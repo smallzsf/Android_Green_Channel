@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,27 +10,25 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/dk_dp_15"
         android:background="@color/app_299ee3"
-        >
+        android:orientation="vertical"
+        android:padding="@dimen/dk_dp_15">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login_pic"
-            android:textSize="16sp"
-            android:gravity="center"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/login_pic"
             android:textColor="@color/white"
-             ></TextView>
+            android:textSize="16sp"/>
 
         <ImageView
             android:id="@+id/iv_setting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/login_setting"
             android:layout_alignParentRight="true"
-            ></ImageView>
+            android:src="@drawable/login_setting"/>
 
     </RelativeLayout>
 

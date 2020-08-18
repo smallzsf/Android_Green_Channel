@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BaseTitleBar">
+
+        <attr name="title" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleColor" format="color" />
+        <attr name="btb_closeIconVisible" format="boolean" />
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftIconVisible" format="boolean" />
+        <attr name="titleBackground" format="color" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightIconVisible" format="boolean" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextVisible" format="boolean" />
+        <attr name="bottomLineVisible" format="boolean" />
+
+    </declare-styleable>
+</resources>

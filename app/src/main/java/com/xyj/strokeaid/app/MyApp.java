@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.didichuxing.doraemonkit.BuildConfig;
 import com.didichuxing.doraemonkit.DoraemonKit;
 
 /**
@@ -30,7 +31,9 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
         super.onCreate();
 
         // DoraemonKit
-        DoraemonKit.install(this);
+        if (BuildConfig.DEBUG) {
+            DoraemonKit.install(this);
+        }
     }
 
 

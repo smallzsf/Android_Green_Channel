@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_stroke_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:rightIconVisible="false"
+        app:rightText="亚历山大（护士）"
+        app:rightTextVisible="true"
+        app:title="患者姓名" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_title_act_stroke_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_below="@id/title_bar_act_stroke_main"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/color_00ACFF"
+        app:tabMode="auto"
+        app:tabTextAppearance="@style/tab_layout_text" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_content_act_stroke_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_below="@id/tl_title_act_stroke_main" />
+
+    <include
+        layout="@layout/include_stroke_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

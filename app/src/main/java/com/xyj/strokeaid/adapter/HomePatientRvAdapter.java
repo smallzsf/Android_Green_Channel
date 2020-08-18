@@ -2,6 +2,7 @@ package com.xyj.strokeaid.adapter;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
+import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.bean.HomePatientBean;
 
 import org.jetbrains.annotations.NotNull;
@@ -22,11 +23,13 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
     /**
      * 代表当前显示的内容状态
      */
-    int type;
+    int mDiseaseType;
+    int mPatientType;
 
-    public HomePatientRvAdapter(int layoutResId, @Nullable List<HomePatientBean> data, int type) {
-        super(layoutResId, data);
-        this.type = type;
+    public HomePatientRvAdapter( @Nullable List<HomePatientBean> data, int diseaseType, int patientType) {
+        super(R.layout.item_rv_home_patient, data);
+        this.mDiseaseType = diseaseType;
+        this.mPatientType = patientType;
     }
 
     @Override

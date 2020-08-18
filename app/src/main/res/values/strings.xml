@@ -17,6 +17,7 @@
     <string name="patient_where_about">患者去向： %s</string>
     <string name="disease_type_stroke">卒 中</string>
     <string name="disease_type_chest_pain">胸 痛</string>
+    <string name="tips_no_data">暂无数据</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -900,5 +901,7 @@
     <string name="xlog_title_crash_report_email">Android客户端 - 错误报告</string>
     <string name="xlog_title_please_choose_email_client">Choose Email Client</string>
     <string name="you_have_cut_down_the_permission">您已经拒绝拍照权限,请到设置里重新打开</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

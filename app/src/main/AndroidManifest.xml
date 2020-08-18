@@ -33,6 +33,7 @@
         <activity
             android:name=".activity.set.SetActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.stroke.StrokeMainActivity" />
 
         <receiver
             android:name=".receiver.MyReceiver"

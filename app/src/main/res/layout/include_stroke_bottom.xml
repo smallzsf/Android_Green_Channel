@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/color_46525f"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_first_time_include_stroke_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24:36:53"
+                android:textColor="@color/app_fff600"
+                android:textSize="17dp" />
+
+
+            <TextView
+                android:id="@+id/tv_first_time_desc_include_stroke_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距发病"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_second_time_include_stroke_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24:36:53"
+                android:textColor="@color/app_fff600"
+                android:textSize="17dp" />
+
+
+            <TextView
+                android:id="@+id/tv_second_time_desc_include_stroke_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距到院"
+                android:textColor="@color/white"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@color/color_00ACFF">
+
+        <TextView
+            android:id="@+id/tv_score_include_stroke_bottom"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="评分"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_time_axis_include_stroke_bottom"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="时间轴"
+            android:textColor="@color/white"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

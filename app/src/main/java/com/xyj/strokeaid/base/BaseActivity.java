@@ -1,9 +1,12 @@
 package com.xyj.strokeaid.base;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import butterknife.ButterKnife;
 
 /**
  * BaseActivity
@@ -15,13 +18,17 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    protected Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(this.getLayoutId());
-
+        ButterKnife.bind(this);
         initView();
+        initListener();
+
+        mContext = this;
     }
 
     @Override
@@ -41,7 +48,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void initView();
 
-
+    /**
+     * 初始化监听事件
+     */
+    public abstract void initListener();
 
 }
 
