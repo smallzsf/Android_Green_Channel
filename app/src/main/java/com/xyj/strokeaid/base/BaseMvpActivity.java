@@ -12,6 +12,7 @@ import com.xyj.strokeaid.presenter.BasePresenter;
 import autodispose2.AutoDispose;
 import autodispose2.AutoDisposeConverter;
 import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider;
+import butterknife.ButterKnife;
 
 /**
  * @author azheng
@@ -27,7 +28,6 @@ public abstract class BaseMvpActivity<T extends BasePresenter> extends BaseActiv
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
 

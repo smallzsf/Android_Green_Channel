@@ -4,4 +4,17 @@
     <string name="tab_video">视频</string>
     <string name="tab_micro">微头条</string>
     <string name="tab_me">我的</string>
+    <string name="hint_search_patient">请输入患者姓名</string>
+    <string name="home_search_type">类型</string>
+    <string name="home_title">急救绿色通道</string>
+    <string name="patient_age_with_para">%d 岁</string>
+    <string name="patient_stroke_doc">卒中医生： %s</string>
+    <string name="patient_chest_pain_doc">胸痛医生： %s</string>
+    <string name="patient_receiver_nurse">接诊护士： %s</string>
+    <string name="patient_start_green_channel">启动绿道： %s</string>
+    <string name="patient_start_disease_time">发病时间： %s</string>
+    <string name="patient_out_come_time">转归时间： %s</string>
+    <string name="patient_where_about">患者去向： %s</string>
+    <string name="disease_type_stroke">卒 中</string>
+    <string name="disease_type_chest_pain">胸 痛</string>
 </resources>

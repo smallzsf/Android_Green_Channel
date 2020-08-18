@@ -4,10 +4,26 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="color_FFFFFF">#FFFFFF</color>
+    <color name="color_EEEEEE">#EEEEEE</color>
+    <color name="color_33EEEEEE">#33EEEEEE</color>
+    <color name="color_66EEEEEE">#66EEEEEE</color>
+    <color name="color_99EEEEEE">#99EEEEEE</color>
+    <color name="color_BBEEEEEE">#BBEEEEEE</color>
+    <color name="color_AAAAAA">#AAAAAA</color>
+    <color name="color_999999">#999999</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_111111">#111111</color>
+    <color name="color_000000">#000000</color>
+
     <color name="tab_gb">#F3F5F4</color>
     <color name="tab_normal_color">#515051</color>
     <color name="tab_selected_color">#D33D3C</color>
 
     <color name="unreadTextColor">#00ff00</color>
     <color name="msgTextColor">#00ff00</color>
+    <color name="color_00ACFF">#00ACFF</color>
+    <color name="color_EAEEF2">#eaeef2</color>
 </resources>
