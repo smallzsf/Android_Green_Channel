@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.activity.set;
 
+import android.os.Bundle;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -20,10 +22,6 @@ import java.util.List;
  */
 public class SetActivity extends PreferenceActivity {
 
-    @Override
-    public void onBuildHeaders(List<Header> target) {
-        loadHeadersFromResource(R.xml.preference_headers, target);
-    }
 
 
 
@@ -36,6 +34,32 @@ public class SetActivity extends PreferenceActivity {
             listView.setDivider(getResources().getDrawable(R.drawable.divider_line));
         }
     }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       /* if(hasHeaders()){
+            Button button = new Button(this);
+            button.setText("设置操作");
+            setListFooter(button);
+        }*/
+    }
+
+    //重写该方法，负责加载界面布局文件
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.preference_headers, target);
+    }
+
+
+    @Override
+    protected boolean isValidFragment(String fragmentName) {
+        return true;
+    }
+
+
+
 }
 
     

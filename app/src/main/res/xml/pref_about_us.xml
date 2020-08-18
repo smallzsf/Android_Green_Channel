@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
-    <Preference android:title="@string/device_code_title" android:key="@string/device_code_key" android:defaultValue="android_ecg"/>
-    <Preference android:title="@string/software_version_title" android:key="@string/software_version_key"/>
-    <Preference android:title="@string/app_setting_develop_number" android:key="@string/app_setting_develop_number_key"/>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Preference
+        android:defaultValue="android_ecg"
+        android:key="@string/device_code_key"
+        android:title="@string/device_code_title" />
+    <Preference
+        android:key="@string/software_version_key"
+        android:title="@string/software_version_title" />
+    <Preference
+        android:key="@string/app_setting_develop_number_key"
+        android:title="@string/app_setting_develop_number" />
 </PreferenceScreen>
