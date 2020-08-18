@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <CheckBoxPreference android:title="@string/debug_mode_switch_title" android:key="@string/debug_mode_switch_key" android:defaultValue="false" android:summaryOn="@string/switch_on" android:summaryOff="@string/switch_off"/>
+    <CheckBoxPreference android:title="@string/navationbar_mode_switch_title" android:key="@string/navationbar_mode_switch_key" android:defaultValue="true" android:summaryOn="@string/switch_on" android:summaryOff="@string/switch_off"/>
+    <CheckBoxPreference android:title="心电检查确诊时间自动赋值" android:key="@string/assignment_mode_switch_key" android:defaultValue="false" android:summaryOn="@string/switch_on" android:summaryOff="@string/switch_off"/>
+</PreferenceScreen>

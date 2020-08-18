@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:icon="@drawable/ic_settings"
+    android:summary="@string/system_settings"
+    >
+    <header
+        android:fragment="com.xyj.strokeaid.fragment.setting.OperatingEnvironmentPrefFragment"
+        android:summary="@string/prefs_summ_operating_environment"
+        android:title="@string/prefs_title_operating_environment" />
+    <header
+        android:fragment="com.xyj.strokeaid.fragment.setting.AssistFunctionPrefFragment"
+        android:summary="@string/prefs_summ_assist_function"
+        android:title="@string/prefs_title_assist_function" />
+    <header
+        android:fragment="com.xyj.strokeaid.fragment.setting.MessagePushPrefFragment"
+        android:summary="@string/prefs_summ_push_message"
+        android:title="@string/prefs_title_push_message" />
+    <header
+        android:fragment="com.xyj.strokeaid.fragment.setting.AboutUsPrefFragment"
+        android:summary="@string/prefs_summ_about_us"
+        android:title="@string/prefs_title_about_us" />
+</preference-headers>
+

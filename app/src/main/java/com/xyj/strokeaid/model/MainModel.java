@@ -2,6 +2,7 @@ package com.xyj.strokeaid.model;
 
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.HomePatientBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.MainContract;
 import com.xyj.strokeaid.http.ApiService;
@@ -23,4 +24,8 @@ import retrofit2.Response;
  */
 public class MainModel implements MainContract.Model {
 
+    @Override
+    public Observable<BaseObjectBean<HomePatientBean>> getPatientData(int diseaseType, int patientType, String name) {
+        return null;
+    }
 }

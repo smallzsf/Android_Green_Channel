@@ -30,6 +30,10 @@
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.set.SetActivity"
+            android:screenOrientation="portrait"></activity>
+
         <receiver
             android:name=".receiver.MyReceiver"
             android:exported="false" />

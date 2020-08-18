@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <PreferenceCategory android:title="@string/app_push_setting_title" android:key="@string/messagepush_setting_key">
+        <CheckBoxPreference android:title="@string/messagepush_switch_title" android:key="@string/messagepush_switch_key" android:defaultValue="true" android:summaryOn="@string/switch_on" android:summaryOff="@string/switch_off"/>
+        <CheckBoxPreference android:title="@string/sound_switch_title" android:key="@string/sound_switch_key" android:defaultValue="true" android:summaryOn="@string/switch_on" android:summaryOff="@string/switch_off"/>
+        <EditTextPreference android:title="@string/push_server_ip_port_title" android:key="@string/push_server_ip_port_key" android:defaultValue="@string/default_pushservice_url_value"/>
+    </PreferenceCategory>
+</PreferenceScreen>

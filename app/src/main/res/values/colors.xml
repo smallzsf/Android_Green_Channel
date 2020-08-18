@@ -26,4 +26,37 @@
     <color name="msgTextColor">#00ff00</color>
     <color name="color_00ACFF">#00ACFF</color>
     <color name="color_EAEEF2">#eaeef2</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00ff00ff</color>
+    <color name="line">#e8e8e8</color>
+    <color name="app_00000000">#00000000</color>
+    <color name="app_004b84">#004b84</color>
+    <color name="app_00aaff">#00aaff</color>
+    <color name="app_00e266">#00e266</color>
+    <color name="app_158cd3">#158cd3</color>
+    <color name="app_223b53">#223b53</color>
+    <color name="app_299ee3">#299ee3</color>
+    <color name="app_2fc595">#2fc595</color>
+    <color name="app_4c000000">#4c000000</color>
+    <color name="app_5db4e7">#5db4e7</color>
+    <color name="app_6a798e">#6a798e</color>
+    <color name="app_9fabbc">#9fabbc</color>
+    <color name="app_a8d4f3">#a8d4f3</color>
+    <color name="app_c5cdd9">#c5cdd9</color>
+    <color name="app_cc1b2939">#cc1b2939</color>
+    <color name="app_ccecff">#ccecff</color>
+    <color name="app_dddddd">#dddddd</color>
+    <color name="app_e0e0e0">#e0e0e0</color>
+    <color name="app_e1f4ff">#e1f4ff</color>
+    <color name="app_eaeef2">#eaeef2</color>
+    <color name="app_eef3f7">#eef3f7</color>
+    <color name="app_f0f0f2">#f0f0f2</color>
+    <color name="app_f15d59">#f15d59</color>
+    <color name="app_f2f2f2">#f2f2f2</color>
+    <color name="app_f5f5f5">#f5f5f5</color>
+    <color name="app_ff0000">#ff0000</color>
+    <color name="app_ffe4e4e4">#ffe4e4e4</color>
+    <color name="app_fff600">#fff600</color>
+    <color name="app_ffffff">#ffffff</color>
+
 </resources>

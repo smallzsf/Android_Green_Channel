@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt">
+    <PreferenceCategory android:title="@string/app_server_url_setting_title">
+        <EditTextPreference android:title="@string/cpc_service_api_title" android:key="@string/cpc_service_api_key" android:defaultValue="@string/default_cpc_service_api" android:positiveButtonText="@string/lab_confirm" android:negativeButtonText="@string/lab_cancel"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/app_setting_sync_time_title">
+        <EditTextPreference android:title="@string/app_setting_sync_time_api_title" android:key="@string/app_setting_sync_time_api_key" android:defaultValue="@string/app_setting_sync_time_default_api"/>
+        <EditTextPreference android:singleLine="false" android:maxLength="5" android:numeric="integer" android:title="@string/app_setting_sync_time_interval_title" android:key="@string/app_setting_sync_time_interval_key" android:defaultValue="@string/app_setting_sync_time_default_interval"/>
+    </PreferenceCategory>
+</PreferenceScreen>
