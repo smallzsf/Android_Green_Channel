@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:rightIconVisible="false"
+        app:rightTextVisible="true"
+        app:title="@string/app_emergency_docotor_time" />
+
+    <LinearLayout
+        android:id="@+id/triage_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/titlebar"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="@string/app_emergency_docotor_time"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/app_tv_editSpinner_time"
+            style="@style/patient_et_style"
+            android:layout_width="@dimen/dp_0"
+            android:layout_weight="2.4"
+            android:focusable="false"
+            android:hint="@string/app_default_time_example"
+            android:paddingLeft="@dimen/dp_10" />
+
+        <ImageView
+            android:id="@+id/iv_refresh"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:paddingLeft="4dp"
+            android:paddingTop="2dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/ic_refresh" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/doctor_name_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@+id/triage_time"
+        android:background="@color/app_eef3f7" />
+
+    <LinearLayout
+        android:id="@+id/triage_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:text="@string/app_emergency_docotor"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <com.xyj.strokeaid.editspinner.EditSpinner
+            android:id="@+id/editSpinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="EditSpinner Test"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+        <!--   <com.p068nl.view.widget.spinner.editspinner.EditSpinner
+               android:id="@+id/emergency_docotr_spinner"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_weight="1.5"
+               app:es_background="@drawable/nlui_config_color_edittext_normal"
+               app:es_dropdown_max_height="160dp"
+               app:es_height="30dp"
+               app:es_hint="@string/please_select" />-->
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/time_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@+id/triage_name"
+        android:background="@color/app_eef3f7" />
+
+    <!--  <include
+            layout="@layout/view_submit_button_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginRight="@dimen/dp_23" />-->
+</RelativeLayout>

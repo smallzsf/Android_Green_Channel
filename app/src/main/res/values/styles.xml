@@ -24,5 +24,15 @@
         <item name="android:layout_marginRight">@dimen/dp_23</item>
     </style>
 
+    <style name="patient_et_style">
+        <item name="android:textSize">@dimen/sp_14</item>
+        <item name="android:textColorHint">@color/app_c5cdd9</item>
+        <item name="android:gravity">right|center_horizontal|clip_horizontal</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_width">@dimen/dp_0</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
 
 </resources>

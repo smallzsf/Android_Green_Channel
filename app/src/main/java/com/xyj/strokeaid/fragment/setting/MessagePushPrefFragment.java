@@ -3,6 +3,7 @@ package com.xyj.strokeaid.fragment.setting;
 
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
+import android.widget.ListView;
 
 import com.xyj.strokeaid.R;
 
@@ -16,4 +17,10 @@ public final class MessagePushPrefFragment extends PreferenceFragment {
         //...
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+    }
 }

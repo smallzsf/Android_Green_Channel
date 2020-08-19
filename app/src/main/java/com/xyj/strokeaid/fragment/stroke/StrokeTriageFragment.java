@@ -1,14 +1,27 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.EmergencyDoctorActivity;
+import com.xyj.strokeaid.activity.stroke.TriageActivity;
+import com.xyj.strokeaid.adapter.BaseRecycAdapter;
+import com.xyj.strokeaid.adapter.StrokeTriageAdapter;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,6 +34,10 @@ public class StrokeTriageFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    @BindView(R.id.rv_content_act_main)
+    RecyclerView rvContentActMain;
+    @BindView(R.id.srl_fresh_act_main)
+    SwipeRefreshLayout srlFreshActMain;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +78,32 @@ public class StrokeTriageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.stroke_fragment_triage, container, false);
+        View inflate = inflater.inflate(R.layout.stroke_fragment_triage, container, false);
+        ButterKnife.bind(this,inflate);
+        init();
+        return inflate;
+
+    }
+
+    private void init() {
+        ArrayList<String> strings = new ArrayList<>();
+        for (int i = 0; i < 14; i++) {
+            strings.add("封装RecyclerView" + i);
+        }
+        rvContentActMain.setLayoutManager(new LinearLayoutManager(getContext()));
+        StrokeTriageAdapter strokeTriageAdapter = new StrokeTriageAdapter(strings, getContext());
+        rvContentActMain.setAdapter(strokeTriageAdapter);
+        strokeTriageAdapter.setOnItemClickListener(new BaseRecycAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getContext(), "position"+position, Toast.LENGTH_SHORT).show();
+                if(position==0){
+                    startActivity(new Intent(getActivity(), TriageActivity.class));
+                }else if(position==1){
+                    startActivity(new Intent(getActivity(), EmergencyDoctorActivity.class));
+                }
+            }
+        });
+
     }
 }

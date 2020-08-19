@@ -2,8 +2,8 @@ package com.xyj.strokeaid.http;
 
 
 import androidx.annotation.NonNull;
+import androidx.databinding.library.baseAdapters.BuildConfig;
 
-import com.xyj.strokeaid.BuildConfig;
 
 import java.io.IOException;
 

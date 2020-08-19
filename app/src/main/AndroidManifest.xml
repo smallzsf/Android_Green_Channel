@@ -27,6 +27,8 @@
             android:value="portrait|landscape" />
 
 
+        <activity android:name=".activity.stroke.EmergencyDoctorActivity"></activity>
+        <activity android:name=".activity.stroke.TriageActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,18 +36,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.set.SetActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.stroke.StrokeMainActivity" />
 
         <receiver
