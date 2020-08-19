@@ -2,9 +2,13 @@ package com.xyj.strokeaid.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.gyf.immersionbar.ImmersionBar;
+import com.xyj.strokeaid.R;
 
 import butterknife.ButterKnife;
 
@@ -29,6 +33,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         initListener();
 
         mContext = this;
+
+        // 初始化沉浸式状态栏
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorPrimary)
+                .fitsSystemWindows(true)
+                .keyboardEnable(true)
+                .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+                .init();
     }
 
     @Override
