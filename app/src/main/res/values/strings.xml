@@ -903,5 +903,10 @@
     <string name="you_have_cut_down_the_permission">您已经拒绝拍照权限,请到设置里重新打开</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="stroke">卒中</string>
+    <string name="chest_pain">胸痛</string>
+    <string name="change_password">修改密码</string>
+    <string name="current_version">当前版本： %s</string>
+    <string name="log_out">退出登录</string>
 
 </resources>

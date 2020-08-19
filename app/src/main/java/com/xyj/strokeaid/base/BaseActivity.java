@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gyf.immersionbar.ImmersionBar;
+import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
 
 import butterknife.ButterKnife;
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
+    protected MMKV mDefaultMMKV;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initListener();
 
         mContext = this;
+        mDefaultMMKV = MMKV.defaultMMKV();
 
         // 初始化沉浸式状态栏
         ImmersionBar.with(this)

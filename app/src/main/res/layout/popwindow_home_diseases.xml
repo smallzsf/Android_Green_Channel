@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_corner_10_with_white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_stroke_pop_diseases"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="卒中"
+        android:textColor="@color/color_222222"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:background="@color/color_DDDDDD" />
+
+    <TextView
+        android:id="@+id/tv_chest_pain_pop_diseases"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="胸痛"
+        android:textColor="@color/color_222222"
+        android:textSize="14sp" />
+
+</LinearLayout>

@@ -21,6 +21,7 @@
         android:singleLine="true"
         android:textColor="@color/color_FFFFFF"
         android:textColorHint="@color/color_FFFFFF"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:focusable="true" />
 
 </LinearLayout>

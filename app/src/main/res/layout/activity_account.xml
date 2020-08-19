@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE"
+    android:orientation="vertical"
+    tools:context=".activity.set.AccountActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_account"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="个人中心" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/dp_12"
+        android:background="@drawable/shape_corner_10_with_white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_name_act_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_222222"
+                android:textSize="18dp"
+                tools:text="刘杰" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="姓名"
+                android:textColor="@color/color_666666"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_department_act_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_222222"
+                android:textSize="18dp"
+                tools:text="急诊科" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="科室"
+                android:textColor="@color/color_666666"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_12"
+        android:background="@drawable/shape_corner_10_with_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_change_pwd_act_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_12"
+            android:text="@string/change_password"
+            android:textSize="16dp"
+            app:drawableStartCompat="@drawable/icon_change_password" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_EEEEEE" />
+
+
+        <TextView
+            android:id="@+id/tv_version_act_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_12"
+            android:text="@string/current_version"
+            android:textSize="16dp"
+            app:drawableStartCompat="@drawable/icon_current_version" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_EEEEEE" />
+
+        <TextView
+            android:id="@+id/tv_exit_act_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:drawablePadding="@dimen/dp_12"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp_12"
+            android:text="@string/log_out"
+            android:textSize="16dp"
+            app:drawableStartCompat="@drawable/icon_exit_blue" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

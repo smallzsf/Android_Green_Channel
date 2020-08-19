@@ -9,6 +9,7 @@ package com.xyj.strokeaid.app;
  * email ：licy3051@qq.com
  */
 public class AppConfig {
+
 }
 
     

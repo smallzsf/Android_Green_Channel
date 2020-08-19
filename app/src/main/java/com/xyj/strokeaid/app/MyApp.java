@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 
 import com.didichuxing.doraemonkit.BuildConfig;
 import com.didichuxing.doraemonkit.DoraemonKit;
+import com.tencent.mmkv.MMKV;
+import com.xyj.strokeaid.helper.ActivityStackManager;
 
 /**
  * MyApp
@@ -30,16 +32,21 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
     public void onCreate() {
         super.onCreate();
 
+        registerActivityLifecycleCallbacks(this);
+
         // DoraemonKit
         if (BuildConfig.DEBUG) {
             DoraemonKit.install(this);
         }
+
+        // init MMKV 替代sp
+        MMKV.initialize(this);
     }
 
 
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-
+        ActivityStackManager.getInstance().onActivityCreated(activity);
     }
 
     @Override
@@ -69,7 +76,7 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
 
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
-
+        ActivityStackManager.getInstance().onActivityDestroyed(activity);
     }
 }
 
