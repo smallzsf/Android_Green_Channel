@@ -75,6 +75,12 @@ public class StrokeMainActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+
+        titleBarActStrokeMain.setLeftLayoutClickListener(v -> finish())
+                .setOnTitleClickListener(v -> {
+                    // TODO: 2020/8/19  跳转该患者的个人信息页面（新建页面）
+                });
+
         tlTitleActStrokeMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

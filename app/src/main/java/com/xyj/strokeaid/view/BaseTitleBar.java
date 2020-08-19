@@ -8,11 +8,11 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.xyj.strokeaid.R;
@@ -89,9 +89,9 @@ public class BaseTitleBar extends RelativeLayout {
                 // 默认true
                 ivLeftBaseTitleBar.setVisibility(VISIBLE);
                 if (ta.hasValue(R.styleable.BaseTitleBar_leftIcon)) {
-                    ivLeftBaseTitleBar.setImageResource(ta.getResourceId(R.styleable.BaseTitleBar_leftIcon, R.drawable.common_icon_left_arrow));
+                    ivLeftBaseTitleBar.setImageResource(ta.getResourceId(R.styleable.BaseTitleBar_leftIcon, R.drawable.common_icon_left_arrow_white));
                 } else {
-                    ivLeftBaseTitleBar.setImageResource(R.drawable.common_icon_left_arrow);
+                    ivLeftBaseTitleBar.setImageResource(R.drawable.common_icon_left_arrow_white);
                 }
             } else {
                 // 不显示
@@ -151,18 +151,23 @@ public class BaseTitleBar extends RelativeLayout {
         ivRightBaseTitleBar.setImageResource(resId);
     }
 
-    public BaseTitleBar setLeftLayoutClickListener(OnClickListener listener) {
+    public BaseTitleBar setLeftLayoutClickListener(@NonNull OnClickListener listener) {
         ivLeftBaseTitleBar.setOnClickListener(listener);
         return this;
     }
 
-    public BaseTitleBar setRightLayoutClickListener(OnClickListener listener) {
+    public BaseTitleBar setOnTitleClickListener(@NonNull OnClickListener listener) {
+        tvTitleBaseTitleBar.setOnClickListener(listener);
+        return this;
+    }
+
+    public BaseTitleBar setRightLayoutClickListener(@NonNull OnClickListener listener) {
         ivRightBaseTitleBar.setOnClickListener(listener);
         tvRightBaseTitleBar.setOnClickListener(listener);
         return this;
     }
 
-    public BaseTitleBar setCloseIconClickListener(OnClickListener listener) {
+    public BaseTitleBar setCloseIconClickListener(@NonNull OnClickListener listener) {
         ivCloseBaseTitleBar.setOnClickListener(listener);
         return this;
     }

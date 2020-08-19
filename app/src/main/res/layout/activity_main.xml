@@ -91,9 +91,9 @@
             android:gravity="center"
             android:paddingStart="@dimen/dp_12"
             android:paddingEnd="@dimen/dp_12"
+            android:text="卒中"
             android:textColor="@color/color_FFFFFF"
-            app:drawableEndCompat="@drawable/icon_solid_arrow_down"
-            tools:text="胸痛" />
+            app:drawableEndCompat="@drawable/icon_solid_arrow_down" />
 
     </LinearLayout>
 
