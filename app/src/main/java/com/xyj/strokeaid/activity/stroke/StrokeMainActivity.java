@@ -54,6 +54,9 @@ public class StrokeMainActivity extends BaseActivity {
     @BindView(R.id.tv_time_axis_include_stroke_bottom)
     TextView tvTimeAxisIncludeStrokeBottom;
 
+    private String mPatientId;
+    private String mDocId;
+
     @Override
     public int getLayoutId() {
         return R.layout.stroke_act_main;
@@ -69,7 +72,7 @@ public class StrokeMainActivity extends BaseActivity {
         // 禁止滑动
         vpContentActStrokeMain.setUserInputEnabled(false);
         vpContentActStrokeMain.setOffscreenPageLimit(Constants.STROKE_TAB_TITLES.length);
-        vpContentActStrokeMain.setAdapter(new StrokeViewPageAdapter(this));
+        vpContentActStrokeMain.setAdapter(new StrokeViewPageAdapter(this, mPatientId, mDocId));
 
     }
 
@@ -116,16 +119,25 @@ public class StrokeMainActivity extends BaseActivity {
 
     private static class StrokeViewPageAdapter extends FragmentStateAdapter {
 
-        public StrokeViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
+        String patientId;
+        String docId;
+
+        public StrokeViewPageAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
             super(fragmentActivity);
+            this.patientId = patientId;
+            this.docId = docId;
         }
 
-        public StrokeViewPageAdapter(@NonNull Fragment fragment) {
+        public StrokeViewPageAdapter(@NonNull Fragment fragment, String patientId, String docId) {
             super(fragment);
+            this.patientId = patientId;
+            this.docId = docId;
         }
 
-        public StrokeViewPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        public StrokeViewPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
             super(fragmentManager, lifecycle);
+            this.patientId = patientId;
+            this.docId = docId;
         }
 
         @NonNull
@@ -137,13 +149,12 @@ public class StrokeMainActivity extends BaseActivity {
                 case 1:
                     return new StrokeDetectionFragment();
                 case 2:
-                    return new StrokeTreatmentFragment();
+                    return StrokeTreatmentFragment.newInstance(patientId, docId);
                 case 3:
                 default:
-                    return new StrokeOutcomeFragment();
+                    return StrokeOutcomeFragment.newInstance(patientId, docId);
             }
         }
-
 
         @Override
         public int getItemCount() {

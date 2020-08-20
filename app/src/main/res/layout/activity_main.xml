@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -89,17 +90,24 @@
 
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_title_act_main"
+    <com.flyco.tablayout.CommonTabLayout
+        android:id="@+id/ctl_title_act_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        android:background="@color/color_FFFFFF"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/color_00ACFF"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/color_00ACFF"
-        app:tabTextAppearance="@style/tab_layout_text"
-        app:tabTextColor="@color/black" />
+        android:background="#ffffff"
+        tl:tl_iconGravity="LEFT"
+        tl:tl_iconHeight="18dp"
+        tl:tl_iconMargin="5dp"
+        tl:tl_iconWidth="18dp"
+        tl:tl_indicator_bounce_enable="false"
+        tl:tl_indicator_color="#2C97DE"
+        tl:tl_indicator_gravity="BOTTOM"
+        tl:tl_textSelectColor="#2C97DE"
+        tl:tl_textUnselectColor="#66000000"
+        tl:tl_textsize="15sp"
+        tl:tl_underline_color="#DDDDDD"
+        tl:tl_underline_gravity="TOP"
+        tl:tl_underline_height="1dp"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_fresh_act_main"
@@ -114,7 +122,7 @@
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="3"
-            tools:listitem="@layout/item_rv_home_patient" />
+            tools:listitem="@layout/adapter_rv_home_patient_item" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

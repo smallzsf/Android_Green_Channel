@@ -24,16 +24,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.newapoplexy.NewApoplexyInfoActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
+import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.HomePatientBean;
+import com.xyj.strokeaid.bean.TabEntity;
 import com.xyj.strokeaid.contract.MainContract;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
 import com.xyj.strokeaid.presenter.MainPresenter;
@@ -64,8 +70,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     EditText etSearchViewSearch;
     @BindView(R.id.tv_disease_type_act_main)
     TextView tvDiseaseTypeActMain;
-    @BindView(R.id.tl_title_act_main)
-    TabLayout tlTitleActMain;
+    @BindView(R.id.ctl_title_act_main)
+    CommonTabLayout tlTitleActMain;
     @BindView(R.id.rv_content_act_main)
     RecyclerView rvContentActMain;
     @BindView(R.id.srl_fresh_act_main)
@@ -86,6 +92,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      */
     private int mPatientType;
 
+    /**
+     * 当前登录人的id
+     */
+    private String mDocId;
+    private ArrayList<CustomTabEntity> mTabEntities;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -95,14 +107,13 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     public void initView() {
 
         // 设置 tab
-        for (String homeTabTitle : Constants.HOME_TAB_TITLES) {
-            tlTitleActMain.addTab(tlTitleActMain.newTab().setText(homeTabTitle));
-        }
+        initTab();
+
         // 初始化rv数据
         mPatientBeans = new ArrayList<>();
-        mPatientBeans.add(new HomePatientBean());
-        mPatientBeans.add(new HomePatientBean());
-        mPatientBeans.add(new HomePatientBean());
+        mPatientBeans.add(new HomePatientBean("张三", 58, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
+        mPatientBeans.add(new HomePatientBean("李东冬冬", 59, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
+        mPatientBeans.add(new HomePatientBean("王文", 60, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
         mPatientRvAdapter = new HomePatientRvAdapter(mPatientBeans, 1, 1);
         // 设置rv
         rvContentActMain.setLayoutManager(new LinearLayoutManager(mContext));
@@ -112,6 +123,17 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         rvContentActMain.setAdapter(mPatientRvAdapter);
         mPatientRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
 
+    }
+
+    private void initTab() {
+        mTabEntities = new ArrayList<>();
+        for (int i = 0; i < Constants.HOME_TAB_TITLES.length; i++) {
+            mTabEntities.add(new TabEntity(Constants.HOME_TAB_TITLES[i],
+                    Constants.HOME_TAB_SELECTED_ICONS[i], Constants.HOME_TAB_UNSELECTED_ICONS[i]));
+        }
+        tlTitleActMain.setTabData(mTabEntities);
+        tlTitleActMain.showMsg(0, 8);
+        tlTitleActMain.showMsg(1, 22);
     }
 
     @Override
@@ -134,27 +156,25 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             }
         });
 
-        tlTitleActMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tlTitleActMain.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
+            public void onTabSelect(int position) {
 
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
+            public void onTabReselect(int position) {
 
             }
         });
 
-        mPatientRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+        mPatientRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
-
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                Intent intent = new Intent(mContext, StrokeMainActivity.class);
+                intent.putExtra(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId());
+                intent.putExtra(IntentKey.DOC_ID, mDocId);
+                startActivity(intent);
             }
         });
 
