@@ -18,6 +18,7 @@ import java.util.List;
  * @since 2017/2/25
  */
 public class SimpleAdapter extends BaseEditSpinnerAdapter implements EditSpinnerFilter {
+
     private Context mContext;
     private List<String> mSpinnerData;
     private List<String> mCacheData;
@@ -88,4 +89,9 @@ public class SimpleAdapter extends BaseEditSpinnerAdapter implements EditSpinner
         notifyDataSetChanged();
         return mCacheData.size() <= 0;
     }
+
+
+
+
+
 }

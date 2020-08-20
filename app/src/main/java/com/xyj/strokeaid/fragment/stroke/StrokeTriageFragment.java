@@ -101,13 +101,21 @@ public class StrokeTriageFragment extends Fragment {
         strokeTriageAdapter.setOnItemClickListener(new BaseRecycAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getContext(), "position" + position, Toast.LENGTH_SHORT).show();
+
                 if (position == 0) {
                     Intent intent = new Intent(getActivity(), TriageActivity.class);
-                    intent.putExtra("position", position);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", position);
+                    intent.putExtras(bundle);
                     startActivityForResult(intent, 0);
                 } else if (position == 1) {
-                    startActivity(new Intent(getActivity(), EmergencyDoctorActivity.class));
+                    Toast.makeText(getContext(), "position" + position, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), EmergencyDoctorActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", position);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, 1);
+
                 }
             }
         });
@@ -117,14 +125,27 @@ public class StrokeTriageFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (data == null) {
+            return;
+        }
         if (requestCode == 0 && resultCode == 0) {
-            if (data == null) {
-                return;
-            }
-         /*  Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.stroke_fragment_triage);
+          /*  Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.stroke_fragment_triage);
            if (f != null) {
                f.onActivityResult(requestCode,resultCode,data);
-           }*/
+           }
+*/
+            String result = data.getExtras().getString("result");
+            int position = data.getExtras().getInt("position");
+            Toast.makeText(getActivity(), "position" + position, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), result + "***" + position, Toast.LENGTH_SHORT).show();
+            TextView tv_operation_path_show = rvContentActMain.getChildAt(position).findViewById(R.id.tv_operation_path_show);
+            TextView tv_is_done = rvContentActMain.getChildAt(position).findViewById(R.id.tv_is_done);
+            tv_operation_path_show.setText(result);
+            tv_is_done.setBackgroundResource(R.drawable.shape_green_round);
+
+        }
+
+        if (requestCode == 1 && resultCode == 1) {
 
             String result = data.getExtras().getString("result");
             int position = data.getExtras().getInt("position");
