@@ -42,6 +42,7 @@ public class StrokeTriageAdapter extends BaseRecycAdapter<String> {
     protected void covert(BaseViewHolder holder, String data, int position) {
         ButterKnife.bind(this, holder.getView());
         tvPathName.setText(data);
+
     }
 
 

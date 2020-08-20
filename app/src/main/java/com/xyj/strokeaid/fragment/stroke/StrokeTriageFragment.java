@@ -1,17 +1,21 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.gson.Gson;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.stroke.EmergencyDoctorActivity;
 import com.xyj.strokeaid.activity.stroke.TriageActivity;
@@ -42,6 +46,7 @@ public class StrokeTriageFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private StrokeTriageAdapter strokeTriageAdapter;
 
     public StrokeTriageFragment() {
         // Required empty public constructor
@@ -79,7 +84,7 @@ public class StrokeTriageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.stroke_fragment_triage, container, false);
-        ButterKnife.bind(this,inflate);
+        ButterKnife.bind(this, inflate);
         init();
         return inflate;
 
@@ -91,19 +96,44 @@ public class StrokeTriageFragment extends Fragment {
             strings.add("封装RecyclerView" + i);
         }
         rvContentActMain.setLayoutManager(new LinearLayoutManager(getContext()));
-        StrokeTriageAdapter strokeTriageAdapter = new StrokeTriageAdapter(strings, getContext());
+        strokeTriageAdapter = new StrokeTriageAdapter(strings, getContext());
         rvContentActMain.setAdapter(strokeTriageAdapter);
         strokeTriageAdapter.setOnItemClickListener(new BaseRecycAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getContext(), "position"+position, Toast.LENGTH_SHORT).show();
-                if(position==0){
-                    startActivity(new Intent(getActivity(), TriageActivity.class));
-                }else if(position==1){
+                Toast.makeText(getContext(), "position" + position, Toast.LENGTH_SHORT).show();
+                if (position == 0) {
+                    Intent intent = new Intent(getActivity(), TriageActivity.class);
+                    intent.putExtra("position", position);
+                    startActivityForResult(intent, 0);
+                } else if (position == 1) {
                     startActivity(new Intent(getActivity(), EmergencyDoctorActivity.class));
                 }
             }
         });
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 0 && resultCode == 0) {
+            if (data == null) {
+                return;
+            }
+         /*  Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.stroke_fragment_triage);
+           if (f != null) {
+               f.onActivityResult(requestCode,resultCode,data);
+           }*/
+
+            String result = data.getExtras().getString("result");
+            int position = data.getExtras().getInt("position");
+            Toast.makeText(getActivity(), result + "***" + position, Toast.LENGTH_SHORT).show();
+            TextView tv_operation_path_show = rvContentActMain.getChildAt(position).findViewById(R.id.tv_operation_path_show);
+            TextView tv_is_done = rvContentActMain.getChildAt(position).findViewById(R.id.tv_is_done);
+            tv_operation_path_show.setText(result);
+            tv_is_done.setBackgroundResource(R.drawable.shape_green_round);
+
+        }
     }
 }

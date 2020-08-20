@@ -1,12 +1,8 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
-import com.xyj.strokeaid.editspinner.EditSpinner;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.editspinner;
+package com.xyj.strokeaid.view.editspinner;
 
 import android.content.Context;
 import android.text.Html;

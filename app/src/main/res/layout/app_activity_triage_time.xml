@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -28,11 +28,12 @@
         android:paddingRight="@dimen/dp_10">
 
         <TextView
+            android:id="@+id/tv_"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_37"
             android:layout_marginRight="14dp"
-            android:text="@string/app_triage_time"
             android:gravity="center"
+            android:text="@string/app_triage_time"
             android:textColor="@color/app_223b53"
             android:textSize="@dimen/sp_14" />
 
@@ -67,28 +68,35 @@
         android:layout_below="@+id/triage_time"
         android:background="@color/app_eef3f7" />
 
-    <LinearLayout
-        android:id="@+id/triage_name"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_37"
-        android:layout_below="@+id/doctor_name_line"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_25"
-        android:paddingRight="@dimen/dp_10">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_37"
-            android:layout_marginRight="14dp"
-            android:text="@string/app_triage_time"
-            android:gravity="center"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/sp_14" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_41"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginRight="@dimen/dp_23"
+        android:background="@drawable/login_btn_bg"
+        android:text="@string/lab_confirm"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_41"
+        android:layout_marginLeft="@dimen/dp_23"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_23"
+        android:background="@drawable/login_btn_bg"
+        android:text="@string/lab_cancel"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:textSize="18sp" />
 
 
-
-</RelativeLayout>
+</LinearLayout>

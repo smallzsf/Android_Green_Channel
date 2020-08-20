@@ -19,7 +19,7 @@
         <TextView
             android:id="@+id/tv_is_done"
             android:layout_width="@dimen/dp_18"
-            android:layout_height="@dimen/dp_18"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_10"
             android:background="@drawable/shape_red_round" />
 
