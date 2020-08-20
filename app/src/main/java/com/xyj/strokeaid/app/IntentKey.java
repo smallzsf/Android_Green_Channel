@@ -9,6 +9,8 @@ package com.xyj.strokeaid.app;
  * email ：licy3051@qq.com
  */
 public class IntentKey {
+    public static String PATIENT_ID = "PATIENT_ID";
+    public static String DOC_ID = "DOC_ID";
 }
 
     

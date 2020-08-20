@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
-    android:orientation="vertical"
-    tools:context=".fragment.stroke.StrokeOutcomeFragment">
+    tools:context=".fragment.stroke.StrokeThrombolyticFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srl_fresh_frag_outcome"
+        android:id="@+id/srl_fresh_frag_stoke_thrombolytic"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_content_frag_outcome"
+            android:id="@+id/rv_content_frag_stoke_thrombolytic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:overScrollMode="never"
             android:scrollbars="none"
-            tools:listitem="@layout/adapter_rv_stroke_path_item" />
+            tools:listitem="@layout/adapter_stroke_path_item" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-
-</LinearLayout>
+</FrameLayout>

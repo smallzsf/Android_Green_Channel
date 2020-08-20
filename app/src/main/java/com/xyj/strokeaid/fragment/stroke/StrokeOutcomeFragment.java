@@ -1,49 +1,64 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.adapter.StrokeProcessRvAdapter;
+import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
+import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
+import com.xyj.strokeaid.helper.SpacesItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link StrokeOutcomeFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * 卒中抢救流程  --  转归
+ *
+ * @author Licy
  */
-public class StrokeOutcomeFragment extends Fragment {
+public class StrokeOutcomeFragment extends BaseFragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    @BindView(R.id.rv_content_frag_outcome)
+    RecyclerView rvContentFragOutcome;
+    @BindView(R.id.srl_fresh_frag_outcome)
+    SwipeRefreshLayout srlFreshFragOutcome;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mPatientId;
+    private String mDocId;
 
-    public StrokeOutcomeFragment() {
-        // Required empty public constructor
+    private StrokeProcessRvAdapter mProcessRvAdapter;
+    private List<StrokeProcessBean> mStrokeProcessBeans;
+
+    private StrokeOutcomeFragment() {
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StrokeOutcomeFragment.
+     * @param patientId 患者ID
+     * @param docId     医生id
+     * @return A new instance of fragment StrokeAngioplastyFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static StrokeOutcomeFragment newInstance(String param1, String param2) {
+    public static StrokeOutcomeFragment newInstance(String patientId, String docId) {
         StrokeOutcomeFragment fragment = new StrokeOutcomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +67,44 @@ public class StrokeOutcomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
+            mDocId = getArguments().getString(IntentKey.DOC_ID);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.stroke_fragment_outcome, container, false);
+    protected int getLayoutId() {
+        return R.layout.stroke_fragment_outcome;
+    }
+
+    @Override
+    protected void initView(@NonNull View view) {
+
+        mStrokeProcessBeans = new ArrayList<>();
+        mStrokeProcessBeans.add(new StrokeProcessBean("急诊绿道转归", 1, "", RouteUrl.GREEN_CHANNEL_OUTCOME, false));
+        mProcessRvAdapter = new StrokeProcessRvAdapter(R.layout.adapter_rv_stroke_path_item, mStrokeProcessBeans);
+
+        rvContentFragOutcome.setLayoutManager(new LinearLayoutManager(mActivity));
+        rvContentFragOutcome.addItemDecoration(new SpacesItemDecoration(0, 0, 0, 1, LinearLayout.VERTICAL));
+        rvContentFragOutcome.setAdapter(mProcessRvAdapter);
+        mProcessRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+    }
+
+    @Override
+    protected void initListener() {
+
+        srlFreshFragOutcome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+        });
+
+        mProcessRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                ARouter.getInstance().build(RouteUrl.GREEN_CHANNEL_OUTCOME).navigation();
+            }
+        });
     }
 }

@@ -1,49 +1,54 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.base.BaseFragment;
+
+import butterknife.BindView;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link StrokeTreatmentFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * 卒中绿道流程  -- 治疗
+ *
+ * @author Licy
  */
-public class StrokeTreatmentFragment extends Fragment {
+public class StrokeTreatmentFragment extends BaseFragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    @BindView(R.id.stl_frag_treat)
+    SegmentTabLayout stlFragTreat;
+    @BindView(R.id.vp_content_frag_treat)
+    ViewPager2 vpContentFragTreat;
 
-    public StrokeTreatmentFragment() {
-        // Required empty public constructor
+    private String mPatientId;
+    private String mDocId;
+
+    private StrokeTreatmentFragment() {
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StrokeTreatmentFragment.
+     * @param patientId 患者ID
+     * @param docId     医生id
+     * @return A new instance of fragment StrokeAngioplastyFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static StrokeTreatmentFragment newInstance(String param1, String param2) {
+    public static StrokeTreatmentFragment newInstance(String patientId, String docId) {
         StrokeTreatmentFragment fragment = new StrokeTreatmentFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +57,69 @@ public class StrokeTreatmentFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
+            mDocId = getArguments().getString(IntentKey.DOC_ID);
         }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.stroke_fragment_treatment, container, false);
+    protected void initView(@NonNull View view) {
+        stlFragTreat.setTabData(Constants.STROKE_TREATMENT_TAB_TITLES);
+
+        vpContentFragTreat.setUserInputEnabled(false);
+        vpContentFragTreat.setAdapter(new StrokeTreatPagerAdapter(this, mPatientId, mDocId));
+        vpContentFragTreat.setCurrentItem(0);
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.stroke_fragment_treatment;
+    }
+
+    @Override
+    protected void initListener() {
+        stlFragTreat.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                vpContentFragTreat.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+    }
+
+    @Override
+    public boolean immersionBarEnabled() {
+        return false;
+    }
+
+    public static class StrokeTreatPagerAdapter extends FragmentStateAdapter {
+
+        String patientId;
+        String docId;
+
+        public StrokeTreatPagerAdapter(@NonNull Fragment fragment, String patientId, String docId) {
+            super(fragment);
+            this.patientId = patientId;
+            this.docId = docId;
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            if (position == 0) {
+                return StrokeThrombolyticFragment.newInstance(patientId, docId);
+            } else {
+                return StrokeAngioplastyFragment.newInstance(patientId, docId);
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return Constants.STROKE_TREATMENT_TAB_TITLES.length;
+        }
     }
 }

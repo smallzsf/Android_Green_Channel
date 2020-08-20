@@ -41,6 +41,7 @@
         app:layout_constraintStart_toEndOf="@id/iv_sex_item_patient" />
 
     <TextView
+        android:id="@+id/tv_disease_type_item_patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_12"

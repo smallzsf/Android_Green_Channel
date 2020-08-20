@@ -42,9 +42,6 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-
-
-
         <activity
             android:name=".activity.stroke.EmergencyDoctorActivity"
             android:screenOrientation="portrait" />
@@ -62,8 +59,14 @@
             android:name=".activity.stroke.StrokeMainActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.newapoplexy.NewApoplexyInfoActivity"></activity>
+        <activity
+            android:name=".activity.newapoplexy.NewApoplexyInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".activity.set.AccountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.GreenChannelOutcomeActivity"
             android:screenOrientation="portrait" />
 
         <receiver
