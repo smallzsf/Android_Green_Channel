@@ -19,7 +19,7 @@ public final class KeyboardUtils {
      * @param view 依附的View
      */
     public static void showKeyboard(View view) {
-        if (view == null){
+        if (view == null) {
             return;
         }
         InputMethodManager imm = (InputMethodManager) view.getContext()
@@ -41,6 +41,21 @@ public final class KeyboardUtils {
                 .getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        if (activity == null) {
+            return;
+        }
+        try {
+            InputMethodManager imm = (InputMethodManager) activity
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(activity.getWindow().getDecorView().getWindowToken(), 0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

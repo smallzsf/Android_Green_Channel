@@ -10,17 +10,14 @@
     <RelativeLayout
         android:id="@+id/rl_title_act_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
+        android:layout_height="98dp"
         android:background="@color/color_00ACFF"
-        android:gravity="center_vertical"
-        android:paddingStart="@dimen/dp_4"
-        android:paddingEnd="@dimen/dp_4">
+        android:padding="@dimen/dp_4">
 
         <TextView
             android:id="@+id/tv_user_act_main"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
+            android:layout_height="@dimen/title_bar_height"
             android:drawablePadding="@dimen/dp_4"
             android:ellipsize="end"
             android:gravity="center_vertical"
@@ -33,8 +30,9 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_height="@dimen/title_bar_height"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:text="@string/home_title"
             android:textColor="@color/color_FFFFFF"
             android:textSize="17sp"
@@ -43,52 +41,52 @@
         <ImageView
             android:id="@+id/iv_add_act_main"
             android:layout_width="@dimen/title_bar_height"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/title_bar_height"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:scaleType="center"
             android:src="@drawable/icon_add" />
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        android:background="@color/color_00ACFF"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/dp_4"
-        android:paddingBottom="@dimen/dp_4">
-
         <include
             layout="@layout/view_search"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_8"
-            android:layout_marginEnd="@dimen/dp_8"
-            android:text="@string/home_search_type"
-            android:textColor="@color/color_FFFFFF" />
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_disease_type_act_main"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/shape_circle_corner_with_alpha_back"
-            android:drawablePadding="@dimen/dp_12"
-            android:gravity="center"
-            android:paddingStart="@dimen/dp_12"
-            android:paddingEnd="@dimen/dp_12"
-            android:text="卒中"
-            android:textColor="@color/color_FFFFFF"
-            app:drawableEndCompat="@drawable/common_icon_white_arrow_down" />
 
-    </LinearLayout>
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="@dimen/title_bar_height"-->
+    <!--        android:background="@color/color_00ACFF"-->
+    <!--        android:gravity="center_vertical"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:paddingTop="@dimen/dp_4"-->
+    <!--        android:paddingBottom="@dimen/dp_4">-->
+
+
+    <!--        <TextView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="@dimen/dp_8"-->
+    <!--            android:layout_marginEnd="@dimen/dp_8"-->
+    <!--            android:text="@string/home_search_type"-->
+    <!--            android:textColor="@color/color_FFFFFF" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_disease_type_act_main"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:background="@drawable/shape_circle_corner_with_alpha_back"-->
+    <!--            android:drawablePadding="@dimen/dp_12"-->
+    <!--            android:gravity="center"-->
+    <!--            android:paddingStart="@dimen/dp_12"-->
+    <!--            android:paddingEnd="@dimen/dp_12"-->
+    <!--            android:text="卒中"-->
+    <!--            android:textColor="@color/color_FFFFFF"-->
+    <!--            app:drawableEndCompat="@drawable/common_icon_white_arrow_down" />-->
+
+    <!--    </LinearLayout>-->
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/ctl_title_act_main"
@@ -107,7 +105,7 @@
         tl:tl_textsize="15sp"
         tl:tl_underline_color="#DDDDDD"
         tl:tl_underline_gravity="TOP"
-        tl:tl_underline_height="1dp"/>
+        tl:tl_underline_height="1dp" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_fresh_act_main"

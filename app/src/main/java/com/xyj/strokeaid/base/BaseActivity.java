@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.base;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -12,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.gyf.immersionbar.ImmersionBar;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.helper.KeyboardUtils;
 
 import java.util.ArrayDeque;
 
@@ -51,10 +54,31 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        KeyboardUtils.hideKeyboard(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        KeyboardUtils.hideKeyboard(this);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
     }
 
+
+    @Override
+    public Resources getResources() {
+        Resources resources = super.getResources();
+        Configuration configuration = new Configuration();
+        configuration.setToDefaults();
+        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+        return resources;
+    }
 
     private ArrayDeque<BaseFragment> mFragments = new ArrayDeque<>();
 

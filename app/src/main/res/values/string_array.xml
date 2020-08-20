@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="patient_destination">
+        <item>请选择</item>
+        <item>急诊留观</item>
+        <item>收入急诊病房</item>
+        <item>收入神内病房</item>
+        <item>收入神外病房</item>
+        <item>转院</item>
+        <item>死亡</item>
+        <item>自行离院</item>
+        <item>其他</item>
+    </string-array>
+
+</resources>

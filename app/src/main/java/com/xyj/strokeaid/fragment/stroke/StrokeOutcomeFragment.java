@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -9,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.alibaba.android.arouter.facade.Postcard;
+import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.GreenChannelOutcomeActivity;
 import com.xyj.strokeaid.adapter.StrokeProcessRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
@@ -81,7 +86,8 @@ public class StrokeOutcomeFragment extends BaseFragment {
     protected void initView(@NonNull View view) {
 
         mStrokeProcessBeans = new ArrayList<>();
-        mStrokeProcessBeans.add(new StrokeProcessBean("急诊绿道转归", 1, "", RouteUrl.GREEN_CHANNEL_OUTCOME, false));
+        mStrokeProcessBeans.add(new StrokeProcessBean("急诊绿道转归",
+                1, "", RouteUrl.GREEN_CHANNEL_OUTCOME, false));
         mProcessRvAdapter = new StrokeProcessRvAdapter(R.layout.adapter_rv_stroke_path_item, mStrokeProcessBeans);
 
         rvContentFragOutcome.setLayoutManager(new LinearLayoutManager(mActivity));
@@ -103,7 +109,34 @@ public class StrokeOutcomeFragment extends BaseFragment {
         mProcessRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                ARouter.getInstance().build(RouteUrl.GREEN_CHANNEL_OUTCOME).navigation();
+                if (TextUtils.isEmpty(mStrokeProcessBeans.get(position).getDestination())) {
+                    showToast("地址不存在~");
+                } else {
+                    ARouter.getInstance()
+                            .build(mStrokeProcessBeans.get(position).getDestination())
+                            .navigation(mActivity, new NavigationCallback() {
+                                @Override
+                                public void onFound(Postcard postcard) {
+                                    showToast(postcard.toString());
+                                }
+
+                                @Override
+                                public void onLost(Postcard postcard) {
+                                    showToast(postcard.toString());
+                                }
+
+                                @Override
+                                public void onArrival(Postcard postcard) {
+                                    showToast(postcard.toString());
+                                }
+
+                                @Override
+                                public void onInterrupt(Postcard postcard) {
+                                    showToast(postcard.toString());
+                                }
+                            });
+//                    startActivity(new Intent(mActivity, GreenChannelOutcomeActivity.class));
+                }
             }
         });
     }

@@ -61,7 +61,6 @@
         <activity
             android:name=".activity.stroke.StrokeMainActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.newapoplexy.NewApoplexyInfoActivity"
             android:screenOrientation="portrait" />

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/color_EEEEEE"
+    android:orientation="vertical"
+    tools:context=".activity.stroke.GreenChannelOutcomeActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_act_g_c_outcome"
@@ -11,6 +14,40 @@
         android:layout_height="@dimen/title_bar_height"
         app:title="急诊绿道转归" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/dp_12"
+            android:paddingEnd="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/app_emergency_docotor"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_14" />
+
+            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                android:id="@+id/es_destination_act_g_c_outcome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                app:Background="@drawable/bg_view_frame"
+                app:hint="请选择"
+                app:rightImage="@drawable/ic_arrow_down_blue" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/inclue_bottom_buttom" />
 
 </LinearLayout>

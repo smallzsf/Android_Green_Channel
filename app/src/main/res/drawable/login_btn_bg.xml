@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:shape="rectangle">
-    <corners android:radius="@dimen/dp_15"/>
-    <solid android:color="#299ee3"/>
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+
+    <item android:drawable="@drawable/shape_btn_bg_enable_false" android:state_enabled="false" />
+    <item android:drawable="@drawable/shape_btn_bg_pressed" android:state_pressed="true" />
+    <item android:drawable="@drawable/shape_btn_bg" />
+</selector>

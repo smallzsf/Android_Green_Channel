@@ -28,7 +28,6 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.newapoplexy.NewApoplexyInfoActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
@@ -68,14 +67,16 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     RelativeLayout rlTitleActMain;
     @BindView(R.id.et_search_view_search)
     EditText etSearchViewSearch;
-    @BindView(R.id.tv_disease_type_act_main)
-    TextView tvDiseaseTypeActMain;
     @BindView(R.id.ctl_title_act_main)
     CommonTabLayout tlTitleActMain;
     @BindView(R.id.rv_content_act_main)
     RecyclerView rvContentActMain;
     @BindView(R.id.srl_fresh_act_main)
     SwipeRefreshLayout srlFreshActMain;
+    @BindView(R.id.tv_disease_view_search)
+    TextView tvDiseaseViewSearch;
+    @BindView(R.id.iv_search_view_search)
+    ImageView ivSearchViewSearch;
 
     private HomePatientRvAdapter mPatientRvAdapter;
     private List<HomePatientBean> mPatientBeans;
@@ -180,7 +181,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     }
 
-    @OnClick({R.id.tv_user_act_main, R.id.iv_add_act_main, R.id.tv_disease_type_act_main})
+    @OnClick({R.id.tv_user_act_main, R.id.iv_add_act_main
+            , R.id.tv_disease_view_search, R.id.iv_search_view_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_user_act_main:
@@ -190,8 +192,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 // TODO: 2020/8/19 跳转添加页面
                 startActivity(new Intent(mContext, NewApoplexyInfoActivity.class));
                 break;
-            case R.id.tv_disease_type_act_main:
-                showPopWindow(mContext, tvDiseaseTypeActMain);
+            case R.id.tv_disease_view_search:
+                showPopWindow(mContext, tvDiseaseViewSearch);
+                break;
+            case R.id.iv_search_view_search:
+                // TODO: 2020/8/20 查询
                 break;
             default:
                 break;
@@ -242,7 +247,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             TextView tvStroke = view.findViewById(R.id.tv_stroke_pop_diseases);
             tvStroke.setOnClickListener(v -> {
                 mDiseaseType = 1;
-                tvDiseaseTypeActMain.setText(getString(R.string.stroke));
+                tvDiseaseViewSearch.setText(getString(R.string.stroke));
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -250,7 +255,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             TextView tvChestPain = view.findViewById(R.id.tv_chest_pain_pop_diseases);
             tvChestPain.setOnClickListener(v -> {
                 mDiseaseType = 2;
-                tvDiseaseTypeActMain.setText(getString(R.string.chest_pain));
+                tvDiseaseViewSearch.setText(getString(R.string.chest_pain));
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -262,7 +267,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             mDiseasePop.setOutsideTouchable(true);
             mDiseasePop.setTouchable(true);
             mDiseasePop.setOnDismissListener(() -> {
-                tvDiseaseTypeActMain.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.common_icon_white_arrow_down, 0);
+                tvDiseaseViewSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.common_icon_white_arrow_down, 0);
                 WindowManager.LayoutParams lp = getWindow().getAttributes();
                 lp.alpha = 1.0f;
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -273,7 +278,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         if (mDiseasePop.isShowing()) {
             mDiseasePop.dismiss();
         } else {
-            tvDiseaseTypeActMain.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.common_icon_white_arrow_up, 0);
+            tvDiseaseViewSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.common_icon_white_arrow_up, 0);
             mDiseasePop.showAsDropDown(anchor);
             WindowManager.LayoutParams lp = getWindow().getAttributes();
             lp.alpha = 0.3f;
@@ -282,5 +287,4 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         }
 
     }
-
 }

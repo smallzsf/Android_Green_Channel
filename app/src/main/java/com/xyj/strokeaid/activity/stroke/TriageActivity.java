@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 
-
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -24,7 +23,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**

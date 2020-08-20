@@ -9,9 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.didichuxing.doraemonkit.BuildConfig;
 import com.didichuxing.doraemonkit.DoraemonKit;
 import com.tencent.mmkv.MMKV;
+import com.xyj.strokeaid.BuildConfig;
 import com.xyj.strokeaid.helper.ActivityStackManager;
 
 /**
@@ -44,7 +44,7 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
             ARouter.openDebug();
         }
         // 初始化路由工具
-        ARouter.init(this);
+        ARouter.init(MyApp.this);
         // init MMKV 替代sp
         MMKV.initialize(this);
 
