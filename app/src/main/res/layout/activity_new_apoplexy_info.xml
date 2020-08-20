@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_ffffff"
+    android:orientation="vertical"
+    tools:context=".activity.newapoplexy.NewApoplexyInfoActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.xyj.strokeaid.view.BaseTitleBar
+                android:id="@+id/bt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="新建卒中患者信息" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/app_dp45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="患者信息"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:textColor="@color/app_299ee3" />
+
+                    <Button
+                        android:id="@+id/btn_connect_patient_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginRight="@dimen/dp_16"
+                        android:background="@drawable/shape_btn_bg"
+                        android:paddingLeft="@dimen/dp_16"
+                        android:paddingRight="@dimen/dp_16"
+                        android:text="关联患者信息"
+                        android:textColor="@color/app_ffffff" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints"/>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_container2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="腕带绑定*"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_patient_no"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="读取患者腕带编号"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="姓名*"
+                        android:textColor="@color/color_000000" />
+
+                    <TextView
+                        android:id="@+id/et_patient_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical|center"
+                        android:text="急0819-06" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_line3"
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:id="@+id/ll_container4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="年龄"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_patient_age"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="0-150"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:text="岁"
+                        android:textColor="@color/color_000000" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_line5"
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_container5"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="身高"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_patient_height"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="0-300"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="cm"
+                        android:textColor="@color/color_000000" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_line4"
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:id="@+id/ll_container6"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="体重"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_patient_weight"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="25-300"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:text="kg"
+                        android:textColor="@color/color_000000"/>
+                </LinearLayout>
+
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="身份证号"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_patient_identity"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入身份证号"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="医保卡号"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_medical_card_num"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入医保卡号"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="就诊ID"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_see_doctor_id"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入就诊ID"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="联系人"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_contract_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入联系姓名"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="联系电话"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:id="@+id/et_contract_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入联系电话"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                style="@style/ViewLineStyle"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_save_join"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/dp_10"
+                android:textColor="@color/app_ffffff"
+                android:background="@drawable/shape_btn_bg"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="保存并加入路径"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

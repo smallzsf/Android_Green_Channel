@@ -27,6 +27,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.newapoplexy.NewApoplexyInfoActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
@@ -167,6 +168,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 break;
             case R.id.iv_add_act_main:
                 // TODO: 2020/8/19 跳转添加页面
+                startActivity(new Intent(mContext, NewApoplexyInfoActivity.class));
                 break;
             case R.id.tv_disease_type_act_main:
                 showPopWindow(mContext, tvDiseaseTypeActMain);
