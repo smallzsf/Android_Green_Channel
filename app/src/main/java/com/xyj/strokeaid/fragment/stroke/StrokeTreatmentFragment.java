@@ -91,11 +91,6 @@ public class StrokeTreatmentFragment extends BaseFragment {
         });
     }
 
-    @Override
-    public boolean immersionBarEnabled() {
-        return false;
-    }
-
     public static class StrokeTreatPagerAdapter extends FragmentStateAdapter {
 
         String patientId;

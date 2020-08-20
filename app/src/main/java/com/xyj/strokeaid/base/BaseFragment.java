@@ -12,9 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
 
-import com.gyf.immersionbar.ImmersionBar;
-import com.gyf.immersionbar.components.SimpleImmersionFragment;
 import com.tencent.mmkv.MMKV;
 
 import butterknife.ButterKnife;
@@ -28,7 +27,7 @@ import butterknife.Unbinder;
  * @date : 2020/8/13
  * email ：licy3051@qq.com
  */
-public abstract class BaseFragment extends SimpleImmersionFragment {
+public abstract class BaseFragment extends Fragment {
 
     protected MMKV mDefaultMMKV;
     protected Activity mActivity;
@@ -82,19 +81,6 @@ public abstract class BaseFragment extends SimpleImmersionFragment {
     protected boolean interceptTouchEvents() {
         return false;
     }
-
-    @Override
-    public void initImmersionBar() {
-        ImmersionBar.with(this)
-                .keyboardEnable(true)
-                .init();
-    }
-
-    @Override
-    public boolean immersionBarEnabled() {
-        return super.immersionBarEnabled();
-    }
-
 
     public void showToast(CharSequence msg) {
         Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();

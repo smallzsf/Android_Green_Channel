@@ -52,11 +52,6 @@ public class StrokeAngioplastyFragment extends BaseFragment {
     }
 
     @Override
-    public boolean immersionBarEnabled() {
-        return false;
-    }
-
-    @Override
     protected void initView(@NonNull View view) {
 
     }
