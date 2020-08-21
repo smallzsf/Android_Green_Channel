@@ -20,7 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="新建卒中患者信息" />
+                app:title="新建胸透患者信息"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -38,7 +38,7 @@
                         android:layout_weight="1"
                         android:text="患者信息"
                         android:layout_marginLeft="@dimen/dp_12"
-                        android:textColor="@color/app_299ee3" />
+                        android:textColor="@color/app_299ee3"/>
 
                     <Button
                         android:id="@+id/btn_connect_patient_info"
@@ -84,7 +84,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
                 </LinearLayout>
 
@@ -107,7 +106,7 @@
                         android:textColor="@color/color_000000" />
 
                     <TextView
-                        android:id="@+id/et_patient_name"
+                        android:id="@+id/et_patient_value"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical|center"
@@ -144,7 +143,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
 
                     <TextView
@@ -174,27 +172,24 @@
                         android:text="性别"
                         android:textColor="@color/color_000000" />
 
-                   <RadioGroup
-                       android:id="@+id/rg_sex"
-                       android:layout_width="0dp"
-                       android:layout_height="match_parent"
-                       android:layout_weight="1"
-                       android:gravity="center_vertical"
+                    <RadioGroup
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="男"/>
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/DK.RadioButton.Left"
+                            android:text="女"/>
 
-                       android:orientation="horizontal">
-                       <RadioButton
-                           android:id="@+id/rb_sex_normal"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:checked="true"
-                           android:text="男"/>
-                       <RadioButton
-                           android:id="@+id/rb_sex_male"
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="女"/>
-
-                   </RadioGroup>
+                    </RadioGroup>
 
 
                 </LinearLayout>
@@ -225,7 +220,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
 
                     <TextView
@@ -265,7 +259,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
 
                     <TextView
@@ -302,6 +295,7 @@
                         android:layout_weight="1"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="EditSpinner Test"
+
                         app:rightImage="@drawable/ic_arrow_down_blue"/>
 
                 </LinearLayout>
@@ -334,7 +328,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
@@ -367,7 +360,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
 
                 </LinearLayout>
@@ -400,7 +392,6 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14"/>
                 </LinearLayout>
                 <View
@@ -419,7 +410,8 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="联系人"
-                        android:textColor="@color/color_000000"/>
+                        android:textColor="@color/color_000000" />
+
                     <EditText
                         android:id="@+id/et_contract_name"
                         android:layout_width="0dp"
@@ -449,7 +441,7 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="联系电话"
-                        android:textColor="@color/color_000000" />
+                        android:textColor="@color/color_000000"/>
 
                     <EditText
                         android:id="@+id/et_contract_phone"
@@ -461,13 +453,12 @@
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:inputType="number"
                         android:textSize="@dimen/sp_14" />
                 </LinearLayout>
             </LinearLayout>
             <View
                 style="@style/ViewLineStyle"
-                tools:ignore="MissingConstraints" />
+                tools:ignore="MissingConstraints"/>
 
             <Button
                 android:id="@+id/btn_save_join"

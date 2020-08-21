@@ -29,7 +29,7 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
     int mPatientType;
 
     public HomePatientRvAdapter(@Nullable List<HomePatientBean> data, int diseaseType, int patientType) {
-        super(R.layout.adapter_rv_home_patient_item, data);
+        super(R.layout.adapter_rv_relation_patient_info_item, data);
         this.mDiseaseType = diseaseType;
         this.mPatientType = patientType;
     }

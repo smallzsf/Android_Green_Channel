@@ -16,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.newapoplexy.NewChestXRayActivity"></activity>
+        <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
         <activity
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait">

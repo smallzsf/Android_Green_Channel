@@ -3,5 +3,5 @@
 
     <item android:drawable="@drawable/shape_btn_bg_enable_false" android:state_enabled="false" />
     <item android:drawable="@drawable/shape_btn_bg_pressed" android:state_pressed="true" />
-    <item android:drawable="@drawable/shape_btn_bg" />
+    <item android:drawable="@drawable/shape_corner_20_with_blue" />
 </selector>
