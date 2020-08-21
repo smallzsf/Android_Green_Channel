@@ -43,6 +43,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
 
@@ -105,7 +110,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void onSuccess(BaseObjectBean<LoginBean> bean) {
-        Toast.makeText(this, bean.getErrorMsg(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, bean.getErrorMsg(), Toast.LENGTH_SHORT).show();
 
         if (bean.getResult() == null && bean.getErrorCode() == 0) {
 

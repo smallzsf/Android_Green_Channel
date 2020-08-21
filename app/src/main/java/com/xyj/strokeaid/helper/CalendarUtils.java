@@ -125,6 +125,8 @@ public class CalendarUtils {
             }
         } catch (ParseException e) {
             e.printStackTrace();
+
+
         }
         return pastDaysList;
     }
@@ -177,7 +179,6 @@ public class CalendarUtils {
 
     public static Calendar getCurrentTime() {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
         return calendar;
     }
 

@@ -3,20 +3,29 @@ package com.xyj.strokeaid.base;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
 
 import java.util.ArrayDeque;
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.ButterKnife;
 
@@ -36,7 +45,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(this.getLayoutId());
+
+        int id = getLayoutId();
+        if (id > 0) {
+            setContentView(id);
+        } else {
+            throw new Resources.NotFoundException();
+        }
+        initInject();
         ButterKnife.bind(this);
         initView();
         initListener();
@@ -52,6 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .keyboardMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                 .init();
     }
+
 
     @Override
     protected void onResume() {
@@ -140,6 +157,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract int getLayoutId();
 
     /**
+     * 初始化注入框架
+     */
+    protected abstract void initInject();
+
+    /**
      * 初始化视图
      */
     public abstract void initView();
@@ -149,6 +171,47 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void initListener();
 
+    protected TimePickerView mTimePickerView;
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param tvShowTime 显示时间的 TextView
+     */
+    protected void showTimePickView(TextView tvShowTime) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(tvShowTime);
+                }
+            })
+                    .isDialog(false)
+                    .setOutSideCancelable(true)
+                    .setRangDate(CalendarUtils.getPastWeek(1, new Date()), Calendar.getInstance())
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param textView
+     */
+    protected void refreshTime(TextView textView) {
+        if (textView != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                textView.setTextColor(getColor(R.color.color_222222));
+            } else {
+                textView.setTextColor(getResources().getColor(R.color.color_222222));
+            }
+            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
+        }
+    }
 }
 
     

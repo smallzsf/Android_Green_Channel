@@ -52,6 +52,11 @@ public class RelationPatientInfoActivity extends BaseMvpActivity<NewApoplexyInfo
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
         // 初始化rv数据

@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.BuildConfig;
@@ -42,12 +44,17 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
             // 打印日志
             ARouter.openLog();
             ARouter.openDebug();
+
+            LogUtils.getConfig().setLogSwitch(true);
+        } else {
+            LogUtils.getConfig().setLogSwitch(false);
         }
         // 初始化路由工具
         ARouter.init(MyApp.this);
         // init MMKV 替代sp
         MMKV.initialize(this);
-
+        // android utils
+        Utils.init(this);
     }
 
 

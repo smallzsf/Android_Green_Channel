@@ -66,6 +66,11 @@ public class EcgExamnationMainActivity extends BaseActivity implements OnDateSet
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
         intent = getIntent();
         bundle = intent.getExtras();

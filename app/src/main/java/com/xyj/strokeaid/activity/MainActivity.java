@@ -105,6 +105,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
         // 设置 tab

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE"
     android:orientation="vertical"
     tools:context=".fragment.stroke.StrokeTreatmentFragment">
 
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_4"
+        android:layout_margin="4dp"
         tl:tl_bar_color="@color/white"
         tl:tl_indicator_color="@color/color_00ACFF"
         tl:tl_indicator_corner_radius="8dp"
@@ -23,6 +24,7 @@
         android:id="@+id/vp_content_frag_treat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="horizontal"
         android:overScrollMode="never"
         android:scrollbars="none" />

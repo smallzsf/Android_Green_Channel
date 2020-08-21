@@ -1,26 +1,47 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.adapter.StrokeProcessRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
+import com.xyj.strokeaid.helper.SpacesItemDecoration;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * 治疗  --  介入
+ *
  * @author Licy
  */
 public class StrokeAngioplastyFragment extends BaseFragment {
 
+    @BindView(R.id.rv_content_frag_stoke_ang)
+    RecyclerView rvContentFragStokeAng;
+    @BindView(R.id.srl_fresh_frag_stoke_ang)
+    SwipeRefreshLayout srlFreshFragStokeAng;
+
     private String mPatientId;
     private String mDocId;
+    private StrokeProcessRvAdapter mProcessRvAdapter;
+    private List<StrokeProcessBean> mStrokeProcessBeans;
 
     private StrokeAngioplastyFragment() {
     }
@@ -30,7 +51,7 @@ public class StrokeAngioplastyFragment extends BaseFragment {
      * this fragment using the provided parameters.
      *
      * @param patientId 患者ID
-     * @param docId 医生id
+     * @param docId     医生id
      * @return A new instance of fragment StrokeAngioplastyFragment.
      */
     public static StrokeAngioplastyFragment newInstance(String patientId, String docId) {
@@ -54,6 +75,26 @@ public class StrokeAngioplastyFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
 
+        mStrokeProcessBeans = prepareData();
+        mProcessRvAdapter = new StrokeProcessRvAdapter(R.layout.adapter_rv_stroke_path_item, mStrokeProcessBeans);
+
+        rvContentFragStokeAng.setLayoutManager(new LinearLayoutManager(mActivity));
+        rvContentFragStokeAng.addItemDecoration(new SpacesItemDecoration(0, 0, 0, 1, LinearLayout.VERTICAL));
+        rvContentFragStokeAng.setAdapter(mProcessRvAdapter);
+        mProcessRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+    }
+
+    private List<StrokeProcessBean> prepareData() {
+
+        List<StrokeProcessBean> list = new ArrayList<>();
+        list.add(new StrokeProcessBean("介入医生接诊时间", "STA01", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("介入适应症", "STA02", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("介入禁忌症", "STA03", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("介入知情同意", "STA04", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("启动导管室", "STA05", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("急诊术前准备完成时间", "STA06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("延误分析", "STA07", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        return list;
     }
 
     @Override
@@ -64,5 +105,24 @@ public class StrokeAngioplastyFragment extends BaseFragment {
     @Override
     protected void initListener() {
 
+        srlFreshFragStokeAng.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+            }
+        });
+
+        mProcessRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                if (TextUtils.isEmpty(mStrokeProcessBeans.get(position).getDestination())) {
+                    showToast("地址不存在~");
+                } else {
+                    ARouter.getInstance()
+                            .build(mStrokeProcessBeans.get(position).getDestination())
+                            .navigation();
+                }
+            }
+        });
     }
 }

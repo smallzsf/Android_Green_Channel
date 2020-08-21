@@ -63,6 +63,11 @@ public class StrokeMainActivity extends BaseActivity {
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
         for (String strokeTabTitle : Constants.STROKE_TAB_TITLES) {

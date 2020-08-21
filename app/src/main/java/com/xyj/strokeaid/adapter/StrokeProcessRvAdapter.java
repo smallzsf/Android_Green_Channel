@@ -35,11 +35,19 @@ public class StrokeProcessRvAdapter extends BaseQuickAdapter<StrokeProcessBean, 
         baseViewHolder.setText(R.id.tv_name_adapter_stroke_path, strokeProcessBean.getName())
                 .setText(R.id.tv_desc_adapter_stroke_path, strokeProcessBean.getDesc());
         TextView tvPathName = baseViewHolder.getView(R.id.tv_name_adapter_stroke_path);
+
         // 填写状态
-
+        if (strokeProcessBean.getStatus() == 2){
+            // 部分完成
+            tvPathName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shape_yellow_round, 0, 0, 0);
+        }else if (strokeProcessBean.getStatus() == 3){
+            // 已完成
+            tvPathName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shape_green_round, 0, 0, 0);
+        }else {
+            // 未完成
+            tvPathName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shape_red_round, 0, 0, 0);
+        }
         // 是否必填
-
-        // 跳转地址
 
     }
 }

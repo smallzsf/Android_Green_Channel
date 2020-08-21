@@ -3,6 +3,7 @@ package com.xyj.strokeaid.view.editspinner;
 import android.content.Context;
 import android.text.Html;
 import android.text.TextUtils;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +65,7 @@ public class SimpleAdapter extends BaseEditSpinnerAdapter implements EditSpinner
         } else {
             textView = (TextView) convertView;
         }
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         textView.setText(Html.fromHtml(getItem(position)));
         return textView;
     }

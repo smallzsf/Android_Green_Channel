@@ -75,6 +75,11 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
 

@@ -11,13 +11,20 @@ package com.xyj.strokeaid.bean;
 public class StrokeProcessBean {
 
     private String name;
+    private String code;
+    /**
+     * 1  未完成
+     * 2  部分完成
+     * 3  已完成
+     */
     private int status;
     private String desc;
     private String destination;
     private boolean mustFill;
 
-    public StrokeProcessBean(String name, int status, String desc, String destination, boolean mustFill) {
+    public StrokeProcessBean(String name, String code, int status, String desc, String destination, boolean mustFill) {
         this.name = name;
+        this.code = code;
         this.status = status;
         this.desc = desc;
         this.destination = destination;

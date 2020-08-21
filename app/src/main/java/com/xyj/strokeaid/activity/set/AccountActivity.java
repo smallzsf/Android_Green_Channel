@@ -46,6 +46,11 @@ public class AccountActivity extends BaseActivity {
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
         PackageManager packageManager = getPackageManager();

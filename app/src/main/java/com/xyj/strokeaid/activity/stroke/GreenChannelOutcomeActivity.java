@@ -28,7 +28,7 @@ import me.jessyan.autosize.AutoSize;
  * @date : 2020/8/20
  * email ：licy3051@qq.com
  */
-@Route(path = RouteUrl.GREEN_CHANNEL_OUTCOME)
+@Route(path = RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME)
 public class GreenChannelOutcomeActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_g_c_outcome)
@@ -45,6 +45,11 @@ public class GreenChannelOutcomeActivity extends BaseActivity {
     @Override
     public int getLayoutId() {
         return R.layout.activity_green_channel_outcome;
+    }
+
+    @Override
+    protected void initInject() {
+
     }
 
     @Override

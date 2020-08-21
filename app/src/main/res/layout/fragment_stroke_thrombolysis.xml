@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:overScrollMode="never"
             android:scrollbars="none"
-            tools:listitem="@layout/adapter_stroke_path_item" />
+            tools:listitem="@layout/adapter_rv_stroke_path_item" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <activity android:name=".activity.newapoplexy.NewChestXRayActivity"></activity>
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
         <activity
@@ -72,6 +73,15 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.EcgExamnationMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.ThrombolyticDocReceiveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.ThrombolysisContraindicationsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.ThrombolysisIndicationsActivity"
             android:screenOrientation="portrait" />
 
         <receiver

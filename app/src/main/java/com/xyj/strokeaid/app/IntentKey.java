@@ -8,13 +8,8 @@ package com.xyj.strokeaid.app;
  * @date : 2020/8/12
  * email ：licy3051@qq.com
  */
-public class IntentKey {
-    public static String PATIENT_ID = "PATIENT_ID";
-    public static String DOC_ID = "DOC_ID";
-    public static String DIALOG_MSG = "DIALOG_MSG";
+public final class IntentKey {
+    public static final String PATIENT_ID = "PATIENT_ID";
+    public static final String DOC_ID = "DOC_ID";
+    public static final String DIALOG_MSG = "DIALOG_MSG";
 }
-
-    
-    
-       
-    

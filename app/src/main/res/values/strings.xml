@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StrokeAid</string>
+    <string name="app_name">绿道</string>
     <string name="tab_home">首页</string>
     <string name="tab_video">视频</string>
     <string name="tab_micro">微头条</string>
@@ -908,5 +908,8 @@
     <string name="change_password">修改密码</string>
     <string name="current_version">当前版本： %s</string>
     <string name="log_out">退出登录</string>
-
+    <string name="thrombolytic_indications_01">1.年龄≥18岁</string>
+    <string name="thrombolytic_indications_02">2.症状出现≤4.5h</string>
+    <string name="thrombolytic_indications_03">3.有缺血性脑卒中导致的神经功能缺损症状</string>
+    <string name="thrombolytic_contraindications_01">1.年龄≥18岁</string>
 </resources>

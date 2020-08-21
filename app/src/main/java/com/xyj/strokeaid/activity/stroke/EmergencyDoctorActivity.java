@@ -55,6 +55,11 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
     }
 
     @Override
+    protected void initInject() {
+
+    }
+
+    @Override
     public void initView() {
 
         intent = getIntent();

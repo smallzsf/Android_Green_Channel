@@ -67,6 +67,12 @@ public class NewApoplexyInfoActivity extends BaseMvpActivity<NewApoplexyInfoPres
     public int getLayoutId() {
         return R.layout.activity_new_apoplexy_info;
     }
+
+    @Override
+    protected void initInject() {
+
+    }
+
     @Override
     public void initView(){
 
