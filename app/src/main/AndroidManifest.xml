@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activity.newapoplexy.NewChestXRayActivity"></activity>
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
         <activity
@@ -44,9 +45,6 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-
-
-
         <activity
             android:name=".activity.stroke.EmergencyDoctorActivity"
             android:screenOrientation="portrait" />
@@ -66,14 +64,14 @@
         <activity
             android:name=".activity.newapoplexy.NewApoplexyInfoActivity"
             android:screenOrientation="portrait" />
-
-
-
-
-        <activity  android:name=".activity.set.AccountActivity"
+        <activity
+            android:name=".activity.set.AccountActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.GreenChannelOutcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.EcgExamnationMainActivity"
             android:screenOrientation="portrait" />
 
         <receiver

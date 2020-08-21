@@ -3,20 +3,25 @@ package com.xyj.strokeaid.fragment.stroke;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.google.gson.Gson;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.EcgExamnationMainActivity;
 import com.xyj.strokeaid.activity.stroke.EmergencyDoctorActivity;
 import com.xyj.strokeaid.activity.stroke.TriageActivity;
 import com.xyj.strokeaid.adapter.BaseRecycAdapter;
@@ -92,33 +97,57 @@ public class StrokeTriageFragment extends Fragment {
 
     private void init() {
         ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < 14; i++) {
-            strings.add("封装RecyclerView" + i);
-        }
+        strings.add("患者到院时间");
+        strings.add("来院方式");
+        strings.add("发病时间");
+        strings.add("急诊分诊时间");
+        strings.add("急诊医生接诊时间");
+        strings.add("卒中医生急诊时间");
+        strings.add("FAST-ED评分");
+        strings.add("发病前mRS评分");
+        strings.add("生命体征");
+        strings.add("快速血糖");
+        strings.add("心电图检查");
+        strings.add("采血时间");
+        strings.add("血样送检时间");
+        strings.add("血样送达检验科时间");
+        strings.add("体重");
+        strings.add("身高");
         rvContentActMain.setLayoutManager(new LinearLayoutManager(getContext()));
-        strokeTriageAdapter = new StrokeTriageAdapter(strings, getContext());
+        strokeTriageAdapter = new StrokeTriageAdapter(R.layout.adapter_stroke_path_item, strings);
         rvContentActMain.setAdapter(strokeTriageAdapter);
-        strokeTriageAdapter.setOnItemClickListener(new BaseRecycAdapter.OnItemClickListener() {
+        strokeTriageAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-            public void onItemClick(int position) {
-
-                if (position == 0) {
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                if (position == 0 || position == 2 || position == 11 || position == 12 || position == 13 || position == 14 || position == 15) {
                     Intent intent = new Intent(getActivity(), TriageActivity.class);
                     Bundle bundle = new Bundle();
+                    bundle.putSerializable("arrayList", strings);
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 0);
-                } else if (position == 1) {
-                    Toast.makeText(getContext(), "position" + position, Toast.LENGTH_SHORT).show();
+                } else if (position == 3 || position == 4 || position == 5) {
+
                     Intent intent = new Intent(getActivity(), EmergencyDoctorActivity.class);
                     Bundle bundle = new Bundle();
+                    bundle.putSerializable("arrayList", strings);
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 1);
 
+                } else if (position == 10) {
+
+                    Intent intent = new Intent(getActivity(), EcgExamnationMainActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("arrayList", strings);
+                    bundle.putInt("position", position);
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, 2);
+
                 }
             }
         });
+
 
     }
 
@@ -129,18 +158,26 @@ public class StrokeTriageFragment extends Fragment {
             return;
         }
         if (requestCode == 0 && resultCode == 0) {
-          /*  Fragment f = getActivity().getSupportFragmentManager().findFragmentById(R.id.stroke_fragment_triage);
-           if (f != null) {
-               f.onActivityResult(requestCode,resultCode,data);
-           }
-*/
+
             String result = data.getExtras().getString("result");
             int position = data.getExtras().getInt("position");
-            Toast.makeText(getActivity(), "position" + position, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), result + "***" + position, Toast.LENGTH_SHORT).show();
-            TextView tv_operation_path_show = rvContentActMain.getChildAt(position).findViewById(R.id.tv_operation_path_show);
-            TextView tv_is_done = rvContentActMain.getChildAt(position).findViewById(R.id.tv_is_done);
-            tv_operation_path_show.setText(result);
+            String weight = data.getExtras().getString("weight");
+            Toast.makeText(getActivity(), "体重"+weight+"position"+position, Toast.LENGTH_SHORT).show();
+            String tall = data.getExtras().getString("tall");
+
+            TextView tv_is_done = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_is_done);
+            if (position==14){
+                TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
+                tv_operation_path_show.setText(weight+"KG");
+            }else if(position==15){
+                TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
+                tv_operation_path_show.setText(tall+"cm");
+
+            }else{
+                TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
+                tv_operation_path_show.setText(result);
+            }
+
             tv_is_done.setBackgroundResource(R.drawable.shape_green_round);
 
         }
@@ -149,12 +186,26 @@ public class StrokeTriageFragment extends Fragment {
 
             String result = data.getExtras().getString("result");
             int position = data.getExtras().getInt("position");
+
             Toast.makeText(getActivity(), result + "***" + position, Toast.LENGTH_SHORT).show();
-            TextView tv_operation_path_show = rvContentActMain.getChildAt(position).findViewById(R.id.tv_operation_path_show);
-            TextView tv_is_done = rvContentActMain.getChildAt(position).findViewById(R.id.tv_is_done);
+            TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
+            TextView tv_is_done = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_is_done);
             tv_operation_path_show.setText(result);
             tv_is_done.setBackgroundResource(R.drawable.shape_green_round);
 
         }
+
+        if (requestCode == 2 && resultCode == 2) {
+
+            String result = data.getExtras().getString("result");
+            int position = data.getExtras().getInt("position");
+            Toast.makeText(getActivity(), result + "***" + position, Toast.LENGTH_SHORT).show();
+            TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
+            TextView tv_is_done = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_is_done);
+            tv_operation_path_show.setText(result);
+            tv_is_done.setBackgroundResource(R.drawable.shape_green_round);
+
+        }
+
     }
 }

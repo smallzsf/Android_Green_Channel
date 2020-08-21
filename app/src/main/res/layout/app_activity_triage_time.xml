@@ -14,10 +14,10 @@
         android:layout_height="@dimen/title_bar_height"
         app:rightIconVisible="false"
         app:rightTextVisible="true"
-        app:title="患者姓名" />
+        app:title="患者到院时间" />
 
     <LinearLayout
-        android:id="@+id/triage_time"
+        android:id="@+id/ll_triage_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/titlebar"
@@ -28,12 +28,12 @@
         android:paddingRight="@dimen/dp_10">
 
         <TextView
-            android:id="@+id/tv_"
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dp_37"
             android:layout_marginRight="14dp"
             android:gravity="center"
-            android:text="@string/app_triage_time"
+            android:text="@string/app_patient_arrive_hospital"
             android:textColor="@color/app_223b53"
             android:textSize="@dimen/sp_14" />
 
@@ -61,12 +61,190 @@
             android:src="@drawable/ic_refresh" />
     </LinearLayout>
 
+
+    <LinearLayout
+        android:id="@+id/ll_triage_doctor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:text="@string/app_emergency_docotor"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/editSpinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="EditSpinner Test"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_fast_blood_sugar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:text="@string/app_fast_blood_sugar"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <EditText
+            android:id="@+id/et_fast_blood_sugar"
+            style="@style/patient_et_style"
+            android:layout_width="wrap_content"
+            android:hint="@string/app_please_input_fast_blood_sugar"
+            android:inputType="number"
+            android:maxLength="3"
+            android:gravity="start"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_fast_blood_sugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_mmol"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="14sp"
+            android:textColor="#223b53"
+            />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_tall"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:text="@string/patient_tall"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <EditText
+            android:id="@+id/et_input_tall"
+            style="@style/patient_et_style"
+            android:layout_width="wrap_content"
+            android:hint="@string/please_input_tall"
+            android:inputType="number"
+            android:maxLength="3"
+            android:gravity="start"
+           />
+
+
+        <TextView
+            android:id="@+id/tv_kg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cm"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="14sp"
+            android:textColor="#223b53"
+          />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_weight"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_37"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:text="@string/patient_weight"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/sp_14" />
+
+        <EditText
+            android:id="@+id/et_input_weight"
+            style="@style/patient_et_style"
+            android:layout_width="wrap_content"
+            android:hint="@string/please_input_weight"
+            android:inputType="number"
+            android:maxLength="3"
+            android:gravity="start"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kg"
+            android:layout_marginRight="@dimen/dp_15"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textSize="14sp"
+            android:textColor="#223b53"
+            />
+
+
+
+
+
+    </LinearLayout>
     <View
-        android:id="@+id/doctor_name_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
         android:layout_below="@+id/triage_time"
         android:background="@color/app_eef3f7" />
+
+
+
 
     <View
         android:layout_width="match_parent"
@@ -74,29 +252,13 @@
         android:layout_weight="1" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_41"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@drawable/shape_btn_blue"
-        android:text="@string/save"
-        android:textColor="@android:color/white"
-        android:textSize="12sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_cancel"
+    <include
+        android:id="@+id/menu"
+        layout="@layout/view_bottom_menu"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_41"
-        android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_23"
-        android:background="@drawable/shape_btn_blue_stroke"
-        android:text="@string/lab_cancel"
-        android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginBottom="@dimen/dp_20"
-        android:textSize="12sp" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
 
 </LinearLayout>

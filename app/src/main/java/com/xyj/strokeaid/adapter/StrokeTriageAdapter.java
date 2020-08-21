@@ -5,14 +5,43 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StrokeTriageAdapter extends BaseRecycAdapter<String> {
+public class StrokeTriageAdapter extends BaseQuickAdapter<String, com.chad.library.adapter.base.viewholder.BaseViewHolder> {
+
+    public StrokeTriageAdapter(int layoutResId, @Nullable List<String> data) {
+        super(layoutResId, data);
+    }
+
+    @Override
+    protected void convert(@NotNull BaseViewHolder baseViewHolder, String s) {
+        baseViewHolder.setText(R.id.tv_path_name, s);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+
+}
+
+
+
+
+    /* extends BaseRecycAdapter<String> {
 
 
     @BindView(R.id.tv_is_done)
@@ -46,4 +75,4 @@ public class StrokeTriageAdapter extends BaseRecycAdapter<String> {
     }
 
 
-}
+}*/

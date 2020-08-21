@@ -3,8 +3,13 @@ package com.xyj.strokeaid.activity.stroke;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
@@ -13,13 +18,9 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,36 +28,45 @@ import butterknife.OnClick;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
-public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetListener {
+public class EcgExamnationMainActivity extends BaseActivity implements OnDateSetListener {
 
 
-    @BindView(R.id.app_tv_editSpinner_time)
-    TextView appTvEditSpinnerTime;
-    @BindView(R.id.iv_refresh)
-    ImageView ivRefresh;
-    @BindView(R.id.editSpinner1)
-    EditSpinner editSpinner1;
     @BindView(R.id.titlebar)
     BaseTitleBar titlebar;
     @BindView(R.id.tv_name)
     TextView tvName;
-    private List<String> list;
+    @BindView(R.id.app_tv_editSpinner_time)
+    TextView appTvEditSpinnerTime;
+    @BindView(R.id.iv_refresh)
+    ImageView ivRefresh;
+    @BindView(R.id.triage_time)
+    LinearLayout triageTime;
+    @BindView(R.id.doctor_name_line)
+    View doctorNameLine;
+    @BindView(R.id.app_et_ecg_result)
+    EditText appEtEcgResult;
+    @BindView(R.id.app_btn_ecg_examine_and_shot)
+    Button appBtnEcgExamineAndShot;
+    @BindView(R.id.btn_getdata)
+    AppCompatButton btnGetdata;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    @BindView(R.id.btn_cancel)
+    AppCompatButton btnCancel;
+
     private TimePickerDialog mDialogAll;
-    SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-
     private int position;
     private Bundle bundle;
     private Intent intent;
 
+
     @Override
     public int getLayoutId() {
-        return R.layout.app_activity_emergency_doctor_time;
+        return R.layout.activityt_ecg_examination;
     }
 
     @Override
     public void initView() {
-
         intent = getIntent();
         bundle = intent.getExtras();
         ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
@@ -73,24 +83,7 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
                 .setCyclic(false)//是否可循环
                 .setToolBarTextColor(R.color.colorPrimary)
                 .build();
-        loadData();
-    }
-
-    private void loadData() {
-        list = new ArrayList<>();
-        list.add("Hello World");
-        list.add("EditSpinner");
-        list.add("WrBug");
-        list.add("Test");
-        list.add("123456789");
-        list.add("123456788");
-        list.add("123456777");
-        list.add("123456666");
-        list.add("123455555");
-        list.add("123444444");
-        list.add("123333333");
-        list.add("122222222");
-        editSpinner1.setItemData(list);
+      //  btnGetdata.setVisibility(View.GONE);
     }
 
     @Override
@@ -99,30 +92,42 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
     }
 
 
-    @OnClick({R.id.app_tv_editSpinner_time, R.id.iv_refresh, R.id.editSpinner1, R.id.btn_confirm, R.id.btn_cancel})
+
+    @OnClick({R.id.titlebar, R.id.tv_name, R.id.app_tv_editSpinner_time, R.id.iv_refresh, R.id.triage_time, R.id.doctor_name_line, R.id.app_et_ecg_result, R.id.app_btn_ecg_examine_and_shot, R.id.btn_getdata, R.id.btn_confirm, R.id.btn_cancel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.titlebar:
+
+                break;
+            case R.id.tv_name:
+                break;
             case R.id.app_tv_editSpinner_time:
                 mDialogAll.show(getSupportFragmentManager(), "All");
+
                 break;
             case R.id.iv_refresh:
 
                 appTvEditSpinnerTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date()));
                 break;
-            case R.id.editSpinner1:
+            case R.id.triage_time:
                 break;
-
+            case R.id.doctor_name_line:
+                break;
+            case R.id.app_et_ecg_result:
+                break;
+            case R.id.app_btn_ecg_examine_and_shot:
+                break;
+            case R.id.btn_getdata:
+                break;
             case R.id.btn_confirm:
 
-                position = bundle.getInt("position", 0);
                 //把返回数据存入Intent
                 intent.putExtra("result", appTvEditSpinnerTime.getText());
                 intent.putExtra("position", position);
                 //设置返回数据
-                setResult(1, intent);
+                setResult(2, intent);
                 //关闭Activity
                 finish();
-
                 break;
             case R.id.btn_cancel:
 
@@ -135,9 +140,6 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-
         appTvEditSpinnerTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
-
     }
-
 }
