@@ -49,7 +49,7 @@
                         android:background="@drawable/shape_corner_20_with_blue"
                         android:paddingLeft="@dimen/dp_16"
                         android:paddingRight="@dimen/dp_16"
-                        android:text="关联患者信息"
+                        android:text="快速建档"
                         android:textColor="@color/app_ffffff" />
 
                 </LinearLayout>
@@ -58,7 +58,32 @@
                     style="@style/ViewLineStyle"
                     tools:ignore="MissingConstraints"/>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="@dimen/dp_87"
+                        android:layout_height="wrap_content"
+                        android:text="单病种类型*"
+                        android:textColor="@color/color_000000"/>
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/dp_34"
+                        android:layout_weight="1"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="EditSpinner Test"
+                        android:gravity="center_vertical"
+                        app:rightImage="@drawable/ic_arrow_down_blue"/>
+                </LinearLayout>
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints"/>
                 <LinearLayout
                     android:id="@+id/ll_container2"
                     android:layout_width="match_parent"
@@ -69,7 +94,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="腕带绑定*"
                         android:textColor="@color/color_000000" />
@@ -100,7 +125,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="姓名*"
                         android:textColor="@color/color_000000" />
@@ -128,7 +153,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="年龄"
                         android:textColor="@color/color_000000" />
@@ -167,30 +192,31 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="性别"
                         android:textColor="@color/color_000000" />
 
                     <RadioGroup
+                        android:id="@+id/rg_sex"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
                         <RadioButton
+                            android:id="@+id/rb_sex_normal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
                             android:text="男"/>
                         <RadioButton
+                            android:id="@+id/rb_sex_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:theme="@style/DK.RadioButton.Left"
                             android:text="女"/>
-
                     </RadioGroup>
-
 
                 </LinearLayout>
                 <View
@@ -205,7 +231,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="身高"
                         android:textColor="@color/color_000000" />
@@ -244,7 +270,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="体重"
                         android:textColor="@color/color_000000" />
@@ -269,7 +295,6 @@
                         android:textColor="@color/color_000000"/>
                 </LinearLayout>
 
-
                 <View
                     style="@style/ViewLineStyle"
                     tools:ignore="MissingConstraints" />
@@ -283,21 +308,79 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
-                        android:text="民族"
+                        android:text="发病时间"
                         android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="年月日"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+
+
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_87"
+                        android:layout_height="wrap_content"
+                        android:text="发病地点"
+                        android:textColor="@color/color_000000" />
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入发病地点"
+                        android:paddingTop="@dimen/dp_4"
+                        android:paddingRight="@dimen/dp_4"
+                        android:paddingBottom="@dimen/dp_4"
+                        android:textSize="@dimen/sp_14" />
+
+                </LinearLayout>
+                <View
+                    style="@style/ViewLineStyle"
+                    tools:ignore="MissingConstraints" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_87"
+                        android:layout_height="wrap_content"
+                        android:text="来院方式"
+                        android:textColor="@color/color_000000"/>
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
                         android:id="@+id/es_nation"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/dp_34"
                         android:layout_weight="1"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="EditSpinner Test"
-
                         app:rightImage="@drawable/ic_arrow_down_blue"/>
-
                 </LinearLayout>
 
                 <View
@@ -313,7 +396,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="身份证号"
                         android:textColor="@color/color_000000" />
@@ -345,7 +428,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="医保卡号"
                         android:textColor="@color/color_000000" />
@@ -377,7 +460,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
                         android:text="就诊ID"
                         android:textColor="@color/color_000000" />
@@ -397,7 +480,6 @@
                 <View
                     style="@style/ViewLineStyle"
                     tools:ignore="MissingConstraints" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_40"
@@ -407,54 +489,23 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="@dimen/dp_68"
+                        android:layout_width="@dimen/dp_87"
                         android:layout_height="wrap_content"
-                        android:text="联系人"
+                        android:text="住院ID"
                         android:textColor="@color/color_000000" />
 
                     <EditText
-                        android:id="@+id/et_contract_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:hint="请输入联系姓名"
+                        android:hint="请输入住院ID"
                         android:paddingTop="@dimen/dp_4"
                         android:paddingRight="@dimen/dp_4"
                         android:paddingBottom="@dimen/dp_4"
-                        android:textSize="@dimen/sp_14" />
-
+                        android:textSize="@dimen/sp_14"/>
                 </LinearLayout>
-                <View
-                    style="@style/ViewLineStyle"
-                    tools:ignore="MissingConstraints" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/dp_12"
-                    android:layout_marginRight="@dimen/dp_12"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="@dimen/dp_68"
-                        android:layout_height="wrap_content"
-                        android:text="联系电话"
-                        android:textColor="@color/color_000000"/>
-
-                    <EditText
-                        android:id="@+id/et_contract_phone"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="请输入联系电话"
-                        android:paddingTop="@dimen/dp_4"
-                        android:paddingRight="@dimen/dp_4"
-                        android:paddingBottom="@dimen/dp_4"
-                        android:textSize="@dimen/sp_14" />
-                </LinearLayout>
             </LinearLayout>
             <View
                 style="@style/ViewLineStyle"
@@ -468,8 +519,9 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:textColor="@color/app_ffffff"
                 android:background="@drawable/shape_corner_20_with_blue"
-                android:layout_marginLeft="@dimen/dp_10"
-                android:layout_marginRight="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_gravity="bottom"
                 android:layout_marginBottom="@dimen/dp_20"
                 android:text="保存并加入路径"/>
         </LinearLayout>

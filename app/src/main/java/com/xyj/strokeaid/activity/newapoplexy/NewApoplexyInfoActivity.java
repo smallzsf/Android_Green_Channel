@@ -34,35 +34,49 @@ public class NewApoplexyInfoActivity extends BaseMvpActivity<NewApoplexyInfoPres
 
     @BindView(R.id.bt_title)
     BaseTitleBar btTitle;
+    //关联患者信息
     @BindView(R.id.btn_connect_patient_info)
-    Button btnConnectPatientInfo;//关联患者信息
+    Button btnConnectPatientInfo;
+    //腕带编号
     @BindView(R.id.et_patient_no)
-    EditText etPatientNo;//腕带编号
+    EditText etPatientNo;
+    //病人名字
     @BindView(R.id.et_patient_name)
-    TextView etPatientName;//病人名字
+    TextView etPatientName;
+    //患者年龄
     @BindView(R.id.et_patient_age)
-    EditText etPatientAge;//患者年龄
+    EditText etPatientAge;
+    //身高
     @BindView(R.id.et_patient_height)
-    EditText etPatientHeight; //身高
+    EditText etPatientHeight;
     @BindView(R.id.et_patient_weight)
-    EditText etPatientWeight; //重量
+    EditText etPatientWeight;
+    //身份证号
     @BindView(R.id.et_patient_identity)
-    EditText etPatientIdentity;//身份证号
+    EditText etPatientIdentity;
+    //医保卡号
     @BindView(R.id.et_medical_card_num)
-    EditText etMedicalCardNum; //医保卡号
+    EditText etMedicalCardNum;
+    //就诊ID
     @BindView(R.id.et_see_doctor_id)
-    EditText etSeeDoctorId;//就诊ID
+    EditText etSeeDoctorId;
+    //联系人姓名
     @BindView(R.id.et_contract_name)
-    EditText etContractName;//联系人姓名
+    EditText etContractName;
+    //联系人手机号
     @BindView(R.id.et_contract_phone)
-    EditText etContractPhone;//联系人手机号
+    EditText etContractPhone;
+    //保存并加入路径
     @BindView(R.id.btn_save_join)
-    Button btnSaveJoin;//保存并加入路径
+    Button btnSaveJoin;
+    //民族
     @BindView(R.id.es_nation)
-    EditSpinner esNation;//民族
+    EditSpinner esNation;
+    //性别
     @BindView(R.id.rg_sex)
-    RadioGroup radioGroup;//性别
-    String mCurrentSex="1";//1男 2女
+    RadioGroup radioGroup;
+    //1男 2女
+    String mCurrentSex="1";
     @Override
     public int getLayoutId() {
         return R.layout.activity_new_apoplexy_info;
@@ -152,6 +166,7 @@ public class NewApoplexyInfoActivity extends BaseMvpActivity<NewApoplexyInfoPres
             case R.id.btn_save_join:
                 getNewApoplexyInfoItemStr();
                 break;
+
         }
     }
     /**

@@ -14,6 +14,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+
+    <include
+        android:id="@+id/iclContainer"
+        layout="@layout/view_search_patient_name"
+        app:layout_constraintBottom_toTopOf="@id/rv_patient_info"
+        app:layout_constraintTop_toBottomOf="@id/bt_relation_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_patient_info"
         android:layout_width="match_parent"
@@ -23,8 +31,8 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="3"
         tools:listitem="@layout/adapter_rv_relation_patient_info_item"
-        app:layout_constraintTop_toBottomOf="@id/bt_relation_info"/>
-
+        app:layout_constraintTop_toBottomOf="@id/iclContainer"
+        />
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
         android:layout_width="match_parent"
@@ -39,8 +47,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
         app:layout_constraintTop_toBottomOf="@+id/rv_patient_info"
         app:layout_constraintVertical_bias="0.96"
-        tools:layout_editor_absoluteX="73dp" />
-
+        android:layout_marginBottom="@dimen/dp_12"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
@@ -55,4 +62,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

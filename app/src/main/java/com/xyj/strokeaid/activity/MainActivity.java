@@ -30,6 +30,7 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.newapoplexy.NewApoplexyInfoActivity;
+import com.xyj.strokeaid.activity.newapoplexy.NewChestXRayActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
@@ -195,7 +196,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 break;
             case R.id.iv_add_act_main:
                 // TODO: 2020/8/19 跳转添加页面
-                startActivity(new Intent(mContext, NewApoplexyInfoActivity.class));
+                startActivity(new Intent(mContext, NewChestXRayActivity.class));
                 break;
             case R.id.tv_disease_view_search:
                 showPopWindow(mContext, tvDiseaseViewSearch);

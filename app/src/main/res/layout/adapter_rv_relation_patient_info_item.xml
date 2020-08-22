@@ -67,7 +67,7 @@
         android:textColor="@color/color_222222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_name_item_patient"
-        android:visibility="gone"/>
+         />
 
     <TextView
         android:id="@+id/tv_end_time_item_patient"
@@ -78,15 +78,14 @@
         android:textColor="@color/color_222222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_start_time_item_patient"
-        android:visibility="gone"/>
+        />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
         android:background="@color/color_EEEEEE"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
 
     <TextView
         android:id="@+id/tv_nurse_time_item_patient"
@@ -99,7 +98,7 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient"
-        android:visibility="gone"/>
+         />
 
     <TextView
         android:id="@+id/tv_doctor_time_item_patient"
@@ -113,6 +112,6 @@
         app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toEndOf="@id/tv_nurse_time_item_patient"
         app:layout_constraintTop_toTopOf="@id/tv_nurse_time_item_patient"
-        android:visibility="gone"/>
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
