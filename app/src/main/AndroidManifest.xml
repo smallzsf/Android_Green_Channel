@@ -75,7 +75,7 @@
             android:name=".activity.stroke.EcgExamnationMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.stroke.ThrombolyticDocReceiveActivity"
+            android:name=".activity.stroke.ThrombolysisDocReceiveActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.ThrombolysisContraindicationsActivity"
@@ -88,6 +88,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.ThrombolysisInformedConsentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.StrokeIntravenousThrombolysisActivity"
             android:screenOrientation="portrait" />
 
         <receiver

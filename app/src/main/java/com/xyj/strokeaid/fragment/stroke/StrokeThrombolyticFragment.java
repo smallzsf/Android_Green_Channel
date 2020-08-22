@@ -93,8 +93,8 @@ public class StrokeThrombolyticFragment extends BaseFragment {
         list.add(new StrokeProcessBean("溶栓知情同意", "STT04", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INFORMED_CONSENT, false));
         list.add(new StrokeProcessBean("溶栓前NIHSS评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
         list.add(new StrokeProcessBean("THRIVE评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
-        list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
-        list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_INTRAVENOU_THROMBOLYSIS, false));
+        list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
         list.add(new StrokeProcessBean("溶栓并发症", "STT09", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("延误分析", "STT10", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         return list;

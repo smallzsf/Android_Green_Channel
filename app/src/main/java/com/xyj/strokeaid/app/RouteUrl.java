@@ -35,6 +35,10 @@ public final class RouteUrl {
          * 溶栓NIHSS评分
          */
         public static final String STROKE_NIHSS = "/app/stroke/nihss";
+        /**
+         * 静脉溶栓
+         */
+        public static final String STROKE_INTRAVENOU_THROMBOLYSIS = "/app/stroke/sit";
     }
 }
 

@@ -29,7 +29,7 @@ import butterknife.OnClick;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE)
-public class ThrombolyticDocReceiveActivity extends BaseActivity {
+public class ThrombolysisDocReceiveActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_tdr)
     BaseTitleBar titleBarActTdr;
