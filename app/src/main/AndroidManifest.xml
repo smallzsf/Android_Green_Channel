@@ -83,6 +83,12 @@
         <activity
             android:name=".activity.stroke.ThrombolysisIndicationsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.StrokeNihssActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.ThrombolysisInformedConsentActivity"
+            android:screenOrientation="portrait" />
 
         <receiver
             android:name=".receiver.MyReceiver"

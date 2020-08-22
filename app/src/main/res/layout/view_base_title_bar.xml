@@ -47,7 +47,7 @@
         android:id="@+id/iv_right_base_title_bar"
         android:layout_width="@dimen/title_bar_height"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
+        android:scaleType="center"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

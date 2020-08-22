@@ -281,7 +281,7 @@
     <string name="app_push_thread_close">推送线程关闭</string>
     <string name="app_push_thread_start">推送线程启动</string>
     <string name="app_quick_file">快速建档</string>
-    <string name="app_rating_results">评分结果：</string>
+    <string name="app_rating_results">评分结果： %s</string>
     <string name="app_remark_and_colon">备注：</string>
     <string name="app_remote_ecg_transmission">远程心电图传输</string>
     <string name="app_report_time">报告时间</string>

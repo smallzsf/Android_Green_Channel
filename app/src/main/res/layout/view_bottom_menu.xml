@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_getdata"
@@ -22,8 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_41"
         android:layout_marginLeft="@dimen/dp_23"
-        android:layout_marginRight="@dimen/dp_23"
         android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_23"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/save"
         android:textColor="@android:color/white"
@@ -36,10 +35,10 @@
         android:layout_marginLeft="@dimen/dp_23"
         android:layout_marginTop="@dimen/dp_20"
         android:layout_marginRight="@dimen/dp_23"
+        android:layout_marginBottom="@dimen/dp_20"
         android:background="@drawable/shape_btn_blue_stroke"
         android:text="@string/lab_cancel"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginBottom="@dimen/dp_20"
         android:textSize="12sp" />
 
 

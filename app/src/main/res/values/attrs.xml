@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <attr name="topLineVisible" format="boolean" />
+    <attr name="bottomLineVisible" format="boolean" />
+    <attr name="title" format="string|reference" />
 
     <declare-styleable name="BaseTitleBar">
 
-        <attr name="title" format="string|reference"/>
+        <attr name="title" />
         <attr name="titleSize" format="dimension" />
         <attr name="titleColor" format="color" />
         <attr name="btb_closeIconVisible" format="boolean" />
@@ -15,7 +18,7 @@
         <attr name="rightIconVisible" format="boolean" />
         <attr name="rightText" format="string" />
         <attr name="rightTextVisible" format="boolean" />
-        <attr name="bottomLineVisible" format="boolean" />
+        <attr name="bottomLineVisible" />
 
     </declare-styleable>
 
@@ -28,7 +31,20 @@
     <declare-styleable name="TextSwitchBar">
 
         <attr name="tsb_title" format="string|reference" />
-        <attr name="tsb_switch" format="boolean"/>
+        <attr name="tsb_switch" format="boolean" />
 
+    </declare-styleable>
+
+    <declare-styleable name="TextTimeBar">
+
+        <attr name="title" />
+        <attr name="topLineVisible" />
+        <attr name="bottomLineVisible" />
+        <attr name="ttb_time_hint" format="string|reference" />
+        <attr name="ttb_time" format="string|reference" />
+
+    </declare-styleable>
+    <declare-styleable name="NihssItemBar">
+        <attr name="title" />
     </declare-styleable>
 </resources>

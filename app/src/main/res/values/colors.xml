@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00acff</color>
+    <color name="colorPrimary">#28CAC9</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
@@ -23,7 +23,7 @@
     <color name="color_F1F1F1">#F1F1F1</color>
 
 
-    <color name="color_46525f">#46525f</color>
+    <color name="color_46525f">#9946525f</color>
 
     <color name="tab_gb">#F3F5F4</color>
     <color name="tab_normal_color">#515051</color>

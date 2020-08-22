@@ -36,6 +36,7 @@ public class StrokeTCRvAdapter extends BaseSectionQuickAdapter<StrokeTCBean , Ba
 
     public StrokeTCRvAdapter(int sectionHeadResId, int layoutResId, @Nullable List<StrokeTCBean> data) {
         super(sectionHeadResId, layoutResId, data);
+        addChildClickViewIds(R.id.tsb_root);
     }
 
     @Override

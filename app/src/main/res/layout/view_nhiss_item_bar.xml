@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title_view_nib"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_title_height"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_12"
+        android:textColor="@color/color_222222"
+        android:textSize="15dp"
+        tools:text="1a.意识水平" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_content_view_nib"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:itemCount="3"
+        tools:listitem="@layout/adapter_rv_nihss_item" />
+
+</LinearLayout>

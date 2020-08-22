@@ -21,11 +21,10 @@
         android:id="@+id/tl_title_act_stroke_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        android:layout_below="@id/title_bar_act_stroke_main"
         app:tabGravity="fill"
-        app:tabIndicatorColor="@color/color_00ACFF"
+        app:tabIndicatorColor="@color/colorPrimary"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/color_00ACFF"
+        app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextAppearance="@style/tab_layout_text"
         app:tabTextColor="@color/black" />
 
@@ -34,7 +33,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_below="@id/tl_title_act_stroke_main"
         android:orientation="horizontal"
         android:overScrollMode="never"
         android:scrollbars="none" />
@@ -42,7 +40,6 @@
     <include
         layout="@layout/include_stroke_bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-     />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

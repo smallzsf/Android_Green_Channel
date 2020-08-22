@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * @date : 2020-08-21 15:06:01
  * email ：licy3051@qq.com
  */
-@Route(path = RouteUrl.Stroke.STROKE_THROMBOLYTIC_DOC_RECEIVE)
+@Route(path = RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE)
 public class ThrombolyticDocReceiveActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_tdr)

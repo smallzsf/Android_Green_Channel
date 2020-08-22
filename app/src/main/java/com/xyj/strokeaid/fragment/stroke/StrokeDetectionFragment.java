@@ -62,7 +62,7 @@ public class StrokeDetectionFragment extends BaseFragment {
     private List<StrokeProcessBean> prepareData() {
 
         List<StrokeProcessBean> list = new ArrayList<>();
-        list.add(new StrokeProcessBean("病情记录", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYTIC_DOC_RECEIVE, false));
+        list.add(new StrokeProcessBean("病情记录", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE, false));
         list.add(new StrokeProcessBean("首次NIHSS评分", "STT02", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INDICATIONS, false));
         list.add(new StrokeProcessBean("首次GCS评分", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
         list.add(new StrokeProcessBean("患者到达CT室", "STT04", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));

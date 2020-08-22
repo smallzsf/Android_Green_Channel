@@ -87,11 +87,11 @@ public class StrokeThrombolyticFragment extends BaseFragment {
     private List<StrokeProcessBean> prepareData() {
 
         List<StrokeProcessBean> list = new ArrayList<>();
-        list.add(new StrokeProcessBean("溶栓医生接诊时间", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYTIC_DOC_RECEIVE, false));
+        list.add(new StrokeProcessBean("溶栓医生接诊时间", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE, false));
         list.add(new StrokeProcessBean("溶栓适应症", "STT02", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INDICATIONS, false));
         list.add(new StrokeProcessBean("溶栓禁忌症", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
-        list.add(new StrokeProcessBean("溶栓知情同意", "STT04", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
-        list.add(new StrokeProcessBean("溶栓前NIHSS评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("溶栓知情同意", "STT04", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INFORMED_CONSENT, false));
+        list.add(new StrokeProcessBean("溶栓前NIHSS评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
         list.add(new StrokeProcessBean("THRIVE评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));

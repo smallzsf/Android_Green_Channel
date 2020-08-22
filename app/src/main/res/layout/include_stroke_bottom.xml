@@ -67,7 +67,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        android:background="@color/color_00ACFF">
+        android:background="@color/colorPrimary">
 
         <TextView
             android:id="@+id/tv_score_include_stroke_bottom"
