@@ -44,7 +44,7 @@ public class StrokeOutcomeFragment extends BaseFragment {
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
-    private StrokeOutcomeFragment() {
+    public StrokeOutcomeFragment() {
     }
 
     /**

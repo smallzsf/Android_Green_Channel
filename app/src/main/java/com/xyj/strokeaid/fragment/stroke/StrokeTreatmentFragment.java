@@ -33,8 +33,6 @@ public class StrokeTreatmentFragment extends BaseFragment {
     private String mPatientId;
     private String mDocId;
 
-    private StrokeTreatmentFragment() {
-    }
 
     /**
      * Use this factory method to create a new instance of

@@ -67,7 +67,7 @@
         android:background="@color/app_eef3f7" />
 
     <LinearLayout
-        android:id="@+id/triage_name"
+        android:id="@+id/ll_triage_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_37"
         android:layout_below="@+id/doctor_name_line"
@@ -77,6 +77,7 @@
 
 
         <TextView
+            android:id="@+id/tv_triage_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="32dp"

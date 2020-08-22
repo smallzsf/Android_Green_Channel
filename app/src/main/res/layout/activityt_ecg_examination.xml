@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/app_ffffff"
     android:focusable="true"
-    android:orientation="vertical"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
 
     <com.xyj.strokeaid.view.BaseTitleBar
@@ -71,7 +71,6 @@
         android:background="@color/app_eef3f7" />
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,15 +86,12 @@
             android:paddingStart="@dimen/dp_21">
 
 
-
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:text="@string/ecg_results"
                 android:textColor="#223b53"
-                android:text="@string/ecg_results" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/app_et_ecg_result"
@@ -106,12 +102,51 @@
                 android:background="@drawable/shape_condition_record_edittext_background"
                 android:gravity="top"
                 android:hint="@string/please_enter_ecg_results"
+                android:textSize="@dimen/sp_12"
                 android:maxLength="500"
                 android:paddingLeft="@dimen/dp_12"
                 android:paddingTop="@dimen/dp_11"
                 android:paddingRight="@dimen/dp_12"
                 android:paddingBottom="@dimen/dp_11"
                 android:singleLine="false" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_37"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:layout_marginTop="@dimen/sp_11"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@drawable/shape_btn_blue_stroke"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dp_21"
+                android:src="@drawable/ic_ecg" />
+
+            <TextView
+                android:id="@+id/tv_ecg_examine_and_shot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/view_ecg_report_tips" />
+
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:paddingRight="@dimen/dp_21"
+                android:src="@drawable/ic_shot" />
 
 
         </LinearLayout>

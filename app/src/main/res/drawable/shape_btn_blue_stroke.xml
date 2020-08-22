@@ -6,6 +6,8 @@
         android:width="1dp"
         android:color="@color/color_00ACFF" />
 
+    <solid android:color="@color/white"></solid>
+
     <corners android:radius="@dimen/dp_25" />
 
 </shape>

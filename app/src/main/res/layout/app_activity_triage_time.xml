@@ -73,6 +73,7 @@
 
 
         <TextView
+            android:id="@+id/tv_triage_doctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="32dp"
@@ -84,13 +85,13 @@
             android:id="@+id/editSpinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             app:Background="@drawable/bg_view_frame"
             app:hint="EditSpinner Test"
             app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -115,31 +116,25 @@
             android:id="@+id/et_fast_blood_sugar"
             style="@style/patient_et_style"
             android:layout_width="wrap_content"
+            android:gravity="start"
             android:hint="@string/app_please_input_fast_blood_sugar"
             android:inputType="number"
-            android:maxLength="3"
-            android:gravity="start"
-            />
+            android:maxLength="3" />
 
 
         <TextView
             android:id="@+id/tv_fast_blood_sugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/app_mmol"
             android:layout_marginRight="@dimen/dp_15"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="14sp"
+            android:text="@string/app_mmol"
             android:textColor="#223b53"
-            />
-
-
+            android:textSize="14sp" />
 
 
     </LinearLayout>
-
-
 
 
     <LinearLayout
@@ -164,31 +159,25 @@
             android:id="@+id/et_input_tall"
             style="@style/patient_et_style"
             android:layout_width="wrap_content"
+            android:gravity="start"
             android:hint="@string/please_input_tall"
             android:inputType="number"
-            android:maxLength="3"
-            android:gravity="start"
-           />
+            android:maxLength="3" />
 
 
         <TextView
             android:id="@+id/tv_kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cm"
             android:layout_marginRight="@dimen/dp_15"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="14sp"
+            android:text="@string/cm"
             android:textColor="#223b53"
-          />
-
-
+            android:textSize="14sp" />
 
 
     </LinearLayout>
-
-
 
 
     <LinearLayout
@@ -213,43 +202,37 @@
             android:id="@+id/et_input_weight"
             style="@style/patient_et_style"
             android:layout_width="wrap_content"
+            android:gravity="start"
             android:hint="@string/please_input_weight"
             android:inputType="number"
-            android:maxLength="3"
-            android:gravity="start"
-            />
+            android:maxLength="3" />
 
 
         <TextView
             android:id="@+id/tv_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/kg"
             android:layout_marginRight="@dimen/dp_15"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="14sp"
+            android:text="@string/kg"
             android:textColor="#223b53"
-            />
-
-
-
+            android:textSize="14sp" />
 
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_1"
-        android:layout_below="@+id/triage_time"
         android:background="@color/app_eef3f7" />
-
-
 
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
 
 
 

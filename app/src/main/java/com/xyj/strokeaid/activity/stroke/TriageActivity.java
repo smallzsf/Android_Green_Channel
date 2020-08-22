@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -62,6 +61,8 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
     EditText etInputWeight;
     @BindView(R.id.ll_fast_blood_sugar)
     LinearLayout llFastBloodSugar;
+    @BindView(R.id.tv_triage_doctor)
+    TextView tvTriageDoctor;
 
     private TimePickerDialog mDialogAll;
     private int position;
@@ -89,13 +90,34 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
         position = bundle.getInt("position", 0);
         titlebar.setTitle(list.get(position));
         tvName.setText(list.get(position));
-        if (position == 0 || position == 2||position == 11|| position == 12||position == 13 ){
-           // llTriageTime.setVisibility(View.GONE);
+        if (position == 0 || position == 2 || position == 11 || position == 12 || position == 13) {
+            // llTriageTime.setVisibility(View.GONE);
             llTriagellDoctor.setVisibility(View.GONE);
             llFastBloodSugar.setVisibility(View.GONE);
             llTall.setVisibility(View.GONE);
             llWeight.setVisibility(View.GONE);
         }
+        if (position == 1) {
+            llTriageTime.setVisibility(View.GONE);
+            //   llTriagellDoctor.setVisibility(View.GONE);
+            llFastBloodSugar.setVisibility(View.GONE);
+            llTall.setVisibility(View.GONE);
+            llWeight.setVisibility(View.GONE);
+            tvTriageDoctor.setText(list.get(position));
+        }
+
+        if (position == 8){
+
+        }
+
+        if (position == 9) {
+            llTriageTime.setVisibility(View.GONE);
+            llTriagellDoctor.setVisibility(View.GONE);
+            // llFastBloodSugar.setVisibility(View.GONE);
+            llTall.setVisibility(View.GONE);
+            llWeight.setVisibility(View.GONE);
+        }
+
 
         if (position == 14) {
             llTriageTime.setVisibility(View.GONE);

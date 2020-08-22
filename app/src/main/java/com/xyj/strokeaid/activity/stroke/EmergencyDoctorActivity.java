@@ -17,7 +17,6 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +39,8 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
     BaseTitleBar titlebar;
     @BindView(R.id.tv_name)
     TextView tvName;
+    @BindView(R.id.tv_triage_name)
+    TextView tvTriageName;
     private List<String> list;
     private TimePickerDialog mDialogAll;
     SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -68,6 +69,18 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
         position = bundle.getInt("position", 0);
         titlebar.setTitle(list.get(position));
         tvName.setText(list.get(position));
+
+        if (position==3){
+            tvTriageName.setText("分诊护士");
+        }
+
+        if (position==4){
+            tvTriageName.setText("急诊医生");
+        }
+
+        if (position==5){
+            tvTriageName.setText("卒中医生");
+        }
 
         mDialogAll = new TimePickerDialog.Builder()
                 .setType(Type.ALL)
@@ -145,4 +158,10 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
