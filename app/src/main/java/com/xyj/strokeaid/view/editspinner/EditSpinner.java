@@ -31,6 +31,7 @@ import java.util.List;
 
 /**
  * Created by WrBug on 2017/2/26 0026.
+ * https://gitee.com/wrbug/EditSpinner/tree/master
  */
 public class EditSpinner extends RelativeLayout implements View.OnClickListener, AdapterView.OnItemClickListener, TextWatcher {
     private EditText editText;

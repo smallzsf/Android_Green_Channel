@@ -19,6 +19,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * @Description: 分诊条目
+ * @Author: crq
+ * @CreateDate: 2020/8/22 17:55
+ */
 public class StrokeTriageAdapter extends BaseQuickAdapter<String, com.chad.library.adapter.base.viewholder.BaseViewHolder> {
 
     public StrokeTriageAdapter(int layoutResId, @Nullable List<String> data) {

@@ -27,7 +27,11 @@ import butterknife.OnClick;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
-
+/**
+ * @Description: 分诊条目的通用布局
+ * @Author: crq
+ * @CreateDate: 2020/8/22 17:55
+ */
 public class TriageActivity extends BaseActivity implements OnDateSetListener {
 
 
@@ -148,7 +152,7 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
 
     @Override
     public void initListener() {
-
+        titlebar.setLeftLayoutClickListener(v -> finish());
     }
 
     @OnClick({R.id.app_tv_editSpinner_time, R.id.iv_refresh, R.id.btn_getdata, R.id.btn_confirm, R.id.btn_cancel})

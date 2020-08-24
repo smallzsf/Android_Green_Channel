@@ -44,7 +44,11 @@ import io.reactivex.functions.Consumer;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
-
+/**
+ * @Description: 心电图
+ * @Author: crq
+ * @CreateDate: 2020/8/22 17:55
+ */
 public class EcgExamnationMainActivity extends BaseActivity implements OnDateSetListener {
 
 
