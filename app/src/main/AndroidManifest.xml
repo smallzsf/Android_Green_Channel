@@ -92,8 +92,11 @@
             android:name=".activity.stroke.ThrombolysisInformedConsentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.stroke.StrokeIntravenousThrombolysisActivity"
+            android:name=".activity.stroke.StrokeThrombolysisIntravenousActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.stroke.ThrombolysisComplicationsActivity" />
+        <activity android:name=".activity.stroke.StrokeThriveActivity" />
+        <activity android:name=".activity.stroke.ThrombolysisDelayActivity" />
 
         <receiver
             android:name=".receiver.MyReceiver"

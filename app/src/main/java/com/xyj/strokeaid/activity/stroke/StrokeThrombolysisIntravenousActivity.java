@@ -13,11 +13,11 @@ import com.xyj.strokeaid.base.BaseActivity;
  * @date : 2020/8/22
  * email ：licy3051@qq.com
  */
-@Route(path = RouteUrl.Stroke.STROKE_INTRAVENOU_THROMBOLYSIS)
-public class StrokeIntravenousThrombolysisActivity extends BaseActivity {
+@Route(path = RouteUrl.Stroke.STROKE_THROMBOLYSIS_INTRAVENOU)
+public class StrokeThrombolysisIntravenousActivity extends BaseActivity {
     @Override
     public int getLayoutId() {
-        return R.layout.stroke_act_intravenou_thrombolysis;
+        return R.layout.stroke_act_thrombolysis_intravenou;
     }
 
     @Override

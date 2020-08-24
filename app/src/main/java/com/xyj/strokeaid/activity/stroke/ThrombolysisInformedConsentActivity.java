@@ -14,7 +14,6 @@ import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * ThrombolysisInformedConsentActivity
@@ -46,7 +45,7 @@ public class ThrombolysisInformedConsentActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.stroke_act_thrombolytic_informed_consent;
+        return R.layout.stroke_act_thrombolysis_informed_consent;
     }
 
     @Override

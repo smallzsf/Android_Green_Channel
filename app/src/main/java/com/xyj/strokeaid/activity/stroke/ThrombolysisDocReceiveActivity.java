@@ -51,7 +51,7 @@ public class ThrombolysisDocReceiveActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.stroke_act_thrombolytic_doc_receive;
+        return R.layout.stroke_act_thrombolysis_doc_receive;
     }
 
     @Override

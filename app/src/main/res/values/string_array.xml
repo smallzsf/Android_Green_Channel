@@ -12,4 +12,15 @@
         <item>其他</item>
     </string-array>
 
+    <string-array name="stroke_complications">
+        <item>颅内出血</item>
+        <item>消化道出血</item>
+        <item>牙龈出血</item>
+        <item>其他部位出血</item>
+        <item>再灌注损伤</item>
+        <item>血管源性唇舌水肿</item>
+        <item>过敏反应</item>
+        <item>其他</item>
+    </string-array>
+
 </resources>

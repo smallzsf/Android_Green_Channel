@@ -49,7 +49,7 @@ public class ThrombolysisIndicationsActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.stroke_act_thrombolytic_indications;
+        return R.layout.stroke_act_thrombolysis_indications;
     }
 
     @Override

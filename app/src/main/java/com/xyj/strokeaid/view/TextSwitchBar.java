@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -79,6 +80,12 @@ public class TextSwitchBar extends LinearLayout {
     public void setContent(String content) {
         if (tvContentViewTsb != null && content != null) {
             tvContentViewTsb.setText(content);
+        }
+    }
+
+    public void setSwitchClickListener(CompoundButton.OnCheckedChangeListener listener){
+        if (scViewTsb != null) {
+            scViewTsb.setOnCheckedChangeListener(listener);
         }
     }
 

@@ -104,7 +104,7 @@ public class StrokeTreatmentFragment extends BaseFragment {
         @Override
         public Fragment createFragment(int position) {
             if (position == 0) {
-                return StrokeThrombolyticFragment.newInstance(patientId, docId);
+                return StrokeThrombolysisFragment.newInstance(patientId, docId);
             } else {
                 return StrokeAngioplastyFragment.newInstance(patientId, docId);
             }

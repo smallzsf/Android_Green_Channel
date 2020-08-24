@@ -31,7 +31,7 @@ import butterknife.BindView;
  *
  * @author Licy
  */
-public class StrokeThrombolyticFragment extends BaseFragment {
+public class StrokeThrombolysisFragment extends BaseFragment {
 
     @BindView(R.id.rv_content_frag_stoke_thrombolytic)
     RecyclerView rvContentFragStokeThrombolytic;
@@ -43,7 +43,7 @@ public class StrokeThrombolyticFragment extends BaseFragment {
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
-    public StrokeThrombolyticFragment() {
+    private StrokeThrombolysisFragment() {
     }
 
     /**
@@ -54,8 +54,8 @@ public class StrokeThrombolyticFragment extends BaseFragment {
      * @param docId     医生id
      * @return A new instance of fragment StrokeAngioplastyFragment.
      */
-    public static StrokeThrombolyticFragment newInstance(String patientId, String docId) {
-        StrokeThrombolyticFragment fragment = new StrokeThrombolyticFragment();
+    public static StrokeThrombolysisFragment newInstance(String patientId, String docId) {
+        StrokeThrombolysisFragment fragment = new StrokeThrombolysisFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -92,11 +92,11 @@ public class StrokeThrombolyticFragment extends BaseFragment {
         list.add(new StrokeProcessBean("溶栓禁忌症", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
         list.add(new StrokeProcessBean("溶栓知情同意", "STT04", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INFORMED_CONSENT, false));
         list.add(new StrokeProcessBean("溶栓前NIHSS评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
-        list.add(new StrokeProcessBean("THRIVE评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
-        list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_INTRAVENOU_THROMBOLYSIS, false));
+        list.add(new StrokeProcessBean("THRIVE评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_THRIVE_SCORE, false));
+        list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INTRAVENOU, false));
         list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
-        list.add(new StrokeProcessBean("溶栓并发症", "STT09", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
-        list.add(new StrokeProcessBean("延误分析", "STT10", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("溶栓并发症", "STT09", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_COMPLICATIONS, false));
+        list.add(new StrokeProcessBean("延误分析", "STT10", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DELAY, false));
         return list;
     }
 

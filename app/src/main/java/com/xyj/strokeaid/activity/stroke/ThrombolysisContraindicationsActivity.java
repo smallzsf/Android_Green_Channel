@@ -57,7 +57,7 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.stroke_act_thrombolytic_contraindications;
+        return R.layout.stroke_act_thrombolysis_contraindications;
     }
 
     @Override
