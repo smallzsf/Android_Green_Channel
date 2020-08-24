@@ -55,5 +55,36 @@
         <item name="android:background">@color/color_F1F1F1</item>
     </style>
 
+    <declare-styleable name="ImageEditBar">
+
+        <attr name="eb_left_icon" format="reference" />
+        <attr name="eb_left_icon_visible" format="boolean" />
+        <attr name="eb_right_icon" format="reference" />
+        <attr name="eb_right_icon_visible" format="boolean" />
+        <attr name="eb_et_hint" format="string" />
+        <attr name="eb_et_enable" format="boolean" />
+        <attr name="eb_et_content" format="string" />
+        <attr name="eb_top_line_visible" format="boolean" />
+        <attr name="eb_bottom_line_visible" format="boolean" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ItemEditBar">
+
+        <attr name="ieb_title" format="string" />
+        <attr name="ieb_must_fill" format="boolean" />
+
+        <attr name="ieb_edit_enable" format="boolean" />
+        <attr name="ieb_edit_hint" format="string" />
+        <attr name="ieb_edit_content" format="string" />
+
+        <attr name="ieb_unit_visible" format="boolean" />
+        <attr name="ieb_unit_text" format="string" />
+
+        <attr name="ieb_click_status" format="boolean" />
+
+        <attr name="android:inputType" />
+
+    </declare-styleable>
 
 </resources>

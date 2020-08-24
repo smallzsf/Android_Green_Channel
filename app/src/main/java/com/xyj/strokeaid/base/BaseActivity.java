@@ -45,7 +45,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mContext = this;
+        mDefaultMMKV = MMKV.defaultMMKV();
         int id = getLayoutId();
         if (id > 0) {
             setContentView(id);
@@ -56,9 +57,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         initListener();
-
-        mContext = this;
-        mDefaultMMKV = MMKV.defaultMMKV();
 
         // 初始化沉浸式状态栏
         ImmersionBar.with(this)

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_root_edit_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <View
+        android:id="@+id/view_top_line_edit_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/view_bottom_line_edit_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_left_edit_bar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_12"
+        tools:src="@drawable/base_icon_place_holder" />
+
+    <ImageView
+        android:id="@+id/iv_right_edit_bar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_12"
+        tools:src="@drawable/common_icon_right_arrow_222222" />
+
+    <EditText
+        android:id="@+id/et_edit_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="5dp"
+        android:layout_toStartOf="@id/iv_right_edit_bar"
+        android:layout_toEndOf="@id/iv_left_edit_bar"
+        android:background="@null"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_666666"
+        android:textCursorDrawable="@drawable/shape_edit_text_cursor"
+        android:textSize="14sp"
+        tools:hint="请输入手机号" />
+
+</RelativeLayout>
