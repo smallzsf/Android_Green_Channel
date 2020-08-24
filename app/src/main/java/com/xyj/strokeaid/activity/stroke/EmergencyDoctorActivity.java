@@ -25,7 +25,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
-
+/**
+ * @Description: 急诊分诊、急诊医生、卒中医生详情
+ * @Author: crq
+ * @CreateDate: 2020/8/22 17:55
+ */
 public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetListener {
 
 
@@ -158,10 +162,5 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

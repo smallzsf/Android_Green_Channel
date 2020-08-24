@@ -12,5 +12,5 @@ public interface EditSpinnerFilter {
      * @param keyword
      * @return
      */
-    boolean onFilter(String keyword);
+   public boolean onFilter(String keyword);
 }
