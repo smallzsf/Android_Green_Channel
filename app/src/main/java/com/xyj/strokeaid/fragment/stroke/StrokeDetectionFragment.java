@@ -62,10 +62,10 @@ public class StrokeDetectionFragment extends BaseFragment {
     private List<StrokeProcessBean> prepareData() {
 
         List<StrokeProcessBean> list = new ArrayList<>();
-        list.add(new StrokeProcessBean("病情记录", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE, false));
-        list.add(new StrokeProcessBean("首次NIHSS评分", "STT02", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INDICATIONS, false));
+        list.add(new StrokeProcessBean("病情记录", "STT01", 1, "", RouteUrl.Detection.ILLNESS_RECORD, false));
+        list.add(new StrokeProcessBean("首次NIHSS评分", "STT02", 1, "", RouteUrl.Detection.PATIENT_ARRIVAL, false));
         list.add(new StrokeProcessBean("首次GCS评分", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
-        list.add(new StrokeProcessBean("患者到达CT室", "STT04", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+        list.add(new StrokeProcessBean("患者到达CT室", "STT04", 1, "", RouteUrl.Detection.PATIENT_ARRIVAL, false));
         list.add(new StrokeProcessBean("影像检查", "STT05", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("ASPECT评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("实验室检查", "STT07", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
@@ -82,14 +82,13 @@ public class StrokeDetectionFragment extends BaseFragment {
 
             }
         });
-
         mProcessRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
                 if (TextUtils.isEmpty(mStrokeProcessBeans.get(position).getDestination())) {
                     showToast("地址不存在~");
                 } else {
-                    //RouterHelper.navWithPatient(mStrokeProcessBeans.get(position).getDestination(), "11");
+                    RouterHelper.navWithPatient(mStrokeProcessBeans.get(position).getDestination(), "11");
                 }
             }
         });

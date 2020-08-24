@@ -51,6 +51,21 @@ public final class RouteUrl {
          * 溶栓延误分析
          */
         public static final String STROKE_THROMBOLYSIS_DELAY = "/app/stroke/t/delay";
+        public static final String STROKE_INTRAVENOU_THROMBOLYSIS = "/app/stroke/sit";
+
+
+
+    }
+    public static final class Detection {
+        /**
+         * 病情记录
+         */
+        public static final String ILLNESS_RECORD="/app/detection/illness";
+
+        /**
+         * 患者到达CT室
+         */
+        public static final String PATIENT_ARRIVAL="/app/detection/patientArrival";
     }
 }
 

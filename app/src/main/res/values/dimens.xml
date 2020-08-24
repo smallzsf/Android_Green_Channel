@@ -366,6 +366,7 @@
     <dimen name="dp_87">87dp</dimen>
     <dimen name="dp_9">9dp</dimen>
     <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_540">540dp</dimen>
     <dimen name="edittext_height">35dp</dimen>
     <dimen name="edittext_width">187dp</dimen>
     <dimen name="fastscroll_default_thickness">8dp</dimen>
@@ -565,4 +566,5 @@
     <dimen name="vital_sign_item_margin_left_right">20dp</dimen>
     <dimen name="vital_sign_title_width">90dp</dimen>
     <dimen name="vital_sign_unit_width">50dp</dimen>
+
 </resources>

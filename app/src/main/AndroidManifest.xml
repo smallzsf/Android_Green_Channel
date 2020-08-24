@@ -7,20 +7,23 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".activity.newapoplexy.NewChestXRayActivity"></activity>
+        <activity android:name=".activity.detection.ImagingCheckActivity"></activity>
+        <activity android:name=".activity.detection.PatientArrivalCtActivity" />
+        <activity
+            android:name=".activity.detection.IllnessRecordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
         <activity
             android:name=".activity.login.LoginActivity"
@@ -101,8 +104,6 @@
         <receiver
             android:name=".receiver.MyReceiver"
             android:exported="false" />
-
-
     </application>
 
 </manifest>

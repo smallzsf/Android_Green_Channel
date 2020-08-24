@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/tv_flow_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:text="Helloworld"
+    android:clickable="true"
+    android:background="@drawable/selector_flow_layout_tag_bg"
+    android:textColor="@drawable/selector_flow_layout_tag_color"
+    xmlns:android="http://schemas.android.com/apk/res/android"/>
