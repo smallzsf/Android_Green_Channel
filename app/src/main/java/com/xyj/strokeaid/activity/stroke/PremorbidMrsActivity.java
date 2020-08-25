@@ -6,13 +6,17 @@ import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.PremorbidMrsAdapter;
 import com.xyj.strokeaid.adapter.StrokeTriageAdapter;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,9 +52,11 @@ public class PremorbidMrsActivity extends BaseActivity {
     public void initView() {
         intent = getIntent();
         bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
+        String arrayList = bundle.getString("arrayList");
+        List<StrokeProcessBean> list= new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+        }.getType());
         position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
+        titlebar.setTitle(list.get(position).getName());
         ArrayList<String> strings = new ArrayList<>();
         strings.add("患者到院时间");
         strings.add("来院方式");

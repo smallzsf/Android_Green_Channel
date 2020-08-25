@@ -3,13 +3,12 @@ package com.xyj.strokeaid.fragment.stroke;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -31,11 +32,12 @@ import com.xyj.strokeaid.activity.stroke.FastEdActivity;
 import com.xyj.strokeaid.activity.stroke.PremorbidMrsActivity;
 import com.xyj.strokeaid.activity.stroke.TriageActivity;
 import com.xyj.strokeaid.activity.stroke.VitalSignsActivity;
-
 import com.xyj.strokeaid.adapter.StrokeTriageAdapter;
+import com.xyj.strokeaid.app.RouteUrl;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 
-import java.sql.CallableStatement;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -52,6 +54,8 @@ public class StrokeTriageFragment extends Fragment {
     RecyclerView rvContentActMain;
     @BindView(R.id.srl_fresh_act_main)
     SwipeRefreshLayout srlFreshActMain;
+    @BindView(R.id.stroke_fragment_triage)
+    FrameLayout strokeFragmentTriage;
 
     private StrokeTriageAdapter strokeTriageAdapter;
 
@@ -72,7 +76,7 @@ public class StrokeTriageFragment extends Fragment {
     }
 
     private void init() {
-        ArrayList<String> strings = new ArrayList<>();
+     /*   ArrayList<String> strings = new ArrayList<>();
         strings.add("患者到院时间");
         strings.add("来院方式");
         strings.add("发病时间");
@@ -88,19 +92,47 @@ public class StrokeTriageFragment extends Fragment {
         strings.add("血样送检时间");
         strings.add("血样送达检验科时间");
         strings.add("体重");
-        strings.add("身高");
+        strings.add("身高");*/
+
+        List<StrokeProcessBean> list = new ArrayList<>();
+        list.add(new StrokeProcessBean("患者到院时间", "STT01", 1, "", null, false));
+        list.add(new StrokeProcessBean("来院方式", "STT02", 1, "", null, false));
+        list.add(new StrokeProcessBean("发病时间", "STT03", 1, "", null, false));
+        list.add(new StrokeProcessBean("急诊分诊时间", "STT04", 1, "", null, false));
+        list.add(new StrokeProcessBean("急诊医生接诊时间", "STT05", 1, "", null, false));
+        list.add(new StrokeProcessBean("卒中医生急诊时间", "STT06", 1, "", null, false));
+        list.add(new StrokeProcessBean("FAST-ED评分", "STT07", 1, "", null, false));
+        list.add(new StrokeProcessBean("发病前mRS评分", "STT08", 1, "", null, false));
+        list.add(new StrokeProcessBean("生命体征", "STT09", 1, "", null, false));
+        list.add(new StrokeProcessBean("快速血糖", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("心电图检查", "STT10", 1, "",null, false));
+        list.add(new StrokeProcessBean("采血时间", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("血样送检时间", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("血样送达检验科时间", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("体重", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("身高", "STT10", 1, "", null, false));
+        list.add(new StrokeProcessBean("血液检查", "STT10", 1, "", null, false));
+
         rvContentActMain.setLayoutManager(new LinearLayoutManager(getContext()));
-        strokeTriageAdapter = new StrokeTriageAdapter(R.layout.adapter_stroke_path_item, strings);
+        strokeTriageAdapter = new StrokeTriageAdapter(R.layout.adapter_stroke_path_item, list);
         rvContentActMain.setAdapter(strokeTriageAdapter);
+
         strokeTriageAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-
-                // rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.ll_patient_path).setBackgroundColor(getResources().getColor(R.color.blue));
+/*
+                if (TextUtils.isEmpty(list.get(position).getDestination())) {
+                    Toast.makeText(getActivity(), "地址不存在~", Toast.LENGTH_SHORT).show();
+                } else {
+                    ARouter.getInstance()
+                            .build(list.get(position).getDestination())
+                            .withInt("position",position)
+                            .navigation();
+                }*/
                 if (position == 0 || position == 1 || position == 2 || position == 9 || position == 11 || position == 12 || position == 13 || position == 14 || position == 15) {
                     Intent intent = new Intent(getActivity(), TriageActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putString("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 0);
@@ -108,7 +140,7 @@ public class StrokeTriageFragment extends Fragment {
 
                     Intent intent = new Intent(getActivity(), EmergencyDoctorActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putString("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 1);
@@ -117,7 +149,7 @@ public class StrokeTriageFragment extends Fragment {
                     //生命体征
                     Intent intent = new Intent(getActivity(), VitalSignsActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putString("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 2);
@@ -125,7 +157,7 @@ public class StrokeTriageFragment extends Fragment {
                 } else if (position == 10) {
                     Intent intent = new Intent(getActivity(), EcgExamnationMainActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putString("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 3);
@@ -134,7 +166,7 @@ public class StrokeTriageFragment extends Fragment {
                     //FAST-ED评分
                     Intent intent = new Intent(getActivity(), FastEdActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putSerializable("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 4);
@@ -143,10 +175,20 @@ public class StrokeTriageFragment extends Fragment {
                     //发病前mRS评分
                     Intent intent = new Intent(getActivity(), PremorbidMrsActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("arrayList", strings);
+                    bundle.putSerializable("arrayList", new Gson().toJson(list));
                     bundle.putInt("position", position);
                     intent.putExtras(bundle);
                     startActivityForResult(intent, 4);
+
+                } else if (position == 16) {
+
+                    srlFreshActMain.setVisibility(View.GONE);
+                    rvContentActMain.setVisibility(View.GONE);
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    StrokeBloodExaminationFragment strokeBloodExaminationFragment = new StrokeBloodExaminationFragment();
+                    transaction.add(R.id.stroke_fragment_triage, strokeBloodExaminationFragment);
+                    transaction.commit();
 
                 }
             }
@@ -202,7 +244,7 @@ public class StrokeTriageFragment extends Fragment {
 
         if (requestCode == 2 && resultCode == 2) {
 
-          /*  int position = data.getExtras().getInt("position");
+            int position = data.getExtras().getInt("position");
             Toast.makeText(getActivity(), position + "***" + position, Toast.LENGTH_SHORT).show();
             TextView tv_operation_path_show = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_operation_path_show);
             TextView tv_is_done = rvContentActMain.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_is_done);
@@ -234,9 +276,8 @@ public class StrokeTriageFragment extends Fragment {
 
 
             }
-*/
-
         }
+
 
     }
 }

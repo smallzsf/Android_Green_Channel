@@ -14,14 +14,18 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,9 +59,11 @@ public class FastEdActivity extends BaseActivity {
     public void initView() {
         intent = getIntent();
         bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
+        String arrayList = bundle.getString("arrayList");
+        List<StrokeProcessBean> list= new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+        }.getType());
         position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
+        titlebar.setTitle(list.get(position).getName());
 
 
     }

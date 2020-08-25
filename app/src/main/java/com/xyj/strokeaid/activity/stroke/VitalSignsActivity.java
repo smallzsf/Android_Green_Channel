@@ -10,9 +10,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -61,6 +64,7 @@ public class VitalSignsActivity extends BaseActivity {
     private Intent intent;
     private List<String> list;
     private SharedPreferences sp;
+    int type=0;
 
 
     @Override
@@ -75,13 +79,19 @@ public class VitalSignsActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        if (type==0){
+            intent = getIntent();
+            bundle = intent.getExtras();
+            String arrayList = bundle.getString("arrayList");
+            List<StrokeProcessBean> list= new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+            }.getType());
+            position = bundle.getInt("position", 0);
+            titlebar.setTitle(list.get(position).getName());
+            loadData();
 
-        intent = getIntent();
-        bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
-        position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
-        loadData();
+        }else{
+
+        }
 
 
     }
@@ -93,8 +103,8 @@ public class VitalSignsActivity extends BaseActivity {
             sp = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
             //对uname 和 upswd 的操作
             if (sp.getBoolean("checkboxBoolean", false)) {
-                //  esVitalSignAware.setText(sp.getString("esVitalSignAware", null));
                 esVitalSignAware.setHint(sp.getString("esVitalSignAware", null));
+                //   esVitalSignAware.setHint(sp.getString("esVitalSignAware", null));
                 esVitalSignAware.clearAnimation();
                 etBreathRateContent.setText(sp.getString("etBreathRateContent", null));
                 etPulseContent.setText(sp.getString("etPulseContent", null));
@@ -122,6 +132,7 @@ public class VitalSignsActivity extends BaseActivity {
         list.add("对刺激有反应");
         list.add("对任何刺激无反应");
         esVitalSignAware.setItemData(list);
+
     }
 
 
@@ -136,10 +147,16 @@ public class VitalSignsActivity extends BaseActivity {
                 SharedPreferences.Editor editor = sp.edit();
 
 
-                if (esVitalSignAware.getText() != null) {
+                if (esVitalSignAware.getText().isEmpty()) {
+                    editor.putString("esVitalSignAware", esVitalSignAware.getHint());
+                    Toast.makeText(mContext, "true::" + esVitalSignAware.getHint(), Toast.LENGTH_SHORT).show();
+
+                } else {
                     editor.putString("esVitalSignAware", esVitalSignAware.getText());
+                    Toast.makeText(mContext, "false::" + esVitalSignAware.getText(), Toast.LENGTH_SHORT).show();
 
                 }
+
                 if (etBreathRateContent.getText().toString() != null) {
                     editor.putString("etBreathRateContent", etBreathRateContent.getText().toString());
                 }

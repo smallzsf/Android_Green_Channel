@@ -2,6 +2,7 @@ package com.xyj.strokeaid.activity.stroke;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,16 +11,25 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,6 +82,7 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
     private int position;
     private Bundle bundle;
     private Intent intent;
+    private List<StrokeProcessBean> list;
 
 
     @Override
@@ -81,7 +92,7 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
 
     @Override
     protected void initInject() {
-
+        ARouter.getInstance().inject(this);
     }
 
     @Override
@@ -90,10 +101,13 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
 
         intent = getIntent();
         bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
+        String arrayList = bundle.getString("arrayList");
+        list = new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+        }.getType());
         position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
-        tvName.setText(list.get(position));
+
+        titlebar.setTitle(list.get(position).getName());
+        tvName.setText(list.get(position).getName());
         if (position == 0 || position == 2 || position == 11 || position == 12 || position == 13) {
             // llTriageTime.setVisibility(View.GONE);
             llTriagellDoctor.setVisibility(View.GONE);
@@ -107,10 +121,10 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
             llFastBloodSugar.setVisibility(View.GONE);
             llTall.setVisibility(View.GONE);
             llWeight.setVisibility(View.GONE);
-            tvTriageDoctor.setText(list.get(position));
+            tvTriageDoctor.setText(list.get(position).getName());
         }
 
-        if (position == 8){
+        if (position == 8) {
 
         }
 
@@ -136,7 +150,6 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
             llWeight.setVisibility(View.GONE);
 
         }
-
         mDialogAll = new TimePickerDialog.Builder()
                 .setType(Type.ALL)
                 .setTitleStringId("选择时间")
@@ -169,15 +182,38 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
 
             case R.id.btn_confirm:
                 String s = etInputWeight.getText().toString();
+                if (position == 0 || position == 2 || position == 11 || position == 12 || position == 13) {
 
-                intent.putExtra("result", appTvEditSpinnerTime.getText());
-                intent.putExtra("tall", etInputTall.getText().toString());
-                intent.putExtra("weight", s);
-                intent.putExtra("position", position);
-                //设置返回数据
-                setResult(0, intent);
-                //关闭Activity
-                finish();
+                    intent.putExtra("result", appTvEditSpinnerTime.getText());
+                    intent.putExtra("tall", etInputTall.getText().toString());
+                    intent.putExtra("weight", s);
+                    intent.putExtra("position", position);
+                    //设置返回数据
+                    setResult(0, intent);
+                    //关闭Activity
+                    finish();
+                }
+
+                if (position == 1) {
+
+                }
+
+                if (position == 8) {
+
+                }
+
+                if (position == 9) {
+
+                }
+
+
+                if (position == 14) {
+
+                }
+                if (position == 15) {
+
+                }
+
 
                 break;
             case R.id.btn_cancel:
@@ -199,7 +235,6 @@ public class TriageActivity extends BaseActivity implements OnDateSetListener {
         appTvEditSpinnerTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
 
     }
-
 
 
 }

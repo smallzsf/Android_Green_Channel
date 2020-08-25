@@ -6,11 +6,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -69,10 +72,13 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
 
         intent = getIntent();
         bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
+        String arrayList = bundle.getString("arrayList");
+        List<StrokeProcessBean> list= new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+        }.getType());
         position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
-        tvName.setText(list.get(position));
+
+        titlebar.setTitle(list.get(position).getName());
+        tvName.setText(list.get(position).getName());
 
         if (position==3){
             tvTriageName.setText("分诊护士");

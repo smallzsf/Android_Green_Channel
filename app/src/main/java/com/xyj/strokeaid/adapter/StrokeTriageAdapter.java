@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.adapter;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,60 +25,37 @@ import butterknife.ButterKnife;
  * @Author: crq
  * @CreateDate: 2020/8/22 17:55
  */
-public class StrokeTriageAdapter extends BaseQuickAdapter<String, com.chad.library.adapter.base.viewholder.BaseViewHolder> {
+public class StrokeTriageAdapter extends BaseQuickAdapter<StrokeProcessBean, com.chad.library.adapter.base.viewholder.BaseViewHolder> {
 
-    public StrokeTriageAdapter(int layoutResId, @Nullable List<String> data) {
+    public StrokeTriageAdapter(int layoutResId, @Nullable List<StrokeProcessBean> data) {
         super(layoutResId, data);
     }
 
     @Override
-    protected void convert(@NotNull BaseViewHolder baseViewHolder, String s) {
-        baseViewHolder.setText(R.id.tv_path_name, s);
+    protected void convert(@NotNull BaseViewHolder baseViewHolder, StrokeProcessBean strokeProcessBean) {
+        baseViewHolder.setText(R.id.tv_path_name, strokeProcessBean.getName())
+                .setText(R.id.tv_operation_path_show, strokeProcessBean.getDesc());
+        TextView tvIsDone = baseViewHolder.getView(R.id.tv_is_done);
+
+        // 填写状态
+        if (strokeProcessBean.getStatus() == 2){
+            // 部分完成
+
+            tvIsDone.setBackgroundResource(R.drawable.shape_yellow_round);
+        }else if (strokeProcessBean.getStatus() == 3){
+            // 已完成
+            tvIsDone.setBackgroundResource(R.drawable.shape_green_round);
+        }else {
+            // 未完成
+            tvIsDone.setBackgroundResource(R.drawable.shape_red_round);
+        }
     }
 
-    @Override
+    /*@Override
     public int getItemViewType(int position) {
         return position;
-    }
+    }*/
 
 
 }
 
-
-
-
-    /* extends BaseRecycAdapter<String> {
-
-
-    @BindView(R.id.tv_is_done)
-    TextView tvIsDone;
-    @BindView(R.id.tv_path_name)
-    TextView tvPathName;
-    @BindView(R.id.app_iv_red_star)
-    ImageView appIvRedStar;
-    @BindView(R.id.tv_operation_path_show)
-    TextView tvOperationPathShow;
-    @BindView(R.id.ll_patient_path)
-    LinearLayout llPatientPath;
-    @BindView(R.id.recyclerView)
-    LinearLayout recyclerView;
-
-    public StrokeTriageAdapter(List<String> list, Context context) {
-        super(list, context);
-    }
-
-    @Override
-    protected int getContentView(int viewType) {
-        return R.layout.adapter_stroke_path_item;
-    }
-
-
-    @Override
-    protected void covert(BaseViewHolder holder, String data, int position) {
-        ButterKnife.bind(this, holder.getView());
-        tvPathName.setText(data);
-
-    }
-
-
-}*/

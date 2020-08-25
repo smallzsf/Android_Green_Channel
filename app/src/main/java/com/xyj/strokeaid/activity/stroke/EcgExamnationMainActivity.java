@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -30,6 +32,7 @@ import com.luck.picture.lib.permissions.Permission;
 import com.luck.picture.lib.permissions.RxPermissions;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -102,10 +105,12 @@ public class EcgExamnationMainActivity extends BaseActivity implements OnDateSet
     public void initView() {
         intent = getIntent();
         bundle = intent.getExtras();
-        ArrayList<String> list = ((ArrayList<String>) bundle.getSerializable("arrayList"));
+        String arrayList = bundle.getString("arrayList");
+        List<StrokeProcessBean> list= new Gson().fromJson(arrayList, new TypeToken<List<StrokeProcessBean>>() {
+        }.getType());
         position = bundle.getInt("position", 0);
-        titlebar.setTitle(list.get(position));
-        tvName.setText(list.get(position));
+        titlebar.setTitle(list.get(position).getName());
+        tvName.setText(list.get(position).getName());
 
         mDialogAll = new TimePickerDialog.Builder()
                 .setType(Type.ALL)

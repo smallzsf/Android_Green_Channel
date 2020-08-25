@@ -74,6 +74,10 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         editText.setHint(hint);
     }
 
+    public String getHint() {
+        return editText.getHint().toString();
+    }
+
     public void setRightImageDrawable(Drawable drawable) {
         mRightIv.setImageDrawable(drawable);
     }

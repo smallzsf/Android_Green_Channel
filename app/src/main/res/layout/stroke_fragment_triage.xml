@@ -7,12 +7,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragment.stroke.StrokeTriageFragment">
 
-<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />-->
-
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_fresh_act_main"
