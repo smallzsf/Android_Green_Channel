@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+
+        <ImageView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginTop="@dimen/dp_30"
+            android:src="@drawable/login_phone"
+            android:text="@string/login_name"
+            android:textColor="@color/app_6a798e"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintLeft_toLeftOf="@+id/cl"
+            app:layout_constraintTop_toBottomOf="@+id/iv_launch" />
+
+        <ImageView
+            android:id="@+id/tv_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_34"
+            android:src="@drawable/login_pwd"
+            android:text="@string/login_password"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@+id/tv_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <EditText
+            android:id="@+id/et_name"
+            style="@style/login_et_style"
+            android:gravity="left"
+            android:hint="请输入您的用户名ID"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+            app:layout_constraintLeft_toRightOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@+id/cl" />
+
+        <EditText
+            android:id="@+id/et_password"
+            style="@style/login_et_style"
+            android:gravity="left"
+            android:hint="@string/login_et_input_password"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_password"
+            app:layout_constraintLeft_toRightOf="@+id/tv_password"
+            app:layout_constraintRight_toRightOf="@+id/cl" />
+
+        <View
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/app_ffe4e4e4"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@+id/et_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+        <View
+            android:id="@+id/v_password_line"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_10"
+            android:background="@color/app_ffe4e4e4"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_name"
+            app:layout_constraintRight_toRightOf="@+id/et_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_password" />
+
+        <CheckBox
+            android:id="@+id/cb_remember_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_20"
+            android:checked="false"
+            android:drawablePadding="@dimen/dp_7"
+            android:text="@string/login_remember_passowrd"
+            app:layout_constraintLeft_toLeftOf="@+id/cl"
+            app:layout_constraintTop_toBottomOf="@+id/v_password_line" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="@dimen/dp_41"
+            android:layout_marginLeft="@dimen/dp_23"
+            android:layout_marginTop="@dimen/dp_22"
+            android:layout_marginRight="@dimen/dp_23"
+            android:background="@drawable/login_btn_bg"
+            android:text="@string/login_btn"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toLeftOf="@+id/cl"
+            app:layout_constraintRight_toRightOf="@+id/cl"
+            app:layout_constraintTop_toBottomOf="@+id/cb_remember_password" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--  <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="血液检查" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/menu"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <TextView
+                android:id="@+id/awareness"
+                android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="抽血时间"
+                android:textColor="@color/app_223b53" />
+
+
+
+            <TextView
+                android:id="@+id/app_tv_editSpinner_time"
+                style="@style/patient_et_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:focusable="false"
+                android:layout_toRightOf="@id/awareness"
+                android:text="选取时间"
+                android:textColor="@color/black"
+                android:hint="@string/app_default_time_example"
+                />
+
+
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/breath_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/breath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="结果时间"
+                    android:textColor="@color/app_223b53" />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                style="@style/patient_et_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|right"
+                android:focusable="false"
+                android:text="选取时间"
+                android:textColor="@color/black"
+                android:hint="@string/app_default_time_example"
+                />
+
+
+
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/pulse_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/pulse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="肌酐"
+                    android:textColor="@color/app_223b53" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_pulse_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/pulse_unit_times_minute"
+                android:layout_toRightOf="@+id/pulse_layout"
+                android:background="@null"
+                android:hint="请输入"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/sp_14" />
+
+
+        </RelativeLayout>
+
+         <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+        <include
+            android:id="@+id/menu"
+            layout="@layout/view_bottom_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+    </LinearLayout>
+
+
+</LinearLayout>
