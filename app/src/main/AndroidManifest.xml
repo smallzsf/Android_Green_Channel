@@ -97,9 +97,18 @@
         <activity
             android:name=".activity.stroke.StrokeThrombolysisIntravenousActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.stroke.ThrombolysisComplicationsActivity" />
-        <activity android:name=".activity.stroke.StrokeThriveActivity" />
-        <activity android:name=".activity.stroke.ThrombolysisDelayActivity" />
+        <activity
+            android:name=".activity.stroke.ThrombolysisComplicationsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.StrokeThriveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.stroke.ThrombolysisDelayActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.common.PatientGreenChannelActivity"
+            android:screenOrientation="portrait" />
 
 
         <activity

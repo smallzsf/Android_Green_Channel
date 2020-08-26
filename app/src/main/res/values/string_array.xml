@@ -23,4 +23,18 @@
         <item>其他</item>
     </string-array>
 
+    <string-array name="nihss_titles">
+        <item>入院NIHSS评分</item>
+        <item>急诊NIHSS评分</item>
+        <item>住院NIHSS评分</item>
+        <item>溶栓术后即刻NIHSS评分</item>
+        <item>溶栓后24h NIHSS评分</item>
+        <item>溶栓后7±2天NIHSS评分</item>
+        <item>介入术前NIHSS评分</item>
+        <item>介入术后即刻NIHSS评分</item>
+        <item>介入术后24h NIHSS评分</item>
+        <item>介入术后7±2天NIHSS评分</item>
+        <item>出院时NIHSS评分</item>
+    </string-array>
+
 </resources>

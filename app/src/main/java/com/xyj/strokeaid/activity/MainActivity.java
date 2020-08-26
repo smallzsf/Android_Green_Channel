@@ -29,10 +29,9 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.newapoplexy.NewApoplexyInfoActivity;
+import com.xyj.strokeaid.activity.common.PatientGreenChannelActivity;
 import com.xyj.strokeaid.activity.newapoplexy.NewChestXRayActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
-import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
@@ -135,12 +134,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     private void initTab() {
         mTabEntities = new ArrayList<>();
         for (int i = 0; i < Constants.HOME_TAB_TITLES.length; i++) {
-            mTabEntities.add(new TabEntity(Constants.HOME_TAB_TITLES[i],
-                    Constants.HOME_TAB_SELECTED_ICONS[i], Constants.HOME_TAB_UNSELECTED_ICONS[i]));
+            mTabEntities.add(new TabEntity(Constants.HOME_TAB_TITLES[i], 0, 0));
         }
         tlTitleActMain.setTabData(mTabEntities);
         tlTitleActMain.showMsg(0, 8);
         tlTitleActMain.showMsg(1, 22);
+        tlTitleActMain.showMsg(2, 16);
     }
 
     @Override
@@ -178,7 +177,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         mPatientRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                Intent intent = new Intent(mContext, StrokeMainActivity.class);
+                Intent intent = new Intent(mContext, PatientGreenChannelActivity.class);
                 intent.putExtra(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId());
                 intent.putExtra(IntentKey.DOC_ID, mDocId);
                 startActivity(intent);

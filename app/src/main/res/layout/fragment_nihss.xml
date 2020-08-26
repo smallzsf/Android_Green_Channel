@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.StrokeNihssFragment">
+
+    <LinearLayout
+        android:id="@+id/ll_score_frag_nihss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_12">
+
+        <TextView
+            android:id="@+id/tv_score_frag_nihss"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/app_rating_results"
+            android:textColor="@color/color_222222"
+            android:textSize="14sp" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_opinion_frag_nihss"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/include_bottom_view"
+        layout="@layout/view_two_horizontal_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_8"
+        android:layout_alignParentBottom="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/include_bottom_view"
+        android:layout_below="@id/ll_score_frag_nihss"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_1a_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="1a.意识水平" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_1b_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="1b.意识水平提问" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_1c_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="1c.意识水平指令" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_2_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="2.凝视" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_3_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="3.视野" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_4_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="4.面瘫" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_5a_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="5a.上肢运动左侧" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_5b_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="5b.上肢运动右侧" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_6a_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="6a.下肢运动左侧" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_6b_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="6b.下肢运动右侧" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_7_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="7.共济失调" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_8_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="8.感觉" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_9_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="9.语言" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_10_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="10.构音障碍" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.NihssItemBar
+                android:id="@+id/nib_11_frag_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="11.忽视症" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/color_EEEEEE" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

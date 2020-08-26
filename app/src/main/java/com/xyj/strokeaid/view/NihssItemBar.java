@@ -2,15 +2,14 @@ package com.xyj.strokeaid.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckedTextView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -44,9 +43,14 @@ public class NihssItemBar extends LinearLayout {
     TextView tvTitleViewNib;
     @BindView(R.id.rv_content_view_nib)
     RecyclerView rvContentViewNib;
+    @BindView(R.id.iv_arrow_view_nib)
+    ImageView ivArrowViewNib;
+    @BindView(R.id.rv_scores_view_nib)
+    RecyclerView rvScoresViewNib;
 
     private List<ItemBean> mItemBeans;
-    private NihssRvAdapter mNihssRvAdapter;
+    private NihssItemRvAdapter mItemRvAdapter;
+    private NihssScoreRvAdapter mScoreRvAdapter;
 
     public NihssItemBar(Context context) {
         this(context, null);
@@ -75,22 +79,58 @@ public class NihssItemBar extends LinearLayout {
         if (!TextUtils.isEmpty(title)) {
             tvTitleViewNib.setText(title);
         }
+
+        boolean scoreVisible = typedArray.getBoolean(R.styleable.NihssItemBar_nib_score_visible, true);
+        if (scoreVisible) {
+            rvScoresViewNib.setVisibility(VISIBLE);
+        } else {
+            rvScoresViewNib.setVisibility(GONE);
+        }
         typedArray.recycle();
 
+        ivArrowViewNib.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (rvContentViewNib.getVisibility() == VISIBLE) {
+                    rvContentViewNib.setVisibility(GONE);
+                    ivArrowViewNib.setImageResource(R.drawable.ic_arrow_down_blue);
+                } else {
+                    rvContentViewNib.setVisibility(VISIBLE);
+                    ivArrowViewNib.setImageResource(R.drawable.ic_arrow_up_blue);
+                    if (mItemRvAdapter != null) {
+                        mItemRvAdapter.notifyDataSetChanged();
+                    }
+                }
+            }
+        });
     }
 
+    /**
+     * 设置数据源
+     *
+     * @param itemBeans 数据源
+     */
     public void setItemBeans(@NonNull List<ItemBean> itemBeans) {
         mItemBeans = itemBeans;
-        if (mNihssRvAdapter == null) {
-            mNihssRvAdapter = new NihssRvAdapter(mItemBeans);
+        if (mItemRvAdapter == null) {
+            mItemRvAdapter = new NihssItemRvAdapter(mItemBeans);
         }
         rvContentViewNib.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvContentViewNib.setAdapter(mNihssRvAdapter);
+        rvContentViewNib.setAdapter(mItemRvAdapter);
 
-        mNihssRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+        if (mScoreRvAdapter == null) {
+            mScoreRvAdapter = new NihssScoreRvAdapter(mItemBeans);
+        }
+        rvScoresViewNib.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        if (rvScoresViewNib.getItemDecorationCount() == 0) {
+            rvScoresViewNib.addItemDecoration(new SpacesItemDecoration(0, 0, 2, 0, HORIZONTAL));
+        }
+        rvScoresViewNib.setAdapter(mScoreRvAdapter);
+
+        mItemRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                if (mItemBeans != null && mNihssRvAdapter != null) {
+                if (mItemBeans != null && mItemRvAdapter != null && mScoreRvAdapter != null) {
                     if (mItemBeans.get(position).checked) {
                         // 已经是选中状态，要取消选中
                         mItemBeans.get(position).checked = false;
@@ -100,7 +140,73 @@ public class NihssItemBar extends LinearLayout {
                             mItemBeans.get(i).checked = i == position;
                         }
                     }
-                    mNihssRvAdapter.notifyDataSetChanged();
+                    mItemRvAdapter.notifyDataSetChanged();
+                    mScoreRvAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        mScoreRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                if (mItemBeans != null && mItemRvAdapter != null && mScoreRvAdapter != null) {
+                    if (mItemBeans.get(position).checked) {
+                        // 已经是选中状态，要取消选中
+                        mItemBeans.get(position).checked = false;
+                    } else {
+                        // 修改为选中状态,清除其他项的选中状态
+                        for (int i = 0; i < mItemBeans.size(); i++) {
+                            mItemBeans.get(i).checked = i == position;
+                        }
+                    }
+                    mScoreRvAdapter.notifyDataSetChanged();
+                    mItemRvAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+    }
+
+    /**
+     * 设置数据源,多选状态
+     *
+     * @param itemBeans 数据源
+     */
+    public void setMultipleItemBeans(@NonNull List<ItemBean> itemBeans) {
+        mItemBeans = itemBeans;
+        if (mItemRvAdapter == null) {
+            mItemRvAdapter = new NihssItemRvAdapter(mItemBeans);
+        }
+        rvContentViewNib.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvContentViewNib.setAdapter(mItemRvAdapter);
+
+        if (mScoreRvAdapter == null) {
+            mScoreRvAdapter = new NihssScoreRvAdapter(mItemBeans);
+        }
+        rvScoresViewNib.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
+        if (rvScoresViewNib.getItemDecorationCount() == 0) {
+            rvScoresViewNib.addItemDecoration(new SpacesItemDecoration(0, 0, 2, 0, HORIZONTAL));
+        }
+        rvScoresViewNib.setAdapter(mScoreRvAdapter);
+
+        mItemRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                if (mItemBeans != null && mItemRvAdapter != null && mScoreRvAdapter != null) {
+                    mItemBeans.get(position).checked = !mItemBeans.get(position).checked;
+                    mItemRvAdapter.notifyDataSetChanged();
+                    mScoreRvAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        mScoreRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                if (mItemBeans != null && mItemRvAdapter != null && mScoreRvAdapter != null) {
+                    mItemBeans.get(position).checked = !mItemBeans.get(position).checked;
+                    mScoreRvAdapter.notifyDataSetChanged();
+                    mItemRvAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -124,49 +230,85 @@ public class NihssItemBar extends LinearLayout {
         return -1;
     }
 
+    /**
+     * 获取分数, 多选状态
+     *
+     * @return -1    没有选中项目
+     *         其他   正常得分
+     */
+    public int getMultipleScore() {
+        int count = -1;
+        if (mItemBeans != null) {
+            for (ItemBean itemBean : mItemBeans) {
+                if (itemBean.checked) {
+                    if (count == -1) {
+                        // 在累加前把值置为0，防止有些选项的值就是0的情况导致计算错误
+                        count = 0;
+                    }
+                    count += itemBean.score;
+                }
+            }
+        }
+        return count;
+    }
 
-    public static class NihssRvAdapter extends BaseQuickAdapter<ItemBean, BaseViewHolder> {
+    public static class NihssItemRvAdapter extends BaseQuickAdapter<ItemBean, BaseViewHolder> {
 
-        public NihssRvAdapter(@Nullable List<ItemBean> data) {
+        public NihssItemRvAdapter(@Nullable List<ItemBean> data) {
             super(R.layout.adapter_rv_nihss_item, data);
         }
 
         @Override
         protected void convert(@NotNull BaseViewHolder baseViewHolder, ItemBean itemBean) {
-            TextView view = baseViewHolder.getView(R.id.rb_content_view_nihss_item);
+            CheckedTextView view = baseViewHolder.getView(R.id.ctv_content_view_nihss_item);
             view.setText(itemBean.content);
-            if (itemBean.checked) {
-                // 选中状态
-                view.setBackground(new ColorDrawable(view.getContext().getResources().getColor(R.color.colorPrimary)));
-                view.setTextColor(Color.WHITE);
-            } else {
-                // 非选中状态
-                view.setBackground(new ColorDrawable(Color.WHITE));
-                view.setTextColor(Color.BLACK);
-            }
+            view.setChecked(itemBean.checked);
+        }
+    }
+
+    public static class NihssScoreRvAdapter extends BaseQuickAdapter<ItemBean, BaseViewHolder> {
+
+        public NihssScoreRvAdapter(@Nullable List<ItemBean> data) {
+            super(R.layout.adapter_rv_nihss_score, data);
+        }
+
+        @Override
+        protected void convert(@NotNull BaseViewHolder baseViewHolder, ItemBean itemBean) {
+            CheckedTextView view = baseViewHolder.getView(R.id.tv_score_adapter_nihss);
+            view.setText(String.valueOf(itemBean.score));
+            view.setChecked(itemBean.checked);
         }
     }
 
     public static class ItemBean {
         public String content;
         public int score;
+        public String scoreValue;
         public boolean checked;
+
+        public ItemBean(String content, int score, String scoreValue, boolean checked) {
+            this.content = content;
+            this.score = score;
+            this.scoreValue = scoreValue;
+            this.checked = checked;
+        }
+
+        public ItemBean(String content, int score, boolean checked) {
+            this.content = content;
+            this.score = score;
+            this.scoreValue = String.valueOf(score);
+            this.checked = checked;
+        }
 
         @Override
         public String toString() {
             return "ItemBean{" +
                     "content='" + content + '\'' +
                     ", score=" + score +
+                    ", scoreValue='" + scoreValue + '\'' +
                     ", checked=" + checked +
                     '}';
         }
-
-        public ItemBean(String content, int score, boolean checked) {
-            this.content = content;
-            this.score = score;
-            this.checked = checked;
-        }
-
     }
 }
 

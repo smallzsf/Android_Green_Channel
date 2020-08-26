@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/title_bar_height"
+    android:orientation="horizontal">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_get_data"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_weight="1"
+        android:background="@drawable/login_btn_bg"
+        android:text="@string/lab_confirm"
+        android:textColor="@android:color/white"
+        android:textSize="14dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_confirm"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_marginStart="@dimen/dp_18"
+        android:layout_weight="1"
+        android:background="@drawable/login_btn_bg"
+        android:text="@string/lab_cancel"
+        android:textColor="@android:color/white"
+        android:textSize="14dp" />
+
+</LinearLayout>
