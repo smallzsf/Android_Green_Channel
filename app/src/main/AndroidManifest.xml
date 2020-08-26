@@ -25,9 +25,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
-        <activity
-            android:name=".activity.login.LoginActivity"
-          >
+        <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

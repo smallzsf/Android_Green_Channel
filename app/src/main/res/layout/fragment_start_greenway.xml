@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.StartGreenwayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        style="@style/tv_normal_titel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="@dimen/item_title_height"
+        android:paddingStart="@dimen/dp_12"
+        android:text="请选择卒中中心医院" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_hos_frag_sg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        tools:itemCount="5"
+        tools:listitem="@layout/adapter_rv_stroke_hos_item"
+        android:scrollbars="none" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_start_frag_sg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/login_btn_bg"
+        android:text="启动绿道"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

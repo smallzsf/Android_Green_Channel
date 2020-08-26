@@ -1,17 +1,27 @@
 package com.xyj.strokeaid.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.adapter.StrokeHosRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.StrokeHosBean;
+import com.xyj.strokeaid.helper.CallUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * StartGreenwayFragment
@@ -23,8 +33,16 @@ import com.xyj.strokeaid.base.BaseFragment;
  */
 public class StartGreenwayFragment extends BaseFragment {
 
+    @BindView(R.id.rv_hos_frag_sg)
+    RecyclerView rvHosFragSg;
+    @BindView(R.id.btn_start_frag_sg)
+    AppCompatButton btnStart;
+
     private String mPatientId;
     private String mDocId;
+
+    private StrokeHosRvAdapter mStrokeHosRvAdapter;
+    private List<StrokeHosBean> mStrokeHosBeans;
 
     public StartGreenwayFragment() {
         // Required empty public constructor
@@ -55,12 +73,43 @@ public class StartGreenwayFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+        mStrokeHosBeans = new ArrayList<>();
+        mStrokeHosBeans.add(new StrokeHosBean("郑州卒中中心医院", "0371-99986666"));
+        mStrokeHosBeans.add(new StrokeHosBean("安阳卒中中心医院", "0372-99986666"));
+        mStrokeHosBeans.add(new StrokeHosBean("新乡卒中中心医院", "0373-99986666"));
 
+        mStrokeHosRvAdapter = new StrokeHosRvAdapter(R.layout.adapter_rv_stroke_hos_item, mStrokeHosBeans);
+
+        rvHosFragSg.setLayoutManager(new LinearLayoutManager(mActivity));
+        rvHosFragSg.setAdapter(mStrokeHosRvAdapter);
+        mStrokeHosRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
     }
 
     @Override
     protected void initListener() {
+        btnStart.setOnClickListener(v -> {
+            showToast("发送成功~");
+        });
 
+        mStrokeHosRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+                if (view.getId() == R.id.iv_call_item_stroke_hos) {
+                    CallUtils.callPhone(mStrokeHosBeans.get(position).getPhone(), mActivity);
+                }
+            }
+        });
+
+        mStrokeHosRvAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
+                for (StrokeHosBean strokeHosBean : mStrokeHosBeans) {
+                    strokeHosBean.setChecked(false);
+                }
+                mStrokeHosBeans.get(position).setChecked(!mStrokeHosBeans.get(position).isChecked());
+                mStrokeHosRvAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }
