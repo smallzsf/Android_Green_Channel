@@ -61,16 +61,40 @@
                 android:layout_height="2dp"
                 android:background="@color/color_EEEEEE" />
 
-            <TextView
-                android:id="@+id/tv_ih_title_frag_ss"
-                style="@style/tv_normal_titel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12"
-                android:text="入院GCS评分"
-                app:drawableEndCompat="@drawable/ic_arrow_down_blue" />
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_ih_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="入院GCS评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_ih_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_ih_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_ih_contain_frag_ss"
@@ -79,7 +103,8 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_ih_gcs_eye_frag_ss"
@@ -116,16 +141,41 @@
                 android:layout_height="2dp"
                 android:background="@color/color_EEEEEE" />
 
-            <TextView
-                android:id="@+id/tv_lh_title_frag_ss"
-                style="@style/tv_normal_titel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12"
-                android:text="住院GCS评分"
-                app:drawableEndCompat="@drawable/ic_arrow_down_blue" />
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_lh_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    android:text="住院GCS评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_lh_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_lh_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_lh_contain_frag_ss"
@@ -134,7 +184,8 @@
                 android:background="@color/white"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_lh_gcs_eye_frag_ss"
@@ -226,15 +277,40 @@
                 android:layout_height="2dp"
                 android:background="@color/color_EEEEEE" />
 
-            <TextView
-                android:id="@+id/tv_sm_title_frag_ss"
-                style="@style/tv_normal_titel"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12"
-                android:text="Spetzler-Marin评分"
-                app:drawableEndCompat="@drawable/ic_arrow_down_blue" />
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_sm_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="Spetzler-Marin评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_sm_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_sm_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_sm_contain_frag_ss"
@@ -242,7 +318,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_sm_volume_frag_ss"
@@ -273,7 +350,6 @@
                     app:title="深静脉引流" />
 
             </LinearLayout>
-
 
             <View
                 android:layout_width="match_parent"

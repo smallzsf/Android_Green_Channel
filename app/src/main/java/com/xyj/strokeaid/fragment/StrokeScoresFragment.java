@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -79,6 +80,18 @@ public class StrokeScoresFragment extends BaseFragment {
     NihssItemBar nibSmDeepFragSs;
     @BindView(R.id.ll_sm_contain_frag_ss)
     LinearLayout llSmContainFragSs;
+    @BindView(R.id.tv_ih_score_title_frag_ss)
+    TextView tvIhScoreTitleFragSs;
+    @BindView(R.id.iv_ih_arrow_frag_ss)
+    ImageView ivIhArrowFragSs;
+    @BindView(R.id.tv_lh_score_title_frag_ss)
+    TextView tvLhScoreTitleFragSs;
+    @BindView(R.id.iv_lh_arrow_frag_ss)
+    ImageView ivLhArrowFragSs;
+    @BindView(R.id.tv_sm_score_title_frag_ss)
+    TextView tvSmScoreTitleFragSs;
+    @BindView(R.id.iv_sm_arrow_frag_ss)
+    ImageView ivSmArrowFragSs;
     private String mPatientId;
     private String mDocId;
 
@@ -120,8 +133,8 @@ public class StrokeScoresFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.btn_get_data, R.id.btn_confirm, R.id.tv_ih_title_frag_ss,
-            R.id.tv_lh_title_frag_ss, R.id.tv_sm_title_frag_ss})
+    @OnClick({R.id.btn_get_data, R.id.btn_confirm,
+            R.id.iv_ih_arrow_frag_ss, R.id.iv_lh_arrow_frag_ss, R.id.iv_sm_arrow_frag_ss})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_get_data:
@@ -130,14 +143,14 @@ public class StrokeScoresFragment extends BaseFragment {
             case R.id.btn_confirm:
 
                 break;
-            case R.id.tv_ih_title_frag_ss:
-                parseHasSubItemScores(llIhContainFragSs, tvIhTitleFragSs);
+            case R.id.iv_ih_arrow_frag_ss:
+                parseHasSubItemScores(llIhContainFragSs, ivIhArrowFragSs);
                 break;
-            case R.id.tv_lh_title_frag_ss:
-                parseHasSubItemScores(llLhContainFragSs, tvLhTitleFragSs);
+            case R.id.iv_lh_arrow_frag_ss:
+                parseHasSubItemScores(llLhContainFragSs, ivLhArrowFragSs);
                 break;
-            case R.id.tv_sm_title_frag_ss:
-                parseHasSubItemScores(llSmContainFragSs, tvSmTitleFragSs);
+            case R.id.iv_sm_arrow_frag_ss:
+                parseHasSubItemScores(llSmContainFragSs, ivSmArrowFragSs);
                 break;
             default:
                 break;
@@ -148,17 +161,15 @@ public class StrokeScoresFragment extends BaseFragment {
      * 处理含有子项目的评分项
      *
      * @param linearLayout
-     * @param textView
+     * @param imageView
      */
-    private void parseHasSubItemScores(@NonNull LinearLayout linearLayout, @NonNull TextView textView) {
+    private void parseHasSubItemScores(@NonNull LinearLayout linearLayout, @NonNull ImageView imageView) {
         if (linearLayout.getVisibility() == View.VISIBLE) {
             linearLayout.setVisibility(View.GONE);
-            textView.setCompoundDrawablesWithIntrinsicBounds(
-                    0, 0, R.drawable.ic_arrow_down_blue, 0);
+            imageView.setImageResource(R.drawable.ic_arrow_down_blue);
         } else {
             linearLayout.setVisibility(View.VISIBLE);
-            textView.setCompoundDrawablesWithIntrinsicBounds(
-                    0, 0, R.drawable.ic_arrow_up_blue, 0);
+            imageView.setImageResource(R.drawable.ic_arrow_up_blue);
         }
     }
 
@@ -218,20 +229,20 @@ public class StrokeScoresFragment extends BaseFragment {
         nibLhGcsSportFragSs.setItemBeans(lnHosGcsSport);
         // 入院Fisher分级
         List<NihssItemBar.ItemBean> fisher = new ArrayList<>();
-        fisher.add(new NihssItemBar.ItemBean("0级：未见出血或仅脑室内出血或实质内出血（3%）", 0,"0级", false));
-        fisher.add(new NihssItemBar.ItemBean("Ⅰ级：仅见基底池出血（14%）", 1,"Ⅰ级", false));
-        fisher.add(new NihssItemBar.ItemBean("Ⅱ级：仅见周边脑池或侧裂池出血（38%）", 2,"Ⅱ级", false));
-        fisher.add(new NihssItemBar.ItemBean("Ⅲ级：广泛蛛网膜下腔出血伴脑实质内血肿（57%）", 3,"Ⅲ级", false));
-        fisher.add(new NihssItemBar.ItemBean("Ⅳ级：基底池和周边脑池、侧裂池较厚积血（57%）", 4,"Ⅳ级", false));
+        fisher.add(new NihssItemBar.ItemBean("0级：未见出血或仅脑室内出血或实质内出血（3%）", 0, "0级", false));
+        fisher.add(new NihssItemBar.ItemBean("Ⅰ级：仅见基底池出血（14%）", 1, "Ⅰ级", false));
+        fisher.add(new NihssItemBar.ItemBean("Ⅱ级：仅见周边脑池或侧裂池出血（38%）", 2, "Ⅱ级", false));
+        fisher.add(new NihssItemBar.ItemBean("Ⅲ级：广泛蛛网膜下腔出血伴脑实质内血肿（57%）", 3, "Ⅲ级", false));
+        fisher.add(new NihssItemBar.ItemBean("Ⅳ级：基底池和周边脑池、侧裂池较厚积血（57%）", 4, "Ⅳ级", false));
         nibInHosFisherFragSs.setItemBeans(fisher);
         // 住院Hunt-Hess评分
         List<NihssItemBar.ItemBean> huntHess = new ArrayList<>();
-        huntHess.add(new NihssItemBar.ItemBean("未破裂动脉瘤", 0,"0级", false));
-        huntHess.add(new NihssItemBar.ItemBean("无症状或轻微头痛", 1,"Ⅰ级", false));
-        huntHess.add(new NihssItemBar.ItemBean("中一重度头痛，脑膜刺激征，颅神经麻痹", 2,"Ⅱ级", false));
-        huntHess.add(new NihssItemBar.ItemBean("嗜睡，意识浑浊，轻度局灶神经体征", 3,"Ⅲ级", false));
-        huntHess.add(new NihssItemBar.ItemBean("昏迷，中或重度偏瘫，有早起去脑强直或自主神经功能紊乱", 4,"Ⅳ级", false));
-        huntHess.add(new NihssItemBar.ItemBean("深昏迷，去大脑强直，濒死状态", 5,"Ⅴ级", false));
+        huntHess.add(new NihssItemBar.ItemBean("未破裂动脉瘤", 0, "0级", false));
+        huntHess.add(new NihssItemBar.ItemBean("无症状或轻微头痛", 1, "Ⅰ级", false));
+        huntHess.add(new NihssItemBar.ItemBean("中一重度头痛，脑膜刺激征，颅神经麻痹", 2, "Ⅱ级", false));
+        huntHess.add(new NihssItemBar.ItemBean("嗜睡，意识浑浊，轻度局灶神经体征", 3, "Ⅲ级", false));
+        huntHess.add(new NihssItemBar.ItemBean("昏迷，中或重度偏瘫，有早起去脑强直或自主神经功能紊乱", 4, "Ⅳ级", false));
+        huntHess.add(new NihssItemBar.ItemBean("深昏迷，去大脑强直，濒死状态", 5, "Ⅴ级", false));
         nibLiveHuntHessFragSs.setItemBeans(huntHess);
         // 住院CHADS2评分
         List<NihssItemBar.ItemBean> chads = new ArrayList<>();
@@ -255,12 +266,12 @@ public class StrokeScoresFragment extends BaseFragment {
         nibHasBledFragSs.setMultipleItemBeans(hasBled);
         // 洼田吞咽评定
         List<NihssItemBar.ItemBean> wada = new ArrayList<>();
-        wada.add(new NihssItemBar.ItemBean("1级：任何条件下均有吞咽困难和不能吞咽", 1, "1级",false));
-        wada.add(new NihssItemBar.ItemBean("2级：3个条件均具备则误吸减少", 2, "2级",false));
-        wada.add(new NihssItemBar.ItemBean("3级：具备2个条件则误吸减少", 3, "3级",false));
-        wada.add(new NihssItemBar.ItemBean("4级：若选择适当食物，则基本上无误吸", 4, "4级",false));
-        wada.add(new NihssItemBar.ItemBean("5级：若注意进食方法和时间基本上无误吸", 5, "5级",false));
-        wada.add(new NihssItemBar.ItemBean("6级：吞咽正常", 6, "6级",false));
+        wada.add(new NihssItemBar.ItemBean("1级：任何条件下均有吞咽困难和不能吞咽", 1, "1级", false));
+        wada.add(new NihssItemBar.ItemBean("2级：3个条件均具备则误吸减少", 2, "2级", false));
+        wada.add(new NihssItemBar.ItemBean("3级：具备2个条件则误吸减少", 3, "3级", false));
+        wada.add(new NihssItemBar.ItemBean("4级：若选择适当食物，则基本上无误吸", 4, "4级", false));
+        wada.add(new NihssItemBar.ItemBean("5级：若注意进食方法和时间基本上无误吸", 5, "5级", false));
+        wada.add(new NihssItemBar.ItemBean("6级：吞咽正常", 6, "6级", false));
         nibWadaSwallowingFragSs.setItemBeans(wada);
         // Spetzler-Marin评分   体积
         List<NihssItemBar.ItemBean> SpetzlerMarinVolume = new ArrayList<>();
@@ -279,7 +290,6 @@ public class StrokeScoresFragment extends BaseFragment {
         SpetzlerMarinDeep.add(new NihssItemBar.ItemBean("有", 1, false));
         nibSmDeepFragSs.setItemBeans(SpetzlerMarinDeep);
     }
-
 
 }
 
