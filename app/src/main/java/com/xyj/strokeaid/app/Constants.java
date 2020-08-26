@@ -19,6 +19,7 @@ public class Constants {
             new int[]{R.drawable.tab_home_unselect, R.drawable.tab_contact_unselect, R.drawable.tab_contact_unselect};
 
     public static final String[] STROKE_TAB_TITLES = new String[]{"分诊", "检诊", "治疗", "转归"};
+    public static final String[] STROKE_OTHER_DISPOSAL_TITLES = new String[]{"康复治疗", "健康教育"};
 
     public static final String[] STROKE_TREATMENT_TAB_TITLES = new String[]{"溶栓", "介入"};
     public static final String[] GREEN_CHANNEL_STROKE_MENU_TITLES = new String[]{

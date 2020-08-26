@@ -12,6 +12,7 @@
     <dimen name="dp_1">1dp</dimen>
     <dimen name="item_title_height">45dp</dimen>
     <dimen name="item_normal_height">40dp</dimen>
+    <dimen name="item_small_height">35dp</dimen>
     <dimen name="buttom_normal_height">36dp</dimen>
 
     <dimen name="item_title_size">14sp</dimen>
