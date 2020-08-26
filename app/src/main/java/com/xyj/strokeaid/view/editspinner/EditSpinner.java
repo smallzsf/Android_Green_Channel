@@ -204,7 +204,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         if (!TextUtils.isEmpty(key)) {
             showFilterData(key);
         } else {
-            popupWindow.dismiss();
+            if (popupWindow != null) {
+                popupWindow.dismiss();
+            }
         }
     }
 

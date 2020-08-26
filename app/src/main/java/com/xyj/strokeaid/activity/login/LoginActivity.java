@@ -3,23 +3,17 @@ package com.xyj.strokeaid.activity.login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
@@ -29,14 +23,11 @@ import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
-import com.xyj.strokeaid.fragment.stroke.StrokeBiologyTagFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodBiochemistryFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodRoutineExaminationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeCruoragFunctionFragment;
+import com.xyj.strokeaid.helper.CodeTimer;
 import com.xyj.strokeaid.presenter.LoginPresenter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * LoginActivity
@@ -53,13 +44,28 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     Button btnSigninLogin;
     SharedPreferences sp = null;
     CheckBox cbRememberPassword;
-    private ImageView ivSetting;
-
-
+    @BindView(R.id.ll_pwd_login)
+    LinearLayout llPwdLogin;
+    @BindView(R.id.ll_verifycode_login)
+    LinearLayout llVerifycodeLogin;
+    @BindView(R.id.tv_code)
+    TextView tvCode;
     @BindView(R.id.tl_title_act_stroke_main)
     TabLayout tlTitleActStrokeMain;
-    @BindView(R.id.vp_content_act_stroke_main)
-    ViewPager2 vpContentActStrokeMain;
+    @BindView(R.id.et_name1)
+    EditText etName1;
+    @BindView(R.id.et_password1)
+    EditText etPassword1;
+    @BindView(R.id.btn_login1)
+    AppCompatButton btnLogin1;
+    @BindView(R.id.cb_remember_password1)
+    CheckBox cbRememberPassword1;
+    private ImageView ivSetting;
+    /*  @BindView(R.id.vp_content_act_stroke_main)
+      ViewPager2 vpContentActStrokeMain;*/
+
+    CodeTimer codeTimer;
+
     public static final String[] STROKE_TAB_TITLES = new String[]{"密码登录", "验证码登录"};
 
 
@@ -77,16 +83,16 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @Override
     public void initView() {
 
-        for (String strokeTabTitle :STROKE_TAB_TITLES) {
+        for (String strokeTabTitle : STROKE_TAB_TITLES) {
             tlTitleActStrokeMain.addTab(tlTitleActStrokeMain.newTab().setText(strokeTabTitle));
         }
 
         // 禁止滑动
-        vpContentActStrokeMain.setUserInputEnabled(false);
+     /*   vpContentActStrokeMain.setUserInputEnabled(false);
         vpContentActStrokeMain.setOffscreenPageLimit(STROKE_TAB_TITLES.length);
-        vpContentActStrokeMain.setAdapter(new StrokeViewPageAdapter(this));
+        vpContentActStrokeMain.setAdapter(new StrokeViewPageAdapter(this));*/
 
-  /*      etUsernameLogin = findViewById(R.id.et_name);
+        etUsernameLogin = findViewById(R.id.et_name);
         etPasswordLogin = findViewById(R.id.et_password);
         btnSigninLogin = findViewById(R.id.btn_login);
         ivSetting = findViewById(R.id.iv_setting);
@@ -110,17 +116,40 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                     Toast.makeText(LoginActivity.this, "帐号密码不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mPresenter.login(getUsername(), getPassword());
+                mPresenter.login(getUsername(), getPassword(),0);
             }
-        });*/
+        });
 
-   /*     ivSetting.setOnClickListener(new View.OnClickListener() {
+        btnLogin1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getUsername1().isEmpty() || getPassword1().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "帐号密码不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                mPresenter.login(getUsername1(), getPassword1(),1);
+            }
+        });
+
+
+        codeTimer = new CodeTimer(tvCode, 60 * 1000, 1000);
+
+        tvCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvCode.setClickable(false);
+                codeTimer.start();
+                //  forgetPresent.getVerifyCodeData();
+            }
+        });
+
+        ivSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SetActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 
     @Override
@@ -128,7 +157,17 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         tlTitleActStrokeMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                vpContentActStrokeMain.setCurrentItem(tab.getPosition());
+
+                //  vpContentActStrokeMain.setCurrentItem(tab.getPosition());
+                if (tab.getPosition() == 0) {
+
+                    llVerifycodeLogin.setVisibility(View.GONE);
+                    llPwdLogin.setVisibility(View.VISIBLE);
+                } else {
+                    llPwdLogin.setVisibility(View.GONE);
+                    llVerifycodeLogin.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
@@ -144,9 +183,16 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+        if (codeTimer != null) {
+            codeTimer.cancel();
+        }
+    }
 
-    private static class StrokeViewPageAdapter extends FragmentStateAdapter {
+    /*   private static class StrokeViewPageAdapter extends FragmentStateAdapter {
 
         String patientId;
         String docId;
@@ -189,7 +235,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         }
 
     }
-
+*/
 
     /**
      * @return 帐号
@@ -205,11 +251,27 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         return etPasswordLogin.getText().toString().trim();
     }
 
+
+    /**
+     * @return 帐号
+     */
+    private String getUsername1() {
+        return etName1.getText().toString().trim();
+    }
+
+    /**
+     * @return 验证码
+     */
+    private String getPassword1() {
+        return etPassword1.getText().toString().trim();
+    }
+
+
     @Override
-    public void onSuccess(BaseObjectBean<LoginBean> bean) {
+    public void onSuccess(BaseObjectBean<LoginBean> bean,int flag) {
 //        Toast.makeText(this, bean.getErrorMsg(), Toast.LENGTH_SHORT).show();
 
-     /*   if (bean.getResult() == null && bean.getErrorCode() == 0) {
+        if (bean.getResult() == null && bean.getErrorCode() == 0&&flag==0) {
 
             //通过
             boolean CheckBoxLogin = cbRememberPassword.isChecked();
@@ -232,8 +294,31 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-        }*/
+        }else{
+            //通过
+            boolean CheckBoxLogin = cbRememberPassword1.isChecked();
+            //按钮被选中，下次进入时会显示账号和密码
+            if (CheckBoxLogin) {
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("uname", getUsername());
+                editor.putString("upswd", getPassword());
+                editor.putBoolean("checkboxBoolean", true);
+                editor.commit();
+            } else {    //按钮被选中，清空账号和密码，下次进入时会显示账号和密码
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("uname", null);
+                editor.putString("upswd", null);
+                editor.putBoolean("checkboxBoolean", false);
+                editor.commit();
+            }
+
+
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
+
 
     @Override
     public void showLoading() {
@@ -249,6 +334,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     public void onError(String errMessage) {
 
     }
+
+
+
 }
 
     

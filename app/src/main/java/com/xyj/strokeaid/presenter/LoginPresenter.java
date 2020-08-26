@@ -31,7 +31,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     @Override
-    public void login(String username, String password) {
+    public void login(String username, String password,int flag) {
         //View是否绑定 如果没有绑定，就不执行网络请求
         if (!isViewAttached()) {
             return;
@@ -48,7 +48,8 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                     @Override
                     public void onNext(@NonNull BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
 
-                        mView.onSuccess(loginBeanBaseObjectBean);
+                        mView.onSuccess(loginBeanBaseObjectBean,flag);
+
                     }
 
                     @Override

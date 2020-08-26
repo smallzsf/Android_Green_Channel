@@ -21,11 +21,11 @@ import butterknife.OnClick;
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 /**
- * @Description: 凝血功能
+ * @Description: 卒中血液检查其它页面
  * @Author: crq
- * @CreateDate: 2020/8/25 14:20
+ * @CreateDate: 2020/8/26 17:45
  */
-public class StrokeCruoragFunctionFragment extends BaseFragment {
+public class StrokeOtherFragment extends BaseFragment {
     @BindView(R.id.tv_draw_blood_time)
     TextView tvDrawBloodTime;
     @BindView(R.id.tv_draw_blood_result_time)
@@ -37,7 +37,7 @@ public class StrokeCruoragFunctionFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.stroke_fragment_cruorag_function;
+        return R.layout.fragment_stroke_other;
     }
 
     @Override
@@ -97,3 +97,4 @@ public class StrokeCruoragFunctionFragment extends BaseFragment {
         }
     }
 }
+

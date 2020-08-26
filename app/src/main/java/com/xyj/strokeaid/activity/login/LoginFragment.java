@@ -73,7 +73,7 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
                     return;
                 }
 
-                mPresenter.login(getUsername(), getPassword());
+                mPresenter.login(getUsername(), getPassword(),0);
             }
         });
 
@@ -92,7 +92,7 @@ public class LoginFragment extends BaseMvpFragment<LoginPresenter> implements Lo
     }
 
     @Override
-    public void onSuccess(BaseObjectBean<LoginBean> bean) {
+    public void onSuccess(BaseObjectBean<LoginBean> bean,int flag) {
 //        Toast.makeText(this, bean.getErrorMsg(), Toast.LENGTH_SHORT).show();
 
         if (bean.getResult() == null && bean.getErrorCode() == 0) {

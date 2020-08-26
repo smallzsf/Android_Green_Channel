@@ -37,6 +37,7 @@ import com.xyj.strokeaid.fragment.StrokeScoresFragment;
 import com.xyj.strokeaid.fragment.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.TransferFragment;
 import com.xyj.strokeaid.fragment.VitalSignsFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +195,8 @@ public class PatientGreenChannelActivity extends BaseActivity {
                     return StartGreenwayFragment.newInstance(patientId, docId);
                 case 4:
                     // 血液检查
-                    return BloodExamFragment.newInstance(patientId, docId);
+                  //  return BloodExamFragment.newInstance(patientId, docId);
+                    return StrokeBloodExaminationFragment.newInstance(patientId, docId);
                 case 5:
                     // 辅助检查
                     return ImageExamFragment.newInstance(patientId, docId);

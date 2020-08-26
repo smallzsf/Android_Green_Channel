@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.stroke.StrokeBloodBiochemistryFragment"
     android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragment.stroke.StrokeBloodSugarFragment"
     android:orientation="vertical">
 
     <!--  <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="血液检查" />-->
+          android:text="血糖" />-->
 
 
     <ScrollView
@@ -45,7 +45,7 @@
 
 
                 <TextView
-                    android:id="@+id/app_tv_editSpinner_time"
+                    android:id="@+id/tv_draw_blood_time"
                     style="@style/patient_et_style"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -91,6 +91,7 @@
 
 
                 <TextView
+                    android:id="@+id/tv_draw_blood_result_time"
                     style="@style/patient_et_style"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -127,12 +128,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:text="肌酐"
+                        android:text="血糖"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/et_pulse_content"
+                    android:id="@+id/et_blood_sugar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

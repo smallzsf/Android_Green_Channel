@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,15 +22,23 @@ import butterknife.OnClick;
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 /**
- * @Description: 凝血功能
+ * @Description: 卒中血脂四项页面
  * @Author: crq
- * @CreateDate: 2020/8/25 14:20
+ * @CreateDate: 2020/8/26 17:21
  */
-public class StrokeCruoragFunctionFragment extends BaseFragment {
+public class StrokeBloodFatFragment extends BaseFragment {
     @BindView(R.id.tv_draw_blood_time)
     TextView tvDrawBloodTime;
     @BindView(R.id.tv_draw_blood_result_time)
     TextView tvDrawBloodResultTime;
+    @BindView(R.id.et_triglyceride)
+    EditText etTriglyceride;
+    @BindView(R.id.et_cholesterol)
+    EditText etCholesterol;
+    @BindView(R.id.et_low_density_lipoprotein_cholesterin)
+    EditText etLowDensityLipoproteinCholesterin;
+    @BindView(R.id.et_high_density_lipoprotein_cholesterol)
+    EditText etHighDensityLipoproteinCholesterol;
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
@@ -37,13 +46,12 @@ public class StrokeCruoragFunctionFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.stroke_fragment_cruorag_function;
+        return R.layout.fragment_blood_fat;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-        btnGetData.setText("获取数据");
-        btnConfirm.setText("确定");
+
     }
 
     @Override
@@ -51,7 +59,7 @@ public class StrokeCruoragFunctionFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.tv_draw_blood_time, R.id.tv_draw_blood_result_time})
+    @OnClick({R.id.tv_draw_blood_time, R.id.tv_draw_blood_result_time, R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_draw_blood_time:
@@ -79,21 +87,25 @@ public class StrokeCruoragFunctionFragment extends BaseFragment {
                         .setType(Type.ALL)
                         .setTitleStringId("选择时间")
                         .setThemeColor(getResources().getColor(R.color.colorPrimary))
-                        //当前文本颜色
                         .setWheelItemTextSelectorColor(getResources().getColor(R.color.colorPrimary))
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvDrawBloodResultTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
-                        //是否可循环
                         .setCyclic(false)
                         .setToolBarTextColor(R.color.colorPrimary)
                         .build();
 
                 mDialogAll1.show(getActivity().getSupportFragmentManager(), "All");
+
+                break;
+            case R.id.btn_get_data:
+                break;
+            case R.id.btn_confirm:
                 break;
         }
     }
 }
+

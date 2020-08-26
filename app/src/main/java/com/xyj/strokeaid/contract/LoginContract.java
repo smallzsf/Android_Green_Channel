@@ -30,7 +30,8 @@ public interface LoginContract {
         @Override
         void onError(String errMessage);
 
-        void onSuccess(BaseObjectBean<LoginBean> bean);
+        void onSuccess(BaseObjectBean<LoginBean> bean,int flag);
+
     }
 
     interface Presenter {
@@ -40,6 +41,6 @@ public interface LoginContract {
          * @param username
          * @param password
          */
-        void login(String username, String password);
+        void login(String username, String password,int flag);
     }
 }

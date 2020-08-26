@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         app:tabGravity="fill"
+        app:tabPaddingEnd="-10dp"
+        app:tabPaddingStart="-10dp"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorPrimary"

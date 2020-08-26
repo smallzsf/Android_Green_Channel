@@ -1,8 +1,10 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -14,7 +16,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BloodExamFragment;
 
 import butterknife.BindView;
 
@@ -29,7 +33,34 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
     TabLayout tlTitleActStrokeMain;
     @BindView(R.id.vp_content_act_stroke_main)
     ViewPager2 vpContentActStrokeMain;
-    public static final String[] STROKE_TAB_TITLES = new String[]{"生物标识物", "凝血功能","血常规","血生化"};
+
+    public static final String[] STROKE_TAB_TITLES = new String[]{"血糖", "血脂四项", "凝血功能", "其它"};
+    public static final String[]  CHEST_PAIN_TAB_TITLES = new String[]{"生物标识物", "凝血功能", "血常规", "血生化"};
+
+    private String mPatientId;
+    private String mDocId;
+
+    public StrokeBloodExaminationFragment() {
+        // Required empty public constructor
+    }
+
+    public static StrokeBloodExaminationFragment newInstance(String patientId, String docId) {
+        StrokeBloodExaminationFragment fragment = new StrokeBloodExaminationFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
+            mDocId = getArguments().getString(IntentKey.DOC_ID);
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -38,7 +69,7 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        for (String strokeTabTitle :STROKE_TAB_TITLES) {
+        for (String strokeTabTitle : STROKE_TAB_TITLES) {
             tlTitleActStrokeMain.addTab(tlTitleActStrokeMain.newTab().setText(strokeTabTitle));
         }
 
@@ -70,7 +101,6 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
     }
 
 
-
     private static class StrokeViewPageAdapter extends FragmentStateAdapter {
 
         String patientId;
@@ -99,14 +129,25 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
-                    return new StrokeBiologyTagFragment();
+                    //胸痛 生物标识物
+                   // return new StrokeBiologyTagFragment();
+                    //卒中 血糖
+                    return new StrokeBloodSugarFragment();
                 case 1:
-                    return new StrokeCruoragFunctionFragment();
+                    //胸痛 凝血功能
+                    //return new StrokeCruoragFunctionFragment();
+                    //卒中 血脂四项
+                    return new StrokeBloodFatFragment();
                 case 2:
-                    return new StrokeBloodRoutineExaminationFragment();
-
+                    //胸痛 血常规
+                   // return new StrokeBloodRoutineExaminationFragment();
+                    //卒中 凝血功能
+                    return new StrokeCruoragFunctionFragment();
                 case 3:
-                    return new StrokeBloodBiochemistryFragment();
+                    //胸痛 血生化
+                    //return new StrokeBloodBiochemistryFragment();
+                    //卒中 其它页面
+                    return new StrokeOtherFragment();
 
 
                 default:
