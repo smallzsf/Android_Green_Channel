@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/iv_item_time_node"
+        android:layout_width="10dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:src="@drawable/icon_time_node" />
+
+    <TextView
+        android:id="@+id/tv_desc_item_time_node"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_toEndOf="@id/iv_item_time_node"
+        android:textColor="@color/color_222222"
+        android:textSize="13sp"
+        tools:text="发病时间" />
+
+    <TextView
+        android:id="@+id/tv_time_item_time_node"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_desc_item_time_node"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_toEndOf="@id/iv_item_time_node"
+        android:textColor="@color/color_222222"
+        android:textSize="13sp"
+        tools:text="2020-08-26 17:27:00" />
+
+    <ImageView
+        android:id="@+id/iv_refresh_item_time_node"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/tv_desc_item_time_node"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_6"
+        android:layout_toEndOf="@id/tv_time_item_time_node"
+        android:src="@drawable/ic_refresh" />
+</RelativeLayout>

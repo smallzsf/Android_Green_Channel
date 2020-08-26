@@ -10,7 +10,7 @@
         android:layout_height="@dimen/buttom_normal_height"
         android:layout_weight="1"
         android:background="@drawable/login_btn_bg"
-        android:text="@string/lab_confirm"
+        android:text="@string/get_data"
         android:textColor="@android:color/white"
         android:textSize="14dp" />
 
