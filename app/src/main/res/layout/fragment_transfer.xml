@@ -1,14 +1,274 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:zhy="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".fragment.TransferFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ScrollView
+        android:id="@+id/sv_admitting_diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/title_bar_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/app_emergency_docotor"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_transformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+
+            <ScrollView
+                android:id="@+id/sv_to_transfe_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_540"
+                android:background="@color/app_ffffff"
+                android:scrollbars="none"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintTop_toBottomOf="@+id/bt_title">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/app_ffffff"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_20">
+
+                        <TextView
+                            style="@style/Text_Dark_Content_Style"
+                            android:text="目标医院" />
+
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/et_target_hospital"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dk_dp_15"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="请选择"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                    </LinearLayout>
+
+                    <include layout="@layout/include_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginRight="@dimen/dp_20"
+                        android:background="@color/app_ffffff"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/app_tv_conditon_record"
+                            style="@style/Text_Dark_Content_Style"
+                            android:text="转院原因" />
+
+                        <EditText
+                            android:id="@+id/et_transfer_reason"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_90"
+                            android:layout_marginTop="@dimen/dp_7"
+                            android:layout_marginBottom="@dimen/dp_10"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:gravity="start"
+                            android:hint="请输入转院原因"
+                            android:paddingLeft="@dimen/dp_6"
+                            android:paddingTop="@dimen/dp_6"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+
+                    <com.zhy.view.flowlayout.TagFlowLayout
+                        android:id="@+id/tfl_transfer_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+                    <include layout="@layout/include_line" />
+
+
+                    <include layout="@layout/include_line" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginRight="@dimen/dp_20"
+                        android:background="@color/app_ffffff"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Text_Dark_Content_Style"
+                            android:text="病情处理" />
+
+                        <EditText
+                            android:id="@+id/et_state_of_illness_dispose"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_90"
+                            android:layout_marginTop="@dimen/dp_7"
+                            android:layout_marginBottom="@dimen/dp_10"
+                            android:background="@drawable/shape_edittext_bg"
+                            android:gravity="start"
+                            android:hint="请输入病情处理"
+                            android:paddingLeft="@dimen/dp_6"
+                            android:paddingTop="@dimen/dp_6"
+                            android:textSize="@dimen/sp_14" />
+                    </LinearLayout>
+
+                    <com.zhy.view.flowlayout.TagFlowLayout
+                        android:id="@+id/tfl_state_of_illness_dispose"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_12"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        android:maxLength="100"
+                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+
+                    <include layout="@layout/include_line" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+
+            <ScrollView
+                android:id="@+id/sv_leave_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_540"
+                android:background="@color/app_ffffff"
+                android:scrollbars="none"
+                android:visibility="gone"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintTop_toBottomOf="@+id/bt_title">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="医嘱离院"
+                        android:textSize="@dimen/sp_15" />
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="医嘱转院"
+                        android:textSize="@dimen/sp_15" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="医嘱转社区卫生服务机构/乡镇卫生院"
+                        android:textSize="@dimen/sp_15" />
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="非医嘱离院"
+                        android:textSize="@dimen/sp_15" />
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="死亡"
+                        android:textSize="@dimen/sp_15" />
+
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="其它"
+                        android:textSize="@dimen/sp_15" />
+
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/view_two_bottom_button" />
+</LinearLayout>

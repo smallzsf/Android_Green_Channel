@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     private boolean isPopupWindowShowing;
     private Animation mAnimation;
     private Animation mResetAnimation;
+    public OnSelectStringLitner onSelectStringLitner;
 
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -194,12 +196,10 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public final void onTextChanged(CharSequence s, int start, int before, int count) {
-
-    }
-
-    @Override
-    public final void afterTextChanged(Editable s) {
         String key = s.toString();
+        if (onSelectStringLitner!=null){
+            onSelectStringLitner.getSeletedString(key);
+        }
         editText.setSelection(key.length());
         if (!TextUtils.isEmpty(key)) {
             showFilterData(key);
@@ -208,6 +208,11 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
                 popupWindow.dismiss();
             }
         }
+    }
+
+    @Override
+    public final void afterTextChanged(Editable s) {
+
     }
 
     private void showFilterData(String key) {
@@ -223,5 +228,15 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
             popupWindow.show();
         }
 
+    }
+
+
+
+    public interface OnSelectStringLitner {
+        void getSeletedString(String text);
+    }
+
+    public void setOnSelectStringLitner(OnSelectStringLitner onSelectStringLitner) {
+        this.onSelectStringLitner = onSelectStringLitner;
     }
 }

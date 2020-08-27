@@ -51,7 +51,8 @@ public class StrokeBloodFatFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        btnGetData.setText("获取数据");
+        btnConfirm.setText("确定");
     }
 
     @Override

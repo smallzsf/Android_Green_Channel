@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
                 android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginRight="@dimen/sp_15">
 
                 <TextView
                     android:id="@+id/awareness"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
                 android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginRight="@dimen/sp_15">
 
                 <LinearLayout
                     android:id="@+id/breath_layout"

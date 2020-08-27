@@ -43,7 +43,7 @@ public class StrokeThrombolysisFragment extends BaseFragment {
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
-    private StrokeThrombolysisFragment() {
+    public StrokeThrombolysisFragment() {
     }
 
     /**

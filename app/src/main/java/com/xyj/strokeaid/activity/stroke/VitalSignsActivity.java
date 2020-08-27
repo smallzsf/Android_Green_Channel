@@ -52,19 +52,14 @@ public class VitalSignsActivity extends BaseActivity {
     EditText etBloodOxygenSaturationContent;
     @BindView(R.id.et_body_temperature_content)
     EditText etBodyTemperatureContent;
-    @BindView(R.id.btn_getdata)
-    AppCompatButton btnGetdata;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.btn_cancel)
-    AppCompatButton btnCancel;
+
+
     private TimePickerDialog mDialogAll;
     private int position;
     private Bundle bundle;
     private Intent intent;
     private List<String> list;
     private SharedPreferences sp;
-    int type=0;
 
 
     @Override
@@ -79,7 +74,7 @@ public class VitalSignsActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if (type==0){
+
             intent = getIntent();
             bundle = intent.getExtras();
             String arrayList = bundle.getString("arrayList");
@@ -89,9 +84,6 @@ public class VitalSignsActivity extends BaseActivity {
             titlebar.setTitle(list.get(position).getName());
             loadData();
 
-        }else{
-
-        }
 
 
     }
@@ -135,7 +127,7 @@ public class VitalSignsActivity extends BaseActivity {
 
     }
 
-
+/*
     @OnClick({R.id.btn_getdata, R.id.btn_confirm, R.id.btn_cancel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -190,5 +182,5 @@ public class VitalSignsActivity extends BaseActivity {
             case R.id.btn_cancel:
                 break;
         }
-    }
+    }*/
 }

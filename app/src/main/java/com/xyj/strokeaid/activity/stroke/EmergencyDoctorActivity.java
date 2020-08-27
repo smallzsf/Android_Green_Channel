@@ -119,7 +119,7 @@ public class EmergencyDoctorActivity extends BaseActivity implements OnDateSetLi
         list.add("123333333");
         list.add("122222222");
         editSpinner1.setItemData(list);
-    }
+}
 
     @Override
     public void initListener() {

@@ -84,7 +84,7 @@ public class SimpleAdapter extends BaseEditSpinnerAdapter implements EditSpinner
             for (int i = 0; i < mSpinnerData.size(); i++) {
                 if (mSpinnerData.get(i).replaceAll("\\s+", "|").matches(builder.toString())) {
                     indexs[mCacheData.size()] = i;
-                    mCacheData.add(mSpinnerData.get(i).replaceFirst(keyword, "<font color=\"#aa0000\">" + keyword + "</font>"));
+                    mCacheData.add(mSpinnerData.get(i).replaceFirst(keyword, "<font color=\"#222222\">" + keyword + "</font>"));
                 }
             }
         }

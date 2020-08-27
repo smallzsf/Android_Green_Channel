@@ -1,17 +1,18 @@
 package com.xyj.strokeaid.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+
+import butterknife.BindView;
 
 /**
  * DiagnosticEvaluationFragment
@@ -23,8 +24,16 @@ import com.xyj.strokeaid.base.BaseFragment;
  */
 public class DiagnosticEvaluationFragment extends BaseFragment {
 
+    @BindView(R.id.stl_title_frag_diagnostic_evaluation)
+    SegmentTabLayout stlTitleFragDiagnosticEvaluation;
     private String mPatientId;
     private String mDocId;
+    public static final String[] STROKE_DIAGNOSTIC_EVALUATIONva_TITLES = new String[]{"入院诊断", "出院诊断"};
+
+    /**
+     * 0 == 入院诊断
+     * 1 == 出院诊断
+     */
 
     public DiagnosticEvaluationFragment() {
         // Required empty public constructor
@@ -55,12 +64,30 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        stlTitleFragDiagnosticEvaluation.setTabData(STROKE_DIAGNOSTIC_EVALUATIONva_TITLES);
     }
+
 
     @Override
     protected void initListener() {
+        stlTitleFragDiagnosticEvaluation.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                if (position == 1) {
+                    //入院诊断
 
+                } else {
+                    //出院诊断
+
+                }
+
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
     }
 
 }

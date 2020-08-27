@@ -84,7 +84,7 @@ public class StrokeOtherFragment extends BaseFragment {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvDrawBloodResultTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
