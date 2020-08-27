@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.stroke.StrokeOutHosDrugFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_pressure_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="降压药" />
+
+        <EditText
+            android:id="@+id/et_pressure_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_sugar_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="降糖药" />
+
+        <EditText
+            android:id="@+id/et_sugar_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_fat_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="调脂药" />
+
+        <EditText
+            android:id="@+id/et_fat_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_anticoagulants_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="抗凝药" />
+
+        <EditText
+            android:id="@+id/et_anticoagulants_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_antiplatelet_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="抗血小板药" />
+
+        <EditText
+            android:id="@+id/et_antiplatelet_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_chinese_medicine_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="中药治疗" />
+
+        <EditText
+            android:id="@+id/et_chinese_medicine_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_4"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_4">
+
+        <CheckBox
+            android:id="@+id/cb_other_drug_frag_sohd"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:minWidth="110dp"
+            android:text="其他" />
+
+        <EditText
+            android:id="@+id/et_other_drug_frag_sohd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_grey_stroke"
+            android:hint="请输入药品名称和数量"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_8"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_666666"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cb_none_frag_sohd"
+        style="@style/tv_normal_titel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginStart="@dimen/dp_12"
+        android:text="无" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <include layout="@layout/view_two_horizontal_bottom_button" />
+
+</LinearLayout>

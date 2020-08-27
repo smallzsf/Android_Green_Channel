@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingEnd="@dimen/dp_12">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="发病48h内用药" />
+
+        <RadioGroup
+            android:id="@+id/rg_time_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_time_confirm_frag_sihd"
+                style="@style/tv_normal_titel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_time_no_frag_sihd"
+                style="@style/tv_normal_titel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="否" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_first_drug_frag_sihd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:title="首次用药时间" />
+
+</LinearLayout>

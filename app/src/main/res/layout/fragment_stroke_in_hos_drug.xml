@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.stroke.StrokeInHosDrugFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/include_bottom_view"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_antiplatelet_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_antiplatelet_frag_sihd"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="抗血小板" />
+
+                <TextView
+                    android:id="@+id/tv_antiplatelet_short_frag_sihd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:textColor="@color/color_555555"
+                    android:textSize="13sp"
+                    tools:text="抗血小板抗血小板抗血小板" />
+
+                <ImageView
+                    android:id="@+id/iv_antiplatelet_frag_sihd"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_antiplatelet_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="gone"
+                tools:itemCount="5"
+                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+
+            <LinearLayout
+                android:id="@+id/ll_anticoagulants_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="@dimen/dp_1"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_anticoagulants_frag_sihd"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="抗凝" />
+
+                <TextView
+                    android:id="@+id/tv_anticoagulants_short_frag_sihd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:textColor="@color/color_555555"
+                    android:textSize="13sp"
+                    tools:text="抗血小板抗血小板抗血小板" />
+
+                <ImageView
+                    android:id="@+id/iv_anticoagulants_frag_sihd"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_anticoagulants_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="gone"
+                tools:itemCount="5"
+                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+
+            <LinearLayout
+                android:id="@+id/ll_pressure_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="@dimen/dp_1"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_pressure_frag_sihd"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="降压" />
+
+                <TextView
+                    android:id="@+id/tv_pressure_short_frag_sihd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:textColor="@color/color_555555"
+                    android:textSize="13sp"
+                    tools:text="抗血小板抗血小板抗血小板" />
+
+                <ImageView
+                    android:id="@+id/iv_pressure_frag_sihd"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_pressure_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="gone"
+                tools:itemCount="5"
+                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+
+            <LinearLayout
+                android:id="@+id/ll_fat_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="@dimen/dp_1"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_fat_frag_sihd"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="调脂" />
+
+                <TextView
+                    android:id="@+id/tv_fat_short_frag_sihd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:textColor="@color/color_555555"
+                    android:textSize="13sp"
+                    tools:text="抗血小板抗血小板抗血小板" />
+
+                <ImageView
+                    android:id="@+id/iv_fat_frag_sihd"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fat_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="gone"
+                tools:itemCount="5"
+                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+
+            <LinearLayout
+                android:id="@+id/ll_sugar_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="@dimen/dp_1"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_sugar_frag_sihd"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="降糖" />
+
+                <TextView
+                    android:id="@+id/tv_sugar_short_frag_sihd"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|end"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:textColor="@color/color_555555"
+                    android:textSize="13sp"
+                    tools:text="抗血小板抗血小板抗血小板" />
+
+                <ImageView
+                    android:id="@+id/iv_sugar_frag_sihd"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sugar_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbars="none"
+                android:visibility="gone"
+                tools:itemCount="5"
+                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/include_bottom_view"
+        layout="@layout/view_two_horizontal_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

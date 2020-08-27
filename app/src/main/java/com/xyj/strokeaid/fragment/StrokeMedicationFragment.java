@@ -1,17 +1,27 @@
 package com.xyj.strokeaid.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeInHosDrugFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeOutHosDrugFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeThrombolysisFragment;
+
+import butterknife.BindView;
 
 /**
  * StrokeMedicationFragment
@@ -22,6 +32,11 @@ import com.xyj.strokeaid.base.BaseFragment;
  * email ：licy3051@qq.com
  */
 public class StrokeMedicationFragment extends BaseFragment {
+
+    @BindView(R.id.stl_title_frag_stroke_medice)
+    SegmentTabLayout stlTitleFragStrokeMedice;
+    @BindView(R.id.vp_content_frag_stroke_medice)
+    ViewPager2 vpContentFragStrokeMedice;
 
     private String mPatientId;
     private String mDocId;
@@ -55,11 +70,64 @@ public class StrokeMedicationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+        stlTitleFragStrokeMedice.setTabData(Constants.STROKE_MEDICATION_TITLES);
 
+        vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mPatientId, mDocId));
     }
 
     @Override
     protected void initListener() {
+        stlTitleFragStrokeMedice.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                vpContentFragStrokeMedice.setCurrentItem(position);
+            }
 
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+    }
+
+    private class StrokeMedicationVpAdapter extends FragmentStateAdapter {
+
+        String patientId;
+        String docId;
+
+        public StrokeMedicationVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+            super(fragmentActivity);
+            this.patientId = patientId;
+            this.docId = docId;
+        }
+
+        public StrokeMedicationVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
+            super(fragment);
+            this.patientId = patientId;
+            this.docId = docId;
+        }
+
+        public StrokeMedicationVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
+            super(fragmentManager, lifecycle);
+            this.patientId = patientId;
+            this.docId = docId;
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            if (position == 0) {
+                return StrokeThrombolysisFragment.newInstance(patientId, docId);
+            } else if (position == 1) {
+                return StrokeInHosDrugFragment.newInstance(patientId, docId);
+            } else {
+                return StrokeOutHosDrugFragment.newInstance(patientId, docId);
+            }
+        }
+
+        @Override
+        public int getItemCount() {
+            return Constants.STROKE_MEDICATION_TITLES.length;
+        }
     }
 }

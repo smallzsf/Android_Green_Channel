@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/item_normal_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/dp_12"
+    android:paddingTop="@dimen/dp_4"
+    android:paddingEnd="@dimen/dp_12"
+    android:paddingBottom="@dimen/dp_4">
+
+    <CheckBox
+        android:id="@+id/cb_name_adapter_after_operation_drug"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_222222"
+        android:textSize="12sp"
+        tools:text="阿司匹林阿司匹林阿司匹林阿司匹林" />
+
+    <EditText
+        android:id="@+id/et_note_adapter_after_operation_drug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_grey_stroke"
+        android:hint="请输入药品名称和数量"
+        android:inputType="textMultiLine"
+        android:minHeight="@dimen/dp_30"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_4"
+        android:textColor="@color/color_222222"
+        android:textColorHint="@color/color_666666"
+        android:textSize="13sp" />
+
+</LinearLayout>
