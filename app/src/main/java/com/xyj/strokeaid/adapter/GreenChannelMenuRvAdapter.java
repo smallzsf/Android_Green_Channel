@@ -1,11 +1,10 @@
 package com.xyj.strokeaid.adapter;
 
-import android.widget.CheckedTextView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.bean.GreenChannelTabBean;
+import com.xyj.strokeaid.view.XyjCheckedTextView;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +27,7 @@ public class GreenChannelMenuRvAdapter extends BaseQuickAdapter<GreenChannelTabB
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, GreenChannelTabBean s) {
-        CheckedTextView view = baseViewHolder.getView(R.id.tv_title_adapter_gcm);
+        XyjCheckedTextView view = baseViewHolder.getView(R.id.tv_title_adapter_gcm);
         view.setText(s.getTitle());
         view.setChecked(s.isChecked());
     }

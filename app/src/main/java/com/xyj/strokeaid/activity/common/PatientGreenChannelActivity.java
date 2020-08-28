@@ -23,10 +23,10 @@ import com.xyj.strokeaid.adapter.GreenChannelMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GreenChannelTabBean;
+import com.xyj.strokeaid.fragment.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.EmptyFragment;
-import com.xyj.strokeaid.fragment.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.StrokeMedicationFragment;
@@ -93,6 +93,8 @@ public class PatientGreenChannelActivity extends BaseActivity {
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
             mMenuTitles.add(new GreenChannelTabBean(greenChannelTabTitle, false));
         }
+        mMenuTitles.get(0).setChecked(true);
+        mSelectedTab = 0;
         mMenuRvAdapter = new GreenChannelMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
 
         rvMenuActPgc.setLayoutManager(new LinearLayoutManager(mContext));
@@ -194,7 +196,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
                     return StartGreenwayFragment.newInstance(patientId, docId);
                 case 4:
                     // 血液检查
-                  //  return BloodExamFragment.newInstance(patientId, docId);
+                    //  return BloodExamFragment.newInstance(patientId, docId);
                     return StrokeBloodExaminationFragment.newInstance(patientId, docId);
                 case 5:
                     // 辅助检查

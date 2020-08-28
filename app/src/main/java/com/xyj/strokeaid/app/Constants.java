@@ -27,7 +27,7 @@ public class Constants {
     public static final String[] GREEN_CHANNEL_STROKE_MENU_TITLES = new String[]{
             "生命体征",
             "病情记录",
-            "NIHSS评分",
+            "NIHSS",
             "启动绿道",
             "血液检查",
             "辅助检查",
