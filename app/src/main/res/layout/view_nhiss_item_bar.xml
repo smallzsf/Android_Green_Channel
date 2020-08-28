@@ -18,8 +18,8 @@
             android:id="@+id/iv_arrow_view_nib"
             android:layout_width="@dimen/item_normal_height"
             android:layout_height="@dimen/item_normal_height"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:scaleType="center"
             android:src="@drawable/ic_arrow_down_blue" />
 
@@ -34,7 +34,7 @@
             android:maxLength="10"
             android:maxLines="2"
             android:textColor="@color/color_222222"
-            android:textSize="14dp"
+            android:textSize="13sp"
             tools:text="1a.意识水平" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -42,10 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/item_normal_height"
             android:layout_below="@id/tv_title_view_nib"
-            android:layout_marginEnd="@dimen/dp_12"
-            android:layout_toStartOf="@id/iv_arrow_view_nib"
-            android:orientation="horizontal"
             android:layout_alignParentStart="true"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:orientation="horizontal"
             android:overScrollMode="never"
             android:scrollbars="none"
             android:visibility="gone"

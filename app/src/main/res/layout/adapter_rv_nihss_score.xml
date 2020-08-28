@@ -7,7 +7,7 @@
     <CheckedTextView
         android:id="@+id/tv_score_adapter_nihss"
         android:layout_width="wrap_content"
-        android:layout_height="32dp"
+        android:layout_height="28dp"
         android:layout_marginTop="@dimen/dp_4"
         android:layout_marginBottom="@dimen/dp_4"
         android:background="@drawable/selector_nihss_scroe_bg"
@@ -16,7 +16,7 @@
         android:paddingStart="@dimen/dp_12"
         android:paddingEnd="@dimen/dp_12"
         android:textColor="@drawable/selector_nihss_text_color"
-        android:textSize="@dimen/dp_13"
+        android:textSize="12sp"
         tools:text="1" />
 
 </LinearLayout>

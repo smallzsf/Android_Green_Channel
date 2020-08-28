@@ -47,5 +47,6 @@
     <declare-styleable name="NihssItemBar">
         <attr name="title" />
         <attr name="nib_score_visible" format="boolean" />
+        <attr name="nib_title_size" format="dimension" />
     </declare-styleable>
 </resources>

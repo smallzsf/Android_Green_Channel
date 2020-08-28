@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckedTextView;
@@ -86,6 +87,10 @@ public class NihssItemBar extends LinearLayout {
         } else {
             rvScoresViewNib.setVisibility(GONE);
         }
+
+        float titleSize = typedArray.getDimension(R.styleable.NihssItemBar_nib_title_size, 12);
+        tvTitleViewNib.setTextSize(TypedValue.COMPLEX_UNIT_SP, titleSize);
+
         typedArray.recycle();
 
         ivArrowViewNib.setOnClickListener(new OnClickListener() {
@@ -234,7 +239,7 @@ public class NihssItemBar extends LinearLayout {
      * 获取分数, 多选状态
      *
      * @return -1    没有选中项目
-     *         其他   正常得分
+     * 其他   正常得分
      */
     public int getMultipleScore() {
         int count = -1;
