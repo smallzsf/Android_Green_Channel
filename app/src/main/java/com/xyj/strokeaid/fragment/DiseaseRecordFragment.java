@@ -1,17 +1,23 @@
 package com.xyj.strokeaid.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
+
+import java.util.Set;
+
+import butterknife.BindView;
 
 /**
  * DiseaseRecordFragment
@@ -22,6 +28,11 @@ import com.xyj.strokeaid.base.BaseFragment;
  * email ：licy3051@qq.com
  */
 public class DiseaseRecordFragment extends BaseFragment {
+
+    @BindView(R.id.id_flow_layout)
+    TagFlowLayout flowLayout;
+    @BindView(R.id.id_flow_layout2)
+    TagFlowLayout flowLayout2;
 
     private String mPatientId;
     private String mDocId;
@@ -48,18 +59,20 @@ public class DiseaseRecordFragment extends BaseFragment {
         }
     }
 
+
     @Override
-    protected int getLayoutId() {
+    public int getLayoutId() {
         return R.layout.fragment_disease_record;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-
     }
 
+
     @Override
-    protected void initListener() {
+    public void initListener() {
+
 
     }
 }

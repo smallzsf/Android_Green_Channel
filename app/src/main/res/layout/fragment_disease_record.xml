@@ -1,14 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.DiseaseRecordFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_41"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_20">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="@string/chief_complaint" />
+
+                <EditText
+                    android:id="@+id/et_major_complaint_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_6"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:layout_marginBottom="@dimen/dp_6"
+                    android:background="@drawable/shape_condition_record_edittext_background"
+                    android:gravity="top"
+                    android:hint="@string/tip_chief_complaint"
+                    android:inputType="textMultiLine"
+                    android:maxLength="50"
+                    android:paddingLeft="@dimen/dp_4"
+                    android:paddingTop="@dimen/dp_4"
+                    android:paddingBottom="@dimen/dp_4"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/app_tv_conditon_record"
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="@string/app_symptom" />
+
+                <EditText
+                    android:id="@+id/et_symptom"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入症状"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/id_flow_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_16"
+                zhy:max_select="1"/>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                style="@style/Text_Dark_Content_Style"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:text="@string/past_medical_history" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/id_flow_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_16"
+                zhy:max_select="1"/>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="@string/history_of_drug_allergy" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入药物过敏史"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="备注" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入备注内容"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/view_two_horizontal_bottom_button" />
+
+</LinearLayout>

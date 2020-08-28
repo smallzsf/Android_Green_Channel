@@ -94,6 +94,16 @@ public class TextTimeBar extends RelativeLayout {
         }
     }
 
+    public void setTime(String time) {
+        if (tvTimeViewTtb != null) {
+            if (TextUtils.isEmpty(time)) {
+                tvTimeViewTtb.setText("");
+            } else {
+                tvTimeViewTtb.setText(time);
+            }
+        }
+    }
+
 }
 
     

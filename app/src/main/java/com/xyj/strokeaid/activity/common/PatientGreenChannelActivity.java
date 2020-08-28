@@ -23,11 +23,10 @@ import com.xyj.strokeaid.adapter.GreenChannelMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GreenChannelTabBean;
-import com.xyj.strokeaid.fragment.BloodExamFragment;
 import com.xyj.strokeaid.fragment.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.EmptyFragment;
-import com.xyj.strokeaid.fragment.ImageExamFragment;
+import com.xyj.strokeaid.fragment.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.StrokeMedicationFragment;
@@ -100,7 +99,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
         rvMenuActPgc.setAdapter(mMenuRvAdapter);
 
         vpContentActPgc.setUserInputEnabled(false);
-        vpContentActPgc.setOffscreenPageLimit(1);
+        vpContentActPgc.setOffscreenPageLimit(Constants.GREEN_CHANNEL_STROKE_MENU_TITLES.length);
         vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientGreenChannelActivity.this, "", ""));
     }
 
@@ -199,7 +198,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
                     return StrokeBloodExaminationFragment.newInstance(patientId, docId);
                 case 5:
                     // 辅助检查
-                    return ImageExamFragment.newInstance(patientId, docId);
+                    return AuxiliaryExamFragment.newInstance(patientId, docId);
                 case 6:
                     // 评分工具
                     return StrokeScoresFragment.newInstance(patientId, docId);

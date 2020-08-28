@@ -21,6 +21,7 @@ public class Constants {
     public static final String[] STROKE_TAB_TITLES = new String[]{"分诊", "检诊", "治疗", "转归"};
     public static final String[] STROKE_OTHER_DISPOSAL_TITLES = new String[]{"康复治疗", "健康教育"};
     public static final String[] STROKE_MEDICATION_TITLES = new String[]{"静脉溶栓", "住院用药","出院带药"};
+    public static final String[] AUXILIARY_EXAM_TITLES = new String[]{"血液", "CT","核磁","超声"};
 
     public static final String[] STROKE_TREATMENT_TAB_TITLES = new String[]{"溶栓", "介入"};
     public static final String[] GREEN_CHANNEL_STROKE_MENU_TITLES = new String[]{
