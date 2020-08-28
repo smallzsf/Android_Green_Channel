@@ -48,10 +48,10 @@
                     android:layout_width="@dimen/dp_68"
                     android:layout_height="wrap_content"
                     android:text="起病方式"
-                    android:textColor="@color/color_000000" />
+                    android:textColor="@color/app_223b53" />
 
                 <RadioGroup
-                    android:id="@+id/rg_sex"
+                    android:id="@+id/rg_have_disease_way"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -59,14 +59,14 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rb_sex_normal"
+                        android:id="@+id/rb_acute"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
                         android:text="急性" />
 
                     <RadioButton
-                        android:id="@+id/rb_sex_male"
+                        android:id="@+id/rb_progressivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="进展性" />
@@ -83,9 +83,109 @@
                 android:layout_below="@+id/triage_time"
                 android:background="@color/app_eef3f7" />
 
+            <LinearLayout
+                android:id="@+id/ll_progress_site"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="进展地点"
+                        android:textColor="@color/app_223b53" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_progress_site"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_court"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="院内" />
+
+                        <RadioButton
+                            android:id="@+id/rb_lobby"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="院外" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="14dp"
+                        android:text="诊断时间"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/sp_14" />
+
+                    <TextView
+                        style="@style/patient_et_style"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_weight="2.4"
+                        android:focusable="false"
+                        android:hint="@string/app_default_time_example"
+                        android:paddingLeft="@dimen/dp_10" />
+
+                    <ImageView
+                        android:id="@+id/iv_refresh1"
+                        android:layout_width="@dimen/dp_22"
+                        android:layout_height="@dimen/dp_22"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="2dp"
+                        android:paddingRight="4dp"
+                        android:paddingBottom="2dp"
+                        android:src="@drawable/ic_refresh" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+
+
+            </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_triage_name"
+                android:id="@+id/ll_diagnosis"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_37"
                 android:layout_below="@+id/doctor_name_line"
@@ -95,21 +195,22 @@
 
 
                 <TextView
-                    android:id="@+id/tv_triage_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
-                    android:text="@string/app_emergency_docotor"
+                    android:text="诊断结果"
                     android:textColor="@color/app_223b53"
                     android:textSize="@dimen/sp_14" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/editSpinner1"
+                    android:id="@+id/es_diagnosis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:editable="false"
                     app:Background="@drawable/bg_view_frame"
-                    app:hint="EditSpinner Test"
-                    app:rightImage="@drawable/ic_arrow_down_blue" />
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue"
+                    tools:ignore="Deprecated" />
 
 
             </LinearLayout>
@@ -123,73 +224,264 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_other_diagnostic"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
-                android:paddingRight="@dimen/dp_10">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="@string/app_emergency_docotor"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_14" />
-
-
-                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:Background="@drawable/bg_view_frame"
-                    app:hint="EditSpinner Test"
-                    app:rightImage="@drawable/ic_arrow_down_blue" />
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
 
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp_25"
+                        android:text="其它(诊断)"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/sp_14" />
+
+                    <EditText
+                        android:id="@+id/et_input_weight"
+                        style="@style/patient_et_style"
+                        android:layout_width="wrap_content"
+                        android:gravity="start"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:maxLength="10" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
             </LinearLayout>
 
-            <View
+            <LinearLayout
+                android:id="@+id/ll_hemorrhagic_apoplexy"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:text="@string/app_emergency_docotor"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_hemorrhagic_apoplexy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:text="@string/app_emergency_docotor"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_hemorrhagic_apoplexy2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+            </LinearLayout>
 
 
             <LinearLayout
+                android:id="@+id/ll_ischemic_stroke"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
-                android:paddingRight="@dimen/dp_10">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="@string/app_emergency_docotor"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_14" />
-
-
-                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:Background="@drawable/bg_view_frame"
-                    app:hint="EditSpinner Test"
-                    app:rightImage="@drawable/ic_arrow_down_blue" />
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
 
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:text="@string/app_emergency_docotor"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/et_ischemic_stroke"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:text="发病机制"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/et_nosogenesis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
             </LinearLayout>
 
-            <View
+
+            <LinearLayout
+                android:id="@+id/ll_moyamoya_disease"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical"
+                 >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_37"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="烟雾病"
+                        android:textColor="@color/app_223b53" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_moyamoya_disease"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_moyamoya_disease_yes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="是" />
+
+                        <RadioButton
+                            android:id="@+id/rb_moyamoya_disease_no"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="否" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_below="@+id/triage_time"
+                    android:background="@color/app_eef3f7" />
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -258,10 +550,250 @@
                     android:textSize="@dimen/sp_14" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_emergency_treatment_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:Background="@drawable/bg_view_frame"
-                    app:hint="EditSpinner Test"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="卒中医生"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_apoplexy_doctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ScrollView
+        android:id="@+id/sv_discharge_diagnosis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="14dp"
+                    android:text="出院时间"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    style="@style/patient_et_style"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_weight="2.4"
+                    android:focusable="false"
+                    android:hint="@string/app_default_time_example"
+                    android:paddingLeft="@dimen/dp_10" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_22"
+                    android:layout_height="@dimen/dp_22"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="2dp"
+                    android:src="@drawable/ic_refresh" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="出院时间"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="@string/app_emergency_docotor"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="@string/app_emergency_docotor"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/triage_time"
+                android:background="@color/app_eef3f7" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_37"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_25"
+                android:paddingRight="@dimen/dp_10">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="急诊医生"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
@@ -296,7 +828,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:Background="@drawable/bg_view_frame"
-                    app:hint="EditSpinner Test"
+                    app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
@@ -311,251 +843,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
-
-
-        <ScrollView
-            android:id="@+id/sv_discharge_diagnosis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:overScrollMode="never"
-            android:visibility="gone"
-            android:scrollbars="none">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="14dp"
-                                    android:text="出院时间"
-                                    android:textColor="@color/app_223b53"
-                                    android:textSize="@dimen/sp_14" />
-
-                                <TextView
-                                    style="@style/patient_et_style"
-                                    android:layout_width="@dimen/dp_0"
-                                    android:layout_weight="2.4"
-                                    android:focusable="false"
-                                    android:hint="@string/app_default_time_example"
-                                    android:paddingLeft="@dimen/dp_10" />
-
-                                <ImageView
-                                    android:layout_width="@dimen/dp_22"
-                                    android:layout_height="@dimen/dp_22"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginRight="10dp"
-                                    android:paddingLeft="4dp"
-                                    android:paddingTop="2dp"
-                                    android:paddingRight="4dp"
-                                    android:paddingBottom="2dp"
-                                    android:src="@drawable/ic_refresh" />
-                        </LinearLayout>
-
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="32dp"
-                                    android:text="出院时间"
-                                    android:textColor="@color/app_223b53"
-                                    android:textSize="@dimen/sp_14" />
-
-                                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:Background="@drawable/bg_view_frame"
-                                    app:hint="EditSpinner Test"
-                                    app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                        </LinearLayout>
-
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="32dp"
-                                    android:text="@string/app_emergency_docotor"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sp_14" />
-
-
-                                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:Background="@drawable/bg_view_frame"
-                                    app:hint="EditSpinner Test"
-                                    app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="32dp"
-                                    android:text="@string/app_emergency_docotor"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/sp_14" />
-
-
-                                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:Background="@drawable/bg_view_frame"
-                                    app:hint="EditSpinner Test"
-                                    app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="32dp"
-                                    android:text="急诊医生"
-                                    android:textColor="@color/app_223b53"
-                                    android:textSize="@dimen/sp_14" />
-
-                                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:Background="@drawable/bg_view_frame"
-                                    app:hint="EditSpinner Test"
-                                    app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                        </LinearLayout>
-
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_37"
-                            android:layout_below="@+id/doctor_name_line"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="@dimen/dp_25"
-                            android:paddingRight="@dimen/dp_10">
-
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="32dp"
-                                    android:text="卒中医生"
-                                    android:textColor="@color/app_223b53"
-                                    android:textSize="@dimen/sp_14" />
-
-                                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    app:Background="@drawable/bg_view_frame"
-                                    app:hint="EditSpinner Test"
-                                    app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:layout_below="@+id/triage_time"
-                            android:background="@color/app_eef3f7" />
-
-
-                </LinearLayout>
-        </ScrollView>
 
 
     <include

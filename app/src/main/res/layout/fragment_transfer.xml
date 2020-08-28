@@ -55,7 +55,7 @@
             <ScrollView
                 android:id="@+id/sv_to_transfe_hospital"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_540"
+                android:layout_height="wrap_content"
                 android:background="@color/app_ffffff"
                 android:scrollbars="none"
                 android:visibility="gone"
@@ -185,7 +185,7 @@
             <ScrollView
                 android:id="@+id/sv_leave_hospital"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_540"
+                android:layout_height="wrap_content"
                 android:background="@color/app_ffffff"
                 android:scrollbars="none"
                 android:visibility="gone"
@@ -198,61 +198,182 @@
                     android:orientation="vertical">
 
 
-                    <CheckBox
+                    <RadioGroup
+                        android:id="@+id/rg_departure_hospital"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <RadioButton
+                            android:id="@+id/rb_leave_hospital"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="医嘱离院"
+                            android:textSize="@dimen/sp_15" />
+
+                        <RadioButton
+                            android:id="@+id/rb_transform_hospital"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="医嘱转院"
+                            android:textSize="@dimen/sp_15" />
+
+                        <RadioButton
+                            android:id="@+id/rb_township_health_center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="医嘱转社区卫生服务机构/乡镇卫生院"
+                            android:textSize="@dimen/sp_15" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_no_leave_hospital"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="非医嘱离院"
+                            android:textSize="@dimen/sp_15" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_die"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="死亡"
+                            android:textSize="@dimen/sp_15" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@null"
+                            android:checked="false"
+                            android:drawableLeft="@drawable/login_checkbox"
+                            android:drawablePadding="5dp"
+                            android:text="其它"
+                            android:textSize="@dimen/sp_15" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <LinearLayout
+                android:id="@+id/ll_die"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_3"
+                    android:text="死亡原因"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sp_14" />
+
+
+                <RadioGroup
+                    android:id="@+id/rg_die_reason"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rb_respiratory_failure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
                         android:checked="false"
                         android:drawableLeft="@drawable/login_checkbox"
                         android:drawablePadding="5dp"
-                        android:text="医嘱离院"
+                        android:text="呼吸循环衰竭"
                         android:textSize="@dimen/sp_15" />
 
-
-                    <CheckBox
+                    <RadioButton
+                        android:id="@+id/rb_cerebrovascular_disease"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
                         android:checked="false"
                         android:drawableLeft="@drawable/login_checkbox"
                         android:drawablePadding="5dp"
-                        android:text="医嘱转院"
+                        android:text="脑血管病"
                         android:textSize="@dimen/sp_15" />
 
-                    <CheckBox
+                    <RadioButton
+                        android:id="@+id/rb_pulmonary_infection"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
                         android:checked="false"
                         android:drawableLeft="@drawable/login_checkbox"
                         android:drawablePadding="5dp"
-                        android:text="医嘱转社区卫生服务机构/乡镇卫生院"
+                        android:text="肺部感染"
                         android:textSize="@dimen/sp_15" />
 
 
-                    <CheckBox
+                    <RadioButton
+                        android:id="@+id/rb_upper_gastrointestinal_hemorrhage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
                         android:checked="false"
                         android:drawableLeft="@drawable/login_checkbox"
                         android:drawablePadding="5dp"
-                        android:text="非医嘱离院"
+                        android:text="上消化道出血"
                         android:textSize="@dimen/sp_15" />
 
 
-                    <CheckBox
+                    <RadioButton
+                        android:id="@+id/rb_acute_renal_failure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
                         android:checked="false"
                         android:drawableLeft="@drawable/login_checkbox"
                         android:drawablePadding="5dp"
-                        android:text="死亡"
+                        android:text="急性肾功能衰竭"
                         android:textSize="@dimen/sp_15" />
 
 
-                    <CheckBox
+                    <RadioButton
+                        android:id="@+id/rb_injure_and_venenatio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="损伤和中毒"
+                        android:textSize="@dimen/sp_15" />
+
+                    <RadioButton
+                        android:id="@+id/rb_die_other"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:button="@null"
@@ -262,8 +383,58 @@
                         android:text="其它"
                         android:textSize="@dimen/sp_15" />
 
-                </LinearLayout>
-            </ScrollView>
+                    <RadioButton
+                        android:id="@+id/rb_unknown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:checked="false"
+                        android:drawableLeft="@drawable/login_checkbox"
+                        android:drawablePadding="5dp"
+                        android:text="不详"
+                        android:textSize="@dimen/sp_15" />
+
+                </RadioGroup>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/tv_die_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_3"
+                        android:text="死亡时间"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/sp_14" />
+
+
+                    <TextView
+                        android:id="@+id/tv_time_item_time_node"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:layout_toRightOf="@id/tv_die_time"
+                        android:text="@string/app_default_time_example"
+                        android:textColor="@color/color_222222"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:id="@+id/iv_refresh_item_time_node"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginTop="@dimen/dp_6"
+                        android:layout_toEndOf="@id/tv_time_item_time_node"
+                        android:layout_toRightOf="@id/tv_die_time"
+                        android:src="@drawable/ic_refresh" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>

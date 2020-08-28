@@ -137,6 +137,7 @@ public class VitalSignsFragment extends BaseFragment {
 
     private void loadData() {
         list = new ArrayList<>();
+        list.add("请选择");
         list.add("清醒");
         list.add("对语言有反应");
         list.add("对刺激有反应");

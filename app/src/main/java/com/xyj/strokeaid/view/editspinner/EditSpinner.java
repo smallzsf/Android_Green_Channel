@@ -196,11 +196,16 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public final void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public final void afterTextChanged(Editable s) {
         String key = s.toString();
         if (onSelectStringLitner!=null){
             onSelectStringLitner.getSeletedString(key);
         }
-        editText.setSelection(key.length());
+        editText.setSelection(0);
         if (!TextUtils.isEmpty(key)) {
             showFilterData(key);
         } else {
@@ -208,11 +213,6 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
                 popupWindow.dismiss();
             }
         }
-    }
-
-    @Override
-    public final void afterTextChanged(Editable s) {
-
     }
 
     private void showFilterData(String key) {

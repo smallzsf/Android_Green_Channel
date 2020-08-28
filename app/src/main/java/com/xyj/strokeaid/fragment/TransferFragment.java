@@ -7,22 +7,30 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -55,7 +63,17 @@ public class TransferFragment extends BaseFragment {
     ScrollView svToTransfeHospital;
     @BindView(R.id.sv_leave_hospital)
     ScrollView svLeaveHospital;
-
+    @BindView(R.id.rg_departure_hospital)
+    RadioGroup rgDepartureHospital;
+    @BindView(R.id.rg_die_reason)
+    RadioGroup rgDieReason;
+    @BindView(R.id.ll_die)
+    LinearLayout llDie;
+    @BindView(R.id.tv_time_item_time_node)
+    TextView tvTimeItemTimeNode;
+    @BindView(R.id.iv_refresh_item_time_node)
+    ImageView ivRefreshItemTimeNode;
+    TimePickerView mTimePickerView;
 
     private String[] mVals = new String[]{"无溶栓能力", "无介入能力", "家属意愿"};
     private String[] mVals1 = new String[]{"未给溶栓药物", "已给溶栓药物"};
@@ -102,11 +120,18 @@ public class TransferFragment extends BaseFragment {
             public void getSeletedString(String text) {
                 if (text.contains("转院")) {
                     svToTransfeHospital.setVisibility(View.VISIBLE);
+                    llDie.setVisibility(View.GONE);
                     svLeaveHospital.setVisibility(View.GONE);
                 } else if (text.contains("离院")) {
                     svToTransfeHospital.setVisibility(View.GONE);
+                    llDie.setVisibility(View.GONE);
                     svLeaveHospital.setVisibility(View.VISIBLE);
-                }else{
+                } else if (text.contains("死亡")) {
+                    llDie.setVisibility(View.VISIBLE);
+                    svToTransfeHospital.setVisibility(View.GONE);
+                    svLeaveHospital.setVisibility(View.GONE);
+                } else {
+                    llDie.setVisibility(View.GONE);
                     svToTransfeHospital.setVisibility(View.GONE);
                     svLeaveHospital.setVisibility(View.GONE);
                 }
@@ -124,6 +149,46 @@ public class TransferFragment extends BaseFragment {
         //设置输入框值
         tflStateOfIllnessDispose.setAdapter(mAdapter1);
         getEtTransferReason(tflStateOfIllnessDispose, etStateOfIllnessDispose, mVals1);
+
+        rgDepartureHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radiobutton = (RadioButton) group.findViewById(group.getCheckedRadioButtonId());
+
+                //Toast.makeText(getActivity(),"选中的内容是"+ radiobutton.getText().toString(),Toast.LENGTH_LONG).show();
+                switch (checkedId) {
+                    case R.id.rb_leave_hospital:
+                        llDie.setVisibility(View.GONE);
+                        break;
+
+                    case R.id.rb_transform_hospital:
+                        llDie.setVisibility(View.GONE);
+
+                        break;
+
+                    case R.id.rb_township_health_center:
+
+                        llDie.setVisibility(View.GONE);
+                        break;
+
+                    case R.id.rb_no_leave_hospital:
+                        llDie.setVisibility(View.GONE);
+
+                        break;
+
+                    case R.id.rb_die:
+                        llDie.setVisibility(View.VISIBLE);
+
+
+                        break;
+
+                    case R.id.rb_other:
+                        llDie.setVisibility(View.GONE);
+                        break;
+                }
+            }
+        });
+
     }
 
 
@@ -228,14 +293,50 @@ public class TransferFragment extends BaseFragment {
 
     };
 
-    @OnClick({R.id.btn_confirm, R.id.btn_cancel})
+    @OnClick({R.id.btn_confirm, R.id.btn_cancel,  R.id.tv_time_item_time_node,R.id.iv_refresh_item_time_node})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm:
-                Toast.makeText(mActivity, esTransformation.getText(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(mActivity, esTransformation.getText(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_cancel:
                 break;
+
+            case R.id.tv_time_item_time_node:
+                showTimePickView();
+                break;
+            case R.id.iv_refresh_item_time_node:
+                String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date());
+                tvTimeItemTimeNode.setText(time);
+                break;
         }
     }
+
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param
+     */
+    protected void showTimePickView() {
+
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date);
+                    tvTimeItemTimeNode.setText(time);
+                }
+            })
+                    .isDialog(false)
+                    .setType(new boolean[]{true, true, true, true, true, true})
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
 }

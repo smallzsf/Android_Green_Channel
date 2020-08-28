@@ -193,7 +193,7 @@
                             android:layout_marginRight="@dimen/dp_23"
                             android:background="@android:color/transparent"
                             android:clickable="false"
-                            android:gravity="left|bottom"
+                            android:gravity="left|center"
                             android:hint="记住密码"
                             android:inputType="textPassword"
                             android:paddingLeft="@dimen/dp_6"
@@ -340,6 +340,7 @@
                             android:textSize="@dimen/sp_15" />
 
 
+
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -347,14 +348,16 @@
                             android:layout_marginRight="@dimen/dp_23"
                             android:background="@android:color/transparent"
                             android:clickable="false"
-                            android:gravity="left|bottom"
+                            android:gravity="left|center"
                             android:hint="记住密码"
                             android:inputType="textPassword"
                             android:paddingLeft="@dimen/dp_6"
+                            android:enabled="false"
                             android:singleLine="true"
                             android:textColor="#ff666666"
                             android:textColorHint="#c5cdd9"
-                            android:textSize="13sp" />
+                            android:textSize="@dimen/sp_13" />
+
 
 
                     </LinearLayout>

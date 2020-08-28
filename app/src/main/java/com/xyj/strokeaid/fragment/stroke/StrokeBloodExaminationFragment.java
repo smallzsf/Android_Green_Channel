@@ -12,6 +12,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.flyco.tablayout.SegmentTabLayout;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
@@ -29,8 +31,10 @@ import butterknife.BindView;
  */
 public class StrokeBloodExaminationFragment extends BaseFragment {
 
-    @BindView(R.id.tl_title_act_stroke_main)
-    TabLayout tlTitleActStrokeMain;
+/*    @BindView(R.id.tl_title_act_stroke_main)
+    TabLayout tlTitleActStrokeMain;*/
+    @BindView(R.id.stl_title_frag_stroke_medice)
+    SegmentTabLayout stlTitleFragStrokeMedice;
     @BindView(R.id.vp_content_act_stroke_main)
     ViewPager2 vpContentActStrokeMain;
 
@@ -69,9 +73,11 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        for (String strokeTabTitle : STROKE_TAB_TITLES) {
+     /*   for (String strokeTabTitle : STROKE_TAB_TITLES) {
             tlTitleActStrokeMain.addTab(tlTitleActStrokeMain.newTab().setText(strokeTabTitle));
-        }
+        }*/
+
+        stlTitleFragStrokeMedice.setTabData(STROKE_TAB_TITLES);
 
         // 禁止滑动
         vpContentActStrokeMain.setUserInputEnabled(false);
@@ -81,7 +87,7 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        tlTitleActStrokeMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+    /*    tlTitleActStrokeMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 vpContentActStrokeMain.setCurrentItem(tab.getPosition());
@@ -94,6 +100,18 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });*/
+
+        stlTitleFragStrokeMedice.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                vpContentActStrokeMain.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
 
             }
         });
