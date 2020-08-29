@@ -1,7 +1,5 @@
 package com.xyj.strokeaid.bean;
 
-
-
 /**
  * @author azheng
  * @date 2018/4/24.
@@ -17,33 +15,31 @@ public class BaseObjectBean<T> {
      * result : {} 对象
      */
 
-    private int errorCode;
-    private String errorMsg;
-    private T result;
+    private int result;
+    private String message;
+    private T data;
 
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public T getResult() {
+    public int getResult() {
         return result;
     }
 
-    public void setResult(T result) {
+    public void setResult(int result) {
         this.result = result;
     }
 
+    public String getMessage() {
+        return message;
+    }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }

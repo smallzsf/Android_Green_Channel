@@ -30,7 +30,7 @@ public interface LoginContract {
         @Override
         void onError(String errMessage);
 
-        void onSuccess(BaseObjectBean<LoginBean> bean,int flag);
+        void onSuccess(BaseObjectBean<LoginBean> bean, int flag);
 
     }
 
@@ -41,6 +41,6 @@ public interface LoginContract {
          * @param username
          * @param password
          */
-        void login(String username, String password,int flag);
+        void login(String username, String password, int flag);
     }
 }

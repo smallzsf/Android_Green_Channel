@@ -27,7 +27,7 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.Stroke.STROKE_NIHSS)
-public class StrokeNihssActivity extends BaseActivity {
+public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.OnScoreChangedListener {
 
     @BindView(R.id.title_bar_act_nihss)
     BaseTitleBar titleBarActNihss;
@@ -71,6 +71,10 @@ public class StrokeNihssActivity extends BaseActivity {
     @Autowired(name = IntentKey.DOC_ID)
     String mDocId;
 
+    /**
+     * 总分
+     */
+    private int mTotalScore = 0;
 
     @Override
     public int getLayoutId() {
@@ -107,9 +111,9 @@ public class StrokeNihssActivity extends BaseActivity {
     @Override
     public void initListener() {
         titleBarActNihss.setLeftLayoutClickListener(v -> finish())
-        .setRightLayoutClickListener(v -> {
-           int scores =  getAllScores();
-        });
+                .setRightLayoutClickListener(v -> {
+                    int scores = getAllScores();
+                });
     }
 
     private int getAllScores() {
@@ -131,12 +135,14 @@ public class StrokeNihssActivity extends BaseActivity {
         oneA.add(new NihssItemBar.ItemBean("昏睡或反应迟钝，需反复刺激、强烈或疼痛刺激才有非刻板的反应", 2, false));
         oneA.add(new NihssItemBar.ItemBean("昏迷，仅有反射性活动或自发性反映或完全无反应、软瘫、无反射", 3, false));
         nib1aActNihss.setItemBeans(oneA);
+        nib1aActNihss.setOnScoreChangedListener(this);
 
         List<NihssItemBar.ItemBean> oneB = new ArrayList<>();
         oneB.add(new NihssItemBar.ItemBean("两项均正确", 0, false));
         oneB.add(new NihssItemBar.ItemBean("一项正确", 1, false));
         oneB.add(new NihssItemBar.ItemBean("两项均不正确", 2, false));
         nib1bActNihss.setItemBeans(oneB);
+        nib1bActNihss.setOnScoreChangedListener(this);
 
         List<NihssItemBar.ItemBean> oneC = new ArrayList<>();
         oneC.add(new NihssItemBar.ItemBean("两项均正确", 0, false));
@@ -232,6 +238,19 @@ public class StrokeNihssActivity extends BaseActivity {
         eleven.add(new NihssItemBar.ItemBean("视、触、听、空间觉或个人的忽视；或对任何一种感觉的双侧同时刺激消失", 1, false));
         eleven.add(new NihssItemBar.ItemBean("严重的偏侧忽视；超过一种形式的偏侧忽视；不认识自己的手；只能对一侧空间定位", 2, false));
         nib11ActNihss.setItemBeans(eleven);
+
+    }
+
+    @Override
+    public void addScore(int newScore, int oldScore) {
+        mTotalScore = mTotalScore - oldScore + newScore;
+        showToast(String.valueOf(mTotalScore));
+    }
+
+    @Override
+    public void subScore(int score) {
+        mTotalScore = mTotalScore - score;
+        showToast(String.valueOf(mTotalScore));
     }
 }
 

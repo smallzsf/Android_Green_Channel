@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -209,6 +211,14 @@ public abstract class BaseActivity extends AppCompatActivity {
             }
             textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
         }
+    }
+
+    public void showToast(CharSequence msg) {
+        Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void showToast(@StringRes int res) {
+        Toast.makeText(mContext, res, Toast.LENGTH_SHORT).show();
     }
 }
 

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.widget.Checkable;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import com.xyj.strokeaid.R;
 public class XyjCheckedTextView extends AppCompatTextView implements Checkable {
 
     private boolean checked = false;
+    private OnCheckedChangeListener mOnCheckedChangeListener;
 
     public XyjCheckedTextView(@NonNull Context context) {
         super(context);
@@ -51,6 +53,9 @@ public class XyjCheckedTextView extends AppCompatTextView implements Checkable {
             this.setBackground(new ColorDrawable(Color.WHITE));
             this.setTextColor(getContext().getResources().getColor(R.color.color_222222));
         }
+        if (mOnCheckedChangeListener != null) {
+            mOnCheckedChangeListener.onCheckedChanged(this, this.checked);
+        }
     }
 
     @Override
@@ -61,6 +66,31 @@ public class XyjCheckedTextView extends AppCompatTextView implements Checkable {
     @Override
     public void toggle() {
         setChecked(!isChecked());
+        if (mOnCheckedChangeListener != null) {
+            mOnCheckedChangeListener.onCheckedChanged(this, isChecked());
+        }
+    }
+
+    public OnCheckedChangeListener getOnCheckedChangeListener() {
+        return mOnCheckedChangeListener;
+    }
+
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
+        mOnCheckedChangeListener = onCheckedChangeListener;
+    }
+
+    /**
+     * Interface definition for a callback to be invoked when the checked state
+     * of a compound button changed.
+     */
+    public interface OnCheckedChangeListener {
+        /**
+         * Called when the checked state of a compound button has changed.
+         *
+         * @param buttonView The compound button view whose state has changed.
+         * @param isChecked  The new checked state of buttonView.
+         */
+        void onCheckedChanged(AppCompatTextView buttonView, boolean isChecked);
     }
 }
 

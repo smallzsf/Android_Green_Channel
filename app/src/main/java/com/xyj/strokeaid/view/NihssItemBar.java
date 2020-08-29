@@ -52,6 +52,15 @@ public class NihssItemBar extends LinearLayout {
     private List<ItemBean> mItemBeans;
     private NihssItemRvAdapter mItemRvAdapter;
     private NihssScoreRvAdapter mScoreRvAdapter;
+    private OnScoreChangedListener mOnScoreChangedListener;
+
+    public OnScoreChangedListener getOnScoreChangedListener() {
+        return mOnScoreChangedListener;
+    }
+
+    public void setOnScoreChangedListener(OnScoreChangedListener onScoreChangedListener) {
+        mOnScoreChangedListener = onScoreChangedListener;
+    }
 
     public NihssItemBar(Context context) {
         this(context, null);
@@ -139,11 +148,26 @@ public class NihssItemBar extends LinearLayout {
                     if (mItemBeans.get(position).checked) {
                         // 已经是选中状态，要取消选中
                         mItemBeans.get(position).checked = false;
+                        if (mOnScoreChangedListener != null) {
+                            mOnScoreChangedListener.subScore(mItemBeans.get(position).score);
+                        }
                     } else {
                         // 修改为选中状态,清除其他项的选中状态
+                        int oldScore = 0;
+                        for (ItemBean itemBean : mItemBeans) {
+                            if (itemBean.checked) {
+                                oldScore = itemBean.score;
+                            }
+                        }
+                        if (mOnScoreChangedListener != null) {
+                            mOnScoreChangedListener.addScore(mItemBeans.get(position).score, oldScore);
+                        }
+
+
                         for (int i = 0; i < mItemBeans.size(); i++) {
                             mItemBeans.get(i).checked = i == position;
                         }
+
                     }
                     mItemRvAdapter.notifyDataSetChanged();
                     mScoreRvAdapter.notifyDataSetChanged();
@@ -233,6 +257,18 @@ public class NihssItemBar extends LinearLayout {
             }
         }
         return -1;
+    }
+
+    public interface OnScoreChangedListener {
+        /**
+         * @param score
+         */
+        void addScore(int newScore, int oldScore);
+
+        /**
+         * @param score
+         */
+        void subScore(int score);
     }
 
     /**

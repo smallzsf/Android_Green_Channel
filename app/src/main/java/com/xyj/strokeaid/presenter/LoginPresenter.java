@@ -6,10 +6,12 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
-import com.xyj.strokeaid.contract.MainContract;
+import com.xyj.strokeaid.helper.Base64Util;
+import com.xyj.strokeaid.helper.RsaUitl;
 import com.xyj.strokeaid.http.RxScheduler;
 import com.xyj.strokeaid.model.LoginModel;
-import com.xyj.strokeaid.model.MainModel;
+
+import java.nio.charset.StandardCharsets;
 
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
@@ -31,14 +33,26 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
     }
 
     @Override
-    public void login(String username, String password,int flag) {
+    public void login(String username, String password, int flag) {
         //View是否绑定 如果没有绑定，就不执行网络请求
         if (!isViewAttached()) {
             return;
         }
-        model.login(username, password)
+
+        String pwd = null;
+        String user = null;
+        try {
+            pwd = Base64Util.encode(RsaUitl.encryptByPublicKey(password.getBytes(StandardCharsets.UTF_8), Base64Util.decode(RsaUitl.STROKE_PUBLIC_KEY)));
+            user = Base64Util.encode(RsaUitl.encryptByPublicKey(username.getBytes(StandardCharsets.UTF_8), Base64Util.decode(RsaUitl.STROKE_PUBLIC_KEY)));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+
+        model.login(user, pwd)
                 .compose(RxScheduler.Obs_io_main())
-                .to(mView.bindAutoDispose())//解决内存泄漏
+                //解决内存泄漏
+                .to(mView.bindAutoDispose())
                 .subscribe(new Observer<BaseObjectBean<LoginBean>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
@@ -47,9 +61,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
                     @Override
                     public void onNext(@NonNull BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
-
-                        mView.onSuccess(loginBeanBaseObjectBean,flag);
-
+                        mView.onSuccess(loginBeanBaseObjectBean, flag);
                     }
 
                     @Override

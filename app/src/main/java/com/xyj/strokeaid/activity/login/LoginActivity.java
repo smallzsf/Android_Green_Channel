@@ -1,17 +1,16 @@
 package com.xyj.strokeaid.activity.login;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -19,15 +18,18 @@ import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.MainActivity;
 import com.xyj.strokeaid.activity.set.SetActivity;
+import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.MmkvKey;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
 import com.xyj.strokeaid.helper.CodeTimer;
 import com.xyj.strokeaid.presenter.LoginPresenter;
+import com.xyj.strokeaid.view.BaseTitleBar;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * LoginActivity
@@ -39,40 +41,41 @@ import butterknife.ButterKnife;
  */
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements LoginContract.View {
 
-    EditText etUsernameLogin;
-    EditText etPasswordLogin;
-    Button btnSigninLogin;
-    SharedPreferences sp = null;
-    CheckBox cbRememberPassword;
-    @BindView(R.id.ll_pwd_login)
-    LinearLayout llPwdLogin;
-    @BindView(R.id.ll_verifycode_login)
-    LinearLayout llVerifycodeLogin;
+    @BindView(R.id.iv_launch)
+    ImageView ivLaunch;
+    @BindView(R.id.title_bar_act_login)
+    BaseTitleBar titleBarActLogin;
+    @BindView(R.id.tl_title_act_login)
+    TabLayout tlTitleActLogin;
+    @BindView(R.id.et_name_act_login)
+    EditText etNameActLogin;
+    @BindView(R.id.et_pwd_act_login)
+    EditText etPwdActLogin;
+    @BindView(R.id.cb_remembre_act_login)
+    CheckBox cbRemembreActLogin;
+    @BindView(R.id.ll_pwd_act_login)
+    LinearLayout llPwdActLogin;
+    @BindView(R.id.et_phone_act_login)
+    EditText etPhoneActLogin;
+    @BindView(R.id.et_code_act_login)
+    EditText etCodeActLogin;
     @BindView(R.id.tv_code)
     TextView tvCode;
-    @BindView(R.id.tl_title_act_stroke_main)
-    TabLayout tlTitleActStrokeMain;
-    @BindView(R.id.et_name1)
-    EditText etName1;
-    @BindView(R.id.et_password1)
-    EditText etPassword1;
-    @BindView(R.id.btn_login1)
-    AppCompatButton btnLogin1;
-    @BindView(R.id.cb_remember_password1)
-    CheckBox cbRememberPassword1;
-    private ImageView ivSetting;
-    /*  @BindView(R.id.vp_content_act_stroke_main)
-      ViewPager2 vpContentActStrokeMain;*/
+    @BindView(R.id.ll_phone_act_login)
+    LinearLayout llPhoneActLogin;
+    @BindView(R.id.btn_login_act_login)
+    AppCompatButton btnLoginActLogin;
 
     CodeTimer codeTimer;
-
-    public static final String[] STROKE_TAB_TITLES = new String[]{"密码登录", "验证码登录"};
-
+    /**
+     * 0  帐号密码登录
+     * 1  手机号验证码登录
+     */
+    private int mLoginType = 0;
 
     @Override
     public int getLayoutId() {
-        // getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        return R.layout.activity_login_new;
+        return R.layout.activity_login;
     }
 
     @Override
@@ -82,92 +85,58 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void initView() {
-
-        for (String strokeTabTitle : STROKE_TAB_TITLES) {
-            tlTitleActStrokeMain.addTab(tlTitleActStrokeMain.newTab().setText(strokeTabTitle));
-        }
-
-        // 禁止滑动
-     /*   vpContentActStrokeMain.setUserInputEnabled(false);
-        vpContentActStrokeMain.setOffscreenPageLimit(STROKE_TAB_TITLES.length);
-        vpContentActStrokeMain.setAdapter(new StrokeViewPageAdapter(this));*/
-
-        etUsernameLogin = findViewById(R.id.et_name);
-        etPasswordLogin = findViewById(R.id.et_password);
-        btnSigninLogin = findViewById(R.id.btn_login);
-        ivSetting = findViewById(R.id.iv_setting);
-        cbRememberPassword = findViewById(R.id.cb_remember_password);
-        sp = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
-        //对uname 和 upswd 的操作
-        if (sp.getBoolean("checkboxBoolean", false)) {
-            etUsernameLogin.setText(sp.getString("uname", null));
-            etPasswordLogin.setText(sp.getString("upswd", null));
-            cbRememberPassword.setChecked(true);
-
-        }
-
-
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
-        btnSigninLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getUsername().isEmpty() || getPassword().isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "帐号密码不能为空", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mPresenter.login(getUsername(), getPassword(),0);
-            }
-        });
 
-        btnLogin1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getUsername1().isEmpty() || getPassword1().isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "帐号密码不能为空", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                mPresenter.login(getUsername1(), getPassword1(),1);
-            }
-        });
-
+        for (String tabTitle : Constants.LOGIN_TAB_TITLE) {
+            tlTitleActLogin.addTab(tlTitleActLogin.newTab().setText(tabTitle));
+        }
 
         codeTimer = new CodeTimer(tvCode, 60 * 1000, 1000);
 
         tvCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvCode.setClickable(false);
-                codeTimer.start();
-                //  forgetPresent.getVerifyCodeData();
+
             }
         });
 
-        ivSetting.setOnClickListener(new View.OnClickListener() {
+        etNameActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_NAME));
+
+    }
+
+    @Override
+    public void initListener() {
+        cbRemembreActLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    buttonView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                }else {
+                    buttonView.setTextColor(getResources().getColor(R.color.color_999999));
+                }
+            }
+        });
+
+        titleBarActLogin.setRightLayoutClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SetActivity.class);
                 startActivity(intent);
             }
         });
-    }
 
-    @Override
-    public void initListener() {
-        tlTitleActStrokeMain.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tlTitleActLogin.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
-                //  vpContentActStrokeMain.setCurrentItem(tab.getPosition());
+                mLoginType = tab.getPosition();
                 if (tab.getPosition() == 0) {
-
-                    llVerifycodeLogin.setVisibility(View.GONE);
-                    llPwdLogin.setVisibility(View.VISIBLE);
+                    llPwdActLogin.setVisibility(View.VISIBLE);
+                    llPhoneActLogin.setVisibility(View.GONE);
                 } else {
-                    llPwdLogin.setVisibility(View.GONE);
-                    llVerifycodeLogin.setVisibility(View.VISIBLE);
+                    llPwdActLogin.setVisibility(View.GONE);
+                    llPhoneActLogin.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override
@@ -192,130 +161,65 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         }
     }
 
-    /*   private static class StrokeViewPageAdapter extends FragmentStateAdapter {
-
-        String patientId;
-        String docId;
-
-        public StrokeViewPageAdapter(@NonNull FragmentActivity fragmentActivity) {
-            super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public StrokeViewPageAdapter(@NonNull Fragment fragment, String patientId, String docId) {
-            super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public StrokeViewPageAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        @NonNull
-        @Override
-        public Fragment createFragment(int position) {
-            switch (position) {
-                case 0:
-                    return new LoginFragment();
-                case 1:
-                    return  new LoginFragment();
-
-                default:
-                    return null;
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return STROKE_TAB_TITLES.length;
-        }
-
-    }
-*/
-
     /**
      * @return 帐号
      */
     private String getUsername() {
-        return etUsernameLogin.getText().toString().trim();
+        return etNameActLogin.getText().toString().trim();
     }
 
     /**
      * @return 密码
      */
     private String getPassword() {
-        return etPasswordLogin.getText().toString().trim();
+        return etPwdActLogin.getText().toString().trim();
     }
 
 
     /**
-     * @return 帐号
+     * @return 手机号
      */
-    private String getUsername1() {
-        return etName1.getText().toString().trim();
+    private String getPhone() {
+        return etPhoneActLogin.getText().toString().trim();
     }
 
     /**
      * @return 验证码
      */
-    private String getPassword1() {
-        return etPassword1.getText().toString().trim();
+    private String getVerifyCode() {
+        return etCodeActLogin.getText().toString().trim();
     }
 
 
     @Override
-    public void onSuccess(BaseObjectBean<LoginBean> bean,int flag) {
-//        Toast.makeText(this, bean.getErrorMsg(), Toast.LENGTH_SHORT).show();
+    public void onSuccess(BaseObjectBean<LoginBean> bean, int flag) {
 
-        if (bean.getResult() == null && bean.getErrorCode() == 0&&flag==0) {
-
-            //通过
-            boolean CheckBoxLogin = cbRememberPassword.isChecked();
-            //按钮被选中，下次进入时会显示账号和密码
-            if (CheckBoxLogin) {
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("uname", getUsername());
-                editor.putString("upswd", getPassword());
-                editor.putBoolean("checkboxBoolean", true);
-                editor.commit();
-            } else {    //按钮被选中，清空账号和密码，下次进入时会显示账号和密码
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("uname", null);
-                editor.putString("upswd", null);
-                editor.putBoolean("checkboxBoolean", false);
-                editor.commit();
+        if (bean.getResult() == 1) {
+            if (flag == 0) {
+                // 帐号密码登录 通过
+                boolean isRememberPwd = cbRemembreActLogin.isChecked();
+                //按钮被选中，下次进入时会显示账号和密码
+                if (isRememberPwd) {
+                    mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, etNameActLogin.getText().toString().trim());
+                    mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, etPwdActLogin.getText().toString().trim());
+                    mDefaultMMKV.apply();
+                } else {
+                    //按钮被选中，清空账号和密码，下次进入时会显示账号和密码
+                    mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, "");
+                    mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, "");
+                    mDefaultMMKV.apply();
+                }
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                // 通过
+                mDefaultMMKV.encode(MmkvKey.LOGIN_PHONE, etPhoneActLogin.getText().toString().trim());
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
-
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
-        }else{
-            //通过
-            boolean CheckBoxLogin = cbRememberPassword1.isChecked();
-            //按钮被选中，下次进入时会显示账号和密码
-            if (CheckBoxLogin) {
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("uname", getUsername());
-                editor.putString("upswd", getPassword());
-                editor.putBoolean("checkboxBoolean", true);
-                editor.commit();
-            } else {    //按钮被选中，清空账号和密码，下次进入时会显示账号和密码
-                SharedPreferences.Editor editor = sp.edit();
-                editor.putString("uname", null);
-                editor.putString("upswd", null);
-                editor.putBoolean("checkboxBoolean", false);
-                editor.commit();
-            }
-
-
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+        } else {
+            showToast(TextUtils.isEmpty(bean.getMessage()) ? "登录失败~" : bean.getMessage());
         }
     }
 
@@ -336,7 +240,29 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
+    @OnClick({R.id.tv_code, R.id.btn_login_act_login})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_code:
+                tvCode.setClickable(false);
+                codeTimer.start();
+                break;
+            case R.id.btn_login_act_login:
+                if (mLoginType == 0) {
+                    mPresenter.login(getUsername(), getPassword(), mLoginType);
+                } else {
+                    // TODO: 2020/8/29 验证码登录
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
     

@@ -2,8 +2,9 @@ package com.xyj.strokeaid.http;
 
 
 import androidx.annotation.NonNull;
-import androidx.databinding.library.baseAdapters.BuildConfig;
 
+
+import com.xyj.strokeaid.BuildConfig;
 
 import java.io.IOException;
 
@@ -100,7 +101,7 @@ public class RetrofitClient {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     //设置网络请求的Url地址
-                    .baseUrl(ApiUrls.baseUrl)
+                    .baseUrl(ApiUrls.BASE_URL)
                     //设置数据解析器
                     .addConverterFactory(GsonConverterFactory.create())
                     //设置网络请求适配器，使其支持RxJava与RxAndroid
