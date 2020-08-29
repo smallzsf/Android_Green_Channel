@@ -1,7 +1,9 @@
 package com.xyj.strokeaid.activity.common;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,12 +64,10 @@ public class PatientGreenChannelActivity extends BaseActivity {
     TextView tvTitleActPgc;
     @BindView(R.id.tv_subtitle_act_pgc)
     TextView tvSubtitleActPgc;
-    @BindView(R.id.tv_menu_act_pgc)
-    TextView tvMenuActPgc;
     @BindView(R.id.tv_start_dis_time_act_pgc)
-    TextView tvStartDisTimeActPgc;
+    Chronometer tvStartDisTimeActPgc;
     @BindView(R.id.tv_in_hos_time_act_pgc)
-    TextView tvInHosTimeActPgc;
+    Chronometer tvInHosTimeActPgc;
     @BindView(R.id.rv_menu_act_pgc)
     RecyclerView rvMenuActPgc;
     @BindView(R.id.vp_content_act_pgc)
@@ -101,8 +101,13 @@ public class PatientGreenChannelActivity extends BaseActivity {
         rvMenuActPgc.setAdapter(mMenuRvAdapter);
 
         vpContentActPgc.setUserInputEnabled(false);
-        vpContentActPgc.setOffscreenPageLimit(Constants.GREEN_CHANNEL_STROKE_MENU_TITLES.length);
+        vpContentActPgc.setOffscreenPageLimit(4);
         vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientGreenChannelActivity.this, "", ""));
+
+        tvStartDisTimeActPgc.setBase(SystemClock.elapsedRealtime());
+        tvInHosTimeActPgc.setBase(SystemClock.elapsedRealtime());
+        tvStartDisTimeActPgc.start();
+        tvInHosTimeActPgc.start();
     }
 
     @Override
@@ -112,8 +117,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
                 if (mSelectedTab == position) {
                     // 选中相同的
-                    mMenuTitles.get(position).setChecked(!mMenuTitles.get(position).isChecked());
-                    mMenuRvAdapter.notifyItemChanged(position);
+                    return;
                 } else {
                     // 切换
                     for (int i = 0; i < mMenuTitles.size(); i++) {
@@ -137,7 +141,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick({R.id.iv_back_act_pgc, R.id.tv_title_act_pgc, R.id.tv_subtitle_act_pgc, R.id.tv_menu_act_pgc})
+    @OnClick({R.id.iv_back_act_pgc, R.id.tv_title_act_pgc, R.id.tv_subtitle_act_pgc})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back_act_pgc:
@@ -146,9 +150,6 @@ public class PatientGreenChannelActivity extends BaseActivity {
             case R.id.tv_title_act_pgc:
             case R.id.tv_subtitle_act_pgc:
                 // TODO: 2020/8/25 跳转用户信息页面
-                break;
-            case R.id.tv_menu_act_pgc:
-                // TODO: 2020/8/25 待定
                 break;
             default:
                 break;

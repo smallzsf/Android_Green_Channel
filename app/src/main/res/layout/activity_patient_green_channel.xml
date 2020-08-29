@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
+    android:background="@color/white"
     tools:context=".activity.common.PatientGreenChannelActivity">
 
     <ImageView
@@ -52,46 +52,65 @@
         app:layout_constraintStart_toEndOf="@id/iv_back_act_pgc"
         app:layout_constraintTop_toBottomOf="@id/tv_title_act_pgc" />
 
-    <TextView
-        android:id="@+id/tv_menu_act_pgc"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:paddingEnd="@dimen/dp_12"
-        android:text="菜单"
-        android:textColor="@color/white"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_back_act_pgc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_start_dis_time_act_pgc"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_margin="@dimen/dp_8"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="距离发病时间：\n2020-08-24 17:14:12"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@id/tv_in_hos_time_act_pgc"
+    <LinearLayout
+        android:id="@+id/ll_time_act_pgc"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F4F4F4"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pgc" />
+        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pgc">
 
-    <TextView
-        android:id="@+id/tv_in_hos_time_act_pgc"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_margin="@dimen/dp_8"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:text="距离入院时间：\n2020-08-24 18:14:12"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_start_dis_time_act_pgc"
-        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pgc" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Chronometer
+                android:id="@+id/tv_start_dis_time_act_pgc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="距离发病"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Chronometer
+                android:id="@+id/tv_in_hos_time_act_pgc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="距离入院"
+                android:textColor="@color/color_666666"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_menu_act_pgc"
@@ -100,19 +119,28 @@
         android:paddingTop="@dimen/dp_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_dis_time_act_pgc"
+        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pgc"
         tools:listitem="@layout/adapter_green_channel_menu_item" />
+
+    <View
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="0dp"
+        android:background="@color/color_DDDDDD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/vp_content_act_pgc"
+        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pgc"
+        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pgc" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_content_act_pgc"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:orientation="vertical"
         android:background="@color/white"
+        android:orientation="vertical"
         android:paddingTop="@dimen/dp_5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/rv_menu_act_pgc"
-        app:layout_constraintTop_toBottomOf="@id/tv_start_dis_time_act_pgc" />
+        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pgc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
