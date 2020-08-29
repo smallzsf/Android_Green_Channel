@@ -44,11 +44,11 @@ public class XyjCheckedTextView extends AppCompatTextView implements Checkable {
         }
         if (checked) {
             this.checked = true;
-            this.setBackground(new ColorDrawable(Color.WHITE));
+            this.setBackground(new ColorDrawable(getContext().getResources().getColor(R.color.colorPrimary22)));
             this.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
         } else {
             this.checked = false;
-            this.setBackground(new ColorDrawable(getContext().getResources().getColor(R.color.color_EEEEEE)));
+            this.setBackground(new ColorDrawable(Color.WHITE));
             this.setTextColor(getContext().getResources().getColor(R.color.color_222222));
         }
     }
