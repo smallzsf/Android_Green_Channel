@@ -11,7 +11,7 @@
         android:id="@+id/title_bar_act_tc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
-        app:title="溶栓禁忌症" />
+        app:title="介入禁忌症" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_content_act_tc"

@@ -6,6 +6,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -99,6 +100,7 @@ public class TransferFragment extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
             mDocId = getArguments().getString(IntentKey.DOC_ID);

@@ -119,6 +119,9 @@
         <activity
             android:name=".activity.stroke.FastEdActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.stroke.GetInvolvedIndicationsActivity" />
+        <activity android:name=".activity.stroke.GetInvolvedContraindicationsActivity" />
+        <activity android:name=".activity.stroke.GetInvolvedInformedConsentActivity" />
 
         <receiver
             android:name=".receiver.MyReceiver"

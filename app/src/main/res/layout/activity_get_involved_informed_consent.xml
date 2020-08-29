@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activity.stroke.ThrombolysisInformedConsentActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_tic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="介入知情同意"
+        app:titleSize="@dimen/sp_13" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar_act_tic"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_12">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="谈话医生"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                android:id="@+id/es_doc_act_tic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                app:Background="@drawable/bg_view_frame"
+                app:hint="请选择"
+                app:rightImage="@drawable/ic_arrow_down_blue" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_37"
+            android:layout_below="@+id/doctor_name_line"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="14dp"
+                android:text="开始知情"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_13" />
+
+            <TextView
+                android:id="@+id/tv_start_know"
+                style="@style/patient_et_style"
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="2.4"
+                android:focusable="false"
+                android:gravity="left"
+                android:hint="@string/app_default_time_example"
+                android:paddingLeft="@dimen/dp_10" />
+
+            <ImageView
+                android:id="@+id/iv_start_know_time_refresh"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:src="@drawable/ic_refresh" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_37"
+            android:layout_below="@+id/doctor_name_line"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp_10">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="14dp"
+                android:text="签署知情"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_13" />
+
+            <TextView
+                android:id="@+id/tv_sign_know"
+                style="@style/patient_et_style"
+                android:layout_width="@dimen/dp_0"
+                android:layout_weight="2.4"
+                android:focusable="false"
+                android:gravity="left"
+                android:hint="@string/app_default_time_example"
+                android:paddingLeft="@dimen/dp_10" />
+
+            <ImageView
+                android:id="@+id/iv_sign_know_time_refresh"
+                android:layout_width="@dimen/dp_22"
+                android:layout_height="@dimen/dp_22"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="2dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="2dp"
+                android:src="@drawable/ic_refresh" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="家属意见"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_13" />
+
+            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                android:id="@+id/es_family_opinion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                app:Background="@drawable/bg_view_frame"
+                app:hint="请选择"
+                app:rightImage="@drawable/ic_arrow_down_blue" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/app_eef3f7" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:layout_marginTop="@dimen/sp_11"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@drawable/shape_btn_blue_stroke"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dp_21"
+                android:src="@drawable/ic_attachment" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="@dimen/sp_12"
+                android:paddingLeft="@dimen/dp_5"
+                android:textColor="@color/app_158cd3"
+                android:text="查看知情同意书(0)" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:paddingRight="@dimen/dp_21"
+                android:src="@drawable/ic_shot" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:layout_marginTop="@dimen/sp_11"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@drawable/shape_btn_blue_stroke"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dp_21"
+                android:src="@drawable/ic_image" />
+
+            <TextView
+                android:id="@+id/tv_ecg_examine_and_shot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="@dimen/sp_12"
+                android:textColor="@color/app_158cd3"
+                android:paddingLeft="@dimen/dp_5"
+                android:text="介入治疗获益和风险示意图" />
+
+
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:layout_marginTop="@dimen/sp_11"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@drawable/shape_btn_blue_stroke"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/dp_21"
+                android:src="@drawable/ic_video" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textSize="@dimen/sp_12"
+                android:paddingLeft="@dimen/dp_5"
+                android:textColor="@color/app_158cd3"
+                android:text="介入知情谈话视频" />
+
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <include
+        layout="@layout/view_two_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

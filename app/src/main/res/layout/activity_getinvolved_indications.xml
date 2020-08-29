@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE"
+    tools:context=".activity.stroke.GetInvolvedIndicationsActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_tc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="介入适应症" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_content_act_tc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/inclue"
+        android:layout_below="@id/title_bar_act_tc"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:listitem="@layout/adapter_rv_stroke_thrombolysis_symptom_item" />
+
+    <include
+        android:id="@+id/inclue"
+        layout="@layout/view_two_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+    <!--  <com.xyj.strokeaid.view.BaseTitleBar
+          android:id="@+id/title_bar_act_ti"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/title_bar_height"
+          app:title="介入适应症" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/title_bar_act_ti"
+          android:background="@color/white"
+          android:orientation="vertical">
+
+          <com.xyj.strokeaid.view.TextSwitchBar
+              android:id="@+id/tsb_age_act_ti"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/item_normal_height"
+              app:tsb_switch="true"
+              app:tsb_title="@string/thrombolytic_indications_01" />
+
+          <com.xyj.strokeaid.view.TextSwitchBar
+              android:id="@+id/tsb_duration_act_ti"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/item_normal_height"
+              android:background="@color/color_EEEEEE"
+              app:tsb_switch="true"
+              app:tsb_title="@string/thrombolytic_indications_02" />
+
+          <com.xyj.strokeaid.view.TextSwitchBar
+              android:id="@+id/tsb_symptom_act_ti"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/item_normal_height"
+              app:tsb_switch="true"
+              app:tsb_title="@string/thrombolytic_indications_03" />
+
+      </LinearLayout>
+
+      <include
+          layout="@layout/view_two_bottom_button"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true" />
+  -->
+</RelativeLayout>

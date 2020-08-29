@@ -53,6 +53,18 @@ public final class RouteUrl {
         public static final String STROKE_THROMBOLYSIS_DELAY = "/app/stroke/t/delay";
         public static final String STROKE_INTRAVENOU_THROMBOLYSIS = "/app/stroke/sit";
 
+        /**
+         * 介入适应症
+         */
+        public static final String STROKE_GET_INVOLVED_INDICATIONS = "/app/stroke/involved_indications";
+        /**
+         * 介入禁忌症
+         */
+        public static final String STROKE_GET_INVOLVED_CONTRAINDICATIONS = "/app/stroke/involved_icontraindications";
+        /**
+         * 介入知情同意
+         */
+        public static final String STROKE_GET_INVOLVED_INFORMED_CONSENT = "/app/stroke/informedconsent";
 
 
     }
