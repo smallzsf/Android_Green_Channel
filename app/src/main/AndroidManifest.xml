@@ -18,7 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.detection.ImagingCheckActivity"></activity>
+        <activity android:name=".activity.stroke.StrokeOperationAfterActivity"></activity>
+        <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
+        <activity android:name=".activity.detection.ImagingCheckActivity" />
         <activity android:name=".activity.detection.PatientArrivalCtActivity" />
         <activity
             android:name=".activity.detection.IllnessRecordActivity"
@@ -107,8 +110,6 @@
         <activity
             android:name=".activity.common.PatientGreenChannelActivity"
             android:screenOrientation="portrait" />
-
-
         <activity
             android:name=".activity.stroke.VitalSignsActivity"
             android:screenOrientation="portrait"

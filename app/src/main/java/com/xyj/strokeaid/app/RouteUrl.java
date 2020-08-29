@@ -65,6 +65,9 @@ public final class RouteUrl {
          * 介入知情同意
          */
         public static final String STROKE_GET_INVOLVED_INFORMED_CONSENT = "/app/stroke/informedconsent";
+        public static final String STROKE_INVOLVED_OPERATION_AFTER = "/app/stroke/involved/operationafter";
+        public static final String STROKE_INVOLVED_OPERATION_BEFORE = "/app/stroke/involved/operationbefore";
+        public static final String STROKE_INVOLVED_OPERATION_ON = "/app/stroke/involved/operationon";
 
 
     }

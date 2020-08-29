@@ -89,9 +89,9 @@ public class StrokeGetInvolvedFragment extends BaseFragment {
         list.add(new StrokeProcessBean("介入适应症", "STT01", 1, "", RouteUrl.Stroke.STROKE_GET_INVOLVED_INDICATIONS, false));
         list.add(new StrokeProcessBean("介入禁忌症", "STT02", 1, "", RouteUrl.Stroke.STROKE_GET_INVOLVED_CONTRAINDICATIONS, false));
         list.add(new StrokeProcessBean("介入知情同意", "STT03", 1, "", RouteUrl.Stroke.STROKE_GET_INVOLVED_INFORMED_CONSENT, false));
-        list.add(new StrokeProcessBean("术前准备", "STT04", 1, "", null, false));
-        list.add(new StrokeProcessBean("术中准备", "STT05", 1, "", null, false));
-        list.add(new StrokeProcessBean("术后准备", "STT06", 1, "",null, false));
+        list.add(new StrokeProcessBean("术前准备", "STT04", 1, "", RouteUrl.Stroke.STROKE_INVOLVED_OPERATION_BEFORE, false));
+        list.add(new StrokeProcessBean("术中准备", "STT05", 1, "", RouteUrl.Stroke.STROKE_INVOLVED_OPERATION_ON, false));
+        list.add(new StrokeProcessBean("术后准备", "STT06", 1, "",RouteUrl.Stroke.STROKE_INVOLVED_OPERATION_AFTER, false));
         return list;
     }
 

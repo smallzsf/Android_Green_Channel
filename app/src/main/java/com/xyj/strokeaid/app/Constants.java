@@ -13,11 +13,7 @@ import com.xyj.strokeaid.R;
 public class Constants {
 
     public static final String[] HOME_TAB_TITLES = new String[]{"急救中", "已转归", "已上报"};
-    public static final int[] HOME_TAB_SELECTED_ICONS =
-            new int[]{R.drawable.tab_home_select, R.drawable.tab_contact_select, R.drawable.tab_contact_select};
-    public static final int[] HOME_TAB_UNSELECTED_ICONS =
-            new int[]{R.drawable.tab_home_unselect, R.drawable.tab_contact_unselect, R.drawable.tab_contact_unselect};
-
+    public static final String[] LOGIN_TAB_TITLE = new String[]{"密码登录", "验证码登录"};
     public static final String[] STROKE_TAB_TITLES = new String[]{"分诊", "检诊", "治疗", "转归"};
     public static final String[] STROKE_OTHER_DISPOSAL_TITLES = new String[]{"康复治疗", "健康教育"};
     public static final String[] STROKE_MEDICATION_TITLES = new String[]{"静脉溶栓", "住院用药","出院带药"};
