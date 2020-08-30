@@ -575,5 +575,6 @@
     <dimen name="vital_sign_item_margin_left_right">20dp</dimen>
     <dimen name="vital_sign_title_width">90dp</dimen>
     <dimen name="vital_sign_unit_width">50dp</dimen>
+    <dimen name="login_item_title">58dp</dimen>
 
 </resources>

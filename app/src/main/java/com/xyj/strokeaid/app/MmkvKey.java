@@ -13,6 +13,9 @@ public final class MmkvKey {
     public static final String LOGIN_NAME = "LOGIN_NAME";
     public static final String LOGIN_PWD = "LOGIN_PWD";
     public static final String LOGIN_PHONE = "LOGIN_PHONE";
+    public static final String LOGIN_REMEMBRE = "LOGIN_REMEMBRE";
+    public static final String TOKEN = "TOKEN";
+    public static final String LOGIN_USER_INFO = "LOGIN_USER_INFO";
 
 }
 

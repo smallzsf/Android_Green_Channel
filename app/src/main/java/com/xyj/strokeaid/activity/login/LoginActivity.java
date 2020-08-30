@@ -3,14 +3,16 @@ package com.xyj.strokeaid.activity.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -25,6 +27,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
 import com.xyj.strokeaid.helper.CodeTimer;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.presenter.LoginPresenter;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -65,8 +68,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     LinearLayout llPhoneActLogin;
     @BindView(R.id.btn_login_act_login)
     AppCompatButton btnLoginActLogin;
+    @BindView(R.id.tb_ensure_pwd_act_login)
+    ToggleButton tbEnsurePwdActLogin;
 
     CodeTimer codeTimer;
+
     /**
      * 0  帐号密码登录
      * 1  手机号验证码登录
@@ -102,19 +108,29 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         });
 
         etNameActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_NAME));
+        etPwdActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_PWD));
+        cbRemembreActLogin.setChecked(mDefaultMMKV.decodeBool(MmkvKey.LOGIN_REMEMBRE));
 
+        etPhoneActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_PHONE));
     }
 
     @Override
     public void initListener() {
-        cbRemembreActLogin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    buttonView.setTextColor(getResources().getColor(R.color.colorPrimary));
-                }else {
-                    buttonView.setTextColor(getResources().getColor(R.color.color_999999));
-                }
+        cbRemembreActLogin.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                buttonView.setTextColor(getResources().getColor(R.color.colorPrimary));
+            } else {
+                buttonView.setTextColor(getResources().getColor(R.color.color_999999));
+            }
+        });
+
+        tbEnsurePwdActLogin.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                // 密码可见
+                etPwdActLogin.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            } else {
+                // 密码不可见
+                etPwdActLogin.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
 
@@ -196,23 +212,25 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
         if (bean.getResult() == 1) {
             if (flag == 0) {
-                // 帐号密码登录 通过
+                // 帐号密码登录 登录成功
+                // 保存登录信息
+                mDefaultMMKV.encode(MmkvKey.LOGIN_USER_INFO, GsonUtils.getGson().toJson(bean.getData()));
+                mDefaultMMKV.encode(MmkvKey.TOKEN, bean.getData().getPassword());
+                mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, etNameActLogin.getText().toString().trim());
                 boolean isRememberPwd = cbRemembreActLogin.isChecked();
-                //按钮被选中，下次进入时会显示账号和密码
+                mDefaultMMKV.encode(MmkvKey.LOGIN_REMEMBRE, isRememberPwd);
                 if (isRememberPwd) {
-                    mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, etNameActLogin.getText().toString().trim());
+                    // 按钮被选中，退出再登录时会自动填充帐号密码
                     mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, etPwdActLogin.getText().toString().trim());
-                    mDefaultMMKV.apply();
                 } else {
-                    //按钮被选中，清空账号和密码，下次进入时会显示账号和密码
-                    mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, "");
+                    // 按钮未被选中，清空账号和密码，下次进入时会显示账号和密码
                     mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, "");
-                    mDefaultMMKV.apply();
                 }
+
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {
-                // 通过
+                // 手机号验证码登陆  登录成功
                 mDefaultMMKV.encode(MmkvKey.LOGIN_PHONE, etPhoneActLogin.getText().toString().trim());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);

@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.stroke.StrokeOperationAfterActivity"></activity>
+
+        <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
         <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
         <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
         <activity android:name=".activity.detection.ImagingCheckActivity" />
@@ -28,13 +29,18 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
-        <activity android:name=".activity.login.LoginActivity">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="android.max_aspect"
