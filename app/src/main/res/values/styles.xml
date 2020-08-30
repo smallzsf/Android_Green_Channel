@@ -16,10 +16,22 @@
         <item name="android:textSize">12dp</item>
     </style>
 
+    <style name="horizontal_divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/color_divider</item>
+    </style>
+
+    <style name="vertical_divider">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/color_divider</item>
+    </style>
+
     <style name="tv_normal_titel">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_222222</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="tv_small">

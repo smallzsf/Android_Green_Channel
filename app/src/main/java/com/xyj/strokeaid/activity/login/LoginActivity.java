@@ -1,19 +1,24 @@
 package com.xyj.strokeaid.activity.login;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.tabs.TabLayout;
 import com.gyf.immersionbar.ImmersionBar;
@@ -72,12 +77,20 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     ToggleButton tbEnsurePwdActLogin;
 
     CodeTimer codeTimer;
+    @BindView(R.id.ll_content_act_login)
+    LinearLayout llContentActLogin;
+    @BindView(R.id.cl_root_act_login)
+    ConstraintLayout clRootActLogin;
+    @BindView(R.id.sl_content_act_login)
+    ScrollView slContentActLogin;
 
     /**
      * 0  帐号密码登录
      * 1  手机号验证码登录
      */
     private int mLoginType = 0;
+    private boolean isSoftKeyBoradShow = false;
+    private int mMaxSrollHeight = 0;
 
     @Override
     public int getLayoutId() {
@@ -122,6 +135,40 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         cbRemembreActLogin.setChecked(mDefaultMMKV.decodeBool(MmkvKey.LOGIN_REMEMBRE));
 
         etPhoneActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_PHONE));
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        clRootActLogin.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                Rect rect = new Rect();
+                //1、获取main在窗体的可视区域
+                clRootActLogin.getWindowVisibleDisplayFrame(rect);
+                //2、获取main在窗体的不可视区域高度，在键盘没有弹起时，main.getRootView().getHeight()调节度应该和rect.bottom高度一样
+                int mainInvisibleHeight = clRootActLogin.getRootView().getHeight() - rect.bottom;
+                int screenHeight = clRootActLogin.getRootView().getHeight();//屏幕高度
+                //3、不可见区域大于屏幕本身高度的1/4：说明键盘弹起了
+                int[] location = new int[2];
+                llContentActLogin.getLocationInWindow(location);
+                if (mainInvisibleHeight > screenHeight / 4) {
+                    // 4､获取Scroll的窗体坐标，算出main需要滚动的高度
+                    int srollHeight = (location[1] + llContentActLogin.getHeight()) - rect.bottom;
+                    mMaxSrollHeight = Math.max(mMaxSrollHeight, screenHeight);
+                    //5､让界面整体上移键盘的高度
+                    slContentActLogin.scrollTo(0, mMaxSrollHeight);
+                    slContentActLogin.setOnTouchListener((v, event) -> true);
+                } else {
+                    isSoftKeyBoradShow = false;
+                    //3、不可见区域小于屏幕高度1/4时,说明键盘隐藏了，把界面下移，移回到原有高度
+                    slContentActLogin.scrollTo(0, 0);
+                    slContentActLogin.setOnTouchListener((v, event) -> false);
+                }
+            }
+        });
     }
 
     @Override

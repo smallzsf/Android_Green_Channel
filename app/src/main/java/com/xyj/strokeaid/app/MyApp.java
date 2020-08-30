@@ -40,7 +40,7 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
         // 添加debug模式下的配置
         if (BuildConfig.DEBUG) {
             // DoraemonKit
-            DoraemonKit.install(this);
+//            DoraemonKit.install(this);
             // 打印日志
             ARouter.openLog();
             ARouter.openDebug();

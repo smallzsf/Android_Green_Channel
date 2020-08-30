@@ -26,6 +26,10 @@
     <color name="color_99000000">#99000000</color>
     <color name="color_F1F1F1">#F1F1F1</color>
 
+    <color name="color_divider">#DCDCDC</color>
+    <color name="color_hint">#999999</color>
+    <color name="color_normal_stroke">#EEEEEE</color>
+    <color name="color_normal_text">#444444</color>
 
     <color name="color_46525f">#9946525f</color>
 

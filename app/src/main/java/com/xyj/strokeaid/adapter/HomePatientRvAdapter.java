@@ -40,9 +40,7 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
                 .setText(R.id.tv_age_item_patient, getContext().getString(R.string.patient_age_with_para, homePatientBean.getAge()))
                 .setText(R.id.tv_disease_type_item_patient, getDiseaseNameByType(homePatientBean.getDiseaseType()))
                 .setText(R.id.tv_start_time_item_patient, getContext().getString(R.string.patient_start_disease_time, homePatientBean.getStartDiseaseTime()))
-                .setText(R.id.tv_end_time_item_patient, getContext().getString(R.string.patient_start_green_channel, homePatientBean.getStartGreenChannelTime()))
-                .setText(R.id.tv_nurse_time_item_patient, getContext().getString(R.string.patient_receiver_nurse, homePatientBean.getNurseName()))
-                .setText(R.id.tv_doctor_time_item_patient, getContext().getString(R.string.patient_stroke_doc, homePatientBean.getDocName()));
+                .setText(R.id.tv_end_time_item_patient, getContext().getString(R.string.patient_start_green_channel, homePatientBean.getStartGreenChannelTime()));
 
         ImageView imageView = baseViewHolder.getView(R.id.iv_sex_item_patient);
         if (homePatientBean.getSex() == 1) {

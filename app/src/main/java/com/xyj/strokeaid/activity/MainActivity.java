@@ -35,6 +35,7 @@ import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.HomePatientBean;
@@ -42,6 +43,7 @@ import com.xyj.strokeaid.bean.TabEntity;
 import com.xyj.strokeaid.contract.MainContract;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
 import com.xyj.strokeaid.presenter.MainPresenter;
+import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,8 +63,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @BindView(R.id.tv_user_act_main)
     TextView tvUserActMain;
-    @BindView(R.id.iv_add_act_main)
-    ImageView ivAddActMain;
     @BindView(R.id.rl_title_act_main)
     RelativeLayout rlTitleActMain;
     @BindView(R.id.et_search_view_search)
@@ -77,6 +77,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     TextView tvDiseaseViewSearch;
     @BindView(R.id.iv_search_view_search)
     ImageView ivSearchViewSearch;
+    @BindView(R.id.title_bar_act_main)
+    BaseTitleBar titleBarActMain;
 
     private HomePatientRvAdapter mPatientRvAdapter;
     private List<HomePatientBean> mPatientBeans;
@@ -115,6 +117,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         // 设置 tab
         initTab();
 
+        // 初始化用户信息
+        tvUserActMain.setText(UserInfoCache.getInstance().getUserInfo().getName());
+
         // 初始化rv数据
         mPatientBeans = new ArrayList<>();
         mPatientBeans.add(new HomePatientBean("张三", 58, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
@@ -124,7 +129,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         // 设置rv
         rvContentActMain.setLayoutManager(new LinearLayoutManager(mContext));
         if (rvContentActMain.getItemDecorationCount() == 0) {
-            rvContentActMain.addItemDecoration(new SpacesItemDecoration(12, 5, 12, 5, LinearLayout.VERTICAL));
+            rvContentActMain.addItemDecoration(new SpacesItemDecoration(10, 10, 10, 10, LinearLayout.VERTICAL));
         }
         rvContentActMain.setAdapter(mPatientRvAdapter);
         mPatientRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
@@ -145,6 +150,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     public void initListener() {
 
+        titleBarActMain.setRightLayoutClickListener(v ->
+                startActivity(new Intent(mContext, NewChestXRayActivity.class)));
         etSearchViewSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -186,16 +193,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     }
 
-    @OnClick({R.id.tv_user_act_main, R.id.iv_add_act_main,
-            R.id.tv_disease_view_search, R.id.iv_search_view_search})
+    @OnClick({R.id.tv_user_act_main, R.id.tv_disease_view_search, R.id.iv_search_view_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_user_act_main:
                 startActivity(new Intent(mContext, AccountActivity.class));
-                break;
-            case R.id.iv_add_act_main:
-                // TODO: 2020/8/19 跳转添加页面
-                startActivity(new Intent(mContext, NewChestXRayActivity.class));
                 break;
             case R.id.tv_disease_view_search:
                 showPopWindow(mContext, tvDiseaseViewSearch);
@@ -286,7 +288,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             tvDiseaseViewSearch.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.common_icon_white_arrow_up, 0);
             mDiseasePop.showAsDropDown(anchor);
             WindowManager.LayoutParams lp = getWindow().getAttributes();
-            lp.alpha = 0.3f;
+            lp.alpha = 0.8f;
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             getWindow().setAttributes(lp);
         }

@@ -25,6 +25,7 @@
     <dimen name="menu_text_size">14sp</dimen>
     <dimen name="item_title_size">13sp</dimen>
     <dimen name="item_content_size">12sp</dimen>
+    <dimen name="text_common_size">14sp</dimen>
 
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
