@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".activity.stroke.StrokeOperationBeforeActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_stroke_after"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="术后结果" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="并发症："
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <CheckBox
+                    android:id="@+id/checkbox_no_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="无"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_ngs_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="脑梗死"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_ggz_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="高灌注"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_ncx_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="脑出血"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <CheckBox
+                    android:id="@+id/checkbox_zwsjss_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="周围神经损伤"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_qkgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="切口感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_jfxdx_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="继发性癫痫"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <CheckBox
+                    android:id="@+id/checkbox_fbgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="肺部感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_mnxtgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="泌尿系统感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_qt_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他："
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:layout_marginTop="@dimen/dp_1"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:minWidth="60dp"
+                android:text="手术意外终止:"
+                android:textColor="@color/color_222222"
+                android:textSize="14dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_yes_act_stroke_after"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="是"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_no_act_stroke_after"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="否"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_zzyy_act_stroke_after"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_90"
+            android:layout_marginTop="@dimen/dp_7"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="start"
+            android:hint="终止原因"
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingTop="@dimen/dp_6"
+            android:textSize="@dimen/sp_14" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:layout_marginTop="@dimen/dp_1"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:minWidth="60dp"
+                android:text="是否延误:"
+                android:textColor="@color/color_222222"
+                android:textSize="14dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_delay_yes_act_stroke_after"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="是"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_delay_no_act_stroke_after"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="否"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/dp_14"
+            android:text="延误原因:" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_no_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="无"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_ngs_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="脑梗死"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_ggz_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="高灌注"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_ncx_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="脑出血"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_zwsjss_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="周围神经损伤"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_qkgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="切口感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_jfxdx_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="继发性癫痫"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_fbgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="肺部感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_mnxtgr_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="泌尿系统感染"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_delay_qt_act_stroke_after"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textColor="@color/color_666666"
+                    android:textSize="@dimen/sp_13" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
