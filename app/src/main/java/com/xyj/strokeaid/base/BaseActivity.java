@@ -47,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initImmersionBar();
         mContext = this;
         mDefaultMMKV = MMKV.defaultMMKV();
         int id = getLayoutId();
@@ -60,6 +61,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initView();
         initListener();
 
+
+    }
+
+    protected void initImmersionBar(){
         // 初始化沉浸式状态栏
         ImmersionBar.with(this)
                 .statusBarColor(R.color.colorPrimary)
