@@ -84,17 +84,38 @@
         app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
 
     <TextView
+        android:id="@+id/tv_detail_item_patient"
         android:layout_width="wrap_content"
-        android:layout_height="27dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
         android:background="@drawable/shape_primary_color_stroke_corner_3"
         android:gravity="center"
         android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_5"
         android:paddingEnd="@dimen/dp_12"
-        android:textSize="@dimen/text_common_size"
-        android:layout_marginTop="@dimen/dp_5"
+        android:paddingBottom="@dimen/dp_5"
+        android:text="查看详情"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient"
+        android:textSize="@dimen/text_common_size"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="查看详情"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_time_node_item_patient"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@drawable/shape_primary_color_stroke_corner_3"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_5"
+        android:text="时间轴"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_common_size"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_item_patient"
+        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -66,7 +67,6 @@ public abstract class BaseFragment extends Fragment {
                 });
             }
         }
-
         mDefaultMMKV = MMKV.defaultMMKV();
         mUnbinder = ButterKnife.bind(this, mRootView);
         initView(mRootView);

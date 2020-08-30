@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
+    android:layout_width="60dp"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_corner_6_with_white"
     android:gravity="center"
@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tv_stroke_pop_diseases"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
         android:text="卒中"
@@ -16,13 +16,13 @@
         android:textSize="14sp" />
 
     <View
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/color_divider" />
 
     <TextView
         android:id="@+id/tv_chest_pain_pop_diseases"
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
         android:text="胸痛"

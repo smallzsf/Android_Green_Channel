@@ -12,34 +12,45 @@
         android:id="@+id/rl_title_act_main"
         android:layout_width="match_parent"
         android:layout_height="89dp"
-        android:paddingStart="@dimen/dp_4"
-        android:paddingEnd="@dimen/dp_4"
-        android:paddingBottom="@dimen/dp_4"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_4">
 
-        <com.xyj.strokeaid.view.BaseTitleBar
-            android:id="@+id/title_bar_act_main"
+        <TextView
             android:layout_width="match_parent"
-            app:title="@string/app_name"
-            app:rightIconVisible="true"
-            app:rightIcon="@drawable/icon_add"
-            app:leftIconVisible="false"
-            android:layout_height="@dimen/title_bar_height"/>
-
+            android:layout_height="@dimen/title_bar_height"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_user_act_main"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/title_bar_height"
-            android:drawablePadding="@dimen/dp_4"
+            android:drawablePadding="@dimen/dp_6"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:maxLength="5"
+            android:maxLength="6"
             android:singleLine="true"
-            android:textColor="@color/color_FFFFFF"
-            android:textSize="13sp"
-            app:drawableStartCompat="@drawable/icon_user"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/icon_doc"
             tools:text="刘杰" />
+
+        <TextView
+            android:id="@+id/tv_add_act_main"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/title_bar_height"
+            android:layout_alignParentEnd="true"
+            android:drawablePadding="@dimen/dp_6"
+            android:gravity="center"
+            android:text="新增患者"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:drawableStartCompat="@drawable/icon_add_patient" />
 
         <include
             layout="@layout/view_search"

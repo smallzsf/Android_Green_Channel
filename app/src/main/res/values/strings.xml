@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">急救绿道</string>
+    
+    <string name="sex_and_age_with_para">性别年龄：%s</string>
+
+    
     <string name="tab_home">首页</string>
     <string name="tab_video">视频</string>
     <string name="tab_micro">微头条</string>

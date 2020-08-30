@@ -4,59 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_FFFFFF"
-    android:padding="@dimen/dp_12">
+    android:background="@color/white"
+    android:paddingBottom="@dimen/dp_12">
 
     <TextView
         android:id="@+id/tv_name_item_patient"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/item_patient_text_height"
-        android:gravity="center"
-        android:minWidth="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/dp_12"
+        android:gravity="center_vertical"
         android:textColor="@color/color_222222"
-        android:textSize="14sp"
+        android:textSize="@dimen/text_common_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="患者202008082017" />
-
-    <ImageView
-        android:id="@+id/iv_sex_item_patient"
-        android:layout_width="@dimen/dp_18"
-        android:layout_height="@dimen/dp_18"
-        android:layout_marginStart="@dimen/dp_12"
-        android:src="@drawable/icon_sex_man"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name_item_patient"
-        app:layout_constraintStart_toEndOf="@id/tv_name_item_patient"
-        app:layout_constraintTop_toTopOf="@id/tv_name_item_patient" />
-
-    <TextView
-        android:id="@+id/tv_age_item_patient"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/dp_12"
-        android:text="@string/patient_age_with_para"
-        android:textColor="@color/color_222222"
-        android:textSize="13sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/tv_name_item_patient"
-        app:layout_constraintStart_toEndOf="@id/iv_sex_item_patient" />
+        tools:text="江流儿" />
 
     <TextView
         android:id="@+id/tv_disease_type_item_patient"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:background="@drawable/shape_blue_stroke"
-        android:gravity="center"
-        android:paddingStart="@dimen/dp_8"
-        android:paddingTop="@dimen/dp_2"
-        android:paddingEnd="@dimen/dp_8"
-        android:paddingBottom="@dimen/dp_2"
-        android:text="@string/disease_type_stroke"
-        android:textColor="@color/color_00ACFF"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_name_item_patient"
-        app:layout_constraintStart_toEndOf="@id/tv_age_item_patient"
-        app:layout_constraintTop_toTopOf="@id/tv_name_item_patient" />
+        android:layout_height="40dp"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:gravity="center_vertical"
+        android:text="卒中"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_name_item_patient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        style="@style/horizontal_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_item_patient" />
+
+    <TextView
+        android:id="@+id/tv_sex_and_age_item_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_patient_text_height"
+        android:gravity="center_vertical"
+        android:text="@string/sex_and_age_with_para"
+        android:textColor="@color/color_222222"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name_item_patient"
+        app:layout_constraintTop_toBottomOf="@id/tv_name_item_patient" />
+
 
     <TextView
         android:id="@+id/tv_start_time_item_patient"
@@ -65,8 +56,9 @@
         android:gravity="center"
         android:text="@string/patient_start_disease_time"
         android:textColor="@color/color_222222"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_name_item_patient" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_name_item_patient"
+        app:layout_constraintTop_toBottomOf="@id/tv_sex_and_age_item_patient" />
 
     <TextView
         android:id="@+id/tv_end_time_item_patient"
@@ -75,39 +67,47 @@
         android:gravity="center"
         android:text="@string/patient_start_green_channel"
         android:textColor="@color/color_222222"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_name_item_patient"
         app:layout_constraintTop_toBottomOf="@id/tv_start_time_item_patient" />
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:background="@color/color_EEEEEE"
+        style="@style/horizontal_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
 
     <TextView
-        android:id="@+id/tv_nurse_time_item_patient"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_patient_text_height"
-        android:gravity="center_vertical"
-        android:text="@string/patient_receiver_nurse"
-        android:textColor="@color/color_222222"
-        app:layout_constraintEnd_toStartOf="@id/tv_doctor_time_item_patient"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
-
-    <TextView
-        android:id="@+id/tv_doctor_time_item_patient"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/item_patient_text_height"
-        android:gravity="center_vertical"
-        android:text="@string/patient_stroke_doc"
-        android:textColor="@color/color_222222"
-        app:layout_constraintBottom_toBottomOf="@id/tv_nurse_time_item_patient"
+        android:id="@+id/tv_detail_item_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/shape_primary_color_stroke_corner_3"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_5"
+        android:text="查看详情"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_common_size"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toEndOf="@id/tv_nurse_time_item_patient"
-        app:layout_constraintTop_toTopOf="@id/tv_nurse_time_item_patient" />
+        app:layout_constraintTop_toBottomOf="@id/tv_end_time_item_patient" />
+
+    <TextView
+        android:id="@+id/tv_time_node_item_patient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@drawable/shape_primary_color_stroke_corner_3"
+        android:gravity="center"
+        android:paddingStart="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_5"
+        android:paddingEnd="@dimen/dp_12"
+        android:paddingBottom="@dimen/dp_5"
+        android:text="查看时间轴"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_common_size"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_detail_item_patient"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_item_patient" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

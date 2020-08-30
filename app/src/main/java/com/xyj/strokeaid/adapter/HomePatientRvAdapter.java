@@ -1,7 +1,5 @@
 package com.xyj.strokeaid.adapter;
 
-import android.widget.ImageView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.xyj.strokeaid.R;
@@ -29,25 +27,20 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
     int mPatientType;
 
     public HomePatientRvAdapter(@Nullable List<HomePatientBean> data, int diseaseType, int patientType) {
-        super(R.layout.adapter_rv_relation_patient_info_item, data);
+        super(R.layout.adapter_rv_home_patient_item, data);
         this.mDiseaseType = diseaseType;
         this.mPatientType = patientType;
+        addChildClickViewIds(R.id.tv_detail_item_patient, R.id.tv_time_node_item_patient);
     }
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, HomePatientBean homePatientBean) {
         baseViewHolder.setText(R.id.tv_name_item_patient, homePatientBean.getName())
-                .setText(R.id.tv_age_item_patient, getContext().getString(R.string.patient_age_with_para, homePatientBean.getAge()))
+                .setText(R.id.tv_sex_and_age_item_patient,
+                        getContext().getString(R.string.sex_and_age_with_para, getSexAndAgeString(homePatientBean.getSex(), homePatientBean.getAge())))
                 .setText(R.id.tv_disease_type_item_patient, getDiseaseNameByType(homePatientBean.getDiseaseType()))
                 .setText(R.id.tv_start_time_item_patient, getContext().getString(R.string.patient_start_disease_time, homePatientBean.getStartDiseaseTime()))
                 .setText(R.id.tv_end_time_item_patient, getContext().getString(R.string.patient_start_green_channel, homePatientBean.getStartGreenChannelTime()));
-
-        ImageView imageView = baseViewHolder.getView(R.id.iv_sex_item_patient);
-        if (homePatientBean.getSex() == 1) {
-            imageView.setImageResource(R.drawable.icon_sex_man);
-        } else {
-            imageView.setImageResource(R.drawable.icon_sex_woman);
-        }
     }
 
 
@@ -59,6 +52,20 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
         } else {
             return "";
         }
+    }
+
+
+    private String getSexAndAgeString(int sex, int age) {
+        StringBuilder stringBuilder = new StringBuilder();
+        if (sex == 1) {
+            stringBuilder.append("男");
+        } else if (sex == 2) {
+            stringBuilder.append("女");
+        } else {
+            stringBuilder.append("未知");
+        }
+        return stringBuilder.append("-").append(age).append("岁").toString();
+
     }
 }
 

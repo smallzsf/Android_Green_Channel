@@ -43,7 +43,6 @@ import com.xyj.strokeaid.bean.TabEntity;
 import com.xyj.strokeaid.contract.MainContract;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
 import com.xyj.strokeaid.presenter.MainPresenter;
-import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,8 +76,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     TextView tvDiseaseViewSearch;
     @BindView(R.id.iv_search_view_search)
     ImageView ivSearchViewSearch;
-    @BindView(R.id.title_bar_act_main)
-    BaseTitleBar titleBarActMain;
+    @BindView(R.id.tv_add_act_main)
+    TextView tvAddActMain;
 
     private HomePatientRvAdapter mPatientRvAdapter;
     private List<HomePatientBean> mPatientBeans;
@@ -150,7 +149,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     public void initListener() {
 
-        titleBarActMain.setRightLayoutClickListener(v ->
+        tvAddActMain.setOnClickListener(v ->
                 startActivity(new Intent(mContext, NewChestXRayActivity.class)));
         etSearchViewSearch.addTextChangedListener(new TextWatcher() {
             @Override
