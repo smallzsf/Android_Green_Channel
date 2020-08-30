@@ -23,7 +23,7 @@
             android:gravity="center_vertical"
             android:text="@string/app_rating_results"
             android:textColor="@color/color_222222"
-            android:textSize="14sp" />
+            android:textSize="@dimen/item_title_size" />
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_opinion_frag_nihss"

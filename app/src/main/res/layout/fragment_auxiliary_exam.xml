@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center|left"
                     android:text="检查类型" />
 
                 <RadioGroup
@@ -56,6 +57,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textSize="@dimen/item_content_size"
                         android:text="血液检查" />
 
                     <RadioButton
@@ -65,6 +67,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CT平扫"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -74,6 +77,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CTA"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -83,6 +87,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CTP"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -92,6 +97,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="MRI"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -101,6 +107,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="MRA"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -110,6 +117,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CE-MRA"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -119,6 +127,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="颈部血管超声"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                     <RadioButton
@@ -128,6 +137,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="TCD"
+                        android:textSize="@dimen/item_content_size"
                         android:visibility="gone" />
 
                 </RadioGroup>
@@ -157,6 +167,7 @@
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:paddingStart="@dimen/dp_12"
+                android:gravity="center|left"
                 android:text="诊断结果" />
 
             <LinearLayout
@@ -179,7 +190,7 @@
                     android:padding="10dp"
                     android:textColor="@color/color_222222"
                     android:textColorHint="@color/color_999999"
-                    android:textSize="13sp" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/tv_result_length_frag_ae"
@@ -209,6 +220,7 @@
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dp_18"
                     android:text="@string/view_ecg_report_tips"
+                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/color_222222"
                     tl:drawableStartCompat="@drawable/ic_image" />
 
@@ -240,6 +252,7 @@
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dp_18"
                     android:text="@string/view_ecg_report_tips"
+                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/color_222222"
                     tl:drawableStartCompat="@drawable/ic_image" />
 

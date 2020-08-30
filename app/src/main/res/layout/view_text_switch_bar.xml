@@ -18,7 +18,7 @@
         android:gravity="center_vertical"
         android:lineSpacingMultiplier="1.2"
         android:textColor="@color/color_222222"
-        android:textSize="14dp"
+        android:textSize="@dimen/item_title_size"
         tools:text="dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd" />
 
     <androidx.appcompat.widget.SwitchCompat

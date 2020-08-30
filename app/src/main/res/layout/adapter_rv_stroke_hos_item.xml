@@ -12,7 +12,7 @@
         android:paddingStart="@dimen/dp_12"
         android:text="卒中中心医院"
         android:textColor="@color/color_222222"
-        android:textSize="16dp" />
+        android:textSize="@dimen/item_title_size" />
 
     <TextView
         android:id="@+id/tv_phone_item_stroke_hos"
@@ -23,7 +23,7 @@
         android:paddingStart="@dimen/dp_12"
         android:text="联系电话 0371-66669999"
         android:textColor="@color/color_666666"
-        android:textSize="14dp" />
+        android:textSize="@dimen/item_content_size" />
 
     <ImageView
         android:id="@+id/iv_call_item_stroke_hos"

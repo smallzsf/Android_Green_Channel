@@ -19,7 +19,7 @@
         android:layout_marginTop="@dimen/dp_5"
         android:layout_toEndOf="@id/iv_item_time_node"
         android:textColor="@color/color_222222"
-        android:textSize="13sp"
+        android:textSize="@dimen/item_title_size"
         tools:text="发病时间" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_marginTop="@dimen/dp_5"
         android:layout_toEndOf="@id/iv_item_time_node"
         android:textColor="@color/color_222222"
-        android:textSize="13sp"
+        android:textSize="@dimen/item_content_size"
         tools:text="2020-08-26 17:27:00" />
 
     <ImageView

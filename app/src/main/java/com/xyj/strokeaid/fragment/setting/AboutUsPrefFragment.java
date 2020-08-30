@@ -2,8 +2,8 @@ package com.xyj.strokeaid.fragment.setting;
 
 
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceFragment;
+
 
 import com.xyj.strokeaid.R;
 

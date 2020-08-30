@@ -35,8 +35,6 @@ import butterknife.BindView;
 public class DiagnosticEvaluationFragment extends BaseFragment {
 
 
-    @BindView(R.id.stl_title_frag_diagnostic_evaluation)
-    SegmentTabLayout stlTitleFragDiagnosticEvaluation;
     @BindView(R.id.rb_acute)
     RadioButton rbAcute;
     @BindView(R.id.rb_progressivity)
@@ -101,7 +99,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner esApoplexyDoctor;
     private String mPatientId;
     private String mDocId;
-    public static final String[] STROKE_DIAGNOSTIC_EVALUATIONva_TITLES = new String[]{"入院诊断", "出院诊断"};
+
     private ArrayList<String> nosogenesisList;
 
     /**
@@ -138,8 +136,14 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        stlTitleFragDiagnosticEvaluation.setTabData(STROKE_DIAGNOSTIC_EVALUATIONva_TITLES);
+        loadData();
+    }
 
+
+    @Override
+    protected void initListener() {
+
+        //起病方式
         rgHaveDiseaseWay.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -159,33 +163,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             }
         });
 
-        loadData();
-
-
-    }
-
-
-    @Override
-    protected void initListener() {
-        stlTitleFragDiagnosticEvaluation.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                if (position == 1) {
-                    //入院诊断
-
-                } else {
-                    //出院诊断
-
-                }
-
-            }
-
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-
+        //诊断结果
         esDiagnosis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
@@ -218,10 +196,11 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             }
         });
 
+        //发病机制
         etNosogenesis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
-                Toast.makeText(mActivity, text, Toast.LENGTH_SHORT).show();
+
                 if (text.contains("其他原因所致的缺血性卒中（SOE）")) {
                     llMoyamoyaDisease.setVisibility(View.VISIBLE);
                 } else {
@@ -230,7 +209,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             }
         });
 
-
+        //烟雾病
         rgMoyamoyaDisease.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

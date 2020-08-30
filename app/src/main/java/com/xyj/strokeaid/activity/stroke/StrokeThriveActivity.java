@@ -29,7 +29,7 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.Stroke.STROKE_THRIVE_SCORE)
-public class StrokeThriveActivity extends BaseActivity {
+public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.OnScoreChangedListener {
     @BindView(R.id.title_bar_act_nihss)
     BaseTitleBar titleBarActNihss;
     @BindView(R.id.ll_score_act_nihss)
@@ -73,7 +73,10 @@ public class StrokeThriveActivity extends BaseActivity {
     String mDocId;
     @BindView(R.id.tv_result_score)
     TextView tvResultScore;
-
+    /**
+     * 总分
+     */
+    private int mTotalScore = 0;
 
     @Override
     public int getLayoutId() {
@@ -97,7 +100,7 @@ public class StrokeThriveActivity extends BaseActivity {
         nihssItemBars.add(nib2ActNihss);
         nihssItemBars.add(nib3ActNihss);
 
-   /*     nihssItemBars.add(nib4ActNihss);
+/*        nihssItemBars.add(nib4ActNihss);
         nihssItemBars.add(nib5aActNihss);
         nihssItemBars.add(nib5bActNihss);
         nihssItemBars.add(nib6aActNihss);
@@ -107,16 +110,16 @@ public class StrokeThriveActivity extends BaseActivity {
         nihssItemBars.add(nib9ActNihss);
         nihssItemBars.add(nib10ActNihss);
         nihssItemBars.add(nib11ActNihss);*/
-        // initVisibleGone(nihssItemBars);
+        initVisibleGone(nihssItemBars);
     }
 
     @Override
     public void initListener() {
-        titleBarActNihss.setLeftLayoutClickListener(v -> finish())
+     /*   titleBarActNihss.setLeftLayoutClickListener(v -> finish())
                 .setRightLayoutClickListener(v -> {
                     int scores = getAllScores();
                 });
-
+*/
 
     }
 
@@ -160,31 +163,37 @@ public class StrokeThriveActivity extends BaseActivity {
      */
     private void initNihssBars() {
         List<NihssItemBar.ItemBean> oneA = new ArrayList<>();
-        oneA.add(new NihssItemBar.ItemBean("≥80岁", 2, false));
-        oneA.add(new NihssItemBar.ItemBean("60-80岁", 1, false));
-        oneA.add(new NihssItemBar.ItemBean("＜60岁", 0, false));
+        oneA.add(new NihssItemBar.ItemBean("2 ≥80岁", 2, false));
+        oneA.add(new NihssItemBar.ItemBean("1 60-80岁", 1, false));
+        oneA.add(new NihssItemBar.ItemBean("0 ＜60岁", 0, false));
         nib1aActNihss.setItemBeans(oneA);
+        nib1aActNihss.setOnScoreChangedListener(this);
+
 
         List<NihssItemBar.ItemBean> oneB = new ArrayList<>();
-        oneB.add(new NihssItemBar.ItemBean("≥21分", 4, false));
-        oneB.add(new NihssItemBar.ItemBean("11-20分", 2, false));
-        oneB.add(new NihssItemBar.ItemBean("＜11分", 0, false));
+        oneB.add(new NihssItemBar.ItemBean("4 ≥21分", 4, false));
+        oneB.add(new NihssItemBar.ItemBean("2 11-20分", 2, false));
+        oneB.add(new NihssItemBar.ItemBean("0 ＜11分", 0, false));
         nib1bActNihss.setItemBeans(oneB);
+        nib1bActNihss.setOnScoreChangedListener(this);
 
         List<NihssItemBar.ItemBean> oneC = new ArrayList<>();
-        oneC.add(new NihssItemBar.ItemBean("有", 1, false));
-        oneC.add(new NihssItemBar.ItemBean("无", 0, false));
+        oneC.add(new NihssItemBar.ItemBean("1 有", 1, false));
+        oneC.add(new NihssItemBar.ItemBean("0 无", 0, false));
         nib1cActNihss.setItemBeans(oneC);
+        nib1cActNihss.setOnScoreChangedListener(this);
 
         List<NihssItemBar.ItemBean> two = new ArrayList<>();
-        two.add(new NihssItemBar.ItemBean("有", 1, false));
-        two.add(new NihssItemBar.ItemBean("无", 0, false));
+        two.add(new NihssItemBar.ItemBean("1 有", 1, false));
+        two.add(new NihssItemBar.ItemBean("0 无", 0, false));
         nib2ActNihss.setItemBeans(two);
+        nib2ActNihss.setOnScoreChangedListener(this);
 
         List<NihssItemBar.ItemBean> three = new ArrayList<>();
-        three.add(new NihssItemBar.ItemBean("有", 1, false));
-        three.add(new NihssItemBar.ItemBean("无", 0, false));
+        three.add(new NihssItemBar.ItemBean("1 有", 1, false));
+        three.add(new NihssItemBar.ItemBean("0 无", 0, false));
         nib3ActNihss.setItemBeans(three);
+        nib3ActNihss.setOnScoreChangedListener(this);
 
     /*    List<NihssItemBar.ItemBean> four = new ArrayList<>();
         four.add(new NihssItemBar.ItemBean("正常", 0, false));
@@ -264,6 +273,23 @@ public class StrokeThriveActivity extends BaseActivity {
     }
 
 
+ /*   @Override
+    public void addScore(int newScore, int oldScore) {
+        mTotalScore= newScore+oldScore;
+        showToast(String.valueOf(mTotalScore));
+    }*/
+
+    @Override
+    public void addScore(int newScore, int oldScore) {
+        mTotalScore = mTotalScore - oldScore + newScore;
+        tvResultScore.setText("评分结果：" + mTotalScore + "分");
+    }
+
+    @Override
+    public void subScore(int score) {
+        mTotalScore = mTotalScore - score;
+        tvResultScore.setText("评分结果：" + mTotalScore + "分");
+    }
 }
 
     

@@ -34,7 +34,7 @@
             android:maxLength="10"
             android:maxLines="2"
             android:textColor="@color/color_222222"
-            android:textSize="13sp"
+            android:textSize="@dimen/item_title_size"
             tools:text="1a.意识水平" />
 
         <androidx.recyclerview.widget.RecyclerView

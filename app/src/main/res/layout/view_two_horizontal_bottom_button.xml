@@ -14,7 +14,7 @@
         android:background="@drawable/login_btn_bg"
         android:text="@string/get_data"
         android:textColor="@android:color/white"
-        android:textSize="14dp" />
+        android:textSize="@dimen/item_title_size" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
@@ -25,6 +25,6 @@
         android:background="@drawable/login_btn_bg"
         android:text="@string/save"
         android:textColor="@android:color/white"
-        android:textSize="14dp" />
+        android:textSize="@dimen/item_title_size" />
 
 </LinearLayout>

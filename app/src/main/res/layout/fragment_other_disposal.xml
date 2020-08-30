@@ -19,7 +19,7 @@
         tl:tl_indicator_color="@color/colorPrimary"
         tl:tl_indicator_corner_radius="8dp"
         tl:tl_tab_padding="20dp"
-        tl:tl_textsize="16dp" />
+        tl:tl_textsize="@dimen/item_title_size" />
 
     <include
         android:id="@+id/include_bottom_view"
@@ -56,6 +56,7 @@
                 style="@style/tv_normal_titel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:gravity="center|left"
                 android:text="康复治疗方式 :" />
 
             <CheckBox
@@ -64,7 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="传统康复（针灸 、推拿）" />
+                android:text="传统康复（针灸 、推拿）"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_pt_frag_od"
@@ -72,7 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="运动疗法（PT）" />
+                android:text="运动疗法（PT）"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_ot_frag_od"
@@ -80,7 +83,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="作业疗法（OT）" />
+                android:text="作业疗法（OT）"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_st_frag_od"
@@ -88,7 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="言语训练（ST）" />
+                android:text="言语训练（ST）"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_other_recovery_frag_od"
@@ -96,13 +101,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="其他（认知训练、吞咽治疗、心理治疗、理疗）" />
+                android:text="其他（认知训练、吞咽治疗、心理治疗、理疗）"
+                android:textSize="@dimen/item_content_size" />
 
             <TextView
                 style="@style/tv_normal_titel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:text="康复治疗场所 :" />
+                android:gravity="center|left"
+                android:text="康复治疗场所 :"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_bedside_frag_od"
@@ -110,7 +118,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="床旁" />
+                android:text="床旁"
+                android:textSize="@dimen/item_content_size" />
 
             <CheckBox
                 android:id="@+id/cb_recovery_depart_frag_od"
@@ -118,7 +127,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
-                android:text="康复科" />
+                android:text="康复科"
+                android:textSize="@dimen/item_content_size" />
 
         </LinearLayout>
 
@@ -152,6 +162,7 @@
                 style="@style/tv_normal_titel"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                 android:gravity="left|center"
                 android:text="宣教方式：" />
 
             <CheckBox
@@ -160,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
+                android:textSize="@dimen/item_content_size"
                 android:text="集体病区教育" />
 
             <CheckBox
@@ -168,6 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
+                android:textSize="@dimen/item_content_size"
                 android:text="一对一教育" />
 
             <CheckBox
@@ -176,6 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/item_small_height"
+                android:textSize="@dimen/item_content_size"
                 android:text="其他" />
 
         </LinearLayout>

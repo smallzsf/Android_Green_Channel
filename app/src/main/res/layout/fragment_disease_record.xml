@@ -45,7 +45,7 @@
                     android:paddingLeft="@dimen/dp_4"
                     android:paddingTop="@dimen/dp_4"
                     android:paddingBottom="@dimen/dp_4"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
             <include layout="@layout/include_line" />
@@ -76,7 +76,7 @@
                     android:hint="请输入症状"
                     android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
 
@@ -88,7 +88,7 @@
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginBottom="@dimen/dp_16"
-                zhy:max_select="1"/>
+                zhy:max_select="1" />
 
             <include layout="@layout/include_line" />
 
@@ -107,7 +107,7 @@
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
                 android:layout_marginBottom="@dimen/dp_16"
-                zhy:max_select="1"/>
+                zhy:max_select="1" />
 
             <include layout="@layout/include_line" />
 
@@ -135,7 +135,7 @@
                     android:hint="请输入药物过敏史"
                     android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
             <include layout="@layout/include_line" />
@@ -164,7 +164,7 @@
                     android:hint="请输入备注内容"
                     android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
         </LinearLayout>

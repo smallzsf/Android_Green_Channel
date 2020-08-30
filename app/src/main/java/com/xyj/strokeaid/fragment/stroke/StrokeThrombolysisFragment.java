@@ -97,6 +97,8 @@ public class StrokeThrombolysisFragment extends BaseFragment {
         list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
         list.add(new StrokeProcessBean("溶栓并发症", "STT09", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_COMPLICATIONS, false));
         list.add(new StrokeProcessBean("延误分析", "STT10", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DELAY, false));
+        list.add(new StrokeProcessBean("FAST-ED评分", "STT11", 1, "", RouteUrl.Stroke.STROKE_FAST_ED__SCORE, false));
+        list.add(new StrokeProcessBean("ASPECT评分", "STT12", 1, "", RouteUrl.Stroke.STROKE_ASPECT__SCORE, false));
         return list;
     }
 

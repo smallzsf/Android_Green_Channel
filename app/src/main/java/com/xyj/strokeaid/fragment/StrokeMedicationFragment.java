@@ -17,6 +17,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeInHosDrugFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOutHosDrugFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeThrombolysisFragment;
@@ -71,8 +72,13 @@ public class StrokeMedicationFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
         stlTitleFragStrokeMedice.setTabData(Constants.STROKE_MEDICATION_TITLES);
+        // 禁止滑动
+        vpContentFragStrokeMedice.setUserInputEnabled(false);
+        vpContentFragStrokeMedice.setOffscreenPageLimit(Constants.STROKE_MEDICATION_TITLES.length);
 
         vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mPatientId, mDocId));
+
+
     }
 
     @Override

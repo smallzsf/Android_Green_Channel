@@ -31,7 +31,7 @@
         tl:tl_indicator_color="@color/colorPrimary"
         tl:tl_indicator_corner_radius="8dp"
         tl:tl_tab_padding="5dp"
-        tl:tl_textsize="12sp" />
+        tl:tl_textsize="@dimen/item_title_size" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_content_act_stroke_main"

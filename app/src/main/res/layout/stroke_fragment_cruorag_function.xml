@@ -48,6 +48,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="选择文件"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -63,7 +64,7 @@
                     android:inputType="numberDecimal"
                     android:maxLength="4"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
@@ -86,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="抽血时间"
+                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/app_223b53" />
 
 
@@ -99,6 +101,7 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
+                    android:textSize="@dimen/item_content_size"
                     android:textColor="@color/black" />
 
 
@@ -129,6 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="结果时间"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
 
 
@@ -144,6 +148,7 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
+                    android:textSize="@dimen/item_content_size"
                     android:textColor="@color/black" />
 
 
@@ -174,6 +179,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="凝血酶原时间"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -190,7 +196,7 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size"  />
 
 
             </RelativeLayout>
@@ -219,6 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="活化部分凝血活酶"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -235,7 +242,7 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size"  />
 
 
             </RelativeLayout>
@@ -264,6 +271,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="凝血酶时间"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -280,7 +288,7 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size"  />
 
             </RelativeLayout>
 
@@ -308,6 +316,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="纤维蛋白原"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -324,7 +333,7 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
@@ -353,6 +362,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="INR"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -369,7 +379,7 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size"  />
 
 
             </RelativeLayout>

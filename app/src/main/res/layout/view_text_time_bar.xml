@@ -31,7 +31,7 @@
         android:hint="点击选择时间"
         android:textColor="@color/color_222222"
         android:textColorHint="@color/color_999999"
-        android:textSize="@dimen/item_title_size" />
+        android:textSize="@dimen/item_content_size" />
 
     <ImageView
         android:id="@+id/iv_refresh_view_ttb"

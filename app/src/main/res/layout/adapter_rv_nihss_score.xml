@@ -16,7 +16,7 @@
         android:paddingStart="@dimen/dp_12"
         android:paddingEnd="@dimen/dp_12"
         android:textColor="@drawable/selector_nihss_text_color"
-        android:textSize="12sp"
+        android:textSize="@dimen/item_content_size"
         tools:text="1" />
 
 </LinearLayout>

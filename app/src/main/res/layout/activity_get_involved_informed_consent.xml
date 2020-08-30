@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         app:title="介入知情同意"
-        app:titleSize="@dimen/sp_13" />
+        app:titleSize="@dimen/item_title_height" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:gravity="center"
                 android:text="谈话医生"
                 android:textColor="@color/color_222222"
-                android:textSize="13sp" />
+                android:textSize="@dimen/item_title_size" />
 
             <com.xyj.strokeaid.view.editspinner.EditSpinner
                 android:id="@+id/es_doc_act_tic"
@@ -66,7 +66,7 @@
                 android:layout_marginRight="14dp"
                 android:text="开始知情"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_13" />
+                android:textSize="@dimen/item_title_size" />
 
             <TextView
                 android:id="@+id/tv_start_know"
@@ -76,6 +76,7 @@
                 android:focusable="false"
                 android:gravity="left"
                 android:hint="@string/app_default_time_example"
+                android:textSize="@dimen/item_content_size"
                 android:paddingLeft="@dimen/dp_10" />
 
             <ImageView
@@ -111,7 +112,7 @@
                 android:layout_marginRight="14dp"
                 android:text="签署知情"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_13" />
+                android:textSize="@dimen/item_title_size" />
 
             <TextView
                 android:id="@+id/tv_sign_know"
@@ -121,6 +122,7 @@
                 android:focusable="false"
                 android:gravity="left"
                 android:hint="@string/app_default_time_example"
+                android:textSize="@dimen/item_content_size"
                 android:paddingLeft="@dimen/dp_10" />
 
             <ImageView
@@ -154,7 +156,7 @@
                 android:gravity="center"
                 android:text="家属意见"
                 android:textColor="@color/black"
-                android:textSize="@dimen/sp_13" />
+                android:textSize="@dimen/item_title_size" />
 
             <com.xyj.strokeaid.view.editspinner.EditSpinner
                 android:id="@+id/es_family_opinion"
@@ -194,7 +196,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:textSize="@dimen/sp_12"
+                android:textSize="@dimen/tab_text_size"
                 android:paddingLeft="@dimen/dp_5"
                 android:textColor="@color/app_158cd3"
                 android:text="查看知情同意书(0)" />
@@ -237,7 +239,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:textSize="@dimen/sp_12"
+                android:textSize="@dimen/tab_text_size"
                 android:textColor="@color/app_158cd3"
                 android:paddingLeft="@dimen/dp_5"
                 android:text="介入治疗获益和风险示意图" />
@@ -271,7 +273,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:gravity="left"
-                android:textSize="@dimen/sp_12"
+                android:textSize="@dimen/tab_text_size"
                 android:paddingLeft="@dimen/dp_5"
                 android:textColor="@color/app_158cd3"
                 android:text="介入知情谈话视频" />

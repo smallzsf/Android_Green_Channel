@@ -69,18 +69,29 @@ public final class RouteUrl {
         public static final String STROKE_INVOLVED_OPERATION_BEFORE = "/app/stroke/involved/operationbefore";
         public static final String STROKE_INVOLVED_OPERATION_ON = "/app/stroke/involved/operationon";
 
+        /**
+         * FAST评分
+         */
+        public static final String STROKE_FAST_ED__SCORE = "/app/stroke/fast_ed_score";
+
+        /**
+         * ASPECT评分
+         */
+        public static final String STROKE_ASPECT__SCORE = "/app/stroke/aspect_score";
+
 
     }
+
     public static final class Detection {
         /**
          * 病情记录
          */
-        public static final String ILLNESS_RECORD="/app/detection/illness";
+        public static final String ILLNESS_RECORD = "/app/detection/illness";
 
         /**
          * 患者到达CT室
          */
-        public static final String PATIENT_ARRIVAL="/app/detection/patientArrival";
+        public static final String PATIENT_ARRIVAL = "/app/detection/patientArrival";
     }
 }
 

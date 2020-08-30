@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_EEEEEE"
+    tools:context=".activity.stroke.AspectScoreActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_tc"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="ASPECT评分" />
+
+
+    <com.flyco.tablayout.SegmentTabLayout
+        android:id="@+id/stl_title_frag_stroke_medice"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/title_bar_act_tc"
+        android:layout_gravity="center_horizontal"
+        tl:tl_bar_color="@color/white"
+        tl:tl_indicator_color="@color/colorPrimary"
+        tl:tl_indicator_corner_radius="8dp"
+        tl:tl_tab_padding="5dp"
+        tl:tl_textsize="12sp" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_before_loop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stl_title_frag_stroke_medice"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content_act_tc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/inclue"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            tools:listitem="@layout/adapter_rv_stroke_thrombolysis_symptom_item" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_back_loop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/stl_title_frag_stroke_medice"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_back_loop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/inclue"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            tools:listitem="@layout/adapter_rv_stroke_thrombolysis_symptom_item" />
+
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/inclue"
+        layout="@layout/view_two_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+
+</RelativeLayout>

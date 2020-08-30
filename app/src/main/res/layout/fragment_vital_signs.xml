@@ -49,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/vital_sign_awareness"
+                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/app_223b53" />
 
 
@@ -91,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_breath"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -107,14 +109,15 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/unit_times_minute"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textSize="@dimen/item_title_size"
                     android:text="@string/unit_times_minute" />
             </RelativeLayout>
 
@@ -143,6 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_pulse"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -159,14 +163,15 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/pulse_unit_times_minute"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textSize="@dimen/item_title_size"
                     android:text="@string/unit_times_minute" />
             </RelativeLayout>
 
@@ -194,6 +199,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_heart_rate"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -210,14 +216,15 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/heart_rate_unit_times_minute"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textSize="@dimen/item_title_size"
                     android:text="@string/unit_times_minute" />
             </RelativeLayout>
 
@@ -245,6 +252,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_systolic_blood_pressure"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -261,14 +269,15 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/systolic_blood_pressure_unit_mm_hg"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textSize="@dimen/item_title_size"
                     android:text="@string/unit_mm_hg" />
             </RelativeLayout>
 
@@ -296,6 +305,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_diastolic_blood_pressure"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -312,15 +322,17 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/diastolic_blood_pressure_unit_mm_hg"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:textSize="@dimen/item_title_size"
                     android:text="@string/unit_mm_hg" />
+
             </RelativeLayout>
 
 
@@ -347,6 +359,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_blood_oxygen_saturation"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -363,15 +376,17 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/blood_oxygen_saturation_unit_percent"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="@string/unit_percent_sign" />
+                    android:gravity="left"
+                    android:textSize="@dimen/item_title_size"
+                    android:text="%&#8194;&#8194;&#8194;&#8194;&#8194;" />
             </RelativeLayout>
 
 
@@ -398,6 +413,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_body_temperature"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
                 </LinearLayout>
 
@@ -414,15 +430,16 @@
                     android:inputType="numberDecimal"
                     android:maxLength="4"
                     android:maxLines="1"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_content_size" />
 
                 <TextView
                     android:id="@+id/body_temperature_unit_celsius"
-                    android:layout_width="@dimen/vital_sign_unit_width"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:textSize="@dimen/item_title_size"
                     android:layout_centerVertical="true"
-                    android:text="@string/unit_celsius" />
+                    android:text="℃&#8194;&#8194;&#8194;&#8194;&#8194;" />
             </RelativeLayout>
 
 

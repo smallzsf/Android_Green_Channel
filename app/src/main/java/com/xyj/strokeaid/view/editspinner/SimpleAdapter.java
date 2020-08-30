@@ -67,6 +67,8 @@ public class SimpleAdapter extends BaseEditSpinnerAdapter implements EditSpinner
         }
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
         textView.setText(Html.fromHtml(getItem(position)));
+        textView.setPadding(20, 20, 0, 20);
+        View view = new View(mContext);
         return textView;
     }
 

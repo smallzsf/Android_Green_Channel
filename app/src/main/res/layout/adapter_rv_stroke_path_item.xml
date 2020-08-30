@@ -18,7 +18,7 @@
         android:gravity="center_vertical"
         android:text="哈哈哈"
         android:textColor="#223b53"
-        android:textSize="17sp"
+        android:textSize="@dimen/item_title_size"
         app:drawableEndCompat="@drawable/star_need"
         app:drawableStartCompat="@drawable/shape_red_round" />
 
@@ -29,7 +29,7 @@
         android:drawablePadding="@dimen/dp_12"
         android:gravity="center_vertical|end"
         android:textColor="@color/color_222222"
-        android:textSize="14sp"
+        android:textSize="@dimen/item_content_size"
         app:drawableEndCompat="@drawable/common_icon_right_arrow_222222"
         tools:text="2020-08-20 15:07:43" />
 

@@ -131,6 +131,7 @@
         <activity android:name=".activity.stroke.GetInvolvedIndicationsActivity" />
         <activity android:name=".activity.stroke.GetInvolvedContraindicationsActivity" />
         <activity android:name=".activity.stroke.GetInvolvedInformedConsentActivity" />
+        <activity android:name=".activity.stroke.AspectScoreActivity" />
 
         <receiver
             android:name=".receiver.MyReceiver"

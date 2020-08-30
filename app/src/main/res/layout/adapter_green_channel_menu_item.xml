@@ -11,7 +11,7 @@
     android:paddingStart="@dimen/dp_5"
     android:paddingEnd="@dimen/dp_5"
     android:textColor="@drawable/selector_menu_text_color"
-    android:textSize="13sp"
+    android:textSize="@dimen/menu_text_size"
     tools:text="生命体征">
 
 </com.xyj.strokeaid.view.XyjCheckedTextView>

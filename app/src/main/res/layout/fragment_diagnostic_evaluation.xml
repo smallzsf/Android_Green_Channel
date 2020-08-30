@@ -10,18 +10,7 @@
     tools:context=".fragment.DiagnosticEvaluationFragment">
 
 
-    <com.flyco.tablayout.SegmentTabLayout
-        android:id="@+id/stl_title_frag_diagnostic_evaluation"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="@dimen/dp_8"
-        android:layout_marginEnd="@dimen/dp_8"
-        tl:tl_bar_color="@color/white"
-        tl:tl_indicator_color="@color/colorPrimary"
-        tl:tl_indicator_corner_radius="8dp"
-        tl:tl_tab_padding="20dp"
-        tl:tl_textsize="16dp" />
+
 
     <ScrollView
         android:id="@+id/sv_admitting_diagnosis"
@@ -48,6 +37,7 @@
                     android:layout_width="@dimen/dp_68"
                     android:layout_height="wrap_content"
                     android:text="起病方式"
+                    android:textSize="@dimen/tab_text_size"
                     android:textColor="@color/app_223b53" />
 
                 <RadioGroup
@@ -63,12 +53,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
+                        android:textSize="@dimen/item_content_size"
                         android:text="急性" />
 
                     <RadioButton
                         android:id="@+id/rb_progressivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="@dimen/item_content_size"
                         android:text="进展性" />
 
                 </RadioGroup>
@@ -102,6 +94,7 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="进展地点"
+                        android:textSize="@dimen/item_content_size"
                         android:textColor="@color/app_223b53" />
 
                     <RadioGroup
@@ -117,12 +110,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
+                            android:textSize="@dimen/item_content_size"
                             android:text="院内" />
 
                         <RadioButton
                             android:id="@+id/rb_lobby"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/item_content_size"
                             android:text="院外" />
 
                     </RadioGroup>
@@ -150,13 +145,14 @@
                         android:layout_marginRight="14dp"
                         android:text="诊断时间"
                         android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
                     <TextView
                         style="@style/patient_et_style"
                         android:layout_width="@dimen/dp_0"
                         android:layout_weight="2.4"
                         android:focusable="false"
+                        android:textSize="@dimen/item_content_size"
                         android:hint="@string/app_default_time_example"
                         android:paddingLeft="@dimen/dp_10" />
 
@@ -199,8 +195,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="诊断结果"
+                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                   />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_diagnosis"
@@ -246,7 +243,7 @@
                         android:layout_marginRight="@dimen/dp_25"
                         android:text="其它(诊断)"
                         android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
                     <EditText
                         android:id="@+id/et_input_weight"
@@ -254,6 +251,7 @@
                         android:layout_width="wrap_content"
                         android:gravity="start"
                         android:hint="请输入"
+                        android:textSize="@dimen/item_content_size"
                         android:inputType="number"
                         android:maxLength="10" />
 
@@ -289,7 +287,7 @@
                         android:layout_marginRight="32dp"
                         android:text="@string/app_emergency_docotor"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -325,7 +323,7 @@
                         android:layout_marginRight="32dp"
                         android:text="@string/app_emergency_docotor"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -369,7 +367,7 @@
                         android:layout_marginRight="32dp"
                         android:text="@string/app_emergency_docotor"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -405,7 +403,7 @@
                         android:layout_marginRight="32dp"
                         android:text="发病机制"
                         android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/sp_14" />
+                        android:textSize="@dimen/item_title_size" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -447,6 +445,7 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="烟雾病"
+                        android:textSize="@dimen/item_title_size"
                         android:textColor="@color/app_223b53" />
 
                     <RadioGroup
@@ -462,12 +461,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
+                            android:textSize="@dimen/item_content_size"
                             android:text="是" />
 
                         <RadioButton
                             android:id="@+id/rb_moyamoya_disease_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="@dimen/item_content_size"
                             android:text="否" />
 
                     </RadioGroup>
@@ -499,7 +500,7 @@
                     android:layout_marginRight="14dp"
                     android:text="诊断时间"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <TextView
                     android:id="@+id/app_tv_editSpinner_time"
@@ -508,6 +509,7 @@
                     android:layout_weight="2.4"
                     android:focusable="false"
                     android:hint="@string/app_default_time_example"
+                    android:textSize="@dimen/item_content_size"
                     android:paddingLeft="@dimen/dp_10" />
 
                 <ImageView
@@ -547,7 +549,7 @@
                     android:layout_marginRight="32dp"
                     android:text="急诊医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size"/>
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_emergency_treatment_doctor"
@@ -583,7 +585,7 @@
                     android:layout_marginRight="32dp"
                     android:text="卒中医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size"/>
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_apoplexy_doctor"
@@ -636,7 +638,7 @@
                     android:layout_marginRight="14dp"
                     android:text="出院时间"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <TextView
                     style="@style/patient_et_style"
@@ -644,6 +646,7 @@
                     android:layout_weight="2.4"
                     android:focusable="false"
                     android:hint="@string/app_default_time_example"
+                    android:textSize="@dimen/item_content_size"
                     android:paddingLeft="@dimen/dp_10" />
 
                 <ImageView
@@ -682,7 +685,7 @@
                     android:layout_marginRight="32dp"
                     android:text="出院时间"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size"/>
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:layout_width="match_parent"
@@ -717,7 +720,7 @@
                     android:layout_marginRight="32dp"
                     android:text="@string/app_emergency_docotor"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -752,7 +755,7 @@
                     android:layout_marginRight="32dp"
                     android:text="@string/app_emergency_docotor"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -787,7 +790,7 @@
                     android:layout_marginRight="32dp"
                     android:text="急诊医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:layout_width="match_parent"
@@ -822,7 +825,7 @@
                     android:layout_marginRight="32dp"
                     android:text="卒中医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:layout_width="match_parent"
