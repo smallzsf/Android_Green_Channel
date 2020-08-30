@@ -7,7 +7,6 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +16,7 @@ import android.widget.ToggleButton;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.android.material.tabs.TabLayout;
+import com.gyf.immersionbar.ImmersionBar;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.MainActivity;
 import com.xyj.strokeaid.activity.set.SetActivity;
@@ -87,6 +87,16 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @Override
     protected void initInject() {
 
+    }
+
+    @Override
+    protected void initImmersionBar() {
+        // 初始化沉浸式状态栏
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorPrimary)
+                .fitsSystemWindows(true)
+                .keyboardEnable(false)
+                .init();
     }
 
     @Override
