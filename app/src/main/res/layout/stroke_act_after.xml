@@ -27,7 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:text="并发症："
-            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:textColor="@color/color_222222"
             android:textSize="@dimen/sp_14" />
 
         <LinearLayout
@@ -47,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="无"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -56,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="脑梗死"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -65,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="高灌注"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -74,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="脑出血"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
 
@@ -90,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="周围神经损伤"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -99,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="切口感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="继发性癫痫"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
             </LinearLayout>
@@ -125,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="肺部感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -134,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="泌尿系统感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -143,12 +144,17 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="其他"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
-
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkbox_qt_act_stroke_after" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -161,7 +167,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="其他："
-            android:textColor="@color/color_333333"
+            android:textStyle="bold"
+            android:textColor="@color/color_222222"
             android:textSize="@dimen/sp_14" />
 
         <LinearLayout
@@ -178,6 +185,7 @@
                 android:gravity="center"
                 android:minWidth="60dp"
                 android:text="手术意外终止:"
+                android:textStyle="bold"
                 android:textColor="@color/color_222222"
                 android:textSize="14dp" />
 
@@ -220,11 +228,10 @@
             android:paddingTop="@dimen/dp_6"
             android:textSize="@dimen/sp_14" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/title_bar_height"
-            android:layout_marginTop="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@color/white"
             android:orientation="horizontal"
             android:paddingEnd="@dimen/dp_12">
@@ -235,6 +242,7 @@
                 android:gravity="center"
                 android:minWidth="60dp"
                 android:text="是否延误:"
+                android:textStyle="bold"
                 android:textColor="@color/color_222222"
                 android:textSize="14dp" />
 
@@ -267,7 +275,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_333333"
+            android:textColor="@color/color_222222"
+            android:textStyle="bold"
             android:textSize="@dimen/dp_14"
             android:text="延误原因:" />
 
@@ -288,7 +297,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="无"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -297,7 +306,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="脑梗死"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -306,7 +315,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="高灌注"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -315,7 +324,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="脑出血"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
 
@@ -331,7 +340,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="周围神经损伤"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -340,7 +349,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="切口感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -349,7 +358,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="继发性癫痫"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
             </LinearLayout>
@@ -366,7 +375,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="肺部感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -375,7 +384,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="泌尿系统感染"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
                 <CheckBox
@@ -384,7 +393,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="其他"
-                    android:textColor="@color/color_666666"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
             </LinearLayout>
         </LinearLayout>

@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.activity.stroke;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -9,6 +10,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.view.BaseTitleBar;
+import com.xyj.strokeaid.view.SelectDataDialog;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -85,6 +87,26 @@ public class StrokeOperationBeforeActivity extends BaseActivity {
                 .setOnTitleClickListener(v -> {
 
                 });
+
+        tvISelectDoctor.setOnClickListener(v -> {
+
+            new SelectDataDialog(this, null, new SelectDataDialog.getSelectDataInterFace() {
+                @Override
+                public void getSelectData(String data) {
+                    tvInterveneDoctor.setText(data);
+                }
+            }).showDialog();
+        });
+
+        tvSelectDoctor.setOnClickListener(v -> {
+
+            new SelectDataDialog(this, null, new SelectDataDialog.getSelectDataInterFace() {
+                @Override
+                public void getSelectData(String data) {
+                    tvInterveneNurse.setText(data.substring(0, data.length() - 1));
+                }
+            }).showDialog();
+        });
     }
 
 

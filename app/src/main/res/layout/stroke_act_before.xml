@@ -37,7 +37,7 @@
             android:gravity="center"
             android:text="选择导室管"
             android:textColor="@color/color_222222"
-            android:textSize="15dp" />
+            android:textSize="@dimen/sp_14"  />
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_cath_act_stroke"
@@ -50,10 +50,17 @@
             app:rightImage="@drawable/ic_arrow_down_blue" />
     </LinearLayout>
 
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/es_cath_act_stroke" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_37"
         android:layout_below="@+id/doctor_name_line"
+        android:layout_marginTop="@dimen/dp_5"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp_12"
         android:paddingRight="@dimen/dp_10">
@@ -64,17 +71,19 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="32dp"
             android:text="@string/app_intervene_doctor"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/sp_14" />
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"  />
 
         <EditText
             android:id="@+id/et_intervene_doctor"
             style="@style/patient_et_style"
-            android:layout_width="wrap_content"
+            android:layout_width="225dp"
+            android:background="@drawable/shape_edittext_bg"
             android:gravity="start"
             android:hint="@string/single_line_input"
             android:inputType="number"
-            android:maxLength="3" />
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingBottom="@dimen/dp_5" />
 
         <TextView
             android:id="@+id/tv_intervene_doctor"
@@ -84,36 +93,43 @@
             android:layout_weight="1"
             android:gravity="end"
             android:text="@string/please_choose"
-            android:textColor="#223b53"
-            android:textSize="14sp" />
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"  />
     </LinearLayout>
 
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_intervene_doctor" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_37"
-        android:layout_below="@+id/doctor_name_line"
+        android:layout_marginTop="@dimen/dp_5"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingLeft="@dimen/dp_12"
         android:paddingRight="@dimen/dp_10">
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="32dp"
             android:text="@string/app_intervene_nurse"
-            android:textColor="@color/app_223b53"
+            android:textColor="@color/color_222222"
             android:textSize="@dimen/sp_14" />
 
         <EditText
             android:id="@+id/et_intervene_nurse"
             style="@style/patient_et_style"
-            android:layout_width="wrap_content"
+            android:layout_width="225dp"
+            android:background="@drawable/shape_edittext_bg"
             android:gravity="start"
             android:hint="@string/single_line_input"
             android:inputType="number"
-            android:maxLength="3" />
+            android:paddingLeft="@dimen/dp_6"
+            android:paddingBottom="@dimen/dp_5" />
 
         <TextView
             android:id="@+id/tv_intervene_nurse"
@@ -123,15 +139,22 @@
             android:layout_weight="1"
             android:gravity="end"
             android:text="@string/please_choose"
-            android:textColor="#223b53"
-            android:textSize="14sp" />
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"  />
     </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_intervene_doctor" />
 
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/ttb_activation_cath_act_stroke"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:bottomLineVisible="true"
+        android:layout_marginTop="@dimen/dp_5"
         app:title="激活导室管"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
@@ -170,5 +193,4 @@
             android:textColor="#223b53"
             android:textSize="14sp" />
     </LinearLayout>
-
 </LinearLayout>
