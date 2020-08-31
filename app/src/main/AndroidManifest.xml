@@ -136,6 +136,10 @@
         <receiver
             android:name=".receiver.MyReceiver"
             android:exported="false" />
+
+        <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
     </application>
 
 </manifest>

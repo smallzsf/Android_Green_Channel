@@ -916,4 +916,8 @@
     <string name="thrombolytic_indications_02">2.症状出现≤4.5h</string>
     <string name="thrombolytic_indications_03">3.有缺血性脑卒中导致的神经功能缺损症状</string>
     <string name="thrombolytic_contraindications_01">1.年龄≥18岁</string>
+    <string name="single_line_input">单行输入</string>
+    <string name="app_intervene_nurse">介入护士</string>
+    <string name="app_interventional_recanalization">介入再通</string>
+
 </resources>

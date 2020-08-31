@@ -1,28 +1,69 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.view.BaseTitleBar;
+import com.xyj.strokeaid.view.TextTimeBar;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- * StrokeOperationAfterActivity
- * description: 卒中介入手术 术前准备
+ * StrokeOperationBeforeActivity
+ * description: TODO
  *
- * @author : Licy
- * @date : 2020/8/22
- * email ：licy3051@qq.com
+ * @date : 2020/8/30
  */
-@Route(path = RouteUrl.Stroke.STROKE_INVOLVED_OPERATION_BEFORE)
 public class StrokeOperationBeforeActivity extends BaseActivity {
+
+    @BindView(R.id.title_bar_act_stroke_before)
+    BaseTitleBar titleBarActStrokeMain;
+
+    /**
+     * 启动导室管
+     */
+    @BindView(R.id.ttb_start_cath_act_stroke)
+    TextTimeBar tvStartCatheter;
+
+    /**
+     * 选择导室管
+     */
+    @BindView(R.id.es_cath_act_stroke)
+    EditSpinner tvSelectCatheter;
+
+    /**
+     * 介入医生
+     */
+    @BindView(R.id.et_intervene_doctor)
+    EditText tvInterveneDoctor;
+
+    /**
+     * 选择医生
+     */
+    @BindView(R.id.tv_intervene_doctor)
+    TextView tvISelectDoctor;
+
+    /**
+     * 介入护士
+     */
+    @BindView(R.id.et_intervene_nurse)
+    EditText tvInterveneNurse;
+
+    /**
+     * 选择护士
+     */
+    @BindView(R.id.tv_intervene_nurse)
+    TextView tvSelectDoctor;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_stroke_operation_before;
+        return R.layout.stroke_act_before;
     }
 
     @Override
@@ -37,6 +78,22 @@ public class StrokeOperationBeforeActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+        titleBarActStrokeMain.setLeftLayoutClickListener(v -> finish())
+                .setOnTitleClickListener(v -> {
 
+                });
     }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
+    }
+
+
 }
+
+    
+    
+       
