@@ -19,10 +19,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/menu"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <!--
@@ -39,7 +36,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
@@ -49,8 +46,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/vital_sign_awareness"
-                    android:textSize="@dimen/item_title_size"
-                    android:textColor="@color/app_223b53" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
 
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -68,15 +65,12 @@
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
@@ -92,8 +86,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_breath"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -117,16 +111,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="@string/unit_times_minute" />
+                    android:text="@string/unit_times_minute"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
-
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -146,8 +136,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_pulse"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -171,15 +161,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="@string/unit_times_minute" />
+                    android:text="@string/unit_times_minute"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -199,8 +185,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_heart_rate"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -224,15 +210,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="@string/unit_times_minute" />
+                    android:text="@string/unit_times_minute"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -252,8 +235,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_systolic_blood_pressure"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -277,15 +260,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="@string/unit_mm_hg" />
+                    android:text="@string/unit_mm_hg"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -305,8 +285,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_diastolic_blood_pressure"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -330,16 +310,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="@string/unit_mm_hg" />
+                    android:text="@string/unit_mm_hg"
+                    android:textSize="@dimen/item_title_size" />
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -359,8 +336,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_blood_oxygen_saturation"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -385,15 +362,12 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:gravity="left"
-                    android:textSize="@dimen/item_title_size"
-                    android:text="%&#8194;&#8194;&#8194;&#8194;&#8194;" />
+                    android:text="%&#8194;&#8194;&#8194;&#8194;&#8194;"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -413,8 +387,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="@string/vital_sign_body_temperature"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -437,17 +411,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textSize="@dimen/item_title_size"
                     android:layout_centerVertical="true"
-                    android:text="℃&#8194;&#8194;&#8194;&#8194;&#8194;" />
+                    android:text="℃&#8194;&#8194;&#8194;&#8194;&#8194;"
+                    android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
-
+            <include layout="@layout/include_line" />
 
         </LinearLayout>
 

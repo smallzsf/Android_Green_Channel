@@ -2,10 +2,11 @@
 <TextView android:id="@+id/tv_flow_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
+    android:layout_marginRight="@dimen/dp_5"
+    android:layout_marginTop="@dimen/dp_5"
     android:text="Helloworld"
     android:clickable="true"
-    android:textSize="12sp"
+    android:textSize="@dimen/item_content_size"
     android:background="@drawable/selector_flow_layout_tag_bg"
     android:textColor="@drawable/selector_flow_layout_tag_color"
     xmlns:android="http://schemas.android.com/apk/res/android"/>

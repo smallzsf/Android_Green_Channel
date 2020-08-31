@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activity.stroke.ThrombolysisInformedConsentActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
@@ -15,94 +16,105 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_bar_act_tic"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/dp_12"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginStart="@dimen/dp_14"
+        android:orientation="horizontal"
         android:paddingEnd="@dimen/dp_12">
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="谈话医生"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_doc_act_tic"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="谈话医生"
-                android:textColor="@color/color_222222"
-                android:textSize="15dp" />
-
-            <com.xyj.strokeaid.view.editspinner.EditSpinner
-                android:id="@+id/es_doc_act_tic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                app:Background="@drawable/bg_view_frame"
-                app:hint="请选择"
-                app:rightImage="@drawable/ic_arrow_down_blue" />
-        </LinearLayout>
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/ttb_start_talk_act_tic"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            app:bottomLineVisible="true"
-            app:title="开始谈话"
-            app:ttb_time_hint="2020-08-22 10:58:19" />
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/ttb_stop_talk_act_tic"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            app:bottomLineVisible="true"
-            app:title="结束谈话"
-            app:ttb_time_hint="2020-08-22 10:58:19" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="家属意见"
-                android:textColor="@color/color_222222"
-                android:textSize="15dp" />
-
-            <com.xyj.strokeaid.view.editspinner.EditSpinner
-                android:id="@+id/es_opinion_act_tic"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                app:Background="@drawable/bg_view_frame"
-                app:hint="请选择"
-                app:rightImage="@drawable/ic_arrow_down_blue" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/app_btn_ecg_examine_and_shot"
-            android:layout_height="@dimen/dp_35"
-            android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/sp_11"
-            android:drawableStart="@drawable/ic_ecg"
-            android:drawableEnd="@drawable/ic_shot"
-            android:drawablePadding="@dimen/dp_4"
-            android:background="@drawable/shape_btn_blue_stroke"
-            android:paddingStart="@dimen/dp_15"
-            android:paddingEnd="@dimen/dp_15"
-            android:layout_marginStart="@dimen/dp_23"
-            android:layout_marginEnd="@dimen/dp_23"
-            android:text="@string/view_ecg_report_tips" />
-
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
     </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_start_talk_act_tic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="开始谈话"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+    <include layout="@layout/include_line" />
+
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_stop_talk_act_tic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="结束谈话"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+    <include layout="@layout/include_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginStart="@dimen/dp_14"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/dp_12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="家属意见"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_opinion_act_tic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+
+    <Button
+        android:id="@+id/app_btn_ecg_examine_and_shot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/dp_23"
+        android:layout_marginTop="@dimen/sp_11"
+        android:layout_marginEnd="@dimen/dp_23"
+        android:background="@drawable/shape_btn_blue_stroke"
+        android:drawableStart="@drawable/ic_ecg"
+        android:drawableEnd="@drawable/ic_shot"
+        android:drawablePadding="@dimen/dp_4"
+        android:paddingStart="@dimen/dp_15"
+        android:paddingEnd="@dimen/dp_15"
+        android:text="@string/view_ecg_report_tips" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1"></View>
+
 
     <include
         layout="@layout/view_two_bottom_button"
@@ -110,4 +122,4 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -79,7 +79,7 @@ public class StrokeThrombolysisFragment extends BaseFragment {
         mProcessRvAdapter = new StrokeProcessRvAdapter(R.layout.adapter_rv_stroke_path_item, mStrokeProcessBeans);
 
         rvContentFragStokeThrombolytic.setLayoutManager(new LinearLayoutManager(mActivity));
-        rvContentFragStokeThrombolytic.addItemDecoration(new SpacesItemDecoration(0, 0, 0, 1, LinearLayout.VERTICAL));
+     //   rvContentFragStokeThrombolytic.addItemDecoration(new SpacesItemDecoration(0, 0, 0, 1, LinearLayout.VERTICAL));
         rvContentFragStokeThrombolytic.setAdapter(mProcessRvAdapter);
         mProcessRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
     }

@@ -11,12 +11,13 @@
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:text="年-月-日"
+        android:textSize="@dimen/item_content_size"
         android:textColor="@color/color_222222" />
 
     <ImageView
         android:id="@+id/iv_refresh_include_time"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/dk_dp_15"
+        android:layout_height="@dimen/dk_dp_15"
         android:src="@drawable/ic_refresh" />
 
 </merge>

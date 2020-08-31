@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.stroke.StrokeBloodExaminationFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragment.stroke.StrokeBloodExaminationFragment">
 
-<!--    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_title_act_stroke_main"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        app:tabGravity="fill"
-        app:tabPaddingEnd="-10dp"
-        app:tabPaddingStart="-10dp"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabTextAppearance="@style/tab_layout_text"
-        app:tabTextColor="@color/black" />-->
+    <!--    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tl_title_act_stroke_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            app:tabGravity="fill"
+            app:tabPaddingEnd="-10dp"
+            app:tabPaddingStart="-10dp"
+            app:tabIndicatorColor="@color/colorPrimary"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/tab_layout_text"
+            app:tabTextColor="@color/black" />-->
 
     <com.flyco.tablayout.SegmentTabLayout
         android:id="@+id/stl_title_frag_stroke_medice"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginEnd="@dimen/dp_8"
@@ -32,6 +32,12 @@
         tl:tl_indicator_corner_radius="8dp"
         tl:tl_tab_padding="5dp"
         tl:tl_textsize="@dimen/item_title_size" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white" />
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_content_act_stroke_main"

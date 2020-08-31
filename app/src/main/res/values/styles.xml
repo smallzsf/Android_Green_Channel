@@ -31,7 +31,7 @@
     <style name="tv_normal_titel">
         <item name="android:textSize">@dimen/item_title_size</item>
         <item name="android:textColor">@color/color_222222</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <style name="tv_small">

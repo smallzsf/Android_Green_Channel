@@ -32,6 +32,7 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -146,11 +147,9 @@ public class TransferFragment extends BaseFragment {
     @Override
     protected void initListener() {
         //设置输入框值
-        tflTransferReason.setAdapter(mAdapter);
-        getEtTransferReason(tflTransferReason, etTransferReason, mVals);
+         getEtTransferReason(tflTransferReason, etTransferReason, mVals);
         //设置输入框值
-        tflStateOfIllnessDispose.setAdapter(mAdapter1);
-        getEtTransferReason(tflStateOfIllnessDispose, etStateOfIllnessDispose, mVals1);
+         getEtTransferReason(tflStateOfIllnessDispose, etStateOfIllnessDispose, mVals1);
 
         rgDepartureHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -194,66 +193,131 @@ public class TransferFragment extends BaseFragment {
     }
 
 
+
     private void getEtTransferReason(TagFlowLayout tfl, EditText et, String[] mVals) {
 
 
-        et.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // 解决scrollView中嵌套EditText导致不能上下滑动的问题
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                switch (event.getAction() & MotionEvent.ACTION_MASK) {
-                    case MotionEvent.ACTION_UP:
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
+        if (et != null) {
+            tfl.setAdapter(new TagAdapter<String>(mVals) {
+
+                private TextView tv;
+
+                @Override
+                public View getView(FlowLayout parent, int position, String s) {
+                    tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.adpter_flow_layout_tv_tag,
+                            tfl, false);
+                    tv.setText(s);
+                    return tv;
                 }
 
-                return false;
-            }
-        });
+                @Override
+                public void onSelected(int position, View view) {
+                    super.onSelected(position, view);
 
-        et.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                if (s.length() > 100) { //判断EditText中输入的字符数是不是已经大于6
-                    et.setText(s.toString().substring(0, 100)); //设置EditText只显示前面6位字符
-                    et.setSelection(100);
-                    return;
                 }
 
+                @Override
+                public void unSelected(int position, View view) {
+                    super.unSelected(position, view);
+                }
+            });
 
-            }
+            et.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    // 解决scrollView中嵌套EditText导致不能上下滑动的问题
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                        case MotionEvent.ACTION_UP:
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
 
-            @Override
-            public void afterTextChanged(Editable s) {
+                    return false;
+                }
+            });
 
-            }
-        });
+            et.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-
-        tfl.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-            @Override
-            public boolean onTagClick(View view, int position, FlowLayout parent) {
-
-                if (!et.getText().toString().isEmpty()) {
-
-                    et.setText(et.getText().toString() + "，" + mVals[position]);
-
-                } else {
-                    et.setText(mVals[position]);
                 }
 
-                return true;
-            }
-        });
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                    if (s.length() > 100) { //判断EditText中输入的字符数是不是已经大于6
+                        et.setText(s.toString().substring(0, 100)); //设置EditText只显示前面6位字符
+                        et.setSelection(100);
+                        return;
+                    }
+
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
+
+
+            tfl.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
+                @Override
+                public boolean onTagClick(View view, int position, FlowLayout parent) {
+
+                    if (!et.getText().toString().isEmpty()) {
+
+                        et.setText(et.getText().toString() + "，" + mVals[position]);
+
+                    } else {
+                        et.setText(mVals[position]);
+                    }
+
+                    return true;
+                }
+            });
+
+            tfl.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+                @Override
+                public void onSelected(Set<Integer> selectPosSet) {
+                    getActivity().setTitle("choose:" + selectPosSet.toString());
+                }
+            });
+
+        } else {
+
+
+            tfl.setAdapter(new TagAdapter<String>(mVals) {
+
+                private TextView tv;
+
+                @Override
+                public View getView(FlowLayout parent, int position, String s) {
+                    tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.adpter_flow_layout_tv_tag,
+                            tfl, false);
+                    tv.setText(s);
+                    return tv;
+                }
+
+                @Override
+                public void onSelected(int position, View view) {
+                    super.onSelected(position, view);
+                    //  view.setBackgroundColor(getResources().getColor(R.color.app_00aaff));
+                    view.setBackground(getResources().getDrawable(R.drawable.selector_flow_layout_checked_bg));
+                }
+
+                @Override
+                public void unSelected(int position, View view) {
+                    super.unSelected(position, view);
+                    view.setBackground(getResources().getDrawable(R.drawable.selector_flow_layout_nomal_bg));
+                }
+            });
+
+
+        }
+
     }
-
 
     private void loadData() {
         list = new ArrayList<>();
@@ -273,46 +337,6 @@ public class TransferFragment extends BaseFragment {
     }
 
 
-    TagAdapter<String> mAdapter = new TagAdapter<String>(mVals) {
-        @Override
-        public View getView(FlowLayout parent, int position, String s) {
-            TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.adpter_flow_layout_tv_tag,
-                    tflTransferReason, false);
-            tv.setText(s);
-            return tv;
-        }
-
-    };
-
-    TagAdapter<String> mAdapter1 = new TagAdapter<String>(mVals1) {
-        @Override
-        public View getView(FlowLayout parent, int position, String s) {
-            TextView tv = (TextView) LayoutInflater.from(getActivity()).inflate(R.layout.adpter_flow_layout_tv_tag,
-                    tflTransferReason, false);
-            tv.setText(s);
-            return tv;
-        }
-
-    };
-
-    @OnClick({R.id.btn_confirm, R.id.btn_cancel,  R.id.tv_time_item_time_node,R.id.iv_refresh_item_time_node})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_confirm:
-                //  Toast.makeText(mActivity, esTransformation.getText(), Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn_cancel:
-                break;
-
-            case R.id.tv_time_item_time_node:
-                showTimePickView();
-                break;
-            case R.id.iv_refresh_item_time_node:
-                String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date());
-                tvTimeItemTimeNode.setText(time);
-                break;
-        }
-    }
 
 
     /**

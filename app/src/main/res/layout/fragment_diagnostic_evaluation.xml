@@ -9,9 +9,6 @@
     android:orientation="vertical"
     tools:context=".fragment.DiagnosticEvaluationFragment">
 
-
-
-
     <ScrollView
         android:id="@+id/sv_admitting_diagnosis"
         android:layout_width="match_parent"
@@ -27,7 +24,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -37,8 +34,8 @@
                     android:layout_width="@dimen/dp_68"
                     android:layout_height="wrap_content"
                     android:text="起病方式"
-                    android:textSize="@dimen/tab_text_size"
-                    android:textColor="@color/app_223b53" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
 
                 <RadioGroup
                     android:id="@+id/rg_have_disease_way"
@@ -53,38 +50,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:textSize="@dimen/item_content_size"
-                        android:text="急性" />
+                        android:text="急性"
+                        android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
                         android:id="@+id/rb_progressivity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/item_content_size"
-                        android:text="进展性" />
+                        android:text="进展性"
+                        android:textSize="@dimen/item_content_size" />
 
                 </RadioGroup>
 
 
             </LinearLayout>
 
-            <View
-                android:id="@+id/doctor_name_line"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:id="@+id/ll_progress_site"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -94,8 +87,8 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="进展地点"
-                        android:textSize="@dimen/item_content_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
 
                     <RadioGroup
                         android:id="@+id/rg_progress_site"
@@ -110,30 +103,27 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
-                            android:textSize="@dimen/item_content_size"
-                            android:text="院内" />
+                            android:text="院内"
+                            android:textSize="@dimen/item_content_size" />
 
                         <RadioButton
                             android:id="@+id/rb_lobby"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/item_content_size"
-                            android:text="院外" />
+                            android:text="院外"
+                            android:textSize="@dimen/item_content_size" />
 
                     </RadioGroup>
 
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -152,9 +142,9 @@
                         android:layout_width="@dimen/dp_0"
                         android:layout_weight="2.4"
                         android:focusable="false"
-                        android:textSize="@dimen/item_content_size"
                         android:hint="@string/app_default_time_example"
-                        android:paddingLeft="@dimen/dp_10" />
+                        android:paddingLeft="@dimen/dp_10"
+                        android:textSize="@dimen/item_content_size" />
 
                     <ImageView
                         android:id="@+id/iv_refresh1"
@@ -171,11 +161,7 @@
                 </LinearLayout>
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
 
 
             </LinearLayout>
@@ -183,7 +169,7 @@
             <LinearLayout
                 android:id="@+id/ll_diagnosis"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -195,9 +181,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="诊断结果"
-                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/app_223b53"
-                   />
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_diagnosis"
@@ -212,25 +197,19 @@
 
             </LinearLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
-
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:id="@+id/ll_other_diagnostic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -251,18 +230,14 @@
                         android:layout_width="wrap_content"
                         android:gravity="start"
                         android:hint="请输入"
-                        android:textSize="@dimen/item_content_size"
                         android:inputType="number"
-                        android:maxLength="10" />
+                        android:maxLength="10"
+                        android:textSize="@dimen/item_content_size" />
 
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
             </LinearLayout>
 
             <LinearLayout
@@ -274,7 +249,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -301,16 +276,12 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -337,11 +308,8 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
+
             </LinearLayout>
 
 
@@ -354,7 +322,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -381,16 +349,12 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -417,11 +381,7 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
             </LinearLayout>
 
 
@@ -429,13 +389,12 @@
                 android:id="@+id/ll_moyamoya_disease"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:orientation="vertical"
-                 >
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_37"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
                     android:paddingLeft="@dimen/dp_25"
@@ -445,8 +404,8 @@
                         android:layout_width="@dimen/dp_68"
                         android:layout_height="wrap_content"
                         android:text="烟雾病"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
 
                     <RadioGroup
                         android:id="@+id/rg_moyamoya_disease"
@@ -461,33 +420,29 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
-                            android:textSize="@dimen/item_content_size"
-                            android:text="是" />
+                            android:text="是"
+                            android:textSize="@dimen/item_content_size" />
 
                         <RadioButton
                             android:id="@+id/rb_moyamoya_disease_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/item_content_size"
-                            android:text="否" />
+                            android:text="否"
+                            android:textSize="@dimen/item_content_size" />
 
                     </RadioGroup>
 
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_1"
-                    android:layout_below="@+id/triage_time"
-                    android:background="@color/app_eef3f7" />
+                <include layout="@layout/include_line" />
 
             </LinearLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -509,8 +464,8 @@
                     android:layout_weight="2.4"
                     android:focusable="false"
                     android:hint="@string/app_default_time_example"
-                    android:textSize="@dimen/item_content_size"
-                    android:paddingLeft="@dimen/dp_10" />
+                    android:paddingLeft="@dimen/dp_10"
+                    android:textSize="@dimen/item_content_size" />
 
                 <ImageView
                     android:id="@+id/iv_refresh"
@@ -526,17 +481,12 @@
                     android:src="@drawable/ic_refresh" />
             </LinearLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -549,7 +499,7 @@
                     android:layout_marginRight="32dp"
                     android:text="急诊医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size"/>
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_emergency_treatment_doctor"
@@ -562,17 +512,11 @@
 
             </LinearLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
-
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -585,7 +529,7 @@
                     android:layout_marginRight="32dp"
                     android:text="卒中医生"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size"/>
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_apoplexy_doctor"
@@ -598,11 +542,7 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
         </LinearLayout>
@@ -626,7 +566,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -646,8 +586,8 @@
                     android:layout_weight="2.4"
                     android:focusable="false"
                     android:hint="@string/app_default_time_example"
-                    android:textSize="@dimen/item_content_size"
-                    android:paddingLeft="@dimen/dp_10" />
+                    android:paddingLeft="@dimen/dp_10"
+                    android:textSize="@dimen/item_content_size" />
 
                 <ImageView
                     android:layout_width="@dimen/dp_22"
@@ -662,17 +602,13 @@
                     android:src="@drawable/ic_refresh" />
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -685,7 +621,7 @@
                     android:layout_marginRight="32dp"
                     android:text="出院时间"
                     android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size"/>
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:layout_width="match_parent"
@@ -698,16 +634,12 @@
             </LinearLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -742,7 +674,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -768,16 +700,12 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -802,17 +730,13 @@
 
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp_25"
@@ -837,11 +761,7 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:layout_below="@+id/triage_time"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
         </LinearLayout>

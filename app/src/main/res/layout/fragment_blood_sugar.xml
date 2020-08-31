@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragment.stroke.StrokeBloodSugarFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragment.stroke.StrokeBloodSugarFragment">
 
     <!--  <TextView
           android:layout_width="wrap_content"
@@ -41,8 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="抽血时间"
-                    android:textSize="@dimen/item_title_size"
-                    android:textColor="@color/app_223b53" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
 
 
                 <TextView
@@ -55,17 +55,13 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
-                    android:textSize="@dimen/item_content_size"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <RelativeLayout
@@ -86,8 +82,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="结果时间"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
 
 
                 </LinearLayout>
@@ -102,17 +98,13 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
-                    android:textSize="@dimen/item_content_size"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <RelativeLayout
@@ -133,8 +125,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="血糖"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -155,10 +147,8 @@
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
+
 
         </LinearLayout>
 

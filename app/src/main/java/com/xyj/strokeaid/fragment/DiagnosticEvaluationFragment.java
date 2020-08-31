@@ -41,8 +41,8 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     RadioButton rbProgressivity;
     @BindView(R.id.rg_have_disease_way)
     RadioGroup rgHaveDiseaseWay;
-    @BindView(R.id.doctor_name_line)
-    View doctorNameLine;
+   /* @BindView(R.id.doctor_name_line)
+    View doctorNameLine;*/
     @BindView(R.id.rb_court)
     RadioButton rbCourt;
     @BindView(R.id.rb_lobby)

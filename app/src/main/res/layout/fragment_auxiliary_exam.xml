@@ -7,18 +7,22 @@
     android:orientation="vertical"
     tools:context=".fragment.AuxiliaryExamFragment">
 
+
     <com.flyco.tablayout.SegmentTabLayout
         android:id="@+id/stl_title_frag_ae"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginEnd="@dimen/dp_8"
         tl:tl_bar_color="@color/white"
         tl:tl_indicator_color="@color/colorPrimary"
         tl:tl_indicator_corner_radius="8dp"
-        tl:tl_tab_padding="20dp"
-        tl:tl_textsize="12sp" />
+        tl:tl_tab_padding="5dp"
+        tl:tl_textsize="@dimen/item_title_size" />
+
+    <include layout="@layout/include_line_white"  />
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -37,33 +41,50 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/tv_normal_titel"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center|left"
-                    android:text="检查类型" />
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="检查类型"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+                <!--               <TextView
+                                   android:id="@+id/tv_time_view_ttb"
+                                   style="@style/tab_layout_text"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="match_parent"
+                                   android:layout_centerVertical="true"
+                                   android:layout_marginStart="@dimen/dp_12"
+                                   android:layout_toEndOf="@id/tv_title_view_ttb"
+                                   android:gravity="center_vertical"
+                                   android:hint="点击选择时间"
+                                   android:textColor="@color/color_222222"
+                                   android:textColorHint="@color/color_999999"
+                                   android:textSize="@dimen/item_content_size" />-->
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
                     <RadioButton
                         android:id="@+id/rb_blood_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:textSize="@dimen/item_content_size"
-                        android:text="血液检查" />
+                        android:text="血液检查"
+                        android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
                         android:id="@+id/rb_ct_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CT平扫"
@@ -73,7 +94,7 @@
                     <RadioButton
                         android:id="@+id/rb_cta_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CTA"
@@ -83,7 +104,7 @@
                     <RadioButton
                         android:id="@+id/rb_ctp_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CTP"
@@ -93,7 +114,7 @@
                     <RadioButton
                         android:id="@+id/rb_mri_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="MRI"
@@ -103,7 +124,7 @@
                     <RadioButton
                         android:id="@+id/rb_mra_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="MRA"
@@ -113,7 +134,7 @@
                     <RadioButton
                         android:id="@+id/rb_cemra_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="CE-MRA"
@@ -123,7 +144,7 @@
                     <RadioButton
                         android:id="@+id/rb_cvus_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="颈部血管超声"
@@ -133,7 +154,7 @@
                     <RadioButton
                         android:id="@+id/rb_tcd_frag_ae"
                         style="@style/tv_small"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="TCD"
@@ -144,31 +165,39 @@
 
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
+
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_complete_time_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 tl:title="检查完成" />
+
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_report_time_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 tl:title="报告打印" />
 
+            <include layout="@layout/include_line" />
+
             <TextView
-                style="@style/tv_normal_titel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
-                android:background="@color/white"
-                android:paddingStart="@dimen/dp_12"
-                android:gravity="center|left"
-                android:text="诊断结果" />
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                android:maxLength="6"
+                android:maxLines="1"
+                android:minWidth="60dp"
+                android:text="诊断结果"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/item_title_size" />
+
 
             <LinearLayout
                 android:id="@+id/ll_result_frag_ae"
@@ -202,44 +231,58 @@
                     android:text="0/300"
                     android:textColor="@color/color_222222"
                     android:textSize="13sp" />
+
+
             </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/ll_photo_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_photo_frag_ae"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:drawablePadding="@dimen/dp_8"
-                    android:gravity="center_vertical"
-                    android:paddingStart="@dimen/dp_18"
-                    android:text="@string/view_ecg_report_tips"
-                    android:textSize="@dimen/item_title_size"
-                    android:textColor="@color/color_222222"
-                    tl:drawableStartCompat="@drawable/ic_image" />
+                <include layout="@layout/include_line" />
 
-
-                <ImageView
-                    android:id="@+id/iv_photo_frag_ae"
-                    android:layout_width="@dimen/item_normal_height"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginEnd="@dimen/dp_12"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_shot" />
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_photo_frag_ae"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="@dimen/dp_8"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/dp_18"
+                        android:text="@string/view_ecg_report_tips"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size"
+                        tl:drawableStartCompat="@drawable/ic_image" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_photo_frag_ae"
+                        android:layout_width="@dimen/item_normal_height"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginEnd="@dimen/dp_12"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_shot" />
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:id="@+id/ll_report_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal">
 
@@ -252,8 +295,8 @@
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/dp_18"
                     android:text="@string/view_ecg_report_tips"
-                    android:textSize="@dimen/item_title_size"
                     android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size"
                     tl:drawableStartCompat="@drawable/ic_image" />
 
 
@@ -266,6 +309,8 @@
                     android:src="@drawable/ic_shot" />
 
             </LinearLayout>
+
+            <include layout="@layout/include_line" />
 
         </LinearLayout>
 

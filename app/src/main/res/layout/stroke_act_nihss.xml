@@ -35,6 +35,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -214,5 +215,11 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <include
+        layout="@layout/include_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@id/ll_score_act_nihss" />
 
 </RelativeLayout>

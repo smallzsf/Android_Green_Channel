@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
-    tools:context=".fragment.stroke.StrokeBiologyTagFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragment.stroke.StrokeBiologyTagFragment">
 
     <!--  <TextView
           android:layout_width="wrap_content"
@@ -42,14 +42,14 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true">
 
-                    <Button
+                    <TextView
                         android:id="@+id/body_temperature1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="选择文件"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -69,11 +69,8 @@
 
             </RelativeLayout>
 
+            <include layout="@layout/include_line" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -87,8 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="抽血时间"
-                    android:textSize="@dimen/item_title_size"
-                    android:textColor="@color/app_223b53" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
 
 
                 <TextView
@@ -101,18 +98,14 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
-                    android:textSize="@dimen/item_content_size"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
-
+            <include layout="@layout/include_line" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -132,8 +125,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="结果时间"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
 
 
                 </LinearLayout>
@@ -148,17 +141,14 @@
                     android:gravity="center|right"
                     android:hint="@string/app_default_time_example"
                     android:text="选取时间"
-                    android:textSize="@dimen/item_content_size"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <RelativeLayout
@@ -179,8 +169,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="凝血酶原时间"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -196,16 +186,13 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/item_content_size"  />
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
+            <include layout="@layout/include_line" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -225,8 +212,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="活化部分凝血活酶"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -242,16 +229,14 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/item_content_size"  />
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -271,8 +256,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="凝血酶时间"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -288,15 +273,13 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/item_content_size"  />
+                    android:textSize="@dimen/item_content_size" />
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -316,8 +299,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="纤维蛋白原"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -339,10 +322,8 @@
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -362,8 +343,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:text="INR"
-                        android:textSize="@dimen/item_title_size"
-                        android:textColor="@color/app_223b53" />
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
                 <EditText
@@ -379,16 +360,13 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:textSize="@dimen/item_content_size"  />
+                    android:textSize="@dimen/item_content_size" />
 
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_1"
-                android:background="@color/app_eef3f7" />
+            <include layout="@layout/include_line" />
 
 
             <!--
@@ -402,7 +380,6 @@
 
 
     </ScrollView>
-
 
 
     <include

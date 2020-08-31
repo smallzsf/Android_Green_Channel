@@ -19,33 +19,54 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_41"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_20"
                 android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:paddingLeft="@dimen/dp_20">
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
                     android:text="@string/chief_complaint" />
 
+                <!-- <EditText
+                     android:id="@+id/et_major_complaint_frag"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:background="@drawable/shape_condition_record_edittext_background"
+                     android:gravity="top"
+                     android:inputType="textMultiLine"
+                     android:maxLength="50"
+                     android:paddingLeft="@dimen/dp_4"
+                     android:paddingTop="@dimen/dp_4"
+                     android:paddingBottom="@dimen/dp_4"
+                     android:textSize="@dimen/item_content_size" />-->
+
+
                 <EditText
                     android:id="@+id/et_major_complaint_frag"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_16"
-                    android:layout_marginTop="@dimen/dp_6"
-                    android:layout_marginRight="@dimen/dp_16"
-                    android:layout_marginBottom="@dimen/dp_6"
-                    android:background="@drawable/shape_condition_record_edittext_background"
-                    android:gravity="top"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
                     android:hint="@string/tip_chief_complaint"
-                    android:inputType="textMultiLine"
-                    android:maxLength="50"
-                    android:paddingLeft="@dimen/dp_4"
-                    android:paddingTop="@dimen/dp_4"
-                    android:paddingBottom="@dimen/dp_4"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
+
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_action_in_chief"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:maxLength="100"
+                    zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
             </LinearLayout>
 
             <include layout="@layout/include_line" />
@@ -70,7 +91,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
                     android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="请输入症状"
@@ -87,7 +107,7 @@
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_5"
                 zhy:max_select="1" />
 
             <include layout="@layout/include_line" />
@@ -99,15 +119,131 @@
                 android:layout_marginRight="@dimen/dp_20"
                 android:text="@string/past_medical_history" />
 
+
+            <EditText
+                android:id="@+id/et_medical_history"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_90"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="@drawable/shape_edittext_bg"
+                android:gravity="start"
+                android:hint="请输入既往史"
+                android:paddingLeft="@dimen/dp_6"
+                android:paddingTop="@dimen/dp_6"
+                android:textSize="@dimen/item_content_size" />
+
+
             <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/id_flow_layout2"
+                android:id="@+id/tfl_medical_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_5"
+                zhy:max_select="1" />
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_16"
-                zhy:max_select="1" />
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="既往用药史" />
+
+           <!--     <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入既往用药史"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/item_content_size" />
+
+
+
+                    -->
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="抗血小板药"
+                    android:layout_marginTop="@dimen/dp_5"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_anticoagulant_drug"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    zhy:max_select="-1" />
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="抗凝药"
+                    android:layout_marginTop="@dimen/dp_5"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_anticoagulant_drug1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    zhy:max_select="-1" />
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="降压药"
+                    android:layout_marginTop="@dimen/dp_5"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_anticoagulant_drug2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    zhy:max_select="-1" />
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="降糖药"
+                    android:layout_marginTop="@dimen/dp_5"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_anticoagulant_drug3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    zhy:max_select="-1" />
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="降脂药"
+                    android:layout_marginTop="@dimen/dp_5"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_anticoagulant_drug4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    zhy:max_select="-1" />
+
+
+            </LinearLayout>
 
             <include layout="@layout/include_line" />
 

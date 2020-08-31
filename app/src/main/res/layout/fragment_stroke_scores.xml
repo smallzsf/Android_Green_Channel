@@ -34,10 +34,7 @@
                 app:nib_score_visible="true"
                 app:title="发病前mRS评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_in_hos_mrs_frag_ss"
@@ -45,10 +42,7 @@
                 android:layout_height="wrap_content"
                 app:title="入院mRS评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_24_mrs_frag_ss"
@@ -56,10 +50,7 @@
                 android:layout_height="wrap_content"
                 app:title="溶栓后24h mRS评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,10 +127,7 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -193,10 +181,7 @@
                     android:layout_height="wrap_content"
                     app:title="睁眼状态" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/color_EEEEEE" />
+                <include layout="@layout/include_line" />
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_lh_gcs_speak_frag_ss"
@@ -204,10 +189,7 @@
                     android:layout_height="wrap_content"
                     app:title="语言状态" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/color_EEEEEE" />
+                <include layout="@layout/include_line" />
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_lh_gcs_sport_frag_ss"
@@ -217,10 +199,7 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_in_hos_fisher_frag_ss"
@@ -228,10 +207,8 @@
                 android:layout_height="wrap_content"
                 app:title="入院Fisher分级" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
+
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_live_hunt_hess_frag_ss"
@@ -239,10 +216,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院Hunt-Hess评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_live_chads2_frag_ss"
@@ -250,10 +224,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院CHADS2评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_has_bled_frag_ss"
@@ -261,10 +232,8 @@
                 android:layout_height="wrap_content"
                 app:title="HAS-BLED评分" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
+
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_wada_swallowing_frag_ss"
@@ -272,10 +241,8 @@
                 android:layout_height="wrap_content"
                 app:title="洼田吞咽评定" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@color/color_EEEEEE" />
+            <include layout="@layout/include_line" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -327,10 +294,8 @@
                     android:layout_height="wrap_content"
                     app:title="体积" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/color_EEEEEE" />
+                <include layout="@layout/include_line" />
+
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_sm_position_frag_ss"
@@ -338,10 +303,8 @@
                     android:layout_height="wrap_content"
                     app:title="位置" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="@color/color_EEEEEE" />
+                <include layout="@layout/include_line" />
+
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_sm_deep_frag_ss"

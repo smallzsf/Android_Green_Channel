@@ -7,18 +7,21 @@
     android:orientation="vertical"
     tools:context=".fragment.StrokeMedicationFragment">
 
+
     <com.flyco.tablayout.SegmentTabLayout
         android:id="@+id/stl_title_frag_stroke_medice"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginEnd="@dimen/dp_8"
         tl:tl_bar_color="@color/white"
         tl:tl_indicator_color="@color/colorPrimary"
         tl:tl_indicator_corner_radius="8dp"
-        tl:tl_tab_padding="20dp"
+        tl:tl_tab_padding="5dp"
         tl:tl_textsize="@dimen/item_title_size" />
+
+    <include layout="@layout/include_line_white"  />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_content_frag_stroke_medice"

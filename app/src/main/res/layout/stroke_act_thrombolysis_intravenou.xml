@@ -5,7 +5,7 @@
     xmlns:zhy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
+    android:background="@color/white"
     tools:context=".activity.stroke.StrokeThrombolysisIntravenousActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
@@ -23,10 +23,13 @@
         <com.xyj.strokeaid.view.TextSwitchBar
             android:id="@+id/tsb_age_act_sti"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_title_height"
+            android:layout_height="@dimen/item_normal_height"
             android:background="@color/white"
             app:tsb_switch="true"
             app:tsb_title="是否溶栓" />
+
+
+        <include layout="@layout/include_line" />
 
         <LinearLayout
             android:id="@+id/ll_refuse_act_sti"
@@ -65,7 +68,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal"
@@ -76,10 +79,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:minWidth="60dp"
                     android:text="接诊医生"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/item_title_size"/>
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_destination_act_tdr"
@@ -92,10 +94,12 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal"
@@ -106,10 +110,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:minWidth="60dp"
                     android:text="@string/thrombolytic_drug"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/item_title_size"/>
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -139,9 +142,12 @@
                 </RadioGroup>
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal"
@@ -155,7 +161,7 @@
                     android:minWidth="60dp"
                     android:text="@string/patient_weight"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <EditText
                     android:id="@+id/et_weight_act_sti"
@@ -169,6 +175,7 @@
                     android:hint="@string/please_enter_the_weight"
                     android:inputType="number"
                     android:maxLength="7"
+                    android:textSize="@dimen/item_content_size"
                     android:textCursorDrawable="@drawable/shape_edit_text_cursor" />
 
                 <TextView
@@ -181,12 +188,14 @@
 
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
-                android:minHeight="@dimen/title_bar_height"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
                 android:paddingEnd="@dimen/dp_12">
@@ -198,7 +207,7 @@
                     android:minWidth="60dp"
                     android:text="@string/dosage"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <EditText
                     android:id="@+id/et_dosage_act_sti"
@@ -211,20 +220,26 @@
                     android:gravity="center_vertical"
                     android:hint="@string/thrombolytic_num_tips"
                     android:inputType="text"
+                    android:textSize="@dimen/item_content_size"
                     android:textCursorDrawable="@drawable/shape_edit_text_cursor" />
 
             </LinearLayout>
 
+            <include layout="@layout/include_line" />
+
+
             <com.xyj.strokeaid.view.TextTimeBar
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_title_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 app:title="开始溶栓" />
 
+            <include layout="@layout/include_line" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal"
@@ -238,7 +253,7 @@
                     android:minWidth="60dp"
                     android:text="溶栓护士"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_nurse_act_tdr"
@@ -250,6 +265,9 @@
                     app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
         </LinearLayout>
 
 

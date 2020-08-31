@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".activity.stroke.ThrombolysisDocReceiveActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
@@ -13,20 +14,14 @@
         android:layout_height="@dimen/title_bar_height"
         app:title="溶栓医生接诊时间" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_bar_act_tdr"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/dp_12"
-        android:paddingEnd="@dimen/dp_12">
-
+    <!--
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
+            android:layout_height="@dimen/item_normal_height"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/dp_12"
+            android:paddingEnd="@dimen/dp_12">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,43 +30,92 @@
                 android:gravity="center"
                 android:text="接诊时间"
                 android:textColor="@color/color_222222"
-                android:textSize="15dp" />
+                android:textSize="@dimen/item_title_size" />
 
             <include layout="@layout/view_select_time" />
 
 
-        </LinearLayout>
+        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
-            android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_below="@+id/doctor_name_line"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="接诊医生"
-                android:textColor="@color/color_222222"
-                android:textSize="15dp" />
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:text="接诊时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
 
-            <com.xyj.strokeaid.view.editspinner.EditSpinner
-                android:id="@+id/es_destination_act_tdr"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                app:Background="@drawable/bg_view_frame"
-                app:hint="请选择"
-                app:rightImage="@drawable/ic_arrow_down_blue" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_time_include_time"
+            style="@style/patient_et_style"
+            android:layout_width="@dimen/dp_0"
+            android:layout_weight="2.4"
+            android:focusable="false"
+            android:hint="@string/app_default_time_example"
+            android:paddingLeft="@dimen/dp_10"
+            android:textSize="@dimen/item_content_size" />
 
+        <ImageView
+            android:id="@+id/iv_refresh_include_time"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_22"
+            android:paddingLeft="4dp"
+            android:paddingTop="2dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/ic_refresh" />
     </LinearLayout>
+
+
+    <include layout="@layout/include_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/dp_25"
+        android:paddingRight="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="接诊医生"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_destination_act_tdr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></View>
+
 
     <include
         layout="@layout/view_two_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_gravity="bottom" />
 
-</RelativeLayout>
+</LinearLayout>

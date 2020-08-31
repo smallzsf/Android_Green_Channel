@@ -24,7 +24,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
@@ -50,7 +50,6 @@
             </LinearLayout>
 
             <include layout="@layout/include_line" />
-
 
             <ScrollView
                 android:id="@+id/sv_to_transfe_hospital"
@@ -128,6 +127,8 @@
                         android:id="@+id/tfl_transfer_reason"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginRight="@dimen/dp_20"
                         android:layout_marginTop="@dimen/dp_12"
                         android:layout_marginBottom="@dimen/dp_16"
                         zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
@@ -169,6 +170,8 @@
                         android:id="@+id/tfl_state_of_illness_dispose"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_marginRight="@dimen/dp_20"
                         android:layout_marginTop="@dimen/dp_12"
                         android:layout_marginBottom="@dimen/dp_16"
                         android:maxLength="100"
