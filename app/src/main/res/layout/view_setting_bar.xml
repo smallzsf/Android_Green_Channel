@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/item_normal_height">
+
+    <View
+        android:id="@+id/view_top_line_view_sb"
+        style="@style/horizontal_divider"
+        android:layout_alignParentTop="true" />
+
+    <View
+        android:id="@+id/view_bottom_line_view_sb"
+        style="@style/horizontal_divider"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:id="@+id/iv_left_view_sb"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:scaleType="fitXY"
+        android:visibility="gone"
+        tools:src="@drawable/icon_defalut" />
+
+    <TextView
+        android:id="@+id/tv_title_view_sb"
+        android:layout_width="wrap_content"
+        android:minWidth="@dimen/item_title_min_width"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:layout_toEndOf="@id/iv_left_view_sb"
+        android:gravity="center_vertical"
+        android:maxLength="12"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size"
+        tools:text="家庭医生团队团队" />
+
+    <ImageView
+        android:id="@+id/iv_right_view_sb"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/item_normal_margin"
+        android:scaleType="center"
+        android:src="@drawable/common_icon_right_arrow_222222" />
+
+    <TextView
+        android:id="@+id/tv_right_view_sb"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical|end"
+        android:maxLines="2"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size"
+        android:visibility="visible"
+        tools:text="无法收到云信通知时，请检查设置" />
+
+</RelativeLayout>

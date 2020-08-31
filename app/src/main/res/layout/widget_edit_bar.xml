@@ -26,7 +26,7 @@
         android:layout_height="30dp"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/dp_12"
-        tools:src="@drawable/base_icon_place_holder" />
+        tools:src="@drawable/icon_defalut" />
 
     <ImageView
         android:id="@+id/iv_right_edit_bar"

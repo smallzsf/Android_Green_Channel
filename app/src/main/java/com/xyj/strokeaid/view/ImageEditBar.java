@@ -75,7 +75,7 @@ public class ImageEditBar extends RelativeLayout {
             mIvLeft.setVisibility(VISIBLE);
             if (array.hasValue(R.styleable.ImageEditBar_eb_left_icon)) {
                 mIvLeft.setImageResource(array.getResourceId(R.styleable.ImageEditBar_eb_left_icon,
-                        R.drawable.base_icon_place_holder));
+                        R.drawable.icon_defalut));
             } else {
                 mIvLeft.setVisibility(GONE);
             }
@@ -87,7 +87,7 @@ public class ImageEditBar extends RelativeLayout {
             mIvRight.setVisibility(VISIBLE);
             if (array.hasValue(R.styleable.ImageEditBar_eb_right_icon)) {
                 mIvRight.setImageResource(array.getResourceId(R.styleable.ImageEditBar_eb_right_icon,
-                        R.drawable.base_icon_place_holder));
+                        R.drawable.icon_defalut));
             } else {
                 mIvRight.setVisibility(GONE);
             }

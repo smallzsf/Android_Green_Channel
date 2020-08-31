@@ -103,10 +103,26 @@
         <attr name="ieb_unit_visible" format="boolean" />
         <attr name="ieb_unit_text" format="string" />
 
-        <attr name="ieb_click_status" format="boolean" />
+        <attr name="ieb_top_line_visible" format="boolean" />
+        <attr name="ieb_bottom_line_visible" format="boolean" />
+    </declare-styleable>
 
-        <attr name="android:inputType" />
 
+    <declare-styleable name="SettingBar">
+        <!-- 左边 -->
+        <attr name="bar_leftText" format="string|reference" />
+        <attr name="bar_leftTextColor" format="color|reference" />
+        <attr name="bar_leftIcon" format="reference" />
+        <attr name="bar_leftIconVisible" format="boolean" />
+        <!-- 右边 -->
+        <attr name="bar_rightText" format="string" />
+        <attr name="bar_rightTextColor" format="color|reference" />
+        <attr name="bar_rightTextVisible" format="boolean" />
+        <attr name="bar_rightIcon" format="reference" />
+        <attr name="bar_rightIconVisible" format="boolean" />
+        <!-- 分割线 -->
+        <attr name="bar_topLineVisible" format="boolean" />
+        <attr name="bar_bottomLineVisible" format="boolean" />
     </declare-styleable>
 
     <style name="Text_Dark_Content_Style">

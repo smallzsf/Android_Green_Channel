@@ -2,15 +2,17 @@ package com.xyj.strokeaid.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xyj.strokeaid.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -21,18 +23,25 @@ import com.xyj.strokeaid.R;
  * @date : 2020/5/16
  * email ：licy3051@qq.com
  */
-public class ItemEditBar extends LinearLayout {
+public class ItemEditBar extends RelativeLayout {
 
-    private TextView mTvLeft;
-    private TextView mTvUnit;
-    private EditText mEtRoot;
-    private TextView mTvSpace;
-    private LinearLayout mLlRoot;
-    private Context mContext;
-    private boolean haveMark;
-    private boolean mClickStatus;
 
-    private boolean mEnable = true;
+    @BindView(R.id.view_top_line_view_ieb)
+    View viewTopLineViewIeb;
+    @BindView(R.id.view_bottom_line_view_ieb)
+    View viewBottomLineViewIeb;
+    @BindView(R.id.tv_title_view_ieb)
+    TextView tvTitleViewIeb;
+    @BindView(R.id.tv_unit_view_ieb)
+    TextView tvUnitViewIeb;
+    @BindView(R.id.et_content_view_ieb)
+    EditText etContentViewIeb;
+    @BindView(R.id.tv_content_view_ieb)
+    TextView tvContentViewIeb;
+    @BindView(R.id.rl_root_item_edit_bar)
+    RelativeLayout rlRootItemEditBar;
+
+    private boolean mEditEnable;
 
     public ItemEditBar(Context context) {
         this(context, null);
@@ -44,142 +53,124 @@ public class ItemEditBar extends LinearLayout {
 
     public ItemEditBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mContext = context;
-        View view = LayoutInflater.from(context).inflate(R.layout.widget_item_edit_bar, this, true);
-
-        mTvLeft = view.findViewById(R.id.tv_widget_item_edit_bar);
-        mTvUnit = view.findViewById(R.id.tv_unit_item_edit_bar);
-        mTvSpace = view.findViewById(R.id.tv_space_widget_item_edit_bar);
-        mEtRoot = view.findViewById(R.id.et_widget_item_edit_bar);
-        mLlRoot = view.findViewById(R.id.ll_root_item_edit_bar);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_item_edit_bar, this, true);
+        ButterKnife.bind(this, view);
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.ItemEditBar);
 
         // 设置title
         // 是否必填
-        haveMark = array.getBoolean(R.styleable.ItemEditBar_ieb_must_fill, false);
-        if (haveMark) {
-            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.drawable.icon_manda), null, null, null);
+        boolean mustFill = array.getBoolean(R.styleable.ItemEditBar_ieb_must_fill, false);
+        if (mustFill) {
+            tvTitleViewIeb.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_manda, 0);
         } else {
-            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(context.getResources().getDrawable(R.drawable.icon_manda_no), null, null, null);
+            tvTitleViewIeb.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_manda_no, 0);
         }
-        // 填充内容
+        // 填充标题
         if (array.hasValue(R.styleable.ItemEditBar_ieb_title)) {
-            mTvLeft.setText(array.getString(R.styleable.ItemEditBar_ieb_title));
+            tvTitleViewIeb.setText(array.getString(R.styleable.ItemEditBar_ieb_title));
         }
 
         // 设置edit text
         // 是否可以编辑
-        if (array.getBoolean(R.styleable.ItemEditBar_ieb_edit_enable, true)) {
-            mEnable = true;
-            mTvSpace.setVisibility(GONE);
-            mEtRoot.setVisibility(VISIBLE);
+        mEditEnable = array.getBoolean(R.styleable.ItemEditBar_ieb_edit_enable, true);
+        if (mEditEnable) {
+            tvContentViewIeb.setVisibility(GONE);
+            etContentViewIeb.setVisibility(VISIBLE);
         } else {
-            mEnable = false;
-            mTvSpace.setVisibility(VISIBLE);
-            mEtRoot.setVisibility(GONE);
+            tvContentViewIeb.setVisibility(VISIBLE);
+            etContentViewIeb.setVisibility(GONE);
         }
-
-
+        // 设置提示文字
         if (array.hasValue(R.styleable.ItemEditBar_ieb_edit_hint)) {
-            mEtRoot.setHint(array.getString(R.styleable.ItemEditBar_ieb_edit_hint));
+            tvContentViewIeb.setHint(array.getString(R.styleable.ItemEditBar_ieb_edit_hint));
+            etContentViewIeb.setHint(array.getString(R.styleable.ItemEditBar_ieb_edit_hint));
         }
+        // 设置内容
         if (array.hasValue(R.styleable.ItemEditBar_ieb_edit_content)) {
-            mEtRoot.setText(array.getString(R.styleable.ItemEditBar_ieb_edit_content));
-        }
-        if (array.hasValue(R.styleable.ItemEditBar_android_inputType)) {
-            mEtRoot.setInputType(array.getInteger(R.styleable.ItemEditBar_android_inputType, InputType.TYPE_CLASS_TEXT));
+            tvContentViewIeb.setText(array.getString(R.styleable.ItemEditBar_ieb_edit_content));
+            etContentViewIeb.setText(array.getString(R.styleable.ItemEditBar_ieb_edit_content));
         }
 
         // unit
         if (array.getBoolean(R.styleable.ItemEditBar_ieb_unit_visible, false)) {
-            mTvUnit.setVisibility(VISIBLE);
+            tvUnitViewIeb.setVisibility(VISIBLE);
             if (array.hasValue(R.styleable.ItemEditBar_ieb_unit_text)) {
-                mTvUnit.setText(array.getString(R.styleable.ItemEditBar_ieb_unit_text));
+                tvUnitViewIeb.setText(array.getString(R.styleable.ItemEditBar_ieb_unit_text));
             }
         } else {
-            mTvUnit.setVisibility(GONE);
+            tvUnitViewIeb.setVisibility(GONE);
         }
 
-        mClickStatus = array.getBoolean(R.styleable.ItemEditBar_ieb_click_status, false);
+        // 顶部分割线
+        if (array.getBoolean(R.styleable.ItemEditBar_ieb_top_line_visible, false)){
+            viewTopLineViewIeb.setVisibility(VISIBLE);
+        }else {
+            viewTopLineViewIeb.setVisibility(GONE);
+        }
+        // 底部分割线
+        if (array.getBoolean(R.styleable.ItemEditBar_ieb_bottom_line_visible, false)){
+            viewBottomLineViewIeb.setVisibility(VISIBLE);
+        }else {
+            viewBottomLineViewIeb.setVisibility(GONE);
+        }
 
         array.recycle();
 
     }
 
     public ItemEditBar setTitle(String title) {
-        mTvLeft.setText(title);
+        tvTitleViewIeb.setText(title);
         return this;
     }
 
     public ItemEditBar setEditContent(String content) {
-        if (mEnable) {
-            mEtRoot.setText(content);
-        } else {
-            mTvSpace.setText(content);
-        }
+        etContentViewIeb.setText(content);
+        tvContentViewIeb.setText(content);
         return this;
     }
 
     public ItemEditBar setEditEnable(boolean enable) {
-        if (mClickStatus) {
-            mTvSpace.setVisibility(VISIBLE);
-            mEtRoot.setVisibility(GONE);
-
-            if (enable) {
-                if (haveMark) {
-                    mTvLeft.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.drawable.icon_manda), null, null, null);
-                }
-            } else {
-                if (haveMark) {
-                    mTvLeft.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.drawable.icon_manda_no), null, null, null);
-                }
-            }
-
-            return this;
-        }
-
-        if (enable) {
-            mTvSpace.setVisibility(GONE);
-            mEtRoot.setVisibility(VISIBLE);
-            if (haveMark) {
-                mTvLeft.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.drawable.icon_manda), null, null, null);
-            }
+        mEditEnable = enable;
+        if (mEditEnable) {
+            tvContentViewIeb.setVisibility(GONE);
+            etContentViewIeb.setVisibility(VISIBLE);
         } else {
-            mTvSpace.setVisibility(VISIBLE);
-            mEtRoot.setVisibility(GONE);
-            if (haveMark) {
-                mTvLeft.setCompoundDrawablesWithIntrinsicBounds(mContext.getResources().getDrawable(R.drawable.icon_manda_no), null, null, null);
-            }
+            tvContentViewIeb.setVisibility(VISIBLE);
+            etContentViewIeb.setVisibility(GONE);
         }
+        return this;
+    }
 
+    public ItemEditBar setRootOnClickListener(OnClickListener listener) {
+        if (rlRootItemEditBar != null) {
+            rlRootItemEditBar.setOnClickListener(listener);
+        }
         return this;
     }
 
     public ItemEditBar setEditHint(String hint) {
-        mEtRoot.setHint(hint);
+        etContentViewIeb.setHint(hint);
+        tvContentViewIeb.setHint(hint);
         return this;
     }
 
     public EditText getEtRoot() {
-        return mEtRoot;
+        return etContentViewIeb;
     }
 
 
     public boolean getEditEnable() {
-        return mEnable;
+        return mEditEnable;
     }
 
     public String getEditContent() {
-        if (mEnable) {
-            return mEtRoot.getText().toString().trim();
+        if (mEditEnable) {
+            return etContentViewIeb.getText().toString().trim();
         } else {
-            return mTvSpace.getText().toString().trim();
+            return tvContentViewIeb.getText().toString().trim();
         }
 
     }
 
-    public void setRootOnClickListener(OnClickListener listener) {
-        mLlRoot.setOnClickListener(listener);
-    }
 }

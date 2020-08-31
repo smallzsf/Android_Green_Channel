@@ -10,6 +10,16 @@ package com.xyj.strokeaid.app;
  */
 public final class RouteUrl {
 
+    /**
+     * 新建患者
+     */
+    public static final String NEW_PATIENT = "/app/add/patient";
+
+    /**
+     * 个人中心
+     */
+    public static final String PERSONAL_INFO = "/app/personal/info";
+
     public static final class Stroke {
         /**
          * 急诊绿道转归

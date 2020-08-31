@@ -540,7 +540,8 @@
     <string name="image_inspection_ct_check_report">查看CT报告(%s)</string>
     <string name="image_inspection_ct_check_report_time">CT出报告</string>
     <string name="image_inspection_ct_check_time">CT检查开始</string>
-    <string name="kg">kg</string>
+    <string name="kg">Kg</string>
+    <string name="kgm2">Kg/㎡</string>
     <string name="lab_cancel">取消</string>
     <string name="lab_confirm">确定</string>
     <string name="lab_reset">重置</string>

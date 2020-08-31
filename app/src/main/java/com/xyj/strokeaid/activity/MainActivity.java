@@ -30,7 +30,6 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.common.PatientGreenChannelActivity;
-import com.xyj.strokeaid.activity.newapoplexy.NewChestXRayActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
@@ -150,7 +149,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     public void initListener() {
 
         tvAddActMain.setOnClickListener(v ->
-                startActivity(new Intent(mContext, NewChestXRayActivity.class)));
+                startActivity(new Intent(mContext, NewPatientMedicalRecordActivity.class)));
         etSearchViewSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

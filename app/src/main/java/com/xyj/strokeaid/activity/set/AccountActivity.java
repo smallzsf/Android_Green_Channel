@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.login.LoginActivity;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.helper.ActivityStackManager;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -24,6 +27,7 @@ import butterknife.OnClick;
  * @date : 2019/8/19
  * email ：licy3051@qq.com
  */
+@Route(path = RouteUrl.PERSONAL_INFO)
 public class AccountActivity extends BaseActivity {
 
 
@@ -47,7 +51,7 @@ public class AccountActivity extends BaseActivity {
 
     @Override
     protected void initInject() {
-
+        ARouter.getInstance().inject(this);
     }
 
     @Override
