@@ -6,60 +6,42 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".activity.newapoplexy.NewApoplexyInfoActivity">
+    tools:context=".activity.NewPatientMedicalRecordActivity">
 
-    <ScrollView
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_npmr"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/item_title_height"
+        app:rightIconVisible="false"
+        app:rightText="快速建档"
+        app:rightTextVisible="true"
+        app:title="新建胸透患者信息" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <com.xyj.strokeaid.view.BaseTitleBar
-                android:id="@+id/bt_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:title="新建胸透患者信息" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/app_dp45"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_title="门诊ID" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_12"
-                        android:layout_weight="1"
-                        android:text="患者信息"
-                        android:textColor="@color/app_299ee3" />
-
-                    <Button
-                        android:id="@+id/btn_connect_patient_info"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_gravity="right|center_vertical"
-                        android:layout_marginRight="@dimen/dp_16"
-                        android:background="@drawable/shape_corner_20_with_blue"
-                        android:paddingLeft="@dimen/dp_16"
-                        android:paddingRight="@dimen/dp_16"
-                        android:text="快速建档"
-                        android:textColor="@color/app_ffffff" />
-
-                </LinearLayout>
-
-                <View
-                    style="@style/ViewLineStyle"
-                    tools:ignore="MissingConstraints" />
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_title="绑定腕带" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -540,5 +522,5 @@
                 android:text="保存并加入路径"
                 android:textColor="@color/app_ffffff" />
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>
