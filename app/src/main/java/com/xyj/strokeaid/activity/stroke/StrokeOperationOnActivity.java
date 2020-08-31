@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -24,6 +26,7 @@ import butterknife.OnClick;
  *
  * @date : 2020/8/30
  */
+@Route(path = RouteUrl.Stroke.STROKE_INVOLVED_OPERATION_ON)
 public class StrokeOperationOnActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_stroke_operation)
