@@ -101,7 +101,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         rvMenuActPgc.setAdapter(mMenuRvAdapter);
 
         vpContentActPgc.setUserInputEnabled(false);
-        vpContentActPgc.setOffscreenPageLimit(4);
         vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
 
         tvStartDisTimeActPgc.setBase(SystemClock.elapsedRealtime());
