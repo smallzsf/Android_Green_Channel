@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.xyj.strokeaid.adapter.AfterOperationDrugRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.AfterOperationDrugBean;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.ArrayList;
@@ -92,6 +94,10 @@ public class StrokeInHosDrugFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.rl_stroke_in_hos_drug)
+    RelativeLayout rlStrokeInHosDrug;
 
     private RadioGroup rgAntiplatelet;
     private RadioButton rbAntiplateletYes;
@@ -138,6 +144,15 @@ public class StrokeInHosDrugFragment extends BaseFragment {
             mDocId = getArguments().getString(IntentKey.DOC_ID);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        HideBottonUtils.getInstance().getHideBotton(rlStrokeInHosDrug, llBottom);
+
+    }
+
 
     @Override
     protected int getLayoutId() {

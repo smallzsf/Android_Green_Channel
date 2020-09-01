@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    android:id="@+id/ll_stroke_blood_sugar"
     tools:context=".fragment.stroke.StrokeBloodSugarFragment">
 
     <!--  <TextView
@@ -157,7 +158,6 @@
 
 
     <include
-        android:id="@+id/include_bottom_view"
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -24,6 +24,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -74,6 +75,10 @@ public class TransferFragment extends BaseFragment {
     @BindView(R.id.iv_refresh_item_time_node)
     ImageView ivRefreshItemTimeNode;
     TimePickerView mTimePickerView;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_transfer)
+    LinearLayout llTransfer;
 
     private String[] mVals = new String[]{"无溶栓能力", "无介入能力", "家属意愿"};
     private String[] mVals1 = new String[]{"未给溶栓药物", "已给溶栓药物"};
@@ -86,6 +91,14 @@ public class TransferFragment extends BaseFragment {
     public TransferFragment() {
         // Required empty public constructor
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        HideBottonUtils.getInstance().getHideBotton(llTransfer, llBottom);
+    }
+
 
     public static TransferFragment newInstance(String patientId, String docId) {
         TransferFragment fragment = new TransferFragment();
@@ -145,9 +158,9 @@ public class TransferFragment extends BaseFragment {
     @Override
     protected void initListener() {
         //设置输入框值
-         getEtTransferReason(tflTransferReason, etTransferReason, mVals);
+        getEtTransferReason(tflTransferReason, etTransferReason, mVals);
         //设置输入框值
-         getEtTransferReason(tflStateOfIllnessDispose, etStateOfIllnessDispose, mVals1);
+        getEtTransferReason(tflStateOfIllnessDispose, etStateOfIllnessDispose, mVals1);
 
         rgDepartureHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -189,7 +202,6 @@ public class TransferFragment extends BaseFragment {
         });
 
     }
-
 
 
     private void getEtTransferReason(TagFlowLayout tfl, EditText et, String[] mVals) {
@@ -333,8 +345,6 @@ public class TransferFragment extends BaseFragment {
         list.add("其他");
         esTransformation.setItemData(list);
     }
-
-
 
 
     /**

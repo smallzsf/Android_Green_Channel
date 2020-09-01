@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
+    android:id="@+id/ll_stroke_biology_tag"
     tools:context=".fragment.stroke.StrokeBiologyTagFragment">
 
     <!--  <TextView
@@ -383,7 +384,6 @@
 
 
     <include
-        android:id="@+id/include_bottom_view"
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

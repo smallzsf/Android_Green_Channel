@@ -1,12 +1,15 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +17,7 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -51,6 +55,10 @@ public class DiseaseRecordFragment extends BaseFragment {
     TagFlowLayout tflAnticoagulantDrug3;
     @BindView(R.id.tfl_anticoagulant_drug4)
     TagFlowLayout tflAnticoagulantDrug4;
+    @BindView(R.id.llVitalSigns)
+    LinearLayout llVitalSigns;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
     private String mPatientId;
     private String mDocId;
 
@@ -96,6 +104,13 @@ public class DiseaseRecordFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        HideBottonUtils.getInstance().getHideBotton(llVitalSigns, llBottom);
     }
 
 

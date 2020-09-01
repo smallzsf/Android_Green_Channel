@@ -1,27 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_start_greenway"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".fragment.StartGreenwayFragment">
 
-    <TextView
-        style="@style/tv_normal_titel"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_title_height"
-        android:paddingStart="@dimen/dp_12"
-        android:text="请选择卒中中心医院" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_hos_frag_sg"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="急诊科"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_emergency_ward"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_emergency_ward"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="神内科"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_neurology"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_neurology"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="导管科"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_duct_branch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_duct_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="&#8194;&#8194;CT室"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_ct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_ct"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="left|center"
+            android:text="&#8194;&#8194;心电图室"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_electrocardiographic_room"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_electrocardiographic_room"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+
+    <include layout="@layout/include_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="检验科"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_clinical_lab"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_clinical_lab"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingRight="@dimen/dp_20"
+            android:text="选择" />
+
+
+    </LinearLayout>
+
+    <include layout="@layout/include_line" />
+
+
+
+
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:overScrollMode="never"
-        tools:itemCount="5"
-        tools:listitem="@layout/adapter_rv_stroke_hos_item"
-        android:scrollbars="none" />
+        android:layout_weight="1"></View>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_start_frag_sg"
@@ -32,8 +287,10 @@
         android:layout_marginEnd="@dimen/dp_12"
         android:layout_marginBottom="50dp"
         android:background="@drawable/login_btn_bg"
+        android:gravity="center"
         android:text="启动绿道"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
+
 
 </LinearLayout>

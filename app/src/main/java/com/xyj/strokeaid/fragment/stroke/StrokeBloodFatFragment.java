@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.stroke;
 
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 
 import java.util.Date;
 
@@ -43,6 +45,10 @@ public class StrokeBloodFatFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_stroke_blood_fat)
+    LinearLayout llStrokeBloodFat;
 
     @Override
     protected int getLayoutId() {
@@ -57,6 +63,15 @@ public class StrokeBloodFatFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        HideBottonUtils.getInstance().getHideBotton(llStrokeBloodFat, llBottom);
 
     }
 

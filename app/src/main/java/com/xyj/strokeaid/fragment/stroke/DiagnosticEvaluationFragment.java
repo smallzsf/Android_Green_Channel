@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -15,6 +16,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -38,8 +40,8 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     RadioButton rbProgressivity;
     @BindView(R.id.rg_have_disease_way)
     RadioGroup rgHaveDiseaseWay;
-   /* @BindView(R.id.doctor_name_line)
-    View doctorNameLine;*/
+    /* @BindView(R.id.doctor_name_line)
+     View doctorNameLine;*/
     @BindView(R.id.rb_court)
     RadioButton rbCourt;
     @BindView(R.id.rb_lobby)
@@ -94,6 +96,12 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner esEmergencyTreatmentDoctor;
     @BindView(R.id.es_apoplexy_doctor)
     EditSpinner esApoplexyDoctor;
+    @BindView(R.id.et_input_weight)
+    EditText etInputWeight;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_diagnostic_evaluation)
+    LinearLayout llDiagnosticEvaluation;
     private String mPatientId;
     private String mDocId;
 
@@ -125,6 +133,15 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             mDocId = getArguments().getString(IntentKey.DOC_ID);
         }
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        HideBottonUtils.getInstance().getHideBotton(llDiagnosticEvaluation, llBottom);
+    }
+
 
     @Override
     protected int getLayoutId() {

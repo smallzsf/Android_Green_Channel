@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_bottom"
     android:layout_width="match_parent"
     android:layout_height="@dimen/title_bar_height"
     android:orientation="horizontal"
@@ -12,8 +13,8 @@
         android:layout_height="@dimen/buttom_normal_height"
         android:layout_weight="1"
         android:background="@drawable/login_btn_bg"
-        android:text="@string/get_data"
         android:gravity="center"
+        android:text="@string/get_data"
         android:textColor="@android:color/white"
         android:textSize="@dimen/item_title_size" />
 

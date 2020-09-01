@@ -21,6 +21,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.Date;
@@ -84,6 +85,10 @@ public class AuxiliaryExamFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_auxiliary_exam)
+    LinearLayout llAuxiliaryExam;
 
     private String mPatientId;
     private String mDocId;
@@ -109,6 +114,14 @@ public class AuxiliaryExamFragment extends BaseFragment {
             mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
             mDocId = getArguments().getString(IntentKey.DOC_ID);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        HideBottonUtils.getInstance().getHideBotton(llAuxiliaryExam, llBottom);
+
     }
 
     @Override

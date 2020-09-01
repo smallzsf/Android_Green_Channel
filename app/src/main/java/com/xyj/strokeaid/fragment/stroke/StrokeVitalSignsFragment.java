@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -94,6 +95,10 @@ public class StrokeVitalSignsFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_vital_signs)
+    LinearLayout llVitalSigns;
     private String mPatientId;
     private String mDocId;
     private List<String> list;
@@ -131,6 +136,15 @@ public class StrokeVitalSignsFragment extends BaseFragment {
         btnConfirm.setText("确定");
         loadData();
 
+
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        HideBottonUtils.getInstance().getHideBotton(llVitalSigns, llBottom);
 
     }
 

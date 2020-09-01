@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.model;
 
 
+import android.util.Log;
+
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
@@ -24,6 +26,7 @@ public class LoginModel implements LoginContract.Model {
     public Observable<BaseObjectBean<LoginBean>> login(String username, String password) {
         RequestLoginBean requestLoginBean = new RequestLoginBean(username, password, "1");
         String request = GsonUtils.getGson().toJson(requestLoginBean);
+        Log.d("xxxx",request);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         return RetrofitClient.getInstance().getApi().login(requestBody);
     }
