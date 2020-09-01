@@ -9,11 +9,13 @@
     <View
         android:id="@+id/view_top_line_view_ieb"
         style="@style/horizontal_divider"
+        android:visibility="gone"
         android:layout_alignParentTop="true" />
 
     <View
         android:id="@+id/view_bottom_line_view_ieb"
         style="@style/horizontal_divider"
+        android:visibility="gone"
         android:layout_alignParentBottom="true" />
 
     <TextView

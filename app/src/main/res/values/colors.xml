@@ -31,7 +31,8 @@
     <color name="color_menu_divider">#F5FCFC</color>
     <color name="color_hint">#999999</color>
     <color name="color_normal_stroke">#EEEEEE</color>
-    <color name="color_normal_text">#444444</color>
+    <color name="text_color_normal">#222222</color>
+    <color name="text_color_hint">#999999</color>
 
     <color name="color_46525f">#9946525f</color>
 

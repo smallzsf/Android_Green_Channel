@@ -32,6 +32,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.contract.LoginContract;
 import com.xyj.strokeaid.helper.CodeTimer;
+import com.xyj.strokeaid.http.TokenConfig;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.presenter.LoginPresenter;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -276,6 +277,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, etNameActLogin.getText().toString().trim());
                 boolean isRememberPwd = cbRemembreActLogin.isChecked();
                 mDefaultMMKV.encode(MmkvKey.LOGIN_REMEMBRE, isRememberPwd);
+                TokenConfig.saveToken(bean.getData().getPassword());
                 if (isRememberPwd) {
                     // 按钮被选中，退出再登录时会自动填充帐号密码
                     mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, etPwdActLogin.getText().toString().trim());

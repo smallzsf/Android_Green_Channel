@@ -12,6 +12,7 @@
         android:layout_marginRight="@dimen/dp_23"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/get_data"
+        android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
@@ -25,6 +26,7 @@
         android:layout_marginRight="@dimen/dp_23"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/save"
+        android:gravity="center"
         android:textColor="@android:color/white"
         android:textSize="12sp" />
 
@@ -38,6 +40,7 @@
         android:layout_marginBottom="@dimen/dp_20"
         android:background="@drawable/shape_btn_blue_stroke"
         android:text="@string/lab_cancel"
+        android:gravity="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="12sp" />
 

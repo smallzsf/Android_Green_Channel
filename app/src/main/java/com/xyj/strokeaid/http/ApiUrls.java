@@ -30,26 +30,26 @@ public class ApiUrls {
     /**
      * 登陆
      */
-    public static final String NET_URL_LOGIN = "/yjjk-gateway/yjjk-pt-api/v1/user/mobileLogin";
+    public static final String NET_URL_LOGIN = "yjjk-gateway/yjjk-pt-api/v1/user/mobileLogin";
     /**
      * 请求验证码
      */
-    public static final String NET_URL_SEND_SMS_FOR_LOGIN = "/yjjk-gateway/yjjk-pt-api/v1/common/sms/authcode/send";
+    public static final String NET_URL_SEND_SMS_FOR_LOGIN = "yjjk-gateway/yjjk-pt-api/v1/common/sms/authcode/send";
     /**
      * 使用手机号密码登录
      */
-    public static final String NET_URL_LOGIN_BY_PHONE = "/yjjk-gateway/yjjk-pt-api/v1/user/loginByAuthcode";
+    public static final String NET_URL_LOGIN_BY_PHONE = "yjjk-gateway/yjjk-pt-api/v1/user/loginByAuthcode";
 
     /**
      * 文件上传
      */
-    public static final String NET_URL_COMMON_FILE_UPLOAD = "/yjjk-gateway/yjjk-pt-api/v1/common/upload";
+    public static final String NET_URL_COMMON_FILE_UPLOAD = "yjjk-gateway/yjjk-pt-api/v1/common/upload";
 
 
     /**
      * 修改用户密码
      */
-    public static final String NET_URL_USER_UPDATE_PASSWORD = "/yjjk-gateway/yjjk-pt-api/v1/user/updatePassword";
+    public static final String NET_URL_USER_UPDATE_PASSWORD = "yjjk-gateway/yjjk-pt-api/v1/user/updatePassword";
 
 }
 

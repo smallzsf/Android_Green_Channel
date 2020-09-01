@@ -5,6 +5,7 @@ import com.xyj.strokeaid.bean.LoginBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
@@ -23,4 +24,12 @@ public interface ApiService {
     @Headers({"Content-Type: application/json","Accept: application/json"})
     @POST(ApiUrls.NET_URL_LOGIN)
     Observable<BaseObjectBean<LoginBean>> login(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST(ApiUrls.NET_URL_USER_UPDATE_PASSWORD)
+    Observable<BaseObjectBean> changePassword(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST(ApiUrls.NET_URL_USER_UPDATE_PASSWORD)
+    Call<BaseObjectBean> changePasswordnor(@Body RequestBody info);
 }

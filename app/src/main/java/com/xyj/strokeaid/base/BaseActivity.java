@@ -22,6 +22,7 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
 
@@ -225,6 +226,10 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void showToast(@StringRes int res) {
         Toast.makeText(mContext, res, Toast.LENGTH_SHORT).show();
+    }
+
+    public String getUserId(){
+        return UserInfoCache.getInstance().getUserInfo().getId();
     }
 }
 

@@ -3,7 +3,6 @@ package com.xyj.strokeaid.http;
 
 import androidx.annotation.NonNull;
 
-
 import com.xyj.strokeaid.BuildConfig;
 
 import java.io.IOException;
@@ -46,16 +45,13 @@ public class RetrofitClient {
      * @return
      */
     private Interceptor getHeaderInterceptor() {
-        return new Interceptor() {
-            @Override
-            public Response intercept(@NonNull Chain chain) throws IOException {
-                Request original = chain.request();
-                Request.Builder requestBuilder = original.newBuilder();
-                //添加Token
-//                        .header("token", "");
-                Request request = requestBuilder.build();
-                return chain.proceed(request);
-            }
+        return chain -> {
+            Request original = chain.request();
+            Request.Builder requestBuilder = original.newBuilder();
+            //添加Token
+            requestBuilder.addHeader("Authorization", TokenConfig.getToken());
+            Request request = requestBuilder.build();
+            return chain.proceed(request);
         };
 
     }
@@ -110,7 +106,7 @@ public class RetrofitClient {
                     .build();
         }
         //创建—— 网络请求接口—— 实例
-        if (apiService==null){
+        if (apiService == null) {
             apiService = retrofit.create(ApiService.class);
         }
 
