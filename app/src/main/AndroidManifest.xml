@@ -154,9 +154,6 @@
             android:name=".receiver.MyReceiver"
             android:exported="false" />
 
-        <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
-        <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
-        <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
         <activity android:name=".activity.set.ChangePasswordActivity" />
     </application>
 
