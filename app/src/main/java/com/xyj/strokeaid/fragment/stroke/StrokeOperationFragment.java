@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.view.View;
@@ -16,10 +16,6 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokArterialAneurysmFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokEcaFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeGetInvolvedFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeSanguineousApoplexyFragment;
 
 import butterknife.BindView;
 

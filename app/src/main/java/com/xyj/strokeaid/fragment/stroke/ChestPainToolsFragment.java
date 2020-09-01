@@ -1,38 +1,34 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeOutcomeFragment;
 
 /**
- * BloodExamFragment
- * description: 血液检查
+ * ScoreToolsFragment
+ * description: 评分工具
  *
  * @author : Licy
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class BloodExamFragment extends BaseFragment {
+public class ChestPainToolsFragment extends BaseFragment {
 
     private String mPatientId;
     private String mDocId;
 
-    public BloodExamFragment() {
+    public ChestPainToolsFragment() {
         // Required empty public constructor
     }
 
-    public static BloodExamFragment newInstance(String patientId, String docId) {
-        BloodExamFragment fragment = new BloodExamFragment();
+    public static ChestPainToolsFragment newInstance(String patientId, String docId) {
+        ChestPainToolsFragment fragment = new ChestPainToolsFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -51,7 +47,7 @@ public class BloodExamFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_blood_exam;
+        return R.layout.fragment_chest_pain_score_tools;
     }
 
     @Override

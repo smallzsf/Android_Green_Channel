@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +21,6 @@ import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 

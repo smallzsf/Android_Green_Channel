@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +27,7 @@ import butterknife.BindView;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class VitalSignsFragment extends BaseFragment {
+public class ChestPainVitalSignsFragment extends BaseFragment {
 
 
     @BindView(R.id.awareness)
@@ -98,12 +98,12 @@ public class VitalSignsFragment extends BaseFragment {
     private String mDocId;
     private List<String> list;
 
-    public VitalSignsFragment() {
+    public ChestPainVitalSignsFragment() {
 
     }
 
-    public static VitalSignsFragment newInstance(String patientId, String docId) {
-        VitalSignsFragment fragment = new VitalSignsFragment();
+    public static ChestPainVitalSignsFragment newInstance(String patientId, String docId) {
+        ChestPainVitalSignsFragment fragment = new ChestPainVitalSignsFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);

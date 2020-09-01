@@ -29,7 +29,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.common.PatientGreenChannelActivity;
+import com.xyj.strokeaid.activity.common.PatientStrokeRecordActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
@@ -182,7 +182,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         mPatientRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                Intent intent = new Intent(mContext, PatientGreenChannelActivity.class);
+                Intent intent = new Intent(mContext, PatientStrokeRecordActivity.class);
                 intent.putExtra(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId());
                 intent.putExtra(IntentKey.DOC_ID, mDocId);
                 startActivity(intent);

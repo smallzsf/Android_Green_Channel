@@ -14,13 +14,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.google.android.material.tabs.TabLayout;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.stroke.StrokeMainActivity;
-import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.BloodExamFragment;
 
 import butterknife.BindView;
 

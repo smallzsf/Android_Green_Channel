@@ -133,7 +133,7 @@
             android:name=".activity.stroke.ThrombolysisDelayActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.common.PatientGreenChannelActivity"
+            android:name=".activity.common.PatientStrokeRecordActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.VitalSignsActivity"

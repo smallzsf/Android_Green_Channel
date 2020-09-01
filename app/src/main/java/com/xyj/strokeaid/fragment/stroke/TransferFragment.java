@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -6,7 +6,6 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,7 +34,6 @@ import java.util.Date;
 import java.util.Set;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * TransferFragment

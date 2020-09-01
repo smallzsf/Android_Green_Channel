@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment;
+package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.view.View;
@@ -17,10 +17,6 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeInHosDrugFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeOutHosDrugFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeThrombolysisFragment;
 
 import butterknife.BindView;
 

@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -22,25 +20,24 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
-import com.didichuxing.doraemonkit.kit.toolpanel.decoration.VerticalDividerItemDecoration;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.GreenChannelMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GreenChannelTabBean;
-import com.xyj.strokeaid.fragment.AuxiliaryExamFragment;
-import com.xyj.strokeaid.fragment.DiagnosticEvaluationFragment;
-import com.xyj.strokeaid.fragment.DiseaseRecordFragment;
-import com.xyj.strokeaid.fragment.EmptyFragment;
-import com.xyj.strokeaid.fragment.OtherDisposalFragment;
-import com.xyj.strokeaid.fragment.StartGreenwayFragment;
-import com.xyj.strokeaid.fragment.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.StrokeNihssFragment;
-import com.xyj.strokeaid.fragment.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.StrokeScoresFragment;
-import com.xyj.strokeaid.fragment.TimeNodeFragment;
-import com.xyj.strokeaid.fragment.TransferFragment;
-import com.xyj.strokeaid.fragment.VitalSignsFragment;
+import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
+import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
+import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
+import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
+import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
+import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
+import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
+import com.xyj.strokeaid.fragment.stroke.TransferFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 
 import java.util.ArrayList;
@@ -58,7 +55,7 @@ import butterknife.OnClick;
  * @date : 2020/8/24
  * email ：licy3051@qq.com
  */
-public class PatientGreenChannelActivity extends BaseActivity {
+public class PatientStrokeRecordActivity extends BaseActivity {
 
 
     @BindView(R.id.iv_back_act_pgc)
@@ -105,7 +102,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
 
         vpContentActPgc.setUserInputEnabled(false);
         vpContentActPgc.setOffscreenPageLimit(4);
-        vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientGreenChannelActivity.this, "", ""));
+        vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
 
         tvStartDisTimeActPgc.setBase(SystemClock.elapsedRealtime());
         tvInHosTimeActPgc.setBase(SystemClock.elapsedRealtime());
@@ -188,7 +185,7 @@ public class PatientGreenChannelActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 生命体征
-                    return VitalSignsFragment.newInstance(patientId, docId);
+                    return StrokeVitalSignsFragment.newInstance(patientId, docId);
                 case 1:
                     // 病情记录
                     return DiseaseRecordFragment.newInstance(patientId, docId);

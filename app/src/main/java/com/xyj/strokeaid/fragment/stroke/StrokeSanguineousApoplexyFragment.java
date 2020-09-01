@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.StrokeOperationFragment;
 
 /**
  * @Description: 脑出血
