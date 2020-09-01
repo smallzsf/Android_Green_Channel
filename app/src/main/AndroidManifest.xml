@@ -8,6 +8,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
 
     <application
         android:name=".app.MyApp"
@@ -18,37 +26,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.NewPatientMedicalRecordActivity"></activity>
-        <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
-        <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
-        <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
-        <activity android:name=".activity.detection.ImagingCheckActivity" />
-        <activity android:name=".activity.detection.PatientArrivalCtActivity" />
-        <activity
-            android:name=".activity.detection.IllnessRecordActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
-        <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
-        <activity
-            android:name=".activity.SplashActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.login.LoginActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
-
+        <!-- 供应商分配的渠道号-->
+        <meta-data
+            android:name="NEOLIX_CHANNEL"
+            android:value="N1290D00" />
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
+            android:value="2.4" />
+        <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+            android:value="true" />
+        <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
@@ -60,6 +50,33 @@
             android:value="640" />
 
         <activity
+            android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.NewPatientMedicalRecordActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
+        <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
+        <activity android:name=".activity.detection.ImagingCheckActivity" />
+        <activity android:name=".activity.detection.PatientArrivalCtActivity" />
+        <activity
+            android:name=".activity.detection.IllnessRecordActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
+        <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
+
+        <activity
+            android:name=".activity.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
             android:name=".activity.stroke.EmergencyDoctorActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -67,9 +84,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="stateHidden"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.set.SetActivity"
             android:screenOrientation="portrait" />
@@ -140,6 +157,7 @@
         <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
         <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
         <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
+        <activity android:name=".activity.set.ChangePasswordActivity" />
     </application>
 
 </manifest>
