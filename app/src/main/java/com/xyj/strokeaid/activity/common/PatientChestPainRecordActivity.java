@@ -17,14 +17,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.adapter.GreenChannelMenuRvAdapter;
+import com.xyj.strokeaid.adapter.PatientMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
-import com.xyj.strokeaid.bean.GreenChannelTabBean;
+import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -54,26 +57,26 @@ import butterknife.OnClick;
  * @date : 2020/9/1
  * email ：licy3051@qq.com
  */
+@Route(path = RouteUrl.ChestPain.CHEST_PAIN_HOME)
 public class PatientChestPainRecordActivity extends BaseActivity {
 
+    @BindView(R.id.iv_back_act_pcpr)
+    ImageView ivBackActPcpr;
+    @BindView(R.id.tv_title_act_pcpr)
+    TextView tvTitleActPcpr;
+    @BindView(R.id.tv_subtitle_act_pcpr)
+    TextView tvSubtitleActPcpr;
+    @BindView(R.id.tv_start_dis_time_act_pcpr)
+    Chronometer tvStartDisTimeActPcpr;
+    @BindView(R.id.tv_in_hos_time_act_pcpr)
+    Chronometer tvInHosTimeActPcpr;
+    @BindView(R.id.rv_menu_act_pcpr)
+    RecyclerView rvMenuActPcpr;
+    @BindView(R.id.vp_content_act_pcpr)
+    ViewPager2 vpContentActPcpr;
 
-    @BindView(R.id.iv_back_act_pgc)
-    ImageView ivBackActPgc;
-    @BindView(R.id.tv_title_act_pgc)
-    TextView tvTitleActPgc;
-    @BindView(R.id.tv_subtitle_act_pgc)
-    TextView tvSubtitleActPgc;
-    @BindView(R.id.tv_start_dis_time_act_pgc)
-    Chronometer tvStartDisTimeActPgc;
-    @BindView(R.id.tv_in_hos_time_act_pgc)
-    Chronometer tvInHosTimeActPgc;
-    @BindView(R.id.rv_menu_act_pgc)
-    RecyclerView rvMenuActPgc;
-    @BindView(R.id.vp_content_act_pgc)
-    ViewPager2 vpContentActPgc;
-
-    private GreenChannelMenuRvAdapter mMenuRvAdapter;
-    private List<GreenChannelTabBean> mMenuTitles;
+    private PatientMenuRvAdapter mMenuRvAdapter;
+    private List<PatientMenuBean> mMenuTitles;
     private int mSelectedTab = -1;
 
     @Override
@@ -89,24 +92,24 @@ public class PatientChestPainRecordActivity extends BaseActivity {
     @Override
     public void initView() {
         mMenuTitles = new ArrayList<>();
-        for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
-            mMenuTitles.add(new GreenChannelTabBean(greenChannelTabTitle, false));
+        for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_CHEST_PAIN_MENU_TITLES) {
+            mMenuTitles.add(new PatientMenuBean(greenChannelTabTitle, false));
         }
         mMenuTitles.get(0).setChecked(true);
         mSelectedTab = 0;
-        mMenuRvAdapter = new GreenChannelMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
+        mMenuRvAdapter = new PatientMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
 
-        rvMenuActPgc.setLayoutManager(new LinearLayoutManager(mContext));
-        rvMenuActPgc.setAdapter(mMenuRvAdapter);
+        rvMenuActPcpr.setLayoutManager(new LinearLayoutManager(mContext));
+        rvMenuActPcpr.setAdapter(mMenuRvAdapter);
 
-        vpContentActPgc.setUserInputEnabled(false);
-        vpContentActPgc.setOffscreenPageLimit(4);
-        vpContentActPgc.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "", ""));
+        vpContentActPcpr.setUserInputEnabled(false);
+        vpContentActPcpr.setOffscreenPageLimit(4);
+        vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "", ""));
 
-        tvStartDisTimeActPgc.setBase(SystemClock.elapsedRealtime());
-        tvInHosTimeActPgc.setBase(SystemClock.elapsedRealtime());
-        tvStartDisTimeActPgc.start();
-        tvInHosTimeActPgc.start();
+        tvStartDisTimeActPcpr.setBase(SystemClock.elapsedRealtime());
+        tvInHosTimeActPcpr.setBase(SystemClock.elapsedRealtime());
+        tvStartDisTimeActPcpr.start();
+        tvInHosTimeActPcpr.start();
     }
 
     @Override
@@ -130,7 +133,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActPgc.setCurrentItem(position);
+                vpContentActPcpr.setCurrentItem(position);
             }
         });
     }
@@ -140,14 +143,14 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick({R.id.iv_back_act_pgc, R.id.tv_title_act_pgc, R.id.tv_subtitle_act_pgc})
+    @OnClick({R.id.iv_back_act_pcpr, R.id.tv_title_act_pcpr, R.id.tv_subtitle_act_pcpr})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_back_act_pgc:
+            case R.id.iv_back_act_pcpr:
                 finish();
                 break;
-            case R.id.tv_title_act_pgc:
-            case R.id.tv_subtitle_act_pgc:
+            case R.id.tv_title_act_pcpr:
+            case R.id.tv_subtitle_act_pcpr:
                 // TODO: 2020/8/25 跳转用户信息页面
                 break;
             default:
@@ -184,44 +187,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 生命体征
-                    return StrokeVitalSignsFragment.newInstance(patientId, docId);
-                case 1:
-                    // 病情记录
-                    return DiseaseRecordFragment.newInstance(patientId, docId);
-                case 2:
-                    // NIHSS评分
-                    return StrokeNihssFragment.newInstance(patientId, docId);
-                case 3:
-                    // 启动绿道
-                    return StartGreenwayFragment.newInstance(patientId, docId);
-                case 4:
-                    // 血液检查
-                    //  return BloodExamFragment.newInstance(patientId, docId);
-                    return StrokeBloodExaminationFragment.newInstance(patientId, docId);
-                case 5:
-                    // 辅助检查
-                    return AuxiliaryExamFragment.newInstance(patientId, docId);
-                case 6:
-                    // 评分工具
-                    return StrokeScoresFragment.newInstance(patientId, docId);
-                case 7:
-                    // 诊断评估
-                    return DiagnosticEvaluationFragment.newInstance(patientId, docId);
-                case 8:
-                    // 药物治疗
-                    return StrokeMedicationFragment.newInstance(patientId, docId);
-                case 9:
-                    // 手术治疗
-                    return StrokeOperationFragment.newInstance(patientId, docId);
-                case 10:
-                    // 其他处置
-                    return OtherDisposalFragment.newInstance(patientId, docId);
-                case 11:
-                    // 转归交接
-                    return TransferFragment.newInstance(patientId, docId);
-                case 12:
-                    // 时间节点
-                    return TimeNodeFragment.newInstance(patientId, docId);
+                    return ChestPainVitalSignsFragment.newInstance(patientId, docId);
                 default:
                     return EmptyFragment.newInstance();
             }

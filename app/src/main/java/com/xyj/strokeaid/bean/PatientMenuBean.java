@@ -8,12 +8,12 @@ package com.xyj.strokeaid.bean;
  * @date : 2020/8/25
  * email ：licy3051@qq.com
  */
-public class GreenChannelTabBean {
+public class PatientMenuBean {
 
     private String title;
     private boolean checked;
 
-    public GreenChannelTabBean(String title, boolean checked) {
+    public PatientMenuBean(String title, boolean checked) {
         this.title = title;
         this.checked = checked;
     }

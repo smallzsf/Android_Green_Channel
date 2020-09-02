@@ -17,14 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.adapter.GreenChannelMenuRvAdapter;
+import com.xyj.strokeaid.adapter.PatientMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
-import com.xyj.strokeaid.bean.GreenChannelTabBean;
+import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -55,6 +57,7 @@ import butterknife.OnClick;
  * @date : 2020/8/24
  * email ：licy3051@qq.com
  */
+@Route(path = RouteUrl.Stroke.STROKE_HOME)
 public class PatientStrokeRecordActivity extends BaseActivity {
 
 
@@ -73,8 +76,8 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     @BindView(R.id.vp_content_act_pgc)
     ViewPager2 vpContentActPgc;
 
-    private GreenChannelMenuRvAdapter mMenuRvAdapter;
-    private List<GreenChannelTabBean> mMenuTitles;
+    private PatientMenuRvAdapter mMenuRvAdapter;
+    private List<PatientMenuBean> mMenuTitles;
     private int mSelectedTab = -1;
 
     @Override
@@ -91,11 +94,11 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     public void initView() {
         mMenuTitles = new ArrayList<>();
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
-            mMenuTitles.add(new GreenChannelTabBean(greenChannelTabTitle, false));
+            mMenuTitles.add(new PatientMenuBean(greenChannelTabTitle, false));
         }
         mMenuTitles.get(0).setChecked(true);
         mSelectedTab = 0;
-        mMenuRvAdapter = new GreenChannelMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
+        mMenuRvAdapter = new PatientMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
 
         rvMenuActPgc.setLayoutManager(new LinearLayoutManager(mContext));
         rvMenuActPgc.setAdapter(mMenuRvAdapter);

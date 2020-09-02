@@ -22,6 +22,10 @@ public final class RouteUrl {
 
     public static final class Stroke {
         /**
+         * 卒中患者病历页面
+         */
+        public static final String STROKE_HOME = "/app/stroke/home";
+        /**
          * 急诊绿道转归
          */
         public static final String STROKE_GREEN_CHANNEL_OUTCOME = "/app/stroke/outcome";
@@ -90,6 +94,13 @@ public final class RouteUrl {
         public static final String STROKE_ASPECT__SCORE = "/app/stroke/aspect_score";
 
 
+    }
+
+    public static final class ChestPain{
+        /**
+         * 胸痛患者病历页面
+         */
+        public static final String CHEST_PAIN_HOME = "/app/chestpain/home";
     }
 
     public static final class Detection {

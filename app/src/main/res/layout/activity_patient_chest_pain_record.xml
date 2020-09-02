@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/iv_back_act_pgc"
+        android:id="@+id/iv_back_act_pcpr"
         android:layout_width="@dimen/title_bar_height"
         android:layout_height="@dimen/title_bar_height"
         android:background="@color/colorPrimary"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_title_act_pgc"
+        android:id="@+id/tv_title_act_pcpr"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_centerHorizontal="true"
@@ -30,30 +30,30 @@
         android:textColor="@color/white"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tv_subtitle_act_pgc"
+        app:layout_constraintBottom_toTopOf="@id/tv_subtitle_act_pcpr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_back_act_pgc"
+        app:layout_constraintStart_toEndOf="@id/iv_back_act_pcpr"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_subtitle_act_pgc"
+        android:id="@+id/tv_subtitle_act_pcpr"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_below="@id/tv_title_act_pgc"
+        android:layout_below="@id/tv_title_act_pcpr"
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:paddingEnd="@dimen/title_bar_height"
-        android:text="男-52岁-卒中"
+        android:text="男-52岁-胸痛"
         android:textColor="@color/white"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_back_act_pgc"
+        app:layout_constraintBottom_toBottomOf="@id/iv_back_act_pcpr"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_back_act_pgc"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_act_pgc" />
+        app:layout_constraintStart_toEndOf="@id/iv_back_act_pcpr"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_act_pcpr" />
 
     <LinearLayout
-        android:id="@+id/ll_time_act_pgc"
+        android:id="@+id/ll_time_act_pcpr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_15"
@@ -64,7 +64,7 @@
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pgc">
+        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pcpr">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,7 +86,7 @@
 
 
             <Chronometer
-                android:id="@+id/tv_start_dis_time_act_pgc"
+                android:id="@+id/tv_start_dis_time_act_pcpr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_5"
@@ -115,7 +115,7 @@
 
 
             <Chronometer
-                android:id="@+id/tv_in_hos_time_act_pgc"
+                android:id="@+id/tv_in_hos_time_act_pcpr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_5"
@@ -127,77 +127,14 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!--   <LinearLayout
-           android:id="@+id/ll_time_act_pgc"
-           android:layout_width="match_parent"
-           android:layout_height="50dp"
-           android:background="#F4F4F4"
-           android:orientation="horizontal"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@id/iv_back_act_pgc">
-
-           <LinearLayout
-               android:layout_width="0dp"
-               android:layout_height="match_parent"
-               android:layout_weight="1"
-               android:gravity="center"
-               android:orientation="vertical">
-
-               <Chronometer
-                   android:id="@+id/tv_start_dis_time_act_pgc"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:gravity="center"
-                   android:textColor="@color/colorPrimary"
-                   android:textSize="14sp" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:gravity="center"
-                   android:text="距离发病"
-                   android:textColor="@color/color_666666"
-                   android:textSize="14sp" />
-
-           </LinearLayout>
-
-           <LinearLayout
-               android:layout_width="0dp"
-               android:layout_height="match_parent"
-               android:layout_weight="1"
-               android:gravity="center"
-               android:orientation="vertical">
-
-               <Chronometer
-                   android:id="@+id/tv_in_hos_time_act_pgc"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:gravity="center"
-                   android:textColor="@color/colorPrimary"
-                   android:textSize="14sp" />
-
-               <TextView
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:gravity="center"
-                   android:text="距离入院"
-                   android:textColor="@color/color_666666"
-                   android:textSize="14sp" />
-
-           </LinearLayout>
-       </LinearLayout>-->
-
-
-
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_menu_act_pgc"
+        android:id="@+id/rv_menu_act_pcpr"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/dp_20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pgc"
+        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pcpr"
         tools:listitem="@layout/adapter_green_channel_menu_item" />
 
     <View
@@ -206,21 +143,21 @@
         android:layout_height="wrap_content"
         android:background="@color/color_divider"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vp_content_act_pgc"
+        app:layout_constraintEnd_toStartOf="@id/vp_content_act_pcpr"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pgc"
-        app:layout_constraintTop_toTopOf="@+id/vp_content_act_pgc"
+        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pcpr"
+        app:layout_constraintTop_toTopOf="@+id/vp_content_act_pcpr"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_content_act_pgc"
+        android:id="@+id/vp_content_act_pcpr"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pgc"
-        app:layout_constraintTop_toTopOf="@+id/rv_menu_act_pgc" />
+        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pcpr"
+        app:layout_constraintTop_toTopOf="@+id/rv_menu_act_pcpr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

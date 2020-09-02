@@ -23,18 +23,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.common.PatientChestPainRecordActivity;
-import com.xyj.strokeaid.activity.common.PatientStrokeRecordActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -86,7 +86,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      * 1 :  卒中
      * 2 :  胸痛
      */
-    private int mDiseaseType;
+    private int mDiseaseType = 1;
     /**
      * 患者类型
      * 1 ： 入径患者
@@ -181,14 +181,19 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         });
 
 
-
         mPatientRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
-                Intent intent = new Intent(mContext, PatientStrokeRecordActivity.class);
-                intent.putExtra(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId());
-                intent.putExtra(IntentKey.DOC_ID, mDocId);
-                startActivity(intent);
+                String destination = "";
+                if (mDiseaseType == 1) {
+                    destination = RouteUrl.Stroke.STROKE_HOME;
+                } else if (mDiseaseType == 2) {
+                    destination = RouteUrl.ChestPain.CHEST_PAIN_HOME;
+                }
+                ARouter.getInstance().build(destination)
+                        .withInt(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId())
+                        .withString(IntentKey.DOC_ID, mDocId)
+                        .navigation();
             }
         });
 
