@@ -29,6 +29,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.common.PatientChestPainRecordActivity;
 import com.xyj.strokeaid.activity.common.PatientStrokeRecordActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
@@ -179,6 +180,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             }
         });
 
+
+
         mPatientRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
@@ -188,6 +191,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 startActivity(intent);
             }
         });
+
 
     }
 
