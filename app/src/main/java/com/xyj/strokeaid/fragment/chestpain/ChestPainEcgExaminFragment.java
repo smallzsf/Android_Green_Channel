@@ -20,14 +20,14 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * ChestPainDiseaseRecordFragment
- * description:  并请记录
+ * ChestPainEcgExaminFragment
+ * description:  心电检查
  *
  * @author : 张世福
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainDiseaseRecordFragment extends BaseFragment {
+public class ChestPainEcgExaminFragment extends BaseFragment {
 
 
     @BindView(R.id.awareness)
@@ -98,12 +98,12 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     private String mDocId;
     private List<String> list;
 
-    public ChestPainDiseaseRecordFragment() {
+    public ChestPainEcgExaminFragment() {
 
     }
 
-    public static ChestPainDiseaseRecordFragment newInstance(String patientId, String docId) {
-        ChestPainDiseaseRecordFragment fragment = new ChestPainDiseaseRecordFragment();
+    public static ChestPainEcgExaminFragment newInstance(String patientId, String docId) {
+        ChestPainEcgExaminFragment fragment = new ChestPainEcgExaminFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -122,7 +122,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_disease_record;
+        return R.layout.fragment_ecg_examin;
     }
 
     @Override
