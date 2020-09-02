@@ -2,16 +2,28 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xyj.strokeaid">
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.NFC" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 
     <uses-feature
         android:name="android.hardware.nfc"
@@ -26,22 +38,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.chestpain.SurgicalPreparationActivtty"></activity>
-        <activity android:name=".activity.chestpain.ChestPainOperationInfoActivity"></activity>
-        <activity android:name=".activity.chestpain.ChestPainEmptyActivity" /> <!-- 供应商分配的渠道号 -->
-        <activity android:name=".activity.common.ChildTreatCenterActivity"></activity>
+        <activity android:name=".activity.chestpain.SurgicalPreparationActivtty" />
+        <activity android:name=".activity.chestpain.ChestPainOperationInfoActivity" />
+        <activity android:name=".activity.chestpain.ChestPainEmptyActivity" />
+        <activity android:name=".activity.common.ChildTreatCenterActivity" />
         <activity android:name=".activity.common.MaternalTreatCenterActivity" />
         <activity android:name=".activity.common.TraumaPatientActivity" />
-        <activity android:name=".activity.chestpain.ChestPainEmptyActivity" /> <!-- 供应商分配的渠道号 -->
+
+        <!-- 供应商分配的渠道号 -->
         <meta-data
             android:name="NEOLIX_CHANNEL"
             android:value="N1290D00" />
         <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="cd8b3decfa001a11de74dc80c8e2e7e0" />
+        <meta-data
             android:name="android.max_aspect"
-            android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
+            android:value="2.4" />
+        <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+            android:value="true" />
+        <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
@@ -149,13 +167,16 @@
         <activity android:name=".activity.stroke.GetInvolvedContraindicationsActivity" />
         <activity android:name=".activity.stroke.GetInvolvedInformedConsentActivity" />
         <activity android:name=".activity.stroke.AspectScoreActivity" />
+        <activity android:name=".activity.set.ChangePasswordActivity" />
+        <activity android:name=".activity.common.PatientChestPainRecordActivity" />
+
+        <!--   高德定位service     -->
+        <service android:name="com.amap.api.location.APSService" />
 
         <receiver
             android:name=".receiver.MyReceiver"
             android:exported="false" />
 
-        <activity android:name=".activity.set.ChangePasswordActivity" />
-        <activity android:name=".activity.common.PatientChestPainRecordActivity" />
         <activity android:name=".activity.stroke.StrokeMrsScoreActivity" />
         <activity android:name=".activity.stroke.StrokeGcsScoreActivity" />
         <activity android:name=".activity.stroke.StrokeSpetzlerMarinActivity" />

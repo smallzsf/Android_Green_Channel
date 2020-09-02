@@ -30,6 +30,7 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
+import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -84,7 +85,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         // set title
         SpannableString spannableString = new SpannableString("奔波霸（男-58-胸痛）");
         RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
-        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length()-1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
         titleBarActPcpr.setTitle(spannableString);
 
         mMenuTitles = new ArrayList<>();
@@ -99,7 +100,6 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         rvMenuActPcpr.setAdapter(mMenuRvAdapter);
 
         vpContentActPcpr.setUserInputEnabled(false);
-        vpContentActPcpr.setOffscreenPageLimit(4);
         vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "", ""));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -111,20 +111,12 @@ public class PatientChestPainRecordActivity extends BaseActivity {
     @Override
     public void initListener() {
 
-        titleBarActPcpr.setLeftLayoutClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        }).setOnTitleClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                        .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
-                        .navigation();
-            }
-        });
+        titleBarActPcpr.setLeftLayoutClickListener(v -> finish())
+                .setOnTitleClickListener(v ->
+                        ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
+                                .withInt(IntentKey.VIEW_TYPE, 2)
+                                .withString(IntentKey.PATIENT_ID, mPatientId)
+                                .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -145,7 +137,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActPcpr.setCurrentItem(position);
+                vpContentActPcpr.setCurrentItem(position, false);
             }
         });
     }
@@ -186,6 +178,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 0:
                     // 生命体征
                     return ChestPainVitalSignsFragment.newInstance(patientId, docId);
+                case 10:
+                    // 手术治疗
+                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
                 default:
                     return EmptyFragment.newInstance();
             }

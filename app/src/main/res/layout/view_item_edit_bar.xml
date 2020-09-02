@@ -9,14 +9,14 @@
     <View
         android:id="@+id/view_top_line_view_ieb"
         style="@style/horizontal_divider"
-        android:visibility="gone"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:visibility="gone" />
 
     <View
         android:id="@+id/view_bottom_line_view_ieb"
         style="@style/horizontal_divider"
-        android:visibility="gone"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tv_title_view_ieb"
@@ -35,25 +35,38 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/item_normal_margin"
         android:gravity="center"
         android:minWidth="40dp"
         android:textColor="@color/color_222222"
         android:textSize="@dimen/item_title_size"
-        android:visibility="visible"
+        android:layout_marginEnd="@dimen/item_normal_margin"
+        android:visibility="gone"
         tools:text="岁" />
+
+    <ImageView
+        android:id="@+id/iv_right_view_ieb"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:layout_marginEnd="@dimen/item_normal_margin"
+        android:scaleType="center"
+        android:src="@drawable/icon_location"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/et_content_view_ieb"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/item_normal_margin"
-        android:layout_toStartOf="@id/tv_unit_view_ieb"
+        android:layout_marginEnd="40dp"
         android:layout_toEndOf="@id/tv_title_view_ieb"
+        android:layout_toStartOf="@id/tv_unit_view_ieb"
         android:background="@null"
         android:cursorVisible="true"
         android:enabled="true"
-        android:gravity="center"
+        android:gravity="center_vertical|end"
         android:textColor="@color/color_222222"
         android:textColorHint="@color/color_999999"
         android:textCursorDrawable="@drawable/shape_edit_text_cursor"

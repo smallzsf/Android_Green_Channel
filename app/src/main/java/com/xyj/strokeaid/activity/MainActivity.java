@@ -103,7 +103,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     /**
      * 当前登录人的id
      */
-    private String mDocId;
+    private String mDocId="";
     private ArrayList<CustomTabEntity> mTabEntities;
 
     @Override

@@ -2,10 +2,12 @@ package com.xyj.strokeaid.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,6 +42,8 @@ public class ItemEditBar extends RelativeLayout {
     TextView tvContentViewIeb;
     @BindView(R.id.rl_root_item_edit_bar)
     RelativeLayout rlRootItemEditBar;
+    @BindView(R.id.iv_right_view_ieb)
+    ImageView ivRightViewIeb;
 
     private boolean mEditEnable;
 
@@ -103,16 +107,29 @@ public class ItemEditBar extends RelativeLayout {
         }
 
         // 顶部分割线
-        if (array.getBoolean(R.styleable.ItemEditBar_ieb_top_line_visible, false)){
+        if (array.getBoolean(R.styleable.ItemEditBar_ieb_top_line_visible, false)) {
             viewTopLineViewIeb.setVisibility(VISIBLE);
-        }else {
+        } else {
             viewTopLineViewIeb.setVisibility(GONE);
         }
         // 底部分割线
-        if (array.getBoolean(R.styleable.ItemEditBar_ieb_bottom_line_visible, false)){
+        if (array.getBoolean(R.styleable.ItemEditBar_ieb_bottom_line_visible, false)) {
             viewBottomLineViewIeb.setVisibility(VISIBLE);
-        }else {
+        } else {
             viewBottomLineViewIeb.setVisibility(GONE);
+        }
+
+        // 右侧图标
+        if (array.getBoolean(R.styleable.ItemEditBar_ieb_right_icon_visible, false)) {
+            Drawable drawable = array.getDrawable(R.styleable.ItemEditBar_ieb_right_icon);
+            if (drawable != null){
+                ivRightViewIeb.setVisibility(VISIBLE);
+                ivRightViewIeb.setImageDrawable(drawable);
+            }else {
+                ivRightViewIeb.setVisibility(GONE);
+            }
+        }else {
+            ivRightViewIeb.setVisibility(GONE);
         }
 
         array.recycle();
