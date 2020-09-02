@@ -26,6 +26,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activity.chestpain.SurgicalPreparationActivtty"></activity>
+        <activity android:name=".activity.chestpain.ChestPainOperationInfoActivity"></activity>
+        <activity android:name=".activity.chestpain.ChestPainEmptyActivity" /> <!-- 供应商分配的渠道号 -->
         <activity android:name=".activity.common.ChildTreatCenterActivity"></activity>
         <activity android:name=".activity.common.MaternalTreatCenterActivity" />
         <activity android:name=".activity.common.TraumaPatientActivity" />

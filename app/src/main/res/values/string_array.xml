@@ -37,4 +37,68 @@
         <item>出院时NIHSS评分</item>
     </string-array>
 
+    <string-array name="chest_pain_operation_delay_reason">
+        <item>症状不明显延误诊断</item>
+        <item>家属未到场</item>
+        <item>医生决策延误</item>
+        <item>排队挂号、缴费、办住院时间长</item>
+        <item>急诊科处理时间长</item>
+        <item>手术期间出现并发症</item>
+        <item>未实施绕行急诊方案</item>
+        <item>导管室人员未到位</item>
+        <item>药物缺乏</item>
+        <item>知情同意时间过长</item>
+        <item>病情不稳定</item>
+        <item>绕行急诊科但未直接入导管室</item>
+        <item>导管室占台</item>
+        <item>转运时间长</item>
+        <item>经费问题</item>
+        <item>心内科会诊时间长</item>
+        <item>血管通路困难</item>
+        <item>难以绕行病变区域</item>
+        <item>急需影像学资料再行PCI</item>
+        <item>其他原因</item>
+    </string-array>
+
+    <string-array name="chest_pain_operation_medicinal">
+        <item>普通肝素</item>
+        <item>低分子肝素</item>
+        <item>比伐卢定</item>
+        <item>磺达肝癸钠</item>
+    </string-array>
+
+    <string-array name="chest_pain_operation_gender_diversity">
+        <item>右冠近段</item>
+        <item>右冠中段</item>
+        <item>右冠远段</item>
+        <item>后降支(右优势型)</item>
+        <item>左主干</item>
+        <item>前降支近段</item>
+        <item>前降支中段</item>
+        <item>前降支远段</item>
+        <item>第一对角支</item>
+        <item>第二对角支</item>
+        <item>旋支近段</item>
+        <item>第一钝缘支</item>
+        <item>旋支远段</item>
+        <item>旋支远段</item>
+        <item>后降支(左优势型或均衡型)</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="chest_pain_operation_intraoperative_complications">
+        <item>恶心心律失常</item>
+        <item>低血压</item>
+        <item>心源性休克</item>
+        <item>严重缓慢型心律失常</item>
+        <item>血栓栓塞</item>
+        <item>慢血流/无复流</item>
+        <item>血管夹层</item>
+        <item>非干预血管急性闭塞</item>
+        <item>血管穿孔</item>
+        <item>死亡</item>
+        <item>其他</item>
+        <item>无</item>
+    </string-array>
+
 </resources>

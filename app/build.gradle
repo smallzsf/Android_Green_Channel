@@ -65,7 +65,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // 依赖的第三方sdk和jar
-    compile (name: 'NeolixEIDReader_V7.3.1', ext: 'aar')
+    compile(name: 'NeolixEIDReader_V7.3.1', ext: 'aar')
 
     // google
     implementation 'androidx.appcompat:appcompat:1.2.0'
