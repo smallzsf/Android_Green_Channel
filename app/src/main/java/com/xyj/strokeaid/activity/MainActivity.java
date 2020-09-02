@@ -197,7 +197,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             }
         });
 
-
     }
 
     @OnClick({R.id.tv_user_act_main, R.id.tv_disease_view_search, R.id.iv_search_view_search})

@@ -28,6 +28,7 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
+import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -188,6 +189,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 0:
                     // 生命体征
                     return ChestPainVitalSignsFragment.newInstance(patientId, docId);
+                case 10:
+
+                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
                 default:
                     return EmptyFragment.newInstance();
             }
