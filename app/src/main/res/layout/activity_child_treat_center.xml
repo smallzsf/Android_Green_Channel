@@ -5,43 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
-    tools:context=".activity.common.PatientChestPainRecordActivity">
+    tools:context=".activity.common.TraumaPatientActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
-        android:id="@+id/title_bar_act_pcpr"
+        android:id="@+id/title_bar_act_ctc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_bar_height"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:title="张江流(男-58-胸痛)" />
+        tools:title="张江流(男-58-创伤)" />
 
     <include
-        android:id="@+id/ll_time_act_pcpr"
+        android:id="@+id/ll_time_act_ctc"
         layout="@layout/include_chronometer_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_bar_act_pcpr" />
+        app:layout_constraintTop_toBottomOf="@id/title_bar_act_ctc" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_menu_act_pcpr"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:id="@+id/rv_menu_act_ctc"
+        android:layout_width="@dimen/menu_item_width"
         android:background="@drawable/shape_patient_record_menu_bg"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_time_act_pcpr"
+        app:layout_constraintTop_toBottomOf="@id/ll_time_act_ctc"
         tools:listitem="@layout/adapter_green_channel_menu_item" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_content_act_pcpr"
+        android:id="@+id/vp_content_act_ctc"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pcpr"
-        app:layout_constraintTop_toTopOf="@+id/rv_menu_act_pcpr" />
+        app:layout_constraintStart_toEndOf="@id/rv_menu_act_ctc"
+        app:layout_constraintTop_toTopOf="@+id/rv_menu_act_ctc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

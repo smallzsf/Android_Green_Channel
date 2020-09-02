@@ -96,11 +96,32 @@ public final class RouteUrl {
 
     }
 
-    public static final class ChestPain{
+    public static final class ChestPain {
         /**
          * 胸痛患者病历页面
          */
         public static final String CHEST_PAIN_HOME = "/app/chestpain/home";
+    }
+
+    public static final class Trauma {
+        /**
+         * 创伤患者病历页面
+         */
+        public static final String TRAUMA_HOME = "/app/trauma/home";
+    }
+
+    public static final class MaternalTreat {
+        /**
+         * 危重孕产妇患者病历页面
+         */
+        public static final String MATERNAL_TREAT_HOME = "/app/maternal/home";
+    }
+
+    public static final class ChildTreat {
+        /**
+         * 危重儿童患者病历页面
+         */
+        public static final String CHILD_TREAT_HOME = "/app/child/home";
     }
 
     public static final class Detection {

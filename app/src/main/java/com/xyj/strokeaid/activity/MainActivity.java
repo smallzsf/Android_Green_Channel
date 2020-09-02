@@ -34,6 +34,7 @@ import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.MmkvKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
@@ -83,16 +84,21 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     private List<HomePatientBean> mPatientBeans;
     private PopupWindow mDiseasePop;
     /**
-     * 1 :  卒中
-     * 2 :  胸痛
+     * 疾病类型（保存包mmkv中， 每次进入会读取当前的配置）
+     * 1、 卒中（默认）
+     * 2、 胸痛
+     * 3、 创伤
+     * 4、 危重孕产妇
+     * 5、 危重儿童和新生儿
      */
     private int mDiseaseType = 1;
     /**
-     * 患者类型
-     * 1 ： 入径患者
-     * 2 ： 绿道转归患者
+     * 患者类型（保存包mmkv中， 每次进入会读取当前的配置）
+     * 0 ： 急救中 （默认）
+     * 1 ： 已转归
+     * 2 ： 已上报
      */
-    private int mPatientType;
+    private int mPatientType = 0;
 
     /**
      * 当前登录人的id
@@ -150,7 +156,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     public void initListener() {
 
         tvAddActMain.setOnClickListener(v ->
-                startActivity(new Intent(mContext, NewPatientMedicalRecordActivity.class)));
+                ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
+                        .withString(IntentKey.DOC_ID, mDocId)
+                        .navigation());
+
         etSearchViewSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -189,6 +198,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                     destination = RouteUrl.Stroke.STROKE_HOME;
                 } else if (mDiseaseType == 2) {
                     destination = RouteUrl.ChestPain.CHEST_PAIN_HOME;
+                } else if (mDiseaseType == 3) {
+                    destination = RouteUrl.Trauma.TRAUMA_HOME;
+                } else if (mDiseaseType == 4) {
+                    destination = RouteUrl.MaternalTreat.MATERNAL_TREAT_HOME;
+                } else if (mDiseaseType == 5) {
+                    destination = RouteUrl.ChildTreat.CHILD_TREAT_HOME;
                 }
                 ARouter.getInstance().build(destination)
                         .withInt(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId())
@@ -207,7 +222,13 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 startActivity(new Intent(mContext, AccountActivity.class));
                 break;
             case R.id.tv_disease_view_search:
-                showPopWindow(mContext, tvDiseaseViewSearch);
+                if (mDiseasePop == null) {
+                    showPopWindow(mContext, tvDiseaseViewSearch);
+                } else {
+                    if (!mDiseasePop.isShowing()) {
+                        showPopWindow(mContext, tvDiseaseViewSearch);
+                    }
+                }
                 break;
             case R.id.iv_search_view_search:
                 // TODO: 2020/8/20 查询
@@ -247,6 +268,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onResume() {
         super.onResume();
+        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
+        mPatientType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_TYPE);
+        tlTitleActMain.setCurrentTab(mPatientType);
+        tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
     }
 
     /**
@@ -261,6 +286,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             TextView tvStroke = view.findViewById(R.id.tv_stroke_pop_diseases);
             tvStroke.setOnClickListener(v -> {
                 mDiseaseType = 1;
+                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText(getString(R.string.stroke));
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
@@ -269,7 +295,38 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             TextView tvChestPain = view.findViewById(R.id.tv_chest_pain_pop_diseases);
             tvChestPain.setOnClickListener(v -> {
                 mDiseaseType = 2;
+                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText(getString(R.string.chest_pain));
+                if (mDiseasePop != null) {
+                    mDiseasePop.dismiss();
+                }
+            });
+
+            TextView tvTrauma = view.findViewById(R.id.tv_trauma_pop_diseases);
+            tvTrauma.setOnClickListener(v -> {
+                mDiseaseType = 3;
+                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
+                tvDiseaseViewSearch.setText("创伤");
+                if (mDiseasePop != null) {
+                    mDiseasePop.dismiss();
+                }
+            });
+
+            TextView tvMaternal = view.findViewById(R.id.tv_maternal_pop_diseases);
+            tvMaternal.setOnClickListener(v -> {
+                mDiseaseType = 4;
+                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
+                tvDiseaseViewSearch.setText("危重孕产妇");
+                if (mDiseasePop != null) {
+                    mDiseasePop.dismiss();
+                }
+            });
+
+            TextView tvChild = view.findViewById(R.id.tv_child_pop_diseases);
+            tvChild.setOnClickListener(v -> {
+                mDiseaseType = 5;
+                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
+                tvDiseaseViewSearch.setText("危重儿童");
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -300,5 +357,19 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             getWindow().setAttributes(lp);
         }
 
+    }
+
+    private String getDiseaseStringByType(int diseaseType){
+        if (diseaseType == 2){
+            return "胸痛";
+        }else if (diseaseType == 3){
+            return "创伤";
+        }else if (diseaseType == 4){
+            return "危重孕产妇";
+        }else if (diseaseType == 5){
+            return "危重儿童";
+        }else {
+            return "卒中";
+        }
     }
 }

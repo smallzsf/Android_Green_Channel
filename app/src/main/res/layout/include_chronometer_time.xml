@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/item_normal_height"
+    android:background="@drawable/shape_patient_disease_record_bg"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/item_normal_margin"
+    android:paddingEnd="@dimen/item_normal_margin"
+    android:paddingBottom="@dimen/dp_4">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距离发病:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/menu_text_size" />
+
+        <Chronometer
+            android:id="@+id/tv_start_time_include_ct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_6"
+            android:textColor="@color/color_0089FF"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/dp_0_5"
+        android:layout_height="match_parent"
+        android:background="@color/color_28CAC9" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="距离入院:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/menu_text_size" />
+
+        <Chronometer
+            android:id="@+id/tv_hos_time_include_ct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_6"
+            android:textColor="@color/color_0089FF"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
