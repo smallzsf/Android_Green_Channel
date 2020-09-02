@@ -35,7 +35,7 @@ import butterknife.OnClick;
  * @Author: crq
  * @CreateDate: 2020/8/30 12:02
  */
-@Route(path = RouteUrl.Stroke.STROKE_ASPECT__SCORE)
+@Route(path = RouteUrl.Stroke.STROKE_ASPECT_SCORE)
 public class AspectScoreActivity extends BaseActivity {
     @Autowired(name = IntentKey.PATIENT_ID)
     String mPatientId;
@@ -46,10 +46,6 @@ public class AspectScoreActivity extends BaseActivity {
     BaseTitleBar titleBarActTc;
     @BindView(R.id.rv_content_act_tc)
     RecyclerView rvContentActTc;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.btn_cancel)
-    AppCompatButton btnCancel;
     @BindView(R.id.stl_title_frag_stroke_medice)
     SegmentTabLayout stlTitleFragStrokeMedice;
     @BindView(R.id.ll_before_loop)
@@ -151,19 +147,6 @@ public class AspectScoreActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.btn_confirm, R.id.btn_cancel})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_confirm:
-                // TODO: 2020/8/21 保存信息
-                break;
-            case R.id.btn_cancel:
-                finish();
-                break;
-            default:
-                break;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

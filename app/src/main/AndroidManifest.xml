@@ -156,6 +156,14 @@
 
         <activity android:name=".activity.set.ChangePasswordActivity" />
         <activity android:name=".activity.common.PatientChestPainRecordActivity" />
+        <activity android:name=".activity.stroke.StrokeMrsScoreActivity" />
+        <activity android:name=".activity.stroke.StrokeGcsScoreActivity" />
+        <activity android:name=".activity.stroke.StrokeSpetzlerMarinActivity" />
+        <activity android:name=".activity.stroke.StrokeHuntHessActivity" />
+        <activity android:name=".activity.stroke.StrokeHasBledScoreActivity" />
+        <activity android:name=".activity.stroke.StrokeFrogFieldEvaluateActivity" />
+        <activity android:name=".activity.stroke.StrokeFishercCassificationActivity" />
+        <activity android:name=".activity.stroke.StrokeChadsActivity" />
     </application>
 
 </manifest>

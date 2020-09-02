@@ -91,7 +91,51 @@ public final class RouteUrl {
         /**
          * ASPECT评分
          */
-        public static final String STROKE_ASPECT__SCORE = "/app/stroke/aspect_score";
+        public static final String STROKE_ASPECT_SCORE = "/app/stroke/aspect_score";
+
+
+        /**
+         * mRS评分
+         */
+        public static final String STROKE_MRS_SCORE = "/app/stroke/mrs_score";
+
+
+        /**
+         * GCS评分
+         */
+        public static final String STROKE_GCS_SCORE = "/app/stroke/gcs_score";
+
+
+        /**
+         * Fisher分级
+         */
+        public static final String STROKE_FiISHEER_SCORE = "/app/stroke/fisher_score";
+
+        /**
+         * Hunt-Hess评分
+         */
+        public static final String STROKE_HUNT_HESS_SCORE = "/app/stroke/hunt_hess_score";
+
+
+        /**
+         * CHADS2评分
+         */
+        public static final String STROKE_CHADS2_SCORE = "/app/stroke/chads2_score";
+
+        /**
+         * HAS-BLED评分
+         */
+        public static final String STROKE_HAS_BLED_SCORE = "/app/stroke/has_bled_score";
+
+        /**
+         * 洼田吞咽评定
+         */
+        public static final String STROKE_FROG_FIELD_EVALUATE = "/app/stroke/frog_field_evaluate_score";
+
+        /**
+         * Spetzler-Marin评分
+         */
+        public static final String STROKE_SPETZLER_MARINSCORE = "/app/stroke/spetzler_marin_score";
 
 
     }

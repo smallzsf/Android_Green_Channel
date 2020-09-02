@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.stroke.StrokeGcsScoreActivity">
+
+    <!--
+        <include
+            layout="@layout/view_two_horizontal_bottom_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_8" />
+    -->
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_nihss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="GCS评分" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rg"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_ih_title_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_ih_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="入院GCS评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_ih_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_ih_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ih_contain_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_ih_gcs_eye_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="睁眼状态" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_EEEEEE" />
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_ih_gcs_speak_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="语言状态" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/color_EEEEEE" />
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_ih_gcs_sport_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="运动状态" />
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:id="@+id/ll_lh_title_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_lh_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    android:text="住院GCS评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_lh_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_lh_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_lh_contain_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_lh_gcs_eye_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="睁眼状态" />
+
+                <include layout="@layout/include_line" />
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_lh_gcs_speak_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="语言状态" />
+
+                <include layout="@layout/include_line" />
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_lh_gcs_sport_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="运动状态" />
+
+            </LinearLayout>
+
+
+            <include layout="@layout/include_line" />
+
+
+            <LinearLayout
+                android:id="@+id/ll_sm_contain_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_volume_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="体积" />
+
+                <include layout="@layout/include_line" />
+
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_position_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="位置" />
+
+                <include layout="@layout/include_line" />
+
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_deep_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="深静脉引流" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_bar_act_nihss"
+        android:gravity="center"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_ih_title_frag_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="入院GCS评分"
+            android:layout_gravity="right"
+            android:textSize="@dimen/item_title_size" />
+
+        <RadioButton
+            android:id="@+id/rb_lh_title_frag_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:text="住院GCS评分"
+            android:textSize="@dimen/item_title_size" />
+
+
+    </RadioGroup>
+
+
+</RelativeLayout>

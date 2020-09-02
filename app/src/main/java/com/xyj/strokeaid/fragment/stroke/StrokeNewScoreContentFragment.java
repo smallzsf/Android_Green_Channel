@@ -3,7 +3,6 @@ package com.xyj.strokeaid.fragment.stroke;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +18,6 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.helper.RouterHelper;
-import com.xyj.strokeaid.helper.SpacesItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +25,11 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 治疗  --  溶栓
+ * 评分内容
  *
  * @author Licy
  */
-public class StrokeThrombolysisFragment extends BaseFragment {
+public class StrokeNewScoreContentFragment extends BaseFragment {
 
     @BindView(R.id.rv_content_frag_stoke_thrombolytic)
     RecyclerView rvContentFragStokeThrombolytic;
@@ -43,7 +41,7 @@ public class StrokeThrombolysisFragment extends BaseFragment {
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
-    public StrokeThrombolysisFragment() {
+    public StrokeNewScoreContentFragment() {
     }
 
     /**
@@ -54,8 +52,8 @@ public class StrokeThrombolysisFragment extends BaseFragment {
      * @param docId     医生id
      * @return A new instance of fragment StrokeAngioplastyFragment.
      */
-    public static StrokeThrombolysisFragment newInstance(String patientId, String docId) {
-        StrokeThrombolysisFragment fragment = new StrokeThrombolysisFragment();
+    public static StrokeNewScoreContentFragment newInstance(String patientId, String docId) {
+        StrokeNewScoreContentFragment fragment = new StrokeNewScoreContentFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -87,16 +85,17 @@ public class StrokeThrombolysisFragment extends BaseFragment {
     private List<StrokeProcessBean> prepareData() {
 
         List<StrokeProcessBean> list = new ArrayList<>();
-        list.add(new StrokeProcessBean("溶栓医生接诊时间", "STT01", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DOC_RECEIVE, false));
-        list.add(new StrokeProcessBean("溶栓适应症", "STT02", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INDICATIONS, false));
-        list.add(new StrokeProcessBean("溶栓禁忌症", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
-        list.add(new StrokeProcessBean("溶栓知情同意", "STT04", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INFORMED_CONSENT, false));
-        list.add(new StrokeProcessBean("溶栓前NIHSS评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
-        list.add(new StrokeProcessBean("静脉溶栓", "STT07", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_INTRAVENOU, false));
-        list.add(new StrokeProcessBean("溶栓后即刻NIHSS评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_NIHSS, false));
-        list.add(new StrokeProcessBean("溶栓并发症", "STT09", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_COMPLICATIONS, false));
-        list.add(new StrokeProcessBean("延误分析", "STT10", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_DELAY, false));
-
+        list.add(new StrokeProcessBean("mRS评分", "STT01", 1, "", RouteUrl.Stroke.STROKE_MRS_SCORE, false));
+        list.add(new StrokeProcessBean("GCS评分", "STT02", 1, "", RouteUrl.Stroke.STROKE_GCS_SCORE, false));
+        list.add(new StrokeProcessBean("Fisher分级", "STT03", 1, "", RouteUrl.Stroke.STROKE_FiISHEER_SCORE, false));
+        list.add(new StrokeProcessBean("Hunt-Hess评分", "STT04", 1, "", RouteUrl.Stroke.STROKE_HUNT_HESS_SCORE, false));
+        list.add(new StrokeProcessBean("CHADS2评分", "STT05", 1, "", RouteUrl.Stroke.STROKE_CHADS2_SCORE, false));
+        list.add(new StrokeProcessBean("HAS-BLED评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_HAS_BLED_SCORE, false));
+        list.add(new StrokeProcessBean("洼田吞咽评定", "STT07", 1, "", RouteUrl.Stroke.STROKE_FROG_FIELD_EVALUATE, false));
+        list.add(new StrokeProcessBean("Spetzler-Marin评分", "STT08", 1, "", RouteUrl.Stroke.STROKE_SPETZLER_MARINSCORE, false));
+        list.add(new StrokeProcessBean("THRIVE评分", "STT09", 1, "", RouteUrl.Stroke.STROKE_THRIVE_SCORE, false));
+        list.add(new StrokeProcessBean("FAST-ED评分", "STT10", 1, "", RouteUrl.Stroke.STROKE_FAST_ED__SCORE, false));
+        list.add(new StrokeProcessBean("ASPECT评分", "STT11", 1, "", RouteUrl.Stroke.STROKE_ASPECT_SCORE, false));
         return list;
     }
 

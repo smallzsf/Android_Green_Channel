@@ -37,6 +37,7 @@ import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
@@ -72,7 +73,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     RecyclerView rvMenuActPsr;
     @BindView(R.id.vp_content_act_psr)
     ViewPager2 vpContentActPsr;
-
     @Autowired(name = IntentKey.PATIENT_ID)
     String mPatientId;
     @Autowired(name = IntentKey.DOC_ID)
@@ -216,7 +216,8 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return AuxiliaryExamFragment.newInstance(patientId, docId);
                 case 6:
                     // 评分工具
-                    return StrokeScoresFragment.newInstance(patientId, docId);
+                //    return StrokeScoresFragment.newInstance(patientId, docId);
+                    return StrokeNewScoreFragment.newInstance(patientId, docId);
                 case 7:
                     // 诊断评估
                     return DiagnosticEvaluationFragment.newInstance(patientId, docId);

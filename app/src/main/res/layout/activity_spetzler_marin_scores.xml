@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.stroke.StrokeSpetzlerMarinActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_nihss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="Spetzler-Marin评分" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar_act_nihss"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_sm_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="Spetzler-Marin评分" />
+
+
+                <TextView
+                    android:id="@+id/tv_sm_score_title_frag_ss"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    tools:text="5" />
+
+                <ImageView
+                    android:id="@+id/iv_sm_arrow_frag_ss"
+                    android:layout_width="@dimen/item_normal_height"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sm_contain_frag_ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_volume_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="体积" />
+
+                <include layout="@layout/include_line" />
+
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_position_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="位置" />
+
+                <include layout="@layout/include_line" />
+
+
+                <com.xyj.strokeaid.view.NihssItemBar
+                    android:id="@+id/nib_sm_deep_frag_ss"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:title="深静脉引流" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>
