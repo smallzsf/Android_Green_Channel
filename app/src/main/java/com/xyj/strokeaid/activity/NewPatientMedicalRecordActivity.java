@@ -9,12 +9,14 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.eid.reader.EIDReader;
 import com.eid.reader.IIDDataCallback;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 
@@ -30,6 +32,13 @@ import com.xyj.strokeaid.base.BaseActivity;
 public class NewPatientMedicalRecordActivity extends BaseActivity implements IIDDataCallback {
 
     private EIDReader idReader;
+
+    @Autowired(name = IntentKey.VIEW_TYPE)
+    int mViewType;
+    @Autowired(name = IntentKey.PATIENT_ID)
+    String mPatientId;
+    @Autowired(name = IntentKey.DOC_ID)
+    String mDocId;
 
     @Override
     public int getLayoutId() {

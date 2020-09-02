@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="60dp"
+    android:layout_width="@dimen/menu_item_width"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_corner_6_with_white"
     android:gravity="center"
@@ -9,24 +9,54 @@
     <TextView
         android:id="@+id/tv_stroke_pop_diseases"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/item_normal_height"
         android:gravity="center"
         android:text="卒中"
         android:textColor="@color/color_222222"
-        android:textSize="14sp" />
+        android:textSize="@dimen/item_title_size" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/color_divider" />
+    <View style="@style/horizontal_divider" />
 
     <TextView
         android:id="@+id/tv_chest_pain_pop_diseases"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/item_normal_height"
         android:gravity="center"
         android:text="胸痛"
         android:textColor="@color/color_222222"
-        android:textSize="14sp" />
+        android:textSize="@dimen/item_title_size" />
+
+    <View style="@style/horizontal_divider" />
+
+    <TextView
+        android:id="@+id/tv_trauma_pop_diseases"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:gravity="center"
+        android:text="创伤"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
+
+    <View style="@style/horizontal_divider" />
+
+    <TextView
+        android:id="@+id/tv_maternal_pop_diseases"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:gravity="center"
+        android:text="危重孕产妇"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
+
+    <View style="@style/horizontal_divider" />
+
+    <TextView
+        android:id="@+id/tv_child_pop_diseases"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:gravity="center"
+        android:text="危重儿童"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
 
 </LinearLayout>

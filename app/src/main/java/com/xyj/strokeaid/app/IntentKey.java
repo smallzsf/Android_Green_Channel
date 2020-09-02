@@ -19,4 +19,21 @@ public final class IntentKey {
      * 3、  溶栓后即刻
      */
     public static final String NIHSS_TYPE = "NIHSS_TYPE";
+
+    /**
+     * 患者类型
+     * 1、 卒中
+     * 2、 胸痛
+     * 3、 创伤
+     * 4、 危重孕产妇
+     * 5、 危重儿童和新生儿
+     */
+    public static final String PATIENT_TYPE = "PATIENT_TYPE";
+
+    /**
+     * 查看类型
+     * 1、 新建
+     * 2、 查看
+     */
+    public static final String VIEW_TYPE = "VIEW_TYPE";
 }

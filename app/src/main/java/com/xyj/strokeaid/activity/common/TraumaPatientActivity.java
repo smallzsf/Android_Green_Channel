@@ -51,27 +51,26 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * PatientGreenChannelActivity
- * description: 患者绿色通道流程页面
- * 1、 展示患者急诊绿色通道的全部检查和时间节点
+ * PatientChestPainRecordActivity
+ * description: 创伤患者救治流程页面
  *
  * @author : Licy
- * @date : 2020/8/24
+ * @date : 2020/9/1
  * email ：licy3051@qq.com
  */
-@Route(path = RouteUrl.Stroke.STROKE_HOME)
-public class PatientStrokeRecordActivity extends BaseActivity {
+@Route(path = RouteUrl.Trauma.TRAUMA_HOME)
+public class TraumaPatientActivity extends BaseActivity {
 
-    @BindView(R.id.title_bar_act_psr)
-    BaseTitleBar titleBarActPsr;
+    @BindView(R.id.title_bar_act_tp)
+    BaseTitleBar titleBarActTp;
     @BindView(R.id.tv_start_time_include_ct)
     Chronometer tvStartTimeIncludeCt;
     @BindView(R.id.tv_hos_time_include_ct)
     Chronometer tvHosTimeIncludeCt;
-    @BindView(R.id.rv_menu_act_psr)
-    RecyclerView rvMenuActPsr;
-    @BindView(R.id.vp_content_act_psr)
-    ViewPager2 vpContentActPsr;
+    @BindView(R.id.rv_menu_act_tp)
+    RecyclerView rvMenuActTp;
+    @BindView(R.id.vp_content_act_tp)
+    ViewPager2 vpContentActTp;
 
     @Autowired(name = IntentKey.PATIENT_ID)
     String mPatientId;
@@ -84,7 +83,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_patient_stroke_record;
+        return R.layout.activity_trauma_patient;
     }
 
     @Override
@@ -95,24 +94,24 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     @Override
     public void initView() {
         // set title
-        SpannableString spannableString = new SpannableString("霸波奔（男-58-卒中）");
+        SpannableString spannableString = new SpannableString("牛魔王（男-58-创伤）");
         RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
         spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-        titleBarActPsr.setTitle(spannableString);
+        titleBarActTp.setTitle(spannableString);
 
         mMenuTitles = new ArrayList<>();
-        for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
+        for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_TRAUMA_MENU_TITLES) {
             mMenuTitles.add(new PatientMenuBean(greenChannelTabTitle, false));
         }
         mMenuTitles.get(0).setChecked(true);
         mSelectedTab = 0;
         mMenuRvAdapter = new PatientMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
 
-        rvMenuActPsr.setLayoutManager(new LinearLayoutManager(mContext));
-        rvMenuActPsr.setAdapter(mMenuRvAdapter);
+        rvMenuActTp.setLayoutManager(new LinearLayoutManager(mContext));
+        rvMenuActTp.setAdapter(mMenuRvAdapter);
 
-        vpContentActPsr.setUserInputEnabled(false);
-        vpContentActPsr.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
+        vpContentActTp.setUserInputEnabled(false);
+        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, "", ""));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -122,21 +121,13 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-
-        titleBarActPsr.setLeftLayoutClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        }).setOnTitleClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                        .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
-                        .navigation();
-            }
-        });
+        // 设置标题跳转
+        titleBarActTp
+                .setLeftLayoutClickListener(v -> finish())
+                .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
+                .withInt(IntentKey.VIEW_TYPE, 2)
+                .withString(IntentKey.PATIENT_ID, mPatientId)
+                .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -157,7 +148,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActPsr.setCurrentItem(position, false);
+                vpContentActTp.setCurrentItem(position);
             }
         });
     }
@@ -168,25 +159,13 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     }
 
 
-    private class GreenChannelVpAdapter extends FragmentStateAdapter {
+    private class TraumaMenuVpAdapter extends FragmentStateAdapter {
 
         String patientId;
         String docId;
 
-        public GreenChannelVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+        public TraumaMenuVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
             super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public GreenChannelVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
-            super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public GreenChannelVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
             this.patientId = patientId;
             this.docId = docId;
         }
@@ -196,45 +175,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
-                    // 生命体征
-                    return StrokeVitalSignsFragment.newInstance(patientId, docId);
-                case 1:
-                    // 病情记录
-                    return DiseaseRecordFragment.newInstance(patientId, docId);
-                case 2:
-                    // NIHSS评分
-                    return StrokeNihssFragment.newInstance(patientId, docId);
-                case 3:
-                    // 启动绿道
-                    return StartGreenwayFragment.newInstance(patientId, docId);
-                case 4:
-                    // 血液检查
-                    //  return BloodExamFragment.newInstance(patientId, docId);
-                    return StrokeBloodExaminationFragment.newInstance(patientId, docId);
-                case 5:
-                    // 辅助检查
-                    return AuxiliaryExamFragment.newInstance(patientId, docId);
-                case 6:
-                    // 评分工具
-                    return StrokeScoresFragment.newInstance(patientId, docId);
-                case 7:
-                    // 诊断评估
-                    return DiagnosticEvaluationFragment.newInstance(patientId, docId);
-                case 8:
-                    // 药物治疗
-                    return StrokeMedicationFragment.newInstance(patientId, docId);
-                case 9:
-                    // 手术治疗
-                    return StrokeOperationFragment.newInstance(patientId, docId);
-                case 10:
-                    // 其他处置
-                    return OtherDisposalFragment.newInstance(patientId, docId);
-                case 11:
-                    // 转归交接
-                    return TransferFragment.newInstance(patientId, docId);
-                case 12:
-                    // 时间节点
-                    return TimeNodeFragment.newInstance(patientId, docId);
                 default:
                     return EmptyFragment.newInstance();
             }
