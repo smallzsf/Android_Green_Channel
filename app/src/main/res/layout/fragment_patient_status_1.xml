@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <!--诊断-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/awareness"
+            android:layout_width="@dimen/vital_sign_title_width"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="诊断"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_vital_sign_aware"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/awareness"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+    </RelativeLayout>
+    <include layout="@layout/include_line" />
+    <!--确诊-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_first_cure"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="确诊时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <TextView
+            android:id="@+id/tv_draw_blood_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_first_cure"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+
+    </RelativeLayout>
+
+    <include layout="@layout/include_line" />
+    <!--院内-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/give_up_cure"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="院内新发心力衰竭"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_blood_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_ct_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_cta_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CTA"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_ctp_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CTP"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_mri_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="MRI"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_mra_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="MRA"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_cemra_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="CE-MRA"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_cvus_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="颈部血管超声"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/rb_tcd_frag_ae"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TCD"
+                android:textSize="@dimen/item_content_size"
+                android:visibility="gone" />
+
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+
+     <!--NYHA分级-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_nyha_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="NYHA分级*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_nyha_1"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="I"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_nyha_2"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="II"
+                android:textSize="@dimen/item_content_size"
+                />
+
+            <RadioButton
+                android:id="@+id/rb_nyha_3"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="III"
+                android:textSize="@dimen/item_content_size"
+                 />
+
+            <RadioButton
+                android:id="@+id/rb_nyha_4"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="IV"
+                android:textSize="@dimen/item_content_size"
+                 />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <include layout="@layout/layout_danger_factor" />
+    <include layout="@layout/layout_check_result" />
+
+    </LinearLayout>
+
+
+
+</androidx.core.widget.NestedScrollView>

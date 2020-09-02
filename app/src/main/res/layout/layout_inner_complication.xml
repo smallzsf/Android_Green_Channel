@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_5"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:text="住院期间并发症"
+        android:textColor="#223b53"
+        android:textSize="@dimen/item_title_size" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_1"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="休克"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_2"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="机械性并发症"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_3"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="感染"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_4"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="再发心梗"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_5"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="血栓"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_6"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="缺血性卒中"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_7"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="TIA出血"
+                android:textSize="@dimen/item_content_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_8"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="恶性心律失常"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_9"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="呼吸衰竭"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_10"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="肾衰竭"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_11"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="死亡"
+                android:textSize="@dimen/item_content_size" />
+            <CheckBox
+                android:id="@+id/cb_text_12"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="无"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

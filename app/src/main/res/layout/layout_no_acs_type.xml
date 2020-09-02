@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_5"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:text="非ACS心源性胸痛类型"
+        android:textColor="#223b53"
+        android:textSize="@dimen/item_title_size" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_1"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心律失常"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_2"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="扩张性心肌病"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_3"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="缺血性心肌病"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_4"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="肥厚性心肌病"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_5"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心肌炎"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_6"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="冠心病"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_7"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="瓣膜性心脏病"
+                android:textSize="@dimen/item_content_size" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_8"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="陈旧性心肌梗死"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_9"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心绞痛"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_10"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心悸"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_11"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="房颤"
+                android:textSize="@dimen/item_content_size" />
+            <CheckBox
+                android:id="@+id/cb_text_12"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="高血压"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_13"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心衰"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_14"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="房扑"
+                android:textSize="@dimen/item_content_size" />
+            <CheckBox
+                android:id="@+id/cb_text_15"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="室早"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_16"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="房早"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_17"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="室上速"
+                android:textSize="@dimen/item_content_size" />
+            <CheckBox
+                android:id="@+id/cb_text_18"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心包炎"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <CheckBox
+                android:id="@+id/cb_text_19"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心包积液"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_20"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心肌桥"
+                android:textSize="@dimen/item_content_size" />
+            <CheckBox
+                android:id="@+id/cb_text_21"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="主动脉观壁间血肿"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <CheckBox
+                android:id="@+id/cb_text_22"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="透壁性动脉粥样硬化性溃疡"
+                android:textSize="@dimen/item_content_size" />
+
+            <CheckBox
+                android:id="@+id/cb_text_23"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="主动脉瘤口张力性气胸"
+                android:textSize="@dimen/item_content_size" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_strategy"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_20"
+            android:layout_gravity="center_vertical"
+            android:text="处理措施"
+            android:gravity="center_vertical"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_step_1"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="治疗入院"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_step_2"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="急诊留观"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_step_3"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="门诊治疗"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_step_4"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="随访"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_note"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_20"
+        android:layout_margin="@dimen/dp_5"
+        android:layout_gravity="center_vertical"
+        android:text="患者情况备注"
+        android:gravity="center_vertical"
+        android:textColor="@color/app_223b53"
+        android:textSize="@dimen/item_title_size" />
+
+
+
+
+</LinearLayout>

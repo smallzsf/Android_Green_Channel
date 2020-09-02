@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp_5"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:gravity="center"
+        android:text="彩超"
+        android:textColor="#223b53"
+        android:textSize="@dimen/item_title_size" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_cc_notify_label"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="通知彩超室时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <TextView
+            android:id="@+id/tv_cc_notify_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_cc_notify_label"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_cc_finish_label"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="彩超检查"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <TextView
+            android:id="@+id/tv_cc_finish_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_cc_finish_label"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_cc_start_label"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="彩超报告时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_cc_start_label"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_report_label"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="通知心外科会诊"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <TextView
+            android:id="@+id/tv_report_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_report_label"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/vital_sign_item_height"
+        android:layout_marginRight="@dimen/sp_15">
+
+        <TextView
+            android:id="@+id/tv_cc_heart_label"
+            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="心外科会诊时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+        <TextView
+            android:id="@+id/tv_cc_heart_time"
+            style="@style/patient_et_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_cc_heart_label"
+            android:focusable="false"
+            android:gravity="center|right"
+            android:hint="@string/app_default_time_example"
+            android:text="选取时间"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_content_size" />
+
+    </RelativeLayout>
+</LinearLayout>

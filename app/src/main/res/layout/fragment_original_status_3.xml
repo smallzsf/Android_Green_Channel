@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <include layout="@layout/layout_original_top" />
+
+    <include layout="@layout/layout_check_shadow" />
+
+    <include layout="@layout/layout_ct" />
+
+    <include layout="@layout/layout_color_ultrasound" />
+
+        <!--夹层类型-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="夹层类型"
+                android:textColor="@color/app_223b53"
+                android:textSize="@dimen/item_title_size" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_type_yes"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="A型"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_type_no"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="B型"
+                    android:textSize="@dimen/item_content_size"
+                    />
+            </RadioGroup>
+        </LinearLayout>
+        <include layout="@layout/include_line" />
+        <!--治疗策略-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <TextView
+                android:id="@+id/tv_strategy"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_20"
+                android:layout_gravity="center_vertical"
+                android:text="治疗策略"
+                android:gravity="center_vertical"
+                android:textColor="@color/app_223b53"
+                android:textSize="@dimen/item_title_size" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_strategy_3"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="紧急介入治疗"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_strategy_4"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="择期介入治疗"
+                    android:textSize="@dimen/item_content_size"
+                    />
+            </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_strategy_5"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="保守治疗"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_strategy_6"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="外科手术"
+                    android:textSize="@dimen/item_content_size"
+                    />
+            </RadioGroup>
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_strategy_1"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="其他(介入失败转为手术)"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+        </LinearLayout>
+        <include layout="@layout/include_line" />
+
+        <include layout="@layout/view_two_horizontal_bottom_button"/>
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>
