@@ -21,13 +21,13 @@ import butterknife.BindView;
 
 /**
  * ChestPainDiseaseRecordFragment
- * description:  评分工具
+ * description:  初始药物
  *
  * @author : 张世福
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainScoringToolsFragment extends BaseFragment {
+public class ChestPainInitDrugFragment extends BaseFragment {
 
 
     @BindView(R.id.awareness)
@@ -98,12 +98,12 @@ public class ChestPainScoringToolsFragment extends BaseFragment {
     private String mDocId;
     private List<String> list;
 
-    public ChestPainScoringToolsFragment() {
+    public ChestPainInitDrugFragment() {
 
     }
 
-    public static ChestPainScoringToolsFragment newInstance(String patientId, String docId) {
-        ChestPainScoringToolsFragment fragment = new ChestPainScoringToolsFragment();
+    public static ChestPainInitDrugFragment newInstance(String patientId, String docId) {
+        ChestPainInitDrugFragment fragment = new ChestPainInitDrugFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -122,7 +122,7 @@ public class ChestPainScoringToolsFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_assistant_test;
+        return R.layout.fragment_init_drug;
     }
 
     @Override
