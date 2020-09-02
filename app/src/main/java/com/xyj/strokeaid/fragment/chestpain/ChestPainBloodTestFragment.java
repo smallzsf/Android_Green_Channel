@@ -21,7 +21,7 @@ import butterknife.BindView;
 
 /**
  * ChestPainDiseaseRecordFragment
- * description:  心电检查
+ * description:  血液检查
  *
  * @author : 张世福
  * @date : 2020/8/26

@@ -21,7 +21,7 @@ import butterknife.BindView;
 
 /**
  * ChestPainDiseaseRecordFragment
- * description:  并请记录
+ * description:  病情信息
  *
  * @author : 张世福
  * @date : 2020/8/26
