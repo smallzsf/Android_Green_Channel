@@ -26,19 +26,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!-- 供应商分配的渠道号-->
+        <activity android:name=".activity.chestpain.ChestPainEmptyActivity"></activity>
+        <!-- 供应商分配的渠道号 -->
         <meta-data
             android:name="NEOLIX_CHANNEL"
             android:value="N1290D00" />
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.4" />
-        <!-- 适配华为（huawei）刘海屏 -->
+            android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true" />
-        <!-- 适配小米（xiaomi）刘海屏 -->
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
@@ -58,7 +56,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.NewPatientMedicalRecordActivity" />
         <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
         <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
@@ -70,12 +67,10 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
         <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
-
         <activity
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".activity.stroke.EmergencyDoctorActivity"
             android:screenOrientation="portrait" />
