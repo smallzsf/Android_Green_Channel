@@ -199,9 +199,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 1:
                     //  病情信息
                     return ChestPainDiseaseRecordFragment.newInstance(patientId, docId);
-//                case 2:
-//                    //  心电检查
-//                    return ChestPainEcgExaminFragment.newInstance(patientId, docId);
+                case 2:
+                    //  心电检查
+                    return ChestPainEcgExaminFragment.newInstance(patientId, docId);
 //                case 3:
 //                    //  心内会诊
 //                    return ChestPainIntraConsultFragment.newInstance(patientId, docId);
