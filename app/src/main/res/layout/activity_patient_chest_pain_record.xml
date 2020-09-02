@@ -4,156 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_bg"
     tools:context=".activity.common.PatientChestPainRecordActivity">
 
-
-    <ImageView
-        android:id="@+id/iv_back_act_pcpr"
-        android:layout_width="@dimen/title_bar_height"
-        android:layout_height="@dimen/title_bar_height"
-        android:background="@color/colorPrimary"
-        android:scaleType="center"
-        android:src="@drawable/common_icon_left_arrow_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_title_act_pcpr"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:paddingTop="@dimen/dp_4"
-        android:paddingEnd="@dimen/title_bar_height"
-        android:text="患者xxxx"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tv_subtitle_act_pcpr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_back_act_pcpr"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_subtitle_act_pcpr"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_below="@id/tv_title_act_pcpr"
-        android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimary"
-        android:gravity="center"
-        android:paddingEnd="@dimen/title_bar_height"
-        android:text="男-52岁-胸痛"
-        android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="@id/iv_back_act_pcpr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_back_act_pcpr"
-        app:layout_constraintTop_toBottomOf="@id/tv_title_act_pcpr" />
-
-    <LinearLayout
-        android:id="@+id/ll_time_act_pcpr"
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_pcpr"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_15"
-        android:layout_marginTop="@dimen/dp_13"
-        android:layout_marginRight="@dimen/dp_15"
-        android:layout_marginBottom="@dimen/dp_15"
-        android:background="@drawable/bg_blue_round"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_height="@dimen/title_bar_height"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_back_act_pcpr">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:title="张江流(男-58-胸痛)" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_blue_round"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_13"
-                android:text="距离发病:"
-                android:textColor="@color/color_666666"
-                android:textSize="@dimen/menu_text_size"
-                android:textStyle="bold" />
-
-
-            <Chronometer
-                android:id="@+id/tv_start_dis_time_act_pcpr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_5"
-                android:layout_marginRight="@dimen/dp_19"
-                android:gravity="center"
-                android:textColor="@color/color_F77654"
-                android:textSize="@dimen/item_content_size" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorPrimary" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_19"
-                android:gravity="center"
-                android:paddingTop="@dimen/dp_13"
-                android:paddingBottom="@dimen/dp_13"
-                android:text="距离入院"
-                android:textColor="@color/color_666666"
-                android:textSize="@dimen/menu_text_size"
-                android:textStyle="bold" />
-
-
-            <Chronometer
-                android:id="@+id/tv_in_hos_time_act_pcpr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_5"
-                android:gravity="center"
-                android:textColor="@color/color_F77654"
-                android:textSize="@dimen/item_content_size" />
-
-
-        </LinearLayout>
-    </LinearLayout>
+    <include
+        android:id="@+id/ll_time_act_pcpr"
+        layout="@layout/include_chronometer_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_bar_act_pcpr" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_menu_act_pcpr"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/dp_20"
+        android:background="@drawable/shape_patient_record_menu_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_time_act_pcpr"
         tools:listitem="@layout/adapter_green_channel_menu_item" />
 
-    <View
-        android:id="@+id/view2"
-        android:layout_width="@dimen/dp_1"
-        android:layout_height="wrap_content"
-        android:background="@color/color_divider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vp_content_act_pcpr"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/rv_menu_act_pcpr"
-        app:layout_constraintTop_toTopOf="@+id/vp_content_act_pcpr"
-        app:layout_constraintVertical_bias="0.0" />
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_content_act_pcpr"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

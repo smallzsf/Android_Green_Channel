@@ -10,6 +10,7 @@
     <dimen name="dp_4">4dp</dimen>
     <dimen name="dp_2">2dp</dimen>
     <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_0_5">0.5dp</dimen>
 
     <dimen name="tab_normal_height">35dp</dimen>
     <dimen name="tab_text_size">13sp</dimen>
@@ -26,6 +27,7 @@
     <dimen name="buttom_normal_height">36dp</dimen>
 
     <dimen name="menu_text_size">14sp</dimen>
+    <dimen name="menu_item_width">80dp</dimen>
     <dimen name="item_title_size">13sp</dimen>
     <dimen name="item_content_size">12sp</dimen>
     <dimen name="text_common_size">14sp</dimen>

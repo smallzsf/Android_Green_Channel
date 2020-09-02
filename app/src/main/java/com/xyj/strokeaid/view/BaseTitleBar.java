@@ -185,6 +185,10 @@ public class BaseTitleBar extends RelativeLayout {
         tvTitleBaseTitleBar.setText(title);
     }
 
+    public void setTitle(CharSequence title) {
+        tvTitleBaseTitleBar.setText(title);
+    }
+
     @Override
     public void setBackgroundColor(int color) {
         clRootTitleBar.setBackgroundColor(color);

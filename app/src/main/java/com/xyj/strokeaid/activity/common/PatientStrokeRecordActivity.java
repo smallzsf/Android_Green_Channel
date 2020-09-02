@@ -2,10 +2,10 @@ package com.xyj.strokeaid.activity.common;
 
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Chronometer;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -24,6 +25,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.PatientMenuRvAdapter;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
@@ -33,20 +35,21 @@ import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.stroke.TransferFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
+import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * PatientGreenChannelActivity
@@ -60,21 +63,20 @@ import butterknife.OnClick;
 @Route(path = RouteUrl.Stroke.STROKE_HOME)
 public class PatientStrokeRecordActivity extends BaseActivity {
 
-
-    @BindView(R.id.iv_back_act_pgc)
-    ImageView ivBackActPgc;
-    @BindView(R.id.tv_title_act_pgc)
-    TextView tvTitleActPgc;
-    @BindView(R.id.tv_subtitle_act_pgc)
-    TextView tvSubtitleActPgc;
-    @BindView(R.id.tv_start_dis_time_act_pgc)
-    Chronometer tvStartDisTimeActPgc;
-    @BindView(R.id.tv_in_hos_time_act_pgc)
-    Chronometer tvInHosTimeActPgc;
-    @BindView(R.id.rv_menu_act_pgc)
-    RecyclerView rvMenuActPgc;
-    @BindView(R.id.vp_content_act_pgc)
-    ViewPager2 vpContentActPgc;
+    @BindView(R.id.title_bar_act_psr)
+    BaseTitleBar titleBarActPsr;
+    @BindView(R.id.tv_start_time_include_ct)
+    Chronometer tvStartTimeIncludeCt;
+    @BindView(R.id.tv_hos_time_include_ct)
+    Chronometer tvHosTimeIncludeCt;
+    @BindView(R.id.rv_menu_act_psr)
+    RecyclerView rvMenuActPsr;
+    @BindView(R.id.vp_content_act_psr)
+    ViewPager2 vpContentActPsr;
+    @Autowired(name = IntentKey.PATIENT_ID)
+    String mPatientId;
+    @Autowired(name = IntentKey.DOC_ID)
+    String mDocId;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -82,7 +84,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_patient_green_channel;
+        return R.layout.activity_patient_stroke_record;
     }
 
     @Override
@@ -92,6 +94,12 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        // set title
+        SpannableString spannableString = new SpannableString("霸波奔（男-58-卒中）");
+        RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
+        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+        titleBarActPsr.setTitle(spannableString);
+
         mMenuTitles = new ArrayList<>();
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
             mMenuTitles.add(new PatientMenuBean(greenChannelTabTitle, false));
@@ -100,20 +108,36 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         mSelectedTab = 0;
         mMenuRvAdapter = new PatientMenuRvAdapter(R.layout.adapter_green_channel_menu_item, mMenuTitles);
 
-        rvMenuActPgc.setLayoutManager(new LinearLayoutManager(mContext));
-        rvMenuActPgc.setAdapter(mMenuRvAdapter);
+        rvMenuActPsr.setLayoutManager(new LinearLayoutManager(mContext));
+        rvMenuActPsr.setAdapter(mMenuRvAdapter);
 
-        vpContentActPgc.setUserInputEnabled(false);
-        vpContentActPgc.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
+        vpContentActPsr.setUserInputEnabled(false);
+        vpContentActPsr.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
 
-        tvStartDisTimeActPgc.setBase(SystemClock.elapsedRealtime());
-        tvInHosTimeActPgc.setBase(SystemClock.elapsedRealtime());
-        tvStartDisTimeActPgc.start();
-        tvInHosTimeActPgc.start();
+        tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
+        tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
+        tvStartTimeIncludeCt.start();
+        tvHosTimeIncludeCt.start();
     }
 
     @Override
     public void initListener() {
+
+        titleBarActPsr.setLeftLayoutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        }).setOnTitleClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
+                        .withInt(IntentKey.VIEW_TYPE, 2)
+                        .withString(IntentKey.PATIENT_ID, mPatientId)
+                        .navigation();
+            }
+        });
+
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
@@ -133,7 +157,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActPgc.setCurrentItem(position);
+                vpContentActPsr.setCurrentItem(position, false);
             }
         });
     }
@@ -143,20 +167,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick({R.id.iv_back_act_pgc, R.id.tv_title_act_pgc, R.id.tv_subtitle_act_pgc})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.iv_back_act_pgc:
-                finish();
-                break;
-            case R.id.tv_title_act_pgc:
-            case R.id.tv_subtitle_act_pgc:
-                // TODO: 2020/8/25 跳转用户信息页面
-                break;
-            default:
-                break;
-        }
-    }
 
     private class GreenChannelVpAdapter extends FragmentStateAdapter {
 
@@ -206,7 +216,8 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return AuxiliaryExamFragment.newInstance(patientId, docId);
                 case 6:
                     // 评分工具
-                    return StrokeScoresFragment.newInstance(patientId, docId);
+                //    return StrokeScoresFragment.newInstance(patientId, docId);
+                    return StrokeNewScoreFragment.newInstance(patientId, docId);
                 case 7:
                     // 诊断评估
                     return DiagnosticEvaluationFragment.newInstance(patientId, docId);

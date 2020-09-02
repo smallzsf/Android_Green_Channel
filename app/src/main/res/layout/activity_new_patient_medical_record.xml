@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_title="门诊ID" />
+                app:ieb_title="就诊号" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_wristband_act_npmr"
@@ -43,61 +43,64 @@
                 app:ieb_title="绑定腕带" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_dis_addr_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_location"
+                app:ieb_right_icon_visible="true"
                 app:ieb_title="发病地址" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_dis_start_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:ieb_bottom_line_visible="true"
+                app:bottomLineVisible="true"
                 app:title="发病时间" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_name_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_title="姓名" />
 
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_idcard_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="身份证" />
+
             <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_sex_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
-                app:bar_leftText="身份证"
-                app:bar_leftTextColor="@color/color_222222"
-                app:bar_rightIcon="@drawable/icon_id_card_scan"
-                app:bar_rightIconVisible="true"
-                app:bar_rightText=""
-                app:bar_rightTextVisible="true" />
+                app:bar_leftText="性别" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_weight_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_edit_enable="false"
-                app:ieb_title="性别" />
-
-            <com.xyj.strokeaid.view.ItemEditBar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                app:ieb_bottom_line_visible="true"
-                app:ieb_edit_enable="false"
+                app:ieb_edit_enable="true"
                 app:ieb_title="体重"
                 app:ieb_unit_text="@string/kg"
                 app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_height_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_edit_enable="false"
+                app:ieb_edit_enable="true"
                 app:ieb_title="身高"
                 app:ieb_unit_text="@string/cm"
                 app:ieb_unit_visible="true" />
 
-
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_bmi_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -107,12 +110,14 @@
                 app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_birth_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
                 app:bar_leftText="出生日期" />
 
             <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/ieb_come_type_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
@@ -123,39 +128,16 @@
                 android:id="@+id/ll_come_hos_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_EEEEEE"
+                android:background="@color/color_bg"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/item_normal_margin"
-                android:paddingEnd="@dimen/item_normal_margin">
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    app:title="呼救时间" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    app:title="到达现场时间" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    app:title="首次医疗接触" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    app:title="到达医院大门" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    app:title="院内接诊时间" />
+                android:paddingEnd="@dimen/item_normal_margin"
+                android:visibility="gone">
 
             </LinearLayout>
 
             <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_in_hos_type_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
@@ -163,41 +145,39 @@
                 app:bar_leftTextColor="@color/color_222222" />
 
             <com.xyj.strokeaid.view.SettingBar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                app:bar_bottomLineVisible="true"
-                app:bar_leftText="国籍"
-                app:bar_leftTextColor="@color/color_222222" />
-
-            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_nation_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
                 app:bar_leftText="民族"
                 app:bar_leftTextColor="@color/color_222222" />
 
-            <com.xyj.strokeaid.view.SettingBar
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_medicare_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:bar_bottomLineVisible="true"
-                app:bar_leftText="医保帐号"
-                app:bar_leftTextColor="@color/color_222222" />
-
-            <com.xyj.strokeaid.view.SettingBar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                app:bar_bottomLineVisible="true"
-                app:bar_leftText="户籍地址"
-                app:bar_leftTextColor="@color/color_222222" />
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="医保帐号" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_domicile_addr_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="户籍地址" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_contact_name_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
                 app:ieb_title="联系人" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_contact_phone_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
                 app:ieb_title="联系电话" />
 
             <Button
@@ -209,6 +189,10 @@
                 android:gravity="center"
                 android:text="@string/save"
                 android:textColor="@color/app_ffffff" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="80dp" />
 
         </LinearLayout>
 

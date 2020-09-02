@@ -2,6 +2,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.didi.dokit'
 
 android {
+    signingConfigs {
+        debug {
+            storeFile file('../jijiulvdao.jks')
+            storePassword 'xinyijia'
+            keyAlias 'xinyijia'
+            keyPassword 'xinyijia'
+        }
+        release {
+            storeFile file('../jijiulvdao.jks')
+            storePassword 'xinyijia'
+            keyAlias 'xinyijia'
+            keyPassword 'xinyijia'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "30.0.1"
 
@@ -65,7 +79,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // 依赖的第三方sdk和jar
-    compile (name: 'NeolixEIDReader_V7.3.1', ext: 'aar')
+    implementation (name: 'NeolixEIDReader_V7.3.1', ext: 'aar')
+    implementation 'com.amap.api:location:4.6.0'
 
     // google
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -119,9 +134,9 @@ dependencies {
     // https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4'
 
-    // easypermissions -- 谷歌权限管理框架
-    // https://github.com/googlesamples/easypermissions
-    implementation 'pub.devrel:easypermissions:3.0.0'
+    // xxpermissions
+    // https://github.com/getActivity/XXPermissions
+    implementation 'com.hjq:xxpermissions:8.6'
 
     // Agent Web
     // https://github.com/Justson/AgentWeb

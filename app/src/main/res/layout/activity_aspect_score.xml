@@ -5,14 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EEEEEE"
     tools:context=".activity.stroke.AspectScoreActivity">
+
+
 
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_act_tc"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
+        android:layout_height="@dimen/item_normal_height"
+        app:rightText="保存"
+        app:rightTextVisible="true"
         app:title="ASPECT评分" />
+
+
 
 
     <com.flyco.tablayout.SegmentTabLayout
@@ -24,7 +29,7 @@
         tl:tl_bar_color="@color/white"
         tl:tl_indicator_color="@color/colorPrimary"
         tl:tl_indicator_corner_radius="8dp"
-        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_3"
         tl:tl_tab_padding="5dp"
         tl:tl_textsize="12sp" />
 
@@ -69,18 +74,6 @@
 
     </LinearLayout>
 
-    <include
-        android:id="@+id/inclue"
-        layout="@layout/view_two_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
-
-    <include layout="@layout/include_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
-        android:layout_below="@id/ll_score_act_nihss"
-        />
 
 
 
