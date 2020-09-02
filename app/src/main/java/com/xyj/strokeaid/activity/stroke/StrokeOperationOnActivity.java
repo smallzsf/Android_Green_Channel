@@ -76,19 +76,19 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 首次检查 单选 8F
      * */
     @BindView(R.id.rb_scjc_8f_act_stroke_operation)
-    RadioButton rbFirstInspection_8F;
+    RadioButton rbFirstInspection8F;
 
     /**
      * 首次检查 单选 6F
      * */
     @BindView(R.id.rb_scjc_6f_act_stroke_operation)
-    RadioButton rbFirstInspection_6F;
+    RadioButton rbFirstInspection6F;
 
     /**
      * 首次检查 单选 长鞘
      * */
     @BindView(R.id.rb_scjc_cs_act_stroke_operation)
-    RadioButton rbFirstInspection_CS;
+    RadioButton rbFirstInspectionCS;
 
 
 
@@ -109,49 +109,49 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 术前代偿（ACG） 单选 0
      * */
     @BindView(R.id.rb_sqdc0_act_stroke_operation)
-    RadioButton rbACG_0;
+    RadioButton rbACG0;
 
     /**
      * 术前代偿（ACG） 单选 1
      * */
     @BindView(R.id.rb_sqdc1_act_stroke_operation)
-    RadioButton rbACG_1;
+    RadioButton rbACG1;
 
     /**
      * 术前代偿（ACG） 单选 2
      * */
     @BindView(R.id.rb_sqdc2_act_stroke_operation)
-    RadioButton rbACG_2;
+    RadioButton rbACG2;
 
     /**
      * 术前代偿（ACG） 单选 3
      * */
     @BindView(R.id.rb_sqdc3_act_stroke_operation)
-    RadioButton rbACG_3;
+    RadioButton rbACG3;
 
     /**
      * 术前闭塞程度（AOL） 单选 0
      * */
     @BindView(R.id.rb_0_act_stroke_operation)
-    RadioButton rbAOL_0;
+    RadioButton rbAOL0;
 
     /**
      * 术前闭塞程度（AOL） 单选 1
      * */
     @BindView(R.id.rb_1_act_stroke_operation)
-    RadioButton rbAOL_1;
+    RadioButton rbAOL1;
 
     /**
      * 术前闭塞程度（AOL） 单选 2
      * */
     @BindView(R.id.rb_2_act_stroke_operation)
-    RadioButton rbAOL_2;
+    RadioButton rbAOL2;
 
     /**
      * 术前闭塞程度（AOL） 单选 3
      * */
     @BindView(R.id.rb_3_act_stroke_operation)
-    RadioButton rbAOL_3;
+    RadioButton rbAOL3;
 
     /**
      * 手术开始
@@ -241,7 +241,7 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * C1支架时间
      * */
     @BindView(R.id.ttb_c1zjsj_act_stroke_operation)
-    TextTimeBar ttbStentTime_C1;
+    TextTimeBar ttbStentTimeC1;
 
     /**
      * 首次开通等级
@@ -278,37 +278,37 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 术前TICI分级 单选  0
      * */
     @BindView(R.id.rb_sqfj_0_act_stroke_operation)
-    RadioButton rbBeforeTICI_0;
+    RadioButton rbBeforeTICI0;
 
     /**
      * 术前TICI分级 单选  1
      * */
     @BindView(R.id.rb_sqfj_1_act_stroke_operation)
-    RadioButton rbBeforeTICI_1;
+    RadioButton rbBeforeTICI1;
 
     /**
      * 术前TICI分级 单选  2a
      * */
     @BindView(R.id.rb_sqfj_2a_act_stroke_operation)
-    RadioButton rbBeforeTICI_2a;
+    RadioButton rbBeforeTICI2a;
 
     /**
      * 术前TICI分级 单选  2b
      * */
     @BindView(R.id.rb_sqfj_2b_act_stroke_operation)
-    RadioButton rbBeforeTICI_2b;
+    RadioButton rbBeforeTICI2b;
 
     /**
      * 术前TICI分级 单选  2c
      * */
     @BindView(R.id.rb_sqfj_2c_act_stroke_operation)
-    RadioButton rbBeforeTICI_2c;
+    RadioButton rbBeforeTICI2c;
 
     /**
      * 术前TICI分级 单选  3
      * */
     @BindView(R.id.rb_sqfj_3_act_stroke_operation)
-    RadioButton rbBeforeTICI_3;
+    RadioButton rbBeforeTICI3;
 
 
 
@@ -317,37 +317,37 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 术后TICI分级 单选  0
      * */
     @BindView(R.id.rb_a_sqfj_0_act_stroke_operation)
-    RadioButton rbAfterTICI_0;
+    RadioButton rbAfterTICI0;
 
     /**
      * 术后TICI分级 单选  1
      * */
     @BindView(R.id.rb_a_sqfj_1_act_stroke_operation)
-    RadioButton rbAfterTICI_1;
+    RadioButton rbAfterTICI1;
 
     /**
      * 术后TICI分级 单选  2a
      * */
     @BindView(R.id.rb_a_sqfj_2a_act_stroke_operation)
-    RadioButton rbAfterTICI_2a;
+    RadioButton rbAfterTICI2a;
 
     /**
      * 术后TICI分级 单选  2b
      * */
     @BindView(R.id.rb_a_sqfj_2b_act_stroke_operation)
-    RadioButton rbAfterTICI_2b;
+    RadioButton rbAfterTICI2b;
 
     /**
      * 术后TICI分级 单选  2c
      * */
     @BindView(R.id.rb_a_sqfj_2c_act_stroke_operation)
-    RadioButton rbAfterTICI_2c;
+    RadioButton rbAfterTICI2c;
 
     /**
      * 术后TICI分级 单选  3
      * */
     @BindView(R.id.rb_a_sqfj_3_act_stroke_operation)
-    RadioButton rbAfterTICI_3;
+    RadioButton rbAfterTICI3;
 
 
     /**
@@ -444,13 +444,13 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 溶栓药物 单选  是
      * */
     @BindView(R.id.rb_rs_yes_act_stroke_after)
-    RadioButton rbThrombolytics_Yes;
+    RadioButton rbThrombolyticsYes;
 
     /**
      * 溶栓药物 单选  否
      * */
     @BindView(R.id.rb_rs_no_act_stroke_after)
-    RadioButton rbThrombolytics_No;
+    RadioButton rbThrombolyticsNo;
 
     /**
      * 溶栓药物名称
@@ -474,13 +474,13 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 抗血小板药物 单选 是
      * */
     @BindView(R.id.rb_xxb_yes_act_stroke_operation)
-    RadioButton rbAntiplateletDrugs_Yes;
+    RadioButton rbAntiplateletDrugsYes;
 
     /**
      * 抗血小板药物 单选 否
      * */
     @BindView(R.id.rb_xxb_no_act_stroke_operation)
-    RadioButton rbAntiplateletDrugs_No;
+    RadioButton rbAntiplateletDrugsNo;
 
     /**
      * 抗血小板药物名称
@@ -512,13 +512,13 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 抗凝药物 单选  是
      * */
     @BindView(R.id.rb_kn_yes_act_stroke_operation)
-    RadioButton rbAnticoagulants_Yes;
+    RadioButton rbAnticoagulantsYes;
 
     /**
      * 抗凝药物 单选  否
      * */
     @BindView(R.id.rb_kn_no_act_stroke_operation)
-    RadioButton rbAnticoagulants_No;
+    RadioButton rbAnticoagulantsNo;
 
     /**
      * 抗凝药物名称
@@ -555,158 +555,158 @@ public class StrokeOperationOnActivity extends BaseActivity {
      * 右美托咪定 单选  是
      * */
     @BindView(R.id.rb_ymtmd_yes_act_stroke_operation)
-    RadioButton rbDexmedetomidine_Yes;
+    RadioButton rbDexmedetomidineYes;
 
     /**
      * 右美托咪定 单选  否
      * */
     @BindView(R.id.rb_ymtmd_no_act_stroke_operation)
-    RadioButton rbDexmedetomidine_No;
+    RadioButton rbDexmedetomidineNo;
 
     /**
      * 鞘 单选  8F
      * */
     @BindView(R.id.rb_s_8f_act_stroke_operation)
-    RadioButton rbSheath_8F;
+    RadioButton rbSheath8F;
 
     /**
      * 鞘 单选  6F
      * */
     @BindView(R.id.rb_s_6f_act_stroke_operation)
-    RadioButton rbSheath_6F;
+    RadioButton rbSheath6F;
 
     /**
      * 鞘 单选  长鞘
      * */
     @BindView(R.id.rb_cs_act_stroke_operation)
-    RadioButton rbSheath_long;
+    RadioButton rbSheathlong;
 
 
     /**
      * 中间导管  单选 5F
      * */
     @BindView(R.id.rb_zjdg_5f_act_stroke_operation)
-    RadioButton rbIntermediateCatheter_5F;
+    RadioButton rbIntermediateCatheter5F;
 
     /**
      * 中间导管  单选 6F
      * */
     @BindView(R.id.rb_zjdg_6f_act_stroke_operation)
-    RadioButton rbIntermediateCatheter_6F;
+    RadioButton rbIntermediateCatheter6F;
 
     /**
      * 中间导管  单选 7F
      * */
     @BindView(R.id.rb_zjdg_7f_act_stroke_operation)
-    RadioButton rbIntermediateCatheter_7F;
+    RadioButton rbIntermediateCatheter7F;
 
     /**
      * 中间导管  单选 8F
      * */
     @BindView(R.id.rb_zjdg_8f_act_stroke_operation)
-    RadioButton rbIntermediateCatheter_8F;
+    RadioButton rbIntermediateCatheter8F;
 
     /**
      * 中间导管  单选 非球囊导管
      * */
     @BindView(R.id.rb_zjdg_fqndg_act_stroke_operation)
-    RadioButton rbIntermediateCatheter_Non;
+    RadioButton rbIntermediateCatheterNon;
 
     /**
      * 微导丝  单选 Floopy
      * */
     @BindView(R.id.rb_floopy_act_stroke_operation)
-    RadioButton rbMicrowire_Floopy;
+    RadioButton rbMicrowireFloopy;
 
     /**
      * 微导丝  单选 Synchro
      * */
     @BindView(R.id.rb_synchro_act_stroke_operation)
-    RadioButton rbMicrowire_Synchro;
+    RadioButton rbMicrowireSynchro;
 
     /**
      * 微导丝  单选 Traxcess
      * */
     @BindView(R.id.rb_traxcess_act_stroke_operation)
-    RadioButton rbMicrowire_Traxcess;
+    RadioButton rbMicrowireTraxcess;
 
     /**
      * 微导管  单选 Rebar18
      * */
     @BindView(R.id.rb_rebar18_act_stroke_operation)
-    RadioButton rbMicrowire_Rebar18;
+    RadioButton rbMicrowireRebar18;
 
     /**
      * 微导管  单选 Rebar27
      * */
     @BindView(R.id.rb_rebar27_act_stroke_operation)
-    RadioButton rbMicrowire_Rebar27;
+    RadioButton rbMicrowireRebar27;
 
     /**
      * 微导管  单选 Headway21
      * */
     @BindView(R.id.rb_headway_act_stroke_operation)
-    RadioButton rbMicrowire_Headway21;
+    RadioButton rbMicrowireHeadway21;
 
     /**
      * 取全支架  单选 SolitaireAB
      * */
     @BindView(R.id.rb_solitaireab_act_stroke_operation)
-    RadioButton rbBracket_SolitaireAB;
+    RadioButton rbBracketSolitaireAB;
 
     /**
      * 取全支架  单选 Trevo
      * */
     @BindView(R.id.rb_trevo_act_stroke_operation)
-    RadioButton rbBracket_Trevo;
+    RadioButton rbBracketTrevo;
 
     /**
      * 取全支架  单选 Revive
      * */
     @BindView(R.id.rb_revive_act_stroke_operation)
-    RadioButton rbBracket_Revive;
+    RadioButton rbBracketRevive;
 
     /**
      * 取全支架  单选 SolitaireFR
      * */
     @BindView(R.id.rb_solitairefr_act_stroke_operation)
-    RadioButton rbBracket_SolitaireFR;
+    RadioButton rbBracketSolitaireFR;
 
     /**
      * 取全支架  单选 神通
      * */
     @BindView(R.id.rb_st_act_stroke_operation)
-    RadioButton rbBracket_ST;
+    RadioButton rbBracketST;
 
     /**
      * 规格  单选 4*15
      * */
     @BindView(R.id.rb_415_act_stroke_operation)
-    RadioButton rbSpecifications_415;
+    RadioButton rbSpecifications415;
 
     /**
      * 规格  单选 4*20
      * */
     @BindView(R.id.rb_420_act_stroke_operation)
-    RadioButton rbSpecifications_420;
+    RadioButton rbSpecifications420;
 
     /**
      * 规格  单选 6*20
      * */
     @BindView(R.id.rb_620_act_stroke_operation)
-    RadioButton rbSpecifications_620;
+    RadioButton rbSpecifications620;
 
     /**
      * 规格  单选 6*30
      * */
     @BindView(R.id.rb_630_act_stroke_operation)
-    RadioButton rbSpecifications_630;
+    RadioButton rbSpecifications630;
 
     /**
      * 规格  单选 4*25
      * */
     @BindView(R.id.rb_425_act_stroke_operation)
-    RadioButton rbSpecifications_425;
+    RadioButton rbSpecifications425;
 
 
     private int[] location = new  int[2] ;
@@ -730,8 +730,8 @@ public class StrokeOperationOnActivity extends BaseActivity {
         llHissScore.getLocationInWindow(location); //获取在当前窗口内的绝对坐标，含toolBar
         llHissScore.getLocationOnScreen(location); //获取在整个屏幕内的绝对坐标，含statusBar
 
-        rbDexmedetomidine_Yes.getLocationInWindow(locationAfter); //获取在当前窗口内的绝对坐标，含toolBar
-        rbDexmedetomidine_Yes.getLocationOnScreen(locationAfter); //获取在整个屏幕内的绝对坐标，含statusBar
+        rbDexmedetomidineYes.getLocationInWindow(locationAfter); //获取在当前窗口内的绝对坐标，含toolBar
+        rbDexmedetomidineYes.getLocationOnScreen(locationAfter); //获取在整个屏幕内的绝对坐标，含statusBar
     }
 
     @Override
