@@ -25,6 +25,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
+import com.xyj.strokeaid.view.SettingBar;
 
 import java.util.ArrayDeque;
 import java.util.Calendar;
@@ -205,6 +206,31 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 显示时间选择控件
+     *
+     * @param tvShowTime 显示时间的 TextView
+     */
+    protected void showTimePickView(SettingBar tvShowTime) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(tvShowTime);
+                }
+            })
+                    .isDialog(false)
+                    .setOutSideCancelable(true)
+                    .setRangDate(CalendarUtils.getPastWeek(1, new Date()), Calendar.getInstance())
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+
+    /**
      * 刷新对应view中显示的时间
      *
      * @param textView
@@ -217,6 +243,18 @@ public abstract class BaseActivity extends AppCompatActivity {
                 textView.setTextColor(getResources().getColor(R.color.color_222222));
             }
             textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
+        }
+    }
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param settingBar
+     */
+    protected void refreshTime(SettingBar settingBar) {
+        if (settingBar != null) {
+            settingBar.setRightTextColor(getResources().getColor(R.color.color_222222));
+            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
         }
     }
 

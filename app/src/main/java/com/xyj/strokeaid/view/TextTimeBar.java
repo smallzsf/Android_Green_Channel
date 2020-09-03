@@ -104,6 +104,26 @@ public class TextTimeBar extends RelativeLayout {
         }
     }
 
+    public void setTitle(String title) {
+        tvTitleViewTtb.setText(title);
+    }
+
+    public void setTitle(CharSequence sequence) {
+        tvTitleViewTtb.setText(sequence);
+    }
+
+    public void setTopLineVisible(boolean visible) {
+        if (viewTopLineViewTtb != null) {
+            viewTopLineViewTtb.setVisibility(visible ? VISIBLE : GONE);
+        }
+    }
+
+    public void setBottomLineVisible(boolean visible) {
+        if (viewBottomLineViewTtb != null) {
+            viewBottomLineViewTtb.setVisibility(visible ? VISIBLE : GONE);
+        }
+    }
+
 }
 
     
