@@ -40,6 +40,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.chestpain.SurgicalPreparationActivtty" />
         <activity android:name=".activity.chestpain.ChestPainOperationInfoActivity" />
+        <activity android:name=".activity.chestpain.ChestPainOperationResultActivity" />
+
         <activity android:name=".activity.chestpain.ChestPainEmptyActivity" />
         <activity android:name=".activity.common.ChildTreatCenterActivity" />
         <activity android:name=".activity.common.MaternalTreatCenterActivity" />

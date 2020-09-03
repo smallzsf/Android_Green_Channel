@@ -114,8 +114,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_activation_time_cath_lab"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="导管室激活时间" />
 
@@ -124,8 +123,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_arrive_time_patient"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="患者到达时间" />
 
@@ -144,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="初步诊断"
-                    android:textColor="@color/app_223b53"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -172,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="手术类型"
-                    android:textColor="@color/app_223b53"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -190,8 +188,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_begin"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="手术开始时间" />
 
@@ -200,8 +197,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_puncture"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="开始穿刺时间" />
 
@@ -210,8 +206,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_success_time_puncture"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="穿刺成功时间" />
 
@@ -220,8 +215,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_anticoagulant_administration"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="抗凝给药时间" />
 
@@ -230,8 +224,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_radiography"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="造影开始时间" />
 
@@ -240,8 +233,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_talk_time_again"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="再次谈话时间" />
 
@@ -250,8 +242,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_through_time_guide_wire"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="导丝通过时间" />
 
@@ -260,8 +251,7 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_over_time"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_10"
+                android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
                 app:title="手术结束时间" />
 
@@ -273,7 +263,7 @@
                 android:layout_marginLeft="@dimen/dp_12"
                 android:gravity="left|center"
                 android:text="术中抗凝给药"
-                android:textColor="#223b53"
+                android:textColor="@color/color_222222"
                 android:textSize="@dimen/item_title_size" />
 
             <include layout="@layout/include_line" />
@@ -336,7 +326,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="是否延误"
-                    android:textColor="@color/app_223b53"
+                    android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
