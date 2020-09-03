@@ -43,6 +43,7 @@
 
                     <RadioButton
                         style="@style/tv_small"
+                        android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -62,6 +63,39 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+                <TextView
+                    android:id="@+id/tv_add_record"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="新增新电记录"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ecg_record_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -163,6 +197,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_ecg_record_two"
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -261,6 +296,7 @@
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/ll_ecg_record_three"
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -389,6 +425,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:text="接收120/网络医院心电图"
                         android:textSize="@dimen/item_content_size" />
 
@@ -449,6 +486,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/view_two_horizontal_bottom_button" />
+    <include layout="@layout/view_two_bottom_button" />
 
 </LinearLayout>
