@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <!--诊断-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/awareness"
+            android:layout_width="@dimen/vital_sign_title_width"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="诊断"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_title_select"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/awareness"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+    </RelativeLayout>
+    <include layout="@layout/include_line" />
+
+    <FrameLayout
+        android:id="@+id/fl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

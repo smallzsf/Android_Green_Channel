@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:text="检查结果"
+        android:textColor="#48aaff"
+        android:textSize="@dimen/item_title_size" />
+
+    <!--72内肌钙蛋白-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_end_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="72h内肌钙蛋白*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/tv_end_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/tv_end_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:gravity="center"
+        android:text="72内肌钙蛋白最高值"
+        android:textColor="@color/app_223b53"
+        android:textSize="@dimen/item_title_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_left"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/awareness"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+        <EditText
+            android:id="@+id/et_emergency_ward"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_right"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/awareness"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+    </LinearLayout>
+
+    <!--脑钠肽-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_bnp_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="脑钠肽*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_bnp_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_bnp_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_bnp_left"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/awareness"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+        <EditText
+            android:id="@+id/et_bnp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="PG/ML"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+
+    <!--总胆固醇(TC)-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_tc_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="总胆固醇(TC)*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_tc_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_tc_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="数值*"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_tc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="mmol/L"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+
+    <!--甘油三酯(TG)-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_tg_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="甘油三酯(TG)*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_tg_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_tg_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="数值*"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_tg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="mmol/L"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+
+    <!--高密度脂蛋白(HDL-C)-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_hdl_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="高密度脂蛋白(HDL-C)*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_hdl_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_hdl_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="数值*"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_hdl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="mmol/L"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+
+    <!--低密度脂蛋白(LDL-C)-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_ldl_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="总胆固醇(TC)*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_ldl_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_ldl_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+    <include layout="@layout/include_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="数值*"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_ldl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="mmol/L"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+
+    <!--心电图-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_uc_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="超声心电图*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_uc_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_uc_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+<!--lvef-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:padding="@dimen/dp_5">
+
+        <TextView
+            android:layout_width="@dimen/dp_68"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="LEVF*"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <EditText
+            android:id="@+id/et_lvef"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_weight="1"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="left"
+            android:hint="单行输入"
+            android:padding="@dimen/dp_5"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:layout_width="@dimen/dp_110"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="%(诊疗过程中最低值)"
+            android:textColor="#223b53"
+            android:textSize="@dimen/item_title_size" />
+
+    </LinearLayout>
+    <!--室壁瘤-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_va_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="室壁瘤*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_va_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_va_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!--局部室壁活动异常-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+        <TextView
+            android:id="@+id/tv_lva_label"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="局部室壁活动异常*"
+            android:textColor="@color/app_223b53"
+            android:textSize="@dimen/item_title_size" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_lva_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
+
+            <RadioButton
+                android:id="@+id/rb_lva_yes"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="是"
+                android:textSize="@dimen/item_content_size"
+                />
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>
