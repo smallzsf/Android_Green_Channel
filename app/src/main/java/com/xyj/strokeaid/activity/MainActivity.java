@@ -103,7 +103,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     /**
      * 当前登录人的id
      */
-    private String mDocId="";
+    private String mDocId = "";
     private ArrayList<CustomTabEntity> mTabEntities;
 
     @Override
@@ -194,9 +194,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             @Override
             public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull View view, int position) {
                 String destination = "";
-                if (mDiseaseType == 1) {
-                    destination = RouteUrl.Stroke.STROKE_HOME;
-                } else if (mDiseaseType == 2) {
+                if (mDiseaseType == 2) {
                     destination = RouteUrl.ChestPain.CHEST_PAIN_HOME;
                 } else if (mDiseaseType == 3) {
                     destination = RouteUrl.Trauma.TRAUMA_HOME;
@@ -204,6 +202,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                     destination = RouteUrl.MaternalTreat.MATERNAL_TREAT_HOME;
                 } else if (mDiseaseType == 5) {
                     destination = RouteUrl.ChildTreat.CHILD_TREAT_HOME;
+                } else {
+                    destination = RouteUrl.Stroke.STROKE_HOME;
                 }
                 ARouter.getInstance().build(destination)
                         .withInt(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId())
@@ -358,16 +358,16 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     }
 
-    private String getDiseaseStringByType(int diseaseType){
-        if (diseaseType == 2){
+    private String getDiseaseStringByType(int diseaseType) {
+        if (diseaseType == 2) {
             return "胸痛";
-        }else if (diseaseType == 3){
+        } else if (diseaseType == 3) {
             return "创伤";
-        }else if (diseaseType == 4){
+        } else if (diseaseType == 4) {
             return "危重孕产妇";
-        }else if (diseaseType == 5){
+        } else if (diseaseType == 5) {
             return "危重儿童";
-        }else {
+        } else {
             return "卒中";
         }
     }
