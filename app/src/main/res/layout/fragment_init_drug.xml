@@ -230,12 +230,10 @@
                     android:paddingStart="@dimen/dp_12"
                     android:paddingEnd="@dimen/dp_12">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentStart="true"
                         android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_toStartOf="@id/iv_arrow_view_nib"
                         android:gravity="center_vertical"
                         android:maxLength="10"
                         android:maxLines="2"
@@ -316,7 +314,7 @@
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
@@ -452,11 +450,10 @@
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="全量"
@@ -588,7 +585,7 @@
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_weight="1"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
