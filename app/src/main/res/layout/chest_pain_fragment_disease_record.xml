@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_ffffff"
+    xmlns:zhy="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Text_Dark_Content_Style"
+                android:text="病情评估"/>
+            <LinearLayout
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    >
+                    <RadioButton
+                        android:id="@+id/rb_persistent_chest_pain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_30"
+                        android:checked="true"
+                        android:text="持续性胸闷/胸痛"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_intermittent_chest_pain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_30"
+                        android:text="间歇性胸闷/胸痛"
+                        android:textSize="@dimen/item_content_size" />
+                </LinearLayout>
+
+                <RadioButton
+                    android:id="@+id/rb_relieved_chest_pain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_30"
+                    android:text="症状已缓解"
+                    android:textSize="@dimen/item_content_size" />
+
+
+            </LinearLayout>
+
+
+
+            <include layout="@layout/include_line" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_12"
+                style="@style/Text_Dark_Content_Style"
+                android:text="病情评估明细"></TextView>
+            <GridView
+                android:id="@+id/gv_detailed"
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:scrollbars="none"
+                android:numColumns="2"
+                android:paddingBottom="10dp"
+                android:listSelector="@color/transparent"
+                />
+
+
+            <include layout="@layout/include_line" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="@string/chief_complaint" />
+
+
+                <EditText
+                    android:id="@+id/et_major_complaint_frag"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="@string/tip_chief_complaint"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/item_content_size" />
+
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tfl_action_in_chief"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:maxLength="100"
+                    zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@color/app_ffffff"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/app_tv_conditon_record"
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="备注" />
+
+                <EditText
+                    android:id="@+id/et_symptom"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入备注"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/item_content_size" />
+            </LinearLayout>
+
+
+            <include layout="@layout/include_line" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        layout="@layout/view_two_horizontal_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_8" />
+
+
+    <!--   <include
+           android:id="@+id/menu"
+           layout="@layout/view_bottom_menu"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentBottom="true" />-->
+</LinearLayout>

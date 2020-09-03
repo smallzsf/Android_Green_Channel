@@ -117,7 +117,7 @@
                 app:bar_leftText="出生日期" />
 
             <com.xyj.strokeaid.view.SettingBar
-                android:id="@+id/ieb_come_type_act_npmr"
+                android:id="@+id/sb_come_type_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
@@ -132,7 +132,7 @@
                 android:orientation="vertical"
                 android:paddingStart="@dimen/item_normal_margin"
                 android:paddingEnd="@dimen/item_normal_margin"
-                android:visibility="gone">
+                android:visibility="visible">
 
             </LinearLayout>
 

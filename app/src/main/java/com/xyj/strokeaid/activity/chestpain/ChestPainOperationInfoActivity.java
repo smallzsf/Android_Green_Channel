@@ -17,6 +17,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -45,35 +46,37 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 public class ChestPainOperationInfoActivity extends BaseActivity {
 
-    @BindView(R.id.iv_left_base_title_bar)
-    ImageView ivBack;
-    @BindView(R.id.tv_title_base_title_bar)
-    TextView tvTitle;
-    @BindView(R.id.tv_right_base_title_bar)
-    TextView tvSave;
+    //    @BindView(R.id.iv_left_base_title_bar)
+//    ImageView ivBack;
+//    @BindView(R.id.tv_title_base_title_bar)
+//    TextView tvTitle;
+//    @BindView(R.id.tv_right_base_title_bar)
+//    TextView tvSave;
+    @BindView(R.id.title_bar_act_npmr)
+    BaseTitleBar titleBarActNpmr;
     @BindView(R.id.tag_reason_delay)
     TagFlowLayout tagFlowLayout;
 
     @BindView(R.id.tv_activation_time_cath_lab)
-    TextView tvActivationTime;       //导管室激活时间
+    TextTimeBar tvActivationTime;       //导管室激活时间
     @BindView(R.id.tv_arrive_time_patient)
-    TextView tvArriveTime;       //患者到达时间
+    TextTimeBar tvArriveTime;       //患者到达时间
     @BindView(R.id.tv_time_begin)
-    TextView tvTimeBegin;       //手术开始时间
+    TextTimeBar tvTimeBegin;       //手术开始时间
     @BindView(R.id.tv_time_puncture)
-    TextView tvTimePuncture;       //开始穿刺时间
+    TextTimeBar tvTimePuncture;       //开始穿刺时间
     @BindView(R.id.tv_success_time_puncture)
-    TextView tvSuccessTimePuncture;       //穿刺成功时间
+    TextTimeBar tvSuccessTimePuncture;       //穿刺成功时间
     @BindView(R.id.tv_time_anticoagulant_administration)
-    TextView tvTimeAnticoagulantAdministration;       //抗凝给药时间
+    TextTimeBar tvTimeAnticoagulantAdministration;       //抗凝给药时间
     @BindView(R.id.tv_time_radiography)
-    TextView tvTimeRadiography;       //造影开始时间
+    TextTimeBar tvTimeRadiography;       //造影开始时间
     @BindView(R.id.tv_talk_time_again)
-    TextView tvTalkTimeAgain;       //再次谈话时间
+    TextTimeBar tvTalkTimeAgain;       //再次谈话时间
     @BindView(R.id.tv_through_time_guide_wire)
-    TextView tvThroughTimeGuideWire;       //导丝通过时间
+    TextTimeBar tvThroughTimeGuideWire;       //导丝通过时间
     @BindView(R.id.tv_over_time)
-    TextView tvOverTime;       //手术结束时间
+    TextTimeBar tvOverTime;       //手术结束时间
 
     @BindView(R.id.es_preliminary_diagnosis_doctor)
     EditSpinner es_preliminary_diagnosis_doctor;    //初步诊断
@@ -121,7 +124,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvActivationTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvActivationTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -141,7 +144,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvArriveTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvArriveTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -161,7 +164,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvTimeBegin.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvTimeBegin.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -181,7 +184,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvTimePuncture.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvTimePuncture.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -201,7 +204,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvSuccessTimePuncture.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvSuccessTimePuncture.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -221,7 +224,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvTimeAnticoagulantAdministration.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvTimeAnticoagulantAdministration.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -241,7 +244,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvTimeRadiography.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvTimeRadiography.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -261,7 +264,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvTalkTimeAgain.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvTalkTimeAgain.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -281,7 +284,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvThroughTimeGuideWire.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvThroughTimeGuideWire.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -301,7 +304,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvOverTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvOverTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -326,9 +329,12 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        tvTitle.setText("手术信息");
-        tvSave.setText("保存");
-        tvSave.setVisibility(View.VISIBLE);
+        titleBarActNpmr.setLeftLayoutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         tagFlowLayout.setAdapter(new TagAdapter<String>(Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_delay_reason))) {
             @Override

@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="介入途径:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rb_channelfrm_intervention"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_channel_gdm_frm_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="股动脉"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_channel_rdm_frm_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="桡动脉"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="弹簧圈:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_th_no_frm_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_th_yes_frm_intervention"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_18"
+                    android:text="有，若有，"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/ed_th_yes_content_frm_intervention"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="个"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="支架:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rb_zj_frm_intervention"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_zj_no_frm_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_zj_yes_frm_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="有"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="top"
+            android:gravity="center_vertical"
+            android:text="支架名称:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/ck_zj_wingspan_frm_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="Wingspan"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_zj_solitaire_frm_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="solitaire"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_zj_enterPrise_frm_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="EnterPrise"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/ck_zj_lvisfrm_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="Lvis"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_zj_neuroform_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="neuroform"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_zj_pipeline_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="Pipeline"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/ck_zj_turbirdge_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="turbirdge"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_zj_qita_intervention"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="其他"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/ed_zj_qita_content_intervention"
+                    style="@style/patient_et_style"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="@string/single_line_input"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingBottom="@dimen/dp_5" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="球囊:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rb_channel_qn_intervention"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_channel_qn_no_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_qn_yes_intervention"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_18"
+                    android:text="有，若有，"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/ed_qn_yes_content_intervention"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_5"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="个"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="top"
+            android:gravity="center_vertical"
+            android:text="其他栓塞材料:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/ck_qtcscl_no_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_qtcscl_glubran_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="Glubran"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_qtcscl_onyx_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="onyx"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_qtcscl_intervention"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/ed_qtcscl_content_intervention"
+                    style="@style/patient_et_style"
+                    android:layout_width="225dp"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="@string/single_line_input"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingBottom="@dimen/dp_5" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="动脉瘤治疗结果:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_wqbs_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="完全闭塞"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ljcl_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="瘤颈残留"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_bfljcl_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="部分瘤体残留"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ltcl_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="瘤体残留"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="载瘤治疗情况:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_wthqtc_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="无弹簧圈突出"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ythqtc_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="有弹簧圈突出"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_zldmbs_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="载瘤动脉闭塞"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="栓塞术过程中并发症:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_ssbfz_no_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ssbfz_yes_intervention"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="有"
+                android:textColor="@color/color_222222"
+                android:textSize="14sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rb_channel_rdm_frm_intervention" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="top"
+            android:gravity="center_vertical"
+            android:text="急性血栓形成部位:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/ck_dmljfj_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="动脉瘤颈附近"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_zldmljyy_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="载瘤动脉瘤颈以远"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_fzdmlydxg_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="非载瘤动脉流域的血管"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_dmlpl_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="动脉瘤破裂"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <CheckBox
+                android:id="@+id/ck_dmlxgbs_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="动脉瘤附近穿支血管闭塞"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_dmjcbw_intervention"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="动脉夹层，部位:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/ed_dmjcbw_content_intervention"
+                    style="@style/patient_et_style"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="@string/single_line_input"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingBottom="@dimen/dp_5" />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/ck_ccbwbfz_intervention"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1"
+                android:text="穿刺部位并发症"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_13" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/ck_qtbfz_intervention"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:text="其他术中并发症，说明:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/ed_qtbfz_content_intervention"
+                    style="@style/patient_et_style"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="@string/single_line_input"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingBottom="@dimen/dp_5" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

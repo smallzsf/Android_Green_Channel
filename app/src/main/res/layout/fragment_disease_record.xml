@@ -162,21 +162,21 @@
                     style="@style/Text_Dark_Content_Style"
                     android:text="既往用药史" />
 
-           <!--     <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="请输入既往用药史"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/item_content_size" />
+                <!--     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="@dimen/dp_90"
+                         android:layout_marginTop="@dimen/dp_7"
+                         android:layout_marginBottom="@dimen/dp_10"
+                         android:background="@drawable/shape_edittext_bg"
+                         android:gravity="start"
+                         android:hint="请输入既往用药史"
+                         android:paddingLeft="@dimen/dp_6"
+                         android:paddingTop="@dimen/dp_6"
+                         android:textSize="@dimen/item_content_size" />
 
 
 
-                    -->
+                         -->
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"

@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -161,6 +163,16 @@ public class SettingBar extends RelativeLayout {
      */
     public SettingBar setRightText(int stringId) {
         setRightText(getResources().getString(stringId));
+        return this;
+    }
+
+    /**
+     * 设置右边的标题
+     */
+    public SettingBar setRightTextColor(@ColorInt int color) {
+        if (tvRightViewSb != null) {
+            tvRightViewSb.setTextColor(color);
+        }
         return this;
     }
 

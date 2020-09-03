@@ -190,4 +190,15 @@ public class ItemEditBar extends RelativeLayout {
 
     }
 
+    public void setTopLineVisible(boolean visible) {
+        if (viewTopLineViewIeb != null) {
+            viewTopLineViewIeb.setVisibility(visible ? VISIBLE : GONE);
+        }
+    }
+
+    public void setBottomLineVisible(boolean visible) {
+        if (viewBottomLineViewIeb != null) {
+            viewBottomLineViewIeb.setVisibility(visible ? VISIBLE : GONE);
+        }
+    }
 }

@@ -36,6 +36,9 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -81,8 +84,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     ItemEditBar iebBmiActNpmr;
     @BindView(R.id.sb_birth_act_npmr)
     SettingBar sbBirthActNpmr;
-    @BindView(R.id.ieb_come_type_act_npmr)
-    SettingBar iebComeTypeActNpmr;
+    @BindView(R.id.sb_come_type_act_npmr)
+    SettingBar sbComeTypeActNpmr;
     @BindView(R.id.ll_come_hos_act_npmr)
     LinearLayout llComeHosActNpmr;
     @BindView(R.id.sb_in_hos_type_act_npmr)
@@ -105,6 +108,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private AMapLocationClient locationClient = null;
     private AMapLocationClientOption locationOption = null;
     private AMapLocationListener locationListener = null;
+    private List<ComeHosBean> mComeHosBeans = null;
 
     @Override
     public int getLayoutId() {
@@ -347,34 +351,34 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick({R.id.ieb_idcard_act_npmr, R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr,
-            R.id.ieb_come_type_act_npmr, R.id.ieb_medicare_act_npmr, R.id.sb_nation_act_npmr,
+    @OnClick({R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr,
+            R.id.sb_come_type_act_npmr, R.id.ieb_medicare_act_npmr, R.id.sb_nation_act_npmr,
             R.id.sb_in_hos_type_act_npmr, R.id.ieb_domicile_addr_act_npmr, R.id.btn_save_act_npmr})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.ieb_idcard_act_npmr:
-                break;
             case R.id.sb_sex_act_npmr:
                 showActionSheet(sbSexActNpmr, "男", "女");
                 break;
             case R.id.sb_birth_act_npmr:
+                showTimePickView(sbBirthActNpmr);
                 break;
-            case R.id.ieb_come_type_act_npmr:
+            case R.id.sb_come_type_act_npmr:
+                showComeHosActionSheet(sbComeTypeActNpmr, "本院急救车", "当地120", "外院转院", "自行来院", "在院卒中");
                 break;
             case R.id.sb_in_hos_type_act_npmr:
+                showActionSheet(sbInHosTypeActNpmr, "急诊","门诊","其他医疗机构转入","其他");
                 break;
             case R.id.sb_nation_act_npmr:
                 break;
-            case R.id.ieb_medicare_act_npmr:
-                break;
-            case R.id.ieb_domicile_addr_act_npmr:
-                break;
             case R.id.btn_save_act_npmr:
-
+                preSave();
                 break;
             default:
                 break;
         }
+    }
+
+    private void preSave() {
     }
 
     private void showActionSheet(SettingBar settingBar, String... strings) {
@@ -390,16 +394,154 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
                     @Override
                     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-                        if (index == 0) {
-                            settingBar.setRightText("男");
-                        } else if (index == 1) {
-                            settingBar.setRightText("女");
-                        }
+                        settingBar.setRightText(strings[index]);
                     }
                 }).show();
     }
 
-    private class IdCardBean {
+    private void showComeHosActionSheet(SettingBar settingBar, String... strings) {
+        ActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelButtonTitle("取消")
+                .setOtherButtonTitles(strings)
+                .setCancelableOnTouchOutside(true)
+                .setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+                    }
+
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                        settingBar.setRightText(strings[index]);
+                        showComeHosType(index);
+                    }
+                }).show();
+    }
+
+    private void showComeHosType(int type) {
+        llComeHosActNpmr.setVisibility(View.VISIBLE);
+        llComeHosActNpmr.removeAllViews();
+        if (type == 0) {
+            // 本院急救车
+            mComeHosBeans = getOwnAmbulanceContent();
+        } else if (type == 1) {
+            // 外院急救车
+            mComeHosBeans = getOwnAmbulanceContent();
+        } else if (type == 2) {
+            // 外院转院
+            mComeHosBeans = getOtherHosContent();
+        } else if (type == 3) {
+            // 自行来院
+            mComeHosBeans = getComeHosSelfContent();
+        } else if (type == 4) {
+            // 在院卒中
+            mComeHosBeans = getInHosStrokeContent();
+        } else {
+            mComeHosBeans = new ArrayList<>();
+            mComeHosBeans.add(new ComeHosBean("首次医疗接触时间", false));
+        }
+
+        for (ComeHosBean comeHosBean : mComeHosBeans) {
+            if (comeHosBean.isEditable()) {
+                ItemEditBar itemEditBar = new ItemEditBar(mContext);
+                itemEditBar.setTitle(comeHosBean.getTitel());
+                itemEditBar.setBottomLineVisible(true);
+                llComeHosActNpmr.addView(itemEditBar);
+            } else {
+                TextTimeBar textTimeBar = new TextTimeBar(mContext);
+                textTimeBar.setTitle(comeHosBean.getTitel());
+                textTimeBar.setBottomLineVisible(true);
+                llComeHosActNpmr.addView(textTimeBar);
+            }
+        }
+
+    }
+
+    private List<ComeHosBean> getInHosStrokeContent() {
+        ArrayList<ComeHosBean> list = new ArrayList<>();
+        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("发病科室", true));
+        list.add(new ComeHosBean("会诊时间", false));
+        list.add(new ComeHosBean("离开科室", false));
+        return list;
+    }
+
+    private List<ComeHosBean> getComeHosSelfContent() {
+        ArrayList<ComeHosBean> list = new ArrayList<>();
+        list.add(new ComeHosBean("到达医院大门时间", false));
+        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("院内接诊时间", false));
+        return list;
+    }
+
+    private List<ComeHosBean> getOtherHosContent() {
+        ArrayList<ComeHosBean> list = new ArrayList<>();
+        list.add(new ComeHosBean("转出医院入门时间", false));
+        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("转运救护车到达时间", false));
+        list.add(new ComeHosBean("离开转出医院时间", false));
+        list.add(new ComeHosBean("到达医院大门时间", false));
+        list.add(new ComeHosBean("院内接诊时间", false));
+        list.add(new ComeHosBean("决定转院时间", false));
+        list.add(new ComeHosBean("医院名称", true));
+        return list;
+    }
+
+    private List<ComeHosBean> getOwnAmbulanceContent() {
+        ArrayList<ComeHosBean> list = new ArrayList<>();
+        list.add(new ComeHosBean("呼救时间", false));
+        list.add(new ComeHosBean("到达现场时间", false));
+        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("到达医院大门时间", false));
+        list.add(new ComeHosBean("院内接诊时间", false));
+        return list;
+    }
+
+    private static class ComeHosBean {
+        private String titel;
+        private String content;
+        private String time;
+        private boolean editable;
+
+        public ComeHosBean(String titel, boolean editable) {
+            this.titel = titel;
+            this.editable = editable;
+        }
+
+        public boolean isEditable() {
+            return editable;
+        }
+
+        public void setEditable(boolean editable) {
+            this.editable = editable;
+        }
+
+        public String getTitel() {
+            return titel;
+        }
+
+        public void setTitel(String titel) {
+            this.titel = titel;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String time) {
+            this.time = time;
+        }
+    }
+
+    private static class IdCardBean {
 
         /**
          * classify : 1
