@@ -3,6 +3,8 @@ package com.xyj.strokeaid.fragment.chestpain;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +48,12 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     LinearLayout llEcgRecordThree;
     @BindView(R.id.btn_cancel)
     AppCompatButton btnCancel;
+    @BindView(R.id.rb_ecg_transmission_120)
+    RadioButton rbEcgTransmission120;
+    @BindView(R.id.rb_ecg_transmission_none)
+    RadioButton rbEcgTransmissionNone;
+    @BindView(R.id.rg_ecg_transmission)
+    RadioGroup rgEcgTransmission;
     private String mPatientId;
     private String mDocId;
 
@@ -127,6 +135,9 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
                 refrashRecordItem();
             }
         });
+
+
+
     }
 
 }

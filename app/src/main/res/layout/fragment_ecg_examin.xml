@@ -36,12 +36,14 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
                 <RadioGroup
+                    android:id="@+id/rg_electrocardiogram"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
                     <RadioButton
+                        android:id="@+id/rb_electrocardiogram_has"
                         style="@style/tv_small"
                         android:checked="true"
                         android:layout_width="wrap_content"
@@ -51,6 +53,8 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+
+                        android:id="@+id/rb_electrocardiogram_none"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -413,6 +417,8 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
                 <RadioGroup
+
+                    android:id="@+id/rg_ecg_transmission"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginRight="@dimen/dp_12"
                     android:layout_width="match_parent"
@@ -421,6 +427,7 @@
                     android:weightSum="3">
 
                     <RadioButton
+                        android:id="@+id/rb_ecg_transmission_120"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -430,6 +437,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:id="@+id/rb_ecg_transmission_none"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

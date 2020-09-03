@@ -72,13 +72,13 @@
                 android:layout_marginTop="@dimen/dp_12"
                 style="@style/Text_Dark_Content_Style"
                 android:text="病情评估明细"></TextView>
-            <com.xyj.strokeaid.view.MeasureGridView
+            <GridView
                 android:id="@+id/gv_detailed"
                 android:layout_marginTop="@dimen/dp_7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="280dp"
+                android:scrollbars="none"
                 android:numColumns="2"
-                android:layout_marginBottom="10dp"
                 android:paddingBottom="10dp"
                 android:listSelector="@color/transparent"
                 />

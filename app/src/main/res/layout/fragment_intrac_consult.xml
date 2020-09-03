@@ -152,12 +152,14 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
                 <RadioGroup
+                    android:id="@+id/rg_delay"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
                     <RadioButton
+                        android:id="@+id/rb_delay_has"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -166,6 +168,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:id="@+id/rb_delay_none"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

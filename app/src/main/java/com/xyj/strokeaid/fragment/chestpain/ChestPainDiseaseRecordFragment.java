@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     @BindView(R.id.rb_relieved_chest_pain)
     RadioButton rbRelievedChestPain;
     @BindView(R.id.gv_detailed)
-    MeasureGridView gvDetailed;
+    GridView gvDetailed;
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
