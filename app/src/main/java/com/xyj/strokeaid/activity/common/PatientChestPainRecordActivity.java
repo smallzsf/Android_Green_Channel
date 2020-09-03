@@ -221,12 +221,6 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 12:
                     // 患者转归
                     return new PatientSumFragment();
-                case 7:
-                    //  初始诊断
-                    return new OriginalDiagnoseFragment();
-                case 12:
-                    //  患者转归
-                    return new PatientSumFragment();
                 default:
                     return EmptyFragment.newInstance();
             }
