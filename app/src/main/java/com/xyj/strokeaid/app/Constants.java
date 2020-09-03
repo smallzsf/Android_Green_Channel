@@ -61,6 +61,8 @@ public class Constants {
             "生命体征",
             "危重儿童"};
 
+    public static final String[] CHEST_OTHER_DISPOSAL_TITLES = new String[]{"急诊CT", "彩超"};
+
 }
 
     
