@@ -19,7 +19,7 @@
         android:layout_marginRight="@dimen/sp_15">
 
         <TextView
-            android:id="@+id/tv_notify_label"
+            android:id="@+id/tv_ct_notify_label"
             android:layout_width="@dimen/tooltip_precise_anchor_threshold"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -28,8 +28,8 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
-            android:id="@+id/tv_notify_time"
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_ct_notify_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,7 +49,7 @@
         android:layout_marginRight="@dimen/sp_15">
 
         <TextView
-            android:id="@+id/tv_finish_label"
+            android:id="@+id/tv_ct_finish_label"
             android:layout_width="@dimen/tooltip_precise_anchor_threshold"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -58,12 +58,12 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
-            android:id="@+id/tv_finish_time"
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_ct_finish_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_finish_label"
+            android:layout_toRightOf="@id/tv_ct_finish_label"
             android:focusable="false"
             android:gravity="center|right"
             android:hint="@string/app_default_time_example"
@@ -80,7 +80,7 @@
         android:layout_marginRight="@dimen/sp_15">
 
         <TextView
-            android:id="@+id/tv_start_label"
+            android:id="@+id/tv_ct_start_label"
             android:layout_width="@dimen/tooltip_precise_anchor_threshold"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -89,8 +89,8 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
-            android:id="@+id/tv_start_time"
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_ct_start_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -111,7 +111,7 @@
         android:layout_marginRight="@dimen/sp_15">
 
         <TextView
-            android:id="@+id/tv_report_label"
+            android:id="@+id/tv_ct_report_label"
             android:layout_width="@dimen/tooltip_precise_anchor_threshold"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -120,8 +120,8 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
-            android:id="@+id/tv_report_time"
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_ct_report_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

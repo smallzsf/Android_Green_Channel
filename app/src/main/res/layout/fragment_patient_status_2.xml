@@ -11,44 +11,45 @@
         android:orientation="vertical">
 
 
-    <!--诊断-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+<!--    &lt;!&ndash;诊断&ndash;&gt;-->
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/item_normal_height"-->
+<!--        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"-->
+<!--        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">-->
 
-        <TextView
-            android:id="@+id/awareness"
-            android:layout_width="@dimen/vital_sign_title_width"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="诊断"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.editspinner.EditSpinner
-            android:id="@+id/es_vital_sign_aware"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/awareness"
-            android:gravity="center"
-            app:Background="@drawable/bg_view_frame"
-            app:hint="请选择"
-            app:rightImage="@drawable/ic_arrow_down_blue" />
+<!--        <TextView-->
+<!--            android:id="@+id/awareness"-->
+<!--            android:layout_width="@dimen/vital_sign_title_width"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:text="诊断"-->
+<!--            android:textColor="@color/app_223b53"-->
+<!--            android:textSize="@dimen/item_title_size" />-->
 
 
-    </RelativeLayout>
-    <include layout="@layout/include_line" />
+<!--        <com.xyj.strokeaid.view.editspinner.EditSpinner-->
+<!--            android:id="@+id/es_vital_sign_aware"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dp_30"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_toRightOf="@+id/awareness"-->
+<!--            android:gravity="center"-->
+<!--            app:Background="@drawable/bg_view_frame"-->
+<!--            app:hint="请选择"-->
+<!--            app:rightImage="@drawable/ic_arrow_down_blue" />-->
+
+
+<!--    </RelativeLayout>-->
+<!--    <include layout="@layout/include_line" />-->
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/vital_sign_item_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/sp_15">
+        android:layout_marginRight="@dimen/sp_15"
+        android:layout_marginBottom="@dimen/dp_80">
 
         <TextView
             android:id="@+id/tv_first_cure"
