@@ -4,6 +4,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 
 /**
@@ -15,7 +16,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 public class PatientSumFragment extends BaseFragment {
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_patient_sum;
     }
 
     @Override

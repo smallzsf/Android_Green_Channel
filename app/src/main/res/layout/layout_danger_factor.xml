@@ -288,7 +288,7 @@
             android:layout_width="@dimen/dp_120"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="早发CVD家族史(男<55,女<60)"
+            android:text="早发CVD家族史"
             android:textColor="@color/app_223b53"
             android:textSize="@dimen/item_title_size" />
 
