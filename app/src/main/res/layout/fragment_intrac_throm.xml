@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginStart="@dimen/dp_7"
                     android:gravity="center"
                     android:maxLength="6"
                     android:maxLines="1"
@@ -157,7 +157,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -202,6 +202,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:layout_marginLeft="@dimen/dp_7"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
@@ -254,7 +255,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -305,17 +306,14 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_7"
                     android:background="@color/white"
                     tl:title="开始知情谈话" />
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_7"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="签署知情协议" />
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_marginLeft="@dimen/dp_7"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
@@ -323,7 +321,6 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_7"
                     android:background="@color/white"
                     tl:title="溶栓结束" />
 

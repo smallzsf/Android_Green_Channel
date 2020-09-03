@@ -121,7 +121,7 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
 //        esVitalSignAware.setItemData(list);
         //剂量
         List<String> doseList = new ArrayList<>();
-        doseList.add("第一代");
+        doseList.add("全量");
         editSpinnerDose.setItemData(doseList);
 
     }
@@ -130,7 +130,9 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     @Override
     protected void initListener() {
 
-
+        rbSuitable.setOnClickListener(this);
+        rbNoSuitable.setOnClickListener(this);
+        rbOtherDepartment.setOnClickListener(this);
         rbIntracHas.setOnClickListener(this);
         rbIntracNone.setOnClickListener(this);
     }
