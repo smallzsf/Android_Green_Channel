@@ -130,8 +130,6 @@ public class ChestPainInitDrugFragment extends BaseFragment {
         btnGetData.setText("获取数据");
         btnConfirm.setText("确定");
         loadData();
-
-
     }
 
 
