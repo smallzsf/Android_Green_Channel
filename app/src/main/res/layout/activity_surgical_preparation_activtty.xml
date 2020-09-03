@@ -10,7 +10,8 @@
         android:id="@+id/rl_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_56"
-        android:background="@color/color_00ACFF">
+        android:background="@color/color_00ACFF"
+        android:visibility="gone">
 
         <RelativeLayout
             android:id="@+id/rl_back"
@@ -45,11 +46,20 @@
 
     </RelativeLayout>
 
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_npmr"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_title_height"
+        app:rightIconVisible="false"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="术前准备" />
+
     <RelativeLayout
         android:id="@+id/rl_doctor"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/rl_title"
+        android:layout_below="@id/title_bar_act_npmr"
         android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_12">
@@ -85,45 +95,23 @@
         </RelativeLayout>
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_start_time"
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_dis_start_act_npmr"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_below="@id/rl_doctor"
-        android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_12">
-
-        <TextView
-            android:id="@+id/tv_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="决定介入手术时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <TextView
-            android:id="@+id/tv_start_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_toRightOf="@id/tv_start"
-            android:focusable="false"
-            android:gravity="center"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_content_size" />
-    </RelativeLayout>
+        app:bottomLineVisible="true"
+        app:title="决定介入手术时间" />
 
     <RelativeLayout
         android:id="@+id/rl_room"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_below="@id/rl_start_time"
-        android:layout_marginLeft="@dimen/dp_12">
+        android:layout_below="@id/ttb_dis_start_act_npmr"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/awareness"
@@ -150,108 +138,33 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_catheter_room"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/rl_room"
-        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_below="@id/ttb_dis_start_act_npmr"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_12">
+        app:bottomLineVisible="true"
+        app:title="启动导管室时间" />
 
-        <TextView
-            android:id="@+id/tv_catheter_room"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="启动导管室时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <TextView
-            android:id="@+id/tv_catheter_room_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_10"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_toRightOf="@id/tv_catheter_room"
-            android:focusable="false"
-            android:gravity="center"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_content_size" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_agree_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_below="@id/rl_catheter_room"
-        android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_12">
+        app:bottomLineVisible="true"
+        app:title="开始知情同意时间" />
 
-        <TextView
-            android:id="@+id/tv_agree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="开始知情同意时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <TextView
-            android:id="@+id/tv_cagree_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_toRightOf="@id/tv_agree"
-            android:focusable="false"
-            android:gravity="center"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_content_size" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_sign_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_below="@id/rl_agree_time"
-        android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_12">
+        app:bottomLineVisible="true"
+        app:title="签署知情同意时间" />
 
-        <TextView
-            android:id="@+id/tv_sign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="签署知情同意时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <TextView
-            android:id="@+id/tv_sign_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/dp_20"
-            android:layout_toRightOf="@id/tv_sign"
-            android:focusable="false"
-            android:gravity="center"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_content_size" />
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/llfamily_advice"
