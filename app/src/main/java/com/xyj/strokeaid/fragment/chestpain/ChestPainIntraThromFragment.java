@@ -2,9 +2,8 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -27,76 +26,55 @@ import butterknife.BindView;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainIntraThromFragment extends BaseFragment {
+public class ChestPainIntraThromFragment extends BaseFragment implements View.OnClickListener {
 
 
-    @BindView(R.id.awareness)
-    TextView awareness;
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
-    @BindView(R.id.breath)
-    TextView breath;
-    @BindView(R.id.breath_layout)
-    LinearLayout breathLayout;
-    @BindView(R.id.et_breath_rate_content)
-    EditText etBreathRateContent;
-    @BindView(R.id.unit_times_minute)
-    TextView unitTimesMinute;
-    @BindView(R.id.pulse)
-    TextView pulse;
-    @BindView(R.id.pulse_layout)
-    LinearLayout pulseLayout;
-    @BindView(R.id.et_pulse_content)
-    EditText etPulseContent;
-    @BindView(R.id.pulse_unit_times_minute)
-    TextView pulseUnitTimesMinute;
-    @BindView(R.id.heart_rate)
-    TextView heartRate;
-    @BindView(R.id.heart_rate_layout)
-    LinearLayout heartRateLayout;
-    @BindView(R.id.et_heart_rate_content)
-    EditText etHeartRateContent;
-    @BindView(R.id.heart_rate_unit_times_minute)
-    TextView heartRateUnitTimesMinute;
-    @BindView(R.id.systolic_blood_pressure)
-    TextView systolicBloodPressure;
-    @BindView(R.id.systolic_blood_pressure_layout)
-    LinearLayout systolicBloodPressureLayout;
-    @BindView(R.id.et_systolic_blood_pressure_content)
-    EditText etSystolicBloodPressureContent;
-    @BindView(R.id.systolic_blood_pressure_unit_mm_hg)
-    TextView systolicBloodPressureUnitMmHg;
-    @BindView(R.id.diastolic_blood_pressure)
-    TextView diastolicBloodPressure;
-    @BindView(R.id.diastolic_blood_pressure_layout)
-    LinearLayout diastolicBloodPressureLayout;
-    @BindView(R.id.et_diastolic_blood_pressure_content)
-    EditText etDiastolicBloodPressureContent;
-    @BindView(R.id.diastolic_blood_pressure_unit_mm_hg)
-    TextView diastolicBloodPressureUnitMmHg;
-    @BindView(R.id.blood_oxygen_saturation)
-    TextView bloodOxygenSaturation;
-    @BindView(R.id.blood_oxygen_saturation_layout)
-    LinearLayout bloodOxygenSaturationLayout;
-    @BindView(R.id.et_blood_oxygen_saturation_content)
-    EditText etBloodOxygenSaturationContent;
-    @BindView(R.id.blood_oxygen_saturation_unit_percent)
-    TextView bloodOxygenSaturationUnitPercent;
-    @BindView(R.id.body_temperature)
-    TextView bodyTemperature;
-    @BindView(R.id.body_temperature_layout)
-    LinearLayout bodyTemperatureLayout;
-    @BindView(R.id.et_body_temperature_content)
-    EditText etBodyTemperatureContent;
-    @BindView(R.id.body_temperature_unit_celsius)
-    TextView bodyTemperatureUnitCelsius;
+    @BindView(R.id.rb_suitable)
+    RadioButton rbSuitable;
+    @BindView(R.id.rb_no_suitable)
+    RadioButton rbNoSuitable;
+    @BindView(R.id.rb_not_screened)
+    RadioButton rbNotScreened;
+    @BindView(R.id.rb_taboo_has)
+    RadioButton rbTabooHas;
+    @BindView(R.id.rb_taboo_none)
+    RadioButton rbTabooNone;
+    @BindView(R.id.rb_thrombolytic_therapy_has)
+    RadioButton rbThrombolyticTherapyHas;
+    @BindView(R.id.rb_thrombolytic_therapy_none)
+    RadioButton rbThrombolyticTherapyNone;
+    @BindView(R.id.rb_thrombolytic_site_has)
+    RadioButton rbThrombolyticSiteHas;
+    @BindView(R.id.rb_thrombolytic_site_none)
+    RadioButton rbThrombolyticSiteNone;
+    @BindView(R.id.rb_emergency_department)
+    RadioButton rbEmergencyDepartment;
+    @BindView(R.id.rb_heart_department)
+    RadioButton rbHeartDepartment;
+    @BindView(R.id.rb_other_department)
+    RadioButton rbOtherDepartment;
+    @BindView(R.id.rb_intrac_has)
+    RadioButton rbIntracHas;
+    @BindView(R.id.rb_intrac_none)
+    RadioButton rbIntracNone;
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_vital_signs)
+    LinearLayout llVitalSigns;
+    @BindView(R.id.ll_no_suitable)
+    LinearLayout llNoSuitable;
+    @BindView(R.id.ll_suitable)
+    LinearLayout llSuitable;
+    @BindView(R.id.edit_spinner_medicine)
+    EditSpinner editSpinnerMedicine;
+    @BindView(R.id.edit_spinner_dose)
+    EditSpinner editSpinnerDose;
     private String mPatientId;
     private String mDocId;
-    private List<String> list;
 
     public ChestPainIntraThromFragment() {
 
@@ -127,8 +105,8 @@ public class ChestPainIntraThromFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        btnGetData.setText("获取数据");
-        btnConfirm.setText("确定");
+//        btnGetData.setText("获取数据");
+//        btnConfirm.setText("确定");
         loadData();
 
 
@@ -136,19 +114,52 @@ public class ChestPainIntraThromFragment extends BaseFragment {
 
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-        esVitalSignAware.setItemData(list);
+        List<String> medicineList = new ArrayList<>();
+        medicineList.add("第一代");
+        editSpinnerMedicine.setItemData(medicineList);
+
+//        esVitalSignAware.setItemData(list);
+        //剂量
+        List<String> doseList = new ArrayList<>();
+        doseList.add("第一代");
+        editSpinnerDose.setItemData(doseList);
+
     }
 
 
     @Override
     protected void initListener() {
 
+
+        rbIntracHas.setOnClickListener(this);
+        rbIntracNone.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.rb_intrac_has:
+                // 溶栓通道点击是
+                break;
+
+            case R.id.rb_intrac_none:
+                // 溶栓通道点击否
+                break;
+            case R.id.rb_suitable:
+                // 溶栓筛查合适
+                llNoSuitable.setVisibility(View.GONE);
+                llSuitable.setVisibility(View.VISIBLE);
+                break;
+            case R.id.rb_no_suitable:
+                // 溶栓筛查不合适
+                llNoSuitable.setVisibility(View.VISIBLE);
+                llSuitable.setVisibility(View.GONE);
+                break;
+            case R.id.rb_not_screened:
+                // 溶栓其他筛查
+                llNoSuitable.setVisibility(View.GONE);
+                llSuitable.setVisibility(View.GONE);
+                break;
+        }
+    }
 }
