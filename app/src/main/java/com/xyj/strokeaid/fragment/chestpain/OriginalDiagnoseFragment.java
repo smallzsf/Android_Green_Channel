@@ -57,7 +57,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
     private void initview() {
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
+        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");
         ft.add(R.id.fl_main, mOriginalStatusFragment1).commitNow();
     }
 
