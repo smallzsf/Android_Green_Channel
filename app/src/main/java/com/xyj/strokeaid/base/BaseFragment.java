@@ -34,11 +34,13 @@ public abstract class BaseFragment extends Fragment {
     protected Activity mActivity;
     protected View mRootView;
     protected Unbinder mUnbinder;
+    public Context context;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mActivity = (Activity) context;
+        this.context  = context;
     }
 
     @Override
