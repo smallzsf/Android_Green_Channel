@@ -38,6 +38,8 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainScoringToolsFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
+import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
+import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -215,8 +217,12 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 //                case 9:
 //                    // 静脉溶栓
 //                    return ChestPainIntraThromFragment.newInstance(patientId, docId);
-
-
+                case 7:
+                    //  初始诊断
+                    return new OriginalDiagnoseFragment();
+                case 12:
+                    //  患者转归
+                    return new PatientSumFragment();
                 default:
                     return EmptyFragment.newInstance();
             }

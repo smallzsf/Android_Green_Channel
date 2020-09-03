@@ -1,139 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/dp_5"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
-        android:gravity="center"
-        android:text="CT"
-        android:textColor="#223b53"
-        android:textSize="@dimen/item_title_size" />
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_ct_notify_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginRight="@dimen/sp_15">
+        android:layout_height="@dimen/item_normal_height"
+        app:title="通知CT室时间" />
 
-        <TextView
-            android:id="@+id/tv_ct_notify_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="通知CT室时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_ct_notify_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_notify_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_ct_ready_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginRight="@dimen/sp_15">
+        android:layout_height="@dimen/item_normal_height"
+        app:title="CT准备完成时间" />
 
-        <TextView
-            android:id="@+id/tv_ct_finish_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="CT准备完成时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_ct_finish_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_ct_finish_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_ct_start_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginRight="@dimen/sp_15">
+        android:layout_height="@dimen/item_normal_height"
+        app:title="CT开始时间" />
 
-        <TextView
-            android:id="@+id/tv_ct_start_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="CT开始时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_ct_start_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_start_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_ct_report_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginRight="@dimen/sp_15">
-
-        <TextView
-            android:id="@+id/tv_ct_report_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="CT报告时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_ct_report_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_report_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-    </RelativeLayout>
-
+        android:layout_height="@dimen/item_normal_height"
+        app:title="CT报告时间" />
 
 </LinearLayout>

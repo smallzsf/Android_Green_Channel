@@ -56,7 +56,9 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     }
 
     private void initview() {
-
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
+        ft.add(R.id.fl_main, mOriginalStatusFragment1).commitNow();
     }
 
     private void initData() {
@@ -78,7 +80,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         mEsTitleSelect.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
-
                 selectFragment(text);
             }
         });
@@ -161,8 +162,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 //                    ft.show(mOriginalStatusFragment1);//不为空，直接显示
 //                }
                 break;
-
-
+            default:
+                break;
         }
 
         ft.commitAllowingStateLoss();//提交

@@ -56,22 +56,6 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     CheckBox mCbShadowText3;
     @BindView(R.id.cb_shadow_text_4)
     CheckBox mCbShadowText4;
-    @BindView(R.id.tv_ct_notify_label)
-    TextView mTvCtNotifyLabel;
-    @BindView(R.id.tv_ct_notify_time)
-    TextTimeBar mTvCtNotifyTime;
-    @BindView(R.id.tv_ct_finish_label)
-    TextView mTvCtFinishLabel;
-    @BindView(R.id.tv_ct_finish_time)
-    TextTimeBar mTvCtFinishTime;
-    @BindView(R.id.tv_ct_start_label)
-    TextView mTvCtStartLabel;
-    @BindView(R.id.tv_ct_start_time)
-    TextTimeBar mTvCtStartTime;
-    @BindView(R.id.tv_ct_report_label)
-    TextView mTvCtReportLabel;
-    @BindView(R.id.tv_ct_report_time)
-    TextTimeBar mTvCtReportTime;
     @BindView(R.id.tv_danger)
     TextView mTvDanger;
     @BindView(R.id.rb_danger_high)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -10,14 +10,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <include layout="@layout/layout_original_top" />
 
-    <include layout="@layout/layout_original_top" />
+        <include layout="@layout/layout_check_shadow" />
 
-    <include layout="@layout/layout_check_shadow" />
+        <include layout="@layout/layout_ct" />
 
-    <include layout="@layout/layout_ct" />
-
-    <include layout="@layout/layout_color_ultrasound" />
+        <include layout="@layout/layout_color_ultrasound" />
 
         <!--夹层类型-->
         <LinearLayout
@@ -58,26 +57,26 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="B型"
-                    android:textSize="@dimen/item_content_size"
-                    />
+                    android:textSize="@dimen/item_content_size" />
             </RadioGroup>
         </LinearLayout>
+
         <include layout="@layout/include_line" />
         <!--治疗策略-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tv_strategy"
                 android:layout_width="@dimen/dp_120"
                 android:layout_height="@dimen/dp_20"
                 android:layout_gravity="center_vertical"
-                android:text="治疗策略"
                 android:gravity="center_vertical"
+                android:text="治疗策略"
                 android:textColor="@color/app_223b53"
                 android:textSize="@dimen/item_title_size" />
 
@@ -104,9 +103,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="择期介入治疗"
-                    android:textSize="@dimen/item_content_size"
-                    />
+                    android:textSize="@dimen/item_content_size" />
             </RadioGroup>
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -129,9 +128,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="外科手术"
-                    android:textSize="@dimen/item_content_size"
-                    />
+                    android:textSize="@dimen/item_content_size" />
             </RadioGroup>
+
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -149,9 +148,10 @@
 
             </RadioGroup>
         </LinearLayout>
+
         <include layout="@layout/include_line" />
 
-        <include layout="@layout/view_two_horizontal_bottom_button"/>
+        <include layout="@layout/view_two_horizontal_bottom_button" />
     </LinearLayout>
 
 
