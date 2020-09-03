@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".activity.chestpain.ChestPainOperationResultActivity">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_npmr"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_title_height"
+        app:rightIconVisible="false"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="结果信息" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="left|center"
+                android:text="入路"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <include layout="@layout/include_line" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_radial_artery_right"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="桡动脉(右侧)"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_radial_artery_left"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="桡动脉(左侧)"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_arteria_femoralis"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="股动脉"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_other"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="left|center"
+                    android:text="冠脉造影"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <TextView
+                    android:id="@+id/tv_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="left|center"
+                    android:text="更多"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_dp150">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/chest_pain_bg_gender_diversity"/>
+
+                <com.zhy.view.flowlayout.TagFlowLayout
+                    android:id="@+id/tag_gender_diversity"
+                    zhy:max_select="-1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    app:tag_gravity="center"
+                    android:padding="@dimen/dp_6"
+                    android:layout_gravity="center"
+                    android:layout_height="match_parent">
+                </com.zhy.view.flowlayout.TagFlowLayout>
+
+            </LinearLayout>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tag_gender_diversity_more"
+                zhy:max_select="-1"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tag_gender_select"
+                zhy:max_select="-1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="left|center"
+                android:text="器械信息"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="left|center"
+                android:text="腔内影像:"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_gender_diversity_IVUS"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="IVUS"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_diversity_OCT"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="OCT"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_diversity_other"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_diversity_no_doing"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="未做"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="left|center"
+                android:text="功能检测"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_function_FFR"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="FFR"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_function_iFR"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="iFR"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_function_other"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="其他"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_function_no_doing"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="未做"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center"
+                    android:text="数值"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <EditText
+                    android:id="@+id/et_doctor_input"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_doctor_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="IABP*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_IABP_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否"
+                        android:paddingRight="@dimen/dp_10"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_IABP_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="临时起搏器*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_pacesetter_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否"
+                        android:paddingRight="@dimen/dp_10"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_pacesetter_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="ECMO*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_ECMO_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否"
+                        android:paddingRight="@dimen/dp_10"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ECMO_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="左心室辅助装置*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_ventricular_assist_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否"
+                        android:paddingRight="@dimen/dp_10"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ventricular_assist_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingRight="@dimen/dp_10"
+                        android:layout_weight="1"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="left|center"
+                android:text="术中并发症*"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <include layout="@layout/include_line" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/tag_intraoperative_complications"
+                zhy:max_select="-1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+            </com.zhy.view.flowlayout.TagFlowLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

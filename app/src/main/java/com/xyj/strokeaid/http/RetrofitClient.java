@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.BuildConfig;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -75,6 +76,8 @@ public class RetrofitClient {
             //如果为DEBUG 就打印日志
             if (BuildConfig.DEBUG) {
                 okHttpClient = new OkHttpClient().newBuilder()
+                        .callTimeout(60, TimeUnit.SECONDS)
+                        .connectTimeout(60, TimeUnit.SECONDS)
                         //设置Header
                         .addInterceptor(getHeaderInterceptor())
                         //设置拦截器

@@ -99,9 +99,8 @@
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/ttb_dis_start_act_npmr"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
+        android:layout_height="@dimen/item_large_height"
         android:layout_below="@id/rl_doctor"
-        android:layout_marginTop="@dimen/dp_10"
         app:bottomLineVisible="true"
         app:title="决定介入手术时间" />
 
@@ -141,27 +140,24 @@
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_catheter_room"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
+        android:layout_height="@dimen/item_large_height"
         android:layout_below="@id/ttb_dis_start_act_npmr"
-        android:layout_marginTop="@dimen/dp_10"
         app:bottomLineVisible="true"
         app:title="启动导管室时间" />
 
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_agree_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
+        android:layout_height="@dimen/item_large_height"
         android:layout_below="@id/rl_catheter_room"
-        android:layout_marginTop="@dimen/dp_10"
         app:bottomLineVisible="true"
         app:title="开始知情同意时间" />
 
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/rl_sign_time"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
+        android:layout_height="@dimen/item_large_height"
         android:layout_below="@id/rl_agree_time"
-        android:layout_marginTop="@dimen/dp_10"
         app:bottomLineVisible="true"
         app:title="签署知情同意时间" />
 
