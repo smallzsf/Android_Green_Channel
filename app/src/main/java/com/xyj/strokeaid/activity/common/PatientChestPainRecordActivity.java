@@ -29,15 +29,13 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainAssistantTestFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainBloodTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainDiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainEcgExaminFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainInitDrugFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainScoringToolsFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
+import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
+import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -46,7 +44,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * PatientChestPainRecordActivity
@@ -187,9 +184,6 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 0:
                     // 生命体征
                     return ChestPainVitalSignsFragment.newInstance(patientId, docId);
-                case 10:
-                    // 手术治疗
-                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
                 case 1:
                     //  病情信息
                     return ChestPainDiseaseRecordFragment.newInstance(patientId, docId);
@@ -208,6 +202,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 //                case 6:
 //                    // 评分工具
 //                    return ChestPainScoringToolsFragment.newInstance(patientId, docId);
+                case 7:
+                    // 初始诊断
+                    return new OriginalDiagnoseFragment();
 //                case 8:
 //                    // 初始药物
 //                    return ChestPainInitDrugFragment.newInstance(patientId, docId);
@@ -215,8 +212,15 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 //                case 9:
 //                    // 静脉溶栓
 //                    return ChestPainIntraThromFragment.newInstance(patientId, docId);
-
-
+                case 10:
+                    // 手术治疗
+                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
+                case 11:
+                    // 其他处置
+                    return EmptyFragment.newInstance();
+                case 12:
+                    // 患者转归
+                    return new PatientSumFragment();
                 default:
                     return EmptyFragment.newInstance();
             }
