@@ -95,8 +95,6 @@ public class StrokeVitalSignsFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
     private String mPatientId;
@@ -143,7 +141,7 @@ public class StrokeVitalSignsFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llVitalSigns, llBottom);
 
     }

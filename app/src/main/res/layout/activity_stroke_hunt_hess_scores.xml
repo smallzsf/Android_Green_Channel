@@ -20,7 +20,7 @@
         android:layout_height="@dimen/item_normal_height"
         app:rightText="保存"
         app:rightTextVisible="true"
-        app:title="Fisher分级" />
+        app:title="Hunt-Hess评分" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

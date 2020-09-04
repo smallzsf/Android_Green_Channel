@@ -59,8 +59,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
+
     private String mPatientId;
     private String mDocId;
 

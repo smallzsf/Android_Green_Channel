@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.app;
 
+import android.text.TextUtils;
+
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -16,7 +18,7 @@ public class UserInfoCache {
 
 
     private static final String TAG = "UserInfoCache";
-    private LoginBean mUserInfo;
+    private static LoginBean mUserInfo;
 
     public static UserInfoCache getInstance() {
         return InstanceHolder.INSTANCE;
@@ -29,6 +31,24 @@ public class UserInfoCache {
     private UserInfoCache() {
         mUserInfo = GsonUtils.getGson().fromJson(MMKV.defaultMMKV().decodeString(MmkvKey.LOGIN_USER_INFO), LoginBean.class);
     }
+
+    /**
+     * 清除 UserInfoCache
+     */
+    public static void clearUserInfoCache() {
+        MMKV.defaultMMKV().remove(MmkvKey.LOGIN_USER_INFO);
+        mUserInfo = null;
+    }
+
+
+
+    /**
+     * 设置 UserInfoCache
+     */
+    public static void setUserInfo() {
+      mUserInfo =  GsonUtils.getGson().fromJson(MMKV.defaultMMKV().decodeString(MmkvKey.LOGIN_USER_INFO), LoginBean.class);
+    }
+
 
     public LoginBean getUserInfo() {
         return mUserInfo;

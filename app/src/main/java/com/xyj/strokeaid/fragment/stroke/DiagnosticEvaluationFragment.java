@@ -98,8 +98,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner esApoplexyDoctor;
     @BindView(R.id.et_input_weight)
     EditText etInputWeight;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
+
     @BindView(R.id.ll_diagnostic_evaluation)
     LinearLayout llDiagnosticEvaluation;
     private String mPatientId;
@@ -139,6 +138,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llDiagnosticEvaluation, llBottom);
     }
 

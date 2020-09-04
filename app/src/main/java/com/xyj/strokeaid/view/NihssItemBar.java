@@ -351,6 +351,30 @@ public class NihssItemBar extends LinearLayout {
                     '}';
         }
     }
+
+    /**
+     * RadioGroup选中RadioButton清除选中状态
+     * @return
+     *
+     */
+    public void clickRgClearState() {
+
+        if (mItemBeans != null && mItemRvAdapter != null && mScoreRvAdapter != null) {
+
+            if (mItemBeans != null) {
+                for (ItemBean itemBean : mItemBeans) {
+                    if (itemBean.checked) {
+                        itemBean.checked = false;
+                    }
+                }
+            }
+
+            mScoreRvAdapter.notifyDataSetChanged();
+            mItemRvAdapter.notifyDataSetChanged();
+        }
+
+    }
+
 }
 
     

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_bg"
     android:orientation="vertical"
     tools:context=".activity.stroke.StrokeMrsScoreActivity">
 
@@ -56,16 +57,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title_bar_act_nihss"
-        android:layout_gravity="center"
-        android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="类型:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/item_title_size"
+            ></TextView>
 
         <RadioButton
             android:id="@+id/rb_before_disease_mrs_frag_ss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_20"
             android:text="发病前"
+            android:checked="true"
             android:textSize="@dimen/item_title_size" />
 
         <RadioButton

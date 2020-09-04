@@ -1,18 +1,17 @@
 package com.xyj.strokeaid.fragment.stroke;
 
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
@@ -35,12 +34,16 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 public class DiseaseRecordFragment extends BaseFragment {
-
-
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
     TagFlowLayout tflActionInChief;
+    @BindView(R.id.app_tv_conditon_record)
+    TextView appTvConditonRecord;
+    @BindView(R.id.et_symptom)
+    EditText etSymptom;
+    @BindView(R.id.id_flow_layout)
+    TagFlowLayout idFlowLayout;
     @BindView(R.id.et_medical_history)
     EditText etMedicalHistory;
     @BindView(R.id.tfl_medical_history)
@@ -55,10 +58,15 @@ public class DiseaseRecordFragment extends BaseFragment {
     TagFlowLayout tflAnticoagulantDrug3;
     @BindView(R.id.tfl_anticoagulant_drug4)
     TagFlowLayout tflAnticoagulantDrug4;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
     @BindView(R.id.llVitalSigns)
     LinearLayout llVitalSigns;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
+
+
+
     private String mPatientId;
     private String mDocId;
 
@@ -110,6 +118,7 @@ public class DiseaseRecordFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llVitalSigns, llBottom);
     }
 

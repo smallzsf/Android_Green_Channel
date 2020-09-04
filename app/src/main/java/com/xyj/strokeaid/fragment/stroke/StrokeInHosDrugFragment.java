@@ -94,8 +94,7 @@ public class StrokeInHosDrugFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
+
     @BindView(R.id.rl_stroke_in_hos_drug)
     RelativeLayout rlStrokeInHosDrug;
 
@@ -149,8 +148,8 @@ public class StrokeInHosDrugFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(rlStrokeInHosDrug, llBottom);
-
     }
 
 

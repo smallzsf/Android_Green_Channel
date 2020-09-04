@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
+import com.xyj.strokeaid.bean.RequestSmsBean;
+import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.contract.LoginContract;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -26,9 +28,26 @@ public class LoginModel implements LoginContract.Model {
     public Observable<BaseObjectBean<LoginBean>> login(String username, String password) {
         RequestLoginBean requestLoginBean = new RequestLoginBean(username, password, "1");
         String request = GsonUtils.getGson().toJson(requestLoginBean);
-        Log.d("xxxx",request);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         return RetrofitClient.getInstance().getApi().login(requestBody);
+    }
+
+    @Override
+    public Observable<BaseObjectBean<LoginBean>> phoneLogin(String phone, String code) {
+        RequestLoginBean requestLoginBean = new RequestLoginBean(phone, code, "");
+        String request = GsonUtils.getGson().toJson(requestLoginBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        return RetrofitClient.getInstance().getApi().phoneLoign(requestBody);
+    }
+
+
+
+    @Override
+    public Observable<BaseObjectBean<SendSmsBean>> sendSms(String phone) {
+        RequestSmsBean requestSmsBean = new RequestSmsBean(phone);
+        String request = GsonUtils.getGson().toJson(requestSmsBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        return RetrofitClient.getInstance().getApi().sendSms(requestBody);
     }
 
     private static class RequestLoginBean {

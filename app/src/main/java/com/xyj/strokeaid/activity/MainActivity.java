@@ -123,7 +123,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         initTab();
 
         // 初始化用户信息
-        tvUserActMain.setText(UserInfoCache.getInstance().getUserInfo().getName());
+        if (UserInfoCache.getInstance().getUserInfo()!=null){
+            tvUserActMain.setText(UserInfoCache.getInstance().getUserInfo().getName());
+        }
+
 
         // 初始化rv数据
         mPatientBeans = new ArrayList<>();

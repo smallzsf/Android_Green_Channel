@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_stroke_blood_fat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_bg"
     android:orientation="vertical"
-    android:id="@+id/ll_stroke_blood_fat"
     tools:context=".fragment.stroke.StrokeBloodFatFragment">
 
-    <!--  <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="血液检查" />-->
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,253 +27,200 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/sp_15">
+                android:layout_height="match_parent"
+                android:layout_above="@+id/menu"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/awareness"
-                    android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="抽血时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size" />
-
-
-                <TextView
-                    android:id="@+id/tv_draw_blood_time"
-                    style="@style/patient_et_style"
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_awareness_time"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/awareness"
-                    android:focusable="false"
-                    android:gravity="center|right"
-                    android:hint="@string/app_default_time_example"
-                    android:text="选取时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:title="抽血时间" />
 
+                <include layout="@layout/include_line" />
 
-            </RelativeLayout>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_draw_blood_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:title="结果时间" />
 
+                <include layout="@layout/include_line" />
 
-            <include layout="@layout/include_line" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/sp_15">
 
                 <LinearLayout
-                    android:id="@+id/breath_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
-
-                    <TextView
-                        android:id="@+id/breath"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="结果时间"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_title_size" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/tv_draw_blood_result_time"
-                    style="@style/patient_et_style"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:focusable="false"
-                    android:gravity="center|right"
-                    android:hint="@string/app_default_time_example"
-                    android:text="选取时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-
-            </RelativeLayout>
-
-
-            <include layout="@layout/include_line" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-                <LinearLayout
-                    android:id="@+id/pulse_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="left"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/pulse"
+                        android:id="@+id/tv_triglyceride"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:minWidth="@dimen/item_title_min_width"
                         android:text="甘油三酯"
-                        android:textColor="@color/app_223b53"
+                        android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
-                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_triglyceride"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/pulse_unit_times_minute"
-                    android:layout_toRightOf="@+id/pulse_layout"
-                    android:background="@null"
-                    android:hint="请输入"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:maxLines="1"
-                    android:textSize="@dimen/item_content_size" />
-
-
-            </RelativeLayout>
-
-
-            <include layout="@layout/include_line" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-                <LinearLayout
-                    android:id="@+id/heart_rate_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
-
-                    <TextView
-                        android:id="@+id/heart_rate"
+                    <EditText
+                        android:id="@+id/et_triglyceride"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:textSize="@dimen/item_content_size" />
+
+
+                </LinearLayout>
+
+
+                <include layout="@layout/include_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_cholesterol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:minWidth="@dimen/item_title_min_width"
                         android:text="胆固醇"
-                        android:textColor="@color/app_223b53"
+                        android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
-                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_cholesterol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/heart_rate_unit_times_minute"
-                    android:layout_toRightOf="@+id/heart_rate_layout"
-                    android:background="@null"
-                    android:hint="请输入"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:maxLines="1"
-                    android:textSize="@dimen/item_content_size" />
-
-
-            </RelativeLayout>
-
-            <include layout="@layout/include_line" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-                <LinearLayout
-                    android:id="@+id/systolic_blood_pressure_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
-
-                    <TextView
-                        android:id="@+id/systolic_blood_pressure"
+                    <EditText
+                        android:id="@+id/et_cholesterol"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:textSize="@dimen/item_content_size" />
+
+
+                </LinearLayout>
+
+
+                <include layout="@layout/include_line" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_low_density_lipoprotein_cholesterin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:minWidth="@dimen/item_title_min_width"
                         android:text="低密度脂蛋白胆固醇"
-                        android:textColor="@color/app_223b53"
+                        android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
-                </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_low_density_lipoprotein_cholesterin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/systolic_blood_pressure_unit_mm_hg"
-                    android:layout_toRightOf="@+id/systolic_blood_pressure_layout"
-                    android:background="@null"
-                    android:hint="请输入"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:maxLines="1"
-                    android:textSize="@dimen/item_content_size" />
-
-            </RelativeLayout>
-
-            <include layout="@layout/include_line" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-                <LinearLayout
-                    android:id="@+id/diastolic_blood_pressure_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
-
-                    <TextView
-                        android:id="@+id/diastolic_blood_pressure"
+                    <EditText
+                        android:id="@+id/et_low_density_lipoprotein_cholesterin"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="高密度脂蛋白胆固醇"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_title_size" />
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:textSize="@dimen/item_content_size" />
+
+
                 </LinearLayout>
 
-                <EditText
-                    android:id="@+id/et_high_density_lipoprotein_cholesterol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@+id/diastolic_blood_pressure_unit_mm_hg"
-                    android:layout_toRightOf="@+id/diastolic_blood_pressure_layout"
-                    android:background="@null"
-                    android:hint="请输入"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:maxLines="1"
-                    android:textSize="@dimen/item_content_size" />
+
+                <include layout="@layout/include_line" />
 
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="left"
+                    android:orientation="horizontal">
 
-            <include layout="@layout/include_line" />
+                    <TextView
+                        android:id="@+id/tv_high_density_lipoprotein_cholesterol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:minWidth="@dimen/item_title_min_width"
+                        android:text="高密度脂蛋白胆固醇"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <EditText
+                        android:id="@+id/et_high_density_lipoprotein_cholesterol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:background="@null"
+                        android:gravity="left"
+                        android:hint="请输入"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:maxLines="1"
+                        android:textSize="@dimen/item_content_size" />
+
+
+                </LinearLayout>
+
+
+                <include layout="@layout/include_line" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -285,15 +229,12 @@
 
 
     <include
+        android:id="@+id/ll_bottom"
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/dp_8" />
-    <!--   <include
-           android:id="@+id/menu"
-           layout="@layout/view_bottom_menu"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true" />-->
+
+
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.bean;
 
+import android.util.Log;
+
 import com.xyj.strokeaid.helper.Base64Util;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.MD5;
@@ -42,7 +44,7 @@ public class RequestSmsBean {
         String date = CalendarUtils.parseDate(CalendarUtils.TYPE_YYYYMMDDHHMMSS, new Date());
         String auth = Base64Util.encode(("xyjtech:" + date).getBytes(StandardCharsets.UTF_8));
         String signMd5 = MD5.getStringMD5("xyjtechXyj@20202019" + date);
-
+        Log.d("验证码",auth+"***"+signMd5+"****");
         String[] strings = new String[2];
         strings[0] = auth;
         strings[1] = signMd5;

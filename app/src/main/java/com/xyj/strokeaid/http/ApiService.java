@@ -2,6 +2,7 @@ package com.xyj.strokeaid.http;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
+import com.xyj.strokeaid.bean.SendSmsBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
@@ -32,4 +33,12 @@ public interface ApiService {
     @Headers({"Content-Type: application/json","Accept: application/json"})
     @POST(ApiUrls.NET_URL_USER_UPDATE_PASSWORD)
     Call<BaseObjectBean> changePasswordnor(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST(ApiUrls.NET_URL_LOGIN_BY_PHONE)
+    Observable<BaseObjectBean<LoginBean>> phoneLoign(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json","Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SEND_SMS_FOR_LOGIN)
+    Observable<BaseObjectBean<SendSmsBean>>  sendSms(@Body RequestBody info);
 }

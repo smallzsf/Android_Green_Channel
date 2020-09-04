@@ -36,8 +36,6 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
     @BindView(R.id.rb_on_site_consultation)

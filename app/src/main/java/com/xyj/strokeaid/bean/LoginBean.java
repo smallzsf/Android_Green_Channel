@@ -393,4 +393,48 @@ public class LoginBean {
     public void setRoleList(List<Object> roleList) {
         this.roleList = roleList;
     }
+
+    @Override
+    public String toString() {
+        return "LoginBean{" +
+                "userId='" + userId + '\'' +
+                ", tenantId='" + tenantId + '\'' +
+                ", id='" + id + '\'' +
+                ", moduleId='" + moduleId + '\'' +
+                ", mkId='" + mkId + '\'' +
+                ", auth='" + auth + '\'' +
+                ", sign='" + sign + '\'' +
+                ", pyt='" + pyt + '\'' +
+                ", status=" + status +
+                ", createdBy='" + createdBy + '\'' +
+                ", createdByName='" + createdByName + '\'' +
+                ", createdByDate='" + createdByDate + '\'' +
+                ", updatedBy='" + updatedBy + '\'' +
+                ", updatedByName='" + updatedByName + '\'' +
+                ", updatedByDate='" + updatedByDate + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", type=" + type +
+                ", code='" + code + '\'' +
+                ", level=" + level +
+                ", empId='" + empId + '\'' +
+                ", empName='" + empName + '\'' +
+                ", orgId='" + orgId + '\'' +
+                ", orgName='" + orgName + '\'' +
+                ", roles='" + roles + '\'' +
+                ", img='" + img + '\'' +
+                ", lookUnits='" + lookUnits + '\'' +
+                ", imId='" + imId + '\'' +
+                ", imToken='" + imToken + '\'' +
+                ", callCenterAccountId='" + callCenterAccountId + '\'' +
+                ", callCenterAccountSecret='" + callCenterAccountSecret + '\'' +
+                ", callCenterLoginType='" + callCenterLoginType + '\'' +
+                ", callCenterDeviceNo='" + callCenterDeviceNo + '\'' +
+                ", orgList=" + orgList +
+                ", roleList=" + roleList +
+                '}';
+    }
 }

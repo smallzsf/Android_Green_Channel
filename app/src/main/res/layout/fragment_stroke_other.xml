@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_stroke_other"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_bg"
     android:orientation="vertical"
-    android:id="@+id/ll_stroke_other"
     tools:context=".fragment.stroke.StrokeOtherFragment">
 
     <!--  <TextView
@@ -19,6 +20,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:overScrollMode="never"
+
         android:scrollbars="none">
 
 
@@ -30,81 +32,22 @@
             android:focusableInTouchMode="true"
             android:orientation="vertical">
 
-            <RelativeLayout
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_awareness_time"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/sp_15">
-
-                <TextView
-                    android:id="@+id/awareness"
-                    android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="抽血时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size" />
-
-
-                <TextView
-                    android:id="@+id/tv_draw_blood_time"
-                    style="@style/patient_et_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_toRightOf="@id/awareness"
-                    android:focusable="false"
-                    android:gravity="center|right"
-                    android:hint="@string/app_default_time_example"
-                    android:text="选取时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-
-            </RelativeLayout>
-
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                tl:title="抽血时间" />
 
             <include layout="@layout/include_line" />
 
-            <RelativeLayout
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_draw_blood_time"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/sp_15">
-
-                <LinearLayout
-                    android:id="@+id/breath_layout"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
-
-                    <TextView
-                        android:id="@+id/breath"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:text="结果时间"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_title_size" />
-
-
-                </LinearLayout>
-
-
-                <TextView
-                    android:id="@+id/tv_draw_blood_result_time"
-                    style="@style/patient_et_style"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:focusable="false"
-                    android:gravity="center|right"
-                    android:hint="@string/app_default_time_example"
-                    android:text="选取时间"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-
-            </RelativeLayout>
-
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                tl:title="结果时间" />
 
             <include layout="@layout/include_line" />
 
@@ -112,7 +55,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:background="@color/color_bg"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -155,7 +99,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -198,7 +142,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -239,7 +183,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -282,7 +226,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -325,7 +269,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -366,7 +310,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -408,7 +352,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginStart="@dimen/item_normal_margin"
                 android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
                 <LinearLayout
@@ -446,14 +390,13 @@
             <include layout="@layout/include_line" />
 
 
-
-
         </LinearLayout>
 
     </ScrollView>
 
 
     <include
+        android:id="@+id/ll_bottom"
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

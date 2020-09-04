@@ -1,35 +1,38 @@
 package com.xyj.strokeaid.activity.login;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.blankj.utilcode.util.RegexUtils;
+import com.blankj.utilcode.util.StringUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.gyf.immersionbar.ImmersionBar;
+import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.MainActivity;
 import com.xyj.strokeaid.activity.set.SetActivity;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.MmkvKey;
+import com.xyj.strokeaid.app.MyApp;
+import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
+import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.contract.LoginContract;
 import com.xyj.strokeaid.helper.CodeTimer;
 import com.xyj.strokeaid.http.TokenConfig;
@@ -116,12 +119,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
         codeTimer = new CodeTimer(tvCode, 60 * 1000, 1000);
 
-        tvCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         etNameActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_NAME));
         etPwdActLogin.setText(mDefaultMMKV.decodeString(MmkvKey.LOGIN_PWD));
@@ -232,17 +229,16 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void onSuccess(BaseObjectBean<LoginBean> bean, int flag) {
-
         if (bean.getResult() == 1) {
             if (flag == 0) {
-                // 帐号密码登录 登录成功
-                // 保存登录信息
+                // 帐号密码登录 登录成功  保存登录信息
                 mDefaultMMKV.encode(MmkvKey.LOGIN_USER_INFO, GsonUtils.getGson().toJson(bean.getData()));
                 mDefaultMMKV.encode(MmkvKey.TOKEN, bean.getData().getPassword());
                 mDefaultMMKV.encode(MmkvKey.LOGIN_NAME, etNameActLogin.getText().toString().trim());
                 boolean isRememberPwd = cbRemembreActLogin.isChecked();
                 mDefaultMMKV.encode(MmkvKey.LOGIN_REMEMBRE, isRememberPwd);
                 TokenConfig.saveToken(bean.getData().getPassword());
+                UserInfoCache.setUserInfo();
                 if (isRememberPwd) {
                     // 按钮被选中，退出再登录时会自动填充帐号密码
                     mDefaultMMKV.encode(MmkvKey.LOGIN_PWD, etPwdActLogin.getText().toString().trim());
@@ -254,8 +250,11 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             } else {
-                // 手机号验证码登陆  登录成功
-                mDefaultMMKV.encode(MmkvKey.LOGIN_PHONE, etPhoneActLogin.getText().toString().trim());
+                // 手机号验证码登陆  登录成功 保存信息
+                mDefaultMMKV.encode(MmkvKey.LOGIN_USER_INFO, GsonUtils.getGson().toJson(bean.getData()));
+                mDefaultMMKV.encode(MmkvKey.TOKEN, bean.getData().getPassword());
+                TokenConfig.saveToken(bean.getData().getPassword());
+                UserInfoCache.setUserInfo();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -263,6 +262,12 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         } else {
             showToast(TextUtils.isEmpty(bean.getMessage()) ? "登录失败~" : bean.getMessage());
         }
+    }
+
+    @Override
+    public void onSendSms(BaseObjectBean<SendSmsBean> bean) {
+        Toast.makeText(mContext, bean.getMessage(), Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -278,7 +283,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void onError(String errMessage) {
-
+        ToastUtils.showShort(errMessage);
     }
 
 
@@ -291,14 +296,29 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_code:
-                tvCode.setClickable(false);
-                codeTimer.start();
+                if (mLoginType == 1) {
+
+                    if (StringUtils.isEmpty(getPhone())) {
+                        ToastUtils.showShort("手机号不能为空");
+                    } else {
+                        if (RegexUtils.isMobileExact(getPhone())) {
+                            tvCode.setClickable(false);
+                            codeTimer.start();
+                            mPresenter.sendSMS(getUsername());
+
+                        } else {
+                            ToastUtils.showShort("请输入正确手机号");
+                        }
+
+                    }
+
+                }
                 break;
             case R.id.btn_login_act_login:
                 if (mLoginType == 0) {
                     mPresenter.login(getUsername(), getPassword(), mLoginType);
                 } else {
-                    // TODO: 2020/8/29 验证码登录
+                    mPresenter.phoneLogin(getPhone(), getVerifyCode(), mLoginType);
                 }
                 break;
             default:

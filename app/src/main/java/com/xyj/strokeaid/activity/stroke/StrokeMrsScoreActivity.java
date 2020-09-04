@@ -65,6 +65,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                     case R.id.rb_before_disease_mrs_frag_ss:
                         TextView tv_title_view_nib = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
                         tv_title_view_nib.setText("发病前mRS评分");
+                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
                         //执行具体操作
                    /*     nibBeforeDiseaseMrsFragSs.setVisibility(View.VISIBLE);
                         nibInHosMrsFragSs.setVisibility(View.GONE);
@@ -74,6 +75,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                     case R.id.rb_in_hos_mrs_frag_ss:
                         TextView tv_title_view_nib1 = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
                         tv_title_view_nib1.setText("入院mRS评分");
+                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
                         //执行具体操作
                     /*    nibBeforeDiseaseMrsFragSs.setVisibility(View.GONE);
                         nibInHosMrsFragSs.setVisibility(View.VISIBLE);
@@ -81,14 +83,16 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                         break;
 
                     case R.id.rb_24_mrs_frag_ss:
-                        TextView tv_title_view_nib2= nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
+                        TextView tv_title_view_nib2 = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
                         tv_title_view_nib2.setText("溶栓后24hmRS评分");
+                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
                         //执行具体操作
                   /*      nibBeforeDiseaseMrsFragSs.setVisibility(View.GONE);
                         nibInHosMrsFragSs.setVisibility(View.GONE);
                         nib24MrsFragSs.setVisibility(View.VISIBLE);*/
                         break;
-
+                    default:
+                        break;
                 }
             }
         });
@@ -116,10 +120,10 @@ public class StrokeMrsScoreActivity extends BaseActivity {
         nibBeforeDiseaseMrsFragSs.setItemBeans(beforeDisMrs);
         // 入院mRS评分
         //List<NihssItemBar.ItemBean> inHosMrs = new ArrayList<>(beforeDisMrs);
-        nibInHosMrsFragSs.setItemBeans(beforeDisMrs);
+        // nibInHosMrsFragSs.setItemBeans(beforeDisMrs);
         // 溶栓后24hmRS评分
-    //    List<NihssItemBar.ItemBean> after24Mrs = new ArrayList<>(beforeDisMrs);
-        nib24MrsFragSs.setItemBeans(beforeDisMrs);
+        //    List<NihssItemBar.ItemBean> after24Mrs = new ArrayList<>(beforeDisMrs);
+        //   nib24MrsFragSs.setItemBeans(beforeDisMrs);
 
     }
 

@@ -2,6 +2,7 @@ package com.xyj.strokeaid.contract;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
+import com.xyj.strokeaid.bean.SendSmsBean;
 
 import io.reactivex.rxjava3.core.Observable;
 
@@ -18,6 +19,8 @@ public interface LoginContract {
 
     interface Model {
         Observable<BaseObjectBean<LoginBean>> login(String username, String password);
+        Observable<BaseObjectBean<LoginBean>> phoneLogin(String phone, String code);
+        Observable<BaseObjectBean<SendSmsBean>> sendSms(String phone);
     }
 
     interface View extends BaseView {
@@ -32,6 +35,8 @@ public interface LoginContract {
 
         void onSuccess(BaseObjectBean<LoginBean> bean, int flag);
 
+        void onSendSms(BaseObjectBean<SendSmsBean> bean);
+
     }
 
     interface Presenter {
@@ -42,5 +47,20 @@ public interface LoginContract {
          * @param password
          */
         void login(String username, String password, int flag);
+
+
+        /**
+         *
+         *
+         * @param phone
+         * @param code
+         */
+        void phoneLogin(String phone, String code, int flag);
+
+        /**
+
+         * @param phone
+         */
+        void sendSMS(String phone);
     }
 }

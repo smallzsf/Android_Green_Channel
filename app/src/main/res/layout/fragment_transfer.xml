@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/ll_transfer"
+    android:background="@color/color_bg"
     tools:context=".fragment.TransferFragment">
 
 
@@ -26,7 +27,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
                 android:paddingEnd="@dimen/dp_12">
@@ -444,5 +444,7 @@
 
     </ScrollView>
 
-    <include layout="@layout/view_two_bottom_button" />
+    <include
+        android:id="@+id/ll_bottom"
+        layout="@layout/view_two_bottom_button" />
 </LinearLayout>

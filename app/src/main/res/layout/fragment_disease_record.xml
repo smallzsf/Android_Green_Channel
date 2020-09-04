@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:zhy="http://schemas.android.com/tools"
+    android:id="@+id/llVitalSigns"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/llVitalSigns"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -23,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/dp_20">
@@ -78,7 +78,6 @@
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -154,7 +153,6 @@
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -180,8 +178,8 @@
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
-                    android:text="抗血小板药"
-                    android:layout_marginTop="@dimen/dp_5"/>
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="抗血小板药" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfl_anticoagulant_drug"
@@ -193,8 +191,8 @@
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
-                    android:text="抗凝药"
-                    android:layout_marginTop="@dimen/dp_5"/>
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="抗凝药" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfl_anticoagulant_drug1"
@@ -206,8 +204,8 @@
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
-                    android:text="降压药"
-                    android:layout_marginTop="@dimen/dp_5"/>
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="降压药" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfl_anticoagulant_drug2"
@@ -219,8 +217,8 @@
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
-                    android:text="降糖药"
-                    android:layout_marginTop="@dimen/dp_5"/>
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="降糖药" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfl_anticoagulant_drug3"
@@ -232,8 +230,8 @@
 
                 <TextView
                     style="@style/Text_Dark_Content_Style"
-                    android:text="降脂药"
-                    android:layout_marginTop="@dimen/dp_5"/>
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="降脂药" />
 
                 <com.zhy.view.flowlayout.TagFlowLayout
                     android:id="@+id/tfl_anticoagulant_drug4"
@@ -254,7 +252,6 @@
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -283,7 +280,6 @@
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -307,6 +303,8 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/view_two_horizontal_bottom_button" />
+    <include
+        android:id="@+id/ll_bottom"
+        layout="@layout/view_two_horizontal_bottom_button" />
 
 </LinearLayout>

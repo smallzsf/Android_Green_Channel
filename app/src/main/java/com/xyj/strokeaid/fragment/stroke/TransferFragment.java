@@ -96,6 +96,8 @@ public class TransferFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llTransfer, llBottom);
     }
 

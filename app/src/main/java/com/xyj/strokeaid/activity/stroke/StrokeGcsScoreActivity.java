@@ -94,15 +94,23 @@ public class StrokeGcsScoreActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_ih_title_frag_ss:
+                        tvIhTitleFragSs.setText("入院GCS评分");
+                        nibIhGcsEyeFragSs.clickRgClearState();
+                        nibIhGcsSpeakFragSs.clickRgClearState();
+                        nibIhGcsSportFragSs.clickRgClearState();
                         //执行具体操作
-                        llIhTitleFragSs.setVisibility(View.VISIBLE);
-                        llLhTitleFragSs.setVisibility(View.GONE);
+                     /*   llIhTitleFragSs.setVisibility(View.VISIBLE);
+                        llLhTitleFragSs.setVisibility(View.GONE);*/
                         break;
 
                     case R.id.rb_lh_title_frag_ss:
+                        tvIhTitleFragSs.setText("住院GCS评分");
+                        nibIhGcsEyeFragSs.clickRgClearState();
+                        nibIhGcsSpeakFragSs.clickRgClearState();
+                        nibIhGcsSportFragSs.clickRgClearState();
                         //执行具体操作
-                        llIhTitleFragSs.setVisibility(View.GONE);
-                        llLhTitleFragSs.setVisibility(View.VISIBLE);
+                    /*    llIhTitleFragSs.setVisibility(View.GONE);
+                        llLhTitleFragSs.setVisibility(View.VISIBLE);*/
                         break;
 
 
@@ -191,10 +199,5 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

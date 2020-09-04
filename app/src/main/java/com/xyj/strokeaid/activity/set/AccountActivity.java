@@ -45,6 +45,8 @@ public class AccountActivity extends BaseActivity {
     SettingBar sbVersionPwdActAccount;
     @BindView(R.id.sb_exit_pwd_act_account)
     SettingBar sbExitPwdActAccount;
+    private String name;
+    private String orgName;
 
     @Override
     public int getLayoutId() {
@@ -72,8 +74,12 @@ public class AccountActivity extends BaseActivity {
             sbVersionPwdActAccount.setLeftText(getString(R.string.current_version, "1.0"));
         }
 
-        String name = UserInfoCache.getInstance().getUserInfo().getName();
-        String orgName = UserInfoCache.getInstance().getUserInfo().getOrgName();
+        // 初始化用户信息
+        if (UserInfoCache.getInstance().getUserInfo()!=null){
+            name = UserInfoCache.getInstance().getUserInfo().getName();
+            orgName = UserInfoCache.getInstance().getUserInfo().getOrgName();
+        }
+
         if (TextUtils.isEmpty(name)) {
             tvNameActAccount.setText("--");
         } else {
@@ -104,6 +110,7 @@ public class AccountActivity extends BaseActivity {
     private void logout() {
         // 清除token
         mDefaultMMKV.remove(MmkvKey.TOKEN);
+        UserInfoCache.clearUserInfoCache();
         // 退出所有Activity，启动login页面
         ActivityStackManager.getInstance().finishAllActivities(LoginActivity.class);
         Intent exitIntent = new Intent(mContext, LoginActivity.class);

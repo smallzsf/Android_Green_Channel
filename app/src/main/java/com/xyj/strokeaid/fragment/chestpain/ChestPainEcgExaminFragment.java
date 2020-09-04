@@ -34,8 +34,6 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     EditSpinner esVitalSignAware;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
     @BindView(R.id.tv_add_record)

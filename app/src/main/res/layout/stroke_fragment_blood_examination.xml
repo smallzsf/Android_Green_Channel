@@ -5,20 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/color_bg"
     tools:context=".fragment.stroke.StrokeBloodExaminationFragment">
 
-    <!--    <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tl_title_act_stroke_main"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
-            app:tabGravity="fill"
-            app:tabPaddingEnd="-10dp"
-            app:tabPaddingStart="-10dp"
-            app:tabIndicatorColor="@color/colorPrimary"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabTextAppearance="@style/tab_layout_text"
-            app:tabTextColor="@color/black" />-->
 
     <com.flyco.tablayout.SegmentTabLayout
         android:id="@+id/stl_title_frag_stroke_medice"

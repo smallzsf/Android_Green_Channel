@@ -15,6 +15,7 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.Date;
 
@@ -31,10 +32,12 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 public class StrokeBloodSugarFragment extends BaseFragment {
 
 
-    @BindView(R.id.tv_draw_blood_time)
-    TextView tvDrawBloodTime;
-    @BindView(R.id.tv_draw_blood_result_time)
-    TextView tvDrawBloodResultTime;
+    @BindView(R.id.ttb_awareness_time)
+    TextTimeBar ttbAwarenessTime;
+    @BindView(R.id.ttb_draw_blood_time)
+    TextTimeBar ttbDrawBloodTime;
+    @BindView(R.id.pulse)
+    TextView pulse;
     @BindView(R.id.et_blood_sugar)
     EditText etBloodSugar;
     @BindView(R.id.btn_get_data)
@@ -43,9 +46,6 @@ public class StrokeBloodSugarFragment extends BaseFragment {
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_stroke_blood_sugar)
     LinearLayout llStrokeBloodSugar;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
-
 
     @Override
     protected int getLayoutId() {
@@ -69,14 +69,15 @@ public class StrokeBloodSugarFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
+        View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llStrokeBloodSugar, llBottom);
-
     }
 
-    @OnClick({R.id.tv_draw_blood_time, R.id.tv_draw_blood_result_time, R.id.btn_get_data, R.id.btn_confirm})
+ /*   @OnClick({R.id.tv_draw_blood_time, R.id.tv_draw_blood_result_time, R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_draw_blood_time:
+*//*
 
                 TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -96,10 +97,11 @@ public class StrokeBloodSugarFragment extends BaseFragment {
                         .build();
 
                 mDialogAll.show(getActivity().getSupportFragmentManager(), "All");
+*//*
 
                 break;
             case R.id.tv_draw_blood_result_time:
-                TimePickerDialog mDialogAll1 = new TimePickerDialog.Builder()
+           *//*     TimePickerDialog mDialogAll1 = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
                         .setTitleStringId("选择时间")
                         .setThemeColor(getResources().getColor(R.color.colorPrimary))
@@ -114,7 +116,7 @@ public class StrokeBloodSugarFragment extends BaseFragment {
                         .setToolBarTextColor(R.color.colorPrimary)
                         .build();
 
-                mDialogAll1.show(getActivity().getSupportFragmentManager(), "All");
+                mDialogAll1.show(getActivity().getSupportFragmentManager(), "All");*//*
 
                 break;
             case R.id.btn_get_data:
@@ -123,7 +125,7 @@ public class StrokeBloodSugarFragment extends BaseFragment {
                 break;
         }
     }
-
+*/
 
 }
 

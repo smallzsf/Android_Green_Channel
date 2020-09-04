@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/color_bg"
     android:id="@+id/ll_auxiliary_exam"
     tools:context=".fragment.AuxiliaryExamFragment">
 
@@ -38,7 +39,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
+                android:background="@color/color_bg"
                 android:orientation="horizontal">
 
                 <TextView
@@ -241,7 +242,7 @@
                 android:id="@+id/ll_photo_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
+                android:background="@color/color_bg"
                 android:orientation="vertical">
 
                 <include layout="@layout/include_line" />
@@ -249,7 +250,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    android:background="@color/color_bg"
                     android:orientation="horizontal">
 
                     <TextView
@@ -284,7 +285,7 @@
                 android:id="@+id/ll_report_frag_ae"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
+                android:background="@color/color_bg"
                 android:orientation="horizontal">
 
                 <TextView
@@ -317,6 +318,8 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/view_two_horizontal_bottom_button" />
+    <include
+        android:id="@+id/ll_bottom"
+        layout="@layout/view_two_horizontal_bottom_button" />
 
 </LinearLayout>

@@ -267,6 +267,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
+        android:id="@+id/ll_bottom"
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
