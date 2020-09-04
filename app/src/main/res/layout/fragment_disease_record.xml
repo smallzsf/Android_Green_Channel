@@ -43,7 +43,7 @@
                         android:paddingEnd="@dimen/dp_12">
 
                         <ImageView
-                            android:id="@+id/iv_arrow_view_nib"
+                            android:id="@+id/iv_troponin"
                             android:layout_width="@dimen/item_normal_height"
                             android:layout_height="@dimen/item_normal_height"
                             android:layout_alignParentTop="true"
@@ -69,187 +69,27 @@
 
 
                 </LinearLayout>
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="抽血送检时间（肌钙蛋白）" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="报告完成时间（肌钙蛋白）" />
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="肌钙蛋白"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_width="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <RadioButton
-                            android:id="@+id/rb_troponin_has"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="是"
-                            android:textSize="@dimen/item_content_size" />
-
-                        <RadioButton
-                            android:id="@+id/rb_troponin_none"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="否"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </RadioGroup>
-                    <TextView
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="新增检查记录"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-                </LinearLayout>
-
-
-                <LinearLayout
+                    android:id="@+id/ll_troponin_data"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
+                    <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
+                        android:layout_marginLeft="@dimen/dp_1"
+                        android:layout_marginRight="@dimen/dp_1"
                         android:layout_height="@dimen/item_normal_height"
                         android:background="@color/white"
-                        android:orientation="horizontal">
+                        tl:title="抽血送检时间（肌钙蛋白）" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/item_normal_height"
-                            android:layout_centerVertical="true"
-                            android:gravity="center"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="首次肌钙蛋白"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
-
-                        <RadioGroup
-                            android:layout_marginLeft="@dimen/dp_30"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_tnt_first"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:checked="true"
-                                android:text="Tnt"
-                                android:textSize="@dimen/item_content_size" />
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_tnl_first"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="Tnl"
-                                android:textSize="@dimen/item_content_size" />
-
-                        </RadioGroup>
-                    </LinearLayout>
-                    <LinearLayout
+                    <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/dp_7"
-                        >
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_grey_stroke"
-                            android:hint="单行输入"
-                            android:layout_weight="1"
-                            android:inputType="text"
-                            android:paddingStart="@dimen/dp_8"
-                            android:textColor="@color/color_222222"
-                            android:textColorHint="@color/color_666666"
-                            android:textSize="13sp" />
-
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="ng/L"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="阴性"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_troponin_two"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                        android:layout_marginLeft="@dimen/dp_1"
+                        android:layout_marginRight="@dimen/dp_1"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:background="@color/white"
+                        tl:title="报告完成时间（肌钙蛋白）" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -272,7 +112,7 @@
                             android:textSize="@dimen/item_title_size" />
 
                         <RadioGroup
-                            android:layout_marginLeft="@dimen/dp_30"
+                            android:layout_marginLeft="@dimen/dp_7"
                             android:layout_width="wrap_content"
                             android:layout_weight="1"
                             android:layout_height="match_parent"
@@ -280,83 +120,28 @@
                             android:weightSum="3">
 
                             <RadioButton
-                                android:id="@+id/rb_troponin_tnt_two"
+                                android:id="@+id/rb_troponin_has"
                                 style="@style/tv_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
                                 android:checked="true"
-                                android:text="Tnt"
+                                android:text="是"
                                 android:textSize="@dimen/item_content_size" />
 
                             <RadioButton
-                                android:id="@+id/rb_troponin_tnl_two"
+                                android:id="@+id/rb_troponin_none"
                                 style="@style/tv_small"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="Tnl"
+                                android:text="否"
                                 android:textSize="@dimen/item_content_size" />
 
                         </RadioGroup>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/dp_7"
-                        >
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_grey_stroke"
-                            android:hint="单行输入"
-                            android:layout_weight="1"
-                            android:inputType="text"
-                            android:paddingStart="@dimen/dp_8"
-                            android:textColor="@color/color_222222"
-                            android:textColorHint="@color/color_666666"
-                            android:textSize="13sp" />
-
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="ng/L"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="阴性"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_troponin_three"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
                         <TextView
+                            android:id="@+id/tv_add_troponin"
+                            android:layout_marginRight="@dimen/dp_12"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/item_normal_height"
                             android:layout_centerVertical="true"
@@ -364,80 +149,303 @@
                             android:maxLength="6"
                             android:maxLines="1"
                             android:minWidth="60dp"
-                            android:text="肌钙蛋白"
+                            android:text="新增检查记录"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/item_title_size" />
-
-                        <RadioGroup
-                            android:layout_marginLeft="@dimen/dp_30"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_tnt_three"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:checked="true"
-                                android:text="Tnt"
-                                android:textSize="@dimen/item_content_size" />
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_tnl_three"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="Tnl"
-                                android:textSize="@dimen/item_content_size" />
-
-                        </RadioGroup>
                     </LinearLayout>
+
+
                     <LinearLayout
+                        android:id="@+id/ll_troponin_first"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/dp_7"
-                        >
-                        <EditText
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_grey_stroke"
-                            android:hint="单行输入"
-                            android:layout_weight="1"
-                            android:inputType="text"
-                            android:paddingStart="@dimen/dp_8"
-                            android:textColor="@color/color_222222"
-                            android:textColorHint="@color/color_666666"
-                            android:textSize="13sp" />
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
 
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="ng/L"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
 
-                        <com.xyj.strokeaid.view.editspinner.EditSpinner
-                            android:layout_width="@dimen/dp_90"
-                            android:layout_height="@dimen/dp_30"
-                            android:layout_marginRight="@dimen/dp_3"
-                            android:gravity="center"
-                            app:Background="@drawable/bg_view_frame"
-                            app:hint="阴性"
-                            app:rightImage="@drawable/ic_arrow_down_blue" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/item_normal_height"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:minWidth="60dp"
+                                android:text="首次肌钙蛋白"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/item_title_size" />
 
+                            <RadioGroup
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnt_first"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="Tnt"
+                                    android:textSize="@dimen/item_content_size" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnl_first"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="Tnl"
+                                    android:textSize="@dimen/item_content_size" />
+
+                            </RadioGroup>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/dp_7"
+                            >
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_grey_stroke"
+                                android:hint="单行输入"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/dp_8"
+                                android:textColor="@color/color_222222"
+                                android:textColorHint="@color/color_666666"
+                                android:textSize="13sp" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="ng/L"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="阴性"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/ll_troponin_two"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/item_normal_height"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:minWidth="60dp"
+                                android:text="肌钙蛋白"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/item_title_size" />
+
+                            <RadioGroup
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnt_two"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="Tnt"
+                                    android:textSize="@dimen/item_content_size" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnl_two"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="Tnl"
+                                    android:textSize="@dimen/item_content_size" />
+
+                            </RadioGroup>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/dp_7"
+                            >
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_grey_stroke"
+                                android:hint="单行输入"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/dp_8"
+                                android:textColor="@color/color_222222"
+                                android:textColorHint="@color/color_666666"
+                                android:textSize="13sp" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="ng/L"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="阴性"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_troponin_three"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/item_normal_height"
+                                android:layout_centerVertical="true"
+                                android:gravity="center"
+                                android:maxLength="6"
+                                android:maxLines="1"
+                                android:minWidth="60dp"
+                                android:text="肌钙蛋白"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/item_title_size" />
+
+                            <RadioGroup
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_width="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:weightSum="3">
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnt_three"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="Tnt"
+                                    android:textSize="@dimen/item_content_size" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_troponin_tnl_three"
+                                    style="@style/tv_small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:text="Tnl"
+                                    android:textSize="@dimen/item_content_size" />
+
+                            </RadioGroup>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_7"
+                            android:layout_marginRight="@dimen/dp_7"
+                            android:orientation="horizontal"
+                            android:layout_marginBottom="@dimen/dp_7"
+                            >
+                            <EditText
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_grey_stroke"
+                                android:hint="单行输入"
+                                android:layout_weight="1"
+                                android:inputType="text"
+                                android:paddingStart="@dimen/dp_8"
+                                android:textColor="@color/color_222222"
+                                android:textColorHint="@color/color_666666"
+                                android:textSize="13sp" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="ng/L"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:layout_marginRight="@dimen/dp_3"
+                                android:gravity="center"
+                                app:Background="@drawable/bg_view_frame"
+                                app:hint="阴性"
+                                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -478,6 +486,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -521,6 +530,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_dimer_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -536,6 +546,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="D-二聚体" />
                     <ImageView
+                        android:id="@+id/iv_dimer"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -546,6 +557,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_dimer_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -592,6 +604,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_bnp_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -607,6 +620,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="BNP" />
                     <ImageView
+                        android:id="@+id/iv_bnp"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -617,6 +631,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_bnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -660,6 +675,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_nt_probnp_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -675,6 +691,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="NT-proBNP" />
                     <ImageView
+                        android:id="@+id/iv_nt_probnp"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -685,6 +702,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_nt_probnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -727,6 +745,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_myo_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -742,6 +761,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="Myo" />
                     <ImageView
+                        android:id="@+id/iv_myo"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -752,6 +772,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_myo_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -796,6 +817,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_ckmb_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -811,6 +833,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="CKMB" />
                     <ImageView
+                        android:id="@+id/iv_ckmb"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -821,6 +844,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_ckmb_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
