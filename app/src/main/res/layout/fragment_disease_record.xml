@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:zhy="http://schemas.android.com/tools"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llVitalSigns"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/llVitalSigns"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -18,291 +19,180 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/dp_20">
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="@string/chief_complaint" />
-
-                <!-- <EditText
-                     android:id="@+id/et_major_complaint_frag"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:background="@drawable/shape_condition_record_edittext_background"
-                     android:gravity="top"
-                     android:inputType="textMultiLine"
-                     android:maxLength="50"
-                     android:paddingLeft="@dimen/dp_4"
-                     android:paddingTop="@dimen/dp_4"
-                     android:paddingBottom="@dimen/dp_4"
-                     android:textSize="@dimen/item_content_size" />-->
-
-
-                <EditText
-                    android:id="@+id/et_major_complaint_frag"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="@string/tip_chief_complaint"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/item_content_size" />
-
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_action_in_chief"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    android:maxLength="100"
-                    zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
-
-            </LinearLayout>
-
-            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/app_tv_conditon_record"
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="@string/app_symptom" />
-
-                <EditText
-                    android:id="@+id/et_symptom"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="请输入症状"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/item_normal_height"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_12">
+
+                        <ImageView
+                            android:id="@+id/iv_arrow_view_nib"
+                            android:layout_width="@dimen/item_normal_height"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_arrow_down_blue" />
+
+                        <TextView
+                            android:id="@+id/tv_title_view_nib"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginEnd="@dimen/dp_12"
+                            android:layout_toStartOf="@id/iv_arrow_view_nib"
+                            android:gravity="center_vertical"
+                            android:maxLength="10"
+                            android:maxLines="2"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size"
+                            tools:text="肌钙蛋白" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="肌钙蛋白"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_consultation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_marginRight="@dimen/dp_12"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_troponin"
+                            style="@style/tv_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="是"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_troponin_none"
+                            style="@style/tv_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="否"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_12"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="新增检查记录"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                </LinearLayout>
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    tl:title="抽血送检时间（肌钙蛋白）" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    tl:title="报告完成时间（肌钙蛋白）" />
+                <ListView
+                    android:id="@+id/listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="@color/transparent"
+                    android:listSelector="@color/transparent"
+                    android:scrollbars="none"></ListView>
             </LinearLayout>
-
-
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/id_flow_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_5"
-                zhy:max_select="1" />
-
-            <include layout="@layout/include_line" />
-
-            <TextView
-                style="@style/Text_Dark_Content_Style"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:text="@string/past_medical_history" />
-
-
-            <EditText
-                android:id="@+id/et_medical_history"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_90"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_7"
-                android:layout_marginRight="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="start"
-                android:hint="请输入既往史"
-                android:paddingLeft="@dimen/dp_6"
-                android:paddingTop="@dimen/dp_6"
-                android:textSize="@dimen/item_content_size" />
-
-
-            <com.zhy.view.flowlayout.TagFlowLayout
-                android:id="@+id/tfl_medical_history"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginRight="@dimen/dp_20"
-                android:layout_marginBottom="@dimen/dp_5"
-                zhy:max_select="1" />
-
-            <include layout="@layout/include_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="既往用药史" />
+                <!--                <RelativeLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:minHeight="@dimen/item_normal_height"-->
+                <!--                    android:paddingStart="@dimen/dp_12"-->
+                <!--                    android:paddingEnd="@dimen/dp_12">-->
 
-                <!--     <EditText
-                         android:layout_width="match_parent"
-                         android:layout_height="@dimen/dp_90"
-                         android:layout_marginTop="@dimen/dp_7"
-                         android:layout_marginBottom="@dimen/dp_10"
-                         android:background="@drawable/shape_edittext_bg"
-                         android:gravity="start"
-                         android:hint="请输入既往用药史"
-                         android:paddingLeft="@dimen/dp_6"
-                         android:paddingTop="@dimen/dp_6"
-                         android:textSize="@dimen/item_content_size" />
+                <!--                    <ImageView -->
+                <!--                        android:layout_width="@dimen/item_normal_height"-->
+                <!--                        android:layout_height="@dimen/item_normal_height"-->
+                <!--                        android:layout_alignParentTop="true"-->
+                <!--                        android:layout_alignParentEnd="true"-->
+                <!--                        android:scaleType="center"-->
+                <!--                        android:src="@drawable/ic_arrow_down_blue" />-->
+
+                <!--                    <TextView -->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="@dimen/item_normal_height"-->
+                <!--                        android:layout_alignParentStart="true"-->
+                <!--                        android:layout_marginEnd="@dimen/dp_12"-->
+                <!--                        android:layout_toStartOf="@id/iv_arrow_view_nib"-->
+                <!--                        android:gravity="center_vertical"-->
+                <!--                        android:maxLength="10"-->
+                <!--                        android:maxLines="2"-->
+                <!--                        android:textColor="@color/color_222222"-->
+                <!--                        android:textSize="@dimen/item_title_size"-->
+                <!--                        tools:text="肌钙蛋白" />-->
 
 
-
-                         -->
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="抗血小板药"
-                    android:layout_marginTop="@dimen/dp_5"/>
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_anticoagulant_drug"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    zhy:max_select="-1" />
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="抗凝药"
-                    android:layout_marginTop="@dimen/dp_5"/>
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_anticoagulant_drug1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    zhy:max_select="-1" />
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="降压药"
-                    android:layout_marginTop="@dimen/dp_5"/>
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_anticoagulant_drug2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    zhy:max_select="-1" />
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="降糖药"
-                    android:layout_marginTop="@dimen/dp_5"/>
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_anticoagulant_drug3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    zhy:max_select="-1" />
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="降脂药"
-                    android:layout_marginTop="@dimen/dp_5"/>
-
-                <com.zhy.view.flowlayout.TagFlowLayout
-                    android:id="@+id/tfl_anticoagulant_drug4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_20"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    zhy:max_select="-1" />
+                <!--                </RelativeLayout>-->
 
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
+            <ListView
+                android:id="@+id/lv_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:cacheColorHint="@color/transparent"
+                android:listSelector="@color/transparent"
+                android:scrollbars="none">
 
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="@string/history_of_drug_allergy" />
+            </ListView>
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="请输入药物过敏史"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/item_content_size" />
-            </LinearLayout>
-
-            <include layout="@layout/include_line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_20"
-                android:background="@color/app_ffffff"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/Text_Dark_Content_Style"
-                    android:text="备注" />
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="请输入备注内容"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/item_content_size" />
-            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
