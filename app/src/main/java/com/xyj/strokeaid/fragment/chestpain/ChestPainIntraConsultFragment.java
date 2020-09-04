@@ -102,7 +102,6 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
         refrashArrivalTimeVis();
         loadData();
     }
@@ -122,12 +121,14 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        rgConsultation.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        RadioGroup.OnCheckedChangeListener onCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 refrashArrivalTimeVis();
             }
-        });
+        };
+        rgConsultation.setOnCheckedChangeListener(onCheckedChangeListener);
+        rgConsultationOut.setOnCheckedChangeListener(onCheckedChangeListener);
 
 
         stlTitleFragOd.setTabData(Constants.CHEST_HEART_IN_OUT_TITLES);
@@ -138,6 +139,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
                 Log.e("zhangshifu", "" + position);
                 titlePosition = position;
                 refrashTitleData();
+                refrashArrivalTimeVis();
             }
 
 
@@ -150,20 +152,29 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     }
 
     private void refrashTitleData() {
-        if (titlePosition == 0){
+        if (titlePosition == 0) {
             llIntracConsultIn.setVisibility(View.VISIBLE);
             llIntracConsultOut.setVisibility(View.GONE);
-        }else {
+        } else {
             llIntracConsultIn.setVisibility(View.GONE);
             llIntracConsultOut.setVisibility(View.VISIBLE);
         }
     }
 
     private void refrashArrivalTimeVis() {
-        if (rbOnSiteConsultation.isChecked()) {
-            ttbArrivalTime.setVisibility(View.VISIBLE);
+        boolean isChecked = false;
+        View view;
+        if (titlePosition == 0) {
+            isChecked = rbOnSiteConsultation.isChecked();
+            view = ttbArrivalTime;
         } else {
-            ttbArrivalTime.setVisibility(View.GONE);
+            isChecked = rbOnSiteConsultationOut.isChecked();
+            view = ttbArrivalTimeOut;
+        }
+        if (isChecked) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
         }
     }
 
