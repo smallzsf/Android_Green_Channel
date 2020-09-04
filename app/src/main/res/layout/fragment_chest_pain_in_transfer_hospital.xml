@@ -17,13 +17,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/sp_14"
         android:layout_gravity="start"
-        android:text="转送其他医院" />
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:text="转送其他医院"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/sp_14" />
 
     <com.xyj.strokeaid.view.TextTimeBar
         android:layout_width="match_parent"
@@ -108,6 +108,7 @@
                 android:textSize="13sp" />
         </RadioGroup>
     </LinearLayout>
+
     <View
         style="@style/horizontal_divider"
         android:layout_marginTop="@dimen/dp_5"
@@ -155,11 +156,13 @@
                 android:textSize="13sp" />
         </RadioGroup>
     </LinearLayout>
+
     <View
         style="@style/horizontal_divider"
         android:layout_marginTop="@dimen/dp_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -250,11 +253,13 @@
                 android:textSize="13sp" />
         </RadioGroup>
     </LinearLayout>
+
     <View
         style="@style/horizontal_divider"
         android:layout_marginTop="@dimen/dp_5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+
     <com.xyj.strokeaid.view.TextTimeBar
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"

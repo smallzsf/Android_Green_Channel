@@ -38,6 +38,7 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
     @BindView(R.id.rg_outcome_leave_hosptal)
     RadioButton mLeaveHosptal;
 
+
     /**
      * 患者转归 单选 出院
      */
@@ -132,27 +133,35 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
     private RadioGroup.OnCheckedChangeListener radioghange = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
+
             if (checkedId == mLeaveHosptal.getId()) {
                 mPainTransferDepartment.setVisibility(View.GONE);
                 mPainTransferHospital.setVisibility(View.GONE);
+
                 mPainTransferDead.setVisibility(View.GONE);
                 mPainLeaveHospital.setVisibility(View.VISIBLE);
                 mLeaveHospitalSaid.setVisibility(View.VISIBLE);
+
             } else if (checkedId == mTransferDepartment.getId()) {
                 mPainTransferDepartment.setVisibility(View.VISIBLE);
                 mPainTransferHospital.setVisibility(View.GONE);
+
                 mPainTransferDead.setVisibility(View.GONE);
                 mPainLeaveHospital.setVisibility(View.GONE);
                 mLeaveHospitalSaid.setVisibility(View.VISIBLE);
+
             } else if (checkedId == mTransferHospital.getId()) {
                 mPainTransferDepartment.setVisibility(View.GONE);
                 mPainTransferHospital.setVisibility(View.VISIBLE);
+
                 mPainTransferDead.setVisibility(View.GONE);
                 mPainLeaveHospital.setVisibility(View.GONE);
                 mLeaveHospitalSaid.setVisibility(View.VISIBLE);
+
             } else if (checkedId == mDead.getId()) {
                 mPainTransferDepartment.setVisibility(View.GONE);
                 mPainTransferHospital.setVisibility(View.GONE);
+
                 mPainTransferDead.setVisibility(View.VISIBLE);
                 mPainLeaveHospital.setVisibility(View.GONE);
                 mLeaveHospitalSaid.setVisibility(View.GONE);
