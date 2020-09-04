@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/sp_14"
+        android:layout_gravity="start"
+        android:text="转送其他医院" />
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="离开本院时间"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="医院名称"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14" />
+
+        <EditText
+            android:layout_width="@dimen/dp_80"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="start"
+            android:hint=""
+            android:inputType="number"
+            android:paddingLeft="@dimen/dp_5" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="网络医院:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="是"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="否"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="转运PCI:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="是"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="否"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="直达导管室:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="是"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="否"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="实际介入手术开始时间"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="远程心电图传输:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="传输心电图至协作单位（转出患者）"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="无"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginTop="@dimen/dp_5"
+        app:bottomLineVisible="true"
+        app:title="传输心电图至协作单位时间"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="传输方式"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/sp_14" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="1"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:text="溶栓后24H内造影:"
+            android:textColor="@color/color_222222"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="是"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_18"
+                android:text="否"
+                android:textColor="@color/color_222222"
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="造影开始时间"
+        app:ttb_time_hint="2020-08-22 10:58:19" />
+
+</LinearLayout>
