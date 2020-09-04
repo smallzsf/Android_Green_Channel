@@ -29,7 +29,6 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
                 <LinearLayout
@@ -61,9 +60,9 @@
                         android:layout_alignParentEnd="true"
                         android:scaleType="center"
                         android:src="@drawable/ic_arrow_down_blue" />
-
-
                 </LinearLayout>
+
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_antihemotherapy_data"
                     android:layout_width="wrap_content"
@@ -241,7 +240,6 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -272,6 +270,8 @@
 
 
                 </LinearLayout>
+
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="wrap_content"
@@ -390,7 +390,6 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -425,6 +424,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_statin_therapy_data"
                     android:layout_width="wrap_content"
@@ -541,7 +541,6 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -577,6 +576,8 @@
 
 
                 </LinearLayout>
+
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_beta_blockers_data"
                     android:orientation="vertical"

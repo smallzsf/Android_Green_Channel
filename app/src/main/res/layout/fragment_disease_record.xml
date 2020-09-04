@@ -63,12 +63,9 @@
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/item_title_size"
                             android:text="肌钙蛋白" />
-
-
                     </RelativeLayout>
-
-
                 </LinearLayout>
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_troponin_data"
                     android:layout_width="match_parent"
@@ -485,6 +482,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="match_parent"
@@ -556,6 +554,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_dimer_data"
                     android:layout_width="match_parent"
@@ -630,6 +629,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_bnp_data"
                     android:layout_width="match_parent"
@@ -701,6 +701,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_nt_probnp_data"
                     android:layout_width="match_parent"
@@ -771,6 +772,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_myo_data"
                     android:layout_width="match_parent"
@@ -843,6 +845,7 @@
 
                 </LinearLayout>
 
+                <include layout="@layout/include_line" />
                 <LinearLayout
                     android:id="@+id/ll_ckmb_data"
                     android:layout_width="match_parent"
