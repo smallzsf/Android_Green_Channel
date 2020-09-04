@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.chestpain.SurgicalPreparationActivtty">
 
     <RelativeLayout
@@ -49,7 +50,7 @@
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_act_npmr"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_title_height"
+        android:layout_height="@dimen/title_bar_height"
         app:rightIconVisible="false"
         app:rightText="保存"
         app:rightTextVisible="true"
@@ -58,10 +59,8 @@
     <RelativeLayout
         android:id="@+id/rl_doctor"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/title_bar_act_npmr"
+        android:layout_height="@dimen/item_title_height"
         android:layout_marginLeft="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_12">
 
         <TextView
@@ -100,15 +99,14 @@
         android:id="@+id/ttb_dis_start_act_npmr"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_large_height"
-        android:layout_below="@id/rl_doctor"
         app:bottomLineVisible="true"
-        app:title="决定介入手术时间" />
+        app:title="决定介入手术时间"
+        app:topLineVisible="true" />
 
     <RelativeLayout
         android:id="@+id/rl_room"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_below="@id/ttb_dis_start_act_npmr"
         android:layout_marginLeft="@dimen/dp_12"
         android:visibility="gone">
 
@@ -141,7 +139,6 @@
         android:id="@+id/rl_catheter_room"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_large_height"
-        android:layout_below="@id/ttb_dis_start_act_npmr"
         app:bottomLineVisible="true"
         app:title="启动导管室时间" />
 
@@ -149,7 +146,6 @@
         android:id="@+id/rl_agree_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_large_height"
-        android:layout_below="@id/rl_catheter_room"
         app:bottomLineVisible="true"
         app:title="开始知情同意时间" />
 
@@ -157,23 +153,20 @@
         android:id="@+id/rl_sign_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_large_height"
-        android:layout_below="@id/rl_agree_time"
         app:bottomLineVisible="true"
         app:title="签署知情同意时间" />
-
 
     <LinearLayout
         android:id="@+id/llfamily_advice"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/rl_sign_time"
+        android:layout_height="@dimen/item_title_height"
         android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginRight="@dimen/dp_12"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="@dimen/dp_68"
+            android:layout_width="@dimen/item_title_min_width"
             android:layout_height="wrap_content"
             android:text="家属意见"
             android:textColor="@color/color_222222"
@@ -181,24 +174,27 @@
 
         <RadioGroup
             android:id="@+id/rg_agree"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_marginStart="40dp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <RadioButton
                 android:id="@+id/rb_agree"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:checked="true"
                 android:text="同意"
                 android:textSize="@dimen/sp_13" />
 
             <RadioButton
                 android:id="@+id/rb_refuse"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="拒绝"
                 android:textSize="@dimen/sp_13" />
 
@@ -206,13 +202,13 @@
 
     </LinearLayout>
 
+    <View style="@style/horizontal_divider" />
+
     <RelativeLayout
         android:id="@+id/rl_result"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/llfamily_advice"
+        android:layout_height="@dimen/item_title_height"
         android:layout_marginLeft="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_12">
 
         <TextView
@@ -245,12 +241,12 @@
         </RelativeLayout>
     </RelativeLayout>
 
+    <View style="@style/horizontal_divider" />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@+id/rl_result"
+        android:layout_height="@dimen/item_title_height"
         android:layout_marginLeft="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginRight="@dimen/dp_12">
 
         <TextView
@@ -272,4 +268,6 @@
             android:textSize="@dimen/sp_13" />
     </RelativeLayout>
 
-</RelativeLayout>
+    <View style="@style/horizontal_divider" />
+
+</LinearLayout>
