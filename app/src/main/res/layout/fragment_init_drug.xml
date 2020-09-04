@@ -19,13 +19,18 @@
         android:scrollbars="none">
 
         <LinearLayout
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="wrap_content" android:background="@drawable/shape_edittext_bg"
+
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
                 <LinearLayout
@@ -38,6 +43,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/dp_12"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentStart="true"
                         android:layout_marginEnd="@dimen/dp_12"
@@ -62,6 +68,8 @@
                 <LinearLayout
                     android:id="@+id/ll_no_suitable"
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_7"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     android:orientation="horizontal">
@@ -70,7 +78,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -112,6 +119,8 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
                     android:background="@color/white"
                     tl:title="给药时间" />
 
@@ -126,6 +135,7 @@
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
                         android:gravity="center"
+                        android:layout_marginStart="@dimen/dp_12"
                         android:maxLength="6"
                         android:maxLines="1"
                         android:minWidth="60dp"
@@ -160,6 +170,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:maxLength="6"
+                        android:layout_marginStart="@dimen/dp_12"
                         android:maxLines="1"
                         android:minWidth="60dp"
                         android:text="氯呲格雷"
@@ -194,6 +205,7 @@
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
+                        android:layout_marginStart="@dimen/dp_12"
                         android:minWidth="60dp"
                         android:text="替格瑞洛"
                         android:textColor="@color/color_222222"

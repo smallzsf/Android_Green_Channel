@@ -38,6 +38,8 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainScoringToolsFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
+import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
+import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
