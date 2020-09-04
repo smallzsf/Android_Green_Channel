@@ -70,37 +70,13 @@
             </RadioGroup>
         </LinearLayout>
         <include layout="@layout/include_line" />
-        <RelativeLayout
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_cure_time"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/vital_sign_item_height"
-            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/sp_15">
-
-            <TextView
-                android:id="@+id/tv_cure_label"
-                android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="开始抗凝剂治疗时间"
-                android:textColor="@color/app_223b53"
-                android:textSize="@dimen/item_title_size" />
-
-
-            <com.xyj.strokeaid.view.TextTimeBar
-                android:id="@+id/tv_cure_time"
-                style="@style/patient_et_style"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/tv_cure_label"
-                android:focusable="false"
-                android:gravity="center|right"
-                android:hint="@string/app_default_time_example"
-                android:text="选取时间"
-                android:textColor="@color/app_223b53"
-                android:textSize="@dimen/item_content_size" />
-
-
-        </RelativeLayout>
+            android:layout_height="@dimen/item_normal_height"
+            android:background="@color/white"
+            app:title="开始抗凝剂治疗时间" />
         <!--治疗策略-->
         <LinearLayout
             android:layout_width="match_parent"

@@ -3,10 +3,12 @@ package com.xyj.strokeaid.fragment.chestpain;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
@@ -14,6 +16,7 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,22 +42,12 @@ public class OriginalStatusFragment5 extends BaseFragment implements OnDateSetLi
     RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
     RadioButton mRbCtFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
     TextView mTvEmergencyWard;
-    @BindView(R.id.cb_shadow_text_1)
-    CheckBox mCbShadowText1;
-    @BindView(R.id.cb_shadow_text_2)
-    CheckBox mCbShadowText2;
-    @BindView(R.id.cb_shadow_text_3)
-    CheckBox mCbShadowText3;
-    @BindView(R.id.cb_shadow_text_4)
-    CheckBox mCbShadowText4;
     @BindView(R.id.cb_text_1)
     CheckBox mCbText1;
     @BindView(R.id.cb_text_2)
@@ -111,8 +104,18 @@ public class OriginalStatusFragment5 extends BaseFragment implements OnDateSetLi
     RadioButton mRbStep3;
     @BindView(R.id.rb_step_4)
     RadioButton mRbStep4;
+    @BindView(R.id.ll_deal)
+    LinearLayout mLlDeal;
     @BindView(R.id.tv_note)
     TextView mTvNote;
+    @BindView(R.id.et_note)
+    EditText mEtNote;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton mBtnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton mBtnConfirm;
+
+
 
     public static OriginalStatusFragment5 newInstance(String keyword) {
         OriginalStatusFragment5 fragment = new OriginalStatusFragment5();
@@ -168,6 +171,6 @@ public class OriginalStatusFragment5 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

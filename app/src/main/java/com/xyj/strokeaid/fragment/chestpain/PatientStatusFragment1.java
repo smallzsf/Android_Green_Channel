@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -8,22 +9,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
-
-import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 /**
  * @ClassName: OriginalStatus1
@@ -34,294 +33,316 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 public class PatientStatusFragment1 extends BaseFragment implements OnDateSetListener {
     List<String> office = new ArrayList<>();
     TimePickerDialog mDialogAll;
-    @BindView(R.id.awareness)
-    TextView awareness;
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
-    @BindView(R.id.tv_first_cure)
-    TextView tvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView tvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.give_up_cure)
-    TextView giveUpCure;
+    TextView mGiveUpCure;
     @BindView(R.id.rb_blood_frag_ae)
-    RadioButton rbBloodFragAe;
+    RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
-    RadioButton rbCtFragAe;
+    RadioButton mRbCtFragAe;
     @BindView(R.id.rb_cta_frag_ae)
-    RadioButton rbCtaFragAe;
+    RadioButton mRbCtaFragAe;
     @BindView(R.id.rb_ctp_frag_ae)
-    RadioButton rbCtpFragAe;
+    RadioButton mRbCtpFragAe;
     @BindView(R.id.rb_mri_frag_ae)
-    RadioButton rbMriFragAe;
+    RadioButton mRbMriFragAe;
     @BindView(R.id.rb_mra_frag_ae)
-    RadioButton rbMraFragAe;
+    RadioButton mRbMraFragAe;
     @BindView(R.id.rb_cemra_frag_ae)
-    RadioButton rbCemraFragAe;
+    RadioButton mRbCemraFragAe;
     @BindView(R.id.rb_cvus_frag_ae)
-    RadioButton rbCvusFragAe;
+    RadioButton mRbCvusFragAe;
     @BindView(R.id.rb_tcd_frag_ae)
-    RadioButton rbTcdFragAe;
+    RadioButton mRbTcdFragAe;
     @BindView(R.id.rg_yn)
-    RadioGroup rgYn;
+    RadioGroup mRgYn;
     @BindView(R.id.tv_nyha_label)
-    TextView tvNyhaLabel;
+    TextView mTvNyhaLabel;
     @BindView(R.id.rb_nyha_1)
-    RadioButton rbNyha1;
+    RadioButton mRbNyha1;
     @BindView(R.id.rb_nyha_2)
-    RadioButton rbNyha2;
+    RadioButton mRbNyha2;
     @BindView(R.id.rb_nyha_3)
-    RadioButton rbNyha3;
+    RadioButton mRbNyha3;
     @BindView(R.id.rb_nyha_4)
-    RadioButton rbNyha4;
+    RadioButton mRbNyha4;
     @BindView(R.id.ll_nyha)
-    LinearLayout llNyha;
+    LinearLayout mLlNyha;
+    @BindView(R.id.cb_text_1)
+    CheckBox mCbText1;
+    @BindView(R.id.cb_text_2)
+    CheckBox mCbText2;
+    @BindView(R.id.cb_text_3)
+    CheckBox mCbText3;
+    @BindView(R.id.cb_text_4)
+    CheckBox mCbText4;
+    @BindView(R.id.cb_text_5)
+    CheckBox mCbText5;
+    @BindView(R.id.cb_text_6)
+    CheckBox mCbText6;
+    @BindView(R.id.cb_text_7)
+    CheckBox mCbText7;
+    @BindView(R.id.cb_text_8)
+    CheckBox mCbText8;
+    @BindView(R.id.cb_text_9)
+    CheckBox mCbText9;
+    @BindView(R.id.cb_text_10)
+    CheckBox mCbText10;
+    @BindView(R.id.cb_text_11)
+    CheckBox mCbText11;
+    @BindView(R.id.cb_text_12)
+    CheckBox mCbText12;
     @BindView(R.id.tv_bp_label)
-    TextView tvBpLabel;
+    TextView mTvBpLabel;
     @BindView(R.id.tv_bp_no)
-    RadioButton tvBpNo;
+    RadioButton mTvBpNo;
     @BindView(R.id.tv_bp_yes)
-    RadioButton tvBpYes;
+    RadioButton mTvBpYes;
     @BindView(R.id.tv_bf_label)
-    TextView tvBfLabel;
+    TextView mTvBfLabel;
     @BindView(R.id.tv_bf_no)
-    RadioButton tvBfNo;
+    RadioButton mTvBfNo;
     @BindView(R.id.tv_bf_yes)
-    RadioButton tvBfYes;
+    RadioButton mTvBfYes;
     @BindView(R.id.tv_diabetic_label)
-    TextView tvDiabeticLabel;
+    TextView mTvDiabeticLabel;
     @BindView(R.id.tv_diabetic_no)
-    RadioButton tvDiabeticNo;
+    RadioButton mTvDiabeticNo;
     @BindView(R.id.tv_diabetic_yes)
-    RadioButton tvDiabeticYes;
+    RadioButton mTvDiabeticYes;
     @BindView(R.id.tv_smoke_label)
-    TextView tvSmokeLabel;
+    TextView mTvSmokeLabel;
     @BindView(R.id.tv_smoke_no)
-    RadioButton tvSmokeNo;
+    RadioButton mTvSmokeNo;
     @BindView(R.id.tv_smoke_yes)
-    RadioButton tvSmokeYes;
+    RadioButton mTvSmokeYes;
     @BindView(R.id.tv_smoke_status_label)
-    TextView tvSmokeStatusLabel;
+    TextView mTvSmokeStatusLabel;
     @BindView(R.id.tv_smoke_status_yes)
-    RadioButton tvSmokeStatusYes;
+    RadioButton mTvSmokeStatusYes;
     @BindView(R.id.tv_smoke_status_no)
-    RadioButton tvSmokeStatusNo;
+    RadioButton mTvSmokeStatusNo;
     @BindView(R.id.tv_fat_label)
-    TextView tvFatLabel;
+    TextView mTvFatLabel;
     @BindView(R.id.tv_fat_no)
-    RadioButton tvFatNo;
+    RadioButton mTvFatNo;
     @BindView(R.id.tv_fat_yes)
-    RadioButton tvFatYes;
+    RadioButton mTvFatYes;
     @BindView(R.id.tv_cvd_label)
-    TextView tvCvdLabel;
+    TextView mTvCvdLabel;
     @BindView(R.id.tv_cvd_no)
-    RadioButton tvCvdNo;
+    RadioButton mTvCvdNo;
     @BindView(R.id.tv_cvd_yes)
-    RadioButton tvCvdYes;
+    RadioButton mTvCvdYes;
     @BindView(R.id.tv_chd_label)
-    TextView tvChdLabel;
+    TextView mTvChdLabel;
     @BindView(R.id.tv_chd_no)
-    RadioButton tvChdNo;
+    RadioButton mTvChdNo;
     @BindView(R.id.tv_chd_yes)
-    RadioButton tvChdYes;
+    RadioButton mTvChdYes;
     @BindView(R.id.rg_chd)
-    RadioGroup rgChd;
+    RadioGroup mRgChd;
     @BindView(R.id.tv_xy_label)
-    TextView tvXyLabel;
+    TextView mTvXyLabel;
     @BindView(R.id.tv_xy_no)
-    RadioButton tvXyNo;
+    RadioButton mTvXyNo;
     @BindView(R.id.tv_xy_yes)
-    RadioButton tvXyYes;
+    RadioButton mTvXyYes;
     @BindView(R.id.rg_xy)
-    RadioGroup rgXy;
+    RadioGroup mRgXy;
     @BindView(R.id.ll_xy)
-    LinearLayout llXy;
+    LinearLayout mLlXy;
     @BindView(R.id.tv_xf_label)
-    TextView tvXfLabel;
+    TextView mTvXfLabel;
     @BindView(R.id.tv_xf_no)
-    RadioButton tvXfNo;
+    RadioButton mTvXfNo;
     @BindView(R.id.tv_xf_yes)
-    RadioButton tvXfYes;
+    RadioButton mTvXfYes;
     @BindView(R.id.rg_xf)
-    RadioGroup rgXf;
+    RadioGroup mRgXf;
     @BindView(R.id.ll_xf)
-    LinearLayout llXf;
+    LinearLayout mLlXf;
     @BindView(R.id.tv_fx_label)
-    TextView tvFxLabel;
+    TextView mTvFxLabel;
     @BindView(R.id.tv_fx_1)
-    RadioButton tvFx1;
+    RadioButton mTvFx1;
     @BindView(R.id.tv_fx_2)
-    RadioButton tvFx2;
+    RadioButton mTvFx2;
     @BindView(R.id.tv_fx_3)
-    RadioButton tvFx3;
+    RadioButton mTvFx3;
     @BindView(R.id.tv_fx_4)
-    RadioButton tvFx4;
+    RadioButton mTvFx4;
     @BindView(R.id.ll_fx)
-    LinearLayout llFx;
+    LinearLayout mLlFx;
     @BindView(R.id.tv_slow_label)
-    TextView tvSlowLabel;
+    TextView mTvSlowLabel;
     @BindView(R.id.tv_slow_no)
-    RadioButton tvSlowNo;
+    RadioButton mTvSlowNo;
     @BindView(R.id.tv_slow_yes)
-    RadioButton tvSlowYes;
+    RadioButton mTvSlowYes;
     @BindView(R.id.rg_slow)
-    RadioGroup rgSlow;
+    RadioGroup mRgSlow;
     @BindView(R.id.tv_factor_nyha_label)
-    TextView tvFactorNyhaLabel;
+    TextView mTvFactorNyhaLabel;
     @BindView(R.id.rb_factor_nyha_1)
-    RadioButton rbFactorNyha1;
+    RadioButton mRbFactorNyha1;
     @BindView(R.id.rb_factor_nyha_2)
-    RadioButton rbFactorNyha2;
+    RadioButton mRbFactorNyha2;
     @BindView(R.id.rb_factor_nyha_3)
-    RadioButton rbFactorNyha3;
+    RadioButton mRbFactorNyha3;
     @BindView(R.id.rb_factor_nyha_4)
-    RadioButton rbFactorNyha4;
+    RadioButton mRbFactorNyha4;
     @BindView(R.id.ll_factor_nyha)
-    LinearLayout llFactorNyha;
+    LinearLayout mLlFactorNyha;
     @BindView(R.id.tv_bm_label)
-    TextView tvBmLabel;
+    TextView mTvBmLabel;
     @BindView(R.id.tv_bm_no)
-    RadioButton tvBmNo;
+    RadioButton mTvBmNo;
     @BindView(R.id.tv_bm_yes)
-    RadioButton tvBmYes;
+    RadioButton mTvBmYes;
     @BindView(R.id.tv_stroke_label)
-    TextView tvStrokeLabel;
+    TextView mTvStrokeLabel;
     @BindView(R.id.tv_stroke_no)
-    RadioButton tvStrokeNo;
+    RadioButton mTvStrokeNo;
     @BindView(R.id.tv_stroke_yes)
-    RadioButton tvStrokeYes;
+    RadioButton mTvStrokeYes;
     @BindView(R.id.rg_stroke)
-    RadioGroup rgStroke;
+    RadioGroup mRgStroke;
     @BindView(R.id.tv_desc_label)
-    TextView tvDescLabel;
+    TextView mTvDescLabel;
     @BindView(R.id.tv_desc_no)
-    RadioButton tvDescNo;
+    RadioButton mTvDescNo;
     @BindView(R.id.tv_desc_yes)
-    RadioButton tvDescYes;
+    RadioButton mTvDescYes;
     @BindView(R.id.ll_desc)
-    LinearLayout llDesc;
+    LinearLayout mLlDesc;
     @BindView(R.id.tv_pa_label)
-    TextView tvPaLabel;
+    TextView mTvPaLabel;
     @BindView(R.id.tv_pa_no)
-    RadioButton tvPaNo;
+    RadioButton mTvPaNo;
     @BindView(R.id.tv_pa_yes)
-    RadioButton tvPaYes;
+    RadioButton mTvPaYes;
     @BindView(R.id.tv_aa_label)
-    TextView tvAaLabel;
+    TextView mTvAaLabel;
     @BindView(R.id.tv_aa_no)
-    RadioButton tvAaNo;
+    RadioButton mTvAaNo;
     @BindView(R.id.tv_aa_yes)
-    RadioButton tvAaYes;
+    RadioButton mTvAaYes;
     @BindView(R.id.tv_copd_label)
-    TextView tvCopdLabel;
+    TextView mTvCopdLabel;
     @BindView(R.id.tv_copd_no)
-    RadioButton tvCopdNo;
+    RadioButton mTvCopdNo;
     @BindView(R.id.tv_copd_yes)
-    RadioButton tvCopdYes;
+    RadioButton mTvCopdYes;
     @BindView(R.id.tv_ss_label)
-    TextView tvSsLabel;
+    TextView mTvSsLabel;
     @BindView(R.id.tv_ss_no)
-    RadioButton tvSsNo;
+    RadioButton mTvSsNo;
     @BindView(R.id.tv_ss_yes)
-    RadioButton tvSsYes;
+    RadioButton mTvSsYes;
     @BindView(R.id.tv_px_label)
-    TextView tvPxLabel;
+    TextView mTvPxLabel;
     @BindView(R.id.tv_px_no)
-    RadioButton tvPxNo;
+    RadioButton mTvPxNo;
     @BindView(R.id.tv_px_yes)
-    RadioButton tvPxYes;
+    RadioButton mTvPxYes;
     @BindView(R.id.tv_pu_label)
-    TextView tvPuLabel;
+    TextView mTvPuLabel;
     @BindView(R.id.tv_pu_no)
-    RadioButton tvPuNo;
+    RadioButton mTvPuNo;
     @BindView(R.id.tv_pu_yes)
-    RadioButton tvPuYes;
+    RadioButton mTvPuYes;
     @BindView(R.id.tv_ta_label)
-    TextView tvTaLabel;
+    TextView mTvTaLabel;
     @BindView(R.id.tv_ta_no)
-    RadioButton tvTaNo;
+    RadioButton mTvTaNo;
     @BindView(R.id.tv_ta_yes)
-    RadioButton tvTaYes;
+    RadioButton mTvTaYes;
     @BindView(R.id.tv_mc_label)
-    TextView tvMcLabel;
+    TextView mTvMcLabel;
     @BindView(R.id.tv_mc_no)
-    RadioButton tvMcNo;
+    RadioButton mTvMcNo;
     @BindView(R.id.tv_mc_yes)
-    RadioButton tvMcYes;
+    RadioButton mTvMcYes;
     @BindView(R.id.tv_end_label)
-    TextView tvEndLabel;
+    TextView mTvEndLabel;
     @BindView(R.id.tv_end_no)
-    RadioButton tvEndNo;
+    RadioButton mTvEndNo;
     @BindView(R.id.tv_end_yes)
-    RadioButton tvEndYes;
+    RadioButton mTvEndYes;
     @BindView(R.id.es_left)
-    EditSpinner esLeft;
+    EditSpinner mEsLeft;
     @BindView(R.id.et_emergency_ward)
-    EditText etEmergencyWard;
+    EditText mEtEmergencyWard;
     @BindView(R.id.es_right)
-    EditSpinner esRight;
+    EditSpinner mEsRight;
     @BindView(R.id.tv_bnp_label)
-    TextView tvBnpLabel;
+    TextView mTvBnpLabel;
     @BindView(R.id.rb_bnp_no)
-    RadioButton rbBnpNo;
+    RadioButton mRbBnpNo;
     @BindView(R.id.rb_bnp_yes)
-    RadioButton rbBnpYes;
+    RadioButton mRbBnpYes;
     @BindView(R.id.es_bnp_left)
-    EditSpinner esBnpLeft;
+    EditSpinner mEsBnpLeft;
     @BindView(R.id.et_bnp)
-    EditText etBnp;
+    EditText mEtBnp;
     @BindView(R.id.tv_tc_label)
-    TextView tvTcLabel;
+    TextView mTvTcLabel;
     @BindView(R.id.rb_tc_no)
-    RadioButton rbTcNo;
+    RadioButton mRbTcNo;
     @BindView(R.id.rb_tc_yes)
-    RadioButton rbTcYes;
+    RadioButton mRbTcYes;
     @BindView(R.id.et_tc)
-    EditText etTc;
+    EditText mEtTc;
     @BindView(R.id.tv_tg_label)
-    TextView tvTgLabel;
+    TextView mTvTgLabel;
     @BindView(R.id.rb_tg_no)
-    RadioButton rbTgNo;
+    RadioButton mRbTgNo;
     @BindView(R.id.rb_tg_yes)
-    RadioButton rbTgYes;
+    RadioButton mRbTgYes;
     @BindView(R.id.et_tg)
-    EditText etTg;
+    EditText mEtTg;
     @BindView(R.id.tv_hdl_label)
-    TextView tvHdlLabel;
+    TextView mTvHdlLabel;
     @BindView(R.id.rb_hdl_no)
-    RadioButton rbHdlNo;
+    RadioButton mRbHdlNo;
     @BindView(R.id.rb_hdl_yes)
-    RadioButton rbHdlYes;
+    RadioButton mRbHdlYes;
     @BindView(R.id.et_hdl)
-    EditText etHdl;
+    EditText mEtHdl;
     @BindView(R.id.tv_ldl_label)
-    TextView tvLdlLabel;
+    TextView mTvLdlLabel;
     @BindView(R.id.rb_ldl_no)
-    RadioButton rbLdlNo;
+    RadioButton mRbLdlNo;
     @BindView(R.id.rb_ldl_yes)
-    RadioButton rbLdlYes;
+    RadioButton mRbLdlYes;
     @BindView(R.id.et_ldl)
-    EditText etLdl;
+    EditText mEtLdl;
     @BindView(R.id.tv_uc_label)
-    TextView tvUcLabel;
+    TextView mTvUcLabel;
     @BindView(R.id.rb_uc_no)
-    RadioButton rbUcNo;
+    RadioButton mRbUcNo;
     @BindView(R.id.rb_uc_yes)
-    RadioButton rbUcYes;
+    RadioButton mRbUcYes;
     @BindView(R.id.et_lvef)
-    EditText etLvef;
+    EditText mEtLvef;
     @BindView(R.id.tv_va_label)
-    TextView tvVaLabel;
+    TextView mTvVaLabel;
     @BindView(R.id.rb_va_no)
-    RadioButton rbVaNo;
+    RadioButton mRbVaNo;
     @BindView(R.id.rb_va_yes)
-    RadioButton rbVaYes;
+    RadioButton mRbVaYes;
     @BindView(R.id.tv_lva_label)
-    TextView tvLvaLabel;
+    TextView mTvLvaLabel;
     @BindView(R.id.rb_lva_no)
-    RadioButton rbLvaNo;
+    RadioButton mRbLvaNo;
     @BindView(R.id.rb_lva_yes)
-    RadioButton rbLvaYes;
+    RadioButton mRbLvaYes;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton mBtnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton mBtnConfirm;
 
 
     public static PatientStatusFragment1 newInstance(String keyword) {

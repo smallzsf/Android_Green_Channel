@@ -1,89 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
 
-<!--    &lt;!&ndash;诊断&ndash;&gt;-->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="@dimen/item_normal_height"-->
-<!--        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"-->
-<!--        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">-->
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_draw_blood_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
 
-<!--        <TextView-->
-<!--            android:id="@+id/awareness"-->
-<!--            android:layout_width="@dimen/vital_sign_title_width"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:text="诊断"-->
-<!--            android:textColor="@color/app_223b53"-->
-<!--            android:textSize="@dimen/item_title_size" />-->
+                android:background="@color/white"
+                app:title="确诊时间" />
 
 
-<!--        <com.xyj.strokeaid.view.editspinner.EditSpinner-->
-<!--            android:id="@+id/es_vital_sign_aware"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/dp_30"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_toRightOf="@+id/awareness"-->
-<!--            android:gravity="center"-->
-<!--            app:Background="@drawable/bg_view_frame"-->
-<!--            app:hint="请选择"-->
-<!--            app:rightImage="@drawable/ic_arrow_down_blue" />-->
-
-
-<!--    </RelativeLayout>-->
-<!--    <include layout="@layout/include_line" />-->
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/sp_15"
-        android:layout_marginBottom="@dimen/dp_80">
-
-        <TextView
-            android:id="@+id/tv_first_cure"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="确诊时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_draw_blood_time"
-            style="@style/patient_et_style"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_first_cure"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-
-    </RelativeLayout>
-
-    <include layout="@layout/include_line" />
-
-        <include layout="@layout/view_two_horizontal_bottom_button"/>
-
-
-    </LinearLayout>
+            <include
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                layout="@layout/view_two_horizontal_bottom_button"
+                android:layout_marginBottom="@dimen/item_normal_margin"/>
 
 
 
-</androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+</RelativeLayout>

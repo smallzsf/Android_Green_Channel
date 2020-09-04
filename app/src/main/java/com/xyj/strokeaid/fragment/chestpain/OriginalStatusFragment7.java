@@ -15,6 +15,7 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,10 +41,8 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
     RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
     RadioButton mRbCtFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
@@ -74,8 +73,13 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
     RadioButton mRbStep3;
     @BindView(R.id.rb_step_4)
     RadioButton mRbStep4;
+    @BindView(R.id.ll_deal)
+    LinearLayout mLlDeal;
     @BindView(R.id.tv_note)
     TextView mTvNote;
+    @BindView(R.id.et_note)
+    EditText mEtNote;
+
 
     public static OriginalStatusFragment7 newInstance(String keyword) {
         OriginalStatusFragment7 fragment = new OriginalStatusFragment7();
@@ -133,6 +137,6 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

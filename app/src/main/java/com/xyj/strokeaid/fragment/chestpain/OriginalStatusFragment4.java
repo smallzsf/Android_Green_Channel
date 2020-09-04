@@ -5,6 +5,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,16 +35,17 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
  */
 public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetListener {
 
+
+    List<String> office = new ArrayList<>();
+    TimePickerDialog mDialogAll;
     @BindView(R.id.give_up_cure)
     TextView mGiveUpCure;
     @BindView(R.id.rb_blood_frag_ae)
     RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
     RadioButton mRbCtFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
@@ -56,6 +58,14 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     CheckBox mCbShadowText3;
     @BindView(R.id.cb_shadow_text_4)
     CheckBox mCbShadowText4;
+    @BindView(R.id.ttb_ct_notify_time)
+    TextTimeBar mTtbCtNotifyTime;
+    @BindView(R.id.ttb_ct_ready_time)
+    TextTimeBar mTtbCtReadyTime;
+    @BindView(R.id.ttb_ct_start_time)
+    TextTimeBar mTtbCtStartTime;
+    @BindView(R.id.ttb_ct_report_time)
+    TextTimeBar mTtbCtReportTime;
     @BindView(R.id.tv_danger)
     TextView mTvDanger;
     @BindView(R.id.rb_danger_high)
@@ -64,10 +74,8 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     RadioButton mRbDangerMid;
     @BindView(R.id.rb_danger_low)
     RadioButton mRbDangerLow;
-    @BindView(R.id.tv_cure_label)
-    TextView mTvCureLabel;
     @BindView(R.id.tv_cure_time)
-    TextView mTvCureTime;
+    TextTimeBar mTvCureTime;
     @BindView(R.id.tv_strategy)
     TextView mTvStrategy;
     @BindView(R.id.rb_strategy_3)
@@ -76,6 +84,8 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     RadioButton mRbStrategy4;
     @BindView(R.id.rb_strategy_5)
     RadioButton mRbStrategy5;
+    @BindView(R.id.rg_strategy)
+    RadioGroup mRgStrategy;
     @BindView(R.id.tv_exist_taboo_label)
     TextView mTvExistTabooLabel;
     @BindView(R.id.rb_taboo_yes)
@@ -86,10 +96,7 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout mLlBottom;
-    List<String> office = new ArrayList<>();
-    TimePickerDialog mDialogAll;
+
 
     public static OriginalStatusFragment4 newInstance(String keyword) {
         OriginalStatusFragment4 fragment = new OriginalStatusFragment4();
@@ -145,6 +152,6 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }
