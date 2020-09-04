@@ -17,6 +17,7 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -57,10 +58,8 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     RadioButton mRbCvusFragAe;
     @BindView(R.id.rb_tcd_frag_ae)
     RadioButton mRbTcdFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
@@ -83,10 +82,8 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     TextView mTvUnit;
     @BindView(R.id.es_vital_sign_aware_2)
     EditSpinner mEsVitalSignAware2;
-    @BindView(R.id.tv_arrive_label)
-    TextView mTvArriveLabel;
     @BindView(R.id.tv_arrive_time)
-    TextView mTvArriveTime;
+    TextTimeBar mTvArriveTime;
     @BindView(R.id.tv_detour_ccu)
     TextView mTvDetourCcu;
     @BindView(R.id.rb_detour_ccu_yes)
@@ -119,8 +116,6 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout mLlBottom;
     @BindView(R.id.rg_into)
     RadioGroup mRgInto;
     @BindView(R.id.ll_into_no)
@@ -212,12 +207,12 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
 
     @OnClick({R.id.give_up_cure, R.id.rb_blood_frag_ae, R.id.rb_ct_frag_ae, R.id.rb_cta_frag_ae, R.id.rb_ctp_frag_ae,
             R.id.rb_mri_frag_ae, R.id.rb_mra_frag_ae, R.id.rb_cemra_frag_ae, R.id.rb_cvus_frag_ae, R.id.rb_tcd_frag_ae,
-            R.id.tv_first_cure, R.id.tv_draw_blood_time, R.id.et_emergency_ward, R.id.tv_emergency_ward, R.id.rb_level_1,
+            R.id.tv_draw_blood_time, R.id.et_emergency_ward, R.id.tv_emergency_ward, R.id.rb_level_1,
             R.id.rb_level_2, R.id.rb_level_3, R.id.rb_level_4, R.id.tv_detour, R.id.rb_detour_yes, R.id.rb_detour_no,
-            R.id.tv_unit, R.id.es_vital_sign_aware_2, R.id.tv_arrive_label, R.id.tv_arrive_time, R.id.tv_detour_ccu,
+            R.id.tv_unit, R.id.es_vital_sign_aware_2, R.id.tv_arrive_time, R.id.tv_detour_ccu,
             R.id.rb_detour_ccu_yes, R.id.rb_detour_ccu_no, R.id.tv_into, R.id.rb_into_yes, R.id.rb_into_no, R.id.cb_text_1,
             R.id.cb_text_2, R.id.cb_text_3, R.id.cb_text_4, R.id.cb_text_5, R.id.cb_text_6, R.id.cb_text_7, R.id.cb_text_8,
-            R.id.btn_get_data, R.id.btn_confirm, R.id.ll_bottom})
+            R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.give_up_cure:
@@ -239,8 +234,6 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             case R.id.rb_cvus_frag_ae:
                 break;
             case R.id.rb_tcd_frag_ae:
-                break;
-            case R.id.tv_first_cure:
                 break;
             case R.id.tv_draw_blood_time:
 
@@ -266,8 +259,6 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             case R.id.tv_unit:
                 break;
             case R.id.es_vital_sign_aware_2:
-                break;
-            case R.id.tv_arrive_label:
                 break;
             case R.id.tv_arrive_time:
                 break;
@@ -303,13 +294,12 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
                 break;
             case R.id.btn_confirm:
                 break;
-            case R.id.ll_bottom:
-                break;
+
         }
     }
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

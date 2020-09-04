@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -15,7 +16,9 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
+import com.xyj.strokeaid.view.TextTimeBar;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,14 +37,8 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 public class PatientStatusFragment3 extends BaseFragment implements OnDateSetListener {
     List<String> office = new ArrayList<>();
     TimePickerDialog mDialogAll;
-    @BindView(R.id.awareness)
-    TextView mAwareness;
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner mEsVitalSignAware;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.cb_text_1)
     CheckBox mCbText1;
     @BindView(R.id.cb_text_2)
@@ -98,16 +95,19 @@ public class PatientStatusFragment3 extends BaseFragment implements OnDateSetLis
     RadioButton mRbStep3;
     @BindView(R.id.rb_step_4)
     RadioButton mRbStep4;
+    @BindView(R.id.ll_deal)
+    LinearLayout mLlDeal;
     @BindView(R.id.tv_note)
     TextView mTvNote;
+    @BindView(R.id.et_note)
+    EditText mEtNote;
     @BindView(R.id.btn_get_data)
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
     @BindView(R.id.ll_bottom)
     LinearLayout mLlBottom;
-    @BindView(R.id.ll_deal)
-    LinearLayout mLlDeal;
+
 
     public static PatientStatusFragment3 newInstance(String keyword) {
         PatientStatusFragment3 fragment = new PatientStatusFragment3();
@@ -165,6 +165,6 @@ public class PatientStatusFragment3 extends BaseFragment implements OnDateSetLis
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

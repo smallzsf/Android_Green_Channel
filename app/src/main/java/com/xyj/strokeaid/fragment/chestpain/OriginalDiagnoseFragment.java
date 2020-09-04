@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.xyj.strokeaid.R;
@@ -48,6 +49,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private OriginalStatusFragment5 mOriginalStatusFragment5 = null;
     private OriginalStatusFragment6 mOriginalStatusFragment6 = null;
     private OriginalStatusFragment7 mOriginalStatusFragment7 = null;
+    private FragmentManager fm;
 
     public static OriginalDiagnoseFragment newInstance(String patientId, String docId) {
         OriginalDiagnoseFragment fragment = new OriginalDiagnoseFragment();
@@ -75,9 +77,9 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     }
 
     private void initview() {
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        fm = getChildFragmentManager();
         mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
-        ft.replace(R.id.fl_main, mOriginalStatusFragment1).commitAllowingStateLoss();
+        fm.beginTransaction().replace(R.id.fl_main, mOriginalStatusFragment1).commitAllowingStateLoss();
     }
 
     private void initData() {
@@ -112,9 +114,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     //根据ID选择碎片的方法
     private void selectFragment(String type){
         //创建碎片事务管理  每一次碎片的显示与隐藏都要通过事务管理来操作
-        FragmentTransaction ft=getChildFragmentManager().beginTransaction();
-        //操作：碎片为空 创建添加
-        //     碎片不为空，直接显示
+       FragmentTransaction ft = fm.beginTransaction();
         hideFragment(ft);
         switch (type) {
             case "STEMI":
@@ -185,7 +185,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                 break;
         }
 
-        ft.commitAllowingStateLoss();//提交
+        ft.commitNowAllowingStateLoss();//提交
     }
 
     //隐藏所有碎片的方法
@@ -212,6 +212,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         if(mOriginalStatusFragment7!=null){
             ft.hide(mOriginalStatusFragment7);
         }
-        ft.commitAllowingStateLoss();
+        ft.commitNowAllowingStateLoss();
     }
 }

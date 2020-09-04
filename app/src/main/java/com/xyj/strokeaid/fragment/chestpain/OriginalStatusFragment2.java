@@ -45,10 +45,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
     RadioButton mRbCtFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
@@ -71,10 +69,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     TextView mTvUnit;
     @BindView(R.id.es_vital_sign_aware_2)
     EditSpinner mEsVitalSignAware2;
-    @BindView(R.id.tv_arrive_label)
-    TextView mTvArriveLabel;
     @BindView(R.id.tv_arrive_time)
-    TextView mTvArriveTime;
+    TextTimeBar mTvArriveTime;
     @BindView(R.id.tv_detour_ccu)
     TextView mTvDetourCcu;
     @BindView(R.id.rb_detour_ccu_yes)
@@ -99,6 +95,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbMeasureLevel2;
     @BindView(R.id.rb_measure_level_3)
     RadioButton mRbMeasureLevel3;
+    @BindView(R.id.rg_again)
+    RadioGroup mRgAgain;
     @BindView(R.id.rb_measure_level_4)
     RadioButton mRbMeasureLevel4;
     @BindView(R.id.rb_measure_level_5)
@@ -115,6 +113,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbIntoYes;
     @BindView(R.id.rb_into_no)
     RadioButton mRbIntoNo;
+    @BindView(R.id.rg_into)
+    RadioGroup mRgInto;
     @BindView(R.id.cb_text_1)
     CheckBox mCbText1;
     @BindView(R.id.cb_text_2)
@@ -143,18 +143,12 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbIntoMeasureLevel4;
     @BindView(R.id.ll_into_yes)
     LinearLayout mLlIntoYes;
+    @BindView(R.id.ll_again)
+    LinearLayout mLlAgain;
     @BindView(R.id.btn_get_data)
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout mLlBottom;
-    @BindView(R.id.rg_into)
-    RadioGroup mRgInto;
-    @BindView(R.id.rg_again)
-    RadioGroup mRgAgain;
-    @BindView(R.id.ll_again)
-    LinearLayout mLlAgain;
 
 
     public static OriginalStatusFragment2 newInstance(String keyword) {
@@ -230,7 +224,7 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == mRbMeasureLevel1.getId()) { //未做
                     mLlAgain.setVisibility(View.GONE);
-                }else {
+                } else {
                     mLlAgain.setVisibility(View.VISIBLE);
                 }
             }
@@ -250,6 +244,6 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

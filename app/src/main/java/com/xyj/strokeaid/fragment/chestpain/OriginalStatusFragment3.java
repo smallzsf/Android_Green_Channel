@@ -5,7 +5,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +17,6 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,10 +42,8 @@ public class OriginalStatusFragment3 extends BaseFragment implements OnDateSetLi
     RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
     RadioButton mRbCtFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
-    TextView mTvDrawBloodTime;
+    TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
     EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
@@ -60,24 +56,27 @@ public class OriginalStatusFragment3 extends BaseFragment implements OnDateSetLi
     CheckBox mCbShadowText3;
     @BindView(R.id.cb_shadow_text_4)
     CheckBox mCbShadowText4;
-    @BindView(R.id.tv_cc_notify_label)
-    TextView mTvCcNotifyLabel;
+    @BindView(R.id.ttb_ct_notify_time)
+    TextTimeBar mTtbCtNotifyTime;
+    @BindView(R.id.ttb_ct_ready_time)
+    TextTimeBar mTtbCtReadyTime;
+    @BindView(R.id.ttb_ct_start_time)
+    TextTimeBar mTtbCtStartTime;
+    @BindView(R.id.ttb_ct_report_time)
+    TextTimeBar mTtbCtReportTime;
+
     @BindView(R.id.tv_cc_notify_time)
     TextTimeBar mTvCcNotifyTime;
-    @BindView(R.id.tv_cc_finish_label)
-    TextView mTvCcFinishLabel;
+
     @BindView(R.id.tv_cc_finish_time)
     TextTimeBar mTvCcFinishTime;
-    @BindView(R.id.tv_cc_start_label)
-    TextView mTvCcStartLabel;
+
     @BindView(R.id.tv_cc_start_time)
     TextTimeBar mTvCcStartTime;
-    @BindView(R.id.tv_cc_report_label)
-    TextView mTvCcReportLabel;
+
     @BindView(R.id.tv_report_time)
     TextTimeBar mTvReportTime;
-    @BindView(R.id.tv_cc_heart_label)
-    TextView mTvCcHeartLabel;
+
     @BindView(R.id.tv_cc_heart_time)
     TextTimeBar mTvCcHeartTime;
     @BindView(R.id.tv_type)
@@ -102,8 +101,7 @@ public class OriginalStatusFragment3 extends BaseFragment implements OnDateSetLi
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout mLlBottom;
+
 
 
     public static OriginalStatusFragment3 newInstance(String keyword) {
@@ -160,6 +158,6 @@ public class OriginalStatusFragment3 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mTvDrawBloodTime.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }
