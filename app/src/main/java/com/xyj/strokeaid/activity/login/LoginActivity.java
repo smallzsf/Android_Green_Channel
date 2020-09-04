@@ -268,12 +268,12 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void showLoading() {
-
+        showLoadingDialog();
     }
 
     @Override
     public void hideLoading() {
-
+        hideLoadingDialog();
     }
 
     @Override

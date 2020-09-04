@@ -25,11 +25,13 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
+import com.xyj.strokeaid.view.LoadingDialogFragment;
 import com.xyj.strokeaid.view.SettingBar;
 
 import java.util.ArrayDeque;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 
@@ -45,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
     protected MMKV mDefaultMMKV;
+    protected LoadingDialogFragment mLoadingDialogFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-    protected void initImmersionBar(){
+    protected void initImmersionBar() {
         // 初始化沉浸式状态栏
         ImmersionBar.with(this)
                 .statusBarColor(R.color.colorPrimary)
@@ -93,6 +96,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mLoadingDialogFragment != null) {
+            mLoadingDialogFragment.dismiss();
+        }
     }
 
 
@@ -266,8 +272,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         Toast.makeText(mContext, res, Toast.LENGTH_SHORT).show();
     }
 
-    public String getUserId(){
+    public String getUserId() {
         return UserInfoCache.getInstance().getUserInfo().getId();
+    }
+
+    public void showLoadingDialog() {
+        if (mLoadingDialogFragment == null) {
+            mLoadingDialogFragment = new LoadingDialogFragment();
+        }
+        if (mLoadingDialogFragment.isVisible()) {
+            return;
+        }
+        mLoadingDialogFragment.show(getSupportFragmentManager(), "loading");
+    }
+
+    public void hideLoadingDialog() {
+        if (mLoadingDialogFragment != null) {
+            mLoadingDialogFragment.dismiss();
+        }
     }
 }
 

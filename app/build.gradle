@@ -208,4 +208,8 @@ dependencies {
 
     /*PictureSelector*/
     implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.0'
+
+    // lottie
+    // https://github.com/airbnb/lottie-android
+    implementation 'com.airbnb.android:lottie:3.4.2'
 }
