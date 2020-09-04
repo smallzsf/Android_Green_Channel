@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@color/white"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="狭窄程度*"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <RadioButton
+                    android:id="@+id/rb_smaller_half"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text=">50%"
+                    android:textSize="@dimen/item_content_size"
+                    tools:ignore="HardcodedText" />
+
+                <RadioButton
+                    android:id="@+id/rb_smaller_seventy"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="50~69%"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_smaller_ninety"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="70~89%"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_smaller_hundred"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="90~99%"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_hundred"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="100%"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="造影时TIMI血流"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_gender_level_zero"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="0级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_level_first"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="1级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_level_second"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="2级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_gender_level_third"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="3级"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="支架内血栓*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_stent_thrombosis_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stent_thrombosis_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="是否分叉病变*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_bifurcation_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_bifurcation_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="是否分CTO*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_CTO_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_CTO_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="钙化病变*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_calcification_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_calcification_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="罪犯病变*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_culprit_lesion_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_culprit_lesion_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <include layout="@layout/include_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="32dp"
+                    android:text="PCI*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/rb_PCI_false"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_PCI_true"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingRight="@dimen/dp_10"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="PCI是:"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="术中处理*"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/operation_process"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                zhy:max_select="-1" />
+
+            <include layout="@layout/include_line" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_through_time_guide_wire"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:title="导丝通过时间:" />
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="术后TIMI血流"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_postoperative_level_zero"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="0级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_postoperative_level_first"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="1级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_postoperative_level_second"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="2级"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_postoperative_level_third"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="3级"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="植入支架个数"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_support_zero"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="0枚"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_first"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="1枚"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_second"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="2枚"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_third"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text=">=3枚"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+            <include layout="@layout/include_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:gravity="left|center"
+                android:text="支架种类"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <RadioButton
+                    android:id="@+id/rb_support_category_BMS"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="BMS"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_category_DES"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="DES"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_category_biodegradable"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="可降解支架"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
+                    android:id="@+id/rb_support_category_other"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingRight="@dimen/dp_10"
+                    android:text="其他"
+                    android:textSize="@dimen/item_content_size" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_margin="@dimen/dp_20"
+        android:padding="@dimen/dp_5"
+        android:src="@drawable/common_icon_close_black" />
+
+</FrameLayout>

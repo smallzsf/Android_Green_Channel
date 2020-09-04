@@ -1,14 +1,449 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.stroke.StrokArterialAneurysmFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView_act_stroke_operation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="动脉瘤" />
+        tools:context=".activity.stroke.StrokeOperationOnActivity">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:gravity="center_vertical"
+                    android:text="颅内血管检查方式:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_14"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/ck_stroke_cta_no_aneurysm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="CTA"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <CheckBox
+                        android:id="@+id/ck_stroke_mra_no_aneurysm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="MRA"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <CheckBox
+                        android:id="@+id/ck_stroke_dsa_no_aneurysm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="DSA"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <CheckBox
+                        android:id="@+id/ck_stroke_not_checked_no_aneurysm"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="未查"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ck_stroke_not_checked_no_aneurysm" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="动脉瘤个数"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <EditText
+                    android:id="@+id/ed_stroke_count_aneurysm"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="0—4"
+                    android:inputType="number"
+                    android:paddingLeft="@dimen/dp_5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/dp_5"
+                    android:text="个" />
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ck_stroke_not_checked_no_aneurysm" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="动脉瘤责任血管部位"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_add_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp_8"
+                        android:text="新增"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/ed_stroke_count_content_aneurysm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="动脉瘤"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:text="是否手术:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_yes_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="是"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_no_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="否"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rb_stroke_no_aneurysm" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_start_time_aneurysm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="开始时间"
+                app:ttb_time_hint="2020-08-22 10:58:19" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:text="手术类型:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/rp_stroke_mode_aneurysm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_intervention_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="介入栓塞术"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_clipping_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="夹闭术"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_compound_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="复合手术"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:text="动脉瘤治疗结果:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_wqbs_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="完全闭塞"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_ljcl_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="瘤径残留"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_bfltcl_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="部分瘤体残留"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_ltcl_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="瘤体残留"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:minWidth="60dp"
+                    android:text="夹闭后在瘤动脉情况:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_tc_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="通畅"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_jdxz_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="轻度狭窄（《50%)"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_yzxz_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="严重狭窄（》50%)"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:id="@+id/rb_stroke_wqbsxz_aneurysm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="完全闭塞"
+                        android:textColor="@color/color_222222"
+                        android:textSize="14sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rb_stroke_no_aneurysm" />
+
+            <include
+                android:id="@+id/include_clipping"
+                layout="@layout/fragment_in_clipping"
+                android:visibility="gone" />
+
+            <include
+                android:id="@+id/include_intervention"
+                layout="@layout/fragment_in_intervention"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>

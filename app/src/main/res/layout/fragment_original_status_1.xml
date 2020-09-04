@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
 
-    <!--诊断-->
+<!--    &lt;!&ndash;诊断&ndash;&gt;
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
@@ -41,7 +41,7 @@
 
 
     </RelativeLayout>
-    <include layout="@layout/include_line" />
+    <include layout="@layout/include_line" />-->
 
     <!--诊断-->
     <LinearLayout
@@ -175,7 +175,7 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_draw_blood_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
@@ -392,7 +392,7 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_arrive_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
@@ -472,6 +472,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_into"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"

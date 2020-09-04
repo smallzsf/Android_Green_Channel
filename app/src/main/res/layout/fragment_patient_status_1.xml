@@ -10,37 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <!--诊断-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-        <TextView
-            android:id="@+id/awareness"
-            android:layout_width="@dimen/vital_sign_title_width"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="诊断"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.editspinner.EditSpinner
-            android:id="@+id/es_vital_sign_aware"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/awareness"
-            android:gravity="center"
-            app:Background="@drawable/bg_view_frame"
-            app:hint="请选择"
-            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-    </RelativeLayout>
-    <include layout="@layout/include_line" />
     <!--确诊-->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -58,7 +27,7 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_draw_blood_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
@@ -93,6 +62,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_yn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -193,10 +163,12 @@
 
      <!--NYHA分级-->
     <LinearLayout
+        android:id="@+id/ll_nyha"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_nyha_label"
@@ -255,8 +227,15 @@
         </RadioGroup>
     </LinearLayout>
     <include layout="@layout/include_line" />
+        <!--住院期间并发症-->
+    <include layout="@layout/layout_inner_complication"/>
     <include layout="@layout/layout_danger_factor" />
     <include layout="@layout/layout_check_result" />
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/timeline_item_margintop"
+        layout="@layout/view_two_horizontal_bottom_button" />
 
     </LinearLayout>
 

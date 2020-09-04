@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.didi.dokit'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     signingConfigs {
@@ -70,6 +71,11 @@ android {
         }
     }
 
+    greendao {
+        //当前数据库版本
+        schemaVersion 1
+    }
+
 }
 
 dependencies {
@@ -126,6 +132,10 @@ dependencies {
     // event bus
     // https://github.com/greenrobot/EventBus
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    // green dao
+    // https://github.com/greenrobot/greenDAO
+    implementation 'org.greenrobot:greendao:3.3.0'
 
     // Dex分包，解决 65k 问题
     implementation 'com.android.support:multidex:1.0.3'

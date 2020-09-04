@@ -47,7 +47,6 @@ public class ChangePasswordActivity extends BaseActivity {
     @BindView(R.id.btn_save_act_cp)
     AppCompatButton btnSaveActCp;
 
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_change_password;

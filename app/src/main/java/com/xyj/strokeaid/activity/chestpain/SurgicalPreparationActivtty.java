@@ -15,6 +15,8 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.BaseTitleBar;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -35,25 +37,28 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
  */
 public class SurgicalPreparationActivtty extends BaseActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
+    @BindView(R.id.title_bar_act_npmr)
+    BaseTitleBar titleBarActNpmr;
+
     @BindView(R.id.rl_back)
-    RelativeLayout rl_back;
+    RelativeLayout rlBack;
     @BindView(R.id.tv_save)
-    TextView tv_save;
+    TextView tvSave;
 
     @BindView(R.id.et_doctor_name)
-    EditText et_doctor_name;
-    @BindView(R.id.tv_start_time)
-    TextView tv_start_time;
+    EditText etDoctorName;
+    @BindView(R.id.ttb_dis_start_act_npmr)
+    TextTimeBar tvStartTime;
     @BindView(R.id.es_room)
-    EditSpinner es_room;
-    @BindView(R.id.tv_catheter_room_time)
-    TextView tv_catheter_room_time;
-    @BindView(R.id.tv_cagree_time)
-    TextView tv_cagree_time;
-    @BindView(R.id.tv_sign_time)
-    TextView tv_sign_time;
+    EditSpinner esRoom;
+    @BindView(R.id.rl_catheter_room)
+    TextTimeBar tvCatheterRoomTime;
+    @BindView(R.id.rl_agree_time)
+    TextTimeBar tvCagreeTime;
+    @BindView(R.id.rl_sign_time)
+    TextTimeBar tvSignTime;
     @BindView(R.id.rg_agree)
-    RadioGroup rg_agree;
+    RadioGroup rgAgree;
     private List<String> list;
     //家属是否同意
     private Boolean familyState;
@@ -76,19 +81,25 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
         list.add("手术室2");
         list.add("手术室3");
         list.add("手术室4");
-        es_room.setItemData(list);
+        esRoom.setItemData(list);
     }
 
     @Override
     public void initListener() {
-        rl_back.setOnClickListener(this);
-        tv_save.setOnClickListener(this);
-        tv_start_time.setOnClickListener(this);
+        rlBack.setOnClickListener(this);
+        tvSave.setOnClickListener(this);
+        tvStartTime.setOnClickListener(this);
         //es_room.
-        tv_catheter_room_time.setOnClickListener(this);
-        tv_cagree_time.setOnClickListener(this);
-        tv_sign_time.setOnClickListener(this);
-        rg_agree.setOnCheckedChangeListener(this);
+        tvCatheterRoomTime.setOnClickListener(this);
+        tvCagreeTime.setOnClickListener(this);
+        tvSignTime.setOnClickListener(this);
+        rgAgree.setOnCheckedChangeListener(this);
+        titleBarActNpmr.setLeftLayoutClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -100,7 +111,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
             case R.id.tv_save:
                 //保存
                 break;
-            case R.id.tv_start_time:
+            case R.id.ttb_dis_start_act_npmr:
                 //决定介入手术时间
                 TimePickerDialog mDialogAllstart_time = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -111,7 +122,8 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tv_start_time.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+
+                                tvStartTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -121,7 +133,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
 
                 mDialogAllstart_time.show(SurgicalPreparationActivtty.this.getSupportFragmentManager(), "All");
                 break;
-            case R.id.tv_catheter_room_time:
+            case R.id.rl_catheter_room:
                 //启动导管室时间
                 TimePickerDialog mDialogAllCatheterRoomTime = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -132,7 +144,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tv_catheter_room_time.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvCatheterRoomTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -142,7 +154,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
 
                 mDialogAllCatheterRoomTime.show(SurgicalPreparationActivtty.this.getSupportFragmentManager(), "All");
                 break;
-            case R.id.tv_cagree_time:
+            case R.id.rl_agree_time:
                 //开始知情时间
                 TimePickerDialog mDialogAllcatheterAgreeTime = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -153,7 +165,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tv_cagree_time.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvCagreeTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环
@@ -163,7 +175,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
 
                 mDialogAllcatheterAgreeTime.show(SurgicalPreparationActivtty.this.getSupportFragmentManager(), "All");
                 break;
-            case R.id.tv_sign_time:
+            case R.id.rl_sign_time:
                 //签署知情时间
                 TimePickerDialog mDialogAllSign = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -174,7 +186,7 @@ public class SurgicalPreparationActivtty extends BaseActivity implements View.On
                         .setCallBack(new OnDateSetListener() {
                             @Override
                             public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tv_sign_time.setText(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+                                tvSignTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
                             }
                         })
                         //是否可循环

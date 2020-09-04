@@ -1,14 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.stroke.StrokeSanguineousApoplexyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="脑出血" />
+        android:orientation="vertical">
 
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/ttb_start_time_fgm_apoplexy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            app:bottomLineVisible="true"
+            app:title="开始时间"
+            app:ttb_time_hint="2020-08-22 10:58:19" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="麻醉方式"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_14" />
+
+            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                android:id="@+id/es_mzfs_fgm_apoplexy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                app:Background="@drawable/bg_view_frame"
+                app:hint="请选择"
+                app:rightImage="@drawable/ic_arrow_down_blue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="top"
+                android:gravity="center_vertical"
+                android:text="手术方式"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/ck_klxzqcs_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="开颅血肿清除术"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_qgbjys_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="去骨瓣减压术"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_nsjxxzcxs_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="脑室镜下血肿抽吸术"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_zkxzcxs_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="钻孔血肿抽吸术"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/ck_qt_fgm_apoplexy"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="其他"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <EditText
+                        android:id="@+id/ck_qt_content_fgm_apoplexy"
+                        style="@style/patient_et_style"
+                        android:layout_width="225dp"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="start"
+                        android:hint="@string/single_line_input"
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/dp_6"
+                        android:paddingBottom="@dimen/dp_5" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_marginTop="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ck_qt_content_fgm_apoplexy" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="top"
+                android:gravity="center_vertical"
+                android:text="脑部并发症"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/ck_nothing_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="无"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_ssbwzcncx_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="手术部位再次脑出血"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_ssylbwzccx_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="手术远离部位再次血"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_ngs_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="脑梗死"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_jfxdx_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="继发性癫痫"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <CheckBox
+                    android:id="@+id/ck_lngr_fgm_apoplexy"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:layout_weight="1"
+                    android:text="颅内感染"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/ck_nb_qt_fgm_apoplexy"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_weight="1"
+                        android:text="其他"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <EditText
+                        android:id="@+id/ck_nb_qt_content_fgm_apoplexy"
+                        style="@style/patient_et_style"
+                        android:layout_width="225dp"
+                        android:layout_marginLeft="@dimen/dp_5"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="start"
+                        android:hint="@string/single_line_input"
+                        android:inputType="number"
+                        android:paddingLeft="@dimen/dp_6"
+                        android:paddingBottom="@dimen/dp_5" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            style="@style/horizontal_divider"
+            android:layout_marginTop="@dimen/dp_5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ck_qt_content_fgm_apoplexy" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:background="@color/white"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/dp_12">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:minWidth="60dp"
+                android:text="预后:"
+                android:textStyle="bold"
+                android:textColor="@color/color_222222"
+                android:textSize="14dp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:weightSum="5">
+
+                <RadioButton
+                    android:id="@+id/rb_zy_fgm_apoplexy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="治愈"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_hz_fgm_apoplexy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="好转"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_jz_fgm_apoplexy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="加重"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_sw_fgm_apoplexy"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="死亡"
+                    android:textColor="@color/color_222222"
+                    android:textSize="14sp" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>

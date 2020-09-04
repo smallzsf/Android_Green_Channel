@@ -2,12 +2,12 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
@@ -15,6 +15,7 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,24 +31,17 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
  * @Author: 小黑
  * @Date: 2020/9/3 0:05
  */
-public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetListener {
-
+public class PatientStatusFragment3 extends BaseFragment implements OnDateSetListener {
     List<String> office = new ArrayList<>();
     TimePickerDialog mDialogAll;
-    @BindView(R.id.give_up_cure)
-    TextView mGiveUpCure;
-    @BindView(R.id.rb_blood_frag_ae)
-    RadioButton mRbBloodFragAe;
-    @BindView(R.id.rb_ct_frag_ae)
-    RadioButton mRbCtFragAe;
+    @BindView(R.id.awareness)
+    TextView mAwareness;
+    @BindView(R.id.es_vital_sign_aware)
+    EditSpinner mEsVitalSignAware;
     @BindView(R.id.tv_first_cure)
     TextView mTvFirstCure;
     @BindView(R.id.tv_draw_blood_time)
     TextView mTvDrawBloodTime;
-    @BindView(R.id.et_emergency_ward)
-    EditText mEtEmergencyWard;
-    @BindView(R.id.tv_emergency_ward)
-    TextView mTvEmergencyWard;
     @BindView(R.id.cb_text_1)
     CheckBox mCbText1;
     @BindView(R.id.cb_text_2)
@@ -62,8 +56,38 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
     CheckBox mCbText6;
     @BindView(R.id.cb_text_7)
     CheckBox mCbText7;
-    @BindView(R.id.ll_heart_type)
-    LinearLayout mLlHeartType;
+    @BindView(R.id.cb_text_8)
+    CheckBox mCbText8;
+    @BindView(R.id.cb_text_9)
+    CheckBox mCbText9;
+    @BindView(R.id.cb_text_10)
+    CheckBox mCbText10;
+    @BindView(R.id.cb_text_11)
+    CheckBox mCbText11;
+    @BindView(R.id.cb_text_12)
+    CheckBox mCbText12;
+    @BindView(R.id.cb_text_13)
+    CheckBox mCbText13;
+    @BindView(R.id.cb_text_14)
+    CheckBox mCbText14;
+    @BindView(R.id.cb_text_15)
+    CheckBox mCbText15;
+    @BindView(R.id.cb_text_16)
+    CheckBox mCbText16;
+    @BindView(R.id.cb_text_17)
+    CheckBox mCbText17;
+    @BindView(R.id.cb_text_18)
+    CheckBox mCbText18;
+    @BindView(R.id.cb_text_19)
+    CheckBox mCbText19;
+    @BindView(R.id.cb_text_20)
+    CheckBox mCbText20;
+    @BindView(R.id.cb_text_21)
+    CheckBox mCbText21;
+    @BindView(R.id.cb_text_22)
+    CheckBox mCbText22;
+    @BindView(R.id.cb_text_23)
+    CheckBox mCbText23;
     @BindView(R.id.tv_strategy)
     TextView mTvStrategy;
     @BindView(R.id.rb_step_1)
@@ -76,9 +100,17 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
     RadioButton mRbStep4;
     @BindView(R.id.tv_note)
     TextView mTvNote;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton mBtnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton mBtnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout mLlBottom;
+    @BindView(R.id.ll_deal)
+    LinearLayout mLlDeal;
 
-    public static OriginalStatusFragment7 newInstance(String keyword) {
-        OriginalStatusFragment7 fragment = new OriginalStatusFragment7();
+    public static PatientStatusFragment3 newInstance(String keyword) {
+        PatientStatusFragment3 fragment = new PatientStatusFragment3();
 //        Bundle args = new Bundle();
 //        args.putString(IntentKey.PATIENT_ID, patientId);
 //        args.putString(IntentKey.DOC_ID, docId);
@@ -88,7 +120,7 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_original_status_7;
+        return R.layout.fragment_patient_status_3;
     }
 
     @Override
@@ -109,8 +141,8 @@ public class OriginalStatusFragment7 extends BaseFragment implements OnDateSetLi
                 .setCyclic(false)//是否可循环
                 .setToolBarTextColor(R.color.colorPrimary)
                 .build();
-
-        mLlHeartType.setVisibility(View.GONE);
+        mLlDeal.setVisibility(View.GONE);
+        mTvNote.setVisibility(View.GONE);
 
     }
 

@@ -220,7 +220,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return StrokeNewScoreFragment.newInstance(patientId, docId);
                 case 7:
                     // 诊断评估
-                    return DiagnosticEvaluationFragment.newInstance(patientId, docId);
+                return DiagnosticEvaluationFragment.newInstance(patientId, docId);
                 case 8:
                     // 药物治疗
                     return StrokeMedicationFragment.newInstance(patientId, docId);

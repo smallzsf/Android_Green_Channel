@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_ffffff"
-    xmlns:zhy="http://schemas.android.com/tools"
     android:orientation="vertical">
 
 
@@ -16,27 +16,29 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="12dp"
+            android:paddingTop="10dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 style="@style/Text_Dark_Content_Style"
-                android:text="病情评估"/>
+                android:text="病情评估" />
+
             <LinearLayout
-                android:layout_marginTop="@dimen/dp_7"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
                 android:layout_marginBottom="10dp"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
                     android:layout_height="wrap_content"
-                    >
+                    android:orientation="horizontal">
+
                     <RadioButton
                         android:id="@+id/rb_persistent_chest_pain"
                         android:layout_width="wrap_content"
@@ -64,28 +66,26 @@
             </LinearLayout>
 
 
-
             <include layout="@layout/include_line" />
 
 
             <TextView
-                android:layout_marginTop="@dimen/dp_12"
                 style="@style/Text_Dark_Content_Style"
+                android:layout_marginTop="@dimen/dp_12"
                 android:text="病情评估明细"></TextView>
+
             <GridView
                 android:id="@+id/gv_detailed"
-                android:layout_marginTop="@dimen/dp_7"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
-                android:scrollbars="none"
+                android:layout_marginTop="@dimen/dp_7"
+                android:listSelector="@color/transparent"
                 android:numColumns="2"
                 android:paddingBottom="10dp"
-                android:listSelector="@color/transparent"
-                />
+                android:scrollbars="none" />
 
 
             <include layout="@layout/include_line" />
-
 
 
             <LinearLayout

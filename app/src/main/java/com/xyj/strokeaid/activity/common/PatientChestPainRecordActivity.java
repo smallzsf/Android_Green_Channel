@@ -187,9 +187,6 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 0:
                     // 生命体征
                     return ChestPainVitalSignsFragment.newInstance(patientId, docId);
-                case 10:
-                    // 手术治疗
-                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
                 case 1:
                     //  病情信息
                     return ChestPainDiseaseRecordFragment.newInstance(patientId, docId);
@@ -208,6 +205,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 //                case 6:
 //                    // 评分工具
 //                    return ChestPainScoringToolsFragment.newInstance(patientId, docId);
+                case 7:
+                    // 初始诊断
+                    return  OriginalDiagnoseFragment.newInstance(patientId,docId);
                 case 8:
                     // 初始药物
                     return ChestPainInitDrugFragment.newInstance(patientId, docId);
@@ -216,7 +216,15 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     // 静脉溶栓
                     return ChestPainIntraThromFragment.newInstance(patientId, docId);
 
-
+                case 10:
+                    // 手术治疗
+                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
+                case 11:
+                    // 其他处置
+                    return EmptyFragment.newInstance();
+                case 12:
+                    // 患者转归
+                    return PatientSumFragment.newInstance(patientId,docId);
                 default:
                     return EmptyFragment.newInstance();
             }

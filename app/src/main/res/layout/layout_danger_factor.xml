@@ -347,6 +347,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_chd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -375,10 +376,12 @@
     <include layout="@layout/include_line" />
 <!--血运重建史-->
     <LinearLayout
+        android:id="@+id/ll_xy"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_xy_label"
@@ -391,6 +394,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_xy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -420,10 +424,12 @@
     <include layout="@layout/include_line" />
 <!--心房颤动-->
     <LinearLayout
+        android:id="@+id/ll_xf"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        >
 
         <TextView
             android:id="@+id/tv_xf_label"
@@ -436,6 +442,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_xf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -464,6 +471,7 @@
     <include layout="@layout/include_line" />
 <!--分型-->
     <LinearLayout
+        android:id="@+id/ll_fx"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
@@ -542,6 +550,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_slow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -570,13 +579,15 @@
     <include layout="@layout/include_line" />
     <!--NYHA分级-->
     <LinearLayout
+        android:id="@+id/ll_factor_nyha"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:visibility="gone">
 
         <TextView
-            android:id="@+id/tv_nyha_label"
+            android:id="@+id/tv_factor_nyha_label"
             android:layout_width="@dimen/dp_120"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -592,7 +603,7 @@
             android:weightSum="3">
 
             <RadioButton
-                android:id="@+id/rb_nyha_1"
+                android:id="@+id/rb_factor_nyha_1"
                 style="@style/tv_small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -601,7 +612,7 @@
                 android:textSize="@dimen/item_content_size" />
 
             <RadioButton
-                android:id="@+id/rb_nyha_2"
+                android:id="@+id/rb_factor_nyha_2"
                 style="@style/tv_small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -611,7 +622,7 @@
                 />
 
             <RadioButton
-                android:id="@+id/rb_nyha_3"
+                android:id="@+id/rb_factor_nyha_3"
                 style="@style/tv_small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -621,7 +632,7 @@
                 />
 
             <RadioButton
-                android:id="@+id/rb_nyha_4"
+                android:id="@+id/rb_factor_nyha_4"
                 style="@style/tv_small"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -694,6 +705,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_stroke"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -722,10 +734,12 @@
     <include layout="@layout/include_line" />
 <!--描述-->
     <LinearLayout
+        android:id="@+id/ll_desc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/tv_desc_label"

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.chestpain.ChestPainOperationInfoActivity;
+import com.xyj.strokeaid.activity.chestpain.ChestPainOperationResultActivity;
 import com.xyj.strokeaid.activity.chestpain.SurgicalPreparationActivtty;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -83,12 +84,14 @@ public class SurgicalTreatmentFragment extends BaseFragment implements View.OnCl
                 startActivity(intentOperationBefore);
                 break;
             case R.id.rl_operation_info:
-                //手术信息
-                Intent intent = new Intent(getContext(), ChestPainOperationInfoActivity.class);
-                startActivity(intent);
+                //手术信
+                Intent intentInfo = new Intent(getContext(), ChestPainOperationInfoActivity.class);
+                startActivity(intentInfo);
                 break;
             case R.id.rl_operation_result:
                 //结果信息
+                Intent intentResult = new Intent(getContext(), ChestPainOperationResultActivity.class);
+                startActivity(intentResult);
                 break;
         }
     }
