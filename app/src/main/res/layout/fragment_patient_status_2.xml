@@ -56,12 +56,12 @@
             android:layout_width="@dimen/tooltip_precise_anchor_threshold"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="初次诊断时间"
+            android:text="确诊时间"
             android:textColor="@color/app_223b53"
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_draw_blood_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"

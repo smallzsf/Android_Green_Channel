@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -38,7 +40,14 @@ public class PatientSumFragment extends BaseFragment {
     private PatientStatusFragment3 mPatientFragment3 = null;
     private PatientStatusFragment4 mPatientFragment4 = null;
 
-
+    public static PatientSumFragment newInstance(String patientId, String docId) {
+        PatientSumFragment fragment = new PatientSumFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_patient_sum;

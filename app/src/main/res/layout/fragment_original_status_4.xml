@@ -86,7 +86,7 @@
                 android:textSize="@dimen/item_title_size" />
 
 
-            <TextView
+            <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_cure_time"
                 style="@style/patient_et_style"
                 android:layout_width="match_parent"
@@ -121,6 +121,7 @@
 
 
             <RadioGroup
+                android:id="@+id/rg_strategy"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -161,7 +162,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
             android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_exist_taboo_label"

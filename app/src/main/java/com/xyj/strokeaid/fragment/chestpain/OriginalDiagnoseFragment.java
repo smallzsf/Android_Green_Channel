@@ -1,13 +1,18 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+
+import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -16,6 +21,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
+
+
 /**
  * @ClassName: OriginalDiagnoseFragment
  * @Description:
@@ -23,6 +30,7 @@ import butterknife.BindView;
  * @Date: 2020/9/2 19:09
  */
 public class OriginalDiagnoseFragment extends BaseFragment {
+
 
 
     @BindView(R.id.awareness)
@@ -41,11 +49,20 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private OriginalStatusFragment6 mOriginalStatusFragment6 = null;
     private OriginalStatusFragment7 mOriginalStatusFragment7 = null;
 
+    public static OriginalDiagnoseFragment newInstance(String patientId, String docId) {
+        OriginalDiagnoseFragment fragment = new OriginalDiagnoseFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_original_diagnose;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initView(@NonNull View view) {
 
@@ -53,12 +70,14 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         initData();
         initEvent();
 
+
+
     }
 
     private void initview() {
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
-        ft.add(R.id.fl_main, mOriginalStatusFragment1).commitNow();
+        ft.replace(R.id.fl_main, mOriginalStatusFragment1).commitAllowingStateLoss();
     }
 
     private void initData() {

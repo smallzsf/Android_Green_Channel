@@ -76,6 +76,8 @@ public class PatientStatusFragment4 extends BaseFragment implements OnDateSetLis
     AppCompatButton mBtnConfirm;
     @BindView(R.id.ll_bottom)
     LinearLayout mLlBottom;
+    @BindView(R.id.ll_deal)
+    LinearLayout mLlDeal;
 
     public static PatientStatusFragment4 newInstance(String keyword) {
         PatientStatusFragment4 fragment = new PatientStatusFragment4();
@@ -111,7 +113,8 @@ public class PatientStatusFragment4 extends BaseFragment implements OnDateSetLis
                 .setToolBarTextColor(R.color.colorPrimary)
                 .build();
 
-
+        mLlDeal.setVisibility(View.GONE);
+        mTvNote.setVisibility(View.GONE);
     }
 
     private void initData() {

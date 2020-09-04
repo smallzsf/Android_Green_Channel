@@ -112,7 +112,7 @@
             android:textSize="@dimen/item_title_size" />
 
 
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_arrive_time"
             style="@style/patient_et_style"
             android:layout_width="match_parent"
