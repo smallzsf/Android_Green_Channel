@@ -16,6 +16,7 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
 import com.tencent.mmkv.MMKV;
+import com.xyj.strokeaid.view.LoadingDialogFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -35,6 +36,7 @@ public abstract class BaseFragment extends Fragment {
     protected View mRootView;
     protected Unbinder mUnbinder;
     public Context context;
+    protected LoadingDialogFragment mLoadingDialogFragment;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -120,6 +122,9 @@ public abstract class BaseFragment extends Fragment {
         if (mUnbinder != null) {
             mUnbinder.unbind();
         }
+        if (mLoadingDialogFragment != null) {
+            mLoadingDialogFragment.dismiss();
+        }
     }
 
     @Override
@@ -127,6 +132,22 @@ public abstract class BaseFragment extends Fragment {
         super.onDestroy();
         if (mRootView != null) {
             mRootView = null;
+        }
+    }
+
+    public void showLoadingDialog() {
+        if (mLoadingDialogFragment == null) {
+            mLoadingDialogFragment = new LoadingDialogFragment();
+        }
+        if (mLoadingDialogFragment.isVisible()) {
+            return;
+        }
+        mLoadingDialogFragment.show(getChildFragmentManager(), "loading");
+    }
+
+    public void hideLoadingDialog() {
+        if (mLoadingDialogFragment != null) {
+            mLoadingDialogFragment.dismiss();
         }
     }
 
