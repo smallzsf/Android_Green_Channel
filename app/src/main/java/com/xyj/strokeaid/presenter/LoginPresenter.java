@@ -1,9 +1,6 @@
 package com.xyj.strokeaid.presenter;
 
 
-import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 import com.blankj.utilcode.util.RegexUtils;
@@ -93,35 +90,35 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
             return;
         }
 
-        if (StringUtils.isEmpty(phone)||StringUtils.isEmpty(code)) {
+        if (StringUtils.isEmpty(phone) || StringUtils.isEmpty(code)) {
             ToastUtils.showShort("不能为空");
         } else {
             if (RegexUtils.isMobileExact(phone)) {
-                  model.phoneLogin(phone, code)
-                            .compose(RxScheduler.Obs_io_main())
-                            .to(mView.bindAutoDispose())
-                            .subscribe(new Observer<BaseObjectBean<LoginBean>>() {
-                                @Override
-                                public void onSubscribe(@NonNull Disposable d) {
-                                    mView.showLoading();
-                                }
+                model.phoneLogin(phone, code)
+                        .compose(RxScheduler.Obs_io_main())
+                        .to(mView.bindAutoDispose())
+                        .subscribe(new Observer<BaseObjectBean<LoginBean>>() {
+                            @Override
+                            public void onSubscribe(@NonNull Disposable d) {
+                                mView.showLoading();
+                            }
 
-                                @Override
-                                public void onNext(@NonNull BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
-                                    mView.onSuccess(loginBeanBaseObjectBean, flag);
-                                }
+                            @Override
+                            public void onNext(@NonNull BaseObjectBean<LoginBean> loginBeanBaseObjectBean) {
+                                mView.onSuccess(loginBeanBaseObjectBean, flag);
+                            }
 
-                                @Override
-                                public void onError(@NonNull Throwable e) {
-                                    mView.onError(e.getMessage());
-                                    mView.hideLoading();
-                                }
+                            @Override
+                            public void onError(@NonNull Throwable e) {
+                                mView.onError(e.getMessage());
+                                mView.hideLoading();
+                            }
 
-                                @Override
-                                public void onComplete() {
-                                    mView.hideLoading();
-                                }
-                            });
+                            @Override
+                            public void onComplete() {
+                                mView.hideLoading();
+                            }
+                        });
 
             } else {
                 ToastUtils.showShort("请输入正确手机号");

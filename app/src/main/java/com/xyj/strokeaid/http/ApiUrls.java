@@ -51,6 +51,15 @@ public class ApiUrls {
      */
     public static final String NET_URL_USER_UPDATE_PASSWORD = "yjjk-gateway/yjjk-pt-api/v1/user/updatePassword";
 
+    /**
+     * 新建患者信息
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_RECORD= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/addForApp";
+
+
+
+
+
 }
 
     

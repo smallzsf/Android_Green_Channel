@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -21,13 +20,11 @@ import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.google.android.material.tabs.TabLayout;
 import com.gyf.immersionbar.ImmersionBar;
-import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.MainActivity;
 import com.xyj.strokeaid.activity.set.SetActivity;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.MmkvKey;
-import com.xyj.strokeaid.app.MyApp;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -266,7 +263,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void onSendSms(BaseObjectBean<SendSmsBean> bean) {
-        Toast.makeText(mContext, bean.getMessage(), Toast.LENGTH_SHORT).show();
+
+      Toast.makeText(mContext, bean.toString(), Toast.LENGTH_SHORT).show();
 
     }
 
@@ -304,7 +302,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                         if (RegexUtils.isMobileExact(getPhone())) {
                             tvCode.setClickable(false);
                             codeTimer.start();
-                            mPresenter.sendSMS(getUsername());
+                            mPresenter.sendSMS(getPhone());
 
                         } else {
                             ToastUtils.showShort("请输入正确手机号");
