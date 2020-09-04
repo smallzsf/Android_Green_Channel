@@ -37,10 +37,9 @@ public class Constants {
             "生命体征",
             "病情记录",
             "心电检查",
-            "心内会诊",
+            "会诊信息",
             "血液检查",
-            "辅助检查",
-            "评分工具",
+            "摄影检查",
             "初始诊断",
             "初始药物",
             "静脉溶栓",
@@ -62,7 +61,7 @@ public class Constants {
             "危重儿童"};
 
     public static final String[] CHEST_OTHER_DISPOSAL_TITLES = new String[]{"急诊CT", "彩超"};
-    public static final String[] CHEST_HEART_IN_OUT_TITLES = new String[]{"心内会诊", "心外会诊"};
+    public static final String[] CHEST_HEART_IN_OUT_TITLES = new String[]{"心内会诊", "外科会诊"};
 
 }
 

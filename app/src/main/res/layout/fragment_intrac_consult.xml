@@ -172,7 +172,7 @@
                         android:maxLength="6"
                         android:maxLines="1"
                         android:minWidth="60dp"
-                        android:text="心外科医生"
+                        android:text="外科医生"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
 

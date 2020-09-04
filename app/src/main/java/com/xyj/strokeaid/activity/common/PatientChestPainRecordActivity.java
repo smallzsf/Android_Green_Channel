@@ -204,27 +204,24 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 5:
                     //  辅助检查
                     return ChestPainAssistantTestFragment.newInstance(patientId, docId);
-//                case 6:
-//                    // 评分工具
-//                    return ChestPainScoringToolsFragment.newInstance(patientId, docId);
-                case 7:
+                case 6:
                     // 初始诊断
                     return  OriginalDiagnoseFragment.newInstance(patientId,docId);
-                case 8:
+                case 7:
                     // 初始药物
                     return ChestPainInitDrugFragment.newInstance(patientId, docId);
 
-                case 9:
+                case 8:
                     // 静脉溶栓
                     return ChestPainIntraThromFragment.newInstance(patientId, docId);
 
-                case 10:
+                case 9:
                     // 手术治疗
                     return SurgicalTreatmentFragment.newInstance(patientId, docId);
-                case 11:
+                case 10:
                     // 其他处置
                     return EmptyFragment.newInstance();
-                case 12:
+                case 11:
                     // 患者转归
                     return PatientSumFragment.newInstance(patientId,docId);
                 default:
