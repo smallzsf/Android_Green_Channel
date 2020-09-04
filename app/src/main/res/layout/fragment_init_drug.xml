@@ -53,7 +53,7 @@
                         android:maxLines="2"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size"
-                        tools:text="抗血小板治疗" />
+                        android:text="抗血小板治疗" />
                     <ImageView
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
@@ -243,20 +243,19 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="@dimen/item_normal_height"
                     android:paddingStart="@dimen/dp_12"
                     android:paddingEnd="@dimen/dp_12">
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
+                        android:layout_alignParentStart="true"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_toStartOf="@id/iv_arrow_view_nib"
                         android:gravity="center_vertical"
-                        android:maxLength="10"
-                        android:maxLines="2"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size"
-                        tools:text="术前抗凝" />
+                        android:text="术前抗凝" />
                     <ImageView
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
@@ -398,13 +397,11 @@
                         android:layout_marginEnd="@dimen/dp_12"
                         android:layout_toStartOf="@id/iv_arrow_view_nib"
                         android:gravity="center_vertical"
-                        android:maxLength="10"
-                        android:maxLines="2"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size"
-                        tools:text="他汀治疗" />
+                        android:text="他汀治疗" />
                     <ImageView
-                        android:layout_width="@dimen/item_normal_height"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
@@ -413,6 +410,7 @@
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -546,7 +544,7 @@
                         android:maxLines="2"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size"
-                        tools:text="β受体阻滞剂" />
+                        android:text="β受体阻滞剂" />
                     <ImageView
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
