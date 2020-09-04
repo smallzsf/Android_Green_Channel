@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_ffffff"
@@ -340,13 +338,13 @@
                         tl:title="给药时间" />
 
                     <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
-                    >
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_7"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="@dimen/dp_7"
+                        >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
