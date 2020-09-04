@@ -255,6 +255,15 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
+                    android:id="@+id/rb_function_IMR"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="IMR"
+                    android:textSize="@dimen/item_content_size" />
+
+                <RadioButton
                     android:id="@+id/rb_function_other"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"

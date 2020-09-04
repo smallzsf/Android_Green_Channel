@@ -7,7 +7,10 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.jzxiang.pickerview.TimePickerDialog;
@@ -135,7 +138,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
             }
         });
 
-    //显示前项
+        //显示前项
         genderListMore = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_gender_diversity_more));
         tagGenderMoreAdapter = new TagAdapter<String>(genderListMore) {
             @Override
@@ -274,6 +277,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                 mDialogAll.show(getSupportFragmentManager(), "All");
             }
         });
+        //销毁popupwindow
         ImageView ivDelete = popupWindowView.findViewById(R.id.iv_delete);
         ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,6 +285,34 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                 popWindow.dismiss();
             }
         });
+
+        //PCI
+        LinearLayout linearPCI = popupWindowView.findViewById(R.id.linearPCI);
+        RadioButton rbPCIFalse = popupWindowView.findViewById(R.id.rb_PCI_false);
+        RadioButton rbPCITrue = popupWindowView.findViewById(R.id.rb_PCI_true);
+        rbPCIFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linearPCI.setVisibility(View.GONE);
+            }
+        });
+        rbPCITrue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                linearPCI.setVisibility(View.VISIBLE);
+            }
+        });
+
+
+        //保存
+        AppCompatButton btSave = popupWindowView.findViewById(R.id.btn_save_diversity_detail);
+        btSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
