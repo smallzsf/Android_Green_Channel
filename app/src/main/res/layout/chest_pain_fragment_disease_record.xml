@@ -153,17 +153,24 @@
             </LinearLayout>
 
 
-            <include layout="@layout/include_line" />
+<!--            <include layout="@layout/include_line" />-->
         </LinearLayout>
     </ScrollView>
 
-    <include
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_start_frag_sg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
 
     <!--   <include
            android:id="@+id/menu"

@@ -487,10 +487,8 @@
                     android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"
@@ -559,10 +557,8 @@
                     android:id="@+id/ll_dimer_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"
@@ -634,10 +630,8 @@
                     android:id="@+id/ll_bnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"
@@ -706,10 +700,8 @@
                     android:id="@+id/ll_nt_probnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"
@@ -777,10 +769,8 @@
                     android:id="@+id/ll_myo_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"
@@ -850,10 +840,8 @@
                     android:id="@+id/ll_ckmb_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_margin="@dimen/dp_7"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <EditText
                         android:layout_width="0dp"

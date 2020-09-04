@@ -33,27 +33,20 @@ import butterknife.BindView;
  */
 public class ChestPainIntraConsultFragment extends BaseFragment {
 
-
+    @BindView(R.id.stl_title_frag_od)
+    SegmentTabLayout stlTitleFragOd;
     @BindView(R.id.es_vital_sign_aware)
     EditSpinner esVitalSignAware;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
     @BindView(R.id.rb_on_site_consultation)
     RadioButton rbOnSiteConsultation;
     @BindView(R.id.rb_remote_consultation)
     RadioButton rbRemoteConsultation;
-    @BindView(R.id.ttb_arrival_time)
-    TextTimeBar ttbArrivalTime;
     @BindView(R.id.rg_consultation)
     RadioGroup rgConsultation;
-    @BindView(R.id.stl_title_frag_od)
-    SegmentTabLayout stlTitleFragOd;
+    @BindView(R.id.ttb_arrival_time)
+    TextTimeBar ttbArrivalTime;
+    @BindView(R.id.ll_intrac_consult_in)
+    LinearLayout llIntracConsultIn;
     @BindView(R.id.es_vital_sign_aware_out)
     EditSpinner esVitalSignAwareOut;
     @BindView(R.id.rb_on_site_consultation_out)
@@ -64,10 +57,16 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     RadioGroup rgConsultationOut;
     @BindView(R.id.ttb_arrival_time_out)
     TextTimeBar ttbArrivalTimeOut;
-    @BindView(R.id.ll_intrac_consult_in)
-    LinearLayout llIntracConsultIn;
     @BindView(R.id.ll_intrac_consult_out)
     LinearLayout llIntracConsultOut;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    @BindView(R.id.btn_cancel)
+    AppCompatButton btnCancel;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_auxiliary_exam)
+    LinearLayout llAuxiliaryExam;
     private String mPatientId;
     private String mDocId;
 
@@ -108,6 +107,9 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
 
 
     private void loadData() {
+
+        btnConfirm.setText("保存");
+        btnCancel.setText("一键启动绿色通道");
 
         ArrayList<String> itemData = new ArrayList<>();
         itemData.add("1");

@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -17,7 +16,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.view.MeasureGridView;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
@@ -38,7 +36,6 @@ import butterknife.ButterKnife;
  */
 public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
-
     @BindView(R.id.rb_persistent_chest_pain)
     RadioButton rbPersistentChestPain;
     @BindView(R.id.rb_intermittent_chest_pain)
@@ -55,12 +52,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     TextView appTvConditonRecord;
     @BindView(R.id.et_symptom)
     EditText etSymptom;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
+    @BindView(R.id.btn_start_frag_sg)
+    AppCompatButton btnStartFragSg;
     private String mPatientId;
     private String mDocId;
 
@@ -145,8 +138,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                 viewHolder = (ViewHolder) view.getTag();
             }
             boolean isSelect = false;
-            if (mapDataSelect.containsKey(position)){
-                isSelect =  mapDataSelect.get(position);
+            if (mapDataSelect.containsKey(position)) {
+                isSelect = mapDataSelect.get(position);
             }
             viewHolder.cbSelect.setSelected(isSelect);
             MyClickListener onClickListener = new MyClickListener(position);
@@ -156,7 +149,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
             return view;
         }
     }
-    static  class ViewHolder {
+
+    static class ViewHolder {
         @BindView(R.id.cb_select)
         CheckBox cbSelect;
         @BindView(R.id.text)
@@ -169,17 +163,18 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
     class MyClickListener implements View.OnClickListener {
         private int position;
-        public MyClickListener(int position){
+
+        public MyClickListener(int position) {
             this.position = position;
         }
 
         @Override
         public void onClick(View view) {
-            boolean isSelect  = false;
-            if (mapDataSelect.containsKey(position)){
+            boolean isSelect = false;
+            if (mapDataSelect.containsKey(position)) {
                 isSelect = mapDataSelect.get(position);
             }
-            mapDataSelect.put(position,!isSelect);
+            mapDataSelect.put(position, !isSelect);
             refrashAdapter(false);
         }
     }
