@@ -1,8 +1,6 @@
 package com.xyj.strokeaid.model;
 
 
-import android.util.Log;
-
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestSmsBean;
