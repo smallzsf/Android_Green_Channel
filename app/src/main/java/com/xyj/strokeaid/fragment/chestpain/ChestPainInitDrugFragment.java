@@ -29,7 +29,8 @@ import butterknife.BindView;
  */
 public class ChestPainInitDrugFragment extends BaseFragment implements View.OnClickListener {
 
-
+    @BindView(R.id.iv_antihemotherapy)
+    ImageView ivAntihemotherapy;
     @BindView(R.id.rb_taboo_has)
     RadioButton rbTabooHas;
     @BindView(R.id.rb_taboo_none)
@@ -46,28 +47,40 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     LinearLayout llAntihemotherapyData;
     @BindView(R.id.ll_antihemotherapy_title)
     LinearLayout llAntihemotherapyTitle;
+    @BindView(R.id.iv_preoperative_anticoagulation)
+    ImageView ivPreoperativeAnticoagulation;
     @BindView(R.id.ll_preoperative_anticoagulation_title)
     LinearLayout llPreoperativeAnticoagulationTitle;
     @BindView(R.id.rb_preoperative_has)
     RadioButton rbPreoperativeHas;
     @BindView(R.id.rb_preoperative_none)
     RadioButton rbPreoperativeNone;
+    @BindView(R.id.eds_preoperative_anticoagulation)
+    EditSpinner edsPreoperativeAnticoagulation;
     @BindView(R.id.ll_preoperative_anticoagulation_data)
     LinearLayout llPreoperativeAnticoagulationData;
+    @BindView(R.id.iv_statin_therapy)
+    ImageView ivStatinTherapy;
     @BindView(R.id.ll_statin_therapy_title)
     LinearLayout llStatinTherapyTitle;
     @BindView(R.id.rb_statin_has)
     RadioButton rbStatinHas;
     @BindView(R.id.rb_statin_none)
     RadioButton rbStatinNone;
+    @BindView(R.id.eds_statin_therapy)
+    EditSpinner edsStatinTherapy;
     @BindView(R.id.ll_statin_therapy_data)
     LinearLayout llStatinTherapyData;
+    @BindView(R.id.iv_beta_blockers)
+    ImageView ivBetaBlockers;
     @BindView(R.id.ll_beta_blockers_title)
     LinearLayout llBetaBlockersTitle;
     @BindView(R.id.rb_block_has)
     RadioButton rbBlockHas;
     @BindView(R.id.rb_block_none)
     RadioButton rbBlockNone;
+    @BindView(R.id.eds_beta_blockers)
+    EditSpinner edsBetaBlockers;
     @BindView(R.id.ll_beta_blockers_data)
     LinearLayout llBetaBlockersData;
     @BindView(R.id.btn_get_data)
@@ -78,17 +91,8 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     LinearLayout llBottom;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
-    @BindView(R.id.iv_antihemotherapy)
-    ImageView ivAntihemotherapy;
-    @BindView(R.id.iv_preoperative_anticoagulation)
-    ImageView ivPreoperativeAnticoagulation;
-    @BindView(R.id.iv_statin_therapy)
-    ImageView ivStatinTherapy;
-    @BindView(R.id.iv_beta_blockers)
-    ImageView ivBetaBlockers;
     private String mPatientId;
     private String mDocId;
-    private List<String> list;
 
     public ChestPainInitDrugFragment() {
 
@@ -119,20 +123,28 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected void initView(@NonNull View view) {
-//        btnGetData.setText("获取数据");
-//        btnConfirm.setText("确定");
+        btnGetData.setText("获取记录");
+        btnConfirm.setText("确定");
         loadData();
     }
 
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-//        esVitalSignAware.setItemData(list);
+        List<String> list = new ArrayList<>();
+        list.add("0mg");
+        list.add("100mg");
+        list.add("300mg");
+        list.add("其他剂量");
+        editSpinnerAmoxicillin.setItemData(list);
+        editSpinnerClopidogrel.setItemData(list);
+        editSpinnerTicagrelor.setItemData(list);
+
+
+        List<String> administrationDataList = new ArrayList<>();
+        administrationDataList.add("药品类型");
+        edsPreoperativeAnticoagulation.setItemData(administrationDataList);
+        edsStatinTherapy.setItemData(administrationDataList);
+        edsBetaBlockers.setItemData(administrationDataList);
     }
 
 
@@ -148,7 +160,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_beta_blockers_title:
-                refrashItemVis(llBetaBlockersData,ivBetaBlockers);
+                refrashItemVis(llBetaBlockersData, ivBetaBlockers);
                 break;
             case R.id.ll_antihemotherapy_title:
                 refrashItemVis(llAntihemotherapyData, ivAntihemotherapy);

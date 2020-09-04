@@ -193,7 +193,7 @@
                             android:layout_toRightOf="@+id/awareness"
                             android:gravity="center"
                             app:Background="@drawable/bg_view_frame"
-                            app:hint="全量"
+                            app:hint="0mg"
                             app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
@@ -346,6 +346,7 @@
                         android:layout_marginBottom="@dimen/dp_7"
                         >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/eds_preoperative_anticoagulation"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginRight="@dimen/dp_3"
@@ -353,34 +354,35 @@
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
-                        app:hint="全量"
+                        app:hint="药品类型"
                         app:rightImage="@drawable/ic_arrow_down_blue" />
 
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="剂量"
-                        android:layout_weight="1"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单位"
-                        android:inputType="text"
-                        android:layout_weight="1"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_grey_stroke"
+                            android:hint="剂量"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/dp_8"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_666666"
+                            android:textSize="13sp" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_grey_stroke"
+                            android:hint="单位"
+                            android:inputType="text"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/dp_8"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_666666"
+                            android:textSize="13sp" />
 
 
-                </LinearLayout>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -496,21 +498,23 @@
                         android:orientation="horizontal"
                         >
                         <com.xyj.strokeaid.view.editspinner.EditSpinner
+
+                            android:id="@+id/eds_statin_therapy"
                             android:layout_width="@dimen/dp_90"
                             android:layout_height="@dimen/dp_30"
                             android:layout_centerVertical="true"
                             android:layout_marginRight="@dimen/dp_3"
                             android:gravity="center"
                             app:Background="@drawable/bg_view_frame"
-                            app:hint="全量"
+                            app:hint="药品类型"
                             app:rightImage="@drawable/ic_arrow_down_blue" />
 
                         <EditText
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:background="@drawable/shape_grey_stroke"
                             android:hint="剂量"
-                            android:layout_weight="1"
                             android:inputType="text"
                             android:paddingStart="@dimen/dp_8"
                             android:textColor="@color/color_222222"
@@ -645,13 +649,14 @@
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/eds_beta_blockers"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
-                        app:hint="全量"
+                        app:hint="药品类型"
                         app:rightImage="@drawable/ic_arrow_down_blue" />
 
                     <EditText
