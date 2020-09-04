@@ -26,8 +26,8 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content" android:background="@drawable/shape_edittext_bg"
-
+                android:layout_width="wrap_content"
+                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginBottom="@dimen/dp_12"
@@ -68,7 +68,7 @@
                 <LinearLayout
                     android:id="@+id/ll_no_suitable"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginLeft="@dimen/dp_7"
                     android:layout_marginRight="@dimen/dp_7"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
@@ -119,8 +119,8 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     android:background="@color/white"
                     tl:title="给药时间" />
 
@@ -128,14 +128,14 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_marginRight="@dimen/dp_7">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:maxLength="6"
                         android:maxLines="1"
                         android:minWidth="60dp"
@@ -148,6 +148,7 @@
                         android:id="@+id/edit_spinner_amoxicillin"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
@@ -162,7 +163,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_marginRight="@dimen/dp_7">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -170,7 +171,7 @@
                         android:layout_centerVertical="true"
                         android:gravity="center"
                         android:maxLength="6"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:maxLines="1"
                         android:minWidth="60dp"
                         android:text="氯呲格雷"
@@ -182,6 +183,7 @@
                         android:id="@+id/edit_spinner_clopidogrel"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
@@ -196,7 +198,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_marginRight="@dimen/dp_7">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -205,7 +207,7 @@
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:minWidth="60dp"
                         android:text="替格瑞洛"
                         android:textColor="@color/color_222222"
@@ -230,7 +232,10 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -266,6 +271,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     android:background="@color/white"
                     android:orientation="horizontal">
 
@@ -273,7 +280,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_marginStart="@dimen/dp_7"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -314,6 +321,8 @@
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="给药时间" />
@@ -323,12 +332,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
                     android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/dp_7"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
+                        android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
@@ -364,7 +376,10 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -402,6 +417,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
                     android:background="@color/white"
                     android:orientation="horizontal">
 
@@ -409,7 +426,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -451,6 +467,8 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     android:background="@color/white"
                     tl:title="给药时间" />
 
@@ -458,14 +476,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginBottom="@dimen/dp_7"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
+                        android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="全量"
@@ -499,7 +520,10 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_12"
                 android:orientation="vertical"
                 >
 
@@ -537,6 +561,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
                     android:background="@color/white"
                     android:orientation="horizontal">
 
@@ -544,7 +570,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -586,6 +611,8 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginRight="@dimen/dp_1"
+                    android:layout_marginLeft="@dimen/dp_1"
                     android:background="@color/white"
                     tl:title="给药时间" />
 
@@ -593,15 +620,17 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_marginBottom="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_7"
+                    android:layout_marginLeft="@dimen/dp_7"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     >
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="match_parent"
-                        android:layout_weight="1"
+                        android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="全量"
