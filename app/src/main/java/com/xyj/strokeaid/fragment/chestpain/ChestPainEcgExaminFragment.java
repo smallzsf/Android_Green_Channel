@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -54,6 +55,16 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     RadioButton rbEcgTransmissionNone;
     @BindView(R.id.rg_ecg_transmission)
     RadioGroup rgEcgTransmission;
+    @BindView(R.id.rb_electrocardiogram_has)
+    RadioButton rbElectrocardiogramHas;
+    @BindView(R.id.rb_electrocardiogram_none)
+    RadioButton rbElectrocardiogramNone;
+    @BindView(R.id.rg_electrocardiogram)
+    RadioGroup rgElectrocardiogram;
+    @BindView(R.id.iv_ecg_record_close_two)
+    ImageView ivEcgRecordCloseTwo;
+    @BindView(R.id.iv_ecg_record_close_three)
+    ImageView ivEcgRecordCloseThree;
     private String mPatientId;
     private String mDocId;
 
@@ -135,7 +146,15 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
                 refrashRecordItem();
             }
         });
-
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ecgRecordItem--;
+                refrashRecordItem();
+            }
+        };
+        ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
+        ivEcgRecordCloseThree.setOnClickListener(onClickListener);
 
 
     }

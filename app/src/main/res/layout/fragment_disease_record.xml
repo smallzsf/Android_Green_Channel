@@ -56,7 +56,7 @@
                             android:layout_height="@dimen/item_normal_height"
                             android:layout_alignParentStart="true"
                             android:layout_marginEnd="@dimen/dp_12"
-                            android:layout_toStartOf="@id/iv_arrow_view_nib"
+                            android:layout_toStartOf="@id/iv_troponin"
                             android:gravity="center_vertical"
                             android:maxLength="10"
                             android:maxLines="2"
