@@ -26,7 +26,8 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/ll_antihemotherapy_title"
+                android:layout_width="match_parent"
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
@@ -55,6 +56,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="抗血小板治疗" />
                     <ImageView
+                        android:id="@+id/iv_antihemotherapy"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -64,174 +66,180 @@
 
 
                 </LinearLayout>
-
                 <LinearLayout
-                    android:id="@+id/ll_no_suitable"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:id="@+id/ll_antihemotherapy_data"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="是否给药"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_30"
+                    <LinearLayout
+                        android:id="@+id/ll_no_suitable"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_7"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:minWidth="60dp"
+                            android:text="是否给药"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <RadioGroup
+                            android:layout_marginLeft="@dimen/dp_30"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <RadioButton
+                                android:id="@+id/rb_taboo_has"
+                                style="@style/tv_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="是"
+                                android:textSize="@dimen/item_content_size" />
+
+                            <RadioButton
+                                android:id="@+id/rb_taboo_none"
+                                style="@style/tv_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="否"
+                                android:textSize="@dimen/item_content_size" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_1"
+                        android:layout_marginRight="@dimen/dp_1"
+                        android:background="@color/white"
+                        tl:title="给药时间" />
+
+                    <LinearLayout
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/vital_sign_item_height"
+                        android:layout_marginRight="@dimen/dp_7">
 
-                        <RadioButton
-                            android:id="@+id/rb_taboo_has"
-                            style="@style/tv_small"
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="是"
-                            android:textSize="@dimen/item_content_size" />
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:layout_marginStart="@dimen/dp_7"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:minWidth="60dp"
+                            android:text="阿莫西林"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
 
-                        <RadioButton
-                            android:id="@+id/rb_taboo_none"
-                            style="@style/tv_small"
+
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/edit_spinner_amoxicillin"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_marginRight="@dimen/dp_3"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/awareness"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="0mg"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/vital_sign_item_height"
+                        android:layout_marginRight="@dimen/dp_7">
+
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="否"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:background="@color/white"
-                    tl:title="给药时间" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_7">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:layout_marginStart="@dimen/dp_7"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="阿莫西林"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:layout_marginStart="@dimen/dp_7"
+                            android:maxLines="1"
+                            android:minWidth="60dp"
+                            android:text="氯呲格雷"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
 
 
-                    <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/edit_spinner_amoxicillin"
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/edit_spinner_clopidogrel"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_marginRight="@dimen/dp_3"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/awareness"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="全量"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_marginRight="@dimen/dp_3"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
-                        android:gravity="center"
-                        app:Background="@drawable/bg_view_frame"
-                        app:hint="0mg"
-                        app:rightImage="@drawable/ic_arrow_down_blue" />
+                        android:layout_height="@dimen/vital_sign_item_height"
+                        android:layout_marginRight="@dimen/dp_7">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:layout_marginStart="@dimen/dp_7"
+                            android:minWidth="60dp"
+                            android:text="替格瑞洛"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_7">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:layout_marginStart="@dimen/dp_7"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="氯呲格雷"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/edit_spinner_ticagrelor"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/awareness"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="0mg"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
-                    <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/edit_spinner_clopidogrel"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_marginRight="@dimen/dp_3"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
-                        android:gravity="center"
-                        app:Background="@drawable/bg_view_frame"
-                        app:hint="全量"
-                        app:rightImage="@drawable/ic_arrow_down_blue" />
-
+                    </LinearLayout>
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_7">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:layout_marginStart="@dimen/dp_7"
-                        android:minWidth="60dp"
-                        android:text="替格瑞洛"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-
-                    <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/edit_spinner_ticagrelor"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
-                        android:gravity="center"
-                        app:Background="@drawable/bg_view_frame"
-                        app:hint="0mg"
-                        app:rightImage="@drawable/ic_arrow_down_blue" />
-
-
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
@@ -240,23 +248,23 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_preoperative_anticoagulation_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/dp_12"
                     android:paddingEnd="@dimen/dp_12">
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentStart="true"
                         android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_toStartOf="@id/iv_arrow_view_nib"
                         android:gravity="center_vertical"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size"
                         android:text="术前抗凝" />
                     <ImageView
+                        android:id="@+id/iv_preoperative_anticoagulation"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -266,8 +274,13 @@
 
 
                 </LinearLayout>
-
                 <LinearLayout
+                    android:id="@+id/ll_preoperative_anticoagulation_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_1"
@@ -318,17 +331,15 @@
 
                 </LinearLayout>
 
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="给药时间" />
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="@dimen/dp_1"
+                        android:layout_marginRight="@dimen/dp_1"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:background="@color/white"
+                        tl:title="给药时间" />
 
-
-
-                <LinearLayout
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -372,9 +383,10 @@
 
 
                 </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
@@ -383,6 +395,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_statin_therapy_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -401,6 +414,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="他汀治疗" />
                     <ImageView
+                        android:id="@+id/iv_statin_therapy"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -411,113 +425,117 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginRight="@dimen/dp_7"
-                    android:background="@color/white"
-                    android:orientation="horizontal">
+                    android:id="@+id/ll_statin_therapy_data"
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="是否给药"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_30"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_7"
+                        android:background="@color/white"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:maxLength="6"
+                            android:maxLines="1"
+                            android:minWidth="60dp"
+                            android:text="是否给药"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <RadioGroup
+                            android:layout_marginLeft="@dimen/dp_30"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <RadioButton
+                                android:id="@+id/rb_statin_has"
+                                style="@style/tv_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="是"
+                                android:textSize="@dimen/item_content_size" />
+
+                            <RadioButton
+                                android:id="@+id/rb_statin_none"
+                                style="@style/tv_small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="否"
+                                android:textSize="@dimen/item_content_size" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_1"
+                        android:layout_marginRight="@dimen/dp_1"
+                        android:background="@color/white"
+                        tl:title="给药时间" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginRight="@dimen/dp_7"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginBottom="@dimen/dp_7"
+                        android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        >
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:layout_width="@dimen/dp_90"
+                            android:layout_height="@dimen/dp_30"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="@dimen/dp_3"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="全量"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
 
-                        <RadioButton
-                            android:id="@+id/rb_statin_has"
-                            style="@style/tv_small"
+                        <EditText
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:background="@drawable/shape_grey_stroke"
+                            android:hint="剂量"
                             android:layout_weight="1"
-                            android:checked="true"
-                            android:text="是"
-                            android:textSize="@dimen/item_content_size" />
-
-                        <RadioButton
-                            android:id="@+id/rb_statin_none"
-                            style="@style/tv_small"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/dp_8"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_666666"
+                            android:textSize="13sp" />
+                        <EditText
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:background="@drawable/shape_grey_stroke"
+                            android:hint="单位"
+                            android:inputType="text"
                             android:layout_weight="1"
-                            android:text="否"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:background="@color/white"
-                    tl:title="给药时间" />
+                            android:paddingStart="@dimen/dp_8"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_666666"
+                            android:textSize="13sp" />
 
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="@dimen/dp_7"
-                    android:layout_marginLeft="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_7"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                    <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:layout_width="@dimen/dp_90"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="@dimen/dp_3"
-                        android:gravity="center"
-                        app:Background="@drawable/bg_view_frame"
-                        app:hint="全量"
-                        app:rightImage="@drawable/ic_arrow_down_blue" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="剂量"
-                        android:layout_weight="1"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单位"
-                        android:inputType="text"
-                        android:layout_weight="1"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-
-
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_12"
@@ -526,6 +544,7 @@
                 >
 
                 <LinearLayout
+                    android:id="@+id/ll_beta_blockers_title"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -546,6 +565,7 @@
                         android:textSize="@dimen/item_title_size"
                         android:text="β受体阻滞剂" />
                     <ImageView
+                        android:id="@+id/iv_beta_blockers"
                         android:layout_width="@dimen/item_normal_height"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_alignParentTop="true"
@@ -555,8 +575,12 @@
 
 
                 </LinearLayout>
-
                 <LinearLayout
+                    android:id="@+id/ll_beta_blockers_data"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_7"
@@ -606,7 +630,7 @@
 
                 </LinearLayout>
 
-                <com.xyj.strokeaid.view.TextTimeBar
+                    <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginRight="@dimen/dp_1"
@@ -614,9 +638,7 @@
                     android:background="@color/white"
                     tl:title="给药时间" />
 
-
-
-                <LinearLayout
+                    <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_marginBottom="@dimen/dp_7"
                     android:layout_marginRight="@dimen/dp_7"
@@ -659,9 +681,8 @@
 
 
                 </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
-
-
 
             <include layout="@layout/include_line" />
 

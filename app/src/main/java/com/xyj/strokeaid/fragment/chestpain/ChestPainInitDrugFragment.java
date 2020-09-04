@@ -2,9 +2,9 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -27,9 +27,65 @@ import butterknife.BindView;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainInitDrugFragment extends BaseFragment {
+public class ChestPainInitDrugFragment extends BaseFragment implements View.OnClickListener {
 
 
+    @BindView(R.id.rb_taboo_has)
+    RadioButton rbTabooHas;
+    @BindView(R.id.rb_taboo_none)
+    RadioButton rbTabooNone;
+    @BindView(R.id.ll_no_suitable)
+    LinearLayout llNoSuitable;
+    @BindView(R.id.edit_spinner_amoxicillin)
+    EditSpinner editSpinnerAmoxicillin;
+    @BindView(R.id.edit_spinner_clopidogrel)
+    EditSpinner editSpinnerClopidogrel;
+    @BindView(R.id.edit_spinner_ticagrelor)
+    EditSpinner editSpinnerTicagrelor;
+    @BindView(R.id.ll_antihemotherapy_data)
+    LinearLayout llAntihemotherapyData;
+    @BindView(R.id.ll_antihemotherapy_title)
+    LinearLayout llAntihemotherapyTitle;
+    @BindView(R.id.ll_preoperative_anticoagulation_title)
+    LinearLayout llPreoperativeAnticoagulationTitle;
+    @BindView(R.id.rb_preoperative_has)
+    RadioButton rbPreoperativeHas;
+    @BindView(R.id.rb_preoperative_none)
+    RadioButton rbPreoperativeNone;
+    @BindView(R.id.ll_preoperative_anticoagulation_data)
+    LinearLayout llPreoperativeAnticoagulationData;
+    @BindView(R.id.ll_statin_therapy_title)
+    LinearLayout llStatinTherapyTitle;
+    @BindView(R.id.rb_statin_has)
+    RadioButton rbStatinHas;
+    @BindView(R.id.rb_statin_none)
+    RadioButton rbStatinNone;
+    @BindView(R.id.ll_statin_therapy_data)
+    LinearLayout llStatinTherapyData;
+    @BindView(R.id.ll_beta_blockers_title)
+    LinearLayout llBetaBlockersTitle;
+    @BindView(R.id.rb_block_has)
+    RadioButton rbBlockHas;
+    @BindView(R.id.rb_block_none)
+    RadioButton rbBlockNone;
+    @BindView(R.id.ll_beta_blockers_data)
+    LinearLayout llBetaBlockersData;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_vital_signs)
+    LinearLayout llVitalSigns;
+    @BindView(R.id.iv_antihemotherapy)
+    ImageView ivAntihemotherapy;
+    @BindView(R.id.iv_preoperative_anticoagulation)
+    ImageView ivPreoperativeAnticoagulation;
+    @BindView(R.id.iv_statin_therapy)
+    ImageView ivStatinTherapy;
+    @BindView(R.id.iv_beta_blockers)
+    ImageView ivBetaBlockers;
     private String mPatientId;
     private String mDocId;
     private List<String> list;
@@ -82,7 +138,37 @@ public class ChestPainInitDrugFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-
+        llBetaBlockersTitle.setOnClickListener(this);
+        llAntihemotherapyTitle.setOnClickListener(this);
+        llStatinTherapyTitle.setOnClickListener(this);
+        llPreoperativeAnticoagulationTitle.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.ll_beta_blockers_title:
+                refrashItemVis(llBetaBlockersData,ivBetaBlockers);
+                break;
+            case R.id.ll_antihemotherapy_title:
+                refrashItemVis(llAntihemotherapyData, ivAntihemotherapy);
+                break;
+            case R.id.ll_statin_therapy_title:
+                refrashItemVis(llStatinTherapyData, ivStatinTherapy);
+                break;
+            case R.id.ll_preoperative_anticoagulation_title:
+                refrashItemVis(llPreoperativeAnticoagulationData, ivPreoperativeAnticoagulation);
+                break;
+        }
+    }
+
+    private void refrashItemVis(View view, ImageView imageView) {
+        if (view.getVisibility() == View.VISIBLE) {
+            view.setVisibility(View.GONE);
+            imageView.setImageResource(R.drawable.ic_arrow_up_blue);
+        } else {
+            view.setVisibility(View.VISIBLE);
+            imageView.setImageResource(R.drawable.ic_arrow_down_blue);
+        }
+    }
 }
