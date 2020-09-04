@@ -135,24 +135,39 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        tvAddRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ecgRecordItem >= 3) {
-                    Toast.makeText(context, "最多只能添加三条心电记录", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                ecgRecordItem++;
-                refrashRecordItem();
-            }
-        });
+
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ecgRecordItem--;
-                refrashRecordItem();
+                switch (view.getId()){
+                    case R.id.tv_add_record:
+                        if (ecgRecordItem >= 3) {
+                            Toast.makeText(context, "最多只能添加三条心电记录", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        ecgRecordItem++;
+                        refrashRecordItem();
+                        break;
+                    case R.id.iv_ecg_record_close_three:
+                    case R.id.iv_ecg_record_close_two:
+                        ecgRecordItem--;
+                        refrashRecordItem();
+                        break;
+                    case R.id.rb_electrocardiogram_none:
+                    case R.id.rb_electrocardiogram_has:
+                        if (rbElectrocardiogramHas.isChecked()){
+                            ecgRecordItem = 1;
+                        }else {
+                            ecgRecordItem = 0;
+                        }
+                        refrashRecordItem();
+                        break;
+                }
             }
         };
+        rbElectrocardiogramHas.setOnClickListener(onClickListener);
+        rbElectrocardiogramNone.setOnClickListener(onClickListener);
+        tvAddRecord.setOnClickListener(onClickListener);
         ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
         ivEcgRecordCloseThree.setOnClickListener(onClickListener);
 

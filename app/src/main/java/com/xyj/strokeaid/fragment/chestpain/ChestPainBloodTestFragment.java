@@ -143,19 +143,11 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     @Override
     protected void initView(@NonNull View view) {
         loadData();
-
-
     }
 
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-//        esVitalSignAware.setItemData(list);
+
     }
 
 
