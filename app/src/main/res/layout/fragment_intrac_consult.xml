@@ -18,18 +18,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <com.flyco.tablayout.SegmentTabLayout
+                android:layout_marginBottom="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:id="@+id/stl_title_frag_od"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                android:maxLength="6"
-                android:maxLines="1"
-                android:minWidth="60dp"
-                android:text="心内科会诊"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/item_title_size" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_8"
+                tl:tl_bar_color="@color/white"
+                tl:tl_indicator_color="@color/colorPrimary"
+                tl:tl_indicator_corner_radius="8dp"
+                tl:tl_tab_padding="20dp"
+                tl:tl_textsize="@dimen/item_title_size" />
+
+            <LinearLayout
+                android:id="@+id/ll_intrac_consult_in"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                >
 
 
             <com.xyj.strokeaid.view.TextTimeBar
@@ -133,107 +142,115 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
                 tl:title="会诊时间" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginLeft="@dimen/dp_7"
-                android:background="@color/white"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="是否延误"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-                <RadioGroup
-                    android:id="@+id/rg_delay"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="3">
-
-                    <RadioButton
-                        android:id="@+id/rb_delay_has"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="是"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <RadioButton
-                        android:id="@+id/rb_delay_none"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="否"
-                        android:checked="true"
-                        android:textSize="@dimen/item_content_size" />
-
-                </RadioGroup>
-
             </LinearLayout>
 
+
             <LinearLayout
+                android:id="@+id/ll_intrac_consult_out"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/dp_7"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                >
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="延误原因"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-
+                    android:background="@color/white"
+                    tl:title="申请时间" />
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/shape_grey_stroke_with_white_bg"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="top"
-                        android:hint="请输入诊断报告结果..."
-                        android:maxLength="300"
-                        android:minHeight="100dp"
-                        android:padding="10dp"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_999999"
-                        android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/vital_sign_item_height"
+                    android:layout_marginRight="@dimen/dp_12">
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="@dimen/dp_4"
-                        android:text="0/300"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="心外科医生"
                         android:textColor="@color/color_222222"
-                        android:textSize="13sp" />
+                        android:textSize="@dimen/item_title_size" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_vital_sign_aware_out"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/awareness"
+                        android:gravity="center"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="会诊方式"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+                    <RadioGroup
+                        android:id="@+id/rg_consultation_out"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:layout_marginRight="@dimen/dp_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_on_site_consultation_out"
+                            style="@style/tv_small"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="现场会诊"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_remote_consultation_out"
+                            style="@style/tv_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="远程会诊"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </RadioGroup>
+
                 </LinearLayout>
 
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_arrival_time_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    tl:title="到达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    tl:title="会诊时间" />
             </LinearLayout>
-
-
 
 
         </LinearLayout>

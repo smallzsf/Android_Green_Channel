@@ -62,6 +62,7 @@ public class Constants {
             "危重儿童"};
 
     public static final String[] CHEST_OTHER_DISPOSAL_TITLES = new String[]{"急诊CT", "彩超"};
+    public static final String[] CHEST_HEART_IN_OUT_TITLES = new String[]{"心内会诊", "心外会诊"};
 
 }
 
