@@ -5,6 +5,9 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:id="@+id/rl_title"
+        android:background="@color/colorPrimary22"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/item_normal_height"
@@ -21,7 +24,8 @@
             android:src="@drawable/ic_arrow_down_blue" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_title"
+            android:layout_width="400dp"
             android:layout_height="@dimen/item_normal_height"
             android:layout_alignParentStart="true"
             android:layout_marginEnd="@dimen/dp_12"

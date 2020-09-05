@@ -175,4 +175,16 @@ public class ISSCommon {
         });
         return  dataList;
     }
+
+    public static List<String> getTitleData(){
+
+        List<String> dataList = new ArrayList<>();
+        dataList.add("头颈部");
+        dataList.add("面  部");
+        dataList.add("胸  部");
+        dataList.add("腹  部");
+        dataList.add("四  肢");
+        dataList.add("体  表");
+        return dataList;
+    }
 }
