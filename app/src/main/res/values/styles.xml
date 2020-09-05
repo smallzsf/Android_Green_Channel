@@ -42,6 +42,11 @@
     </style>
 
     <style name="tv_small_hiht">
+        <item name="android:padding">@dimen/dp_7</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:background">@drawable/shape_edittext_bg</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/item_title_size</item>
         <item name="android:textColor">@color/color_222222</item>
         <item name="android:gravity">center_vertical</item>

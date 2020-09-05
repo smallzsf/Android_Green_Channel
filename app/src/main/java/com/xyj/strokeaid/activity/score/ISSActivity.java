@@ -1,19 +1,21 @@
 package com.xyj.strokeaid.activity.score;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +26,12 @@ public class ISSActivity extends BaseActivity {
     @BindView(R.id.listview)
     ListView listview;
     private List<String[]> dataList = new ArrayList<>();
+    private List<String> titleDataList = new ArrayList<>();
+
+    Map<Integer, Boolean> mapOpenData = new HashMap<>();
+
+    private int selectItemClickPosition = -1;
+    private MyAdapter myAdapter;
 
     @Override
     public int getLayoutId() {
@@ -40,8 +48,10 @@ public class ISSActivity extends BaseActivity {
     public void initView() {
         context = this;
         dataList = ISSCommon.getData();
+        titleDataList = ISSCommon.getTitleData();
 
-        listview.setAdapter(new MyAdapter());
+        myAdapter = new MyAdapter();
+        listview.setAdapter(myAdapter);
     }
 
     @Override
@@ -79,43 +89,47 @@ public class ISSActivity extends BaseActivity {
             }
 
             String[] strings = dataList.get(i);
-            if (strings.length > 0) {
-                viewHolder.tvText1.setText(strings[0]);
-                viewHolder.tvText1.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvText1.setVisibility(View.GONE);
+            boolean isOpen = false;
+            if (mapOpenData.containsKey(i) ) {
+                isOpen = mapOpenData.get(i);
             }
-            if (strings.length > 1) {
-                viewHolder.tvText2.setText(strings[1]);
-                viewHolder.tvText2.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvText2.setVisibility(View.GONE);
+            String text = titleDataList.get(i);
+            if(isOpen){
+                text =  text+ "  " + (selectItemClickPosition + 1) + "分";
             }
-            if (strings.length > 2) {
-                viewHolder.tvText3.setText(strings[2]);
-                viewHolder.tvText3.setVisibility(View.VISIBLE);
+            viewHolder.tvTitle.setText(text);
+            viewHolder.rlTitle.setOnClickListener(new MyClickListener(i,true));
+            if (isOpen) {
+                viewHolder.ivTroponin.setImageResource(R.drawable.ic_arrow_up_blue);
             } else {
-                viewHolder.tvText3.setVisibility(View.GONE);
+                viewHolder.ivTroponin.setImageResource(R.drawable.ic_arrow_down_blue);
             }
-            if (strings.length > 3) {
-                viewHolder.tvText4.setText(strings[3]);
-                viewHolder.tvText4.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvText4.setVisibility(View.GONE);
-            }
-            if (strings.length > 4) {
-                viewHolder.tvText5.setText(strings[4]);
-                viewHolder.tvText5.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvText5.setVisibility(View.GONE);
-            }
-            if (strings.length > 5) {
-                viewHolder.tvText6.setText(strings[5]);
-                viewHolder.tvText6.setVisibility(View.VISIBLE);
-            } else {
-                viewHolder.tvText6.setVisibility(View.GONE);
-            }
+
+            checkOpen(strings, strings.length > 0 && isOpen, viewHolder.tvText1, 0);
+            checkOpen(strings, strings.length > 1 && isOpen, viewHolder.tvText2, 1);
+            checkOpen(strings, strings.length > 2 && isOpen, viewHolder.tvText3, 2);
+            checkOpen(strings, strings.length > 3 && isOpen, viewHolder.tvText4, 3);
+            checkOpen(strings, strings.length > 4 && isOpen, viewHolder.tvText5, 4);
+            checkOpen(strings, strings.length > 5 && isOpen, viewHolder.tvText6, 5);
             return view;
+        }
+
+        private void checkOpen(String[] strings, boolean isOpen, TextView textView, int position) {
+            if (isOpen) {
+                textView.setOnClickListener(new MyClickListener(position,false));
+                textView.setText(strings[position]);
+                textView.setVisibility(View.VISIBLE);
+
+                if (selectItemClickPosition == position){
+                    textView.setBackgroundResource(R.drawable.shape_edittext_bg_blue);
+                }else {
+                    textView.setBackgroundResource(R.drawable.shape_edittext_bg);
+                }
+
+
+            } else {
+                textView.setVisibility(View.GONE);
+            }
         }
 
 
@@ -124,6 +138,8 @@ public class ISSActivity extends BaseActivity {
     static class ViewHolder {
         @BindView(R.id.iv_troponin)
         ImageView ivTroponin;
+        @BindView(R.id.rl_title)
+        RelativeLayout rlTitle;
         @BindView(R.id.tv_text_1)
         TextView tvText1;
         @BindView(R.id.tv_text_2)
@@ -136,10 +152,39 @@ public class ISSActivity extends BaseActivity {
         TextView tvText5;
         @BindView(R.id.tv_text_6)
         TextView tvText6;
+        @BindView(R.id.tv_title)
+        TextView tvTitle;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);
         }
     }
+
+    class MyClickListener implements View.OnClickListener {
+        private int position;
+        private boolean isTitle;
+        public MyClickListener(int position,boolean title) {
+            this.position = position;
+            this.isTitle = title;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (!isTitle){
+
+                selectItemClickPosition = position;
+                myAdapter.notifyDataSetChanged();
+            }else {
+                if (mapOpenData.containsKey(position) && mapOpenData.get(position)) {
+                    mapOpenData.put(position,false);
+                }else {
+                    mapOpenData.put(position,true);
+                }
+                selectItemClickPosition = 0;
+                myAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
 
 }
