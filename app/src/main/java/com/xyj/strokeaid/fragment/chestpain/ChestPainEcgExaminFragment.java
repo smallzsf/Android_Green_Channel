@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -30,28 +31,40 @@ import butterknife.BindView;
  */
 public class ChestPainEcgExaminFragment extends BaseFragment {
 
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
+    @BindView(R.id.rb_electrocardiogram_has)
+    RadioButton rbElectrocardiogramHas;
+    @BindView(R.id.rb_electrocardiogram_none)
+    RadioButton rbElectrocardiogramNone;
+    @BindView(R.id.rg_electrocardiogram)
+    RadioGroup rgElectrocardiogram;
     @BindView(R.id.tv_add_record)
     TextView tvAddRecord;
     @BindView(R.id.ll_ecg_record_one)
     LinearLayout llEcgRecordOne;
+    @BindView(R.id.iv_ecg_record_close_two)
+    ImageView ivEcgRecordCloseTwo;
     @BindView(R.id.ll_ecg_record_two)
     LinearLayout llEcgRecordTwo;
+    @BindView(R.id.iv_ecg_record_close_three)
+    ImageView ivEcgRecordCloseThree;
     @BindView(R.id.ll_ecg_record_three)
     LinearLayout llEcgRecordThree;
-    @BindView(R.id.btn_cancel)
-    AppCompatButton btnCancel;
     @BindView(R.id.rb_ecg_transmission_120)
     RadioButton rbEcgTransmission120;
     @BindView(R.id.rb_ecg_transmission_none)
     RadioButton rbEcgTransmissionNone;
     @BindView(R.id.rg_ecg_transmission)
     RadioGroup rgEcgTransmission;
+    @BindView(R.id.es_vital_sign_aware)
+    EditSpinner esVitalSignAware;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_auxiliary_exam)
+    LinearLayout llAuxiliaryExam;
     private String mPatientId;
     private String mDocId;
 
@@ -108,8 +121,6 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     private void loadData() {
 
 
-        btnConfirm.setText("保存");
-        btnCancel.setText("一键启动绿色通道");
 
         ArrayList<String> itemData = new ArrayList<>();
         itemData.add("实时监控");
@@ -122,18 +133,41 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        tvAddRecord.setOnClickListener(new View.OnClickListener() {
+
+        View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (ecgRecordItem >= 3) {
-                    Toast.makeText(context, "最多只能添加三条心电记录", Toast.LENGTH_LONG).show();
-                    return;
+                switch (view.getId()) {
+                    case R.id.tv_add_record:
+                        if (ecgRecordItem >= 3) {
+                            Toast.makeText(context, "最多只能添加三条心电记录", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        ecgRecordItem++;
+                        refrashRecordItem();
+                        break;
+                    case R.id.iv_ecg_record_close_three:
+                    case R.id.iv_ecg_record_close_two:
+                        ecgRecordItem--;
+                        refrashRecordItem();
+                        break;
+                    case R.id.rb_electrocardiogram_none:
+                    case R.id.rb_electrocardiogram_has:
+                        if (rbElectrocardiogramHas.isChecked()) {
+                            ecgRecordItem = 1;
+                        } else {
+                            ecgRecordItem = 0;
+                        }
+                        refrashRecordItem();
+                        break;
                 }
-                ecgRecordItem++;
-                refrashRecordItem();
             }
-        });
-
+        };
+        rbElectrocardiogramHas.setOnClickListener(onClickListener);
+        rbElectrocardiogramNone.setOnClickListener(onClickListener);
+        tvAddRecord.setOnClickListener(onClickListener);
+        ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
+        ivEcgRecordCloseThree.setOnClickListener(onClickListener);
 
 
     }
