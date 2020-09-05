@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <LinearLayout
@@ -96,37 +97,13 @@
     </RelativeLayout>
     <include layout="@layout/include_line" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/sp_15">
 
-        <TextView
-            android:id="@+id/tv_arrive_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="到达时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <TextView
+        <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_arrive_time"
-            style="@style/patient_et_style"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_arrive_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-
-    </RelativeLayout>
+            android:layout_height="@dimen/item_normal_height"
+            android:background="@color/white"
+            tl:title="到达时间" />
 
     <include layout="@layout/include_line" />
 

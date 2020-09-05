@@ -1,13 +1,19 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+
+import android.os.Build;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -16,6 +22,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
+
+
 /**
  * @ClassName: OriginalDiagnoseFragment
  * @Description:
@@ -23,6 +31,7 @@ import butterknife.BindView;
  * @Date: 2020/9/2 19:09
  */
 public class OriginalDiagnoseFragment extends BaseFragment {
+
 
 
     @BindView(R.id.awareness)
@@ -40,12 +49,22 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private OriginalStatusFragment5 mOriginalStatusFragment5 = null;
     private OriginalStatusFragment6 mOriginalStatusFragment6 = null;
     private OriginalStatusFragment7 mOriginalStatusFragment7 = null;
+    private FragmentManager fm;
 
+    public static OriginalDiagnoseFragment newInstance(String patientId, String docId) {
+        OriginalDiagnoseFragment fragment = new OriginalDiagnoseFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.PATIENT_ID, patientId);
+        args.putString(IntentKey.DOC_ID, docId);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_original_diagnose;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initView(@NonNull View view) {
 
@@ -53,12 +72,14 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         initData();
         initEvent();
 
+
+
     }
 
     private void initview() {
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");
-        ft.add(R.id.fl_main, mOriginalStatusFragment1).commitNow();
+        fm = getChildFragmentManager();
+        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
+        fm.beginTransaction().replace(R.id.fl_main, mOriginalStatusFragment1).commitAllowingStateLoss();
     }
 
     private void initData() {
@@ -93,9 +114,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     //根据ID选择碎片的方法
     private void selectFragment(String type){
         //创建碎片事务管理  每一次碎片的显示与隐藏都要通过事务管理来操作
-        FragmentTransaction ft=getChildFragmentManager().beginTransaction();
-        //操作：碎片为空 创建添加
-        //     碎片不为空，直接显示
+       FragmentTransaction ft = fm.beginTransaction();
         hideFragment(ft);
         switch (type) {
             case "STEMI":
@@ -166,7 +185,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                 break;
         }
 
-        ft.commitAllowingStateLoss();//提交
+        ft.commitNowAllowingStateLoss();//提交
     }
 
     //隐藏所有碎片的方法
@@ -193,6 +212,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         if(mOriginalStatusFragment7!=null){
             ft.hide(mOriginalStatusFragment7);
         }
-        ft.commitAllowingStateLoss();
+        ft.commitNowAllowingStateLoss();
     }
 }

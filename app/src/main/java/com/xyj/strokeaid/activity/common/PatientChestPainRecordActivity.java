@@ -204,7 +204,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 //                    return ChestPainScoringToolsFragment.newInstance(patientId, docId);
                 case 7:
                     // 初始诊断
-                    return new OriginalDiagnoseFragment();
+                    return  OriginalDiagnoseFragment.newInstance(patientId,docId);
 //                case 8:
 //                    // 初始药物
 //                    return ChestPainInitDrugFragment.newInstance(patientId, docId);
@@ -220,7 +220,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     return EmptyFragment.newInstance();
                 case 12:
                     // 患者转归
-                    return new PatientSumFragment();
+                    return PatientSumFragment.newInstance(patientId,docId);
                 default:
                     return EmptyFragment.newInstance();
             }
