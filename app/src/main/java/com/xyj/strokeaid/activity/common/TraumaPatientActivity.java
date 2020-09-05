@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Chronometer;
 
@@ -28,12 +29,13 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
-import com.xyj.strokeaid.fragment.trauma.StrokeScoresFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaStrokeScoresFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -102,7 +104,10 @@ public class TraumaPatientActivity extends BaseActivity {
         rvMenuActTp.setAdapter(mMenuRvAdapter);
 
         vpContentActTp.setUserInputEnabled(false);
-        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, "", ""));
+
+
+
+    vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, "", ""));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -164,6 +169,7 @@ public class TraumaPatientActivity extends BaseActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
+            Log.e("zhangshifu",""+position);
             switch (position) {
                 case 0:
                     // 生命体征
@@ -177,15 +183,15 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 3:
                     //影像检查
                     return ImageCheckFragment.newInstance(patientId, docId);
-                case 4:
-                    //会诊信息
-                    return ConsultationInfoFragment.newInstance(patientId, docId);
+//                case 4:
+//                    //会诊信息
+//                    return ConsultationInfoFragment.newInstance(patientId, docId);
 //                case 5:
 //
 //                    break;
                 case 6:
                     // 評分工具
-                    return StrokeScoresFragment.newInstance(patientId, docId);
+                    return TraumaStrokeScoresFragment.newInstance(patientId, docId);
 //                case 7:
 //
 //                    break;
