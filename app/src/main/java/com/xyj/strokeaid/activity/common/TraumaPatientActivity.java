@@ -153,6 +153,7 @@ public class TraumaPatientActivity extends BaseActivity {
     }
 
 
+
     private class TraumaMenuVpAdapter extends FragmentStateAdapter {
 
         String patientId;
