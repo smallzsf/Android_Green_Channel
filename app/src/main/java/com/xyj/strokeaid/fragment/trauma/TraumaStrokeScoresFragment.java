@@ -3,9 +3,7 @@ package com.xyj.strokeaid.fragment.trauma;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,9 +12,6 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,7 +30,7 @@ public class TraumaStrokeScoresFragment extends BaseFragment {
     ListView listView;
     private String mPatientId;
     private String mDocId;
-    private String[]  data = {"PHI評分","PHI評分","PHI評分"};
+    private String[]  data = {"PHI评分 ","TI评分","TS评分","GCS评分","ISS评分"};
 
     public TraumaStrokeScoresFragment() {
         // Required empty public constructor
@@ -61,8 +56,6 @@ public class TraumaStrokeScoresFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
-
         listView.setAdapter(new MyAdapter());
     }
 
