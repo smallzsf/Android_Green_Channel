@@ -6,75 +6,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="@dimen/dp_12"
-        android:background="@color/colorPrimary22"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingLeft="@dimen/dp_12"
-        android:paddingRight="@dimen/dp_12">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <TextView
-            style="@style/Text_Dark_Content_Style"
-            android:text="血液检查" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="血液检查" />
 
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/tv_collection_time"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:background="@color/white"
-        app:title="采集时间" />
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_collection_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                app:title="采集时间" />
 
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/tv_arrive_time"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:background="@color/white"
-        app:title="送达时间" />
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_arrive_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                app:title="送达时间" />
 
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/tv_report_time"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:background="@color/white"
-        app:title="报告时间" />
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_report_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                app:title="报告时间" />
 
-    <LinearLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_12"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="血检报告"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="上传"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/dp_12"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/item_normal_height"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_12"
-            android:gravity="center"
-            android:maxLength="6"
-            android:maxLines="1"
-            android:minWidth="60dp"
-            android:text="查看CT片子"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_title_size" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="@dimen/item_normal_height"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_12"
-            android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:maxLength="6"
-            android:maxLines="1"
-            android:minWidth="60dp"
-            android:text="上传"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_title_size" />
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_8" />
 </LinearLayout>
