@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.activity.score;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,9 +20,9 @@ import butterknife.ButterKnife;
 
 public class ISSActivity extends BaseActivity {
 
+    private Context context;
     @BindView(R.id.listview)
     ListView listview;
-
     private List<String[]> dataList = new ArrayList<>();
 
     @Override
@@ -31,25 +33,22 @@ public class ISSActivity extends BaseActivity {
     @Override
     protected void initInject() {
 
-        listview.setAdapter(new MyAdapter());
-        initData();
     }
 
-    private void initData() {
-        dataList = ISSCommon.getData();
-
-
-    }
 
     @Override
     public void initView() {
+        context = this;
+        dataList = ISSCommon.getData();
 
+        listview.setAdapter(new MyAdapter());
     }
 
     @Override
     public void initListener() {
 
     }
+
 
     private class MyAdapter extends BaseAdapter {
 
@@ -71,49 +70,49 @@ public class ISSActivity extends BaseActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             ViewHolder viewHolder;
-            if (view == null){
-                view = View.inflate(ISSActivity.this, R.layout.adapter_iss, null);
+            if (view == null) {
+                view = View.inflate(context, R.layout.adapter_iss, null);
                 viewHolder = new ViewHolder(view);
                 view.setTag(viewHolder);
-            }else {
+            } else {
                 viewHolder = (ViewHolder) view.getTag();
             }
 
             String[] strings = dataList.get(i);
-            if (strings.length >0){
+            if (strings.length > 0) {
                 viewHolder.tvText1.setText(strings[0]);
                 viewHolder.tvText1.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText1.setVisibility(View.GONE);
             }
-            if (strings.length >1){
+            if (strings.length > 1) {
                 viewHolder.tvText2.setText(strings[1]);
                 viewHolder.tvText2.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText2.setVisibility(View.GONE);
             }
-            if (strings.length >2){
+            if (strings.length > 2) {
                 viewHolder.tvText3.setText(strings[2]);
                 viewHolder.tvText3.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText3.setVisibility(View.GONE);
             }
-            if (strings.length >3){
+            if (strings.length > 3) {
                 viewHolder.tvText4.setText(strings[3]);
                 viewHolder.tvText4.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText4.setVisibility(View.GONE);
             }
-            if (strings.length >4){
+            if (strings.length > 4) {
                 viewHolder.tvText5.setText(strings[4]);
                 viewHolder.tvText5.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText5.setVisibility(View.GONE);
             }
-            if (strings.length >5){
+            if (strings.length > 5) {
                 viewHolder.tvText6.setText(strings[5]);
                 viewHolder.tvText6.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 viewHolder.tvText6.setVisibility(View.GONE);
             }
             return view;
@@ -121,6 +120,7 @@ public class ISSActivity extends BaseActivity {
 
 
     }
+
     static class ViewHolder {
         @BindView(R.id.iv_troponin)
         ImageView ivTroponin;
