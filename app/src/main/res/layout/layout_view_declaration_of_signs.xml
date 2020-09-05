@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <!--
-
-                    <com.xyj.strokeaid.view.BaseTitleBar
-                        android:id="@+id/titlebar"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/title_bar_height"
-                        app:rightIconVisible="false"
-                        app:rightTextVisible="true"
-                        app:title="生命体征" />
-        -->
-
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -406,4 +392,3 @@
         <include layout="@layout/include_line" />
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
