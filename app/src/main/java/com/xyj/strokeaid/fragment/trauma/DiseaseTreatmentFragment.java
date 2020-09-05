@@ -95,8 +95,8 @@ public class DiseaseTreatmentFragment  extends BaseFragment {
 
     }
 
-    public static ChestPainBloodTestFragment newInstance(String patientId, String docId) {
-        ChestPainBloodTestFragment fragment = new ChestPainBloodTestFragment();
+    public static DiseaseTreatmentFragment newInstance(String patientId, String docId) {
+        DiseaseTreatmentFragment fragment = new DiseaseTreatmentFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
