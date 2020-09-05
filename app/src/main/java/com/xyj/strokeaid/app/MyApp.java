@@ -17,6 +17,8 @@ import com.didichuxing.doraemonkit.DoraemonKit;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 import com.xyj.strokeaid.BuildConfig;
 import com.xyj.strokeaid.bean.DaoMaster;
 import com.xyj.strokeaid.bean.DaoSession;
@@ -69,6 +71,10 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
         Utils.init(this);
         // 配置数据库
         initGreenDao();
+        // 友盟统计
+        UMConfigure.init(this, AppConfig.YOUMENG_AK, "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
     }
 
     private void initGreenDao() {
@@ -98,12 +104,10 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
 
     @Override
     public void onActivityResumed(@NonNull Activity activity) {
-
     }
 
     @Override
     public void onActivityPaused(@NonNull Activity activity) {
-
     }
 
     @Override
