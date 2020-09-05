@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -65,8 +66,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbDetourYes;
     @BindView(R.id.rb_detour_no)
     RadioButton mRbDetourNo;
-    @BindView(R.id.tv_unit)
-    TextView mTvUnit;
+    @BindView(R.id.tv_until)
+    TextView mTvUntil;
     @BindView(R.id.es_vital_sign_aware_2)
     EditSpinner mEsVitalSignAware2;
     @BindView(R.id.tv_arrive_time)
@@ -149,6 +150,34 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
+    @BindView(R.id.rb_into_measure_level_5)
+    RadioButton rbIntoMeasureLevel5;
+    @BindView(R.id.rb_other_deal_1)
+    RadioButton rbOtherDeal1;
+    @BindView(R.id.rb_other_deal_2)
+    RadioButton rbOtherDeal2;
+    @BindView(R.id.rb_invade_2)
+    RadioButton rbInvade2;
+    @BindView(R.id.rb_invade_24)
+    RadioButton rbInvade24;
+    @BindView(R.id.et_invade_ward)
+    EditText etInvadeWard;
+    @BindView(R.id.rb_invade_72)
+    RadioButton rbInvade72;
+    @BindView(R.id.rb_invade_other)
+    RadioButton rbInvadeOther;
+    @BindView(R.id.rb_invade_cabg)
+    RadioButton rbInvadeCabg;
+    @BindView(R.id.ll_invade)
+    LinearLayout llInvade;
+    @BindView(R.id.ll_other)
+    LinearLayout llOther;
+    @BindView(R.id.rg_other_deal)
+    RadioGroup rgOtherDeal;
+    @BindView(R.id.rg_detour)
+    RadioGroup rgDetour;
+    @BindView(R.id.rl_until)
+    RelativeLayout rlUntil;
 
 
     public static OriginalStatusFragment2 newInstance(String keyword) {
@@ -218,6 +247,22 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
             }
         });
 
+        //绕行急诊
+        rgDetour.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbDetourNo.getId()) { //否
+                    rlUntil.setVisibility(View.GONE);
+                    mEsVitalSignAware2.setVisibility(View.GONE);
+                }
+
+                if (checkedId == mRbDetourYes.getId()) { //是
+                    rlUntil.setVisibility(View.VISIBLE);
+                    mEsVitalSignAware2.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         //再次危险分层
         mRgAgain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -229,7 +274,18 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
                 }
             }
         });
-        //初诊时间
+        //再次危险分层
+        rgOtherDeal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == rbOtherDeal1.getId()) { //保守治疗
+                    llInvade.setVisibility(View.GONE);
+                }
+                if (checkedId == rbOtherDeal2.getId()) { //侵入性策略
+                    llInvade.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         //初诊时间
         mTvDrawBloodTime.setOnClickListener(v -> {
             mDialogAll.show(getChildFragmentManager(), "All");

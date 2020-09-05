@@ -74,7 +74,7 @@ public class PatientSumFragment extends BaseFragment {
         titles.add("NSTEMI");
         titles.add("UA");
         titles.add("主动脉夹层");
-        titles.add("肺动脉拴塞");
+        titles.add("肺动脉栓塞");
         titles.add("非ACS心源性胸痛");
         titles.add("其他非心源性胸痛");
         mEsTitleSelect.setItemData(titles);
@@ -136,7 +136,7 @@ public class PatientSumFragment extends BaseFragment {
                     ft.show(mPatientFragment3);//不为空，直接显示
                 }
                 break;
-            case "其它非心源性胸痛 ":
+            case "其他非心源性胸痛":
                 if (mPatientFragment4 == null) {//为空，创建
                     mPatientFragment4 = PatientStatusFragment4.newInstance(type);//创建
                     ft.add(R.id.fl_main, mPatientFragment4);//将碎片添加到专门存放碎片的容器中

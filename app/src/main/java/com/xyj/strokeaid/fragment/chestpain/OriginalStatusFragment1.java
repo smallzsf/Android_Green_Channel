@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -78,8 +79,8 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     RadioButton mRbDetourYes;
     @BindView(R.id.rb_detour_no)
     RadioButton mRbDetourNo;
-    @BindView(R.id.tv_unit)
-    TextView mTvUnit;
+    @BindView(R.id.tv_until)
+    TextView mTvUntil;
     @BindView(R.id.es_vital_sign_aware_2)
     EditSpinner mEsVitalSignAware2;
     @BindView(R.id.tv_arrive_time)
@@ -125,6 +126,44 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
 
     List<String> office = new ArrayList<>();
     TimePickerDialog mDialogAll;
+    @BindView(R.id.rg_detour)
+    RadioGroup rgDetour;
+    @BindView(R.id.rl_until)
+    RelativeLayout rlUntil;
+    @BindView(R.id.rb_into_measure_level_1)
+    RadioButton rbIntoMeasureLevel1;
+    @BindView(R.id.rb_into_measure_level_2)
+    RadioButton rbIntoMeasureLevel2;
+    @BindView(R.id.rb_into_measure_level_3)
+    RadioButton rbIntoMeasureLevel3;
+    @BindView(R.id.rb_into_measure_level_4)
+    RadioButton rbIntoMeasureLevel4;
+    @BindView(R.id.rb_into_measure_level_5)
+    RadioButton rbIntoMeasureLevel5;
+    @BindView(R.id.rb_other_deal_1)
+    RadioButton rbOtherDeal1;
+    @BindView(R.id.rb_other_deal_2)
+    RadioButton rbOtherDeal2;
+    @BindView(R.id.rg_other_deal)
+    RadioGroup rgOtherDeal;
+    @BindView(R.id.rb_invade_2)
+    RadioButton rbInvade2;
+    @BindView(R.id.rb_invade_24)
+    RadioButton rbInvade24;
+    @BindView(R.id.et_invade_ward)
+    EditText etInvadeWard;
+    @BindView(R.id.rb_invade_72)
+    RadioButton rbInvade72;
+    @BindView(R.id.rb_invade_other)
+    RadioButton rbInvadeOther;
+    @BindView(R.id.rb_invade_cabg)
+    RadioButton rbInvadeCabg;
+    @BindView(R.id.ll_invade)
+    LinearLayout llInvade;
+    @BindView(R.id.ll_other)
+    LinearLayout llOther;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
 
     public static OriginalStatusFragment1 newInstance(String keyword) {
         OriginalStatusFragment1 fragment = new OriginalStatusFragment1();
@@ -193,10 +232,28 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             }
         });
 
+        //绕行急诊
+        rgDetour.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbDetourNo.getId()) { //否
+                    rlUntil.setVisibility(View.GONE);
+                    mTvArriveTime.setVisibility(View.GONE);
+                }
+
+                if (checkedId == mRbDetourYes.getId()) { //是
+                    rlUntil.setVisibility(View.VISIBLE);
+                    mTvArriveTime.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         //初诊时间
         mTvDrawBloodTime.setOnClickListener(v -> {
             mDialogAll.show(getChildFragmentManager(), "All");
         });
+
+
 
     }
 
@@ -209,7 +266,7 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             R.id.rb_mri_frag_ae, R.id.rb_mra_frag_ae, R.id.rb_cemra_frag_ae, R.id.rb_cvus_frag_ae, R.id.rb_tcd_frag_ae,
             R.id.tv_draw_blood_time, R.id.et_emergency_ward, R.id.tv_emergency_ward, R.id.rb_level_1,
             R.id.rb_level_2, R.id.rb_level_3, R.id.rb_level_4, R.id.tv_detour, R.id.rb_detour_yes, R.id.rb_detour_no,
-            R.id.tv_unit, R.id.es_vital_sign_aware_2, R.id.tv_arrive_time, R.id.tv_detour_ccu,
+            R.id.tv_until, R.id.es_vital_sign_aware_2, R.id.tv_arrive_time, R.id.tv_detour_ccu,
             R.id.rb_detour_ccu_yes, R.id.rb_detour_ccu_no, R.id.tv_into, R.id.rb_into_yes, R.id.rb_into_no, R.id.cb_text_1,
             R.id.cb_text_2, R.id.cb_text_3, R.id.cb_text_4, R.id.cb_text_5, R.id.cb_text_6, R.id.cb_text_7, R.id.cb_text_8,
             R.id.btn_get_data, R.id.btn_confirm})
@@ -256,7 +313,7 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
                 break;
             case R.id.rb_detour_no:
                 break;
-            case R.id.tv_unit:
+            case R.id.tv_until:
                 break;
             case R.id.es_vital_sign_aware_2:
                 break;

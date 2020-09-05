@@ -12,12 +12,6 @@
         android:orientation="vertical">
 
     <!--确诊-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/sp_15">
-
 
         <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_draw_blood_time"
@@ -27,7 +21,6 @@
             app:title="确诊时间" />
 
 
-    </RelativeLayout>
 
     <include layout="@layout/include_line" />
     <!--院内-->
