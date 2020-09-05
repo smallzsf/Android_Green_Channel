@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -17,7 +18,9 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -100,12 +103,50 @@ public class DiseaseTreatmentFragment extends BaseFragment {
     RadioButton rbTracheotomy;
     @BindView(R.id.rb_ricothyroidotomy)
     RadioButton rbRicothyroidotomy;
-    @BindView(R.id.rb_on_site_consultation)
-    RadioButton rbOnSiteConsultation;
-    @BindView(R.id.rb_remote_consultation)
-    RadioButton rbRemoteConsultation;
-    @BindView(R.id.rg_consultation)
-    RadioGroup rgConsultation;
+    @BindView(R.id.cb_ventilation_bandage)
+    CheckBox cbVentilationBandage;
+    @BindView(R.id.cb_ventilation_limbs)
+    CheckBox cbVentilationLimbs;
+    @BindView(R.id.cb_ventilation_chest)
+    CheckBox cbVentilationChest;
+    @BindView(R.id.cb_ventilation_pelvis)
+    CheckBox cbVentilationPelvis;
+    @BindView(R.id.cb_ventilation_neck)
+    CheckBox cbVentilationNeck;
+    @BindView(R.id.cb_ventilation_vertebra)
+    CheckBox cbVentilationVertebra;
+    @BindView(R.id.cb_ventilation_fracture_out)
+    CheckBox cbVentilationFractureOut;
+    @BindView(R.id.cb_ventilation_suture)
+    CheckBox cbVentilationSuture;
+    @BindView(R.id.cb_ventilation_catheter)
+    CheckBox cbVentilationCatheter;
+    @BindView(R.id.cb_ventilation_other)
+    CheckBox cbVentilationOther;
+    @BindView(R.id.rb_blood_transfusion)
+    RadioButton rbBloodTransfusion;
+    @BindView(R.id.rb_blood_transfusion_no)
+    RadioButton rbBloodTransfusionNo;
+    @BindView(R.id.rg_blood_transfusion)
+    RadioGroup rgBloodTransfusion;
+    @BindView(R.id.rb_artificial_to)
+    RadioButton rbArtificialTo;
+    @BindView(R.id.rb_artificial_to_no)
+    RadioButton rbArtificialToNo;
+    @BindView(R.id.rg_artificial_to)
+    RadioGroup rgArtificialTo;
+    @BindView(R.id.rb_closed_thoracic_drainage)
+    RadioButton rbClosedThoracicDrainage;
+    @BindView(R.id.rb_closed_thoracic_drainage_no)
+    RadioButton rbClosedThoracicDrainageNo;
+    @BindView(R.id.rg_closed_thoracic_drainage)
+    RadioGroup rgClosedThoracicDrainage;
+    @BindView(R.id.rb_pelvic_girdle)
+    RadioButton rbPelvicGirdle;
+    @BindView(R.id.rb_pelvic_girdle_no)
+    RadioButton rbPelvicGirdleNo;
+    @BindView(R.id.rg_pelvic_girdle)
+    RadioGroup rgPelvicGirdle;
     @BindView(R.id.btn_start_frag_sg)
     AppCompatButton btnStartFragSg;
     @BindView(R.id.llVitalSigns)
@@ -116,7 +157,7 @@ public class DiseaseTreatmentFragment extends BaseFragment {
 
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_simple_respirator;
-    private List<Integer> disposalIdList = new ArrayList();
+    private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
 
 
     public DiseaseTreatmentFragment() {
@@ -153,10 +194,8 @@ public class DiseaseTreatmentFragment extends BaseFragment {
         ventilationModeList.add(rbNasotrachealTube);
         ventilationModeList.add(rbILMA);
         ventilationModeList.add(rbNasalCatheterVentilation);
-        ventilationModeList.add(rbOnSiteConsultation);
         ventilationModeList.add(rbOropharyngealVentilation);
         ventilationModeList.add(rbOrotrachealIntubation);
-        ventilationModeList.add(rbRemoteConsultation);
         ventilationModeList.add(rbRicothyroidotomy);
         ventilationModeList.add(rbTracheotomy);
         ventilationModeList.add(rbSimpleRespirator);
@@ -166,6 +205,20 @@ public class DiseaseTreatmentFragment extends BaseFragment {
             radioButton.setOnClickListener(onRadioClickListener);
         }
         refrashRadioStatus();
+
+
+//        mapVentilationSelected.put(R.id.cb_ventilation_bandage,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_neck,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_catheter,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_chest,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_fracture_out,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_limbs,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_other,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_pelvis,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_suture,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_vertebra,false);
+
+
         loadData();
 
 
@@ -188,7 +241,7 @@ public class DiseaseTreatmentFragment extends BaseFragment {
             }
             if (radioButton.getId() == checkRadioId) {
                 radioButton.setChecked(true);
-            }else {
+            } else {
                 radioButton.setChecked(false);
             }
         }
