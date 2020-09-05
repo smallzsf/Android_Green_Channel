@@ -86,8 +86,16 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // 依赖的第三方sdk和jar
+    // 身份证nfc读取
     implementation (name: 'NeolixEIDReader_V7.3.1', ext: 'aar')
+    // 高德
     implementation 'com.amap.api:location:4.6.0'
+    // bugly
+    implementation 'com.tencent.bugly:crashreport_upgrade:1.4.5'
+    // 友盟
+
+    // 极光
+
 
     // google
     implementation 'androidx.appcompat:appcompat:1.2.0'

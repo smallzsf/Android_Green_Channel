@@ -9,7 +9,7 @@ package com.xyj.strokeaid.app;
  * email ：licy3051@qq.com
  */
 public class AppConfig {
-
+    public static final String BUGLY_APP_ID = "4d8a19ff1e";
 }
 
     

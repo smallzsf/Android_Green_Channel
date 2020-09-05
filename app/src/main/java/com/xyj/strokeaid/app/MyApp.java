@@ -8,11 +8,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.Utils;
 import com.didichuxing.doraemonkit.DoraemonKit;
+import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.BuildConfig;
 import com.xyj.strokeaid.bean.DaoMaster;
@@ -35,6 +38,7 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     @Override
@@ -55,6 +59,8 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
         } else {
             LogUtils.getConfig().setLogSwitch(false);
         }
+        // bugly 统一 初始化
+        Bugly.init(getApplicationContext(), AppConfig.BUGLY_APP_ID, BuildConfig.DEBUG);
         // 初始化路由工具
         ARouter.init(MyApp.this);
         // init MMKV 替代sp
