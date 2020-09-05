@@ -191,9 +191,6 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 7:
                     // 評分工具
                     return TraumaStrokeScoresFragment.newInstance(patientId, docId);
-//                case 8:
-//
-//                    break;
                 default:
                     return EmptyFragment.newInstance();
             }
