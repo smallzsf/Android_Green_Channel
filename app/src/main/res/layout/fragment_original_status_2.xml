@@ -38,6 +38,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_detour"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -67,13 +68,14 @@
 
     <!--直达科室-->
     <RelativeLayout
+        android:id="@+id/rl_until"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
         android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
 
         <TextView
-            android:id="@+id/tv_unit"
+            android:id="@+id/tv_until"
             android:layout_width="@dimen/vital_sign_title_width"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -87,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_30"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tv_unit"
+            android:layout_toRightOf="@+id/tv_until"
             android:gravity="center"
             app:Background="@drawable/bg_view_frame"
             app:hint="请选择"

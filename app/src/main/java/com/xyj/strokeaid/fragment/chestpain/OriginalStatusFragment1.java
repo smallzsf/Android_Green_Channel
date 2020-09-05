@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,106 +39,82 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetListener {
 
 
-    List<String> office = new ArrayList<>();
-    TimePickerDialog mDialogAll;
     @BindView(R.id.give_up_cure)
-    TextView giveUpCure;
+    TextView mGiveUpCure;
     @BindView(R.id.rb_blood_frag_ae)
-    RadioButton rbBloodFragAe;
+    RadioButton mRbBloodFragAe;
     @BindView(R.id.rb_ct_frag_ae)
-    RadioButton rbCtFragAe;
+    RadioButton mRbCtFragAe;
     @BindView(R.id.rb_cta_frag_ae)
-    RadioButton rbCtaFragAe;
+    RadioButton mRbCtaFragAe;
     @BindView(R.id.rb_ctp_frag_ae)
-    RadioButton rbCtpFragAe;
+    RadioButton mRbCtpFragAe;
     @BindView(R.id.rb_mri_frag_ae)
-    RadioButton rbMriFragAe;
+    RadioButton mRbMriFragAe;
     @BindView(R.id.rb_mra_frag_ae)
-    RadioButton rbMraFragAe;
+    RadioButton mRbMraFragAe;
     @BindView(R.id.rb_cemra_frag_ae)
-    RadioButton rbCemraFragAe;
+    RadioButton mRbCemraFragAe;
     @BindView(R.id.rb_cvus_frag_ae)
-    RadioButton rbCvusFragAe;
+    RadioButton mRbCvusFragAe;
     @BindView(R.id.rb_tcd_frag_ae)
-    RadioButton rbTcdFragAe;
-    @BindView(R.id.tv_first_cure)
-    TextView tvFirstCure;
     RadioButton mRbTcdFragAe;
     @BindView(R.id.tv_draw_blood_time)
-    TextTimeBar tvDrawBloodTime;
     TextTimeBar mTvDrawBloodTime;
     @BindView(R.id.et_emergency_ward)
-    EditText etEmergencyWard;
+    EditText mEtEmergencyWard;
     @BindView(R.id.tv_emergency_ward)
-    TextView tvEmergencyWard;
+    TextView mTvEmergencyWard;
     @BindView(R.id.rb_level_1)
-    RadioButton rbLevel1;
+    RadioButton mRbLevel1;
     @BindView(R.id.rb_level_2)
-    RadioButton rbLevel2;
+    RadioButton mRbLevel2;
     @BindView(R.id.rb_level_3)
-    RadioButton rbLevel3;
+    RadioButton mRbLevel3;
     @BindView(R.id.rb_level_4)
-    RadioButton rbLevel4;
+    RadioButton mRbLevel4;
     @BindView(R.id.tv_detour)
-    TextView tvDetour;
+    TextView mTvDetour;
     @BindView(R.id.rb_detour_yes)
-    RadioButton rbDetourYes;
+    RadioButton mRbDetourYes;
     @BindView(R.id.rb_detour_no)
-    RadioButton rbDetourNo;
-    @BindView(R.id.tv_unit)
-    TextView tvUnit;
+    RadioButton mRbDetourNo;
+    @BindView(R.id.tv_until)
+    TextView mTvUntil;
     @BindView(R.id.es_vital_sign_aware_2)
-    EditSpinner esVitalSignAware2;
-    @BindView(R.id.tv_arrive_label)
-    TextView tvArriveLabel;
     EditSpinner mEsVitalSignAware2;
     @BindView(R.id.tv_arrive_time)
-    TextView tvArriveTime;
     TextTimeBar mTvArriveTime;
     @BindView(R.id.tv_detour_ccu)
-    TextView tvDetourCcu;
+    TextView mTvDetourCcu;
     @BindView(R.id.rb_detour_ccu_yes)
-    RadioButton rbDetourCcuYes;
+    RadioButton mRbDetourCcuYes;
     @BindView(R.id.rb_detour_ccu_no)
-    RadioButton rbDetourCcuNo;
+    RadioButton mRbDetourCcuNo;
     @BindView(R.id.tv_into)
-    TextView tvInto;
+    TextView mTvInto;
     @BindView(R.id.rb_into_yes)
-    RadioButton rbIntoYes;
+    RadioButton mRbIntoYes;
     @BindView(R.id.rb_into_no)
-    RadioButton rbIntoNo;
-    @BindView(R.id.rg_into)
-    RadioGroup rgInto;
+    RadioButton mRbIntoNo;
     @BindView(R.id.cb_text_1)
-    CheckBox cbText1;
+    CheckBox mCbText1;
     @BindView(R.id.cb_text_2)
-    CheckBox cbText2;
+    CheckBox mCbText2;
     @BindView(R.id.cb_text_3)
-    CheckBox cbText3;
+    CheckBox mCbText3;
     @BindView(R.id.cb_text_4)
-    CheckBox cbText4;
+    CheckBox mCbText4;
     @BindView(R.id.cb_text_5)
-    CheckBox cbText5;
+    CheckBox mCbText5;
     @BindView(R.id.cb_text_6)
-    CheckBox cbText6;
+    CheckBox mCbText6;
     @BindView(R.id.cb_text_7)
-    CheckBox cbText7;
+    CheckBox mCbText7;
     @BindView(R.id.cb_text_8)
-    CheckBox cbText8;
-    @BindView(R.id.ll_into_no)
-    LinearLayout llIntoNo;
-    @BindView(R.id.rb_into_measure_level_1)
-    RadioButton rbIntoMeasureLevel1;
-    @BindView(R.id.rb_into_measure_level_2)
-    RadioButton rbIntoMeasureLevel2;
-    @BindView(R.id.rb_into_measure_level_3)
-    RadioButton rbIntoMeasureLevel3;
-    @BindView(R.id.rb_into_measure_level_4)
-    RadioButton rbIntoMeasureLevel4;
-    @BindView(R.id.ll_into_yes)
-    LinearLayout llIntoYes;
+    CheckBox mCbText8;
     @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
+    AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
     @BindView(R.id.rg_into)
@@ -146,8 +123,47 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     LinearLayout mLlIntoNo;
     @BindView(R.id.ll_into_yes)
     LinearLayout mLlIntoYes;
-    AppCompatButton btnConfirm;
 
+    List<String> office = new ArrayList<>();
+    TimePickerDialog mDialogAll;
+    @BindView(R.id.rg_detour)
+    RadioGroup rgDetour;
+    @BindView(R.id.rl_until)
+    RelativeLayout rlUntil;
+    @BindView(R.id.rb_into_measure_level_1)
+    RadioButton rbIntoMeasureLevel1;
+    @BindView(R.id.rb_into_measure_level_2)
+    RadioButton rbIntoMeasureLevel2;
+    @BindView(R.id.rb_into_measure_level_3)
+    RadioButton rbIntoMeasureLevel3;
+    @BindView(R.id.rb_into_measure_level_4)
+    RadioButton rbIntoMeasureLevel4;
+    @BindView(R.id.rb_into_measure_level_5)
+    RadioButton rbIntoMeasureLevel5;
+    @BindView(R.id.rb_other_deal_1)
+    RadioButton rbOtherDeal1;
+    @BindView(R.id.rb_other_deal_2)
+    RadioButton rbOtherDeal2;
+    @BindView(R.id.rg_other_deal)
+    RadioGroup rgOtherDeal;
+    @BindView(R.id.rb_invade_2)
+    RadioButton rbInvade2;
+    @BindView(R.id.rb_invade_24)
+    RadioButton rbInvade24;
+    @BindView(R.id.et_invade_ward)
+    EditText etInvadeWard;
+    @BindView(R.id.rb_invade_72)
+    RadioButton rbInvade72;
+    @BindView(R.id.rb_invade_other)
+    RadioButton rbInvadeOther;
+    @BindView(R.id.rb_invade_cabg)
+    RadioButton rbInvadeCabg;
+    @BindView(R.id.ll_invade)
+    LinearLayout llInvade;
+    @BindView(R.id.ll_other)
+    LinearLayout llOther;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
 
     public static OriginalStatusFragment1 newInstance(String keyword) {
         OriginalStatusFragment1 fragment = new OriginalStatusFragment1();
@@ -189,37 +205,55 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
         office.add("科室二");
         office.add("科室三");
         office.add("科室四");
-        esVitalSignAware2.setItemData(office);
+        mEsVitalSignAware2.setItemData(office);
     }
 
     private void initEvent() {
         //选择科室
-        esVitalSignAware2.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
+        mEsVitalSignAware2.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
                 // TODO: 2020/9/3 需要根据科室不同加载数据
             }
         });
         //显示再灌注
-        rgInto.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        mRgInto.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == rbIntoNo.getId()) { //否
-                    llIntoNo.setVisibility(View.VISIBLE);
-                    llIntoYes.setVisibility(View.GONE);
+                if (checkedId == mRbIntoNo.getId()) { //否
+                    mLlIntoNo.setVisibility(View.VISIBLE);
+                    mLlIntoYes.setVisibility(View.GONE);
                 }
 
-                if (checkedId == rbIntoYes.getId()) { //是
-                   llIntoNo.setVisibility(View.GONE);
-                    llIntoYes.setVisibility(View.VISIBLE);
+                if (checkedId == mRbIntoYes.getId()) { //是
+                    mLlIntoNo.setVisibility(View.GONE);
+                    mLlIntoYes.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //绕行急诊
+        rgDetour.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbDetourNo.getId()) { //否
+                    rlUntil.setVisibility(View.GONE);
+                    mTvArriveTime.setVisibility(View.GONE);
+                }
+
+                if (checkedId == mRbDetourYes.getId()) { //是
+                    rlUntil.setVisibility(View.VISIBLE);
+                    mTvArriveTime.setVisibility(View.VISIBLE);
                 }
             }
         });
 
         //初诊时间
-      tvDrawBloodTime.setOnClickListener(v -> {
+        mTvDrawBloodTime.setOnClickListener(v -> {
             mDialogAll.show(getChildFragmentManager(), "All");
         });
+
+
 
     }
 
@@ -232,7 +266,7 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             R.id.rb_mri_frag_ae, R.id.rb_mra_frag_ae, R.id.rb_cemra_frag_ae, R.id.rb_cvus_frag_ae, R.id.rb_tcd_frag_ae,
             R.id.tv_draw_blood_time, R.id.et_emergency_ward, R.id.tv_emergency_ward, R.id.rb_level_1,
             R.id.rb_level_2, R.id.rb_level_3, R.id.rb_level_4, R.id.tv_detour, R.id.rb_detour_yes, R.id.rb_detour_no,
-            R.id.tv_unit, R.id.es_vital_sign_aware_2, R.id.tv_arrive_time, R.id.tv_detour_ccu,
+            R.id.tv_until, R.id.es_vital_sign_aware_2, R.id.tv_arrive_time, R.id.tv_detour_ccu,
             R.id.rb_detour_ccu_yes, R.id.rb_detour_ccu_no, R.id.tv_into, R.id.rb_into_yes, R.id.rb_into_no, R.id.cb_text_1,
             R.id.cb_text_2, R.id.cb_text_3, R.id.cb_text_4, R.id.cb_text_5, R.id.cb_text_6, R.id.cb_text_7, R.id.cb_text_8,
             R.id.btn_get_data, R.id.btn_confirm})
@@ -279,7 +313,7 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
                 break;
             case R.id.rb_detour_no:
                 break;
-            case R.id.tv_unit:
+            case R.id.tv_until:
                 break;
             case R.id.es_vital_sign_aware_2:
                 break;
@@ -323,6 +357,6 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        tvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
+        mTvDrawBloodTime.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
     }
 }

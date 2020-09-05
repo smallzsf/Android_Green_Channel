@@ -113,6 +113,7 @@ public class PatientStatusFragment4 extends BaseFragment implements OnDateSetLis
 
         mLlDeal.setVisibility(View.GONE);
         mTvNote.setVisibility(View.GONE);
+        mEtNote.setVisibility(View.GONE);
     }
 
     private void initData() {
@@ -124,6 +125,8 @@ public class PatientStatusFragment4 extends BaseFragment implements OnDateSetLis
         mTvDrawBloodTime.setOnClickListener(v -> {
             mDialogAll.show(getChildFragmentManager(), "All");
         });
+
+
 
     }
 

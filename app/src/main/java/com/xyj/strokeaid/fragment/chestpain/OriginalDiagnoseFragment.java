@@ -126,6 +126,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                 }
                 break;
             case "NSTEMI":
+            case "UA":
                 if(mOriginalStatusFragment2==null){//为空，创建
                     mOriginalStatusFragment2=OriginalStatusFragment2.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment2);//将碎片添加到专门存放碎片的容器中
@@ -133,53 +134,50 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                     ft.show(mOriginalStatusFragment2);//不为空，直接显示
                 }
                 break;
-            case "UA":
+
+            case "主动脉夹层":
                 if(mOriginalStatusFragment3==null){//为空，创建
                     mOriginalStatusFragment3=OriginalStatusFragment3.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment3);//将碎片添加到专门存放碎片的容器中
                 }else{
                     ft.show(mOriginalStatusFragment3);//不为空，直接显示
                 }
+
                 break;
-            case "主动脉夹层":
+            case "肺动脉拴塞":
                 if(mOriginalStatusFragment4==null){//为空，创建
                     mOriginalStatusFragment4=OriginalStatusFragment4.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment4);//将碎片添加到专门存放碎片的容器中
                 }else{
                     ft.show(mOriginalStatusFragment4);//不为空，直接显示
                 }
+
                 break;
-            case "肺动脉拴塞":
+            case "非ACS心源性胸痛":
                 if(mOriginalStatusFragment5==null){//为空，创建
                     mOriginalStatusFragment5=OriginalStatusFragment5.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment5);//将碎片添加到专门存放碎片的容器中
                 }else{
                     ft.show(mOriginalStatusFragment5);//不为空，直接显示
                 }
+
                 break;
-            case "非ACS心源性胸痛":
+            case "其他非心源性胸痛":
                 if(mOriginalStatusFragment6==null){//为空，创建
                     mOriginalStatusFragment6=OriginalStatusFragment6.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment6);//将碎片添加到专门存放碎片的容器中
                 }else{
                     ft.show(mOriginalStatusFragment6);//不为空，直接显示
                 }
+
                 break;
-            case "其他非心源性胸痛":
+            case "待查":
                 if(mOriginalStatusFragment7==null){//为空，创建
                     mOriginalStatusFragment7=OriginalStatusFragment7.newInstance(type);//创建
                     ft.add(R.id.fl_main, mOriginalStatusFragment7);//将碎片添加到专门存放碎片的容器中
                 }else{
                     ft.show(mOriginalStatusFragment7);//不为空，直接显示
                 }
-                break;
-            case "待查":
-//                if(mOriginalStatusFragment1==null){//为空，创建
-//                    mOriginalStatusFragment1=new OriginalStatusFragment1();//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment1);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment1);//不为空，直接显示
-//                }
                 break;
             default:
                 break;

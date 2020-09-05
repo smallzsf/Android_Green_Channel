@@ -32,6 +32,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_end"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -60,19 +61,23 @@
     <include layout="@layout/include_line" />
 
     <TextView
+        android:id="@+id/tv_end_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
         android:gravity="center"
-        android:text="72内肌钙蛋白最高值"
+        android:text="72h内肌钙蛋白最高值"
         android:textColor="@color/app_223b53"
-        android:textSize="@dimen/item_title_size" />
+        android:textSize="@dimen/item_title_size"
+        android:visibility="gone"/>
 
     <LinearLayout
+        android:id="@+id/ll_end_72"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_left"
@@ -130,6 +135,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_bnp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -157,10 +163,12 @@
     </LinearLayout>
     <include layout="@layout/include_line" />
     <LinearLayout
+        android:id="@+id/ll_bnp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_bnp_left"
@@ -215,6 +223,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_tc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -242,10 +251,12 @@
     </LinearLayout>
     <include layout="@layout/include_line" />
     <LinearLayout
+        android:id="@+id/ll_tc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="@dimen/dp_68"
@@ -297,6 +308,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_tg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -324,10 +336,12 @@
     </LinearLayout>
     <include layout="@layout/include_line" />
     <LinearLayout
+        android:id="@+id/ll_tg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="@dimen/dp_68"
@@ -379,6 +393,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_hdl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -406,10 +421,12 @@
     </LinearLayout>
     <include layout="@layout/include_line" />
     <LinearLayout
+        android:id="@+id/ll_hdl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="@dimen/dp_68"
@@ -461,6 +478,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_ldl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -488,10 +506,12 @@
     </LinearLayout>
     <include layout="@layout/include_line" />
     <LinearLayout
+        android:id="@+id/ll_ldl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="@dimen/dp_68"
@@ -543,6 +563,7 @@
 
 
         <RadioGroup
+            android:id="@+id/rg_uc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -570,10 +591,12 @@
     </LinearLayout>
 <!--lvef-->
     <LinearLayout
+        android:id="@+id/ll_lved"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal"
-        android:padding="@dimen/dp_5">
+        android:padding="@dimen/dp_5"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="@dimen/dp_68"
