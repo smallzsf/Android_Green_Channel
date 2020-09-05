@@ -35,6 +35,7 @@ import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
 import com.xyj.strokeaid.fragment.trauma.OperationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.OutcomeOfPatientsFragment;
 import com.xyj.strokeaid.fragment.trauma.TraumaStrokeScoresFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -191,6 +192,10 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 7:
                     // 評分工具
                     return TraumaStrokeScoresFragment.newInstance(patientId, docId);
+                case 8:
+                    //患者转归
+                    return OutcomeOfPatientsFragment.newInstance(patientId, docId);
+
                 default:
                     return EmptyFragment.newInstance();
             }

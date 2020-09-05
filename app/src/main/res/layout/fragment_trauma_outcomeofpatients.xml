@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="患者转归" />
+            <com.zhy.view.flowlayout.FlowLayout
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rb_leave_hospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="出院"
+                    android:textSize="@dimen/item_content_size" />
+                <RadioButton
+                    android:id="@+id/rb_transform_hospital"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="转送其它医院"
+                    android:textSize="@dimen/item_content_size" />
+                <RadioButton
+                    android:id="@+id/rb_transform_department"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="转送其它科室"
+                    android:textSize="@dimen/item_content_size" />
+                <RadioButton
+                    android:id="@+id/rb_die"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="死亡"
+                    android:textSize="@dimen/item_content_size" />
+
+            </com.zhy.view.flowlayout.FlowLayout>
+            <LinearLayout
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="@dimen/item_content_size"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="住院天数"/>
+                <EditText
+                    android:id="@+id/et_hospitalization_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/item_content_size"
+                    android:text="天"/>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="@dimen/item_content_size"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="住ICU天数"/>
+                <EditText
+                    android:id="@+id/et_ICU_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/item_content_size"
+                    android:text="天"/>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="@dimen/item_content_size"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="呼吸机使用时长"/>
+                <EditText
+                    android:id="@+id/et_respirator_timer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/item_content_size"
+                    android:text="小时"/>
+            </LinearLayout>
+            <LinearLayout
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+                <TextView
+                    android:textSize="@dimen/item_content_size"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="总费用"/>
+                <EditText
+                    android:id="@+id/et_totalcost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/item_content_size"
+                    android:text="元"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_leavehospital"
+                android:paddingEnd="@dimen/dp_20"
+                android:paddingStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:text="出院"
+                    android:textSize="@dimen/item_content_size"/>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_leave_hospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    app:title="出院时间" />
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:text="治疗结果"
+                    android:textSize="@dimen/item_content_size"/>
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_result_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:text="治愈"
+                        android:textSize="@dimen/item_content_size" />
+                    <RadioButton
+                        android:id="@+id/rb_result_better"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:text="好转"
+                        android:textSize="@dimen/item_content_size" />
+                    <RadioButton
+                        android:id="@+id/rb_leave_self"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:text="自动离院"
+                        android:textSize="@dimen/item_content_size" />
+                    <RadioButton
+                        android:id="@+id/rb_result_other"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dp_5"
+                        android:text="其它原因离院"
+                        android:textSize="@dimen/item_content_size" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_transferhospital"
+                android:paddingEnd="@dimen/dp_20"
+                android:paddingStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:text="转送其它医院"
+                    android:textSize="@dimen/item_content_size"/>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_leave_hospital_door"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    app:title="离开本院大门时间" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="医院名称"
+                        android:textSize="@dimen/item_content_size"/>
+                    <EditText
+                        android:id="@+id/et_hospitalization_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="left"
+                        android:hint="单行输入"
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/item_content_size" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="网络医院"
+                        android:textSize="@dimen/item_content_size"/>
+                    <RadioGroup
+                        android:id="@+id/rg_is_net"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:id="@+id/rb_nethospital_true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="是"
+                        />
+                    <RadioButton
+                        android:id="@+id/rb_nethospital_flase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_transferdepartment"
+                android:paddingEnd="@dimen/dp_20"
+                android:paddingStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:text="转送其它科室"
+                    android:textSize="@dimen/item_content_size"/>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_transfer_department"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    app:title="转科时间" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="接诊科室"
+                        android:textSize="@dimen/item_content_size"/>
+                    <EditText
+                        android:id="@+id/et_reception_department"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="left"
+                        android:hint="单行输入"
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/item_content_size" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="转科原因"
+                        android:textSize="@dimen/item_content_size"/>
+                    <EditText
+                        android:id="@+id/et_transfer_reason"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="left"
+                        android:hint="单行输入"
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/item_content_size" />
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_die"
+                android:visibility="gone"
+                android:paddingEnd="@dimen/dp_20"
+                android:paddingStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_40"
+                    android:text="死亡"
+                    android:textSize="@dimen/item_content_size"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="死亡地点"
+                        android:textSize="@dimen/item_content_size"/>
+                    <EditText
+                        android:id="@+id/et_die_location"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="left"
+                        android:hint="单行输入"
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/item_content_size" />
+
+                </LinearLayout>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_die_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    app:title="死亡时间" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_40"
+                        android:text="死亡原因"
+                        android:textSize="@dimen/item_content_size"/>
+                    <EditText
+                        android:id="@+id/et_die_reason"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dp_20"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_edittext_bg"
+                        android:gravity="left"
+                        android:hint="单行输入"
+                        android:padding="@dimen/dp_5"
+                        android:textSize="@dimen/item_content_size" />
+
+                </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
