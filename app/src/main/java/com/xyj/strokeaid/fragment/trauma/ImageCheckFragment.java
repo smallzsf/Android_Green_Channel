@@ -15,6 +15,9 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.TextTimeBar;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -22,6 +25,8 @@ import butterknife.OnClick;
  * 心电检查
  */
 public class ImageCheckFragment extends BaseFragment {
+
+
     @BindView(R.id.rb_ct_scan)
     RadioButton rbCtScan;
     @BindView(R.id.rb_ct_raise)
@@ -70,6 +75,9 @@ public class ImageCheckFragment extends BaseFragment {
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_bottom)
     LinearLayout llBottom;
+
+    private List<RadioButton> ventilationModeList = new ArrayList();
+    private int checkRadioId = R.id.rb_ct_scan;
     private String mPatientId;
     private String mDocId;
 
@@ -104,11 +112,53 @@ public class ImageCheckFragment extends BaseFragment {
     protected void initView(@NonNull View view) {
         btnGetData.setText("获取记录");
         btnConfirm.setText("保存");
+        String image = "检查CT平扫片子";
+        String report = "检查CT平扫报告";
+        tvCheckImage.setText(image);
+        tvCheckReport.setText(report);
+
+        ventilationModeList.add(rbCtScan);
+        ventilationModeList.add(rbCtRaise);
+        ventilationModeList.add(rbThreeRebuild);
+        ventilationModeList.add(rbCta);
+        ventilationModeList.add(rbCtp);
+        ventilationModeList.add(rbMri);
+        ventilationModeList.add(rbColorUltrasound);
+        ventilationModeList.add(rbDr);
+        ventilationModeList.add(rbDsa);
+        ventilationModeList.add(rbOther);
+
+        for (int i = 0; i < ventilationModeList.size(); i++) {
+            RadioButton radioButton = ventilationModeList.get(i);
+            radioButton.setOnClickListener(onRadioClickListener);
+        }
+        refrashRadioStatus();
+
         loadData();
 
     }
-
-
+    View.OnClickListener onRadioClickListener = view -> {
+        checkRadioId = view.getId();
+        RadioButton radioButton = (RadioButton) view;
+        String image = "检查"+radioButton.getText().toString()+"片子";
+        String report = "检查"+radioButton.getText().toString()+"报告";
+        tvCheckImage.setText(image);
+        tvCheckReport.setText(report);
+        refrashRadioStatus();
+    };
+    private void refrashRadioStatus() {
+        for (int i = 0; i < ventilationModeList.size(); i++) {
+            RadioButton radioButton = ventilationModeList.get(i);
+            if (radioButton == null) {
+                continue;
+            }
+            if (radioButton.getId() == checkRadioId) {
+                radioButton.setChecked(true);
+            }else {
+                radioButton.setChecked(false);
+            }
+        }
+    }
     private void loadData() {
     }
 
