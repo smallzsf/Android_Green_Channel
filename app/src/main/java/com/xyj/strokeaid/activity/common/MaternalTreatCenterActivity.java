@@ -133,7 +133,7 @@ public class MaternalTreatCenterActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActMtc.setCurrentItem(position);
+                vpContentActMtc.setCurrentItem(position,false);
             }
         });
     }

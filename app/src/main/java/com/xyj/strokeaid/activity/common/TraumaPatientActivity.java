@@ -119,9 +119,9 @@ public class TraumaPatientActivity extends BaseActivity {
         titleBarActTp
                 .setLeftLayoutClickListener(v -> finish())
                 .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                .withInt(IntentKey.VIEW_TYPE, 2)
-                .withString(IntentKey.PATIENT_ID, mPatientId)
-                .navigation());
+                        .withInt(IntentKey.VIEW_TYPE, 2)
+                        .withString(IntentKey.PATIENT_ID, mPatientId)
+                        .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -142,7 +142,7 @@ public class TraumaPatientActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActTp.setCurrentItem(position);
+                vpContentActTp.setCurrentItem(position, false);
             }
         });
     }

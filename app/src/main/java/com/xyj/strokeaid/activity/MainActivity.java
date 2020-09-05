@@ -132,9 +132,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         // 初始化rv数据
         mPatientBeans = new ArrayList<>();
         mPatientBeans.add(new HomePatientBean("张三", 58, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
-        mPatientBeans.add(new HomePatientBean("李东冬冬", 59, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
-        mPatientBeans.add(new HomePatientBean("王文", 60, 1, 1, "2020-08-20 09:53:14", "2020-08-20 10:53:31", "徐甜甜", "林柳", 1));
-        mPatientRvAdapter = new HomePatientRvAdapter(mPatientBeans, 1, 1);
+        mPatientRvAdapter = new HomePatientRvAdapter(mPatientBeans);
         // 设置rv
         rvContentActMain.setLayoutManager(new LinearLayoutManager(mContext));
         if (rvContentActMain.getItemDecorationCount() == 0) {
@@ -151,9 +149,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             mTabEntities.add(new TabEntity(Constants.HOME_TAB_TITLES[i], 0, 0));
         }
         tlTitleActMain.setTabData(mTabEntities);
-        tlTitleActMain.showMsg(0, 8);
-        tlTitleActMain.showMsg(1, 22);
-        tlTitleActMain.showMsg(2, 16);
+//        tlTitleActMain.showMsg(0, 8);
+//        tlTitleActMain.showMsg(1, 22);
+//        tlTitleActMain.showMsg(2, 16);
     }
 
     @Override
@@ -272,7 +270,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void onResume() {
         super.onResume();
 //        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
-        mDiseaseType= 3;
+        mDiseaseType = 3;
         mPatientType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_TYPE);
         tlTitleActMain.setCurrentTab(mPatientType);
         tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
@@ -292,6 +290,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 mDiseaseType = 1;
                 mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText(getString(R.string.stroke));
+                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+                mPatientRvAdapter.notifyDataSetChanged();
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -301,6 +301,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 mDiseaseType = 2;
                 mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText(getString(R.string.chest_pain));
+                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+                mPatientRvAdapter.notifyDataSetChanged();
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -311,6 +313,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 mDiseaseType = 3;
                 mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText("创伤");
+                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+                mPatientRvAdapter.notifyDataSetChanged();
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -321,6 +325,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 mDiseaseType = 4;
                 mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText("危重孕产妇");
+                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+                mPatientRvAdapter.notifyDataSetChanged();
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }
@@ -331,6 +337,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 mDiseaseType = 5;
                 mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
                 tvDiseaseViewSearch.setText("危重儿童");
+                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+                mPatientRvAdapter.notifyDataSetChanged();
                 if (mDiseasePop != null) {
                     mDiseasePop.dismiss();
                 }

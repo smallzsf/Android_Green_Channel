@@ -172,18 +172,6 @@ public class PatientChestPainRecordActivity extends BaseActivity {
             this.docId = docId;
         }
 
-        public ChestPainRecordVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
-            super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public ChestPainRecordVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
         @NonNull
         @Override
         public Fragment createFragment(int position) {

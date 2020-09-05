@@ -20,16 +20,8 @@ import java.util.List;
  */
 public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, BaseViewHolder> {
 
-    /**
-     * 代表当前显示的内容状态
-     */
-    int mDiseaseType;
-    int mPatientType;
-
-    public HomePatientRvAdapter(@Nullable List<HomePatientBean> data, int diseaseType, int patientType) {
+    public HomePatientRvAdapter(@Nullable List<HomePatientBean> data) {
         super(R.layout.adapter_rv_home_patient_item, data);
-        this.mDiseaseType = diseaseType;
-        this.mPatientType = patientType;
         addChildClickViewIds(R.id.tv_detail_item_patient, R.id.tv_time_node_item_patient);
     }
 
@@ -45,12 +37,16 @@ public class HomePatientRvAdapter extends BaseQuickAdapter<HomePatientBean, Base
 
 
     private String getDiseaseNameByType(int type) {
-        if (type == 1) {
-            return "卒中";
+        if (type == 5) {
+            return "危重儿童";
         } else if (type == 2) {
             return "胸痛";
+        } else if (type == 3) {
+            return "创伤";
+        } else if (type == 4) {
+            return "危重孕产妇";
         } else {
-            return "";
+            return "卒中";
         }
     }
 

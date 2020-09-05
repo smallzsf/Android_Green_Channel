@@ -133,7 +133,7 @@ public class ChildTreatCenterActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActCtc.setCurrentItem(position);
+                vpContentActCtc.setCurrentItem(position,false);
             }
         });
     }

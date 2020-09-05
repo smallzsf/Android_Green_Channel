@@ -112,8 +112,6 @@
         <activity
             android:name=".activity.detection.IllnessRecordActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.newapoplexy.NewChestXRayActivity" />
-        <activity android:name=".activity.newapoplexy.RelationPatientInfoActivity" />
         <activity
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait"
@@ -134,9 +132,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.stroke.StrokeMainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.newapoplexy.NewApoplexyInfoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.set.AccountActivity"
