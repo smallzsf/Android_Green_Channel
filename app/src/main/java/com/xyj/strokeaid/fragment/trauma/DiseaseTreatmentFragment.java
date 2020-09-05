@@ -2,23 +2,15 @@ package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainBloodTestFragment;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
 
 public class DiseaseTreatmentFragment  extends BaseFragment {
 
@@ -51,7 +43,7 @@ public class DiseaseTreatmentFragment  extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_disease_treatment;
+        return R.layout.fragment_trauma_disease_treatment;
     }
 
     @Override
