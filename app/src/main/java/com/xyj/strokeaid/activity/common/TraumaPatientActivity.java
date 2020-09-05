@@ -27,10 +27,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -167,6 +164,7 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 0:
                     // 生命体征
                     return DiseaseTreatmentFragment.newInstance(patientId, docId);
+                case 1:
                     //检验信息
                     return InspectionInformationFragment.newInstance(patientId, docId);
 //                case 2:

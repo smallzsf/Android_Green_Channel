@@ -112,7 +112,7 @@ public class InspectionInformationFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_disease_record;
+        return R.layout.fragment_inspection_information;
     }
 
     @Override
