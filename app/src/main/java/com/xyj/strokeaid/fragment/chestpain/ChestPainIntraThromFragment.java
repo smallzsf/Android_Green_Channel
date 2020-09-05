@@ -61,8 +61,6 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
     @BindView(R.id.ll_no_suitable)

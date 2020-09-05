@@ -46,8 +46,6 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
     private String mPatientId;

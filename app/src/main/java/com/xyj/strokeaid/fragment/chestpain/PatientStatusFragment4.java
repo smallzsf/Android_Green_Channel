@@ -73,8 +73,6 @@ public class PatientStatusFragment4 extends BaseFragment implements OnDateSetLis
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout mLlBottom;
 
 
     public static PatientStatusFragment4 newInstance(String keyword) {

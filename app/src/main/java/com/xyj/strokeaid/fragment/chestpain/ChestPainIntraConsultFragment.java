@@ -63,8 +63,6 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     AppCompatButton btnConfirm;
     @BindView(R.id.btn_cancel)
     AppCompatButton btnCancel;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
     private String mPatientId;

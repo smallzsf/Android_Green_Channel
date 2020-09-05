@@ -75,8 +75,6 @@ public class TransferFragment extends BaseFragment {
     @BindView(R.id.iv_refresh_item_time_node)
     ImageView ivRefreshItemTimeNode;
     TimePickerView mTimePickerView;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_transfer)
     LinearLayout llTransfer;
 

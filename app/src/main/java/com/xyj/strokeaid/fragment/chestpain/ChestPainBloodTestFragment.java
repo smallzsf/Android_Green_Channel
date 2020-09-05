@@ -65,8 +65,6 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.llVitalSigns)
     LinearLayout llVitalSigns;
     @BindView(R.id.ll_troponin_first)

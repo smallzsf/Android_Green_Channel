@@ -345,8 +345,6 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
     AppCompatButton mBtnConfirm;
     @BindView(R.id.rg_smoke)
     RadioGroup rgSmoke;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
     @BindView(R.id.ll_smoke_status)
     LinearLayout llSmokeStatus;
     @BindView(R.id.rg_end)
