@@ -29,6 +29,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -174,9 +175,9 @@ public class TraumaPatientActivity extends BaseActivity {
         @Override
         public Fragment createFragment(int position) {
             switch (position) {
-//                case 0:
-//
-//                    break;
+                case 0:
+                    // 生命体征
+                    return ChestPainVitalSignsFragment.newInstance(patientId, docId);
 //                case 1:
 //
 //                    break;
