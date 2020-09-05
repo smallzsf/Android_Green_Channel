@@ -41,20 +41,20 @@ public class DiseaseRecordFragment extends BaseFragment {
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
     TagFlowLayout tflActionInChief;
-    @BindView(R.id.et_medical_history)
-    EditText etMedicalHistory;
-    @BindView(R.id.tfl_medical_history)
-    TagFlowLayout tflMedicalHistory;
-    @BindView(R.id.tfl_anticoagulant_drug)
-    TagFlowLayout tflAnticoagulantDrug;
-    @BindView(R.id.tfl_anticoagulant_drug1)
-    TagFlowLayout tflAnticoagulantDrug1;
-    @BindView(R.id.tfl_anticoagulant_drug2)
-    TagFlowLayout tflAnticoagulantDrug2;
-    @BindView(R.id.tfl_anticoagulant_drug3)
-    TagFlowLayout tflAnticoagulantDrug3;
-    @BindView(R.id.tfl_anticoagulant_drug4)
-    TagFlowLayout tflAnticoagulantDrug4;
+//    @BindView(R.id.et_medical_history)
+//    EditText etMedicalHistory;
+//    @BindView(R.id.tfl_medical_history)
+//    TagFlowLayout tflMedicalHistory;
+//    @BindView(R.id.tfl_anticoagulant_drug)
+//    TagFlowLayout tflAnticoagulantDrug;
+//    @BindView(R.id.tfl_anticoagulant_drug1)
+//    TagFlowLayout tflAnticoagulantDrug1;
+//    @BindView(R.id.tfl_anticoagulant_drug2)
+//    TagFlowLayout tflAnticoagulantDrug2;
+//    @BindView(R.id.tfl_anticoagulant_drug3)
+//    TagFlowLayout tflAnticoagulantDrug3;
+//    @BindView(R.id.tfl_anticoagulant_drug4)
+//    TagFlowLayout tflAnticoagulantDrug4;
     @BindView(R.id.llVitalSigns)
     LinearLayout llVitalSigns;
     @BindView(R.id.ll_bottom)
@@ -119,13 +119,13 @@ public class DiseaseRecordFragment extends BaseFragment {
         //设置主诉值
         getEtTransferReason(tflActionInChief, etMajorComplaintFrag, mVals);
         //设置既往值
-        getEtTransferReason(tflMedicalHistory, etMedicalHistory, mVals1);
-        //抗血小板药、抗凝药、降压药、降糖药、降脂药
-        getEtTransferReason(tflAnticoagulantDrug, null, mVals2);
-        getEtTransferReason(tflAnticoagulantDrug1, null, mVals3);
-        getEtTransferReason(tflAnticoagulantDrug2, null, mVals4);
-        getEtTransferReason(tflAnticoagulantDrug3, null, mVals5);
-        getEtTransferReason(tflAnticoagulantDrug4, null, mVals6);
+//        getEtTransferReason(tflMedicalHistory, etMedicalHistory, mVals1);
+//        //抗血小板药、抗凝药、降压药、降糖药、降脂药
+//        getEtTransferReason(tflAnticoagulantDrug, null, mVals2);
+//        getEtTransferReason(tflAnticoagulantDrug1, null, mVals3);
+//        getEtTransferReason(tflAnticoagulantDrug2, null, mVals4);
+//        getEtTransferReason(tflAnticoagulantDrug3, null, mVals5);
+//        getEtTransferReason(tflAnticoagulantDrug4, null, mVals6);
 
     }
 
