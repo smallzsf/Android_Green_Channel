@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.trauma;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.score.ISSActivity;
+import com.xyj.strokeaid.activity.score.PHIActivity;
+import com.xyj.strokeaid.activity.stroke.StrokeGcsScoreActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 
@@ -30,7 +34,7 @@ public class TraumaStrokeScoresFragment extends BaseFragment {
     ListView listView;
     private String mPatientId;
     private String mDocId;
-    private String[]  data = {"PHI评分 ","TI评分","TS评分","GCS评分","ISS评分"};
+    private String[] data = {"PHI评分 ", "TI评分", "TS评分", "GCS评分", "ISS评分"};
 
     public TraumaStrokeScoresFragment() {
         // Required empty public constructor
@@ -117,7 +121,17 @@ public class TraumaStrokeScoresFragment extends BaseFragment {
 
         @Override
         public void onClick(View view) {
+            if (position == 0) {
+                startActivity(new Intent(context, PHIActivity.class));
+            } else if (position == 1) {
 
+            } else if (position == 2) {
+
+            } else if (position == 3) {
+                startActivity(new Intent(context, StrokeGcsScoreActivity.class));
+            } else if (position == 4) {
+                startActivity(new Intent(context, ISSActivity.class));
+            }
         }
     }
 

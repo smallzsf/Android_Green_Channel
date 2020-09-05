@@ -40,7 +40,6 @@ import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.stroke.TransferFragment;
@@ -89,7 +88,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     protected void initInject() {
-        ARouter.getInstance().inject(this);
     }
 
     @Override
