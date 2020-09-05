@@ -33,6 +33,7 @@ import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
+import com.xyj.strokeaid.fragment.trauma.StrokeScoresFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -182,9 +183,9 @@ public class TraumaPatientActivity extends BaseActivity {
 //                case 5:
 //
 //                    break;
-//                case 6:
-//
-//                    break;
+                case 6:
+                    // 評分工具
+                    return StrokeScoresFragment.newInstance(patientId, docId);
 //                case 7:
 //
 //                    break;
