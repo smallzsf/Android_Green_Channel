@@ -2,7 +2,6 @@ package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,81 +11,29 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.xyj.strokeaid.view.TextTimeBar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class InspectionInformationFragment extends BaseFragment {
-    @BindView(R.id.awareness)
-    TextView awareness;
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
-    @BindView(R.id.breath)
-    TextView breath;
-    @BindView(R.id.breath_layout)
-    LinearLayout breathLayout;
-    @BindView(R.id.et_breath_rate_content)
-    EditText etBreathRateContent;
-    @BindView(R.id.unit_times_minute)
-    TextView unitTimesMinute;
-    @BindView(R.id.pulse)
-    TextView pulse;
-    @BindView(R.id.pulse_layout)
-    LinearLayout pulseLayout;
-    @BindView(R.id.et_pulse_content)
-    EditText etPulseContent;
-    @BindView(R.id.pulse_unit_times_minute)
-    TextView pulseUnitTimesMinute;
-    @BindView(R.id.heart_rate)
-    TextView heartRate;
-    @BindView(R.id.heart_rate_layout)
-    LinearLayout heartRateLayout;
-    @BindView(R.id.et_heart_rate_content)
-    EditText etHeartRateContent;
-    @BindView(R.id.heart_rate_unit_times_minute)
-    TextView heartRateUnitTimesMinute;
-    @BindView(R.id.systolic_blood_pressure)
-    TextView systolicBloodPressure;
-    @BindView(R.id.systolic_blood_pressure_layout)
-    LinearLayout systolicBloodPressureLayout;
-    @BindView(R.id.et_systolic_blood_pressure_content)
-    EditText etSystolicBloodPressureContent;
-    @BindView(R.id.systolic_blood_pressure_unit_mm_hg)
-    TextView systolicBloodPressureUnitMmHg;
-    @BindView(R.id.diastolic_blood_pressure)
-    TextView diastolicBloodPressure;
-    @BindView(R.id.diastolic_blood_pressure_layout)
-    LinearLayout diastolicBloodPressureLayout;
-    @BindView(R.id.et_diastolic_blood_pressure_content)
-    EditText etDiastolicBloodPressureContent;
-    @BindView(R.id.diastolic_blood_pressure_unit_mm_hg)
-    TextView diastolicBloodPressureUnitMmHg;
-    @BindView(R.id.blood_oxygen_saturation)
-    TextView bloodOxygenSaturation;
-    @BindView(R.id.blood_oxygen_saturation_layout)
-    LinearLayout bloodOxygenSaturationLayout;
-    @BindView(R.id.et_blood_oxygen_saturation_content)
-    EditText etBloodOxygenSaturationContent;
-    @BindView(R.id.blood_oxygen_saturation_unit_percent)
-    TextView bloodOxygenSaturationUnitPercent;
-    @BindView(R.id.body_temperature)
-    TextView bodyTemperature;
-    @BindView(R.id.body_temperature_layout)
-    LinearLayout bodyTemperatureLayout;
-    @BindView(R.id.et_body_temperature_content)
-    EditText etBodyTemperatureContent;
-    @BindView(R.id.body_temperature_unit_celsius)
-    TextView bodyTemperatureUnitCelsius;
+    @BindView(R.id.tv_collection_time)
+    TextTimeBar tvCollectionTime;
+    @BindView(R.id.tv_arrive_time)
+    TextTimeBar tvArriveTime;
+    @BindView(R.id.tv_report_time)
+    TextTimeBar tvReportTime;
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.tv_upload)
+    TextView tvUpload;
+
     private String mPatientId;
     private String mDocId;
-    private List<String> list;
 
     public InspectionInformationFragment() {
 
@@ -117,7 +64,7 @@ public class InspectionInformationFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        btnGetData.setText("获取数据");
+        btnGetData.setText("获取记录");
         btnConfirm.setText("确定");
         loadData();
 
@@ -126,18 +73,26 @@ public class InspectionInformationFragment extends BaseFragment {
 
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-        esVitalSignAware.setItemData(list);
     }
 
 
     @Override
     protected void initListener() {
 
+    }
+
+    @OnClick({R.id.tv_upload, R.id.btn_get_data, R.id.btn_confirm})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_upload:
+                showToast("上传");
+                break;
+            case R.id.btn_get_data:
+                showToast("获取记录");
+                break;
+            case R.id.btn_confirm:
+                showToast("确定");
+                break;
+        }
     }
 }
