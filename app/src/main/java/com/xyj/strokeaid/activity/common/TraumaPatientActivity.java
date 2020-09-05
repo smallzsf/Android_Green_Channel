@@ -28,8 +28,9 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
+import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -167,9 +168,9 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 1:
                     //检验信息
                     return InspectionInformationFragment.newInstance(patientId, docId);
-//                case 2:
-//
-//                    break;
+                case 2:
+                    //心电检查
+                    return ElectrocardiographCheckFragment.newInstance(patientId, docId);
 //                case 3:
 //
 //                    break;
