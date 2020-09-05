@@ -2,22 +2,122 @@ package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiseaseTreatmentFragment  extends BaseFragment {
+import butterknife.BindView;
+
+public class DiseaseTreatmentFragment extends BaseFragment {
 
 
+    @BindView(R.id.awareness)
+    TextView awareness;
+    @BindView(R.id.es_vital_sign_aware)
+    EditSpinner esVitalSignAware;
+    @BindView(R.id.breath)
+    TextView breath;
+    @BindView(R.id.breath_layout)
+    LinearLayout breathLayout;
+    @BindView(R.id.et_breath_rate_content)
+    EditText etBreathRateContent;
+    @BindView(R.id.unit_times_minute)
+    TextView unitTimesMinute;
+    @BindView(R.id.pulse)
+    TextView pulse;
+    @BindView(R.id.pulse_layout)
+    LinearLayout pulseLayout;
+    @BindView(R.id.et_pulse_content)
+    EditText etPulseContent;
+    @BindView(R.id.pulse_unit_times_minute)
+    TextView pulseUnitTimesMinute;
+    @BindView(R.id.heart_rate)
+    TextView heartRate;
+    @BindView(R.id.heart_rate_layout)
+    LinearLayout heartRateLayout;
+    @BindView(R.id.et_heart_rate_content)
+    EditText etHeartRateContent;
+    @BindView(R.id.heart_rate_unit_times_minute)
+    TextView heartRateUnitTimesMinute;
+    @BindView(R.id.systolic_blood_pressure)
+    TextView systolicBloodPressure;
+    @BindView(R.id.systolic_blood_pressure_layout)
+    LinearLayout systolicBloodPressureLayout;
+    @BindView(R.id.et_systolic_blood_pressure_content)
+    EditText etSystolicBloodPressureContent;
+    @BindView(R.id.systolic_blood_pressure_unit_mm_hg)
+    TextView systolicBloodPressureUnitMmHg;
+    @BindView(R.id.diastolic_blood_pressure)
+    TextView diastolicBloodPressure;
+    @BindView(R.id.diastolic_blood_pressure_layout)
+    LinearLayout diastolicBloodPressureLayout;
+    @BindView(R.id.et_diastolic_blood_pressure_content)
+    EditText etDiastolicBloodPressureContent;
+    @BindView(R.id.diastolic_blood_pressure_unit_mm_hg)
+    TextView diastolicBloodPressureUnitMmHg;
+    @BindView(R.id.blood_oxygen_saturation)
+    TextView bloodOxygenSaturation;
+    @BindView(R.id.blood_oxygen_saturation_layout)
+    LinearLayout bloodOxygenSaturationLayout;
+    @BindView(R.id.et_blood_oxygen_saturation_content)
+    EditText etBloodOxygenSaturationContent;
+    @BindView(R.id.blood_oxygen_saturation_unit_percent)
+    TextView bloodOxygenSaturationUnitPercent;
+    @BindView(R.id.body_temperature)
+    TextView bodyTemperature;
+    @BindView(R.id.body_temperature_layout)
+    LinearLayout bodyTemperatureLayout;
+    @BindView(R.id.et_body_temperature_content)
+    EditText etBodyTemperatureContent;
+    @BindView(R.id.body_temperature_unit_celsius)
+    TextView bodyTemperatureUnitCelsius;
+    @BindView(R.id.rb_simple_respirator)
+    RadioButton rbSimpleRespirator;
+    @BindView(R.id.rb_ILMA)
+    RadioButton rbILMA;
+    @BindView(R.id.rb_nasal_catheter_ventilation)
+    RadioButton rbNasalCatheterVentilation;
+    @BindView(R.id.rb_oropharyngeal_ventilation)
+    RadioButton rbOropharyngealVentilation;
+    @BindView(R.id.rb_nasotracheal_tube)
+    RadioButton rbNasotrachealTube;
+    @BindView(R.id.rb_orotracheal_intubation)
+    RadioButton rbOrotrachealIntubation;
+    @BindView(R.id.rb_tracheotomy)
+    RadioButton rbTracheotomy;
+    @BindView(R.id.rb_ricothyroidotomy)
+    RadioButton rbRicothyroidotomy;
+    @BindView(R.id.rb_on_site_consultation)
+    RadioButton rbOnSiteConsultation;
+    @BindView(R.id.rb_remote_consultation)
+    RadioButton rbRemoteConsultation;
+    @BindView(R.id.rg_consultation)
+    RadioGroup rgConsultation;
+    @BindView(R.id.btn_start_frag_sg)
+    AppCompatButton btnStartFragSg;
+    @BindView(R.id.llVitalSigns)
+    LinearLayout llVitalSigns;
     private String mPatientId;
     private String mDocId;
-    private List<String> list;
+
+
+    private List<RadioButton> ventilationModeList = new ArrayList();
+    private int checkRadioId = R.id.rb_simple_respirator;
+    private List<Integer> disposalIdList = new ArrayList();
+
 
     public DiseaseTreatmentFragment() {
 
@@ -48,21 +148,53 @@ public class DiseaseTreatmentFragment  extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-//        btnGetData.setText("获取数据");
-//        btnConfirm.setText("确定");
+
+
+        ventilationModeList.add(rbNasotrachealTube);
+        ventilationModeList.add(rbILMA);
+        ventilationModeList.add(rbNasalCatheterVentilation);
+        ventilationModeList.add(rbOnSiteConsultation);
+        ventilationModeList.add(rbOropharyngealVentilation);
+        ventilationModeList.add(rbOrotrachealIntubation);
+        ventilationModeList.add(rbRemoteConsultation);
+        ventilationModeList.add(rbRicothyroidotomy);
+        ventilationModeList.add(rbTracheotomy);
+        ventilationModeList.add(rbSimpleRespirator);
+
+        for (int i = 0; i < ventilationModeList.size(); i++) {
+            RadioButton radioButton = ventilationModeList.get(i);
+            radioButton.setOnClickListener(onRadioClickListener);
+        }
+        refrashRadioStatus();
         loadData();
 
 
     }
 
+    View.OnClickListener onRadioClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            checkRadioId = view.getId();
+            refrashRadioStatus();
+        }
+    };
+
+    private void refrashRadioStatus() {
+
+        for (int i = 0; i < ventilationModeList.size(); i++) {
+            RadioButton radioButton = ventilationModeList.get(i);
+            if (radioButton == null) {
+                continue;
+            }
+            if (radioButton.getId() == checkRadioId) {
+                radioButton.setChecked(true);
+            }else {
+                radioButton.setChecked(false);
+            }
+        }
+    }
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
 //        esVitalSignAware.setItemData(list);
     }
 

@@ -71,6 +71,7 @@
 
             </LinearLayout>
             <LinearLayout
+                android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/dp_10"
@@ -185,6 +186,7 @@
                         android:layout_height="wrap_content"
                         >
                         <RadioButton
+                            android:id="@+id/rb_simple_respirator"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -193,6 +195,7 @@
                             android:text="简易呼吸器"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_ILMA"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -201,6 +204,7 @@
                             android:text="喉罩通气"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_nasal_catheter_ventilation"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -209,14 +213,16 @@
                             android:text="鼻导管通气"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_oropharyngeal_ventilation"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:text="口烟管通气"
+                            android:text="口咽管通气"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_nasotracheal_tube"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -225,6 +231,7 @@
                             android:text="经鼻气管内插管"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_orotracheal_intubation"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -233,6 +240,7 @@
                             android:text="经口气管内插管"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_tracheotomy"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
@@ -241,6 +249,7 @@
                             android:text="气管切开"
                             android:textSize="@dimen/item_content_size" />
                         <RadioButton
+                            android:id="@+id/rb_ricothyroidotomy"
                             style="@style/tv_small"
                             android:layout_width="wrap_content"
                             android:checked="true"
