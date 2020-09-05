@@ -20,6 +20,8 @@ import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.gyf.immersionbar.ImmersionBar;
+import com.hjq.permissions.OnPermission;
+import com.hjq.permissions.XXPermissions;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.UserInfoCache;
@@ -31,7 +33,7 @@ import com.xyj.strokeaid.view.SettingBar;
 import java.util.ArrayDeque;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
+import java.util.List;
 
 import butterknife.ButterKnife;
 
@@ -291,6 +293,62 @@ public abstract class BaseActivity extends AppCompatActivity {
             mLoadingDialogFragment.dismiss();
         }
     }
+
+    protected void requestPerm(String permission) {
+        XXPermissions.with(this)
+                .permission(permission)
+                .request(new OnPermission() {
+
+                    @Override
+                    public void hasPermission(List<String> granted, boolean all) {
+                        if (all) {
+                            showToast("获取权限成功");
+                        } else {
+                            showToast("获取权限成功，部分权限未正常授予");
+                        }
+                    }
+
+                    @Override
+                    public void noPermission(List<String> denied, boolean never) {
+                        if (never) {
+                            showToast("被永久拒绝授权，请手动授予权限");
+                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                            XXPermissions.startPermissionActivity(mContext, denied);
+                        } else {
+                            showToast("获取权限失败");
+                        }
+                    }
+                });
+    }
+
+    protected void requestPerms(String correctString, String deniedString, String... permission ) {
+        XXPermissions.with(this)
+                .permission(permission)
+                .request(new OnPermission() {
+
+                    @Override
+                    public void hasPermission(List<String> granted, boolean all) {
+                        if (all) {
+                            showToast(correctString);
+                        } else {
+                            showToast("部分权限未正常授予");
+                        }
+                    }
+
+                    @Override
+                    public void noPermission(List<String> denied, boolean never) {
+                        if (never) {
+                            showToast("被永久拒绝授权，请手动授予权限");
+                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                            XXPermissions.startPermissionActivity(mContext, denied);
+                        } else {
+                            showToast(deniedString);
+                        }
+                    }
+                });
+    }
+
+
 }
 
     

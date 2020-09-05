@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -87,6 +88,7 @@ public class DiseaseRecordFragment extends BaseFragment {
 
     public static DiseaseRecordFragment newInstance(String patientId, String docId) {
         DiseaseRecordFragment fragment = new DiseaseRecordFragment();
+        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);

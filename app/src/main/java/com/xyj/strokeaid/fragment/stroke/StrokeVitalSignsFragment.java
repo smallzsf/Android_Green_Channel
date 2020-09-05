@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -107,6 +108,7 @@ public class StrokeVitalSignsFragment extends BaseFragment {
 
     public static StrokeVitalSignsFragment newInstance(String patientId, String docId) {
         StrokeVitalSignsFragment fragment = new StrokeVitalSignsFragment();
+        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);

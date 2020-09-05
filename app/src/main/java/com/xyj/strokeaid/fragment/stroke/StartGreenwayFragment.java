@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.StrokeHosRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
@@ -77,6 +78,7 @@ public class StartGreenwayFragment extends BaseFragment {
 
     public static StartGreenwayFragment newInstance(String patientId, String docId) {
         StartGreenwayFragment fragment = new StartGreenwayFragment();
+        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);

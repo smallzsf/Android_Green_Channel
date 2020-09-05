@@ -16,6 +16,7 @@ public final class MmkvKey {
     public static final String LOGIN_REMEMBRE = "LOGIN_REMEMBRE";
     public static final String TOKEN = "TOKEN";
     public static final String LOGIN_USER_INFO = "LOGIN_USER_INFO";
+    public static final String PERMISSION_ALL_GRANTED = "PERMISSION_ALL_GRANTED";
     /**
      * 首页选择的疾病类型
      */

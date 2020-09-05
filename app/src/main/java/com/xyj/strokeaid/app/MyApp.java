@@ -51,6 +51,8 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
 
         registerActivityLifecycleCallbacks(this);
 
+        Utils.init(this);
+
         // 添加debug模式下的配置
         if (BuildConfig.DEBUG) {
             // DoraemonKit
@@ -60,9 +62,11 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
             ARouter.openDebug();
 
             LogUtils.getConfig().setLogSwitch(true);
+            LogUtils.getConfig().setGlobalTag("xyjAid");
         } else {
             LogUtils.getConfig().setLogSwitch(false);
         }
+
         // bugly 统一 初始化
         Bugly.init(getApplicationContext(), AppConfig.BUGLY_APP_ID, BuildConfig.DEBUG);
         // 初始化路由工具

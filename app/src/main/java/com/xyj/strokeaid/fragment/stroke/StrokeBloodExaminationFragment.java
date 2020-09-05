@@ -12,6 +12,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
@@ -45,6 +46,7 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
 
     public static StrokeBloodExaminationFragment newInstance(String patientId, String docId) {
         StrokeBloodExaminationFragment fragment = new StrokeBloodExaminationFragment();
+        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);

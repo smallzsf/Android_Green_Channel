@@ -118,12 +118,13 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     public void initView() {
+        requestPerms("获取基础权限成功~", "获取基础权限失败~", Constants.BASIC_PERMISSIONS);
 
         // 设置 tab
         initTab();
 
         // 初始化用户信息
-        if (UserInfoCache.getInstance().getUserInfo()!=null){
+        if (UserInfoCache.getInstance().getUserInfo() != null) {
             tvUserActMain.setText(UserInfoCache.getInstance().getUserInfo().getName());
         }
 

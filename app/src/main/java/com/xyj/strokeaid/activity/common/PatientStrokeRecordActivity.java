@@ -1,6 +1,10 @@
 package com.xyj.strokeaid.activity.common;
 
-import android.os.Bundle;
+import android.content.Intent;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
@@ -20,6 +24,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.xyj.strokeaid.R;
@@ -40,12 +45,14 @@ import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.stroke.TransferFragment;
+import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,6 +125,9 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvStartTimeIncludeCt.start();
         tvHosTimeIncludeCt.start();
+
+        NfcUtils nfcUtils = new NfcUtils(this);
+        NfcUtils.NfcInit(this);
     }
 
     @Override
@@ -163,10 +173,60 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onResume() {
+        super.onResume();
+        //设定intentfilter和tech-list。如果两个都为null就代表优先接收任何形式的TAG action。也就是说系统会主动发TAG intent。
+        if (NfcUtils.mNfcAdapter != null) {
+            NfcUtils.mNfcAdapter.enableForegroundDispatch(this, NfcUtils.mPendingIntent, NfcUtils.mIntentFilter, NfcUtils.mTechList);
+        }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (NfcUtils.mNfcAdapter != null) {
+            NfcUtils.mNfcAdapter.disableForegroundDispatch(this);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        NfcUtils.mNfcAdapter = null;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        LogUtils.e("--------------NFC-------------");
+        processIntent(intent);
+    }
+
+    public void processIntent(Intent intent) {
+        Parcelable[] rawmsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        NdefMessage msg = (NdefMessage) rawmsgs[0];
+        NdefRecord[] records = msg.getRecords();
+        String resultStr = new String(records[0].getPayload());
+        showToast(resultStr);
+        // 返回的是NFC检查到卡中的数据
+        LogUtils.e("processIntent: " + resultStr);
+        try {
+            // 检测卡的id
+            String id = NfcUtils.readNFCId(intent);
+            LogUtils.e("processIntent--id: " + id);
+            // NfcUtils中获取卡中数据的方法
+            String result = NfcUtils.readNFCFromTag(intent);
+            LogUtils.e("processIntent--result: " + result);
+            // 往卡中写数据
+//
+//            String data = "this.is.write";
+//            NfcUtils.writeNFCToTag(data,intent);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private class GreenChannelVpAdapter extends FragmentStateAdapter {
 
@@ -194,6 +254,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         @NonNull
         @Override
         public Fragment createFragment(int position) {
+            LogUtils.d(" + " + position);
             switch (position) {
                 case 0:
                     // 生命体征
