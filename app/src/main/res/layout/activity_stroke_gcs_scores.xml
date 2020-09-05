@@ -123,35 +123,7 @@
                 android:background="@color/white"
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
-
-                <TextView
-                    android:id="@+id/tv_lh_title_frag_ss"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    android:text="住院GCS评分" />
-
-
-                <TextView
-                    android:id="@+id/tv_lh_score_title_frag_ss"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginEnd="@dimen/dp_12"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical|end"
-                    tools:text="5" />
-
-                <ImageView
-                    android:id="@+id/iv_lh_arrow_frag_ss"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="center"
-                    android:src="@drawable/ic_arrow_down_blue" />
-
-            </LinearLayout>
+                android:paddingEnd="@dimen/dp_12"></LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_lh_contain_frag_ss"
@@ -161,31 +133,7 @@
                 android:orientation="vertical"
                 android:paddingStart="@dimen/dp_12"
                 android:paddingEnd="@dimen/dp_12"
-                android:visibility="gone">
-
-                <com.xyj.strokeaid.view.NihssItemBar
-                    android:id="@+id/nib_lh_gcs_eye_frag_ss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:title="睁眼状态" />
-
-                <include layout="@layout/include_line" />
-
-                <com.xyj.strokeaid.view.NihssItemBar
-                    android:id="@+id/nib_lh_gcs_speak_frag_ss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:title="语言状态" />
-
-                <include layout="@layout/include_line" />
-
-                <com.xyj.strokeaid.view.NihssItemBar
-                    android:id="@+id/nib_lh_gcs_sport_frag_ss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:title="运动状态" />
-
-            </LinearLayout>
+                android:visibility="gone"></LinearLayout>
 
 
             <include layout="@layout/include_line" />
@@ -237,37 +185,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title_bar_act_nihss"
         android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="类型:"
-            android:textColor="@color/black"
-            android:textSize="@dimen/item_title_size"
-            ></TextView>
-
-        <RadioButton
-            android:id="@+id/rb_ih_title_frag_ss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="入院GCS评分"
-            android:checked="true"
-            android:layout_gravity="right"
-            android:textSize="@dimen/item_title_size" />
-
-        <RadioButton
-            android:id="@+id/rb_lh_title_frag_ss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="住院GCS评分"
-            android:textSize="@dimen/item_title_size" />
-
-
-    </RadioGroup>
+        android:orientation="horizontal"></RadioGroup>
 
 
 </RelativeLayout>

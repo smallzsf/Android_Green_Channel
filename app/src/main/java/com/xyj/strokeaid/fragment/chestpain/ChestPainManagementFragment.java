@@ -1,24 +1,15 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
-
 import butterknife.BindView;
-
-import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 /**
  * @Description: 胸痛其他处置
@@ -37,7 +28,6 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
      */
     @BindView(R.id.rg_outcome_leave_hosptal)
     RadioButton mLeaveHosptal;
-
 
     /**
      * 患者转归 单选 出院
@@ -87,6 +77,54 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
     @BindView(R.id.ll_leave_hospital_said)
     LinearLayout mLeaveHospitalSaid;
 
+    /**
+     * 降糖药物
+     */
+    @BindView(R.id.rg_hypoglycemic)
+    RadioGroup rgHypoglycemic;
+
+    /**
+     * 降糖药物 单选 是
+     */
+    @BindView(R.id.rg_hypoglycemic_yes)
+    RadioButton rbHypoglycemicYes;
+
+    /**
+     * 降糖药物 单选 否
+     */
+    @BindView(R.id.rg_hypoglycemic_no)
+    RadioButton rbHypoglycemicNo;
+
+    /**
+     * 降糖药物 药物名称
+     */
+    @BindView(R.id.ll_hypoglycemic_name)
+    LinearLayout llHypoglycemicName;
+
+    /**
+     * 口服抗凝药物
+     */
+    @BindView(R.id.rg_anticoagulation)
+    RadioGroup rgAnticoagulation;
+
+    /**
+     * 口服抗凝药物 单选 是
+     */
+    @BindView(R.id.rb_anticoagulation_yes)
+    RadioButton rbAnticoagulationYes;
+
+    /**
+     * 口服抗凝药物 单选 否
+     */
+    @BindView(R.id.rb_anticoagulation_no)
+    RadioButton rbAnticoagulationNo;
+
+    /**
+     * 口服抗凝药物 药物名称
+     */
+    @BindView(R.id.ll_anticoagulation_name)
+    LinearLayout llAnticoagulationName;
+
 
     public static ChestPainManagementFragment newInstance() {
         ChestPainManagementFragment fragment = new ChestPainManagementFragment();
@@ -108,7 +146,9 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
     private void initview() {
         mOutcome.setOnCheckedChangeListener(radioghange);
 
+        rgHypoglycemic.setOnCheckedChangeListener(radioghangeHypoglycemic);
 
+        rgAnticoagulation.setOnCheckedChangeListener(radioghangeAnticoagulation);
     }
 
     private void initData() {
@@ -168,4 +208,31 @@ public class ChestPainManagementFragment extends BaseFragment implements OnDateS
             }
         }
     };
+
+    private RadioGroup.OnCheckedChangeListener radioghangeHypoglycemic = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            if (checkedId == rbHypoglycemicYes.getId()) {
+                llHypoglycemicName.setVisibility(View.VISIBLE);
+
+            } else if (checkedId == rbHypoglycemicNo.getId()) {
+                llHypoglycemicName.setVisibility(View.GONE);
+            }
+        }
+    };
+
+    private RadioGroup.OnCheckedChangeListener radioghangeAnticoagulation = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+            if (checkedId == rbAnticoagulationYes.getId()) {
+                llAnticoagulationName.setVisibility(View.VISIBLE);
+
+            } else if (checkedId == rbAnticoagulationNo.getId()) {
+                llAnticoagulationName.setVisibility(View.GONE);
+            }
+        }
+    };
+
 }

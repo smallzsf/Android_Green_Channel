@@ -144,19 +144,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:paddingEnd="@dimen/dp_12">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dp_12"
                     android:gravity="left"
                     android:minWidth="60dp"
                     android:text="首次检查:"
+                    android:layout_marginStart="@dimen/dp_12"
                     android:textColor="@color/color_222222"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -165,7 +165,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:weightSum="5">
 
                     <RadioButton
                         android:id="@+id/rb_scjc_8f_act_stroke_operation"
@@ -204,7 +205,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_1"
                 android:background="@color/white"
                 android:orientation="horizontal"
@@ -214,9 +215,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:minWidth="60dp"
                     android:text="串联病变:"
+                    android:layout_gravity="center_vertical"
                     android:textColor="@color/color_222222"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -225,7 +227,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_clbb_yes_act_stroke_operation"
@@ -906,41 +909,40 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="4">
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkbox_zjqs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="支架取栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_cs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="抽栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_qncx_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="球囊成型"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_zjcx_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="支架成型"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
@@ -949,32 +951,31 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkbox_dmrs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="动脉溶栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_jxss_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="机械碎栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_qt_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="其他"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
@@ -1012,41 +1013,40 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="4">
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_zjqs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="支架取栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_cs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="抽栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_qncx_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="球囊成型"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_zjcx_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="支架成型"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
@@ -1055,32 +1055,31 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_dmrs_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="动脉溶栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_jxss_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="机械碎栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_qt_act_stroke_operation"
-                            android:layout_width="fill_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginLeft="@dimen/dp_8"
                             android:text="其他"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
@@ -1176,7 +1175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_rs_yes_act_stroke_after"
@@ -1321,7 +1320,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_xxb_yes_act_stroke_operation"
@@ -1432,7 +1431,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="5">
 
                     <RadioButton
                         android:id="@+id/rb_jm_act_stroke_operation"
@@ -1483,7 +1482,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_kn_yes_act_stroke_operation"
@@ -1604,7 +1603,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="5">
 
                     <RadioButton
                         android:id="@+id/rb_jbm_act_stroke_operation"
@@ -1655,7 +1654,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_ymtmd_yes_act_stroke_operation"
@@ -1707,7 +1706,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_s_8f_act_stroke_operation"
@@ -1769,7 +1768,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:weightSum="6">
 
                     <RadioButton
                         android:id="@+id/rb_zjdg_5f_act_stroke_operation"
@@ -1847,7 +1846,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="5">
 
                     <RadioButton
                         android:id="@+id/rb_floopy_act_stroke_operation"

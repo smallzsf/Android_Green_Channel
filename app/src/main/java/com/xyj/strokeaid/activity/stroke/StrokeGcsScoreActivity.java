@@ -14,6 +14,13 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RequestBloodDataBean;
+import com.xyj.strokeaid.bean.SendAddStrokeCgsBean;
+import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
 
 import java.util.ArrayList;
@@ -22,6 +29,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @Description: Gcs评分
@@ -30,8 +42,8 @@ import butterknife.OnClick;
  */
 @Route(path = RouteUrl.Stroke.STROKE_GCS_SCORE)
 public class StrokeGcsScoreActivity extends BaseActivity {
-
-
+    @BindView(R.id.title_bar_act_nihss)
+    BaseTitleBar titleBarActStrokeMain;
     @BindView(R.id.tv_ih_title_frag_ss)
     TextView tvIhTitleFragSs;
     @BindView(R.id.tv_ih_score_title_frag_ss)
@@ -46,20 +58,6 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     NihssItemBar nibIhGcsSportFragSs;
     @BindView(R.id.ll_ih_contain_frag_ss)
     LinearLayout llIhContainFragSs;
-    @BindView(R.id.tv_lh_title_frag_ss)
-    TextView tvLhTitleFragSs;
-    @BindView(R.id.tv_lh_score_title_frag_ss)
-    TextView tvLhScoreTitleFragSs;
-    @BindView(R.id.iv_lh_arrow_frag_ss)
-    ImageView ivLhArrowFragSs;
-    @BindView(R.id.nib_lh_gcs_eye_frag_ss)
-    NihssItemBar nibLhGcsEyeFragSs;
-    @BindView(R.id.nib_lh_gcs_speak_frag_ss)
-    NihssItemBar nibLhGcsSpeakFragSs;
-    @BindView(R.id.nib_lh_gcs_sport_frag_ss)
-    NihssItemBar nibLhGcsSportFragSs;
-    @BindView(R.id.ll_lh_contain_frag_ss)
-    LinearLayout llLhContainFragSs;
     @BindView(R.id.nib_sm_volume_frag_ss)
     NihssItemBar nibSmVolumeFragSs;
     @BindView(R.id.nib_sm_position_frag_ss)
@@ -68,12 +66,10 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     NihssItemBar nibSmDeepFragSs;
     @BindView(R.id.ll_sm_contain_frag_ss)
     LinearLayout llSmContainFragSs;
-    @BindView(R.id.rg)
-    RadioGroup rg;
+
     @BindView(R.id.ll_ih_title_frag_ss)
     LinearLayout llIhTitleFragSs;
-    @BindView(R.id.ll_lh_title_frag_ss)
-    LinearLayout llLhTitleFragSs;
+
 
     @Override
     public int getLayoutId() {
@@ -88,35 +84,18 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     @Override
     public void initView() {
         initNihssBars();
-
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_ih_title_frag_ss:
-                        tvIhTitleFragSs.setText("入院GCS评分");
-                        nibIhGcsEyeFragSs.clickRgClearState();
-                        nibIhGcsSpeakFragSs.clickRgClearState();
-                        nibIhGcsSportFragSs.clickRgClearState();
-                        //执行具体操作
-                     /*   llIhTitleFragSs.setVisibility(View.VISIBLE);
-                        llLhTitleFragSs.setVisibility(View.GONE);*/
-                        break;
-
-                    case R.id.rb_lh_title_frag_ss:
-                        tvIhTitleFragSs.setText("住院GCS评分");
-                        nibIhGcsEyeFragSs.clickRgClearState();
-                        nibIhGcsSpeakFragSs.clickRgClearState();
-                        nibIhGcsSportFragSs.clickRgClearState();
-                        //执行具体操作
-                    /*    llIhTitleFragSs.setVisibility(View.GONE);
-                        llLhTitleFragSs.setVisibility(View.VISIBLE);*/
-                        break;
-
-
-                }
-            }
-        });
+        titleBarActStrokeMain.setLeftLayoutClickListener(v -> finish())
+                .setRightLayoutClickListener(v -> {
+                    SendAddStrokeCgsBean sendAddStrokeMrsBean = new SendAddStrokeCgsBean();
+                    int nGcsEye = nibIhGcsEyeFragSs.getScore();
+                    int nGcsSpeak = nibIhGcsSpeakFragSs.getScore();
+                    int nGcsSport = nibIhGcsSportFragSs.getScore();
+                    sendAddStrokeMrsBean.setGcsEye(nGcsEye + "");
+                    sendAddStrokeMrsBean.setGcsSpeech(nGcsEye + "");
+                    sendAddStrokeMrsBean.setGcsSport(nGcsSport + "");
+                    sendAddStrokeMrsBean.setScore(nGcsEye + nGcsSpeak + nGcsSport);
+                    addStrokeMrs(sendAddStrokeMrsBean);
+                });
     }
 
     @Override
@@ -125,16 +104,12 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_ih_arrow_frag_ss, R.id.iv_lh_arrow_frag_ss})
+    @OnClick({R.id.iv_ih_arrow_frag_ss})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_ih_arrow_frag_ss:
                 parseHasSubItemScores(llIhContainFragSs, ivIhArrowFragSs);
                 break;
-            case R.id.iv_lh_arrow_frag_ss:
-                parseHasSubItemScores(llLhContainFragSs, ivLhArrowFragSs);
-                break;
-
             default:
                 break;
         }
@@ -147,13 +122,8 @@ public class StrokeGcsScoreActivity extends BaseActivity {
      * @param imageView
      */
     private void parseHasSubItemScores(@NonNull LinearLayout linearLayout, @NonNull ImageView imageView) {
-        if (linearLayout.getVisibility() == View.VISIBLE) {
-            linearLayout.setVisibility(View.GONE);
-            imageView.setImageResource(R.drawable.ic_arrow_down_blue);
-        } else {
-            linearLayout.setVisibility(View.VISIBLE);
-            imageView.setImageResource(R.drawable.ic_arrow_up_blue);
-        }
+        linearLayout.setVisibility(View.VISIBLE);
+        imageView.setImageResource(R.drawable.ic_arrow_up_blue);
     }
 
     /**
@@ -186,18 +156,36 @@ public class StrokeGcsScoreActivity extends BaseActivity {
         inHosGcsSport.add(new NihssItemBar.ItemBean("遵嘱运动", 6, false));
         nibIhGcsSportFragSs.setItemBeans(inHosGcsSport);
 
-        // 住院GCS评分  睁眼反应
-        List<NihssItemBar.ItemBean> lnHosGcsEye = new ArrayList<>(inHosGcsEye);
-        nibLhGcsEyeFragSs.setItemBeans(lnHosGcsEye);
-        // 住院GCS评分  语言反应
-        List<NihssItemBar.ItemBean> lnHosGcsSpeak = new ArrayList<>(inHosGcsSpeak);
-        nibLhGcsSpeakFragSs.setItemBeans(lnHosGcsSpeak);
-        // 住院GCS评分  运动反应
-        List<NihssItemBar.ItemBean> lnHosGcsSport = new ArrayList<>(inHosGcsSport);
-        nibLhGcsSportFragSs.setItemBeans(lnHosGcsSport);
-
     }
 
+    /**
+     * 上传CGS评分
+     */
+    private void addStrokeMrs(SendAddStrokeCgsBean sendAddStrokeCgsBean) {
+        String request = GsonUtils.getGson().toJson(sendAddStrokeCgsBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addCgs(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
 
 }

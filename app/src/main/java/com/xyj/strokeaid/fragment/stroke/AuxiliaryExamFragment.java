@@ -7,10 +7,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
@@ -20,14 +18,31 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.AddImageExaminteDataBean;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.CTDataBean;
+import com.xyj.strokeaid.bean.RequestBloodDataBean;
+import com.xyj.strokeaid.bean.RequestCTDataBean;
+import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
+import com.xyj.strokeaid.bean.SendAddBloodDataBean;
+import com.xyj.strokeaid.bean.SendAddCTBean;
+import com.xyj.strokeaid.bean.SendBloodDataBean;
+import com.xyj.strokeaid.bean.SendCTDataBean;
+import com.xyj.strokeaid.bean.SendImageExaminteDataBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
-
+import java.util.ArrayList;
 import java.util.Date;
-
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ImageExamFragment
@@ -92,6 +107,8 @@ public class AuxiliaryExamFragment extends BaseFragment {
     private String mDocId;
     protected TimePickerView mTimePickerView;
 
+    private int type = 0;
+
     public AuxiliaryExamFragment() {
         // Required empty public constructor
     }
@@ -142,6 +159,7 @@ public class AuxiliaryExamFragment extends BaseFragment {
      *             3、 超声检查
      */
     private void setViewShowType(int type) {
+        this.type = type;
         if (type == 1) {
             // CT检查
             rbBloodFragAe.setVisibility(View.GONE);
@@ -158,6 +176,12 @@ public class AuxiliaryExamFragment extends BaseFragment {
             llReportFragAe.setVisibility(View.VISIBLE);
             tvReportFragAe.setText("查看CT平扫报告");
             tvPhotoFragAe.setText("查看CT平扫片子");
+
+            //TODO 接口请求
+            SendCTDataBean sendCTDataBean = new SendCTDataBean();
+            sendCTDataBean.setId(mPatientId);
+            sendCTDataBean.setRdcord_id(mPatientId);
+            getCTData(sendCTDataBean);
         } else if (type == 2) {
             // 核磁检查
             rbBloodFragAe.setVisibility(View.GONE);
@@ -174,6 +198,11 @@ public class AuxiliaryExamFragment extends BaseFragment {
             llReportFragAe.setVisibility(View.VISIBLE);
             tvReportFragAe.setText("查看MRI报告");
             tvPhotoFragAe.setText("查看MRI片子");
+            //TODO 接口请求
+            SendImageExaminteDataBean sendImageExaminteDataBean = new SendImageExaminteDataBean();
+            sendImageExaminteDataBean.setId(mPatientId);
+            sendImageExaminteDataBean.setRdcord_id(mPatientId);
+            getImageExaminte(sendImageExaminteDataBean);
         } else if (type == 3) {
             // 超声检查
             rbBloodFragAe.setVisibility(View.GONE);
@@ -190,6 +219,12 @@ public class AuxiliaryExamFragment extends BaseFragment {
             llReportFragAe.setVisibility(View.VISIBLE);
             tvReportFragAe.setText("查看颈部血管超声报告");
             tvPhotoFragAe.setText("查看颈部血管超声片子");
+
+            //TODO 接口请求
+            SendImageExaminteDataBean sendImageExaminteDataBean = new SendImageExaminteDataBean();
+            sendImageExaminteDataBean.setId(mPatientId);
+            sendImageExaminteDataBean.setRdcord_id(mPatientId);
+            getImageExaminte(sendImageExaminteDataBean);
         } else {
             // 默认状态
             rbBloodFragAe.setVisibility(View.VISIBLE);
@@ -205,6 +240,12 @@ public class AuxiliaryExamFragment extends BaseFragment {
             llPhotoFragAe.setVisibility(View.GONE);
             llReportFragAe.setVisibility(View.VISIBLE);
             tvReportFragAe.setText("查看血检报告");
+
+            //TODO 接口请求
+            SendBloodDataBean sendBloodDataBean = new SendBloodDataBean();
+            sendBloodDataBean.setId(mPatientId);
+            sendBloodDataBean.setRdcord_id(mPatientId);
+            getBloodData(sendBloodDataBean);
         }
         // 清除数据
         ttbReportTimeFragAe.setTime("");
@@ -300,6 +341,11 @@ public class AuxiliaryExamFragment extends BaseFragment {
 
     }
 
+//         * @param type 0、默认状态（血液检查）
+//            *             1、 CT检查
+//     *             2、 核磁检查
+//     *             3、 超声检查
+
     @OnClick({R.id.tv_photo_frag_ae, R.id.iv_photo_frag_ae, R.id.tv_report_frag_ae,
             R.id.iv_report_frag_ae, R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
@@ -315,7 +361,33 @@ public class AuxiliaryExamFragment extends BaseFragment {
             case R.id.btn_get_data:
                 break;
             case R.id.btn_confirm:
-                break;
+                if (type == 0) { //血液检查
+                    ArrayList<SendAddBloodDataBean> arrayList = new ArrayList<>();
+                    SendAddBloodDataBean sendAddBloodDataBean = new SendAddBloodDataBean();
+                    arrayList.add(sendAddBloodDataBean);
+                    addBloodData(arrayList);
+                    break;
+                }
+                if (type == 1) { //CT检查
+                    SendAddCTBean sendAddCTBean = new SendAddCTBean();
+                    sendAddCTBean.setCtexambegintime("");
+                    addCTData(sendAddCTBean);
+                    break;
+                }
+                if (type == 2) { //核磁检查
+                    ArrayList<AddImageExaminteDataBean> arrayList = new ArrayList<>();
+                    AddImageExaminteDataBean addImageExaminteDataBean = new AddImageExaminteDataBean();
+                    arrayList.add(addImageExaminteDataBean);
+                    addImageExaminte(arrayList);
+                    break;
+                }
+                if (type == 3) { //超声检查
+                    ArrayList<AddImageExaminteDataBean> arrayList = new ArrayList<>();
+                    AddImageExaminteDataBean addImageExaminteDataBean = new AddImageExaminteDataBean();
+                    arrayList.add(addImageExaminteDataBean);
+                    addImageExaminte(arrayList);
+                    break;
+                }
             default:
                 break;
         }
@@ -345,4 +417,214 @@ public class AuxiliaryExamFragment extends BaseFragment {
         }
         mTimePickerView.show();
     }
+
+
+    /**
+     * 获取CT数据
+     */
+    private void getCTData(SendCTDataBean sendCTDataBean) {
+        String request = GsonUtils.getGson().toJson(sendCTDataBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .sendCT(requestBody)
+                .enqueue(new Callback<RequestCTDataBean>() {
+                    @Override
+                    public void onResponse(Call<RequestCTDataBean> call, Response<RequestCTDataBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取CT数据成功");
+                                RequestCTDataBean requestCTDataBean = response.body();
+                                if (requestCTDataBean == null) {
+                                    return;
+                                }
+                                CTDataBean ctDataBean = requestCTDataBean.getData();
+                                if (ctDataBean != null) {
+                                    ttbCompleteTimeFragAe.setTime("2020-12-01");
+                                    ttbReportTimeFragAe.setTime("2020-12-01");
+                                    etResultFragAe.setText("111111111111111111111111111111111111111111111111111111111111111111111");
+                                }
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestCTDataBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 添加CT数据
+     */
+    private void addCTData(SendAddCTBean sendAddCTBean) {
+        String request = GsonUtils.getGson().toJson(sendAddCTBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addCT(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("提交CT数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     * 获取影像检查
+     */
+    private void getImageExaminte(SendImageExaminteDataBean sendImageExaminteDataBean) {
+        String request = GsonUtils.getGson().toJson(sendImageExaminteDataBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getImgeExaminate(requestBody)
+                .enqueue(new Callback<RequestImageExaminteDataBean>() {
+                    @Override
+                    public void onResponse(Call<RequestImageExaminteDataBean> call, Response<RequestImageExaminteDataBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取影像数据成功");
+                                ttbCompleteTimeFragAe.setTime("2020-12-01");
+                                ttbReportTimeFragAe.setTime("2020-12-01");
+                                etResultFragAe.setText("1111111111111111111111111111111111111111" +
+                                        "111111111111111111111111111111111111111111111111111111" +
+                                        "1111111111111111111111111111111111111111111111111111111");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestImageExaminteDataBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 上传影像检查
+     */
+    private void addImageExaminte(ArrayList<AddImageExaminteDataBean> list) {
+        String request = GsonUtils.getGson().toJson(list);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addImgeExaminate(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("提交影像数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     * 获取血液数据
+     */
+    private void getBloodData(SendBloodDataBean sendBloodDataBean) {
+        String request = GsonUtils.getGson().toJson(sendBloodDataBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getBloodData(requestBody)
+                .enqueue(new Callback<RequestBloodDataBean>() {
+                    @Override
+                    public void onResponse(Call<RequestBloodDataBean> call, Response<RequestBloodDataBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取血液数据成功");
+                                ttbCompleteTimeFragAe.setTime("2020-12-01");
+                                ttbReportTimeFragAe.setTime("2020-12-01");
+                                etResultFragAe.setText("1111111111111111111111111111111111111111" +
+                                        "111111111111111111111111111111111111111111111111111111" +
+                                        "1111111111111111111111111111111111111111111111111111111");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestBloodDataBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 上传血液数据
+     */
+    private void addBloodData(ArrayList<SendAddBloodDataBean> arrayList) {
+        String request = GsonUtils.getGson().toJson(arrayList);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addBloodData(requestBody)
+                .enqueue(new Callback<RequestBloodDataBean>() {
+                    @Override
+                    public void onResponse(Call<RequestBloodDataBean> call, Response<RequestBloodDataBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取血液数据成功");
+                                ttbCompleteTimeFragAe.setTime("2020-12-01");
+                                ttbReportTimeFragAe.setTime("2020-12-01");
+                                etResultFragAe.setText("1111111111111111111111111111111111111111" +
+                                        "1111111111111111111111111111111111111111111111111111111" +
+                                        "1111111111111111111111111111111111111111111111111111111");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestBloodDataBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
 }

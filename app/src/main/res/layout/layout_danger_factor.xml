@@ -320,6 +320,15 @@
                 android:text="是"
                 android:textSize="@dimen/item_content_size"
                 />
+
+            <RadioButton
+                android:id="@+id/tv_pa_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size" />
         </RadioGroup>
     </LinearLayout>
     <include layout="@layout/include_line" />
@@ -815,15 +824,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="3">
-
-            <RadioButton
-                android:id="@+id/tv_pa_no"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="否"
-                android:textSize="@dimen/item_content_size" />
 
             <RadioButton
                 android:id="@+id/tv_pa_yes"

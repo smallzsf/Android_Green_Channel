@@ -1,12 +1,5 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.RadioGroup;
-import android.widget.TextView;
-
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -14,14 +7,22 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @Description: mrs评分
@@ -30,6 +31,10 @@ import butterknife.OnClick;
  */
 @Route(path = RouteUrl.Stroke.STROKE_MRS_SCORE)
 public class StrokeMrsScoreActivity extends BaseActivity {
+
+    @BindView(R.id.title_bar_act_nihss)
+    BaseTitleBar titleBarActStrokeMain;
+
     @Autowired(name = IntentKey.PATIENT_ID)
     String mPatientId;
     @Autowired(name = IntentKey.DOC_ID)
@@ -37,12 +42,6 @@ public class StrokeMrsScoreActivity extends BaseActivity {
 
     @BindView(R.id.nib_before_disease_mrs_frag_ss)
     NihssItemBar nibBeforeDiseaseMrsFragSs;
-    @BindView(R.id.nib_in_hos_mrs_frag_ss)
-    NihssItemBar nibInHosMrsFragSs;
-    @BindView(R.id.nib_24_mrs_frag_ss)
-    NihssItemBar nib24MrsFragSs;
-    @BindView(R.id.rg)
-    RadioGroup rg;
 
 
     @Override
@@ -57,45 +56,14 @@ public class StrokeMrsScoreActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        titleBarActStrokeMain.setLeftLayoutClickListener(v -> finish())
+                .setRightLayoutClickListener(v -> {
+                    SendAddStrokeMrsBean sendAddStrokeMrsBean = new SendAddStrokeMrsBean();
+                    sendAddStrokeMrsBean.setMrs(nibBeforeDiseaseMrsFragSs.getScore());
+                    sendAddStrokeMrsBean.setScore(nibBeforeDiseaseMrsFragSs.getScore());
+                    addStrokeMrs(sendAddStrokeMrsBean);
+                });
         initNihssBars();
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_before_disease_mrs_frag_ss:
-                        TextView tv_title_view_nib = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
-                        tv_title_view_nib.setText("发病前mRS评分");
-                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
-                        //执行具体操作
-                   /*     nibBeforeDiseaseMrsFragSs.setVisibility(View.VISIBLE);
-                        nibInHosMrsFragSs.setVisibility(View.GONE);
-                        nib24MrsFragSs.setVisibility(View.GONE);*/
-                        break;
-
-                    case R.id.rb_in_hos_mrs_frag_ss:
-                        TextView tv_title_view_nib1 = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
-                        tv_title_view_nib1.setText("入院mRS评分");
-                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
-                        //执行具体操作
-                    /*    nibBeforeDiseaseMrsFragSs.setVisibility(View.GONE);
-                        nibInHosMrsFragSs.setVisibility(View.VISIBLE);
-                        nib24MrsFragSs.setVisibility(View.GONE);*/
-                        break;
-
-                    case R.id.rb_24_mrs_frag_ss:
-                        TextView tv_title_view_nib2 = nibBeforeDiseaseMrsFragSs.findViewById(R.id.tv_title_view_nib);
-                        tv_title_view_nib2.setText("溶栓后24hmRS评分");
-                        nibBeforeDiseaseMrsFragSs.clickRgClearState();
-                        //执行具体操作
-                  /*      nibBeforeDiseaseMrsFragSs.setVisibility(View.GONE);
-                        nibInHosMrsFragSs.setVisibility(View.GONE);
-                        nib24MrsFragSs.setVisibility(View.VISIBLE);*/
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
     }
 
     @Override
@@ -118,14 +86,35 @@ public class StrokeMrsScoreActivity extends BaseActivity {
         beforeDisMrs.add(new NihssItemBar.ItemBean("严重残障；卧床不起、大小便失禁、须持续护理和照顾", 5, false));
         beforeDisMrs.add(new NihssItemBar.ItemBean("死亡", 6, false));
         nibBeforeDiseaseMrsFragSs.setItemBeans(beforeDisMrs);
-        // 入院mRS评分
-        //List<NihssItemBar.ItemBean> inHosMrs = new ArrayList<>(beforeDisMrs);
-        // nibInHosMrsFragSs.setItemBeans(beforeDisMrs);
-        // 溶栓后24hmRS评分
-        //    List<NihssItemBar.ItemBean> after24Mrs = new ArrayList<>(beforeDisMrs);
-        //   nib24MrsFragSs.setItemBeans(beforeDisMrs);
-
     }
 
+    /**
+     * 上传MRS评分
+     */
+    private void addStrokeMrs(SendAddStrokeMrsBean sendAddStrokeMrsBean) {
+        String request = GsonUtils.getGson().toJson(sendAddStrokeMrsBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addMrs(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
 
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
 }

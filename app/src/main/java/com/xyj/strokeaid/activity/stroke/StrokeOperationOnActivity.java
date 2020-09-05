@@ -8,9 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import androidx.core.content.ContextCompat;
-
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
@@ -18,10 +16,8 @@ import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * StrokeOperationBeforeActivity
@@ -709,9 +705,9 @@ public class StrokeOperationOnActivity extends BaseActivity {
     RadioButton rbSpecifications425;
 
 
-    private int[] location = new  int[2] ;
+    private int location = 0;
 
-    private int[] locationAfter = new  int[2] ;
+    private int locationAfter = 0 ;
 
 
 
@@ -727,11 +723,8 @@ public class StrokeOperationOnActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        llHissScore.getLocationInWindow(location); //获取在当前窗口内的绝对坐标，含toolBar
-        llHissScore.getLocationOnScreen(location); //获取在整个屏幕内的绝对坐标，含statusBar
-
-        rbDexmedetomidineYes.getLocationInWindow(locationAfter); //获取在当前窗口内的绝对坐标，含toolBar
-        rbDexmedetomidineYes.getLocationOnScreen(locationAfter); //获取在整个屏幕内的绝对坐标，含statusBar
+        location = llHissScore.getTop();
+        locationAfter = llHissScore.getTop();
     }
 
     @Override
@@ -749,19 +742,17 @@ public class StrokeOperationOnActivity extends BaseActivity {
         });
 
         surgicalMedication.setOnClickListener(v -> {
-            mScrollView.scrollTo(0,2800);
+            mScrollView.scrollTo(0,2500);
             operationProcessLine.setBackgroundColor(ContextCompat.getColor(this, R.color.color_FFFFFF));
             surgicalMedicationLine.setBackgroundColor(ContextCompat.getColor(this, R.color.app_00aaff));
             surgicalConsumablesLine.setBackgroundColor(ContextCompat.getColor(this, R.color.color_FFFFFF));
-
         });
 
         surgicalConsumables.setOnClickListener(v -> {
-            mScrollView.scrollTo(0,3100);
+            mScrollView.scrollTo(0,3000);
             operationProcessLine.setBackgroundColor(ContextCompat.getColor(this, R.color.color_FFFFFF));
             surgicalMedicationLine.setBackgroundColor(ContextCompat.getColor(this, R.color.color_FFFFFF));
             surgicalConsumablesLine.setBackgroundColor(ContextCompat.getColor(this, R.color.app_00aaff));
-
         });
 
     }

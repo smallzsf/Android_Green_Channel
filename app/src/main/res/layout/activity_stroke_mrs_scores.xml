@@ -29,21 +29,6 @@
                 app:nib_score_visible="true"
                 app:title="发病前mRS评分" />
 
-            <com.xyj.strokeaid.view.NihssItemBar
-                android:id="@+id/nib_in_hos_mrs_frag_ss"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:title="入院mRS评分" />
-
-
-            <com.xyj.strokeaid.view.NihssItemBar
-                android:id="@+id/nib_24_mrs_frag_ss"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:title="溶栓后24h mRS评分" />
-
             <include layout="@layout/include_line" />
 
 
@@ -58,43 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title_bar_act_nihss"
         android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="类型:"
-            android:textColor="@color/black"
-            android:textSize="@dimen/item_title_size"
-            ></TextView>
-
-        <RadioButton
-            android:id="@+id/rb_before_disease_mrs_frag_ss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="发病前"
-            android:checked="true"
-            android:textSize="@dimen/item_title_size" />
-
-        <RadioButton
-            android:id="@+id/rb_in_hos_mrs_frag_ss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="入院"
-            android:textSize="@dimen/item_title_size" />
-
-        <RadioButton
-            android:id="@+id/rb_24_mrs_frag_ss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="溶栓后"
-            android:textSize="@dimen/item_title_size" />
-
-    </RadioGroup>
+        android:orientation="horizontal"></RadioGroup>
 
 
     <com.xyj.strokeaid.view.BaseTitleBar

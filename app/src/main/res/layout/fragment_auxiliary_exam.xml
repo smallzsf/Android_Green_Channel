@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/color_bg"
-    android:id="@+id/ll_auxiliary_exam"
-    tools:context=".fragment.AuxiliaryExamFragment">
+    android:id="@+id/ll_auxiliary_exam">
 
 
     <com.flyco.tablayout.SegmentTabLayout

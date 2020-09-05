@@ -56,9 +56,50 @@ public class ApiUrls {
      */
     public static final String NET_URL_NEW_PATIENMEDICAL_RECORD= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/addForApp";
 
+    /**
+     * 获取CT信息
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_SEND_CT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/select";
 
+    /**
+     * 添加CT信息
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_ADD_CT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/add";
 
+    /**
+     * 影像检查
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_IMAGE_EXAMINATE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeImageExam/select";
 
+    /**
+     * 上传检查
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_ADD_IMAGE_EXAMINATE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeImageExam/add";
+
+    /**
+     * 获取血液数据
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_GET_BLOOD_DATA = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeExaminationDetail/select";
+
+    /**
+     * 上传血液数据
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_ADD_BLOOD_DATA = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeExaminationDetail/add";
+
+    /**
+     * MRS评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_MRS = "yjjk-gateway/yjjk-cdm-api/v1/mrs/add";
+
+    /**
+     * CGS评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_CGS = "yjjk-gateway/yjjk-cdm-api/v1/gcs/add";
+
+    /**
+     * 吞咽评定
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_SWALLOW = "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
 
 }
 

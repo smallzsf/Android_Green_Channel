@@ -47,12 +47,14 @@
                     android:textStyle="bold" />
 
                 <RadioGroup
+                    android:id="@+id/rg_hypoglycemic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp_8"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/rg_hypoglycemic_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="是"
@@ -60,6 +62,7 @@
                         android:textSize="14sp" />
 
                     <RadioButton
+                        android:id="@+id/rg_hypoglycemic_no"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/dp_18"
@@ -76,12 +79,14 @@
                 app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
 
             <LinearLayout
+                android:id="@+id/ll_hypoglycemic_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/title_bar_height"
                 android:layout_marginStart="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -92,6 +97,7 @@
                     android:textSize="@dimen/sp_14" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_hypoglycemic_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
@@ -127,12 +133,14 @@
                     android:textStyle="bold" />
 
                 <RadioGroup
+                    android:id="@+id/rg_anticoagulation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp_8"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/rb_anticoagulation_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="是"
@@ -140,6 +148,7 @@
                         android:textSize="14sp" />
 
                     <RadioButton
+                        android:id="@+id/rb_anticoagulation_no"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/dp_18"
@@ -156,12 +165,14 @@
                 app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
 
             <LinearLayout
+                android:id="@+id/ll_anticoagulation_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/title_bar_height"
                 android:layout_marginStart="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_5"
                 android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -172,6 +183,7 @@
                     android:textSize="@dimen/sp_14" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_anticoagulation_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
@@ -184,95 +196,28 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
                 android:text="出院信息"
-                android:textStyle="bold"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginEnd="@dimen/dp_12"
                 android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14" />
+                android:textSize="@dimen/sp_14"
+                android:textStyle="bold" />
 
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="horizontal">
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_unit_visible="true"
+                app:ieb_unit_text="天"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="住院天数:" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="住院天数*"
-                    android:textStyle="bold"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:layout_width="@dimen/dp_80"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint=""
-                    android:inputType="number"
-                    android:paddingLeft="@dimen/dp_5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:text="天" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="总费用"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:layout_width="@dimen/dp_80"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint=""
-                    android:inputType="number"
-                    android:paddingLeft="@dimen/dp_5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/dp_5"
-                    android:text="元" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_unit_visible="true"
+                app:ieb_unit_text="元"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="总费用:" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -499,9 +444,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_weight="1"
                     android:text="保存" />
-
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
