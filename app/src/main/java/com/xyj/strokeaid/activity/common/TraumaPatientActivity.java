@@ -186,15 +186,6 @@ public class TraumaPatientActivity extends BaseActivity {
                     //
                     return OperationInfoFragment.newInstance(patientId, docId);
 
-//                case 6:
-//
-//                    break;
-//                case 4:
-//                    //会诊信息
-//                    return ConsultationInfoFragment.newInstance(patientId, docId);
-//                case 5:
-//
-//                    break;
                 case 6:
                     // 評分工具
                     return TraumaStrokeScoresFragment.newInstance(patientId, docId);
