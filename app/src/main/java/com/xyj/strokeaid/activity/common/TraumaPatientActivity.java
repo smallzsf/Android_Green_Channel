@@ -10,8 +10,6 @@ import android.widget.Chronometer;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -29,20 +27,16 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
-import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
-import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
-import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
-import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
-import com.xyj.strokeaid.fragment.stroke.TransferFragment;
+import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.DiseaseSceneFragment;
+import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
+import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
+import com.xyj.strokeaid.fragment.trauma.OperationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.OutcomeOfPatientsFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaStrokeScoresFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -175,6 +169,33 @@ public class TraumaPatientActivity extends BaseActivity {
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
+                    // 发病现场
+                    return DiseaseSceneFragment.newInstance(patientId, docId);
+                case 1:
+                    // 生命体征
+                    return DiseaseTreatmentFragment.newInstance(patientId, docId);
+                case 2:
+                    //检验信息
+                    return InspectionInformationFragment.newInstance(patientId, docId);
+                case 3:
+                    //心电检查
+                    return ElectrocardiographCheckFragment.newInstance(patientId, docId);
+                case 4:
+                    //影像检查
+                    return ImageCheckFragment.newInstance(patientId, docId);
+                case 5:
+                    //会诊信息
+                    return ConsultationInfoFragment.newInstance(patientId, docId);
+                case 6:
+                    //手术信息
+                    return OperationInfoFragment.newInstance(patientId, docId);
+                case 7:
+                    // 評分工具
+                    return TraumaStrokeScoresFragment.newInstance(patientId, docId);
+                case 8:
+                    //患者转归
+                    return OutcomeOfPatientsFragment.newInstance(patientId, docId);
+
                 default:
                     return EmptyFragment.newInstance();
             }

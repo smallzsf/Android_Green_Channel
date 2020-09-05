@@ -97,7 +97,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     @Override
     protected void initInject() {
-        ARouter.getInstance().inject(this);
     }
 
     @Override

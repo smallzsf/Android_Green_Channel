@@ -53,8 +53,15 @@ public class Constants {
             "时间节点"};
 
     public static final String[] GREEN_CHANNEL_TRAUMA_MENU_TITLES = new String[]{
-            "生命体征",
-            "创伤"};
+            "发病现场",
+            "急诊救治",
+            "检验信息",
+            "心电检查",
+            "影像检查",
+            "会诊信息",
+            "手术信息",
+            "评分工具",
+            "患者转归"};
 
     public static final String[] GREEN_CHANNEL_MATERNAL_MENU_TITLES = new String[]{
             "生命体征",

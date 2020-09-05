@@ -41,6 +41,17 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="tv_small_hiht">
+        <item name="android:padding">@dimen/dp_7</item>
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:background">@drawable/shape_edittext_bg</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
     <style name="et_normal_titel">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/color_222222</item>
@@ -136,6 +147,17 @@
         <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Text_Blue_Content_Style">
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">#223b53</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:background">@color/colorPrimary22</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:layout_height">30dp</item>
     </style>
 
     <style name="mycheckbox" parent="@android:style/Widget.CompoundButton.CheckBox">
