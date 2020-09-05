@@ -152,12 +152,26 @@
                 app:bar_leftText="民族"
                 app:bar_leftTextColor="@color/color_222222" />
 
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_medicare_type_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="医保类型" />
+
             <com.xyj.strokeaid.view.ItemEditBar
-                android:id="@+id/ieb_medicare_act_npmr"
+                android:id="@+id/ieb_medicare_num_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_title="医保帐号" />
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_serious_medicare_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="大病医保" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_domicile_addr_act_npmr"

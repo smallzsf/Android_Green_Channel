@@ -21,6 +21,7 @@ public class Constants {
 
     public static final String[] STROKE_TREATMENT_TAB_TITLES = new String[]{"溶栓", "介入"};
     public static final String[] GREEN_CHANNEL_STROKE_MENU_TITLES = new String[]{
+            "分诊信息",
             "生命体征",
             "病情记录",
             "NIHSS    ",
@@ -36,6 +37,7 @@ public class Constants {
             "时间节点"};
 
     public static final String[] GREEN_CHANNEL_CHEST_PAIN_MENU_TITLES = new String[]{
+            "分诊信息",
             "生命体征",
             "病情记录",
             "心电检查",

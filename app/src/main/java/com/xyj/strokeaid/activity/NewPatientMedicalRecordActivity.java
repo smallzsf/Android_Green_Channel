@@ -92,8 +92,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     SettingBar sbInHosTypeActNpmr;
     @BindView(R.id.sb_nation_act_npmr)
     SettingBar sbNationActNpmr;
-    @BindView(R.id.ieb_medicare_act_npmr)
-    ItemEditBar iebMedicareActNpmr;
+    @BindView(R.id.ieb_medicare_num_act_npmr)
+    ItemEditBar iebMedicareNumActNpmr;
     @BindView(R.id.ieb_domicile_addr_act_npmr)
     ItemEditBar iebDomicileAddrActNpmr;
     @BindView(R.id.ieb_contact_name_act_npmr)
@@ -102,6 +102,10 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     ItemEditBar iebContactPhoneActNpmr;
     @BindView(R.id.btn_save_act_npmr)
     Button btnSaveActNpmr;
+    @BindView(R.id.sb_medicare_type_act_npmr)
+    SettingBar sbMedicareTypeActNpmr;
+    @BindView(R.id.sb_serious_medicare_act_npmr)
+    SettingBar sbSeriousMedicareActNpmr;
 
 
     private EIDReader idReader;
@@ -136,6 +140,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 .setLeftLayoutClickListener(v -> finish())
                 .setRightLayoutClickListener(v -> {
                     // TODO: 2020/9/2 快速建档
+
                 });
 
 
@@ -352,7 +357,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     }
 
     @OnClick({R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr,
-            R.id.sb_come_type_act_npmr, R.id.ieb_medicare_act_npmr, R.id.sb_nation_act_npmr,
+            R.id.sb_come_type_act_npmr, R.id.ieb_medicare_num_act_npmr, R.id.sb_nation_act_npmr,
             R.id.sb_in_hos_type_act_npmr, R.id.ieb_domicile_addr_act_npmr, R.id.btn_save_act_npmr})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -366,7 +371,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 showComeHosActionSheet(sbComeTypeActNpmr, "本院急救车", "当地120", "外院转院", "自行来院", "在院卒中");
                 break;
             case R.id.sb_in_hos_type_act_npmr:
-                showActionSheet(sbInHosTypeActNpmr, "急诊","门诊","其他医疗机构转入","其他");
+                showActionSheet(sbInHosTypeActNpmr, "急诊", "门诊", "其他医疗机构转入", "其他");
                 break;
             case R.id.sb_nation_act_npmr:
                 break;

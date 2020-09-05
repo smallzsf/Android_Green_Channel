@@ -34,6 +34,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -223,8 +224,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 //            NfcUtils.writeNFCToTag(data,intent);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -239,62 +238,53 @@ public class PatientStrokeRecordActivity extends BaseActivity {
             this.docId = docId;
         }
 
-        public GreenChannelVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
-            super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public GreenChannelVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
         @NonNull
         @Override
         public Fragment createFragment(int position) {
             LogUtils.d(" + " + position);
             switch (position) {
                 case 0:
+                    // 分诊信息
+                    return TriageInfoFragment.newInstance(patientId, 1);
+                case 1:
                     // 生命体征
                     return StrokeVitalSignsFragment.newInstance(patientId, docId);
-                case 1:
+                case 2:
                     // 病情记录
                     return DiseaseRecordFragment.newInstance(patientId, docId);
-                case 2:
+                case 3:
                     // NIHSS评分
                     return StrokeNihssFragment.newInstance(patientId, docId);
-                case 3:
+                case 4:
                     // 启动绿道
                     return StartGreenwayFragment.newInstance(patientId, docId);
-                case 4:
+                case 5:
                     // 血液检查
                     //  return BloodExamFragment.newInstance(patientId, docId);
                     return StrokeBloodExaminationFragment.newInstance(patientId, docId);
-                case 5:
+                case 6:
                     // 辅助检查
                     return AuxiliaryExamFragment.newInstance(patientId, docId);
-                case 6:
+                case 7:
                     // 评分工具
                 //    return StrokeScoresFragment.newInstance(patientId, docId);
                     return StrokeNewScoreFragment.newInstance(patientId, docId);
-                case 7:
+                case 8:
                     // 诊断评估
                 return DiagnosticEvaluationFragment.newInstance(patientId, docId);
-                case 8:
+                case 9:
                     // 药物治疗
                     return StrokeMedicationFragment.newInstance(patientId, docId);
-                case 9:
+                case 10:
                     // 手术治疗
                     return StrokeOperationFragment.newInstance(patientId, docId);
-                case 10:
+                case 11:
                     // 其他处置
                     return OtherDisposalFragment.newInstance(patientId, docId);
-                case 11:
+                case 12:
                     // 转归交接
                     return TransferFragment.newInstance(patientId, docId);
-                case 12:
+                case 13:
                     // 时间节点
                     return TimeNodeFragment.newInstance(patientId, docId);
                 default:

@@ -10,7 +10,11 @@ package com.xyj.strokeaid.app;
  */
 public final class IntentKey {
     public static final String PATIENT_ID = "PATIENT_ID";
+    public static final String RECORD_ID = "RECORD_ID";
     public static final String DOC_ID = "DOC_ID";
+    /**
+     *
+     */
     public static final String DIALOG_MSG = "DIALOG_MSG";
     /**
      * NIHSS 评分 类型
@@ -28,7 +32,7 @@ public final class IntentKey {
      * 4、 危重孕产妇
      * 5、 危重儿童和新生儿
      */
-    public static final String PATIENT_TYPE = "PATIENT_TYPE";
+    public static final String DISEASE_VIEW_TYPE = "DISEASE_VIEW_TYPE";
 
     /**
      * 查看类型

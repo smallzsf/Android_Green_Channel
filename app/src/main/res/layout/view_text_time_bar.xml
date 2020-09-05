@@ -3,31 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_bg"
     android:minHeight="@dimen/item_normal_height">
 
     <TextView
         android:id="@+id/tv_title_view_ttb"
-        android:layout_width="wrap_content"
+        android:layout_width="90dp"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:ellipsize="none"
         android:gravity="center_vertical"
-        android:maxLength="10"
-        android:maxLines="1"
+        android:maxLines="2"
         android:minWidth="@dimen/item_title_min_width"
         android:textColor="@color/color_222222"
         android:textSize="@dimen/item_title_size"
-        tools:text="开始谈话开始谈话开始谈话" />
+        tools:text="开始谈话开始谈话开始谈话始谈话始谈话" />
 
     <ImageView
         android:id="@+id/iv_refresh_view_ttb"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:scaleType="center"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/item_normal_margin"
+        android:scaleType="center"
         android:src="@drawable/ic_refresh" />
 
     <TextView

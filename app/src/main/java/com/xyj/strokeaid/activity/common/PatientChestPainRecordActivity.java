@@ -42,6 +42,7 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
 import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
+import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -188,39 +189,42 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
+                    // 分诊信息
+                    return TriageInfoFragment.newInstance(patientId, 2);
+                case 1:
                     // 生命体征
                     return ChestPainVitalSignsFragment.newInstance(patientId, docId);
-                case 1:
+                case 2:
                     //  病情信息
                     return ChestPainDiseaseRecordFragment.newInstance(patientId, docId);
-                case 2:
+                case 3:
                     //  心电检查
                     return ChestPainEcgExaminFragment.newInstance(patientId, docId);
-                case 3:
+                case 4:
                     //  心内会诊
                     return ChestPainIntraConsultFragment.newInstance(patientId, docId);
-                case 4:
+                case 5:
                     // 血液检查
                     return ChestPainBloodTestFragment.newInstance(patientId, docId);
-                case 5:
+                case 6:
                     //  辅助检查
                     return ChestPainAssistantTestFragment.newInstance(patientId, docId);
-                case 6:
+                case 7:
                     // 初始诊断
                     return  OriginalDiagnoseFragment.newInstance(patientId,docId);
-                case 7:
+                case 8:
                     // 初始药物
                     return ChestPainInitDrugFragment.newInstance(patientId, docId);
-                case 8:
+                case 9:
                     // 静脉溶栓
                     return ChestPainIntraThromFragment.newInstance(patientId, docId);
-                case 9:
+                case 10:
                     // 手术治疗
                     return SurgicalTreatmentFragment.newInstance(patientId, docId);
-                case 10:
+                case 11:
                     // 其他处置
                     return ChestPainManagementFragment.newInstance();
-                case 11:
+                case 12:
                     // 患者转归
                     return PatientSumFragment.newInstance(patientId,docId);
                 default:

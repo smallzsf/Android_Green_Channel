@@ -33,7 +33,6 @@ import com.xyj.strokeaid.activity.stroke.PremorbidMrsActivity;
 import com.xyj.strokeaid.activity.stroke.TriageActivity;
 import com.xyj.strokeaid.activity.stroke.VitalSignsActivity;
 import com.xyj.strokeaid.adapter.StrokeTriageAdapter;
-import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
 
 import java.util.ArrayList;
@@ -68,7 +67,7 @@ public class StrokeTriageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View inflate = inflater.inflate(R.layout.stroke_fragment_triage, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_triage_info, container, false);
         ButterKnife.bind(this, inflate);
         init();
         return inflate;
