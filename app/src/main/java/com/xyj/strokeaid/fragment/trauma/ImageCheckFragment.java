@@ -21,37 +21,64 @@ import butterknife.OnClick;
 /**
  * 心电检查
  */
-public class ElectrocardiographCheckFragment extends BaseFragment {
-    @BindView(R.id.rb_yes)
-    RadioButton rbYes;
-    @BindView(R.id.rb_no)
-    RadioButton rbNo;
-    @BindView(R.id.tv_check_time)
-    TextTimeBar tvCheckTime;
-    @BindView(R.id.tv_report_time)
-    TextTimeBar tvReportTime;
+public class ImageCheckFragment extends BaseFragment {
+    @BindView(R.id.rb_ct_scan)
+    RadioButton rbCtScan;
+    @BindView(R.id.rb_ct_raise)
+    RadioButton rbCtRaise;
+    @BindView(R.id.rb_three_rebuild)
+    RadioButton rbThreeRebuild;
+    @BindView(R.id.rb_cta)
+    RadioButton rbCta;
+    @BindView(R.id.rb_ctp)
+    RadioButton rbCtp;
+    @BindView(R.id.rb_mri)
+    RadioButton rbMri;
+    @BindView(R.id.rb_color_ultrasound)
+    RadioButton rbColorUltrasound;
+    @BindView(R.id.rb_dr)
+    RadioButton rbDr;
+    @BindView(R.id.rb_dsa)
+    RadioButton rbDsa;
+    @BindView(R.id.rb_other)
+    RadioButton rbOther;
+    @BindView(R.id.tv_doctor_advice_time)
+    TextTimeBar tvDoctorAdviceTime;
+    @BindView(R.id.tv_patient_arrive_time)
+    TextTimeBar tvPatientArriveTime;
+    @BindView(R.id.tv_patient_leave_time)
+    TextTimeBar tvPatientLeaveTime;
+    @BindView(R.id.tv_check_finish_time)
+    TextTimeBar tvCheckFinishTime;
+    @BindView(R.id.tv_check_report_time)
+    TextTimeBar tvCheckReportTime;
     @BindView(R.id.tv_report)
     TextView tvReport;
     @BindView(R.id.et_report)
     EditText etReport;
-    @BindView(R.id.tv_upload)
-    TextView tvUpload;
+    @BindView(R.id.tv_check_image)
+    TextView tvCheckImage;
+    @BindView(R.id.tv_upload_image)
+    TextView tvUploadImage;
+    @BindView(R.id.tv_check_report)
+    TextView tvCheckReport;
+    @BindView(R.id.tv_upload_report)
+    TextView tvUploadReport;
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_bottom)
     LinearLayout llBottom;
-
     private String mPatientId;
     private String mDocId;
 
-    public ElectrocardiographCheckFragment() {
+    public ImageCheckFragment() {
 
     }
 
-    public static ElectrocardiographCheckFragment newInstance(String patientId, String docId) {
-        ElectrocardiographCheckFragment fragment = new ElectrocardiographCheckFragment();
+    public static ImageCheckFragment newInstance(String patientId, String docId) {
+        ImageCheckFragment fragment = new ImageCheckFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.PATIENT_ID, patientId);
         args.putString(IntentKey.DOC_ID, docId);
@@ -70,7 +97,7 @@ public class ElectrocardiographCheckFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_electrocardiograph_check;
+        return R.layout.fragment_image_check;
     }
 
     @Override
@@ -78,7 +105,6 @@ public class ElectrocardiographCheckFragment extends BaseFragment {
         btnGetData.setText("获取记录");
         btnConfirm.setText("保存");
         loadData();
-
 
     }
 
@@ -92,17 +118,14 @@ public class ElectrocardiographCheckFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.rb_yes, R.id.rb_no, R.id.tv_upload, R.id.btn_get_data, R.id.btn_confirm})
+    @OnClick({R.id.tv_upload_image, R.id.tv_upload_report, R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.rb_yes:
-                showToast("有");
+            case R.id.tv_upload_image:
+                showToast("上传片子");
                 break;
-            case R.id.rb_no:
-                showToast("无");
-                break;
-            case R.id.tv_upload:
-                showToast("上传");
+            case R.id.tv_upload_report:
+                showToast("上传报告");
                 break;
             case R.id.btn_get_data:
                 showToast("获取记录");
