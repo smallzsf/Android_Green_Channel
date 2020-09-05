@@ -31,7 +31,7 @@ import butterknife.BindView;
  * @Date: 2020/9/3 0:05
  */
 public class PatientStatusFragment1 extends BaseFragment implements OnDateSetListener {
-    List<String> office = new ArrayList<>();
+    List<String> selectText = new ArrayList<>();
     TimePickerDialog mDialogAll;
     @BindView(R.id.tv_draw_blood_time)
     TextTimeBar mTvDrawBloodTime;
@@ -343,6 +343,46 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
+    @BindView(R.id.rg_smoke)
+    RadioGroup rgSmoke;
+    @BindView(R.id.ll_bottom)
+    LinearLayout llBottom;
+    @BindView(R.id.ll_smoke_status)
+    LinearLayout llSmokeStatus;
+    @BindView(R.id.rg_end)
+    RadioGroup rgEnd;
+    @BindView(R.id.ll_end_72)
+    LinearLayout llEnd72;
+    @BindView(R.id.rg_bnp)
+    RadioGroup rgBnp;
+    @BindView(R.id.ll_bnp)
+    LinearLayout llBnp;
+    @BindView(R.id.rg_tc)
+    RadioGroup rgTc;
+    @BindView(R.id.ll_tc)
+    LinearLayout llTc;
+    @BindView(R.id.rg_tg)
+    RadioGroup rgTg;
+    @BindView(R.id.ll_tg)
+    LinearLayout llTg;
+    @BindView(R.id.rg_hdl)
+    RadioGroup rgHdl;
+    @BindView(R.id.ll_hdl)
+    LinearLayout llHdl;
+    @BindView(R.id.rg_ldl)
+    RadioGroup rgLdl;
+    @BindView(R.id.ll_ldl)
+    LinearLayout llLdl;
+    @BindView(R.id.rg_uc)
+    RadioGroup rgUc;
+    @BindView(R.id.ll_lved)
+    LinearLayout llLved;
+    @BindView(R.id.rg_xf_1)
+    RadioGroup rgXf1;
+    @BindView(R.id.rg_xf_2)
+    RadioGroup rgXf2;
+    @BindView(R.id.tv_end_title)
+    TextView tvEndTitle;
 
 
     public static PatientStatusFragment1 newInstance(String keyword) {
@@ -383,10 +423,131 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
     }
 
     private void initData() {
+        selectText.add("1");
+        selectText.add("2");
+        selectText.add("3");
+
+        mEsLeft.setItemData(selectText);
+        mEsRight.setItemData(selectText);
+        mEsBnpLeft.setItemData(selectText);
 
     }
 
     private void initEvent() {
+
+        //吸烟
+        rgSmoke.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvSmokeNo.getId()) { //否
+                    llSmokeStatus.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvSmokeYes.getId()) { //是
+                    llSmokeStatus.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //心房颤动
+        mRgXf.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvXfNo.getId()) { //否
+                    mLlFx.setVisibility(View.GONE);
+                    tvEndTitle.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvXfYes.getId()) { //是
+                    mLlFx.setVisibility(View.VISIBLE);
+                    tvEndTitle.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //72H内肌钙蛋白
+        rgEnd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvEndNo.getId()) { //否
+                    llEnd72.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvEndYes.getId()) { //是
+                    llEnd72.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //脑钠肽
+        rgBnp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbBnpNo.getId()) { //否
+                    llBnp.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbBnpYes.getId()) { //是
+                    llBnp.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //总胆固醇
+        rgTc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbTcNo.getId()) { //否
+                    llTc.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbTcYes.getId()) { //是
+                    llTc.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //甘油三酯
+        rgTg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbTgNo.getId()) { //否
+                    llTg.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbTgYes.getId()) { //是
+                    llTg.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //高密度脂蛋白
+        rgHdl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbHdlNo.getId()) { //否
+                    llHdl.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbHdlYes.getId()) { //是
+                    llHdl.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //低密度脂蛋白
+        rgLdl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbLdlNo.getId()) { //否
+                    llLdl.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbLdlYes.getId()) { //是
+                    llLdl.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        //超声心电图
+        rgUc.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbUcNo.getId()) { //否
+                    llLved.setVisibility(View.GONE);
+                }
+                if (checkedId == mRbUcYes.getId()) { //是
+                    llLved.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
 
 
     }

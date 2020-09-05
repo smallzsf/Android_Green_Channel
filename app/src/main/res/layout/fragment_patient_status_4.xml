@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,10 +27,15 @@
         <!--需要做判断，隐藏部分-->
         <include layout="@layout/layout_other_no_acs_type"/>
 
-        <include layout="@layout/view_two_horizontal_bottom_button"/>
 
     </LinearLayout>
 
+    <include
+        android:layout_margin="@dimen/dp_20"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        layout="@layout/view_two_horizontal_bottom_button"/>
 
 
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>
