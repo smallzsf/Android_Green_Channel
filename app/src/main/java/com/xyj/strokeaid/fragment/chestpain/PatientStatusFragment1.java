@@ -433,6 +433,18 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
 
     private void initEvent() {
 
+        //院内心力衰竭
+        mRgYn.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbBloodFragAe.getId()) { //是
+                    mLlNyha.setVisibility(View.VISIBLE);
+                }
+                if (checkedId == mRbCtFragAe.getId()) { //否
+                    mLlNyha.setVisibility(View.GONE);
+                }
+            }
+        });
         //吸烟
         rgSmoke.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -442,6 +454,19 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
                 }
                 if (checkedId == mTvSmokeYes.getId()) { //是
                     llSmokeStatus.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        //冠心病
+        mRgChd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvChdNo.getId()) { //否
+                    mLlXy.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvChdYes.getId()) { //是
+                    mLlXy.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -461,6 +486,33 @@ public class PatientStatusFragment1 extends BaseFragment implements OnDateSetLis
             }
         });
 
+        //心力衰竭
+        mRgSlow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvSlowNo.getId()) { //否
+                    mLlFactorNyha.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvSlowYes.getId()) { //是
+                    mLlFactorNyha.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
+
+        //脑血管
+        mRgStroke.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mTvStrokeNo.getId()) { //否
+                    mLlDesc.setVisibility(View.GONE);
+                }
+                if (checkedId == mTvStrokeYes.getId()) { //是
+                    mLlDesc.setVisibility(View.VISIBLE);
+
+                }
+            }
+        });
         //72H内肌钙蛋白
         rgEnd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/dp_12"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/item_normal_height"
+        android:gravity="center"
+        android:text="CT"
+
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/ttb_ct_notify_time"
         android:layout_width="match_parent"

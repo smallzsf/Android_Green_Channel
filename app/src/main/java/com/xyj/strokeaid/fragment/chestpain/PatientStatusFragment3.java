@@ -141,6 +141,7 @@ public class PatientStatusFragment3 extends BaseFragment implements OnDateSetLis
                 .build();
         mLlDeal.setVisibility(View.GONE);
         mTvNote.setVisibility(View.GONE);
+        mEtNote.setVisibility(View.GONE);
 
     }
 

@@ -219,6 +219,7 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == mRbIntoNo.getId()) { //否
+
                     mLlIntoNo.setVisibility(View.VISIBLE);
                     mLlIntoYes.setVisibility(View.GONE);
                 }

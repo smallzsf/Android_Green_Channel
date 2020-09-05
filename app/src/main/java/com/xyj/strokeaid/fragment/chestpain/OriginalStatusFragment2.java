@@ -104,8 +104,6 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioButton mRbMeasureLevel5;
     @BindView(R.id.rb_measure_level_6)
     RadioButton mRbMeasureLevel6;
-    @BindView(R.id.tv_again_hierarchy_label)
-    TextView mTvAgainHierarchyLabel;
     @BindView(R.id.tv_again_hierarchy_time)
     TextTimeBar mTvAgainHierarchyTime;
     @BindView(R.id.tv_into)
@@ -178,6 +176,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
     RadioGroup rgDetour;
     @BindView(R.id.rl_until)
     RelativeLayout rlUntil;
+    @BindView(R.id.ll_again_deal)
+    LinearLayout mLlAgainDeal;
 
 
     public static OriginalStatusFragment2 newInstance(String keyword) {
@@ -213,6 +213,8 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
                 .setToolBarTextColor(R.color.colorPrimary)
                 .build();
 
+        mLlAgain.setVisibility(View.VISIBLE);
+        llOther.setVisibility(View.VISIBLE);
     }
 
     private void initData() {
@@ -253,12 +255,12 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == mRbDetourNo.getId()) { //否
                     rlUntil.setVisibility(View.GONE);
-                    mEsVitalSignAware2.setVisibility(View.GONE);
+                    mTvArriveTime.setVisibility(View.GONE);
                 }
 
                 if (checkedId == mRbDetourYes.getId()) { //是
                     rlUntil.setVisibility(View.VISIBLE);
-                    mEsVitalSignAware2.setVisibility(View.VISIBLE);
+                    mTvArriveTime.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -269,12 +271,14 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == mRbMeasureLevel1.getId()) { //未做
                     mLlAgain.setVisibility(View.GONE);
-                } else {
+                } else if (checkedId == mRbMeasureLevel2.getId()) {
                     mLlAgain.setVisibility(View.VISIBLE);
+                    mTvAgainHierarchyTime.setVisibility(View.VISIBLE);
+                    mLlAgainDeal.setVisibility(View.VISIBLE);
                 }
             }
         });
-        //再次危险分层
+        //处理策略
         rgOtherDeal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {

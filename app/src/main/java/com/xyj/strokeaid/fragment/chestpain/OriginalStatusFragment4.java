@@ -96,6 +96,8 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
     AppCompatButton mBtnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton mBtnConfirm;
+    @BindView(R.id.ll_taboo)
+    LinearLayout mLlTaboo;
 
 
     public static OriginalStatusFragment4 newInstance(String keyword) {
@@ -130,7 +132,8 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
                 .setCyclic(false)//是否可循环
                 .setToolBarTextColor(R.color.colorPrimary)
                 .build();
-
+        mCbShadowText2.setVisibility(View.GONE);
+        mCbShadowText3.setVisibility(View.GONE);
     }
 
     private void initData() {
@@ -141,6 +144,17 @@ public class OriginalStatusFragment4 extends BaseFragment implements OnDateSetLi
         //初诊时间
         mTvDrawBloodTime.setOnClickListener(v -> {
             mDialogAll.show(getChildFragmentManager(), "All");
+        });
+
+        mRgStrategy.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == mRbStrategy4.getId()){
+                    mLlTaboo.setVisibility(View.VISIBLE);
+                }else {
+                    mLlTaboo.setVisibility(View.GONE);
+                }
+            }
         });
 
     }

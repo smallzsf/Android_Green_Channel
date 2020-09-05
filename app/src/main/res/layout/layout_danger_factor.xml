@@ -200,7 +200,7 @@
 
         <TextView
             android:id="@+id/tv_smoke_status_label"
-            android:layout_width="@dimen/dp_120"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="状态*"
@@ -212,7 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="2">
 
             <RadioButton
                 android:id="@+id/tv_smoke_status_yes"
@@ -288,7 +288,7 @@
 
         <TextView
             android:id="@+id/tv_cvd_label"
-            android:layout_width="@dimen/dp_120"
+            android:layout_width="@dimen/dp_90"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="早发CVD家族史"
@@ -300,7 +300,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:weightSum="3">
+            android:weightSum="2">
 
             <RadioButton
                 android:id="@+id/tv_cvd_no"
@@ -321,14 +321,6 @@
                 android:textSize="@dimen/item_content_size"
                 />
 
-            <RadioButton
-                android:id="@+id/tv_pa_no"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="否"
-                android:textSize="@dimen/item_content_size" />
         </RadioGroup>
     </LinearLayout>
     <include layout="@layout/include_line" />
@@ -612,7 +604,7 @@
 
         <TextView
             android:id="@+id/tv_factor_nyha_label"
-            android:layout_width="@dimen/dp_120"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="NYHA分级*"
@@ -767,7 +759,7 @@
 
         <TextView
             android:id="@+id/tv_desc_label"
-            android:layout_width="@dimen/dp_120"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="描述*"
@@ -787,7 +779,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="否"
+                android:text="缺血性"
                 android:textSize="@dimen/item_content_size" />
 
             <RadioButton
@@ -796,7 +788,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="是"
+                android:text="出血性"
                 android:textSize="@dimen/item_content_size"
                 />
         </RadioGroup>
@@ -824,7 +816,15 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="3">
-
+            <RadioButton
+                android:id="@+id/tv_pa_no"
+                style="@style/tv_small"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="否"
+                android:textSize="@dimen/item_content_size"
+                />
             <RadioButton
                 android:id="@+id/tv_pa_yes"
                 style="@style/tv_small"

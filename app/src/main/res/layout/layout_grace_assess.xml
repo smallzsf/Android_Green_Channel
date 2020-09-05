@@ -2,9 +2,9 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/dp_5"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,290 +12,267 @@
         android:orientation="vertical">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_edittext_bg"
+            android:layout_margin="@dimen/dp_12"
+            android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:gravity="center"
-        android:text="Grace评估 *"
-        android:textColor="#223b53"
-        android:textSize="@dimen/item_title_size" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:gravity="center"
+                android:text="Grace评估"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:gravity="center"
-        android:text="Grace评分 *"
-        android:textColor="#223b53"
-        android:textSize="@dimen/item_title_size" />
-    <!--否-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/dp_15"
-        android:orientation="vertical">
+            <include layout="@layout/include_line"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_10"
+                android:gravity="center"
+                android:text="Grace评分"
+                android:textColor="#223b53"
+                android:textSize="@dimen/item_title_size" />
+            <include layout="@layout/include_line"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="Grace极高危条件(满足其一即可)"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_1"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="急性心力衰竭"
+                    android:textSize="@dimen/item_content_size" />
+
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_2"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="致命性心律失常或心脏骤停"
+                    android:textSize="@dimen/item_content_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_3"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="血液动力学不稳定或心源性休克"
+                    android:textSize="@dimen/item_content_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_4"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="心肌梗死合并机械并发症"
+                    android:textSize="@dimen/item_content_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_5"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="反复动态改变"
+                    android:textSize="@dimen/item_content_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_grace_text_6"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="药物治疗无效反复"
+                    android:textSize="@dimen/item_content_size" />
+
+            </LinearLayout>
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_10"
             android:gravity="center"
-            android:text="Grace极高危条件(满足其一即可)"
+            android:text="再危险分层"
             android:textColor="#223b53"
             android:textSize="@dimen/item_title_size" />
 
-        <CheckBox
-            android:id="@+id/cb_grace_text_1"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="急性心力衰竭"
-            android:textSize="@dimen/item_content_size" />
-
-
-        <CheckBox
-            android:id="@+id/cb_grace_text_2"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="致命性心律失常或心脏骤停"
-            android:textSize="@dimen/item_content_size" />
-
-        <CheckBox
-            android:id="@+id/cb_grace_text_3"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="血液动力学不稳定或心源性休克"
-            android:textSize="@dimen/item_content_size" />
-
-        <CheckBox
-            android:id="@+id/cb_grace_text_4"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="心肌梗死合并机械并发症"
-            android:textSize="@dimen/item_content_size" />
-        <CheckBox
-            android:id="@+id/cb_grace_text_5"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="反复动态改变"
-            android:textSize="@dimen/item_content_size" />
-        <CheckBox
-            android:id="@+id/cb_grace_text_6"
-            style="@style/tv_small"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="药物治疗无效反复"
-            android:textSize="@dimen/item_content_size" />
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_10"
-        android:gravity="center"
-        android:text="再危险分层"
-        android:textColor="#223b53"
-        android:textSize="@dimen/item_title_size" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="@dimen/dp_15">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="措施 *"
-            android:textColor="#223b53"
-            android:layout_margin="@dimen/dp_10"
-            android:textSize="@dimen/item_title_size" />
-
-        <RadioGroup
-            android:id="@+id/rg_again"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+            android:layout_marginLeft="@dimen/dp_15"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_1"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="未做"
-                android:textSize="@dimen/item_content_size" />
+            <RadioGroup
+                android:id="@+id/rg_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_2"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="转为STEMI"
-                android:textSize="@dimen/item_content_size"
-                />
+                <RadioButton
+                    android:id="@+id/rb_measure_level_1"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="未做"
+                    android:textSize="@dimen/item_content_size" />
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_3"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="极高危"
-                android:textSize="@dimen/item_content_size"
-                />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rb_measure_level_2"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="转为STEMI"
+                    android:textSize="@dimen/item_content_size" />
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="4">
+                <RadioButton
+                    android:id="@+id/rb_measure_level_3"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="极高危"
+                    android:textSize="@dimen/item_content_size" />
+            </RadioGroup>
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_4"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="高危"
-                android:textSize="@dimen/item_content_size" />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_5"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="中危"
-                android:textSize="@dimen/item_content_size"
-                />
+                <RadioButton
+                    android:id="@+id/rb_measure_level_4"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="高危"
+                    android:textSize="@dimen/item_content_size" />
 
-            <RadioButton
-                android:id="@+id/rb_measure_level_6"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="低危"
-                android:textSize="@dimen/item_content_size"
-                />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rb_measure_level_5"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="中危"
+                    android:textSize="@dimen/item_content_size" />
 
-    </LinearLayout>
+                <RadioButton
+                    android:id="@+id/rb_measure_level_6"
+                    style="@style/tv_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="低危"
+                    android:textSize="@dimen/item_content_size" />
+            </RadioGroup>
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_again"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
 
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_again_hierarchy_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:title="再次危险分层时间"
+                android:visibility="gone"/>
 
-     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/vital_sign_item_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/sp_15">
+            <include layout="@layout/include_line" />
 
-        <TextView
-            android:id="@+id/tv_again_hierarchy_label"
-            android:layout_width="@dimen/tooltip_precise_anchor_threshold"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="再次危险分层时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
+            <LinearLayout
+                android:id="@+id/ll_again_deal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_into"
+                    android:layout_width="@dimen/dp_120"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="再灌注措施*"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
 
 
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/tv_again_hierarchy_time"
-            style="@style/patient_et_style"
+                <RadioGroup
+                    android:id="@+id/rg_into"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_into_yes"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_into_no"
+                        style="@style/tv_small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <include
+                android:id="@+id/ll_into"
+                layout="@layout/layout_into_card" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/include_bottom_view"
+            layout="@layout/view_two_horizontal_bottom_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toRightOf="@id/tv_again_hierarchy_label"
-            android:focusable="false"
-            android:gravity="center|right"
-            android:hint="@string/app_default_time_example"
-            android:text="选取时间"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_content_size" />
-
-
-    </RelativeLayout>
-
-     <include layout="@layout/include_line" />
-
-    <!--诊断-->
-     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
-
-        <TextView
-            android:id="@+id/tv_into"
-            android:layout_width="@dimen/dp_120"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="再灌注措施*"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <RadioGroup
-            android:id="@+id/rg_into"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <RadioButton
-                android:id="@+id/rb_into_yes"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="是"
-                android:textSize="@dimen/item_content_size" />
-
-            <RadioButton
-                android:id="@+id/rb_into_no"
-                style="@style/tv_small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="否"
-                android:textSize="@dimen/item_content_size"
-                />
-        </RadioGroup>
-    </LinearLayout>
-
-     <include
-        android:id="@+id/ll_into"
-        layout="@layout/layout_into_card"/>
-    </LinearLayout>
-    <include
-        android:id="@+id/include_bottom_view"
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp_8" />
     </LinearLayout>
 
 
