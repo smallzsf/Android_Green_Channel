@@ -30,6 +30,7 @@ import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -171,9 +172,9 @@ public class TraumaPatientActivity extends BaseActivity {
                 case 2:
                     //心电检查
                     return ElectrocardiographCheckFragment.newInstance(patientId, docId);
-//                case 3:
-//
-//                    break;
+                case 3:
+                    //影像检查
+                    return ImageCheckFragment.newInstance(patientId, docId);
 //                case 4:
 //
 //                    break;

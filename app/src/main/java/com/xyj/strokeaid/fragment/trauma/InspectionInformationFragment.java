@@ -65,7 +65,7 @@ public class InspectionInformationFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
         btnGetData.setText("获取记录");
-        btnConfirm.setText("确定");
+        btnConfirm.setText("保存");
         loadData();
 
 
@@ -91,7 +91,7 @@ public class InspectionInformationFragment extends BaseFragment {
                 showToast("获取记录");
                 break;
             case R.id.btn_confirm:
-                showToast("确定");
+                showToast("保存");
                 break;
         }
     }
