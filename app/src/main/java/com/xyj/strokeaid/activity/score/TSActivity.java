@@ -14,7 +14,8 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreChangedListener {
+public class TSActivity extends BaseActivity implements NihssItemBar.OnScoreChangedListener {
+
     @BindView(R.id.title_bar_act_nihss)
     BaseTitleBar titleBarActNihss;
     @BindView(R.id.tv_result_score)
@@ -29,7 +30,8 @@ public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreCha
     NihssItemBar nib3;
     @BindView(R.id.nib_4)
     NihssItemBar nib4;
-
+    @BindView(R.id.nib_5)
+    NihssItemBar nib5;
     /**
      * 总分
      */
@@ -37,16 +39,17 @@ public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreCha
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_score_phi;
+        return R.layout.activity_score_ts;
     }
 
     @Override
     protected void initInject() {
+
     }
 
     @Override
     public void initView() {
-        titleBarActNihss.setTitle("PHI评分");
+        titleBarActNihss.setTitle("TS评分");
         tvResultScore.setText("评分结果：0分");
         initNihssBars();
         ArrayList<NihssItemBar> nihssItemBars = new ArrayList<>();
@@ -54,6 +57,7 @@ public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreCha
         nihssItemBars.add(nib2);
         nihssItemBars.add(nib3);
         nihssItemBars.add(nib4);
+        nihssItemBars.add(nib5);
         initVisibleGone(nihssItemBars);
     }
 
@@ -66,30 +70,40 @@ public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreCha
 
     private void initNihssBars() {
         List<NihssItemBar.ItemBean> oneA = new ArrayList<>();
-        oneA.add(new NihssItemBar.ItemBean("0~74", 5, false));
-        oneA.add(new NihssItemBar.ItemBean("75~85", 2, false));
-        oneA.add(new NihssItemBar.ItemBean("86~100", 1, false));
-        oneA.add(new NihssItemBar.ItemBean(">100", 0, false));
+        oneA.add(new NihssItemBar.ItemBean("正常", 1, false));
+        oneA.add(new NihssItemBar.ItemBean("浅、困难", 0, false));
         nib1.setItemBeans(oneA);
         nib1.setOnScoreChangedListener(this);
         List<NihssItemBar.ItemBean> oneB = new ArrayList<>();
-        oneB.add(new NihssItemBar.ItemBean("<50", 5, false));
-        oneB.add(new NihssItemBar.ItemBean("51~119", 0, false));
-        oneB.add(new NihssItemBar.ItemBean("≥120", 3, false));
+        oneB.add(new NihssItemBar.ItemBean("正常（＞2′）", 2, false));
+        oneB.add(new NihssItemBar.ItemBean("迟缓（＜2′）", 1, false));
+        oneB.add(new NihssItemBar.ItemBean("无", 0, false));
         nib2.setItemBeans(oneB);
         nib2.setOnScoreChangedListener(this);
         List<NihssItemBar.ItemBean> oneC = new ArrayList<>();
-        oneC.add(new NihssItemBar.ItemBean("＜10次、需插管", 5, false));
-        oneC.add(new NihssItemBar.ItemBean("费力、浅", 3, false));
-        oneC.add(new NihssItemBar.ItemBean("正常", 0, false));
+        oneC.add(new NihssItemBar.ItemBean("＞35", 2, false));
+        oneC.add(new NihssItemBar.ItemBean("25~35", 3, false));
+        oneC.add(new NihssItemBar.ItemBean("10~24", 4, false));
+        oneC.add(new NihssItemBar.ItemBean("1~9", 1, false));
+        oneC.add(new NihssItemBar.ItemBean("无", 0, false));
         nib3.setItemBeans(oneC);
         nib3.setOnScoreChangedListener(this);
         List<NihssItemBar.ItemBean> oneD = new ArrayList<>();
-        oneD.add(new NihssItemBar.ItemBean("无可理解的语言", 5, false));
-        oneD.add(new NihssItemBar.ItemBean("混乱或好斗", 3, false));
-        oneD.add(new NihssItemBar.ItemBean("正常", 0, false));
+        oneD.add(new NihssItemBar.ItemBean("≥90", 4, false));
+        oneD.add(new NihssItemBar.ItemBean("70~89", 3, false));
+        oneD.add(new NihssItemBar.ItemBean("50~69", 2, false));
+        oneD.add(new NihssItemBar.ItemBean("＜50", 1, false));
+        oneD.add(new NihssItemBar.ItemBean("0", 0, false));
         nib4.setItemBeans(oneD);
         nib4.setOnScoreChangedListener(this);
+        List<NihssItemBar.ItemBean> oneE = new ArrayList<>();
+        oneE.add(new NihssItemBar.ItemBean("14~15", 5, false));
+        oneE.add(new NihssItemBar.ItemBean("11~13", 4, false));
+        oneE.add(new NihssItemBar.ItemBean("8~10", 3, false));
+        oneE.add(new NihssItemBar.ItemBean("5~7", 2, false));
+        oneE.add(new NihssItemBar.ItemBean("3~4", 1, false));
+        nib5.setItemBeans(oneE);
+        nib5.setOnScoreChangedListener(this);
     }
 
     @Override
@@ -108,5 +122,4 @@ public class PHIActivity extends BaseActivity implements NihssItemBar.OnScoreCha
         mTotalScore = mTotalScore - score;
         tvResultScore.setText("评分结果：" + mTotalScore + "分");
     }
-
 }

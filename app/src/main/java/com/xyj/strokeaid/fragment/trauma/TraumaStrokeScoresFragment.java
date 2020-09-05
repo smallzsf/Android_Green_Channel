@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.score.ISSActivity;
 import com.xyj.strokeaid.activity.score.PHIActivity;
+import com.xyj.strokeaid.activity.score.TIActivity;
+import com.xyj.strokeaid.activity.score.TSActivity;
 import com.xyj.strokeaid.activity.stroke.StrokeGcsScoreActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -124,9 +126,9 @@ public class TraumaStrokeScoresFragment extends BaseFragment {
             if (position == 0) {
                 startActivity(new Intent(context, PHIActivity.class));
             } else if (position == 1) {
-
+                startActivity(new Intent(context, TIActivity.class));
             } else if (position == 2) {
-
+                startActivity(new Intent(context, TSActivity.class));
             } else if (position == 3) {
                 startActivity(new Intent(context, StrokeGcsScoreActivity.class));
             } else if (position == 4) {
