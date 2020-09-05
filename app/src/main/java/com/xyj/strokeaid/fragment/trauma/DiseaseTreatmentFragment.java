@@ -17,7 +17,9 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -116,7 +118,7 @@ public class DiseaseTreatmentFragment extends BaseFragment {
 
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_simple_respirator;
-    private List<Integer> disposalIdList = new ArrayList();
+    private Map<Integer,Boolean> mapVentilationSelected = new HashMap<>();
 
 
     public DiseaseTreatmentFragment() {
@@ -166,6 +168,21 @@ public class DiseaseTreatmentFragment extends BaseFragment {
             radioButton.setOnClickListener(onRadioClickListener);
         }
         refrashRadioStatus();
+
+
+
+//        mapVentilationSelected.put(R.id.cb_ventilation_bandage,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_neck,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_catheter,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_chest,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_fracture_out,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_limbs,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_other,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_pelvis,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_suture,false);
+//        mapVentilationSelected.put(R.id.cb_ventilation_vertebra,false);
+
+
         loadData();
 
 
