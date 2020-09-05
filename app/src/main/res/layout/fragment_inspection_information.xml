@@ -34,12 +34,75 @@
                 android:background="@color/white"
                 app:title="送达时间" />
 
-            <com.xyj.strokeaid.view.TextTimeBar
-                android:id="@+id/tv_report_time"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:background="@color/white"
-                app:title="报告时间" />
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="血型(ABO)"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <EditText
+                    android:id="@+id/et_blood_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/app_dp45"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="血糖"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <EditText
+                    android:id="@+id/et_blood_suger"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_emergency_ward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="mmol/L"
+                    android:textColor="#223b53" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_centerVertical="true"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:maxLength="6"
                     android:maxLines="1"
                     android:minWidth="60dp"
@@ -75,6 +138,388 @@
                     android:text="上传"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sheet_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="传染病9项报告"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <TextView
+                        android:id="@+id/tv_time_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_25"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_check_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看"
+                        android:textColor="@color/tab_selected_color" />
+
+                    <TextView
+                        android:id="@+id/tv_delete_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="删除"
+                        android:textColor="@color/tab_selected_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sheet_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="凝血四项报告"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <TextView
+                        android:id="@+id/tv_time_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_25"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_check_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看"
+                        android:textColor="@color/tab_selected_color" />
+
+                    <TextView
+                        android:id="@+id/tv_delete_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="删除"
+                        android:textColor="@color/tab_selected_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sheet_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="血常规报告"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <TextView
+                        android:id="@+id/tv_time_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_25"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_check_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看"
+                        android:textColor="@color/tab_selected_color" />
+
+                    <TextView
+                        android:id="@+id/tv_delete_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="删除"
+                        android:textColor="@color/tab_selected_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sheet_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="血生化报告"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <TextView
+                        android:id="@+id/tv_time_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:textColor="#223b53"
+                        android:textSize="@dimen/item_title_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_25"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_check_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看"
+                        android:textColor="@color/tab_selected_color" />
+
+                    <TextView
+                        android:id="@+id/tv_delete_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="删除"
+                        android:textColor="@color/tab_selected_color" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="穿刺检查" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="wrap_content"
+                    android:text="穿刺类型"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_chest"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:checked="true"
+                        android:text="胸腔"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_belly"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:text="腹腔"
+                        android:textSize="@dimen/item_content_size" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="血液"
+                    android:textColor="#223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <EditText
+                    android:id="@+id/et_blood"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_blood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="ml"
+                    android:textColor="#223b53" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="wrap_content"
+                    android:text="凝固"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_solidify_yes"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:checked="true"
+                        android:text="凝固"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_solidify_no"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:text="不凝固"
+                        android:textSize="@dimen/item_content_size" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="wrap_content"
+                    android:text="气体"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_gas_yes"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:checked="true"
+                        android:text="有    "
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_gas_no"
+                        android:layout_width="@dimen/dp_90"
+                        android:layout_height="@dimen/dp_30"
+                        android:text="无"
+                        android:textSize="@dimen/item_content_size" />
+                </RadioGroup>
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
