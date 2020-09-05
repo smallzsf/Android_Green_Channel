@@ -28,8 +28,8 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.DiseaseSceneFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
@@ -168,28 +168,30 @@ public class TraumaPatientActivity extends BaseActivity {
         public Fragment createFragment(int position) {
             switch (position) {
                 case 0:
+                    // 发病现场
+                    return DiseaseSceneFragment.newInstance(patientId, docId);
+                case 1:
                     // 生命体征
                     return DiseaseTreatmentFragment.newInstance(patientId, docId);
-                case 1:
+                case 2:
                     //检验信息
                     return InspectionInformationFragment.newInstance(patientId, docId);
-                case 2:
+                case 3:
                     //心电检查
                     return ElectrocardiographCheckFragment.newInstance(patientId, docId);
-                case 3:
+                case 4:
                     //影像检查
                     return ImageCheckFragment.newInstance(patientId, docId);
-                case 4:
+                case 5:
                     //会诊信息
                     return ConsultationInfoFragment.newInstance(patientId, docId);
-                case 5:
-                    //
-                    return OperationInfoFragment.newInstance(patientId, docId);
-
                 case 6:
+                    //手术信息
+                    return OperationInfoFragment.newInstance(patientId, docId);
+                case 7:
                     // 評分工具
                     return TraumaStrokeScoresFragment.newInstance(patientId, docId);
-//                case 7:
+//                case 8:
 //
 //                    break;
                 default:

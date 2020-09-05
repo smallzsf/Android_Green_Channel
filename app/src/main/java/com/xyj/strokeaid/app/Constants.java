@@ -49,6 +49,7 @@ public class Constants {
             "时间节点"};
 
     public static final String[] GREEN_CHANNEL_TRAUMA_MENU_TITLES = new String[]{
+            "发病现场",
             "急诊救治",
             "检验信息",
             "心电检查",
