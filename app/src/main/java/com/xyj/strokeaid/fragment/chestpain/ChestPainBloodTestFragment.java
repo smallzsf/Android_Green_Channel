@@ -137,7 +137,7 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_disease_record;
+        return R.layout.fragment_chest_pain_blood_test;
     }
 
     @Override
