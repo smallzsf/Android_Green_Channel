@@ -162,8 +162,6 @@ public class OriginalStatusFragment1 extends BaseFragment implements OnDateSetLi
     LinearLayout llInvade;
     @BindView(R.id.ll_other)
     LinearLayout llOther;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
 
     public static OriginalStatusFragment1 newInstance(String keyword) {
         OriginalStatusFragment1 fragment = new OriginalStatusFragment1();

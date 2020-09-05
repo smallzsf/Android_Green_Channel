@@ -347,7 +347,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_30"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tv_until"
+            android:layout_toRightOf="@id/tv_until"
             android:gravity="center"
             app:Background="@drawable/bg_view_frame"
             app:hint="请选择"
