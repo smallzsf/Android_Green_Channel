@@ -24,6 +24,8 @@ import com.xyj.strokeaid.bean.DaoMaster;
 import com.xyj.strokeaid.bean.DaoSession;
 import com.xyj.strokeaid.helper.ActivityStackManager;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * MyApp
  * description: TODO
@@ -72,9 +74,12 @@ public class MyApp extends Application implements Application.ActivityLifecycleC
         // 配置数据库
         initGreenDao();
         // 友盟统计
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
         UMConfigure.init(this, AppConfig.YOUMENG_AK, "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
-        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
+        // 极光
+        JPushInterface.setDebugMode(BuildConfig.DEBUG);
+        JPushInterface.init(this);
     }
 
     private void initGreenDao() {
