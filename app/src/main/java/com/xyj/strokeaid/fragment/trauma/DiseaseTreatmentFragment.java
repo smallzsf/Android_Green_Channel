@@ -115,7 +115,7 @@ public class DiseaseTreatmentFragment  extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_disease_record;
+        return R.layout.fragment_disease_treatment;
     }
 
     @Override

@@ -10,8 +10,6 @@ import android.widget.Chronometer;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -29,21 +27,9 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
-import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
-import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeScoresFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
-import com.xyj.strokeaid.fragment.stroke.TransferFragment;
+import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -177,7 +163,7 @@ public class TraumaPatientActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 生命体征
-                    return ChestPainVitalSignsFragment.newInstance(patientId, docId);
+                    return DiseaseTreatmentFragment.newInstance(patientId, docId);
 //                case 1:
 //
 //                    break;

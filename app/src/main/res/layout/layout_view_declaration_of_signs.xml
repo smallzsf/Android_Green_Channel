@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--
+
+                    <com.xyj.strokeaid.view.BaseTitleBar
+                        android:id="@+id/titlebar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/title_bar_height"
+                        app:rightIconVisible="false"
+                        app:rightTextVisible="true"
+                        app:title="生命体征" />
+        -->
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <TextView
+                android:id="@+id/awareness"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/vital_sign_awareness"
+                android:textColor="@color/app_223b53"
+                android:textSize="@dimen/item_title_size" />
+
+
+            <com.xyj.strokeaid.view.editspinner.EditSpinner
+                android:id="@+id/es_vital_sign_aware"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_30"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/awareness"
+                android:gravity="center"
+                app:Background="@drawable/bg_view_frame"
+                app:hint="请选择"
+                app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/breath_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/breath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_breath"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_breath_rate_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/unit_times_minute"
+                android:layout_toRightOf="@+id/breath_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_breathing_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/unit_times_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/unit_times_minute"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/pulse_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/pulse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_pulse"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_pulse_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/pulse_unit_times_minute"
+                android:layout_toRightOf="@+id/pulse_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_pulse_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/pulse_unit_times_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/unit_times_minute"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/heart_rate_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/heart_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_heart_rate"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_heart_rate_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/heart_rate_unit_times_minute"
+                android:layout_toRightOf="@+id/heart_rate_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_heart_rate_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/heart_rate_unit_times_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/unit_times_minute"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/systolic_blood_pressure_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/systolic_blood_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_systolic_blood_pressure"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_systolic_blood_pressure_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/systolic_blood_pressure_unit_mm_hg"
+                android:layout_toRightOf="@+id/systolic_blood_pressure_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_systolic_blood_pressure_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/systolic_blood_pressure_unit_mm_hg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/unit_mm_hg"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/diastolic_blood_pressure_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/diastolic_blood_pressure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_diastolic_blood_pressure"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_diastolic_blood_pressure_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/diastolic_blood_pressure_unit_mm_hg"
+                android:layout_toRightOf="@+id/diastolic_blood_pressure_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_diastolic_blood_pressure_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/diastolic_blood_pressure_unit_mm_hg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/unit_mm_hg"
+                android:textSize="@dimen/item_title_size" />
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/blood_oxygen_saturation_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/blood_oxygen_saturation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_blood_oxygen_saturation"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_blood_oxygen_saturation_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/blood_oxygen_saturation_unit_percent"
+                android:layout_toRightOf="@+id/blood_oxygen_saturation_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_blood_oxygen_saturation_range"
+                android:inputType="number"
+                android:maxLength="3"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/blood_oxygen_saturation_unit_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="left"
+                android:text="%&#8194;&#8194;&#8194;&#8194;&#8194;"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vital_sign_item_height"
+            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+
+            <LinearLayout
+                android:id="@+id/body_temperature_layout"
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/body_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/vital_sign_body_temperature"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/et_body_temperature_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/body_temperature_unit_celsius"
+                android:layout_toRightOf="@+id/body_temperature_layout"
+                android:background="@null"
+                android:hint="@string/vital_sign_body_temperature_range"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:maxLines="1"
+                android:textSize="@dimen/item_content_size" />
+
+            <TextView
+                android:id="@+id/body_temperature_unit_celsius"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="℃&#8194;&#8194;&#8194;&#8194;&#8194;"
+                android:textSize="@dimen/item_title_size" />
+        </RelativeLayout>
+
+
+        <include layout="@layout/include_line" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
