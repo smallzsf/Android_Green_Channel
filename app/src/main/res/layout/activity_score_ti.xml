@@ -52,7 +52,7 @@
                 android:id="@+id/nib_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="呼吸幅度" />
+                app:title="部位" />
 
             <View
                 android:layout_width="match_parent"
@@ -63,7 +63,7 @@
                 android:id="@+id/nib_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="毛细血管充盈" />
+                app:title="创伤类型" />
 
             <View
                 android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:id="@+id/nib_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="呼吸频率（R）" />
+                app:title="循环" />
 
             <View
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 android:id="@+id/nib_4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="动脉收缩压" />
+                app:title="意识" />
 
             <View
                 android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                 android:id="@+id/nib_5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="GCS分值" />
+                app:title="呼吸" />
 
             <View
                 android:layout_width="match_parent"
