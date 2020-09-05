@@ -151,7 +151,7 @@
 
         <TextView
             android:id="@+id/tv_nyha_label"
-            android:layout_width="@dimen/dp_120"
+            android:layout_width="@dimen/dp_80"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="NYHA分级*"

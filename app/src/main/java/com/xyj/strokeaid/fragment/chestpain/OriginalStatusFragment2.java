@@ -275,8 +275,11 @@ public class OriginalStatusFragment2 extends BaseFragment implements OnDateSetLi
                     mLlAgain.setVisibility(View.VISIBLE);
                     mTvAgainHierarchyTime.setVisibility(View.VISIBLE);
                     mLlAgainDeal.setVisibility(View.VISIBLE);
-                }
-            }
+                }else {
+                    mTvAgainHierarchyTime.setVisibility(View.GONE);
+                    mLlAgain.setVisibility(View.VISIBLE);
+                    mLlAgainDeal.setVisibility(View.GONE);
+                }            }
         });
         //处理策略
         rgOtherDeal.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
