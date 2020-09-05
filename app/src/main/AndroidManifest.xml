@@ -188,6 +188,7 @@
         <activity android:name=".activity.stroke.StrokeFishercCassificationActivity" />
         <activity android:name=".activity.stroke.StrokeChadsActivity" />
         <activity android:name=".activity.score.PHIActivity" />
+        <activity android:name=".activity.score.TSActivity" />
         <activity android:name=".activity.score.ISSActivity" />
     </application>
 
