@@ -190,6 +190,7 @@
         <activity android:name=".activity.score.PHIActivity" />
         <activity android:name=".activity.score.TSActivity" />
         <activity android:name=".activity.score.ISSActivity" />
+        <activity android:name=".activity.score.TIActivity" />
     </application>
 
 </manifest>
