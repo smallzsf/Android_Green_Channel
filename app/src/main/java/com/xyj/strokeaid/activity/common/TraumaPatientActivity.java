@@ -28,6 +28,7 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
+import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
 import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
 import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
 import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
@@ -178,10 +179,11 @@ public class TraumaPatientActivity extends BaseActivity {
                     return ImageCheckFragment.newInstance(patientId, docId);
                 case 4:
                     //会诊信息
+                    return ConsultationInfoFragment.newInstance(patientId, docId);
+                case 5:
+                    //
                     return OperationInfoFragment.newInstance(patientId, docId);
-//                case 5:
-//
-//                    break;
+
 //                case 6:
 //
 //                    break;
