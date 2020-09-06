@@ -17,7 +17,12 @@ import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.DiseaseRecordRequest;
+import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -25,6 +30,11 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.Set;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * DiseaseRecordFragment
@@ -265,6 +275,191 @@ public class DiseaseRecordFragment extends BaseFragment {
         }
 
     }
+
+
+    /**
+     * 病情记录添加add
+     */
+    private void diseaseRecordAdd(DiseaseRecordRequest.DiseaseRecordAdd diseaseRecordAdd) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordAdd);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordAdd(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 病情记录修改
+     */
+    private void diseaseRecordUpate(DiseaseRecordRequest.DiseaseRecordUpdate diseaseRecordUpdate) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordUpdate);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordUpdate(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 病情评估根据recordId删除
+     */
+    private void diseaseRecordDeleteByRecordId(DiseaseRecordRequest.DiseaseRecordDeleteByRecordId diseaseRecordDeleteByRecordId) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordDeleteByRecordId);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordDeleteByRecordid(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     * 病情评估先删后插
+     */
+    private void diseaseRecordEdit(DiseaseRecordRequest.DiseaseRecordEdit   diseaseRecordEdit) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordEdit);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordEdit(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     *  病情评估获取
+     */
+    private void diseaseRecordGet(DiseaseRecordRequest.DiseaseRecordGet   diseaseRecordGet) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordGet);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordGet(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     *  病情评估根据recordid获取
+     */
+    private void diseaseRecordGetByRecordid(DiseaseRecordRequest.DiseaseRecordGetByRecordId   diseaseRecordGetByRecordid) {
+        String request = GsonUtils.getGson().toJson(diseaseRecordGetByRecordid);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .diseaseRecordGetByRecordid(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
 
 
 }

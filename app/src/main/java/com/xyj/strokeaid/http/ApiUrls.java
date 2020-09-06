@@ -101,6 +101,43 @@ public class ApiUrls {
      */
     public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_SWALLOW = "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
 
+
+
+
+    /**
+     * 病情评估添加
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DISEASE_RECORD_ADD= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/add";
+
+
+    /**
+     * 病情评估修改
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_UPDATE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/update";
+
+
+    /**
+     * 病情评估根据recordId删除
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_DELETE_BY_RECORDID = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/deleteByRecordId";
+
+
+    /**
+     * 病情评估先删后插
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_EDIT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/edit";
+
+    /**
+     * 病情评估获取
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/get";
+
+    /**
+     * 病情评估根据recordid获取
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GETBYRECORDID = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/getByRecordId";
+
+
 }
 
     

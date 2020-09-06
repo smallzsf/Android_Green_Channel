@@ -1,23 +1,23 @@
 package com.xyj.strokeaid.bean;
 
 /**
- * @Description: 新建传参类
+ * @Description: 新建患者信息传参类
  * @Author: crq
  * @CreateDate: 2020/9/4 20:15
  */
 public class NewPatientMedicalRecordBean {
 
     /**
-     * id : 694943008495374336
-     * operationid : 694943008495374336
-     * emergencyType : 694943008495374336
-     * empId : 395ba2768267c0d43d79754827baca89
-     * fullname : SMS_192532713
-     * age : eHlqdGVjaDoyMDIwMDkwNDE5NDQwNg==
-     * gender : licy
-     * idcardno : 694943008495374336
-     * unablegetidcardno : 395ba2768267c0d43d79754827baca89
-     * birthdate : SMS_192532713
+     * id :
+     * operationid :
+     * emergencyType :
+     * empId :
+     * fullname :
+     * age :
+     * gender :
+     * idcardno :
+     * unablegetidcardno :
+     * birthdate :
      * nation :
      * contactname :
      * contactnumber :

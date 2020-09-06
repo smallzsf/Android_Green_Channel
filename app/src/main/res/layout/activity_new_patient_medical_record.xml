@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_bg"
     android:orientation="vertical"
     tools:context=".activity.NewPatientMedicalRecordActivity">
 
@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
+                android:background="@color/white"
                 app:title="发病时间" />
 
             <com.xyj.strokeaid.view.ItemEditBar

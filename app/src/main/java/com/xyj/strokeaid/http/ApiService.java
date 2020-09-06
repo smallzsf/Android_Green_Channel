@@ -108,4 +108,62 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_SWALLOW)
     Call<BaseObjectBean> addSwallow(@Body RequestBody info);
+
+    /**
+     * 病情记录添加
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DISEASE_RECORD_ADD)
+    Call<BaseObjectBean> diseaseRecordAdd(@Body RequestBody info);
+
+    /**
+     * 病情记录修改
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_UPDATE)
+    Call<BaseObjectBean> diseaseRecordUpdate(@Body RequestBody info);
+
+
+    /**
+     * 病情评估根据recordId删除
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_DELETE_BY_RECORDID)
+    Call<BaseObjectBean> diseaseRecordDeleteByRecordid(@Body RequestBody info);
+
+    /**
+     * 病情评估先删后插
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_EDIT)
+    Call<BaseObjectBean> diseaseRecordEdit(@Body RequestBody info);
+
+
+
+    /**
+     * 病情评估获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GET)
+    Call<BaseObjectBean> diseaseRecordGet(@Body RequestBody info);
+
+
+    /**
+     *  病情评估根据recordid获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GETBYRECORDID)
+    Call<BaseObjectBean> diseaseRecordGetByRecordid(@Body RequestBody info);
 }
