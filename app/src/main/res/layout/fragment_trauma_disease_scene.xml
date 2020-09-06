@@ -687,108 +687,142 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/colorPrimary22"
                 >
+                <LinearLayout
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        style="@style/Text_Blue_Content_Style"
+                        android:text="救治结局" />
+                </LinearLayout>
 
-                <TextView
-                    style="@style/Text_Blue_Content_Style"
-                    android:layout_marginTop="@dimen/dp_10"
-                    android:text="救治结局" />
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/eds_treating_jie"
+                    android:background="@color/colorPrimary22"
+                    android:layout_width="@dimen/dp_90"
+                    android:layout_gravity="center_vertical"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginRight="@dimen/dp_3"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="转入本院"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                android:maxLength="6"
-                android:maxLines="1"
-                android:minWidth="60dp"
-                android:text="转入科室"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/item_title_size" />
-            <com.zhy.view.flowlayout.FlowLayout
+            <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/rb_department_emergency"
+                android:id="@+id/ll_tallransferred_to_department"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
+                >
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="急诊科"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-                <RadioButton
-                    android:id="@+id/rb_department_icu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ICU/EICU"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-                <RadioButton
-                    android:id="@+id/rb_department_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="手术室"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-
-                <RadioButton
-                    android:id="@+id/rb_department_specialist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="专科病房"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_content_size" />
-                <EditText
-                    android:layout_width="@dimen/dp_130"
-                    android:layout_height="@dimen/dp_30"
-                    android:background="@drawable/shape_grey_stroke"
-                    android:hint="单行输入"
-                    android:layout_marginRight="@dimen/dp_12"
-                    android:singleLine="true"
-                    android:inputType="text"
-                    android:paddingStart="@dimen/dp_8"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="转入科室"
                     android:textColor="@color/color_222222"
-                    android:textColorHint="@color/color_666666"
-                    android:textSize="13sp" />
+                    android:textSize="@dimen/item_title_size" />
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            </com.zhy.view.flowlayout.FlowLayout>
+                    <RadioButton
+                        android:id="@+id/rb_department_emergency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="急诊科"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_content_size" />
 
-            <com.xyj.strokeaid.view.TextTimeBar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
-                tl:title="死亡时间" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                android:maxLength="6"
-                android:maxLines="1"
-                android:minWidth="60dp"
-                android:text="死亡原因"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/item_title_size" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_90"
-                android:layout_marginTop="@dimen/dp_7"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="start"
-                android:hint="多行输入"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_12"
-                android:paddingLeft="@dimen/dp_6"
-                android:paddingTop="@dimen/dp_6"
-                android:textSize="@dimen/item_content_size" />
+                    <RadioButton
+                        android:id="@+id/rb_department_icu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ICU/EICU"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_department_operation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="手术室"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_department_specialist"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="专科病房"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_content_size" />
+                    <EditText
+                        android:layout_width="@dimen/dp_130"
+                        android:layout_height="@dimen/dp_30"
+                        android:background="@drawable/shape_grey_stroke"
+                        android:hint="单行输入"
+                        android:layout_marginRight="@dimen/dp_12"
+                        android:singleLine="true"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/dp_8"
+                        android:textColor="@color/color_222222"
+                        android:textColorHint="@color/color_666666"
+                        android:textSize="13sp" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+            </LinearLayout>
+
+
+           <LinearLayout
+               android:id="@+id/ll_death"
+               android:orientation="vertical"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               >
+               <com.xyj.strokeaid.view.TextTimeBar
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/item_normal_height"
+                   android:background="@color/white"
+                   tl:title="死亡时间" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="@dimen/item_normal_height"
+                   android:layout_centerVertical="true"
+                   android:layout_marginStart="@dimen/dp_12"
+                   android:gravity="center"
+                   android:maxLength="6"
+                   android:maxLines="1"
+                   android:minWidth="60dp"
+                   android:text="死亡原因"
+                   android:textColor="@color/color_222222"
+                   android:textSize="@dimen/item_title_size" />
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/dp_90"
+                   android:layout_marginTop="@dimen/dp_7"
+                   android:layout_marginBottom="@dimen/dp_10"
+                   android:background="@drawable/shape_edittext_bg"
+                   android:gravity="start"
+                   android:hint="多行输入"
+                   android:layout_marginLeft="@dimen/dp_12"
+                   android:layout_marginRight="@dimen/dp_12"
+                   android:paddingLeft="@dimen/dp_6"
+                   android:paddingTop="@dimen/dp_6"
+                   android:textSize="@dimen/item_content_size" />
+           </LinearLayout>
 
 
         </LinearLayout>

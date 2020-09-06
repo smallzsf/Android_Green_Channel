@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -184,13 +185,19 @@ public class DiseaseSceneFragment extends BaseFragment {
     RadioButton rbDepartmentOperation;
     @BindView(R.id.rb_department_specialist)
     RadioButton rbDepartmentSpecialist;
+    @BindView(R.id.ll_tallransferred_to_department)
+    LinearLayout llTallransferredToDepartment;
+    @BindView(R.id.ll_death)
+    LinearLayout llDeath;
+    @BindView(R.id.eds_treating_jie)
+    EditSpinner edsTreatingJie;
     private String mPatientId;
     private String mDocId;
 
 
-//    private int checkRadioId = R.id.rb_simple_respirator;
+    //    private int checkRadioId = R.id.rb_simple_respirator;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
-    private Map<String,Integer> mapNormalRadioIds = new HashMap<>();
+    private Map<String, Integer> mapNormalRadioIds = new HashMap<>();
 
     private Map<String, List<RadioButton>> mapRadioList = new HashMap<>();
 
@@ -225,7 +232,7 @@ public class DiseaseSceneFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
 
-         List<RadioButton> ventilationModeList = new ArrayList();
+        List<RadioButton> ventilationModeList = new ArrayList();
 
         ventilationModeList.add(rbILMA);
         ventilationModeList.add(rbNasalCatheterVentilation);
@@ -233,7 +240,7 @@ public class DiseaseSceneFragment extends BaseFragment {
         ventilationModeList.add(rbRicothyroidotomy);
         ventilationModeList.add(rbSimpleRespirator);
 
-        mapRadioList.put("urgent",ventilationModeList);
+        mapRadioList.put("urgent", ventilationModeList);
 
         refrashRadioStatus();
 
@@ -285,16 +292,16 @@ public class DiseaseSceneFragment extends BaseFragment {
                         continue;
                     }
                     if (radioButton.getId() == view.getId()) {
-                       isChecked = true;
-                       break;
+                        isChecked = true;
+                        break;
                     }
                 }
-                if (isChecked){
+                if (isChecked) {
                     checkKey = key;
                     break;
                 }
             }
-            mapNormalRadioIds.put(checkKey,view.getId());
+            mapNormalRadioIds.put(checkKey, view.getId());
 
             refrashRadioStatus();
         }
@@ -306,7 +313,7 @@ public class DiseaseSceneFragment extends BaseFragment {
             List<RadioButton> ventilationModeList = entry.getValue();
             String key = entry.getKey();
             int checkRadioId = 0;
-            if (mapNormalRadioIds.containsKey(key)){
+            if (mapNormalRadioIds.containsKey(key)) {
                 checkRadioId = mapNormalRadioIds.get(key);
             }
             for (int i = 0; i < ventilationModeList.size(); i++) {
@@ -326,6 +333,32 @@ public class DiseaseSceneFragment extends BaseFragment {
     }
 
     private void loadData() {
+
+        ArrayList<String> data = new ArrayList<>();
+        data.add("转入本院");
+        data.add("转入其它医院");
+        data.add("死亡");
+        edsTreatingJie.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
+            @Override
+            public void getSeletedString(String text) {
+                refrashEdsTreatingJieStatus(text);
+            }
+        });
+        refrashEdsTreatingJieStatus("转入本院");
+        edsTreatingJie.setItemData(data);
+    }
+
+    private void refrashEdsTreatingJieStatus(String text){
+        llDeath.setVisibility(View.VISIBLE);
+        llTallransferredToDepartment.setVisibility(View.VISIBLE);
+        if (TextUtils.equals("转入本院",text)){
+            llDeath.setVisibility(View.GONE);
+        }else if (TextUtils.equals("转入其它医院",text)){
+            llDeath.setVisibility(View.GONE);
+            llTallransferredToDepartment.setVisibility(View.GONE);
+        }else {
+            llTallransferredToDepartment.setVisibility(View.GONE);
+        }
     }
 
 
