@@ -207,17 +207,6 @@ public class DiseaseTreatmentFragment extends BaseFragment {
         refrashRadioStatus();
 
 
-//        mapVentilationSelected.put(R.id.cb_ventilation_bandage,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_neck,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_catheter,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_chest,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_fracture_out,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_limbs,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_other,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_pelvis,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_suture,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_vertebra,false);
-
 
         loadData();
 
@@ -248,7 +237,14 @@ public class DiseaseTreatmentFragment extends BaseFragment {
     }
 
     private void loadData() {
-//        esVitalSignAware.setItemData(list);
+
+        List<String> list = new ArrayList<>();
+        list.add("请选择");
+        list.add("清醒");
+        list.add("对语言有反应");
+        list.add("对刺激有反应");
+        list.add("对任何刺激无反应");
+        esVitalSignAware.setItemData(list);
     }
 
 
