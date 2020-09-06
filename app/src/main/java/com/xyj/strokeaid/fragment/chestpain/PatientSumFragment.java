@@ -107,42 +107,64 @@ public class PatientSumFragment extends BaseFragment {
         FragmentTransaction ft = getChildFragmentManager().beginTransaction();
         //操作：碎片为空 创建添加
         //     碎片不为空，直接显示
-        hideFragment(ft);
+//        hideFragment(ft);
         switch (type) {
             case "STEMI":
             case "NSTEMI":
             case "UA":
-                if (mPatientFragment1 == null) {//为空，创建
-                    mPatientFragment1 = PatientStatusFragment1.newInstance(type);//创建
-                    ft.add(R.id.fl_main, mPatientFragment1);//将碎片添加到专门存放碎片的容器中
-                } else {
-                    ft.show(mPatientFragment1);//不为空，直接显示
+//                if (mPatientFragment1 == null) {//为空，创建
+//                    mPatientFragment1 = PatientStatusFragment1.newInstance(type);//创建
+//                    ft.add(R.id.fl_main, mPatientFragment1);//将碎片添加到专门存放碎片的容器中
+//                } else {
+//                    ft.show(mPatientFragment1);//不为空，直接显示
+//                }
+
+                if(mPatientFragment1==null){
+                    mPatientFragment1=PatientStatusFragment1.newInstance(type);//创建
                 }
+                ft.replace(R.id.fl_main, mPatientFragment1);
+
                 break;
             case "主动脉夹层":
             case "肺动脉栓塞":
-                if (mPatientFragment2 == null) {//为空，创建
-                    mPatientFragment2 = PatientStatusFragment2.newInstance(type);//创建
-                    ft.add(R.id.fl_main, mPatientFragment2);//将碎片添加到专门存放碎片的容器中
-                } else {
-                    ft.show(mPatientFragment2);//不为空，直接显示
+//                if (mPatientFragment2 == null) {//为空，创建
+//                    mPatientFragment2 = PatientStatusFragment2.newInstance(type);//创建
+//                    ft.add(R.id.fl_main, mPatientFragment2);//将碎片添加到专门存放碎片的容器中
+//                } else {
+//                    ft.show(mPatientFragment2);//不为空，直接显示
+//                }
+                if(mPatientFragment2==null){
+                    mPatientFragment2=PatientStatusFragment2.newInstance(type);//创建
                 }
+                ft.replace(R.id.fl_main, mPatientFragment2);
+
                 break;
             case "非ACS心源性胸痛":
-                if (mPatientFragment3 == null) {//为空，创建
-                    mPatientFragment3 = PatientStatusFragment3.newInstance(type);//创建
-                    ft.add(R.id.fl_main, mPatientFragment3);//将碎片添加到专门存放碎片的容器中
-                } else {
-                    ft.show(mPatientFragment3);//不为空，直接显示
+//                if (mPatientFragment3 == null) {//为空，创建
+//                    mPatientFragment3 = PatientStatusFragment3.newInstance(type);//创建
+//                    ft.add(R.id.fl_main, mPatientFragment3);//将碎片添加到专门存放碎片的容器中
+//                } else {
+//                    ft.show(mPatientFragment3);//不为空，直接显示
+//                }
+                if(mPatientFragment3==null){
+                    mPatientFragment3=PatientStatusFragment3.newInstance(type);//创建
                 }
+                ft.replace(R.id.fl_main, mPatientFragment3);
+
                 break;
             case "其他非心源性胸痛":
-                if (mPatientFragment4 == null) {//为空，创建
-                    mPatientFragment4 = PatientStatusFragment4.newInstance(type);//创建
-                    ft.add(R.id.fl_main, mPatientFragment4);//将碎片添加到专门存放碎片的容器中
-                } else {
-                    ft.show(mPatientFragment4);//不为空，直接显示
+//                if (mPatientFragment4 == null) {//为空，创建
+//                    mPatientFragment4 = PatientStatusFragment4.newInstance(type);//创建
+//                    ft.add(R.id.fl_main, mPatientFragment4);//将碎片添加到专门存放碎片的容器中
+//                } else {
+//                    ft.show(mPatientFragment4);//不为空，直接显示
+//                }
+
+                if(mPatientFragment4==null){
+                    mPatientFragment4=PatientStatusFragment4.newInstance(type);//创建
                 }
+                ft.replace(R.id.fl_main, mPatientFragment4);
+
                 break;
             default:
                 break;
