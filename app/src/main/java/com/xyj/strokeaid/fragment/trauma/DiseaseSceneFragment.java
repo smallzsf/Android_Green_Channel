@@ -176,13 +176,23 @@ public class DiseaseSceneFragment extends BaseFragment {
     AppCompatButton btnStartFragSg;
     @BindView(R.id.llVitalSigns)
     LinearLayout llVitalSigns;
+    @BindView(R.id.rb_department_emergency)
+    RadioButton rbDepartmentEmergency;
+    @BindView(R.id.rb_department_icu)
+    RadioButton rbDepartmentIcu;
+    @BindView(R.id.rb_department_operation)
+    RadioButton rbDepartmentOperation;
+    @BindView(R.id.rb_department_specialist)
+    RadioButton rbDepartmentSpecialist;
     private String mPatientId;
     private String mDocId;
 
 
-    private List<RadioButton> ventilationModeList = new ArrayList();
-    private int checkRadioId = R.id.rb_simple_respirator;
+//    private int checkRadioId = R.id.rb_simple_respirator;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
+    private Map<String,Integer> mapNormalRadioIds = new HashMap<>();
+
+    private Map<String, List<RadioButton>> mapRadioList = new HashMap<>();
 
 
     public DiseaseSceneFragment() {
@@ -215,6 +225,7 @@ public class DiseaseSceneFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
 
+         List<RadioButton> ventilationModeList = new ArrayList();
 
         ventilationModeList.add(rbILMA);
         ventilationModeList.add(rbNasalCatheterVentilation);
@@ -222,25 +233,38 @@ public class DiseaseSceneFragment extends BaseFragment {
         ventilationModeList.add(rbRicothyroidotomy);
         ventilationModeList.add(rbSimpleRespirator);
 
-        for (int i = 0; i < ventilationModeList.size(); i++) {
-            RadioButton radioButton = ventilationModeList.get(i);
-            radioButton.setOnClickListener(onRadioClickListener);
-        }
+        mapRadioList.put("urgent",ventilationModeList);
+
         refrashRadioStatus();
 
 
-//        mapVentilationSelected.put(R.id.cb_ventilation_bandage,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_neck,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_catheter,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_chest,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_fracture_out,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_limbs,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_other,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_pelvis,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_suture,false);
-//        mapVentilationSelected.put(R.id.cb_ventilation_vertebra,false);
+        ArrayList<RadioButton> radioButtons = new ArrayList<>();
+        radioButtons.add(rbReasonKnife);
+        radioButtons.add(rbReasonSuicide);
+        radioButtons.add(rbReasonFight);
+        radioButtons.add(rbReasonFightGroup);
+        radioButtons.add(rbReasonGun);
+        radioButtons.add(rbReasonHeightFall);
+        radioButtons.add(rbReasonMurder);
+        radioButtons.add(rbReasonOther);
+        radioButtons.add(rbReasonProduceAccident);
+        radioButtons.add(rbReasonTrafficAccident);
+        mapRadioList.put("reason", radioButtons);
 
+        radioButtons = new ArrayList<>();
+        radioButtons.add(rbDepartmentIcu);
+        radioButtons.add(rbDepartmentEmergency);
+        radioButtons.add(rbDepartmentOperation);
+        radioButtons.add(rbDepartmentSpecialist);
+        mapRadioList.put("department", radioButtons);
 
+        for (Map.Entry<String, List<RadioButton>> entry : mapRadioList.entrySet()) {
+            List<RadioButton> value = entry.getValue();
+            for (int i = 0; i < value.size(); i++) {
+                RadioButton radioButton = value.get(i);
+                radioButton.setOnClickListener(onRadioClickListener);
+            }
+        }
         loadData();
 
 
@@ -249,28 +273,59 @@ public class DiseaseSceneFragment extends BaseFragment {
     View.OnClickListener onRadioClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            checkRadioId = view.getId();
+            String checkKey = "";
+            for (Map.Entry<String, List<RadioButton>> entry : mapRadioList.entrySet()) {
+                List<RadioButton> ventilationModeList = entry.getValue();
+                String key = entry.getKey();
+                int checkRadioId = 0;
+                boolean isChecked = false;
+                for (int i = 0; i < ventilationModeList.size(); i++) {
+                    RadioButton radioButton = ventilationModeList.get(i);
+                    if (radioButton == null) {
+                        continue;
+                    }
+                    if (radioButton.getId() == view.getId()) {
+                       isChecked = true;
+                       break;
+                    }
+                }
+                if (isChecked){
+                    checkKey = key;
+                    break;
+                }
+            }
+            mapNormalRadioIds.put(checkKey,view.getId());
+
             refrashRadioStatus();
         }
     };
 
     private void refrashRadioStatus() {
 
-        for (int i = 0; i < ventilationModeList.size(); i++) {
-            RadioButton radioButton = ventilationModeList.get(i);
-            if (radioButton == null) {
-                continue;
+        for (Map.Entry<String, List<RadioButton>> entry : mapRadioList.entrySet()) {
+            List<RadioButton> ventilationModeList = entry.getValue();
+            String key = entry.getKey();
+            int checkRadioId = 0;
+            if (mapNormalRadioIds.containsKey(key)){
+                checkRadioId = mapNormalRadioIds.get(key);
             }
-            if (radioButton.getId() == checkRadioId) {
-                radioButton.setChecked(true);
-            } else {
-                radioButton.setChecked(false);
+            for (int i = 0; i < ventilationModeList.size(); i++) {
+                RadioButton radioButton = ventilationModeList.get(i);
+                if (radioButton == null) {
+                    continue;
+                }
+                if (radioButton.getId() == checkRadioId) {
+                    radioButton.setChecked(true);
+                } else {
+                    radioButton.setChecked(false);
+                }
             }
         }
+
+
     }
 
     private void loadData() {
-//        esVitalSignAware.setItemData(list);
     }
 
 
