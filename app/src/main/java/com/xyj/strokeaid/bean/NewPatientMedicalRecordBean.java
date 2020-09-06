@@ -69,6 +69,9 @@ public class NewPatientMedicalRecordBean {
      * behospitalizedway :  入院途径1急诊 2门诊 3其他医疗机构转入4其他
      */
 
+
+
+
     private String id;
     private String operationid;
     private String emergencyType;

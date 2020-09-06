@@ -6,11 +6,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -19,12 +21,24 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.configure.PickerOptions;
+import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.view.BasePickerView;
+import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.eid.reader.EIDReader;
 import com.eid.reader.IIDDataCallback;
+import com.google.gson.annotations.SerializedName;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.DiseaseRecordRequest;
+import com.xyj.strokeaid.bean.NewPatientMedicalRecordBean;
+import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ActionSheet;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -32,11 +46,23 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.loc.di.e;
 
 /**
  * NewPatientMedicalRecordActivity
@@ -55,7 +81,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     String mPatientId;
     @Autowired(name = IntentKey.DOC_ID)
     String mDocId;
-
     @BindView(R.id.title_bar_act_npmr)
     BaseTitleBar titleBarActNpmr;
     @BindView(R.id.ieb_outpatient_id_act_npmr)
@@ -120,6 +145,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private AMapLocationClientOption locationOption = null;
     private AMapLocationListener locationListener = null;
     private List<ComeHosBean> mComeHosBeans = null;
+
 
     @Override
     public int getLayoutId() {
@@ -359,7 +385,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     @OnClick({R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr, R.id.sb_dis_start_range_act_npmr,
             R.id.sb_come_type_act_npmr, R.id.ieb_medicare_num_act_npmr, R.id.sb_nation_act_npmr,
-            R.id.sb_in_hos_type_act_npmr, R.id.ieb_domicile_addr_act_npmr, R.id.btn_save_act_npmr})
+            R.id.sb_in_hos_type_act_npmr, R.id.ieb_domicile_addr_act_npmr, R.id.btn_save_act_npmr, R.id.sb_medicare_type_act_npmr, R.id.sb_serious_medicare_act_npmr})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.sb_sex_act_npmr:
@@ -375,11 +401,23 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 showActionSheet(sbInHosTypeActNpmr, "急诊", "门诊", "其他医疗机构转入", "其他");
                 break;
             case R.id.sb_nation_act_npmr:
+                //民族
+                showPickerView();
 
                 break;
             case R.id.sb_dis_start_range_act_npmr:
                 showActionSheet(sbDisStartRangeActNpmr,
-                        "凌晨(0点到6点)", "清晨(6到8点)", "上午(8到12点)", "中午(12到14点)","傍晚(17到19点)","晚上(19到24点)");
+                        "凌晨(0点到6点)", "清晨(6到8点)", "上午(8到12点)", "中午(12到14点)", "傍晚(17到19点)", "晚上(19到24点)");
+                break;
+            case R.id.sb_medicare_type_act_npmr:
+
+                showActionSheet(sbMedicareTypeActNpmr, "城镇职工基本医疗保险", "新型农村合作医疗", "城镇居民基本医疗保险", "自费", "军免");
+
+                break;
+            case R.id.sb_serious_medicare_act_npmr:
+
+                showActionSheet(sbSeriousMedicareActNpmr, "是", "否");
+
                 break;
             case R.id.btn_save_act_npmr:
                 preSave();
@@ -388,6 +426,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 break;
         }
     }
+
 
     /**
      * 获取数据
@@ -407,6 +446,41 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
      * 保存前校验数据
      */
     private void preSave() {
+        //edit
+        NewPatientMedicalRecordBean newPatientMedicalRecordBean = new NewPatientMedicalRecordBean();
+        String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();
+        String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();
+        String editIebWristbandActNpmr = iebWristbandActNpmr.getEditContent();
+        String editIebDisAddrActNpmr = iebDisAddrActNpmr.getEditContent();
+        String editIebNameActNpmr = iebNameActNpmr.getEditContent();
+        String editIebIdcardActNpmr = iebIdcardActNpmr.getEditContent();
+        String editIebAgeActNpmr = iebAgeActNpmr.getEditContent();
+        String editIebWeightActNpmr = iebWeightActNpmr.getEditContent();
+        String editIebHeightActNpmr = iebHeightActNpmr.getEditContent();
+        String editIebBmiActNpmr = iebBmiActNpmr.getEditContent();
+        String editIebMedicareNumActNpmr = iebMedicareNumActNpmr.getEditContent();
+        String editIebDomicileAddrActNpmr = iebDomicileAddrActNpmr.getEditContent();
+        String editIebContactNameActNpmr = iebContactNameActNpmr.getEditContent();
+        String editIebContactPhoneActNpmr = iebContactPhoneActNpmr.getEditContent();
+        LogUtils.d(editIebOutpatientIdActNpmr + "," + editIebLiveHosIdActNpmr + "," + editIebWristbandActNpmr + "," + editIebDisAddrActNpmr + "," + editIebNameActNpmr + "," + editIebAgeActNpmr + "," + editIebIdcardActNpmr + "," + editIebWeightActNpmr + "," + editIebHeightActNpmr + "," + editIebBmiActNpmr
+                + "," + editIebMedicareNumActNpmr + "," + editIebDomicileAddrActNpmr + "," + editIebContactNameActNpmr + "," + editIebContactPhoneActNpmr
+        );
+        //time
+        String time = ttbDisStartActNpmr.getTime();
+        ToastUtils.showShort(time);
+        LogUtils.d(time);
+        //setting
+        String sex = sbSexActNpmr.getRightText().toString();
+        String birth = sbBirthActNpmr.getRightText().toString();
+        String comeType = sbComeTypeActNpmr.getRightText().toString();
+        String inHosType = sbInHosTypeActNpmr.getRightText().toString();
+        String nation = sbNationActNpmr.getRightText().toString();
+        String medicareType = sbMedicareTypeActNpmr.getRightText().toString();
+        String seriousMedicare = sbSeriousMedicareActNpmr.getRightText().toString();
+        String disStartRange = sbDisStartRangeActNpmr.getRightText().toString();
+        LogUtils.d(sex + "," + birth + "," + "," + comeType + "," + "," + inHosType + "," + "," + nation + "," + medicareType + "," + seriousMedicare + "," + disStartRange);
+        newPatientMedicalRecord(newPatientMedicalRecordBean);
+
 
     }
 
@@ -422,6 +496,32 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     }
 
+
+    /**
+     * 展示民族
+     */
+    private void showPickerView() {
+        List<String> strings = new ArrayList<>();
+       String[] OPTION = new String[]{"汉族", "蒙古族", "回族", "藏族", "维吾尔族", "苗族", "彝族", "壮族", "布依族", "朝鲜族", "满族", "侗族", "瑶族", "白族", "土家族", "哈尼族", "哈萨克族", "傣族", "黎族", "傈僳族", "佤族", "畲族", "高山族", "拉祜族", "水族", "东乡族", "纳西族", "景颇族", "柯尔克孜族", "土族", "达斡尔族", "仫佬族", "羌族", "布朗族", "撒拉族", "毛难族"
+                , "仡佬族", "锡伯族", "阿昌族", "普米族", "塔吉克族", "怒族", "乌孜别克族", "俄罗斯族", "鄂温克族", "崩龙族", "保安族", "裕固族", "京族", "塔塔尔族", "独龙族", "鄂伦春族", "赫哲族", "门巴族", "珞巴族", "基诺族", "其他", "外国血统"};
+        for (int i = 0; i < OPTION.length; i++) {
+            strings.add(OPTION[i]);
+        }
+
+        //条件选择器
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(NewPatientMedicalRecordActivity.this, new OnOptionsSelectListener() {
+
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                ToastUtils.showShort(strings.get(options1) + "**" + options1);
+                sbNationActNpmr.setRightText(strings.get(options1));
+            }
+        }).build();
+        pvOptions.setPicker(strings, null, null);
+        pvOptions.show();
+    }
+
+
     private void showActionSheet(SettingBar settingBar, String... strings) {
         ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
@@ -435,7 +535,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
                     @Override
                     public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+
                         settingBar.setRightText(strings[index]);
+
                     }
                 }).show();
     }
@@ -697,4 +799,37 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             this.idnum = idnum;
         }
     }
+
+
+    /**
+     * 新建患者信息
+     */
+    private void newPatientMedicalRecord(NewPatientMedicalRecordBean newPatientMedicalRecordBean) {
+        String request = GsonUtils.getGson().toJson(newPatientMedicalRecordBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .newPatienMedical(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
 }

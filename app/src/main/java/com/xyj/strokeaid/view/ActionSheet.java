@@ -210,7 +210,7 @@ public class ActionSheet extends Fragment implements View.OnClickListener {
                 FrameLayout.LayoutParams.MATCH_PARENT));
         mBg = new View(getActivity());
         mBg.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT));
+                FrameLayout.LayoutParams.WRAP_CONTENT));
         mBg.setBackgroundColor(Color.argb(136, 0, 0, 0));
         mBg.setId(ActionSheet.BG_VIEW_ID);
         mBg.setOnClickListener(this);

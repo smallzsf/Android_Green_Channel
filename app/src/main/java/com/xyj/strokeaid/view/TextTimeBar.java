@@ -104,6 +104,11 @@ public class TextTimeBar extends RelativeLayout {
         }
     }
 
+    public String getTime() {
+        return tvTimeViewTtb.getText().toString();
+
+    }
+
     public void setTitle(String title) {
         tvTitleViewTtb.setText(title);
     }

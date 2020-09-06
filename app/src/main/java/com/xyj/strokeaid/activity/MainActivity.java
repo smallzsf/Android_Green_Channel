@@ -270,7 +270,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void onResume() {
         super.onResume();
 //        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
-        mDiseaseType = 3;
+    //    mDiseaseType = 3;
         mPatientType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_TYPE);
         tlTitleActMain.setCurrentTab(mPatientType);
         tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
