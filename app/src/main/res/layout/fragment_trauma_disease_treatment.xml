@@ -150,6 +150,7 @@
                             android:layout_weight="1"
                             android:minHeight="@dimen/dp_40"
                             android:layout_width="match_parent"
+                            tl:ieb_title="胶体"
                             tl:ieb_edit_hint="单行输入"
                             tl:ieb_unit_visible="true"
                             app:ieb_bottom_line_visible="true"

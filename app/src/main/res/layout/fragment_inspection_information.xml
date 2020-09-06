@@ -420,7 +420,7 @@
                     android:layout_width="@dimen/dp_68"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="血液"
+                    android:text=""
                     android:textColor="#223b53"
                     android:textSize="@dimen/item_title_size" />
 
