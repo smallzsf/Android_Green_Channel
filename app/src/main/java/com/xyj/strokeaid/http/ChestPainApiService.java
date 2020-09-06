@@ -1,6 +1,4 @@
-package com.xyj.strokeaid.http.gson;
-
-import com.xyj.strokeaid.http.ApiUrls;
+package com.xyj.strokeaid.http;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;

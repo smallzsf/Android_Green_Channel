@@ -2,7 +2,6 @@ package com.xyj.strokeaid.http;
 
 
 import com.xyj.strokeaid.BuildConfig;
-import com.xyj.strokeaid.http.gson.ChestPainApiService;
 
 import java.util.concurrent.TimeUnit;
 
