@@ -68,18 +68,18 @@
     </string-array>
 
     <string-array name="chest_pain_operation_intraoperative_complications">
-        <item>恶心心律失常</item>
-        <item>低血压</item>
-        <item>心源性休克</item>
-        <item>严重缓慢型心律失常</item>
-        <item>血栓栓塞</item>
-        <item>慢血流/无复流</item>
-        <item>血管夹层</item>
-        <item>非干预血管急性闭塞</item>
-        <item>血管穿孔</item>
-        <item>死亡</item>
-        <item>其他</item>
-        <item>无</item>
+        <item>恶心心律失常:cpc_intraoperativecomplications_exxlsc</item>
+        <item>低血压:cpc_intraoperativecomplications_dxy</item>
+        <item>心源性休克:cpc_intraoperativecomplications_xyxxk</item>
+        <item>严重缓慢型心律失常:cpc_intraoperativecomplications_yzhmxxlsc</item>
+        <item>血栓栓塞:cpc_intraoperativecomplications_xsss</item>
+        <item>慢血流/无复流:cpc_intraoperativecomplications_mxl</item>
+        <item>血管夹层:cpc_intraoperativecomplications_xgjc</item>
+        <item>非干预血管急性闭塞:cpc_intraoperativecomplications_fgyxgjxbs</item>
+        <item>血管穿孔:cpc_intraoperativecomplications_xgck</item>
+        <item>死亡:cpc_intraoperativecomplications_sw</item>
+        <item>其他:cpc_intraoperativecomplications_qt</item>
+        <item>无:cpc_intraoperativecomplications_wu</item>
     </string-array>
     <string-array name="chest_pain_operation_gender_diversity">
         <item>右冠近段:cpc_coronaryangiography_ygjd</item>

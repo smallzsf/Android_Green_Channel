@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.activity.chestpain;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -119,6 +121,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     RadioGroup rgLeftVentAssistDevice;
 
     private List<GenderSelectBean> selectList = new ArrayList<>();
+    private List<String> intraoperativeList;
     private List<String> genderList;
     private List<String> genderListMore;
     private TagAdapter<String> tagGenderAdapter;
@@ -175,27 +178,20 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     @Override
     public void initView() {
 
-
-        //术中并发症流布局
-        tagIntraoperativeComplications.setAdapter(new TagAdapter<String>(Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_intraoperative_complications))) {
-            @Override
-            public View getView(FlowLayout parent, int position, String o) {
-                TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
-                view.setText(o);
-                return view;
-            }
-        });
-
-        initData();
+       initData();
     }
 
     private void initData() {
+        bean = new ChestPainOperationRsultBean();
         chestUtil = new ChestPainOperationResultUtil(this);
         //显示前项
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity);
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);
+        chestUtil.initGenderMap(R.array.chest_pain_operation_intraoperative_complications);
 
         bean = resetShow();
+
+
 
         initFlowLayout();
     }
@@ -209,6 +205,41 @@ public class ChestPainOperationResultActivity extends BaseActivity {
      * 冠脉造影流布局
      */
     private void initFlowLayout() {
+
+        intraoperativeList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_intraoperative_complications));
+        //术中并发症流布局
+        tagIntraoperativeComplications.setAdapter(new TagAdapter<String>(intraoperativeList) {
+            @Override
+            public View getView(FlowLayout parent, int position, String o) {
+                TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
+                view.setText(o);
+
+                List<String> strings = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications));
+                String s = strings.get(position);
+                view.setTag(s);
+
+                return view;
+            }
+        });
+        tagIntraoperativeComplications.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+            @Override
+            public void onSelected(Set<Integer> selectPosSet) {
+                HashSet<Integer> selectPos = (HashSet<Integer>) selectPosSet;
+                String genderMapValueKey = chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications);
+                List<String> strings = chestUtil.getMapGenderDataList().get(genderMapValueKey);
+                String data = "";
+                for (Integer selectPo : selectPos) {
+                    String s = strings.get(selectPo);
+                    if (TextUtils.isEmpty(data)) {
+                        data += s;
+                    } else {
+                        data += ("," + s);
+                    }
+                }
+//                intraoperativecomplications
+                bean.setIntraoperativecomplications(data);
+            }
+        });
 
         genderList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_gender_diversity));
         tagGenderAdapter = new TagAdapter<String>(genderList) {
@@ -387,7 +418,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         public void onClick(View view) {
 //            ChestPainOperationRsultBean
 //            findViewById(rgEcmo.getCheckedRadioButtonId())
-            bean = new ChestPainOperationRsultBean();
+
             ArrayList<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> coronaryangiographyarray = new ArrayList<>();
             for (Map.Entry<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean> entry : coronaryangiographyarrayBeanMap.entrySet()) {
                 coronaryangiographyarray.add(entry.getValue());
