@@ -15,7 +15,6 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
