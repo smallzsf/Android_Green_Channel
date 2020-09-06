@@ -2,6 +2,7 @@ package com.xyj.strokeaid.activity.chestpain;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -29,8 +30,10 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,7 +139,13 @@ public class ChestPainOperationResultPop extends PopupWindow {
     @BindView(R.id.rg_pci)
     RadioGroup rgPci;
 
-
+    ChestPainOperationResultUtil resultUtil;
+    @BindView(R.id.rg_timi_after)
+    RadioGroup rgTimiAfter;
+    @BindView(R.id.rg_stents_implanted_num)
+    RadioGroup rgStentsImplantedNum;
+    @BindView(R.id.rg_stent_type)
+    RadioGroup rgStentType;
     private View popupWindowView;
     private Context context;
 
@@ -147,8 +156,10 @@ public class ChestPainOperationResultPop extends PopupWindow {
         super(contentView, width, height, focusable);
         this.context = context;
         popupWindowView = contentView;
+        resultUtil = new ChestPainOperationResultUtil(context);
+
 //        popupWindowView = getLayoutInflater().inflate(R.layout.pop_gender_diversity_detail, null, false);
-        ButterKnife.bind(popupWindowView);
+        ButterKnife.bind(this, popupWindowView);
 
         initPopupWindow();
     }
@@ -157,11 +168,16 @@ public class ChestPainOperationResultPop extends PopupWindow {
      * 弹窗样式
      */
     private void initPopupWindow() {
-
+        resultUtil.initGenderMap(R.array.chest_pain_operation_process);
         TagFlowLayout operation_process = popupWindowView.findViewById(R.id.operation_process);
 
+
+        String genderMapKey = resultUtil.getGenderMapKey(R.array.chest_pain_operation_process);
+
+        List<String> dataList = resultUtil.getMapGenderDataList().get(genderMapKey);
+
         //术中处理流布局
-        operation_process.setAdapter(new TagAdapter<String>(Arrays.asList(context.getResources().getStringArray(R.array.chest_pain_operation_process))) {
+        operation_process.setAdapter(new TagAdapter<String>(dataList) {
             @Override
             public View getView(FlowLayout parent, int position, String o) {
                 TextView view = (TextView) LayoutInflater.from(context).inflate(R.layout.adapter_tag_item, parent, false);
@@ -170,7 +186,28 @@ public class ChestPainOperationResultPop extends PopupWindow {
                 return view;
             }
         });
+        operation_process.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+            @Override
+            public void onSelected(Set<Integer> selectPosSet) {
+                Log.e("zhangshifu", selectPosSet.toString());
+                HashSet<Integer> selectPos = (HashSet<Integer>) selectPosSet;
+                String genderMapValueKey = resultUtil.getGenderMapValueKey(R.array.chest_pain_operation_process);
+                List<String> strings = resultUtil.getMapGenderDataList().get(genderMapValueKey);
+                String data = "";
+                for (Integer selectPo : selectPos) {
+                    String s = strings.get(selectPo);
+                    if (TextUtils.isEmpty(data)) {
+                        data += s;
+                    } else {
+                        data += ("," + s);
+                    }
+                }
+                bean.setIntraoperativemanagement(data);
+
+            }
+        });
         //选择时间
+
         TextTimeBar tv_through_time_guide_wire = popupWindowView.findViewById(R.id.tv_through_time_guide_wire);
         tv_through_time_guide_wire.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,6 +273,7 @@ public class ChestPainOperationResultPop extends PopupWindow {
                 case R.id.btn_save_diversity_detail:
                     // TODO save
                     saveData();
+                    ChestPainOperationResultPop.this.dismiss();
                     break;
             }
         }
@@ -268,11 +306,24 @@ public class ChestPainOperationResultPop extends PopupWindow {
         value = getRadioButtonTag(rgPci);
         bean.setIspci(value);
         // 此段代码必须先放在设置PCI之后
-        if (TextUtils.equals("cpc_bool_true",value)){
+        if (TextUtils.equals("cpc_bool_true", value)) {
+            bean.setOperationguidewirepasstime(tvThroughTimeGuideWire.getTime());
+            // 设置支架个数
+            value = getRadioButtonTag(rgTimiAfter);
+            bean.setTimiafter(value);
+            // 设置支架个数
+            value = getRadioButtonTag(rgStentsImplantedNum);
+            bean.setNumberofstentsimplanted(value);
+            // 设置支架种类
+            value = getRadioButtonTag(rgStentType);
+            bean.setStenttype(value);
 
+        } else {
+            bean.setIntraoperativemanagement("");
+        }
 
-
-
+        if (callBack != null){
+            callBack.save(bean);
         }
     }
 
@@ -286,6 +337,16 @@ public class ChestPainOperationResultPop extends PopupWindow {
         WindowManager.LayoutParams lp = ((AppCompatActivity) context).getWindow().getAttributes();
         lp.alpha = bgAlpha; //0.0-1.0
         ((AppCompatActivity) context).getWindow().setAttributes(lp);
+    }
+
+    private ICallBack callBack;
+
+    public void setCallBack(ICallBack callBack){
+        this.callBack = callBack;
+    }
+
+    public interface ICallBack{
+        void save(ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean);
     }
 
 

@@ -19,6 +19,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
+import com.umeng.commonsdk.debug.I;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GenderSelectBean;
@@ -85,7 +86,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     /**
      * 选中的部位设置信息
      */
-    private Map<String,ChestPainOperationRsultBean.CoronaryangiographyarrayBean>  coronaryangiographyarrayBeanMap = new HashMap<>();
+    private Map<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean> coronaryangiographyarrayBeanMap = new HashMap<>();
 
     /**
      * 界面管理bean 以及接口通信
@@ -141,7 +142,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         initData();
     }
 
-    private void initData(){
+    private void initData() {
         chestUtil = new ChestPainOperationResultUtil(this);
         //显示前项
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity);
@@ -155,7 +156,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     private ChestPainOperationRsultBean resetShow() {
         return new ChestPainOperationRsultBean();
     }
-
 
 
     /**
@@ -222,7 +222,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                     String value = valueDataList.get(i);
                     String name = genderList.get(i);
                     GenderSelectBean bean =
-                            new GenderSelectBean(i, 0, name,value);
+                            new GenderSelectBean(i, 0, name, value);
                     selectList.add(bean);
                 }
             }
@@ -235,7 +235,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                     String value = valueDataList.get(i);
                     String name = genderListMore.get(i);
                     GenderSelectBean bean =
-                            new GenderSelectBean(i, 0, name,value);
+                            new GenderSelectBean(i, 0, name, value);
                     selectList.add(bean);
                 }
             }
@@ -299,11 +299,17 @@ public class ChestPainOperationResultActivity extends BaseActivity {
      */
     private void initPopupWindow() {
         popupWindowView = getLayoutInflater().inflate(R.layout.pop_gender_diversity_detail, null, false);
-        popWindow = new ChestPainOperationResultPop(this,popupWindowView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        popWindow = new ChestPainOperationResultPop(this, popupWindowView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
         popWindow.setFocusable(true);
         popupWindowView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
         popWindow.showAtLocation(tagGenderSelect, Gravity.CENTER, 0, 0);
         popWindow.backgroundAlpha(0.8f);
+        popWindow.setCallBack(new ChestPainOperationResultPop.ICallBack() {
+            @Override
+            public void save(ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean) {
+                coronaryangiographyarrayBeanMap.put(popGenderSelectBean.getNetType(), bean);
+            }
+        });
     }
 
     @Override

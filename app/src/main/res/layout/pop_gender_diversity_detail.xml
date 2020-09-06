@@ -41,7 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="<50%"
+                    android:text=">50%"
                     android:tag="cpc_xzcd_xy50"
                     android:textSize="@dimen/item_content_size"
                     tools:ignore="HardcodedText" />
@@ -491,6 +491,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_timi_after"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -541,6 +542,7 @@
                 <include layout="@layout/include_line" />
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_12"
@@ -550,6 +552,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_stents_implanted_num"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
@@ -609,6 +612,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_stent_type"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
