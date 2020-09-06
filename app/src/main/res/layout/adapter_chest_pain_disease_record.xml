@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <CheckBox
         android:id="@+id/cb_select"
+        style="@style/XyjCheckBox"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"></CheckBox>
+        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/text"
+        style="@style/tv_small"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"></TextView>
+        android:gravity="center_vertical" />
 </LinearLayout>

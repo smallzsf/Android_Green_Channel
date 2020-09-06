@@ -16,7 +16,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="12dp"
             android:paddingTop="10dp"
@@ -41,57 +41,47 @@
 
                     <RadioButton
                         android:id="@+id/rb_persistent_chest_pain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_30"
+                        style="@style/XyjRadionButtonHorizontalWeight"
                         android:checked="true"
-                        android:text="持续性胸闷/胸痛"
-                        android:textSize="@dimen/item_content_size" />
+                        android:text="持续性胸闷/胸痛" />
 
                     <RadioButton
                         android:id="@+id/rb_intermittent_chest_pain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_30"
-                        android:text="间歇性胸闷/胸痛"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="间歇性胸闷/胸痛" />
                 </LinearLayout>
 
                 <RadioButton
                     android:id="@+id/rb_relieved_chest_pain"
+                    style="@style/XyjRadionButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_30"
+                    android:layout_height="@dimen/item_normal_height"
                     android:text="症状已缓解"
                     android:textSize="@dimen/item_content_size" />
 
 
             </LinearLayout>
 
-
             <include layout="@layout/include_line" />
-
 
             <TextView
                 style="@style/Text_Dark_Content_Style"
-                android:layout_marginTop="@dimen/dp_12"
-                android:text="病情评估明细"></TextView>
+                android:text="病情评估明细" />
 
             <GridView
                 android:id="@+id/gv_detailed"
                 android:layout_width="match_parent"
                 android:layout_height="280dp"
-                android:layout_marginTop="@dimen/dp_7"
                 android:listSelector="@color/transparent"
                 android:numColumns="2"
                 android:paddingBottom="10dp"
                 android:scrollbars="none" />
 
-
             <include layout="@layout/include_line" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -105,7 +95,6 @@
                     android:id="@+id/et_major_complaint_frag"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
                     android:layout_marginBottom="@dimen/dp_10"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
@@ -129,7 +118,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:background="@color/app_ffffff"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -143,7 +131,6 @@
                     android:id="@+id/et_symptom"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="请输入备注"
@@ -152,8 +139,9 @@
                     android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
-
-<!--            <include layout="@layout/include_line" />-->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
         </LinearLayout>
     </ScrollView>
 

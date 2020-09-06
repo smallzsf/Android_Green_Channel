@@ -36,10 +36,37 @@
     </style>
 
     <style name="tv_small">
-        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textSize">@dimen/item_content_size</item>
         <item name="android:textColor">@color/color_222222</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+
+    <style name="XyjRadionButton">
+        <item name="android:textSize">@dimen/item_content_size</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:button">@drawable/selector_radio_button</item>
+    </style>
+
+    <style name="XyjRadionButtonHorizontalWeight" parent="XyjRadionButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="XyjCheckBox">
+        <item name="android:textSize">@dimen/item_content_size</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:button">@drawable/selector_check_box</item>
+    </style>
+
+    <style name="XyjCheckBoxHorizontalWeight" parent="XyjCheckBox">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
 
     <style name="tv_small_hiht">
         <item name="android:padding">@dimen/dp_7</item>
@@ -144,9 +171,9 @@
     <style name="Text_Dark_Content_Style">
         <item name="android:textSize">@dimen/item_title_size</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:gravity">left|center_horizontal|clip_horizontal</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
     </style>
 
     <style name="Text_Blue_Content_Style">

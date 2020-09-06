@@ -98,7 +98,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      * 1 ： 已转归
      * 2 ： 已上报
      */
-    private int mPatientType = 0;
+    private int mPatientStatusType = 0;
 
     /**
      * 当前登录人的id
@@ -269,10 +269,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onResume() {
         super.onResume();
-//        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
-    //    mDiseaseType = 3;
-        mPatientType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_TYPE);
-        tlTitleActMain.setCurrentTab(mPatientType);
+        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
+        mPatientStatusType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_STATUS_TYPE);
+        tlTitleActMain.setCurrentTab(mPatientStatusType);
         tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
     }
 

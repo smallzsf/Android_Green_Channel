@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_save"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="再灌注措施"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_reperfusion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_reperfusion_yes"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="是" />
+
+                    <RadioButton
+                        android:id="@+id/rb_reperfusion_no"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+            <!--    处理措施    -->
+            <LinearLayout
+                android:id="@+id/ll_deal_way"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="措施" />
+
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_reperfusion_ways"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_into_measure_level_1"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="直接PCI"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_into_measure_level_2"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="溶栓"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_into_measure_level_3"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="择期介入"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_into_measure_level_4"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="CABG"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_into_measure_level_5"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="转运PCI"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+
+                <View style="@style/horizontal_divider" />
+
+                <!--    直接PCI    -->
+                <LinearLayout
+                    android:id="@+id/ll_direct_pci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_direct_decide_pci"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_large_height"
+                        app:bottomLineVisible="true"
+                        app:title="决定介入时间"
+                        app:topLineVisible="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/vital_sign_title_width"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/item_normal_margin"
+                            android:gravity="center_vertical"
+                            android:text="决定医生"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/es_direct_decide_doc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/item_normal_margin"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="请选择"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                    </LinearLayout>
+
+                    <View style="@style/horizontal_divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/vital_sign_title_width"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/item_normal_margin"
+                            android:gravity="center_vertical"
+                            android:text="谈话医生"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/es_direct_talk_doc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="@dimen/item_normal_margin"
+                            android:gravity="center"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="请选择"
+                            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+                    </LinearLayout>
+
+                    <View style="@style/horizontal_divider" />
+
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/rl_agree_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_large_height"
+                        app:bottomLineVisible="true"
+                        app:title="开始知情同意" />
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/rl_sign_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_large_height"
+                        app:bottomLineVisible="true"
+                        app:title="签署知情同意" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="@dimen/item_title_min_width"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/item_normal_margin"
+                            android:gravity="center_vertical"
+                            android:text="家属意见"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_family_opinion"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="3">
+
+                            <RadioButton
+                                android:id="@+id/rb_family_opinion_agree"
+                                style="@style/tv_normal_titel"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="同意" />
+
+                            <RadioButton
+                                android:id="@+id/rb_family_opinion_disagree"
+                                style="@style/tv_normal_titel"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="拒绝" />
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <View style="@style/horizontal_divider" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_family_refuse_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/item_normal_margin"
+                        android:layout_marginTop="@dimen/dp_4"
+                        android:layout_marginEnd="@dimen/item_normal_margin"
+                        android:layout_marginBottom="@dimen/dp_4"
+                        android:background="@drawable/shape_grey_stroke_with_white_bg"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <EditText
+                            android:id="@+id/et_refuse_reason"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:gravity="top"
+                            android:hint="请输入拒绝原因..."
+                            android:maxLength="300"
+                            android:minHeight="80dp"
+                            android:padding="10dp"
+                            android:textColor="@color/color_222222"
+                            android:textColorHint="@color/color_999999"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <TextView
+                            android:id="@+id/tv_refuse_reason_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="@dimen/dp_4"
+                            android:text="0/300"
+                            android:textColor="@color/color_222222"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_start_catheter_room"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_large_height"
+                        app:bottomLineVisible="true"
+                        app:title="启动导管室"
+                        app:topLineVisible="true" />
+
+
+                    <com.xyj.strokeaid.view.SettingBar
+                        android:id="@+id/sb_agree_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:bar_leftText="查看知情同意书"
+                        app:bar_rightIcon="@drawable/ic_shot"
+                        app:bar_rightIconVisible="true"
+                        app:bar_rightTextVisible="false" />
+
+                    <View style="@style/horizontal_divider" />
+
+                </LinearLayout>
+                <!--    溶栓    -->
+                <LinearLayout
+                    android:id="@+id/ll_thrombolysis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="溶栓措施"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_thrombolysis_way"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_thrombolysis_way_1"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:text="补救PCI"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_thrombolysis_way_2"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:text="溶栓后介入"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_thrombolysis_way_3"
+                            style="@style/tv_small"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="无"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </RadioGroup>
+
+                    <View style="@style/horizontal_divider" />
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_thrombolysis_decide_pci"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:visibility="gone"
+                        app:bottomLineVisible="true"
+                        app:title="决定介入时间" />
+
+                </LinearLayout>
+                <!--    择期介入    -->
+                <LinearLayout
+                    android:id="@+id/ll_select_pci"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_select_decide_pci"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:bottomLineVisible="true"
+                        app:title="决定介入" />
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_select_start_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:bottomLineVisible="true"
+                        app:title="造影开始" />
+
+                </LinearLayout>
+                <!--    CABG    -->
+                <LinearLayout
+                    android:id="@+id/ll_cabg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_decide_cabg"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:bottomLineVisible="true"
+                        app:title="决定CABG" />
+
+                    <com.xyj.strokeaid.view.TextTimeBar
+                        android:id="@+id/ttb_start_cabg"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:bottomLineVisible="true"
+                        app:title="开始CABG" />
+
+                </LinearLayout>
+                <!--    转运PCI    -->
+                <LinearLayout
+                    android:id="@+id/ll_transfer_pci"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/item_normal_margin"
+                        android:gravity="center_vertical"
+                        android:text="转运PCI"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_transfer_pci"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_transfer_pci_out"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="转出患者" />
+
+                        <RadioButton
+                            android:id="@+id/rb_transfer_pci_in"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="接收患者" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--    再灌注拒绝    -->
+            <LinearLayout
+                android:id="@+id/ll_into_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center"
+                    android:text="无再灌注措施："
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_1"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="生命体征平稳，无持续缺血表现" />
+
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_2"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="超过再灌注时间窗" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_3"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="高出血风险" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_4"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="出血活动期" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_5"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="严重肝肾功能不全" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_6"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="经济原因限制" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_7"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="拒绝或放弃" />
+
+                <CheckBox
+                    android:id="@+id/cb_into_no_8"
+                    style="@style/tv_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="其他原因" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -185,7 +185,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         detailedDataList.add("齿痛");
         detailedDataList.add("肩背痛");
         detailedDataList.add("合并出血");
-        detailedDataList.add("合并心表");
+        detailedDataList.add("合并心衰");
         detailedDataList.add("合并恶性心律失常");
         detailedDataList.add("不明原因的昏厥");
         detailedDataList.add("自汗、大汗淋漓");

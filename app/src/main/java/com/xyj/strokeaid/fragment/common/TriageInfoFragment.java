@@ -49,6 +49,7 @@ public class TriageInfoFragment extends BaseFragment {
     LinearLayout strokeFragmentTriage;
     @BindView(R.id.ll_stroke_doc_frag_ti)
     LinearLayout llStrokeDocFragTi;
+
     private String mRecordId;
     private int mDiseaseViewType;
 

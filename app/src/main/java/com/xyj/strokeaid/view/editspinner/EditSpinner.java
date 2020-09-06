@@ -7,7 +7,6 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +18,11 @@ import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListPopupWindow;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
-
 
 import com.xyj.strokeaid.R;
 
@@ -47,6 +44,8 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     private Animation mAnimation;
     private Animation mResetAnimation;
     public OnSelectStringLitner onSelectStringLitner;
+    public OnSelectIndexAndStringLitner mOnSelectIndexAndStringLitner;
+    private int mSelectIndex = 0;
 
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -188,6 +187,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         editText.setText(((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position));
         mRightImageTopView.setClickable(false);
+        mSelectIndex = position;
         popupWindow.dismiss();
     }
 
@@ -204,8 +204,11 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     @Override
     public final void afterTextChanged(Editable s) {
         String key = s.toString();
-        if (onSelectStringLitner!=null){
+        if (onSelectStringLitner != null) {
             onSelectStringLitner.getSeletedString(key);
+        }
+        if (mOnSelectIndexAndStringLitner != null) {
+            mOnSelectIndexAndStringLitner.getSeletedStringAndIndex(key, mSelectIndex);
         }
         editText.setSelection(0);
         if (!TextUtils.isEmpty(key)) {
@@ -232,13 +235,19 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     }
 
-
-
     public interface OnSelectStringLitner {
         void getSeletedString(String text);
     }
 
     public void setOnSelectStringLitner(OnSelectStringLitner onSelectStringLitner) {
         this.onSelectStringLitner = onSelectStringLitner;
+    }
+
+    public interface OnSelectIndexAndStringLitner {
+        void getSeletedStringAndIndex(String text, int position);
+    }
+
+    public void setOnSelectIndexAndStringLitner(OnSelectIndexAndStringLitner onSelectIndexAndStringLitner) {
+        mOnSelectIndexAndStringLitner = onSelectIndexAndStringLitner;
     }
 }

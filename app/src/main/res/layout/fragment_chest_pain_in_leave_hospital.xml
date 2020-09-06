@@ -3,92 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <View
-        style="@style/horizontal_divider"
-        android:layout_marginTop="@dimen/dp_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:text="出院"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/sp_14" />
-
     <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_out_hos_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:bottomLineVisible="true"
-        app:title="出院时间"
-        app:ttb_time_hint="2020-08-22 10:58:19" />
+        app:title="出院时间" />
 
-    <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:gravity="center_vertical"
+        android:text="治疗结果"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
+
+    <com.xyj.strokeaid.view.MyRadioGroup
+        android:id="@+id/rg_treat_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:background="@color/white"
+        android:layout_marginStart="@dimen/item_normal_margin"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:minWidth="60dp"
-            android:text="治疗结果:"
-            android:textColor="@color/color_222222"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <RadioGroup
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_8"
+            android:layout_height="@dimen/item_normal_height"
             android:orientation="horizontal">
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="治愈"
-                android:textColor="@color/color_222222"
-                android:textSize="13sp" />
+                android:id="@+id/rb_treat_result_cure"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="治愈" />
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:text="好转"
-                android:textColor="@color/color_222222"
-                android:textSize="13sp" />
+                android:id="@+id/rb_treat_result_better"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="好转" />
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:text="自动离院"
-                android:textColor="@color/color_222222"
-                android:textSize="14sp" />
+                android:id="@+id/rb_treat_result_leave_self"
+                style="@style/XyjRadionButtonHorizontalWeight"
+
+                android:text="自动离院" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:text="其他原因离院"
-                android:textColor="@color/color_222222"
-                android:textSize="14sp" />
-        </RadioGroup>
-    </LinearLayout>
+                android:id="@+id/rb_treat_result_other"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="其他原因离院" />
 
+        </LinearLayout>
+
+    </com.xyj.strokeaid.view.MyRadioGroup>
 
 </LinearLayout>

@@ -22,9 +22,9 @@ public final class MmkvKey {
      */
     public static final String HOME_DISEASE_TYPE = "HOME_DISEASE_TYPE";
     /**
-     * 首页选择的患者类型
+     * 首页选择的患者状态类型
      */
-    public static final String HOME_PATIENT_TYPE = "HOME_PATIENT_TYPE";
+    public static final String HOME_PATIENT_STATUS_TYPE = "HOME_PATIENT_STATUS_TYPE";
 
 }
 

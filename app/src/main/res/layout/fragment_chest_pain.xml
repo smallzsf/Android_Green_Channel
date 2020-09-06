@@ -1,371 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.stroke.StrokEcaFragment"
     tools:ignore="MissingDefaultResource">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/scrollView_act_stroke_operation"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.stroke.StrokeOperationOnActivity">
+        android:layout_above="@id/btn_save"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="住院期间用药"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14" />
+                style="@style/Text_Blue_Content_Style"
+                android:text="住院期间用药" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/item_title_min_width"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:minWidth="60dp"
-                    android:text="降糖药物*:"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="降糖药物"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
-                    android:id="@+id/rg_hypoglycemic"
+                    android:id="@+id/rg_sugar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                     <RadioButton
-                        android:id="@+id/rg_hypoglycemic_yes"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/rb_sugar_yes"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="是"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:text="是" />
 
                     <RadioButton
-                        android:id="@+id/rg_hypoglycemic_no"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/rb_sugar_no"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_18"
-                        android:text="否"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:text="否" />
+
                 </RadioGroup>
+
             </LinearLayout>
 
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
-                android:id="@+id/ll_hypoglycemic_name"
+                android:id="@+id/ll_blood_sugar_drug"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/vital_sign_title_width"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="药物名称*"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="药物名称"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
+
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/es_hypoglycemic_name"
+                    android:id="@+id/es_sugar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
-                    app:hint="1"
+                    app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
+
             </LinearLayout>
 
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/item_title_min_width"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:minWidth="60dp"
-                    android:text="口服抗凝药物*:"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="口服抗凝药物"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
-                    android:id="@+id/rg_anticoagulation"
+                    android:id="@+id/rg_anticoagulant"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
                     <RadioButton
-                        android:id="@+id/rb_anticoagulation_yes"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/rb_anticoagulant_yes"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:text="是"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:text="是" />
 
                     <RadioButton
-                        android:id="@+id/rb_anticoagulation_no"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/rb_anticoagulant_no"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_18"
-                        android:text="否"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:layout_weight="1"
+                        android:text="否" />
+
                 </RadioGroup>
+
             </LinearLayout>
 
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
-                android:id="@+id/ll_anticoagulation_name"
+                android:id="@+id/ll_anticoagulant_drug"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/title_bar_height"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
+                android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal"
                 android:visibility="gone">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/vital_sign_title_width"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="药物名称*"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="药物名称"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/item_title_size" />
+
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/es_anticoagulation_name"
+                    android:id="@+id/es_anticoagulant"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
-                    app:hint="1"
+                    app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
+
             </LinearLayout>
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:text="出院信息"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14"
-                android:textStyle="bold" />
+                style="@style/Text_Blue_Content_Style"
+                android:text="出院信息" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_in_hos_days"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:ieb_unit_visible="true"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="住院天数:"
                 app:ieb_unit_text="天"
-                app:ieb_bottom_line_visible="true"
-                app:ieb_title="住院天数:" />
+                app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_in_hos_total_cost"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:ieb_unit_visible="true"
-                app:ieb_unit_text="元"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_title="总费用:" />
+                app:ieb_title="总费用:"
+                app:ieb_unit_text="元"
+                app:ieb_unit_visible="true" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:background="@color/white"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:minWidth="60dp"
-                    android:text="患者转归*:"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:text="患者转归"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/item_title_size" />
 
-                <RadioGroup
-                    android:id="@+id/rg_outcome"
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_patient_out"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rg_outcome_leave_hosptal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="出院"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rg_outcome_transfer_hospital"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_18"
-                        android:text="转其他医院"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        <RadioButton
+                            android:id="@+id/rb_patient_out_hos"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="出院"
+                            android:textSize="@dimen/item_content_size" />
 
-                    <RadioButton
-                        android:id="@+id/rg_outcome_transfer_department"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_18"
-                        android:text="转送其他科"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        <RadioButton
+                            android:id="@+id/rb_patient_out_other_hos"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="转其他医院"
+                            android:textSize="@dimen/item_content_size" />
 
-                    <RadioButton
-                        android:id="@+id/rg_outcome_transfer_dead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_18"
-                        android:text="死亡"
-                        android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rb_patient_out_other_depart"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="转送其他科"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_patient_out_death"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="死亡"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+
             </LinearLayout>
 
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:id="@+id/ll_leave_hospital_said"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/dp_5">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_gravity="top"
                     android:gravity="center_vertical"
                     android:text="离院宣传"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_14" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:orientation="vertical">
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="戒烟"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="戒烟" />
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="规律坚持服药"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="规律坚持服药" />
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="遵医嘱随访治疗"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="遵医嘱随访治疗" />
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="生活起居调护"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="生活起居调护" />
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="心血管危险因素控制（降压、调脂、血糖控制、限酒、控制体重）"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="心血管危险因素控制（降压、调脂、血糖控制、限酒、控制体重）" />
 
                     <CheckBox
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_weight="1"
-                        android:text="未宣教"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        style="@style/XyjCheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_small_height"
+                        android:text="未宣教" />
                 </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
             </LinearLayout>
 
             <include
@@ -388,63 +361,53 @@
                 layout="@layout/fragment_chest_pain_in_transfer_hospital"
                 android:visibility="gone" />
 
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="患者情况备注" />
 
             <LinearLayout
+                android:id="@+id/ll_family_refuse_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:text="患者情况备注"
-                    android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_marginEnd="@dimen/item_normal_margin"
+                android:layout_marginBottom="@dimen/dp_4"
+                android:background="@drawable/shape_grey_stroke_with_white_bg"
+                android:orientation="vertical"
+                android:visibility="visible">
 
                 <EditText
+                    android:id="@+id/et_refuse_reason"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_90"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_10"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="start"
-                    android:hint="多行输入"
-                    android:paddingLeft="@dimen/dp_6"
-                    android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/sp_14" />
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="患者情况备注..."
+                    android:maxLength="300"
+                    android:minHeight="80dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_refuse_reason_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:text="0/300"
+                    android:textColor="@color/color_222222"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <LinearLayout
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_12"
-                android:layout_marginEnd="@dimen/dp_12"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_height="@dimen/space_height" />
 
-                <Button
-                    android:layout_width="@dimen/dp_80"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="获取记录" />
-
-                <Button
-                    android:layout_width="@dimen/dp_80"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_weight="1"
-                    android:text="保存" />
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

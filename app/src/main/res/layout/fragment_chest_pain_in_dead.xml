@@ -3,108 +3,104 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <View
-        style="@style/horizontal_divider"
-        android:layout_marginTop="@dimen/dp_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:text="死亡"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/sp_14" />
-
     <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_death_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:bottomLineVisible="true"
-        app:title="死亡时间"
-        app:ttb_time_hint="2020-08-22 10:58:19" />
+        app:title="死亡时间" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:minWidth="60dp"
-            android:text="死亡原因:"
-            android:textColor="@color/color_222222"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_8"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="心源性"
-                android:textColor="@color/color_222222"
-                android:textSize="13sp" />
-
-            <RadioButton
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/dp_18"
-                android:text="非心源性"
-                android:textColor="@color/color_222222"
-                android:textSize="13sp" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <View
-        style="@style/horizontal_divider"
-        android:layout_marginTop="@dimen/dp_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
+        android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="描述"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:gravity="center_vertical"
+            android:text="死亡原因"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
+            android:textSize="@dimen/item_title_size" />
+
+        <RadioGroup
+            android:id="@+id/rg_death_reason"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_death_reason_heart"
+                style="@style/XyjRadionButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="心源性" />
+
+            <RadioButton
+                android:id="@+id/rb_death_reason_not_heart"
+                style="@style/XyjRadionButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:text="非心源性" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:gravity="center_vertical"
+        android:text="死亡原因"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/item_normal_margin"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:background="@drawable/shape_grey_stroke_with_white_bg"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <EditText
-            android:layout_width="150dp"
+            android:id="@+id/et_death_reason"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="start"
-            android:hint="单行输入"
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_5" />
+            android:background="@null"
+            android:gravity="top"
+            android:hint="死亡描述..."
+            android:maxLength="300"
+            android:minHeight="80dp"
+            android:padding="10dp"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_death_reason_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:text="0/300"
+            android:textColor="@color/color_222222"
+            android:textSize="13sp" />
     </LinearLayout>
 
 

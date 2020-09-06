@@ -1,45 +1,495 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <!--诊断-->
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_head"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/awareness"
-            android:layout_width="@dimen/vital_sign_title_width"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="诊断"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/item_title_size" />
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="诊断" />
 
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_title_select"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_30"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/awareness"
             android:gravity="center"
             app:Background="@drawable/bg_view_frame"
             app:hint="请选择"
             app:rightImage="@drawable/ic_arrow_down_blue" />
 
 
-    </RelativeLayout>
-    <include layout="@layout/include_line" />
+    </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/fl_main"
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_confirm_time"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_below="@id/ll_head"
+        app:title="确诊时间" />
 
-</LinearLayout>
+    <View style="@style/horizontal_divider" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_save"
+        android:layout_below="@id/ttb_confirm_time">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ll_stemi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/dp_120"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="院内新发心力衰竭" />
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_heart_failure"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_rg_heart_failure_yes"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="是" />
+
+                        <RadioButton
+                            android:id="@+id/rb_rg_heart_failure_no"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="否" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <include layout="@layout/include_line" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:text="住院期间并发症" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_1"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="休克" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_2"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="机械性并发症" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_3"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="感染" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_4"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="再发心梗" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_5"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="血栓" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_6"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="缺血性卒中" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_7"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="TIA出血" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_8"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="恶性心律失常" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_9"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="呼吸衰竭" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_10"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="肾衰竭" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_11"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="死亡" />
+
+                        <CheckBox
+                            android:id="@+id/cb_setmi_12"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="无" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_non_acs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:text="非ACS心源性胸痛类型" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_5"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心肌炎" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_6"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="冠心病" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_7"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="瓣膜性心脏病" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_8"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="陈旧性心肌梗死" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_9"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心绞痛" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_24"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="张力性气胸" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_10"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心悸" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_11"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="房颤" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_12"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="高血压" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_13"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心衰" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_14"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="房扑" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_15"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="室早" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_16"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="房早" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_17"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="室上速" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_18"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心包炎" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_19"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心包积液" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_20"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心肌桥" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_23"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="主动脉瘤" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_1"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="心律失常" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_2"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="扩张性心肌病" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_3"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="缺血性心肌病" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_4"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="肥厚性心肌病" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_21"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="主动脉观壁间血肿" />
+
+                        <CheckBox
+                            android:id="@+id/cb_non_acs_22"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:text="透壁性动脉粥样硬化性溃疡" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_non_heart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:text="其他非心源性胸痛类型" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_1"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="呼吸系统病" />
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_2"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="消化系统病" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_3"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="神经系统病" />
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_4"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="精神系统病" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_5"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="肌肉骨骼病" />
+
+                    <CheckBox
+                        android:id="@+id/cb_non_heart_6"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="皮肤系统病" />
+
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/cb_non_heart_7"
+                    style="@style/XyjCheckBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:text="其他" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

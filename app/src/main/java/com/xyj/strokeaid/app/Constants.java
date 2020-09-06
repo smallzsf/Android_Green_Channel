@@ -46,6 +46,7 @@ public class Constants {
             "影像检查",
             "初始诊断",
             "初始药物",
+            "治疗决策",
             "静脉溶栓",
             "手术治疗",
             "其他处置",
@@ -91,6 +92,10 @@ public class Constants {
             Manifest.permission.ACCESS_WIFI_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
             Manifest.permission.REQUEST_INSTALL_PACKAGES
+    };
+
+    public static final String[] CHEST_PAIN_DIAGNOSE_CONTENT = new String[]{
+            "STEMI", "NSTEMI", "UA", "主动脉夹层", "肺动脉栓塞", "非ACS心源性胸痛", "其他非心源性胸痛"
     };
 }
 

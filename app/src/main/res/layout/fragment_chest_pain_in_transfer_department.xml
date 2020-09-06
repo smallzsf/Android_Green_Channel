@@ -3,96 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <View
-        style="@style/horizontal_divider"
-        android:layout_marginTop="@dimen/dp_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:text="转送其他科室"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/sp_14" />
-
     <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_transfer_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:bottomLineVisible="true"
         app:title="转科时间"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:orientation="horizontal">
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/vital_sign_title_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:gravity="center_vertical"
             android:text="接诊科室"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
+            android:textSize="@dimen/item_title_size" />
 
-        <EditText
-            android:layout_width="@dimen/dp_80"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="start"
-            android:hint=""
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_5" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_transfer_depart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/item_normal_margin"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
 
     </LinearLayout>
 
-    <View
-        style="@style/horizontal_divider"
-        android:layout_marginTop="@dimen/dp_5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ttb_start_time_fgm_cea" />
+    <View style="@style/horizontal_divider" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:gravity="center_vertical"
+        android:text="转科原因"
+        android:textColor="@color/color_222222"
+        android:textSize="@dimen/item_title_size" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="转科原因"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/item_normal_margin"
+        android:layout_marginBottom="@dimen/dp_4"
+        android:background="@drawable/shape_grey_stroke_with_white_bg"
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <EditText
-            android:layout_width="@dimen/dp_80"
+            android:id="@+id/et_transfer_reason"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/dp_5"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="start"
-            android:hint=""
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_5" />
-    </LinearLayout>
+            android:background="@null"
+            android:gravity="top"
+            android:hint="转科原因..."
+            android:maxLength="300"
+            android:minHeight="80dp"
+            android:padding="10dp"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/item_content_size" />
 
+        <TextView
+            android:id="@+id/tv_transfer_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:text="0/300"
+            android:textColor="@color/color_222222"
+            android:textSize="13sp" />
+    </LinearLayout>
 
 </LinearLayout>
