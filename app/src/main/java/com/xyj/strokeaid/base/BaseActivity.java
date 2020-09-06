@@ -105,12 +105,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public Resources getResources() {
-        Resources resources = super.getResources();
-        Configuration configuration = new Configuration();
-        configuration.setToDefaults();
-        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-        return resources;
+        return super.getResources();
     }
+
+//    @Override
+//    public Resources getResources() {
+//        return super.getResources();
+//        Resources resources = super.getResources();
+//        Configuration configuration = new Configuration();
+//        configuration.setToDefaults();
+//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
+//        return resources;
+//    }
 
     private ArrayDeque<BaseFragment> mFragments = new ArrayDeque<>();
 
