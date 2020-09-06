@@ -524,6 +524,7 @@ public class StrokArterialAneurysmFragment extends BaseFragment {
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             if (checkedId == rbInterventionAneurysm.getId()) {
+
                 ckAneurysmIntervention.setVisibility(View.GONE);
                 ckAneurysmClipping.setVisibility(View.GONE);
             } else if (checkedId == rbInterventionClipping.getId()) {
