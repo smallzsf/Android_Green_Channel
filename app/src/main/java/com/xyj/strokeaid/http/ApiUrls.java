@@ -137,6 +137,17 @@ public class ApiUrls {
      */
     public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GETBYRECORDID = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/getByRecordId";
 
+    /**
+     * 胸痛 血液检查
+     */
+    public static class ChestPain{
+
+        /**
+         * 胸痛 血液检查获取
+         */
+        public static final String NET_URL_CHEST_PAIN_BLOOD_TEST_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/get";
+
+    }
 
 }
 
