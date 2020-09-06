@@ -14,10 +14,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.google.gson.Gson;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -174,16 +174,14 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                 .getInstance()
                 .getCPApi()
                 .getChestPainImageExamination(requestBody)
-                .enqueue(new Callback<String>() {
+                .enqueue(new Callback<ChestPainImageExaminationBean>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<ChestPainImageExaminationBean> call, Response<ChestPainImageExaminationBean> response) {
                         Log.e("zhangshifu", "onResponse" + response);
-                        Gson gson = new Gson();
-                        ChestPainImageExaminationBean chestPainImageExaminationBean = gson.fromJson(response.toString(), ChestPainImageExaminationBean.class);
-                        if (chestPainImageExaminationBean != null) {
-
-                            data = chestPainImageExaminationBean.getData();
-                            checkviews();
+                        if (response != null && response.body() != null) {
+                            ChestPainImageExaminationBean body = response.body();
+                            data = body.getData();
+                            checkViews();
                         }
 
 
@@ -191,7 +189,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<ChestPainImageExaminationBean> call, Throwable t) {
                         Log.e("zhangshifu", "onFailure");
                     }
                 });
@@ -202,7 +200,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     /**
      * 根据数据处理页面
      */
-    private void checkviews() {
+    private void checkViews() {
         if (data == null) {
             return;
         }
@@ -309,11 +307,14 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                 break;
             case R.id.btn_confirm:
             case R.id.btn_confirm_color_ct:
-                saveddata();
+                saveData();
                 break;
             case R.id.btn_get_data:
             case R.id.btn_get_data_color_ct:
-                loadData();
+//                loadData();
+                data =GsonUtils.getGson().fromJson(mDefaultMMKV.decodeString("影像页面数据"),ChestPainImageExaminationBean.DataBean.class);
+                if (data!=null)
+                checkViews();
                 break;
 
         }
@@ -322,10 +323,11 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     /**
      * 保存数据
      */
-    private void saveddata() {
+    private void saveData() {
         if (data == null) {
             data = new ChestPainImageExaminationBean.DataBean();
         }
+        data.setRecordId(RecordIdUtil.RECORD_ID);
         if (rbEmergencyCt.isChecked()) {
             data.setImageexam("cpc_imageexam_ct");
             if (!TextUtils.isEmpty(etCtPlace.getText().toString().trim())) {
@@ -344,6 +346,34 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (!TextUtils.isEmpty(ttbNotice.getTime())) {
             data.setCtexamnoticetime(ttbNotice.getTime());
         }
+        if (!TextUtils.isEmpty(ttbGetready.getTime())) {
+            data.setCtexamreadytime(ttbGetready.getTime());
+        }
+        if (!TextUtils.isEmpty(ttbArrival.getTime())) {
+            data.setCtexampatientarrivaltime(ttbArrival.getTime());
+        }
+        if (!TextUtils.isEmpty(ttbCheck.getTime())) {
+            data.setCduexambegintime(ttbCheck.getTime());
+        }
+        if (!TextUtils.isEmpty(ttbCtReport.getTime())) {
+            data.setCtexamreporttime(ttbCtReport.getTime());
+        }
+        if (!TextUtils.isEmpty(etCheckResult.getText().toString().trim())) {
+            data.setCtresult(etCheckResult.getText().toString().trim());
+        }
+        if (!TextUtils.isEmpty(ttbColorCtNotice.getTime())) {
+            data.setCduexamnoticetime(ttbColorCtNotice.getTime());
+        }
+        if (!TextUtils.isEmpty(ttbColorCtCheck.getTime())) {
+            data.setCduexambegintime(ttbColorCtCheck.getTime());
+        }
+        if (!TextUtils.isEmpty(ttbColorCtResult.getTime())) {
+            data.setCduexamreporttime(ttbColorCtResult.getTime());
+        }
+        mDefaultMMKV.encode("影像页面数据",GsonUtils.getGson().toJson(data));
+        Log.d("数据保存", "影像页面保存数据: "+data.toString());
+
+
 
 
         String request = GsonUtils.getGson().toJson(data);
@@ -351,25 +381,25 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .getChestPainImageExamination(requestBody)
-                .enqueue(new Callback<String>() {
+                .saveChestPainImageExamination(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
                     @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
                         Log.e("zhangshifu", "onResponse" + response);
-                        Gson gson = new Gson();
-                        ChestPainImageExaminationBean chestPainImageExaminationBean = gson.fromJson(response.toString(), ChestPainImageExaminationBean.class);
-                        if (chestPainImageExaminationBean != null) {
-
-                            data = chestPainImageExaminationBean.getData();
-                            checkviews();
+                        if (response!=null&&response.body()!=null)
+                        {
+                            BaseObjectBean body = response.body();
+                            if (body.getResult()==1)
+                            {
+                                showToast("数据保存成功");
+                            }
                         }
-
 
                     }
 
 
                     @Override
-                    public void onFailure(Call<String> call, Throwable t) {
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
                         Log.e("zhangshifu", "onFailure");
                     }
                 });
