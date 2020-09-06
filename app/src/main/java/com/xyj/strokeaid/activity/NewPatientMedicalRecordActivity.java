@@ -2,18 +2,15 @@ package com.xyj.strokeaid.activity;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -22,7 +19,6 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-import com.blankj.utilcode.util.LogUtils;
 import com.eid.reader.EIDReader;
 import com.eid.reader.IIDDataCallback;
 import com.xyj.strokeaid.R;
@@ -106,7 +102,18 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     SettingBar sbMedicareTypeActNpmr;
     @BindView(R.id.sb_serious_medicare_act_npmr)
     SettingBar sbSeriousMedicareActNpmr;
-
+    @BindView(R.id.ieb_live_hos_id_act_npmr)
+    ItemEditBar iebLiveHosIdActNpmr;
+    @BindView(R.id.sb_dis_start_range_act_npmr)
+    SettingBar sbDisStartRangeActNpmr;
+    @BindView(R.id.ieb_age_act_npmr)
+    ItemEditBar iebAgeActNpmr;
+    @BindView(R.id.rb_dis_time_exact_act_npmr)
+    RadioButton rbDisTimeExactActNpmr;
+    @BindView(R.id.rb_dis_time_inaccuracy_act_npmr)
+    RadioButton rbDisTimeInaccuracyActNpmr;
+    @BindView(R.id.rg_dis_time_act_npmr)
+    RadioGroup rgDisTimeActNpmr;
 
     private EIDReader idReader;
     private AMapLocationClient locationClient = null;
@@ -126,12 +133,15 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     @Override
     public void initView() {
-        requestPermission();
+        requestPerms("获取授权成功", "获取授权失败，", Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
         if (idReader == null) {
             idReader = new EIDReader(this);
         }
         idReader.setIidDataCallback(this);
         initLocation();
+        iebAgeActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
+        iebWeightActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
+        iebHeightActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
     }
 
     @Override
@@ -139,10 +149,37 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         titleBarActNpmr
                 .setLeftLayoutClickListener(v -> finish())
                 .setRightLayoutClickListener(v -> {
-                    // TODO: 2020/9/2 快速建档
-
+                    quickCreatPatient();
                 });
-
+        rgDisTimeActNpmr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                ttbDisStartActNpmr.setVisibility(View.VISIBLE);
+                if (checkedId == R.id.rb_dis_time_exact_act_npmr) {
+                    // 发病时间精确就不显示区间
+                    sbDisStartRangeActNpmr.setVisibility(View.GONE);
+                } else {
+                    ttbDisStartActNpmr.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        // 发病时间
+        ttbDisStartActNpmr.setTimeZoneClickListener(v -> {
+            showTimePickView(ttbDisStartActNpmr);
+        });
+        // 地址
+        iebDisAddrActNpmr.setRightIvOnClickerListener(v -> {
+            startLocation();
+        });
+        // 身份证
+        iebIdcardActNpmr.setRightIvOnClickerListener(v -> {
+            if (idReader != null) {
+                // 将NFC设置为读卡器模式
+                idReader.enableReaderMode(this);
+            }
+            showLoadingDialog();
+        });
+        // 腕带
 
     }
 
@@ -178,10 +215,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     @Override
     protected void onResume() {
         super.onResume();
-        if (idReader != null) {
-            // 将NFC设置为读卡器模式
-            idReader.enableReaderMode(this);
-        }
     }
 
     @Override
@@ -195,10 +228,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     @Override
     protected void onPause() {
         super.onPause();
-        if (idReader != null) {
-            // 恢复NFC适配到正常模式
-            idReader.disableReaderMode();
-        }
     }
 
     @Override
@@ -213,16 +242,16 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     @Override
     public void onIDCardState(int i, String s) {
-        showToast("errCode  is " + i + "message  is " + s);
-        LogUtils.d("errCode  is " + i);
-        LogUtils.d("message  is " + s);
+        showLoadingDialog();
     }
 
     @Override
     public void onGetIDData(String result, String resultDetail, String idData, Bitmap pic) {
-        LogUtils.d("result  is " + result);
-        LogUtils.d("resultDetail  is " + resultDetail);
-        LogUtils.d("idData  is " + idData);
+        hideLoadingDialog();
+        if (idReader != null) {
+            // 恢复NFC适配到正常模式
+            idReader.disableReaderMode();
+        }
         if (TextUtils.equals("00", result)) {
             // 读取成功
             IdCardBean idCardBean = GsonUtils.getGson().fromJson(idData, IdCardBean.class);
@@ -240,37 +269,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 // 户籍地址
                 iebDomicileAddrActNpmr.setEditContent(idCardBean.getAddress());
             }
-
-
-        }
-    }
-
-    private void requestPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                    || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE},
-                        81);
-            } else {
-            }
         } else {
-
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        if (requestCode == 81) {
-            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {// Permission Granted
-//                finish();
-                Toast.makeText(this, "无所需权限,请在设置中添加权限", Toast.LENGTH_LONG).show();
-            } else {
-            }
-        } else {
-
+            // 读取失败
+            showToast("读取失败，错误码：" + result);
         }
     }
 
@@ -356,7 +357,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         super.onCreate(savedInstanceState);
     }
 
-    @OnClick({R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr,
+    @OnClick({R.id.sb_sex_act_npmr, R.id.sb_birth_act_npmr, R.id.sb_dis_start_range_act_npmr,
             R.id.sb_come_type_act_npmr, R.id.ieb_medicare_num_act_npmr, R.id.sb_nation_act_npmr,
             R.id.sb_in_hos_type_act_npmr, R.id.ieb_domicile_addr_act_npmr, R.id.btn_save_act_npmr})
     public void onViewClicked(View view) {
@@ -365,7 +366,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 showActionSheet(sbSexActNpmr, "男", "女");
                 break;
             case R.id.sb_birth_act_npmr:
-                showTimePickView(sbBirthActNpmr);
+                showBirthPickView(sbBirthActNpmr);
                 break;
             case R.id.sb_come_type_act_npmr:
                 showComeHosActionSheet(sbComeTypeActNpmr, "本院急救车", "当地120", "外院转院", "自行来院", "在院卒中");
@@ -374,6 +375,11 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 showActionSheet(sbInHosTypeActNpmr, "急诊", "门诊", "其他医疗机构转入", "其他");
                 break;
             case R.id.sb_nation_act_npmr:
+
+                break;
+            case R.id.sb_dis_start_range_act_npmr:
+                showActionSheet(sbDisStartRangeActNpmr,
+                        "凌晨(0点到6点)", "清晨(6到8点)", "上午(8到12点)", "中午(12到14点)","傍晚(17到19点)","晚上(19到24点)");
                 break;
             case R.id.btn_save_act_npmr:
                 preSave();
@@ -383,7 +389,37 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         }
     }
 
+    /**
+     * 获取数据
+     */
+    private void getData() {
+
+    }
+
+    /**
+     * 保存数据
+     */
+    private void saveData() {
+
+    }
+
+    /**
+     * 保存前校验数据
+     */
     private void preSave() {
+
+    }
+
+    /**
+     * 刷新页面
+     */
+    private void refreshView() {
+
+    }
+
+
+    private void quickCreatPatient() {
+
     }
 
     private void showActionSheet(SettingBar settingBar, String... strings) {
@@ -459,7 +495,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 llComeHosActNpmr.addView(textTimeBar);
             }
         }
-
     }
 
     private List<ComeHosBean> getInHosStrokeContent() {
@@ -549,17 +584,17 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private static class IdCardBean {
 
         /**
-         * classify : 1
-         * idType : 01
-         * birthDate : 19920609
-         * address : 河南省延津县城关镇大潭村迎宾路４２号
-         * nation : 汉
-         * sex : 男
-         * signingOrganization : 延津县公安局
-         * endTime : 20390308
-         * name : 李承扬
-         * beginTime : 20190308
-         * idnum : 410726199206093417
+         * classify :
+         * idType :
+         * birthDate :
+         * address :
+         * nation :
+         * sex :
+         * signingOrganization :
+         * endTime :
+         * name :
+         * beginTime :
+         * idnum :
          */
 
         private String classify;

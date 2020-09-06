@@ -40,7 +40,7 @@
         android:layout_toEndOf="@id/tv_title_view_ttb"
         android:gravity="center_vertical"
         android:hint="点击选择时间"
-        android:textColor="@color/color_222222"
+        android:textColor="@color/color_444444"
         android:textColorHint="@color/color_999999"
         android:textSize="@dimen/item_content_size" />
 

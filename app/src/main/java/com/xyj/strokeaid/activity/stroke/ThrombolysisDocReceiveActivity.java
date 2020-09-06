@@ -17,6 +17,8 @@ import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -81,7 +83,7 @@ public class ThrombolysisDocReceiveActivity extends BaseActivity {
                 showTimePickView(tvTimeIncludeTime);
                 break;
             case R.id.iv_refresh_include_time:
-                refreshTime(tvTimeIncludeTime);
+                refreshTime(tvTimeIncludeTime, new Date());
                 break;
             case R.id.btn_confirm:
                 // TODO: 2020/8/21 保存信息

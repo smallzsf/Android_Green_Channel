@@ -29,9 +29,9 @@ import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
 import com.xyj.strokeaid.view.LoadingDialogFragment;
 import com.xyj.strokeaid.view.SettingBar;
+import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.ArrayDeque;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -102,7 +102,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             mLoadingDialogFragment.dismiss();
         }
     }
-
 
     @Override
     public Resources getResources() {
@@ -199,12 +198,35 @@ public abstract class BaseActivity extends AppCompatActivity {
             mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
                 @Override
                 public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime);
+                    refreshTime(tvShowTime, date);
                 }
             })
                     .isDialog(false)
                     .setOutSideCancelable(true)
-                    .setRangDate(CalendarUtils.getPastWeek(1, new Date()), Calendar.getInstance())
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param textTimeBar 显示时间的 TextView
+     */
+    protected void showTimePickView(TextTimeBar textTimeBar) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(textTimeBar, date);
+                }
+            })
+                    .isDialog(false)
+                    .setOutSideCancelable(true)
                     .build();
         }
         if (mTimePickerView.isShowing()) {
@@ -223,12 +245,36 @@ public abstract class BaseActivity extends AppCompatActivity {
             mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
                 @Override
                 public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime);
+                    refreshTime(tvShowTime, date);
                 }
             })
                     .isDialog(false)
                     .setOutSideCancelable(true)
-                    .setRangDate(CalendarUtils.getPastWeek(1, new Date()), Calendar.getInstance())
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param settingBar 显示时间的 TextView
+     */
+    protected void showBirthPickView(SettingBar settingBar) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    String birth = CalendarUtils.parseDate(CalendarUtils.TYPE_YEAR_MONTH_DAY, date);
+                    settingBar.setRightText(birth);
+                }
+            })
+                    .isDialog(false)
+                    .setType(new boolean[]{true, true, true, false, false, false})
+                    .setOutSideCancelable(true)
                     .build();
         }
         if (mTimePickerView.isShowing()) {
@@ -243,14 +289,25 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param textView
      */
-    protected void refreshTime(TextView textView) {
+    protected void refreshTime(TextView textView, Date date) {
         if (textView != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 textView.setTextColor(getColor(R.color.color_222222));
             } else {
                 textView.setTextColor(getResources().getColor(R.color.color_222222));
             }
-            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
+            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
+        }
+    }
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param textTimeBar
+     */
+    protected void refreshTime(TextTimeBar textTimeBar, Date date) {
+        if (textTimeBar != null) {
+            textTimeBar.setTime(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
         }
     }
 
@@ -259,10 +316,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      *
      * @param settingBar
      */
-    protected void refreshTime(SettingBar settingBar) {
+    protected void refreshTime(SettingBar settingBar, Date date) {
         if (settingBar != null) {
             settingBar.setRightTextColor(getResources().getColor(R.color.color_222222));
-            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date()));
+            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
         }
     }
 
@@ -325,7 +382,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 });
     }
 
-    protected void requestPerms(String correctString, String deniedString, String... permission ) {
+    protected void requestPerms(String correctString, String deniedString, String... permission) {
 
         if (XXPermissions.hasPermission(mContext, permission)) {
             // 已经获取权限，无须再申请

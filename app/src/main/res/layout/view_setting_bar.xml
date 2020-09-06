@@ -59,7 +59,7 @@
         android:ellipsize="end"
         android:gravity="center_vertical|end"
         android:maxLines="2"
-        android:textColor="@color/color_222222"
+        android:textColor="@color/color_444444"
         android:textSize="@dimen/item_title_size"
         android:visibility="visible"
         tools:text="无法收到云信通知时，请检查设置" />

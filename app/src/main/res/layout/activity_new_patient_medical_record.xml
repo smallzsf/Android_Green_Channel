@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".activity.NewPatientMedicalRecordActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_act_npmr"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/item_title_height"
+        android:layout_height="@dimen/title_bar_height"
         app:rightIconVisible="false"
         app:rightText="快速建档"
         app:rightTextVisible="true"
@@ -33,37 +33,100 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入就诊号"
                 app:ieb_title="就诊号" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_live_hos_id_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入住院号"
+                app:ieb_title="住院号" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_wristband_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_title="绑定腕带" />
+                app:ieb_edit_hint="请输入腕带编号"
+                app:ieb_right_icon="@drawable/icon_nfc_scan"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="腕带编号" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_dis_addr_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入发病地址"
                 app:ieb_right_icon="@drawable/icon_location"
                 app:ieb_right_icon_visible="true"
                 app:ieb_title="发病地址" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="发病时间"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_dis_time_act_npmr"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_dis_time_exact_act_npmr"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="精确" />
+
+                    <RadioButton
+                        android:id="@+id/rb_dis_time_inaccuracy_act_npmr"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="不确定" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_dis_start_act_npmr"
                 android:layout_width="match_parent"
+                app:topLineVisible="true"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
-                android:background="@color/white"
+                android:visibility="gone"
                 app:title="发病时间" />
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_dis_start_range_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bar_bottomLineVisible="true"
+                android:visibility="gone"
+                app:bar_leftText="发病区间" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_name_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入姓名"
                 app:ieb_title="姓名" />
 
             <com.xyj.strokeaid.view.ItemEditBar
@@ -71,7 +134,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_title="身份证" />
+                app:ieb_edit_hint="请输入身份证号"
+                app:ieb_right_icon="@drawable/icon_nfc_scan"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="身份证号" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_sex_act_npmr"
@@ -81,11 +147,22 @@
                 app:bar_leftText="性别" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_age_act_npmr"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入年龄"
+                app:ieb_title="年龄"
+                app:ieb_unit_text="岁"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_weight_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_enable="true"
+                app:ieb_edit_hint="请输入体重"
                 app:ieb_title="体重"
                 app:ieb_unit_text="@string/kg"
                 app:ieb_unit_visible="true" />
@@ -96,6 +173,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_enable="true"
+                app:ieb_edit_hint="请输入身高"
                 app:ieb_title="身高"
                 app:ieb_unit_text="@string/cm"
                 app:ieb_unit_visible="true" />
@@ -106,6 +184,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_enable="false"
+                app:ieb_edit_hint="自动计算"
                 app:ieb_title="BMI"
                 app:ieb_unit_text="@string/kgm2"
                 app:ieb_unit_visible="true" />
@@ -115,7 +194,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
-                app:bar_leftText="出生日期" />
+                app:bar_leftText="出生日期"
+                app:bar_rightText="请选择出生日期"
+                app:bar_rightTextVisible="true" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_come_type_act_npmr"
@@ -123,7 +204,9 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
                 app:bar_leftText="来院方式"
-                app:bar_leftTextColor="@color/color_222222" />
+                app:bar_leftTextColor="@color/color_222222"
+                app:bar_rightText="请选择来院方式"
+                app:bar_rightTextVisible="true" />
 
             <LinearLayout
                 android:id="@+id/ll_come_hos_act_npmr"
@@ -143,7 +226,9 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
                 app:bar_leftText="入院途径"
-                app:bar_leftTextColor="@color/color_222222" />
+                app:bar_leftTextColor="@color/color_222222"
+                app:bar_rightText="请选择入院途径"
+                app:bar_rightTextVisible="true" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_nation_act_npmr"
@@ -151,34 +236,42 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:bar_bottomLineVisible="true"
                 app:bar_leftText="民族"
-                app:bar_leftTextColor="@color/color_222222" />
+                app:bar_leftTextColor="@color/color_222222"
+                app:bar_rightText="请选择民族"
+                app:bar_rightTextVisible="true" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_medicare_type_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:ieb_bottom_line_visible="true"
-                app:ieb_title="医保类型" />
+                app:bar_bottomLineVisible="true"
+                app:bar_leftText="医保类型"
+                app:bar_rightText="请选择医保类型"
+                app:bar_rightTextVisible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_medicare_num_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
-                app:ieb_title="医保帐号" />
+                app:ieb_edit_hint="请输入医保卡号"
+                app:ieb_title="医保卡号" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_serious_medicare_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:ieb_bottom_line_visible="true"
-                app:ieb_title="大病医保" />
+                app:bar_bottomLineVisible="true"
+                app:bar_leftText="大病医保"
+                app:bar_rightText="请选择是否大病医保"
+                app:bar_rightTextVisible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/ieb_domicile_addr_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入户籍地址"
                 app:ieb_title="户籍地址" />
 
             <com.xyj.strokeaid.view.ItemEditBar
@@ -186,6 +279,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入联系人"
                 app:ieb_title="联系人" />
 
             <com.xyj.strokeaid.view.ItemEditBar
@@ -193,6 +287,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入联系电话"
                 app:ieb_title="联系电话" />
 
             <Button

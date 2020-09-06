@@ -122,13 +122,13 @@ public class ItemEditBar extends RelativeLayout {
         // 右侧图标
         if (array.getBoolean(R.styleable.ItemEditBar_ieb_right_icon_visible, false)) {
             Drawable drawable = array.getDrawable(R.styleable.ItemEditBar_ieb_right_icon);
-            if (drawable != null){
+            if (drawable != null) {
                 ivRightViewIeb.setVisibility(VISIBLE);
                 ivRightViewIeb.setImageDrawable(drawable);
-            }else {
+            } else {
                 ivRightViewIeb.setVisibility(GONE);
             }
-        }else {
+        } else {
             ivRightViewIeb.setVisibility(GONE);
         }
 
@@ -199,6 +199,12 @@ public class ItemEditBar extends RelativeLayout {
     public void setBottomLineVisible(boolean visible) {
         if (viewBottomLineViewIeb != null) {
             viewBottomLineViewIeb.setVisibility(visible ? VISIBLE : GONE);
+        }
+    }
+
+    public void setRightIvOnClickerListener(View.OnClickListener listener) {
+        if (ivRightViewIeb != null) {
+            ivRightViewIeb.setOnClickListener(listener);
         }
     }
 }
