@@ -1,5 +1,10 @@
 package com.xyj.strokeaid.bean.dist;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.xyj.strokeaid.bean.BaseObjectBean;
+
 /**
  * 影像检查
  */
@@ -43,7 +48,7 @@ public class ChestPainImageExaminationBean {
     public static class MessageBean {
     }
 
-    public static class DataBean {
+    public static class DataBean implements Parcelable {
         /**
          * id : uW#u^[
          * recordId : EpwbyMC
@@ -196,6 +201,16 @@ public class ChestPainImageExaminationBean {
 
         public void setCduexamreporttime(String cduexamreporttime) {
             this.cduexamreporttime = cduexamreporttime;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+
         }
     }
 }

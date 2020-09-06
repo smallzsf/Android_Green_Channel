@@ -52,7 +52,7 @@
         android:layout_weight="1"
         android:overScrollMode="never"
         android:scrollbars="none"
-        android:visibility="visible"
+        android:visibility="gone"
        >
 
         <LinearLayout
