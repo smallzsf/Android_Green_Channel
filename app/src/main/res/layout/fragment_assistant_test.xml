@@ -5,41 +5,80 @@
     android:id="@+id/ll_vital_signs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_ffffff"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_7"
+        android:text="影像检查"
+        android:textColor="@color/black"
+        android:textSize="@dimen/item_title_size" />
+
+
+    <RadioGroup
+        android:id="@+id/rg_chest_pain_diseaseRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_emergency_ct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="急诊CT"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_color_ultrasound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="彩超"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_not_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未做"></RadioButton>
+
+    </RadioGroup>
+
+
     <ScrollView
+        android:id="@+id/sv_emergency_ct"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:overScrollMode="never"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:visibility="gone"
+       >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.flyco.tablayout.SegmentTabLayout
-                android:layout_marginBottom="@dimen/dp_12"
-                android:layout_marginTop="@dimen/dp_12"
-                android:id="@+id/stl_title_frag_od"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/dp_8"
-                android:layout_marginEnd="@dimen/dp_8"
-                tl:tl_bar_color="@color/white"
-                tl:tl_indicator_color="@color/colorPrimary"
-                tl:tl_indicator_corner_radius="8dp"
-                tl:tl_tab_padding="20dp"
-                tl:tl_textsize="@dimen/item_title_size" />
+            <!--  <com.flyco.tablayout.SegmentTabLayout
+                  android:layout_marginBottom="@dimen/dp_12"
+                  android:layout_marginTop="@dimen/dp_12"
+                  android:id="@+id/stl_title_frag_od"
+                  android:layout_width="match_parent"
+                  android:layout_height="@dimen/item_normal_height"
+                  android:layout_gravity="center_horizontal"
+                  android:layout_marginStart="@dimen/dp_8"
+                  android:layout_marginEnd="@dimen/dp_8"
+                  tl:tl_bar_color="@color/white"
+                  tl:tl_indicator_color="@color/colorPrimary"
+                  tl:tl_indicator_corner_radius="8dp"
+                  tl:tl_tab_padding="20dp"
+                  tl:tl_textsize="@dimen/item_title_size" />-->
 
             <LinearLayout
                 android:id="@+id/ll_emergency_ct"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -53,9 +92,6 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
                         android:text="检查地点"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
@@ -63,37 +99,39 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginRight="@dimen/dp_12"
+                        android:layout_marginLeft="@dimen/item_normal_margin"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:singleLine="true"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
+                        android:singleLine="true"
                         android:textColor="@color/color_222222"
                         android:textColorHint="@color/color_666666"
                         android:textSize="13sp" />
 
                 </LinearLayout>
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     tl:title="通知时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     tl:title="准备完成时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     tl:title="患者到达时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     tl:title="患者检查时间" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -112,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginTop="@dimen/dp_12"
-                    android:background="@color/app_ffffff"
+                    android:background="@color/color_bg"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -126,11 +164,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_90"
                         android:layout_marginTop="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_12"
                         android:layout_marginBottom="@dimen/dp_10"
                         android:background="@drawable/shape_edittext_bg"
                         android:gravity="start"
                         android:hint="请输入诊断结果"
-                        android:layout_marginRight="@dimen/dp_12"
                         android:paddingLeft="@dimen/dp_6"
                         android:paddingTop="@dimen/dp_6"
                         android:textSize="@dimen/item_content_size" />
@@ -164,12 +202,13 @@
                         android:text="查看CT片子"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical|right"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -197,12 +236,13 @@
                         android:text="查看CT报告"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical|right"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -213,77 +253,88 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:visibility="gone"
-                android:id="@+id/ll_ultrasound_color"
-                android:layout_width="wrap_content"
+
+
+
+            <include layout="@layout/view_two_horizontal_bottom_button"
+                android:layout_marginTop="@dimen/dp_20"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="检查地点"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单行输入"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:singleLine="true"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="通知彩超室时间" />
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="彩超检查时间" />
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="彩超结果时间" />
-
-
-            </LinearLayout>
-
-
-            <include layout="@layout/include_line" />
+                android:layout_width="match_parent" />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <include
+
+    <LinearLayout
+        android:id="@+id/ll_ultrasound_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_12"
+                android:gravity="center"
+                android:text="检查地点"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/item_title_size" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/dp_12"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@drawable/shape_grey_stroke"
+                android:hint="单行输入"
+                android:inputType="text"
+                android:paddingStart="@dimen/dp_8"
+                android:singleLine="true"
+                android:textColor="@color/color_222222"
+                android:textColorHint="@color/color_666666"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            tl:title="通知彩超室时间" />
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            tl:title="彩超检查时间" />
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            tl:title="彩超结果时间" />
+
+
+        <include layout="@layout/view_two_horizontal_bottom_button"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" />
+
+    </LinearLayout>
+
+
+    <!--<include
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />
+        android:layout_margin="@dimen/dp_8" />-->
 
 
     <!--   <include
