@@ -1,6 +1,5 @@
 package com.xyj.strokeaid.activity.chestpain;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,7 +23,6 @@ import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +30,6 @@ import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -146,6 +143,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     private GenderSelectBean popGenderSelectBean;
 
     private ChestPainOperationResultUtil chestUtil;
+    private TagAdapter<String> tagIntraoAdapter;
 
     @Override
     public int getLayoutId() {
@@ -178,7 +176,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     @Override
     public void initView() {
 
-       initData();
+        initData();
     }
 
     private void initData() {
@@ -188,18 +186,96 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity);
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);
         chestUtil.initGenderMap(R.array.chest_pain_operation_intraoperative_complications);
-
-        bean = resetShow();
-
-
-
         initFlowLayout();
+
+        bean = resetShowNet();
+        resetShow();
     }
 
-    private ChestPainOperationRsultBean resetShow() {
+    private void resetShow() {
+
+        String value = bean.getIsiabp();
+        resetRadioButton(rgIabp, value);
+        // 腔内影像
+        resetRadioButton(rgCpcQnyx, bean.getIntracavitaryimaging());
+        //功能检测
+        resetRadioButton(rgCpcFuncexam, bean.getFunctiondetectionvalue());
+        //临时起搏器
+        resetRadioButton(rgTemporaryPacemaker, bean.getIstemporarypacemaker());
+        // 设置ecmo
+        resetRadioButton(rgEcmo, bean.getIsecmo());
+        //左心室辅助装置
+        resetRadioButton(rgLeftVentAssistDevice, bean.getIsleftventassistdevice());
+
+        List<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> data = bean.getCoronaryangiographyarray();
+        for (int i = 0; i < data.size(); i++) {
+            ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean = data.get(i);
+            for (int j = 0; j < genderList.size(); j++) {
+                String s = genderList.get(j);
+                if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                    tagGenderAdapter.setSelected(j, s);
+                }
+            }
+
+            for (int j = 0; j < genderListMore.size(); j++) {
+                String s = genderListMore.get(j);
+                if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                    tagGenderMoreAdapter.setSelected(j, s);
+                }
+            }
+        }
+//        setIntraoperativecomplications
+        Set<Integer> selectIntraoPosition = new HashSet<>();
+        String intraoperativecomplications = bean.getIntraoperativecomplications();
+        List<String> intraoValueList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications));
+        for (int i = 0; i < intraoValueList.size(); i++) {
+            String s = intraoValueList.get(i);
+            if (intraoperativecomplications.contains(s)) {
+                tagIntraoAdapter.setSelected(i, s);
+            }
+        }
+
+    }
+
+    private void resetRadioButton(RadioGroup rg, String value) {
+        int childCount = rg.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            RadioButton radioButton = (RadioButton) rg.getChildAt(i);
+            if (TextUtils.equals(radioButton.getTag().toString(), value)) {
+                radioButton.setChecked(true);
+            } else {
+                radioButton.setChecked(false);
+            }
+        }
+    }
+
+    // TODO 通过网络请求得到这个javabean 自动回显数据
+    private ChestPainOperationRsultBean resetShowNet() {
         return new ChestPainOperationRsultBean();
     }
 
+
+    private void refrashIntraoAdapter(boolean isReset) {
+        if (tagGenderAdapter == null || isReset) {
+            tagIntraoAdapter = new TagAdapter<String>(intraoperativeList) {
+                @Override
+                public View getView(FlowLayout parent, int position, String o) {
+                    TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
+                    view.setText(o);
+
+                    List<String> strings = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications));
+                    String s = strings.get(position);
+                    view.setTag(s);
+
+                    return view;
+                }
+            };
+            tagIntraoperativeComplications.setAdapter(tagIntraoAdapter);
+        } else {
+            tagIntraoAdapter.notifyDataChanged();
+        }
+
+    }
 
     /**
      * 冠脉造影流布局
@@ -208,19 +284,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
         intraoperativeList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_intraoperative_complications));
         //术中并发症流布局
-        tagIntraoperativeComplications.setAdapter(new TagAdapter<String>(intraoperativeList) {
-            @Override
-            public View getView(FlowLayout parent, int position, String o) {
-                TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
-                view.setText(o);
-
-                List<String> strings = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications));
-                String s = strings.get(position);
-                view.setTag(s);
-
-                return view;
-            }
-        });
         tagIntraoperativeComplications.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
             @Override
             public void onSelected(Set<Integer> selectPosSet) {
@@ -384,7 +447,11 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         popWindow.setCallBack(new ChestPainOperationResultPop.ICallBack() {
             @Override
             public void save(ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean) {
-                coronaryangiographyarrayBeanMap.put(popGenderSelectBean.getNetType(), bean);
+
+//                coronaryangiography
+                String netType = popGenderSelectBean.getNetType();
+                bean.setCoronaryangiographyX(netType);
+                coronaryangiographyarrayBeanMap.put(netType, bean);
             }
         });
     }
@@ -416,8 +483,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     View.OnClickListener rightSaveClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-//            ChestPainOperationRsultBean
-//            findViewById(rgEcmo.getCheckedRadioButtonId())
 
             ArrayList<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> coronaryangiographyarray = new ArrayList<>();
             for (Map.Entry<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean> entry : coronaryangiographyarrayBeanMap.entrySet()) {
