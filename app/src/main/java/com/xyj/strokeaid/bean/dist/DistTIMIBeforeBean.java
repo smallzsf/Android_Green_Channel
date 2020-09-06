@@ -6,7 +6,7 @@ package com.xyj.strokeaid.bean.dist;
  */
 
 @IDistFieldName(value = "TIMIBefore")
-public class DistTIMIBeforeBean {
+public class DistTIMIBeforeBean extends DistItemBaseBean{
 
 
     /**

@@ -7,7 +7,7 @@ package com.xyj.strokeaid.bean.dist;
  "FieldLabel": "狭窄程度"
  */
 @IDistFieldName(value = "DegreeOfArteryStenosis")
-public class DisttStenosisDegreeBean {
+public class DisttStenosisDegreeBean  extends DistItemBaseBean{
 
 
     /**
