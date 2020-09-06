@@ -6,10 +6,21 @@ public class GenderSelectBean {
     private int type;   //0-第一个集合  1-更多集合
     private String name;
 
-    public GenderSelectBean(int position, int type, String name) {
+    private String netType;
+
+    public GenderSelectBean(int position, int type, String name, String netType) {
         this.position = position;
         this.type = type;
         this.name = name;
+        this.netType = netType;
+    }
+
+    public String getNetType() {
+        return netType;
+    }
+
+    public void setNetType(String netType) {
+        this.netType = netType;
     }
 
     public int getPosition() {
@@ -34,5 +45,14 @@ public class GenderSelectBean {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "GenderSelectBean{" +
+                "position=" + position +
+                ", type=" + type +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

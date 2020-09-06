@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.activity.chestpain;
 
+import android.util.ArrayMap;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -19,7 +22,9 @@ import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GenderSelectBean;
+import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -28,7 +33,9 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -46,6 +53,8 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
  */
 public class ChestPainOperationResultActivity extends BaseActivity {
 
+    @BindView(R.id.title_bar_act_npmr)
+    BaseTitleBar titleBarActNpmr;
     @BindView(R.id.tag_gender_diversity)
     TagFlowLayout tagGenderDiversity;
     @BindView(R.id.tag_gender_diversity_more)
@@ -58,6 +67,8 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
     @BindView(R.id.tag_gender_select)
     TagFlowLayout tagGenderSelect;
+    @BindView(R.id.rg_approach)
+    RadioGroup rgApproach;
 
     private List<GenderSelectBean> selectList = new ArrayList<>();
     private List<String> genderList;
@@ -68,7 +79,22 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     private Set<Integer> selectGender;
     private Set<Integer> selectGenderMore;
     private View popupWindowView;
-    private PopupWindow popWindow;
+    private ChestPainOperationResultPop popWindow;
+
+
+    /**
+     * 选中的部位设置信息
+     */
+    private Map<String,ChestPainOperationRsultBean.CoronaryangiographyarrayBean>  coronaryangiographyarrayBeanMap = new HashMap<>();
+
+    /**
+     * 界面管理bean 以及接口通信
+     */
+    private ChestPainOperationRsultBean bean;
+    // 通过点击弹出 popupwindow 时设置
+    private GenderSelectBean popGenderSelectBean;
+
+    private ChestPainOperationResultUtil chestUtil;
 
     @Override
     public int getLayoutId() {
@@ -81,16 +107,16 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     }
 
     @OnClick({R.id.iv_left_base_title_bar, R.id.tv_more})
-    public void onClick(View view){
-        switch (view.getId()){
+    public void onClick(View view) {
+        switch (view.getId()) {
             case R.id.iv_left_base_title_bar:
                 finish();
                 break;
             case R.id.tv_more:
-                if(tagGenderDiversityMore.getVisibility()==View.VISIBLE){
+                if (tagGenderDiversityMore.getVisibility() == View.VISIBLE) {
                     tagGenderDiversityMore.setVisibility(View.GONE);
                     tvMore.setText("更多");
-                }else{
+                } else {
                     tagGenderDiversityMore.setVisibility(View.VISIBLE);
                     tvMore.setText("收起");
                 }
@@ -101,7 +127,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        initFlowLayout();
 
         //术中并发症流布局
         tagIntraoperativeComplications.setAdapter(new TagAdapter<String>(Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_intraoperative_complications))) {
@@ -113,19 +138,41 @@ public class ChestPainOperationResultActivity extends BaseActivity {
             }
         });
 
+        initData();
     }
 
+    private void initData(){
+        chestUtil = new ChestPainOperationResultUtil(this);
+        //显示前项
+        chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity);
+        chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);
+
+        bean = resetShow();
+
+        initFlowLayout();
+    }
+
+    private ChestPainOperationRsultBean resetShow() {
+        return new ChestPainOperationRsultBean();
+    }
+
+
+
     /**
-     *冠脉造影流布局
+     * 冠脉造影流布局
      */
     private void initFlowLayout() {
-        //显示前项
-        genderList = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_gender_diversity));
+
+        genderList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_gender_diversity));
         tagGenderAdapter = new TagAdapter<String>(genderList) {
             @Override
             public View getView(FlowLayout parent, int position, String o) {
                 TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
                 view.setText(o);
+
+                List<String> strings = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_gender_diversity));
+                String s = strings.get(position);
+                view.setTag(s);
                 return view;
             }
         };
@@ -139,12 +186,16 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         });
 
         //显示前项
-        genderListMore = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_gender_diversity_more));
+        genderListMore = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_gender_diversity_more));
         tagGenderMoreAdapter = new TagAdapter<String>(genderListMore) {
             @Override
             public View getView(FlowLayout parent, int position, String o) {
                 TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
                 view.setText(o);
+
+                List<String> strings = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_gender_diversity_more));
+                String s = strings.get(position);
+                view.setTag(s);
                 return view;
             }
         };
@@ -166,7 +217,12 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         if (null != selectGender && null != genderListMore) {
             for (int i = 0; i < genderList.size(); i++) {
                 if (selectGender.contains(i)) {
-                    GenderSelectBean bean = new GenderSelectBean(i, 0, genderList.get(i));
+
+                    List<String> valueDataList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_gender_diversity));
+                    String value = valueDataList.get(i);
+                    String name = genderList.get(i);
+                    GenderSelectBean bean =
+                            new GenderSelectBean(i, 0, name,value);
                     selectList.add(bean);
                 }
             }
@@ -174,7 +230,12 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         if (null != selectGenderMore && null != genderListMore) {
             for (int i = 0; i < genderListMore.size(); i++) {
                 if (selectGenderMore.contains(i)) {
-                    GenderSelectBean bean = new GenderSelectBean(i, 1, genderListMore.get(i));
+
+                    List<String> valueDataList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_gender_diversity_more));
+                    String value = valueDataList.get(i);
+                    String name = genderListMore.get(i);
+                    GenderSelectBean bean =
+                            new GenderSelectBean(i, 0, name,value);
                     selectList.add(bean);
                 }
             }
@@ -198,6 +259,8 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                             selectGenderMore.remove(bean.getPosition());
                             tagGenderMoreAdapter.setSelectedList(selectGenderMore);
                         }
+                        // TODO  取消选中效果
+                        Log.e("zhangshifu", bean.toString());
                         selectList.remove(bean);
                         selectAdapter.notifyDataChanged();
                     }
@@ -212,6 +275,9 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         tagGenderSelect.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
+                // 点击选中条目的 position
+                popGenderSelectBean = selectList.get(position);
+
                 showPopupWindow();
                 return false;
             }
@@ -223,106 +289,48 @@ public class ChestPainOperationResultActivity extends BaseActivity {
             popWindow.dismiss();
         } else {
             initPopupWindow();
-            backgroundAlpha(0.8f);
+
         }
     }
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = getWindow().getAttributes();
-        lp.alpha = bgAlpha; //0.0-1.0
-        getWindow().setAttributes(lp);
-    }
+
+
     /**
      * 弹窗样式
      */
     private void initPopupWindow() {
         popupWindowView = getLayoutInflater().inflate(R.layout.pop_gender_diversity_detail, null, false);
-        popWindow = new PopupWindow(popupWindowView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        popWindow = new ChestPainOperationResultPop(this,popupWindowView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
         popWindow.setFocusable(true);
         popupWindowView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
         popWindow.showAtLocation(tagGenderSelect, Gravity.CENTER, 0, 0);
-
-        TagFlowLayout operation_process = popupWindowView.findViewById(R.id.operation_process);
-
-        //术中处理流布局
-        operation_process.setAdapter(new TagAdapter<String>(Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_process))) {
-            @Override
-            public View getView(FlowLayout parent, int position, String o) {
-                TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
-                view.setText(o);
-                return view;
-            }
-        });
-        //选择时间
-        TextTimeBar tv_through_time_guide_wire = popupWindowView.findViewById(R.id.tv_through_time_guide_wire);
-        tv_through_time_guide_wire.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
-                        .setType(Type.ALL)
-                        .setTitleStringId("选择时间")
-                        .setThemeColor(getResources().getColor(R.color.colorPrimary))
-                        //当前文本颜色
-                        .setWheelItemTextSelectorColor(getResources().getColor(R.color.colorPrimary))
-                        .setCallBack(new OnDateSetListener() {
-                            @Override
-                            public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tv_through_time_guide_wire.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
-                            }
-                        })
-                        //是否可循环
-                        .setCyclic(false)
-                        .setToolBarTextColor(R.color.colorPrimary)
-                        .build();
-
-                mDialogAll.show(getSupportFragmentManager(), "All");
-            }
-        });
-        //销毁popupwindow
-        ImageView ivDelete = popupWindowView.findViewById(R.id.iv_delete);
-        ivDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                popWindow.dismiss();
-            }
-        });
-
-        //PCI
-        LinearLayout linearPCI = popupWindowView.findViewById(R.id.linearPCI);
-        RadioButton rbPCIFalse = popupWindowView.findViewById(R.id.rb_PCI_false);
-        RadioButton rbPCITrue = popupWindowView.findViewById(R.id.rb_PCI_true);
-        rbPCIFalse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linearPCI.setVisibility(View.GONE);
-            }
-        });
-        rbPCITrue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                linearPCI.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-        //保存
-        AppCompatButton btSave = popupWindowView.findViewById(R.id.btn_save_diversity_detail);
-        btSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                backgroundAlpha(1f);
-            }
-        });
+        popWindow.backgroundAlpha(0.8f);
     }
 
     @Override
     public void initListener() {
+
+        rgApproach.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
+                bean.setArterialapproach((String) radioButton.getTag());
+            }
+        });
+        titleBarActNpmr.setRightLayoutClickListener(rightSaveClickListener);
+    }
+
+    /**
+     * 点击右边保存按钮
+     */
+    View.OnClickListener rightSaveClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+//            ChestPainOperationRsultBean
+            save(bean);
+        }
+    };
+
+    public void save(ChestPainOperationRsultBean bean) {
 
     }
 }

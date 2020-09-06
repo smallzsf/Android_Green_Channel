@@ -42,12 +42,14 @@
             <include layout="@layout/include_line" />
 
             <RadioGroup
+                android:id="@+id/rg_approach"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_40"
                 android:orientation="horizontal"
                 android:weightSum="4">
 
                 <RadioButton
+                    android:tag="cpc_rl_rdml"
                     android:id="@+id/rb_radial_artery_right"
                     style="@style/tv_small"
                     android:layout_width="0dp"
@@ -57,6 +59,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
+                    android:tag="cpc_rl_rdmr"
                     android:id="@+id/rb_radial_artery_left"
                     style="@style/tv_small"
                     android:layout_width="0dp"
@@ -66,6 +69,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
+                    android:tag="cpc_rl_gdm"
                     android:id="@+id/rb_arteria_femoralis"
                     style="@style/tv_small"
                     android:layout_width="0dp"
@@ -75,6 +79,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
+                    android:tag="cpc_rl_qt"
                     android:id="@+id/rb_other"
                     style="@style/tv_small"
                     android:layout_width="0dp"

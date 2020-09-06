@@ -29,6 +29,7 @@
                 android:textSize="@dimen/item_title_size" />
 
             <RadioGroup
+                android:id="@+id/rg_narrow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -40,7 +41,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text=">50%"
+                    android:text="<50%"
+                    android:tag="cpc_xzcd_xy50"
                     android:textSize="@dimen/item_content_size"
                     tools:ignore="HardcodedText" />
 
@@ -50,6 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_xzcd_50z69"
                     android:text="50~69%"
                     android:textSize="@dimen/item_content_size" />
 
@@ -60,6 +63,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="70~89%"
+                    android:tag="cpc_xzcd_70z89"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
@@ -69,6 +73,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="90~99%"
+                    android:tag="cpc_xzcd_90z99"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
@@ -77,6 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_xzcd_100"
                     android:text="100%"
                     android:textSize="@dimen/item_content_size" />
 
@@ -94,6 +100,7 @@
                 android:textSize="@dimen/item_title_size" />
 
             <RadioGroup
+                android:id="@+id/rb_gender_timi"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
@@ -102,6 +109,7 @@
                 <RadioButton
                     android:id="@+id/rb_gender_level_zero"
                     style="@style/tv_small"
+                    android:tag="cpc_timi_0"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -112,6 +120,7 @@
                 <RadioButton
                     android:id="@+id/rb_gender_level_first"
                     style="@style/tv_small"
+                    android:tag="cpc_timi_1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -125,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_timi_2"
                     android:paddingRight="@dimen/dp_10"
                     android:text="2级"
                     android:textSize="@dimen/item_content_size" />
@@ -135,6 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_timi_3"
                     android:paddingRight="@dimen/dp_10"
                     android:text="3级"
                     android:textSize="@dimen/item_content_size" />
@@ -158,12 +169,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rb_is_thrombosis_in_stent"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_stent_thrombosis_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -174,6 +187,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_stent_thrombosis_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -204,12 +218,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_is_bifurcation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_bifurcation_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -220,6 +236,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_bifurcation_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -251,12 +268,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_is_cto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_CTO_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -267,6 +286,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_CTO_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -297,12 +317,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_is_calcified"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_calcification_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -313,6 +335,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_calcification_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -343,12 +366,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_criminal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_culprit_lesion_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -359,6 +384,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_culprit_lesion_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -389,12 +415,14 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
+                    android:id="@+id/rg_pci"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
                     <RadioButton
+                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_PCI_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -405,6 +433,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
+                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_PCI_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
@@ -424,7 +453,6 @@
                 android:id="@+id/linearPCI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:orientation="vertical">
 
                 <TextView
