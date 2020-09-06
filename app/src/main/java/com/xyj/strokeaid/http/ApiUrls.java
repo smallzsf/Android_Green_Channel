@@ -147,6 +147,17 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_BLOOD_TEST_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/get";
 
+
+        /**
+         * 胸痛 影像检查 信息获取
+         */
+        public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/get";
+
+        /**
+         * 胸痛 影像检查 信息上传
+         */
+        public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/edit";
+
     }
 
 }
