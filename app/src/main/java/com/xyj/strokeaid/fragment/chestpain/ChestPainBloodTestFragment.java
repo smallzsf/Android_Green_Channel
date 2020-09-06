@@ -16,7 +16,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
-import com.xyj.strokeaid.http.gson.RecordIdUtil;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.List;
@@ -154,9 +154,6 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
     private void loadData() {
         RecordIdUtil src = new RecordIdUtil();
-
-
-
         src.setRecordId(RecordIdUtil.RECORD_ID);
         String request = GsonUtils.getGson().toJson(src);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
@@ -167,12 +164,12 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
                 .enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        Log.e("zhangshifu", "zhangshifu");
+                        Log.e("zhangshifu", "onResponse");
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Log.e("zhangshifu", "zhangshifu");
+                        Log.e("zhangshifu", "onFailure");
                     }
                 });
     }

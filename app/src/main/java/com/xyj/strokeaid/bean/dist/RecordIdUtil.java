@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.http.gson;
+package com.xyj.strokeaid.bean.dist;
 
 public class RecordIdUtil {
 
