@@ -295,6 +295,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void requestPerm(String permission) {
+        if (XXPermissions.hasPermission(mContext, permission)) {
+            // 已经获取权限，无须再申请
+            return;
+        }
         XXPermissions.with(this)
                 .permission(permission)
                 .request(new OnPermission() {
@@ -322,6 +326,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void requestPerms(String correctString, String deniedString, String... permission ) {
+
+        if (XXPermissions.hasPermission(mContext, permission)) {
+            // 已经获取权限，无须再申请
+            return;
+        }
         XXPermissions.with(this)
                 .permission(permission)
                 .request(new OnPermission() {
@@ -347,7 +356,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 }
 
