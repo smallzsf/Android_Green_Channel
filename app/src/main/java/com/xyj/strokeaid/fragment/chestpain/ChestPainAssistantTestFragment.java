@@ -1,18 +1,15 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 
-import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -32,8 +29,8 @@ import butterknife.BindView;
  */
 public class ChestPainAssistantTestFragment extends BaseFragment {
 
-    @BindView(R.id.stl_title_frag_od)
-    SegmentTabLayout stlTitleFragOd;
+    /*   @BindView(R.id.stl_title_frag_od)
+       SegmentTabLayout stlTitleFragOd;*/
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
@@ -42,12 +39,17 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     LinearLayout llEmergencyCt;
     @BindView(R.id.ll_ultrasound_color)
     LinearLayout llUltrasoundColor;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
+    /*  @BindView(R.id.btn_get_data)
+      AppCompatButton btnGetData;
+      @BindView(R.id.btn_confirm)
+      AppCompatButton btnConfirm;*/
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
+    @BindView(R.id.rg_chest_pain_diseaseRecord)
+    RadioGroup rgChestPainDiseaseRecord;
+    @BindView(R.id.sv_emergency_ct)
+    ScrollView svEmergencyCt;
+
     private String mPatientId;
     private String mDocId;
     private List<String> list;
@@ -88,7 +90,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
         loadData();
 
-        refrashTitleData();
+        //  refrashTitleData();
 
     }
 
@@ -116,7 +118,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-        stlTitleFragOd.setTabData(Constants.CHEST_OTHER_DISPOSAL_TITLES);
+      /*  stlTitleFragOd.setTabData(Constants.CHEST_OTHER_DISPOSAL_TITLES);
         stlTitleFragOd.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
@@ -128,6 +130,27 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
             @Override
             public void onTabReselect(int position) {
 
+            }
+        });*/
+
+        rgChestPainDiseaseRecord.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rb_emergency_ct:
+                        svEmergencyCt.setVisibility(View.VISIBLE);
+                        llUltrasoundColor.setVisibility(View.GONE);
+                        break;
+                    case R.id.rb_color_ultrasound:
+                        svEmergencyCt.setVisibility(View.GONE);
+                        llUltrasoundColor.setVisibility(View.VISIBLE);
+                        break;
+                    case R.id.rb_not_done:
+                        svEmergencyCt.setVisibility(View.GONE);
+                        llUltrasoundColor.setVisibility(View.GONE);
+                        break;
+
+                }
             }
         });
     }
