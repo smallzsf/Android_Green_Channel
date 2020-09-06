@@ -91,7 +91,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
      * 4、 危重孕产妇
      * 5、 危重儿童和新生儿
      */
-    private int mDiseaseType = 3;
+    private int mDiseaseType = 1;
     /**
      * 患者类型（保存包mmkv中， 每次进入会读取当前的配置）
      * 0 ： 急救中 （默认）
@@ -267,8 +267,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onResume() {
         super.onResume();
-//        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
-        mDiseaseType= 3;
+        mDiseaseType = mDefaultMMKV.decodeInt(MmkvKey.HOME_DISEASE_TYPE);
         mPatientType = mDefaultMMKV.decodeInt(MmkvKey.HOME_PATIENT_TYPE);
         tlTitleActMain.setCurrentTab(mPatientType);
         tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
