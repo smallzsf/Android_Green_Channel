@@ -191,8 +191,12 @@
                     style="@style/Text_Blue_Content_Style"
                     android:text="术后生命体征" />
 
-                <include layout="@layout/layout_view_declaration_of_signs">
-                </include>
+                <include layout="@layout/layout_view_declaration_of_signs"/>
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
+                    tl:title="患者离开时间" />
             </LinearLayout>
 
 
