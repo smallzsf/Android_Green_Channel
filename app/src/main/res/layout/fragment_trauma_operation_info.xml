@@ -75,6 +75,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
+                    tl:title="手术结束时间" />
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:background="@color/white"
                     tl:title="浓缩红细胞、血浆送达时间" />
 
                 <TextView

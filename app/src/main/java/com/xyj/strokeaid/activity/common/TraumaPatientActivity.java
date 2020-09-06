@@ -173,7 +173,7 @@ public class TraumaPatientActivity extends BaseActivity {
                     // 发病现场
                     return DiseaseSceneFragment.newInstance(patientId, docId);
                 case 1:
-                    // 生命体征
+                    // 急诊救治
                     return DiseaseTreatmentFragment.newInstance(patientId, docId);
                 case 2:
                     //检验信息
