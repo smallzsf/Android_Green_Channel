@@ -1,48 +1,37 @@
 package com.xyj.strokeaid.activity.chestpain;
 
-import android.util.ArrayMap;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.widget.AppCompatButton;
-
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.jzxiang.pickerview.TimePickerDialog;
-import com.jzxiang.pickerview.data.Type;
-import com.jzxiang.pickerview.listener.OnDateSetListener;
-import com.umeng.commonsdk.debug.I;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GenderSelectBean;
 import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
-import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
-import com.xyj.strokeaid.view.TextTimeBar;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
 /**
  * ChestPainOperationInfoActivity
@@ -70,6 +59,64 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     TagFlowLayout tagGenderSelect;
     @BindView(R.id.rg_approach)
     RadioGroup rgApproach;
+    @BindView(R.id.rb_radial_artery_right)
+    RadioButton rbRadialArteryRight;
+    @BindView(R.id.rb_radial_artery_left)
+    RadioButton rbRadialArteryLeft;
+    @BindView(R.id.rb_arteria_femoralis)
+    RadioButton rbArteriaFemoralis;
+    @BindView(R.id.rb_other)
+    RadioButton rbOther;
+    @BindView(R.id.rb_gender_diversity_IVUS)
+    RadioButton rbGenderDiversityIVUS;
+    @BindView(R.id.rb_gender_diversity_OCT)
+    RadioButton rbGenderDiversityOCT;
+    @BindView(R.id.rb_gender_diversity_other)
+    RadioButton rbGenderDiversityOther;
+    @BindView(R.id.rb_gender_diversity_no_doing)
+    RadioButton rbGenderDiversityNoDoing;
+    @BindView(R.id.rg_cpc_qnyx)
+    RadioGroup rgCpcQnyx;
+    @BindView(R.id.rb_function_FFR)
+    RadioButton rbFunctionFFR;
+    @BindView(R.id.rb_function_iFR)
+    RadioButton rbFunctionIFR;
+    @BindView(R.id.rb_function_IMR)
+    RadioButton rbFunctionIMR;
+    @BindView(R.id.rb_function_other)
+    RadioButton rbFunctionOther;
+    @BindView(R.id.rb_function_no_doing)
+    RadioButton rbFunctionNoDoing;
+    @BindView(R.id.rg_cpc_funcexam)
+    RadioGroup rgCpcFuncexam;
+    @BindView(R.id.et_doctor_input)
+    EditText etDoctorInput;
+    @BindView(R.id.tv_doctor_select)
+    TextView tvDoctorSelect;
+    @BindView(R.id.rb_IABP_false)
+    RadioButton rbIABPFalse;
+    @BindView(R.id.rb_IABP_true)
+    RadioButton rbIABPTrue;
+    @BindView(R.id.rg_iabp)
+    RadioGroup rgIabp;
+    @BindView(R.id.rb_pacesetter_true)
+    RadioButton rbPacesetterTrue;
+    @BindView(R.id.rb_pacesetter_false)
+    RadioButton rbPacesetterFalse;
+    @BindView(R.id.rg_temporary_pacemaker)
+    RadioGroup rgTemporaryPacemaker;
+    @BindView(R.id.rb_ECMO_true)
+    RadioButton rbECMOTrue;
+    @BindView(R.id.rb_ECMO_false)
+    RadioButton rbECMOFalse;
+    @BindView(R.id.rg_ecmo)
+    RadioGroup rgEcmo;
+    @BindView(R.id.rb_ventricular_assist_true)
+    RadioButton rbVentricularAssistTrue;
+    @BindView(R.id.rb_ventricular_assist_false)
+    RadioButton rbVentricularAssistFalse;
+    @BindView(R.id.rg_left_vent_assist_device)
+    RadioGroup rgLeftVentAssistDevice;
 
     private List<GenderSelectBean> selectList = new ArrayList<>();
     private List<String> genderList;
@@ -259,7 +306,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                             selectGenderMore.remove(bean.getPosition());
                             tagGenderMoreAdapter.setSelectedList(selectGenderMore);
                         }
-                        // TODO  取消选中效果
                         Log.e("zhangshifu", bean.toString());
                         selectList.remove(bean);
                         selectAdapter.notifyDataChanged();
@@ -318,11 +364,19 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         rgApproach.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
-                bean.setArterialapproach((String) radioButton.getTag());
+                String tag = getRadioButtonTag(radioGroup);
+                bean.setArterialapproach(tag);
             }
         });
         titleBarActNpmr.setRightLayoutClickListener(rightSaveClickListener);
+    }
+
+    private String getRadioButtonTag(RadioGroup radioGroup) {
+        RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
+        if (radioButton == null) {
+            return "";
+        }
+        return (String) radioButton.getTag();
     }
 
     /**
@@ -332,6 +386,35 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         @Override
         public void onClick(View view) {
 //            ChestPainOperationRsultBean
+//            findViewById(rgEcmo.getCheckedRadioButtonId())
+            bean = new ChestPainOperationRsultBean();
+            ArrayList<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> coronaryangiographyarray = new ArrayList<>();
+            for (Map.Entry<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean> entry : coronaryangiographyarrayBeanMap.entrySet()) {
+                coronaryangiographyarray.add(entry.getValue());
+            }
+            bean.setCoronaryangiographyarray(coronaryangiographyarray);
+
+            // 设置iabp
+            String value = getRadioButtonTag(rgIabp);
+            bean.setIsiabp(value);
+            // 腔内影像
+            value = getRadioButtonTag(rgCpcQnyx);
+            bean.setIntracavitaryimaging(value);
+//          功能检测
+            value = getRadioButtonTag(rgCpcFuncexam);
+            bean.setFunctiondetectionvalue(value);
+
+//        临时起搏器
+            value = getRadioButtonTag(rgTemporaryPacemaker);
+            bean.setIstemporarypacemaker(value);
+
+            // 设置ecmo
+            value = getRadioButtonTag(rgEcmo);
+            bean.setIsecmo(value);
+            //左心室辅助装置
+            value = getRadioButtonTag(rgLeftVentAssistDevice);
+            bean.setIsleftventassistdevice(value);
+
             save(bean);
         }
     };
@@ -339,4 +422,5 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     public void save(ChestPainOperationRsultBean bean) {
 
     }
+
 }

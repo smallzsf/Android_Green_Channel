@@ -160,7 +160,7 @@ public class ChestPainOperationResultPop extends PopupWindow {
 
 //        popupWindowView = getLayoutInflater().inflate(R.layout.pop_gender_diversity_detail, null, false);
         ButterKnife.bind(this, popupWindowView);
-
+        bean = new ChestPainOperationRsultBean.CoronaryangiographyarrayBean();
         initPopupWindow();
     }
 
@@ -280,7 +280,7 @@ public class ChestPainOperationResultPop extends PopupWindow {
     };
 
     private void saveData() {
-        bean = new ChestPainOperationRsultBean.CoronaryangiographyarrayBean();
+
         // 设置狭窄程度
         String value = getRadioButtonTag(rgNarrow);
         bean.setDegreeofarterystenosis(value);
@@ -330,6 +330,9 @@ public class ChestPainOperationResultPop extends PopupWindow {
     @NotNull
     private String getRadioButtonTag(RadioGroup rgGenderTimi) {
         RadioButton radioButton = popupWindowView.findViewById(rgGenderTimi.getCheckedRadioButtonId());
+        if (radioButton == null) {
+            return "";
+        }
         return String.valueOf(radioButton.getTag());
     }
 
