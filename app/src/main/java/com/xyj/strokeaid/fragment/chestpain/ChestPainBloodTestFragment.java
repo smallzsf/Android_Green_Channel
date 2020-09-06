@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,12 +14,19 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.http.gson.RecordIdUtil;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainDiseaseRecordFragment
@@ -145,7 +153,25 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
 
     private void loadData() {
+        RecordIdUtil src = new RecordIdUtil();
+        src.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(src);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .getChestPainBloodText(requestBody)
+                .enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        Log.e("zhangshifu", "zhangshifu");
+                    }
 
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        Log.e("zhangshifu", "zhangshifu");
+                    }
+                });
     }
 
 
