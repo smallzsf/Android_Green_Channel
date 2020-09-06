@@ -14,4 +14,20 @@ public interface ChestPainApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_BLOOD_TEST_GET)
     Call<String> getChestPainBloodText(@Body RequestBody info);
+
+    /**
+     * 胸痛 影像检查获取
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_GET)
+    Call<String> getChestPainImageExamination(@Body RequestBody info);
+
+    /**
+     * 胸痛 影像检查保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_SAVE)
+    Call<String> saveChestPainImageExamination(@Body RequestBody info);
+
+
 }
