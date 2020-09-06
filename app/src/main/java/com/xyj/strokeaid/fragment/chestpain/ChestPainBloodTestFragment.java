@@ -154,6 +154,9 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
     private void loadData() {
         RecordIdUtil src = new RecordIdUtil();
+
+
+
         src.setRecordId(RecordIdUtil.RECORD_ID);
         String request = GsonUtils.getGson().toJson(src);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
