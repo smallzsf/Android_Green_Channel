@@ -68,60 +68,60 @@
     </string-array>
 
     <string-array name="chest_pain_operation_intraoperative_complications">
-        <item>恶心心律失常</item>
-        <item>低血压</item>
-        <item>心源性休克</item>
-        <item>严重缓慢型心律失常</item>
-        <item>血栓栓塞</item>
-        <item>慢血流/无复流</item>
-        <item>血管夹层</item>
-        <item>非干预血管急性闭塞</item>
-        <item>血管穿孔</item>
-        <item>死亡</item>
-        <item>其他</item>
-        <item>无</item>
+        <item>恶心心律失常:cpc_intraoperativecomplications_exxlsc</item>
+        <item>低血压:cpc_intraoperativecomplications_dxy</item>
+        <item>心源性休克:cpc_intraoperativecomplications_xyxxk</item>
+        <item>严重缓慢型心律失常:cpc_intraoperativecomplications_yzhmxxlsc</item>
+        <item>血栓栓塞:cpc_intraoperativecomplications_xsss</item>
+        <item>慢血流/无复流:cpc_intraoperativecomplications_mxl</item>
+        <item>血管夹层:cpc_intraoperativecomplications_xgjc</item>
+        <item>非干预血管急性闭塞:cpc_intraoperativecomplications_fgyxgjxbs</item>
+        <item>血管穿孔:cpc_intraoperativecomplications_xgck</item>
+        <item>死亡:cpc_intraoperativecomplications_sw</item>
+        <item>其他:cpc_intraoperativecomplications_qt</item>
+        <item>无:cpc_intraoperativecomplications_wu</item>
     </string-array>
     <string-array name="chest_pain_operation_gender_diversity">
-        <item>右冠近段</item>
-        <item>右冠中段</item>
-        <item>右冠远段</item>
-        <item>后降支(右优势型)</item>
-        <item>左主干</item>
+        <item>右冠近段:cpc_coronaryangiography_ygjd</item>
+        <item>右冠中段:cpc_coronaryangiography_ygzd</item>
+        <item>右冠远段:cpc_coronaryangiography_ygyd</item>
+        <item>后降支(右优势型):cpc_coronaryangiography_hjzy</item>
+        <item>左主干:cpc_coronaryangiography_zzg</item>
     </string-array>
 
     <string-array name="chest_pain_operation_gender_diversity_more">
-        <item>前降支近段</item>
-        <item>前降支中段</item>
-        <item>前降支远段</item>
-        <item>第一对角支</item>
-        <item>第二对角支</item>
-        <item>旋支近段</item>
-        <item>第一钝缘支</item>
-        <item>旋支远段</item>
-        <item>左室后支</item>
-        <item>后降支(左优势型或均衡型)</item>
-        <item>中间支</item>
-        <item>第三对角支</item>
-        <item>第二钝缘支</item>
-        <item>第三钝缘支</item>
-        <item>锐缘支</item>
-        <item>左圆椎支</item>
-        <item>右圆椎支</item>
-        <item>室间隔支</item>
-        <item>左后外侧支</item>
-        <item>右后外侧支</item>
-        <item>房室沟动脉</item>
-        <item>后降支</item>
+        <item>前降支近段:cpc_coronaryangiography_qjzjd</item>
+        <item>前降支中段:cpc_coronaryangiography_qjzzd</item>
+        <item>前降支远段:cpc_coronaryangiography_qjzyd</item>
+        <item>第一对角支:cpc_coronaryangiography_dydjz</item>
+        <item>第二对角支:cpc_coronaryangiography_dedjz</item>
+        <item>旋支近段:cpc_coronaryangiography_xzjd</item>
+        <item>第一钝缘支:cpc_coronaryangiography_dycyz</item>
+        <item>旋支远段:cpc_coronaryangiography_xzyd</item>
+        <item>左室后支:cpc_coronaryangiography_zshz</item>
+        <item>后降支(左优势型或均衡型):cpc_coronaryangiography_hjzz</item>
+        <item>中间支:cpc_coronaryangiography_zjz</item>
+        <item>第三对角支:cpc_coronaryangiography_dsdjz</item>
+        <item>第二钝缘支:cpc_coronaryangiography_decyz</item>
+        <item>第三钝缘支:cpc_coronaryangiography_dscyz</item>
+        <item>锐缘支:cpc_coronaryangiography_ryz</item>
+        <item>左圆椎支:cpc_coronaryangiography_yyzz</item>
+        <item>右圆椎支:cpc_coronaryangiography_zyzz</item>
+        <item>室间隔支:cpc_coronaryangiography_zjgz</item>
+        <item>左后外侧支:cpc_coronaryangiography_zhwcz</item>
+        <item>右后外侧支:cpc_coronaryangiography_yhwcz</item>
+        <item>房室沟动脉:cpc_coronaryangiography_fsgdm</item>
+        <item>后降支:cpc_coronaryangiography_hjz</item>
     </string-array>
 
     <string-array name="chest_pain_operation_process">
-        <item>植入支架</item>
-        <item>PTCA</item>
-        <item>血栓抽吸</item>
-        <item>冠状内溶栓</item>
-        <item>仅使用导丝</item>
-        <item>其他</item>
-        <item>无</item>
+        <item>植入支架:cpc_intraoperativemanagement_zrzj</item>
+        <item>PTCA:cpc_intraoperativemanagement_ptca</item>
+        <item>血栓抽吸:cpc_intraoperativemanagement_xscx</item>
+        <item>冠脉内溶栓:cpc_intraoperativemanagement_gmnrs</item>
+        <item>仅使用导丝:cpc_intraoperativemanagement_jsyds</item>
+        <item>其他:cpc_intraoperativemanagement_qt</item>
+        <item>无:cpc_intraoperativemanagement_wu</item>
     </string-array>
 
     <string-array name="accepts_location">

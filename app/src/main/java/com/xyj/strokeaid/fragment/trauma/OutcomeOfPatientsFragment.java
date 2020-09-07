@@ -143,11 +143,8 @@ public class OutcomeOfPatientsFragment extends BaseFragment {
             RadioButton radioButton = resutList.get(i);
             radioButton.setOnClickListener(resultClickListener);
         }
-        rgIsNet.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+        rgIsNet.setOnCheckedChangeListener((radioGroup, i) -> {
 
-            }
         });
 
         loadData();

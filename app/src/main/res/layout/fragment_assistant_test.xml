@@ -97,6 +97,7 @@
                         android:textSize="@dimen/item_title_size" />
 
                     <EditText
+                        android:id="@+id/et_ct_place"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginRight="@dimen/dp_12"
@@ -113,24 +114,33 @@
                 </LinearLayout>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_notice"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:title="通知时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_getready"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:title="准备完成时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_arrival"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:title="患者到达时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_check"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:title="患者检查时间" />
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_ct_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:title="CT报告时间" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -160,7 +170,7 @@
 
 
                     <EditText
-                        android:id="@+id/et_major_complaint_frag"
+                        android:id="@+id/et_check_result"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_90"
                         android:layout_marginTop="@dimen/dp_7"
@@ -204,6 +214,7 @@
                         android:textSize="@dimen/item_title_size" />
 
                     <TextView
+                        android:id="@+id/tv_ct_check_post"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
@@ -238,6 +249,7 @@
                         android:textSize="@dimen/item_title_size" />
 
                     <TextView
+                        android:id="@+id/tv_ct_result_post"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
@@ -290,6 +302,7 @@
                 android:textSize="@dimen/item_title_size" />
 
             <EditText
+                android:id="@+id/et_color_ct_place"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="@dimen/dp_12"
@@ -306,25 +319,56 @@
         </LinearLayout>
 
         <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/ttb_color_ct_notice"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
             tl:title="通知彩超室时间" />
 
         <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/ttb_color_ct_check"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
             tl:title="彩超检查时间" />
 
         <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/ttb_color_ct_result"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
             tl:title="彩超结果时间" />
 
 
-        <include layout="@layout/view_two_horizontal_bottom_button"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_bar_height"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/dp_8"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" />
+            android:paddingEnd="@dimen/dp_8">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_data_color_ct"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/buttom_normal_height"
+                android:layout_weight="1"
+                android:background="@drawable/login_btn_bg"
+                android:gravity="center"
+                android:text="@string/get_data"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/item_title_size" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_confirm_color_ct"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/buttom_normal_height"
+                android:layout_marginStart="@dimen/dp_18"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/login_btn_bg"
+                android:text="@string/save"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/item_title_size" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

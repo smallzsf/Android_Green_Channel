@@ -73,8 +73,6 @@ public class ImageCheckFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_bottom)
-    LinearLayout llBottom;
 
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_ct_scan;

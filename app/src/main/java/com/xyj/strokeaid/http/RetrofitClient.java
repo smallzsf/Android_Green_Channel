@@ -1,17 +1,13 @@
 package com.xyj.strokeaid.http;
 
 
-import androidx.annotation.NonNull;
-
 import com.xyj.strokeaid.BuildConfig;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory;
@@ -116,4 +112,26 @@ public class RetrofitClient {
         return apiService;
     }
 
+
+    private ChestPainApiService cpApiService;
+    public ChestPainApiService getCPApi() {
+        //初始化一个client,不然retrofit会自己默认添加一个
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    //设置网络请求的Url地址
+                    .baseUrl(ApiUrls.BASE_URL)
+                    //设置数据解析器
+                    .addConverterFactory(GsonConverterFactory.create())
+                    //设置网络请求适配器，使其支持RxJava与RxAndroid
+                    .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                    .client(getOkHttpClient())
+                    .build();
+        }
+        //创建—— 网络请求接口—— 实例
+        if (cpApiService == null) {
+            cpApiService = retrofit.create(ChestPainApiService.class);
+        }
+
+        return cpApiService;
+    }
 }
