@@ -13,6 +13,8 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
+import java.util.Arrays;
+
 import butterknife.BindView;
 
 /**
@@ -51,6 +53,7 @@ public class TriageInfoFragment extends BaseFragment {
     LinearLayout llStrokeDocFragTi;
 
     private String mRecordId;
+
     private int mDiseaseViewType;
 
     public TriageInfoFragment() {
@@ -97,6 +100,8 @@ public class TriageInfoFragment extends BaseFragment {
             llStrokeDocFragTi.setVisibility(View.VISIBLE);
             ttbStrokeDocTimeFragTi.setVisibility(View.VISIBLE);
         }
+        // 接诊地点
+        esEmergencyAddrFragTi.setItemData(Arrays.asList(getResources().getStringArray(R.array.accepts_location)));
     }
 
     @Override
@@ -106,6 +111,42 @@ public class TriageInfoFragment extends BaseFragment {
                 saveDataToChestPain();
             } else {
                 saveDataToStroke();
+            }
+        });
+
+        // 卒中医生到达
+        ttbStrokeDocTimeFragTi.setTimeZoneClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickView(ttbStrokeDocTimeFragTi);
+            }
+        });
+        // 患者到院
+        ttbPatientArrivalFragTi.setTimeZoneClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickView(ttbPatientArrivalFragTi);
+            }
+        });
+        // 患者到达急诊
+        ttbPatientEmergencyFragTi.setTimeZoneClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickView(ttbPatientEmergencyFragTi);
+            }
+        });
+        // 急诊医生接诊
+        ttbEmergencyDocTimeFragTi.setTimeZoneClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickView(ttbStrokeDocTimeFragTi);
+            }
+        });
+        // 急诊分诊
+        ttbEmergencyTriageFragTi.setTimeZoneClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickView(ttbStrokeDocTimeFragTi);
             }
         });
     }
@@ -125,7 +166,7 @@ public class TriageInfoFragment extends BaseFragment {
         ttbEmergencyDocTimeFragTi.setTime("");
         // 急诊医生
         esEmergencyDocFragTi.setText("");
-        if (mDiseaseViewType == 1){
+        if (mDiseaseViewType == 1) {
             // 卒中医生接诊
             ttbStrokeDocTimeFragTi.setTime("");
             // 卒中医生

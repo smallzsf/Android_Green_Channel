@@ -2,12 +2,14 @@ package com.xyj.strokeaid.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,8 +17,19 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.tencent.mmkv.MMKV;
+import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.UserInfoCache;
+import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.LoadingDialogFragment;
+import com.xyj.strokeaid.view.SettingBar;
+import com.xyj.strokeaid.view.TextTimeBar;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -149,6 +162,128 @@ public abstract class BaseFragment extends Fragment {
         if (mLoadingDialogFragment != null) {
             mLoadingDialogFragment.dismiss();
         }
+    }
+
+
+    protected TimePickerView mTimePickerView;
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param tvShowTime 显示时间的 TextView
+     */
+    protected void showTimePickView(TextView tvShowTime) {
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(1900, 0, 1);
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(tvShowTime, date);
+                }
+            })
+                    .isDialog(false)
+                    .setRangDate(startTime, Calendar.getInstance())
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param textTimeBar 显示时间的 TextView
+     */
+    protected void showTimePickView(TextTimeBar textTimeBar) {
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(1900, 0, 1);
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(textTimeBar, date);
+                }
+            })
+                    .isDialog(false)
+                    .setRangDate(startTime, Calendar.getInstance())
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param tvShowTime 显示时间的 TextView
+     */
+    protected void showTimePickView(SettingBar tvShowTime) {
+        Calendar startTime = Calendar.getInstance();
+        startTime.set(1900, 0, 1);
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    refreshTime(tvShowTime, date);
+                }
+            })
+                    .isDialog(false)
+                    .setRangDate(startTime, Calendar.getInstance())
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param textView
+     */
+    protected void refreshTime(TextView textView, Date date) {
+        if (textView != null) {
+            textView.setTextColor(getResources().getColor(R.color.color_222222));
+            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
+        }
+    }
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param textTimeBar
+     */
+    protected void refreshTime(TextTimeBar textTimeBar, Date date) {
+        if (textTimeBar != null) {
+            textTimeBar.setTime(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
+        }
+    }
+
+    /**
+     * 刷新对应view中显示的时间
+     *
+     * @param settingBar
+     */
+    protected void refreshTime(SettingBar settingBar, Date date) {
+        if (settingBar != null) {
+            settingBar.setRightTextColor(getResources().getColor(R.color.color_222222));
+            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
+        }
+    }
+
+    public String getUserId() {
+        return UserInfoCache.getInstance().getUserInfo().getId();
     }
 
     /**

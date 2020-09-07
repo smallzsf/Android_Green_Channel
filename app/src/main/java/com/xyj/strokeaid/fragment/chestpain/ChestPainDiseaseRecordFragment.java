@@ -16,6 +16,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.view.XyjGridView;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
@@ -43,7 +44,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     @BindView(R.id.rb_relieved_chest_pain)
     RadioButton rbRelievedChestPain;
     @BindView(R.id.gv_detailed)
-    GridView gvDetailed;
+    XyjGridView gvDetailed;
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
@@ -54,6 +55,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     EditText etSymptom;
     @BindView(R.id.btn_start_frag_sg)
     AppCompatButton btnStartFragSg;
+
     private String mPatientId;
     private String mDocId;
 

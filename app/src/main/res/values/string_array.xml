@@ -123,4 +123,11 @@
         <item>其他</item>
         <item>无</item>
     </string-array>
+
+    <string-array name="accepts_location">
+        <item>急诊</item>
+        <item>门诊</item>
+        <item>神经内科</item>
+        <item>其他</item>
+    </string-array>
 </resources>

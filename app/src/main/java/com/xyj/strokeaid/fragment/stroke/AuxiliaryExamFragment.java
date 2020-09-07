@@ -398,6 +398,7 @@ public class AuxiliaryExamFragment extends BaseFragment {
      *
      * @param textTimeBar 要显示时间的控件
      */
+    @Override
     protected void showTimePickView(TextTimeBar textTimeBar) {
         if (mTimePickerView == null) {
             mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {

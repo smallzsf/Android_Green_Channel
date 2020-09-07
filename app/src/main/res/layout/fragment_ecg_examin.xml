@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_auxiliary_exam"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,8 +22,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -35,6 +36,7 @@
                     android:text="心电图"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
+
                 <RadioGroup
                     android:id="@+id/rg_electrocardiogram"
                     android:layout_width="match_parent"
@@ -45,10 +47,10 @@
                     <RadioButton
                         android:id="@+id/rb_electrocardiogram_has"
                         style="@style/tv_small"
-                        android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:text="有"
                         android:textSize="@dimen/item_content_size" />
 
@@ -68,32 +70,34 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:layout_weight="1"
                     android:gravity="center"
                     android:maxLength="6"
                     android:maxLines="1"
                     android:minWidth="60dp"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
+
                 <TextView
                     android:id="@+id/tv_add_record"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/dp_12"
                     android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp_12"
                     android:gravity="center"
                     android:maxLength="6"
                     android:maxLines="1"
                     android:minWidth="60dp"
-                    android:text="新增新电记录"
+                    android:text="新增心电记录"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
             </LinearLayout>
@@ -101,39 +105,29 @@
             <LinearLayout
                 android:id="@+id/ll_ecg_record_one"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/dp_7"
-                android:layout_marginRight="@dimen/dp_7"
-                android:layout_marginBottom="@dimen/dp_7"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_6"
+                android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:background="@color/white"
-                    tl:title="首份心电检查时间" />
+                    app:bottomLineVisible="true"
+                    tl:title="心电检查时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="心电图诊断时间" />
+                    app:bottomLineVisible="true"
+                    tl:title="诊断时间" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="心电报告"
+                    android:gravity="center_vertical"
+                    android:text="心电图诊断结论"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
@@ -152,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:background="@null"
                         android:gravity="top"
-                        android:hint="请输入诊断报告结果..."
+                        android:hint="请输入心电图诊断结论..."
                         android:maxLength="300"
                         android:minHeight="100dp"
                         android:padding="10dp"
@@ -182,7 +176,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
@@ -191,12 +184,12 @@
                         android:text="心电报告文件"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical|right"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -210,40 +203,156 @@
 
             <LinearLayout
                 android:id="@+id/ll_ecg_record_two"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_7"
                 android:layout_marginRight="@dimen/dp_7"
                 android:layout_marginBottom="@dimen/dp_7"
-                android:visibility="gone"
                 android:background="@drawable/shape_edittext_bg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_ecg_record_close_two"
-                    android:padding="@dimen/dp_11"
                     android:layout_width="@dimen/dp_40"
                     android:layout_height="@dimen/dp_40"
                     android:layout_gravity="right"
-                    android:src="@drawable/ic_close"
-                    >
+                    android:padding="@dimen/dp_11"
+                    android:src="@drawable/ic_close">
 
                 </ImageView>
 
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
+                    tl:title="心电检查时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
+                    tl:title="心电图诊断时间" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center"
+                    android:maxLength="6"
+                    android:maxLines="1"
+                    android:minWidth="60dp"
+                    android:text="心电报告"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <include layout="@layout/include_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/shape_grey_stroke_with_white_bg"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="请输入诊断报告结果..."
+                        android:maxLength="300"
+                        android:minHeight="100dp"
+                        android:padding="10dp"
+                        android:textColor="@color/color_222222"
+                        android:textColorHint="@color/color_999999"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginBottom="@dimen/dp_4"
+                        android:text="0/300"
+                        android:textColor="@color/color_222222"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <include layout="@layout/include_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:gravity="center"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="心电报告文件"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|right"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:minWidth="60dp"
+                        android:text="上传"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_ecg_record_three"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginRight="@dimen/dp_7"
+                android:layout_marginBottom="@dimen/dp_7"
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/iv_ecg_record_close_three"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_gravity="right"
+                    android:padding="@dimen/dp_11"
+                    android:src="@drawable/ic_close">
+
+                </ImageView>
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     android:background="@color/white"
                     tl:title="心电检查时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_marginRight="@dimen/dp_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    android:layout_marginLeft="@dimen/dp_1"
+                    android:layout_marginRight="@dimen/dp_1"
                     tl:title="心电图诊断时间" />
 
                 <TextView
@@ -258,6 +367,7 @@
                     android:text="心电报告"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
+
                 <include layout="@layout/include_line" />
 
                 <LinearLayout
@@ -292,6 +402,7 @@
                 </LinearLayout>
 
                 <include layout="@layout/include_line" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -310,12 +421,13 @@
                         android:text="心电报告文件"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical|right"
                         android:maxLength="6"
                         android:maxLines="1"
@@ -325,147 +437,27 @@
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
-                android:id="@+id/ll_ecg_record_three"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/dp_7"
-                android:layout_marginRight="@dimen/dp_7"
-                android:layout_marginBottom="@dimen/dp_7"
-                android:visibility="gone"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <ImageView
-                    android:id="@+id/iv_ecg_record_close_three"
-                    android:padding="@dimen/dp_11"
-                    android:layout_width="@dimen/dp_40"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_close"
-                    >
-
-                </ImageView>
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:background="@color/white"
-                    tl:title="首份心电检查时间" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="@dimen/dp_1"
-                    android:layout_marginLeft="@dimen/dp_1"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="心电图诊断时间" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="心电报告"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-                <include layout="@layout/include_line" />
-
-                <LinearLayout
+                    style="@style/Text_Blue_Content_Style"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/shape_grey_stroke_with_white_bg"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="top"
-                        android:hint="请输入诊断报告结果..."
-                        android:maxLength="300"
-                        android:minHeight="100dp"
-                        android:padding="10dp"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_999999"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="@dimen/dp_4"
-                        android:text="0/300"
-                        android:textColor="@color/color_222222"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <include layout="@layout/include_line" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_12"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="心电报告文件"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center_vertical|right"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="上传"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
+                    android:gravity="center_vertical"
                     android:text="远程心电传输"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
-                <RadioGroup
 
+                <RadioGroup
                     android:id="@+id/rg_ecg_transmission"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginRight="@dimen/dp_12"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
@@ -474,7 +466,7 @@
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:checked="true"
                         android:text="接收120/网络医院心电图"
                         android:textSize="@dimen/item_content_size" />
@@ -485,7 +477,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="无"
+                        android:text="未传输"
                         android:textSize="@dimen/item_content_size" />
 
                 </RadioGroup>
@@ -493,36 +485,30 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="接收时间" />
+                    app:bottomLineVisible="true"
+                    app:title="接收时间"
+                    app:topLineVisible="true" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/vital_sign_item_height"
                     android:layout_marginLeft="@dimen/dp_12"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/item_title_min_width"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
+                        android:gravity="center_vertical"
                         android:text="传输方式"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
 
-
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
                         android:id="@+id/es_vital_sign_aware"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/awareness"
-                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="请选择"
                         app:rightImage="@drawable/ic_arrow_down_blue" />
@@ -531,11 +517,14 @@
                 </LinearLayout>
             </LinearLayout>
 
-
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
     <include layout="@layout/view_two_horizontal_bottom_button" />
 
 

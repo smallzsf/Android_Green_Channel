@@ -90,7 +90,7 @@ public class TextTimeBar extends RelativeLayout {
 
     public void setTimeZoneClickListener(OnClickListener listener) {
         if (listener != null) {
-            tvTitleViewTtb.setOnClickListener(listener);
+            tvTimeViewTtb.setOnClickListener(listener);
         }
     }
 
