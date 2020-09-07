@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.activity;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -74,7 +75,6 @@ import static com.loc.di.e;
  */
 @Route(path = RouteUrl.NEW_PATIENT)
 public class NewPatientMedicalRecordActivity extends BaseActivity implements IIDDataCallback {
-
     @Autowired(name = IntentKey.VIEW_TYPE)
     int mViewType;
     @Autowired(name = IntentKey.PATIENT_ID)
@@ -145,6 +145,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private AMapLocationClientOption locationOption = null;
     private AMapLocationListener locationListener = null;
     private List<ComeHosBean> mComeHosBeans = null;
+    private NewPatientMedicalRecordBean mPatinetBean = null;
+    private String[] OPTION = new String[]{"汉族", "蒙古族", "回族", "藏族", "维吾尔族", "苗族", "彝族", "壮族", "布依族", "朝鲜族", "满族", "侗族", "瑶族", "白族", "土家族", "哈尼族", "哈萨克族", "傣族", "黎族", "傈僳族", "佤族", "畲族", "高山族", "拉祜族", "水族", "东乡族", "纳西族", "景颇族", "柯尔克孜族", "土族", "达斡尔族", "仫佬族", "羌族", "布朗族", "撒拉族", "毛难族"
+            , "仡佬族", "锡伯族", "阿昌族", "普米族", "塔吉克族", "怒族", "乌孜别克族", "俄罗斯族", "鄂温克族", "崩龙族", "保安族", "裕固族", "京族", "塔塔尔族", "独龙族", "鄂伦春族", "赫哲族", "门巴族", "珞巴族", "基诺族", "其他", "外国血统"};
 
 
     @Override
@@ -180,12 +183,14 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         rgDisTimeActNpmr.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                ttbDisStartActNpmr.setVisibility(View.VISIBLE);
+
                 if (checkedId == R.id.rb_dis_time_exact_act_npmr) {
                     // 发病时间精确就不显示区间
+                    ttbDisStartActNpmr.setVisibility(View.VISIBLE);
                     sbDisStartRangeActNpmr.setVisibility(View.GONE);
                 } else {
-                    ttbDisStartActNpmr.setVisibility(View.VISIBLE);
+                    ttbDisStartActNpmr.setVisibility(View.GONE);
+                    sbDisStartRangeActNpmr.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -446,11 +451,19 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
      * 保存前校验数据
      */
     private void preSave() {
-        //edit
-        NewPatientMedicalRecordBean newPatientMedicalRecordBean = new NewPatientMedicalRecordBean();
-        String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();
-        String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();
-        String editIebWristbandActNpmr = iebWristbandActNpmr.getEditContent();
+
+        if (mPatinetBean == null) {
+            mPatinetBean = new NewPatientMedicalRecordBean();
+        }
+
+        if (iebNameActNpmr.getEditContent().equals("")) {
+            ToastUtils.showShort("姓名不能为空");
+            return;
+        }
+        //edit 14
+        String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();//就诊id
+        String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();//入院id
+        String editIebWristbandActNpmr = iebWristbandActNpmr.getEditContent();//时间采集器腕带编号
         String editIebDisAddrActNpmr = iebDisAddrActNpmr.getEditContent();
         String editIebNameActNpmr = iebNameActNpmr.getEditContent();
         String editIebIdcardActNpmr = iebIdcardActNpmr.getEditContent();
@@ -462,25 +475,235 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         String editIebDomicileAddrActNpmr = iebDomicileAddrActNpmr.getEditContent();
         String editIebContactNameActNpmr = iebContactNameActNpmr.getEditContent();
         String editIebContactPhoneActNpmr = iebContactPhoneActNpmr.getEditContent();
-        LogUtils.d(editIebOutpatientIdActNpmr + "," + editIebLiveHosIdActNpmr + "," + editIebWristbandActNpmr + "," + editIebDisAddrActNpmr + "," + editIebNameActNpmr + "," + editIebAgeActNpmr + "," + editIebIdcardActNpmr + "," + editIebWeightActNpmr + "," + editIebHeightActNpmr + "," + editIebBmiActNpmr
-                + "," + editIebMedicareNumActNpmr + "," + editIebDomicileAddrActNpmr + "," + editIebContactNameActNpmr + "," + editIebContactPhoneActNpmr
-        );
-        //time
-        String time = ttbDisStartActNpmr.getTime();
-        ToastUtils.showShort(time);
-        LogUtils.d(time);
-        //setting
-        String sex = sbSexActNpmr.getRightText().toString();
-        String birth = sbBirthActNpmr.getRightText().toString();
-        String comeType = sbComeTypeActNpmr.getRightText().toString();
-        String inHosType = sbInHosTypeActNpmr.getRightText().toString();
-        String nation = sbNationActNpmr.getRightText().toString();
-        String medicareType = sbMedicareTypeActNpmr.getRightText().toString();
-        String seriousMedicare = sbSeriousMedicareActNpmr.getRightText().toString();
-        String disStartRange = sbDisStartRangeActNpmr.getRightText().toString();
-        LogUtils.d(sex + "," + birth + "," + "," + comeType + "," + "," + inHosType + "," + "," + nation + "," + medicareType + "," + seriousMedicare + "," + disStartRange);
-        newPatientMedicalRecord(newPatientMedicalRecordBean);
+        //time  1
+        String disStarTime = ttbDisStartActNpmr.getTime();
+        //14+1
+        mPatinetBean.setFullname(editIebNameActNpmr);
+        mPatinetBean.setAge(editIebAgeActNpmr);
+        mPatinetBean.setIdcardno(editIebIdcardActNpmr);
+        mPatinetBean.setContactname(editIebContactNameActNpmr);
+        mPatinetBean.setContactnumber(editIebContactPhoneActNpmr);
+        mPatinetBean.setAttacktime(disStarTime);
+        mPatinetBean.setAttackaddress(editIebDisAddrActNpmr);
+        mPatinetBean.setHeight(editIebHeightActNpmr);
+        mPatinetBean.setWeight(editIebWeightActNpmr);
+        mPatinetBean.setBmi(editIebBmiActNpmr);
+        mPatinetBean.setRegisteraddress(editIebDomicileAddrActNpmr);
+        mPatinetBean.setMedicarecardno(editIebMedicareNumActNpmr);
+        mPatinetBean.setPatientidofambulant(editIebOutpatientIdActNpmr);
+        mPatinetBean.setPatientidofhospitalization(editIebLiveHosIdActNpmr);
+        mPatinetBean.setTimecollectorcode(editIebWristbandActNpmr);
 
+        //setting 8
+        String sex = sbSexActNpmr.getRightText().toString();
+        if (sex.equals("男")) {
+            mPatinetBean.setGender("cpc_gender_1");
+        } else {
+            mPatinetBean.setGender("cpc_gender_2");
+        }
+
+        String birth = sbBirthActNpmr.getRightText().toString();
+        if (!birth.equals("请选择出生日期")) {
+            mPatinetBean.setBirthdate(birth);
+        }
+
+        /**
+         * 来院方式
+         */
+        String comeType = sbComeTypeActNpmr.getRightText().toString();
+        if (comeType.equals("本院急救车") || comeType.equals("当地120")) {
+            mPatinetBean.setComingway("cpc_lyfsv2_hj120");
+        } else if (comeType.equals("外院转院")) {
+            mPatinetBean.setComingway("cpc_lyfsv2_zy120");
+        } else if (comeType.equals("自行来院")) {
+            mPatinetBean.setComingway("cpc_lyfsv2_zxly");
+        } else {
+            mPatinetBean.setComingway("cpc_lyfsv2_ynfb");
+        }
+        //不同来院方式返回集合
+        ArrayList<String> getComeHosList = getComeHosType(comeType);
+        LogUtils.d(getComeHosList);
+        if (comeType.contains("本院急救车") || comeType.contains("当地120")) {
+            //呼救时间 timeofcall
+            mPatinetBean.setTimeofcall(getComeHosList.get(0));
+            //到达现场时间  arrive120time
+            mPatinetBean.setArrive120time(getComeHosList.get(1));
+            //首次医疗接触时间  fmctime
+            mPatinetBean.setFmctime(getComeHosList.get(2));
+            //到达医院大门时间 arrivegatetime
+            mPatinetBean.setArrivegatetime(getComeHosList.get(3));
+            //院内接诊时间  firstdoctorreceptiontime
+            mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(4));
+        } else if (comeType.contains("外院转院")) {
+            //转出医院入门时间 hospitaltransferfromarrivedtime
+            mPatinetBean.setHospitaltransferfromarrivedtime(getComeHosList.get(0));
+            ////首次医疗接触时间  fmctime
+            mPatinetBean.setFmctime(getComeHosList.get(1));
+            //转运救护车到达时间 transferambulancearrivaltime
+            mPatinetBean.setTransferambulancearrivaltime(getComeHosList.get(2));
+            //离开转出医院时间  hospitaltransferfromleavetime
+            mPatinetBean.setHospitaltransferfromleavetime(getComeHosList.get(3));
+            //到达医院大门时间     arrivegatetime
+            mPatinetBean.setArrivegatetime(getComeHosList.get(4));
+            //院内接诊时间 firstdoctorreceptiontime
+            mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(5));
+            //决定转院时间  decidetranstime
+            mPatinetBean.setDecidetranstime(getComeHosList.get(6));
+            //医院名称  hospitalnametransfrom
+            mPatinetBean.setHospitalnametransfrom(getComeHosList.get(7));
+        } else if (comeType.contains("自行来院")) {
+            ////到达医院大门时间  arrivegatetime
+            mPatinetBean.setArrivegatetime(getComeHosList.get(0));
+            //首次医疗接触时间  fmctime
+            mPatinetBean.setFmctime(getComeHosList.get(1));
+            //院内接诊时间  firstdoctorreceptiontime
+            mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(2));
+        } else if (comeType.contains("在院卒中")) {
+            //首次医疗接触时间    fmctime
+            mPatinetBean.setFmctime(getComeHosList.get(0));
+            //发病科室  attackdepartment
+            mPatinetBean.setAttackdepartment((getComeHosList.get(1)));
+            //会诊时间      emergencytime
+            mPatinetBean.setEmergencytime((getComeHosList.get(2)));
+            //离开科室  leaveattackdepartmenttime
+            mPatinetBean.setLeaveattackdepartmenttime((getComeHosList.get(3)));
+        }
+
+
+        /**
+         * 1急诊 2门诊 3其他医疗机构转入4其他
+         */
+        String inHosType = sbInHosTypeActNpmr.getRightText().toString();
+        if (inHosType.equals("急诊")) {
+            mPatinetBean.setBehospitalizedway("1");
+        } else if (inHosType.equals("门诊")) {
+            mPatinetBean.setBehospitalizedway("2");
+        } else if (inHosType.equals("其他医疗机构转入")) {
+            mPatinetBean.setBehospitalizedway("3");
+        } else if (inHosType.equals("其他")) {
+            mPatinetBean.setBehospitalizedway("4");
+        }
+
+
+        /**
+         * 民族
+         */
+        String nation = sbNationActNpmr.getRightText().toString();
+        for (int i = 0; i < OPTION.length; i++) {
+            if (nation.equals(OPTION[i])) {
+                mPatinetBean.setNation(i + 1 + "");
+            }
+
+        }
+
+        /**
+         *  医保类型
+         *  "cpc_yblx_czzgjbylbx": "城镇职工基本医疗保险",
+         *  "cpc_yblx_xxnchzyl": "新型农村合作医疗",
+         *  "cpc_yblx_czjmjbylbx": "城镇居民基本医疗保险",
+         *  "cpc_yblx_zf": "自费",
+         *  "cpc_yblx_jm": "军免"
+         */
+        String medicareType = sbMedicareTypeActNpmr.getRightText().toString();
+        if (medicareType.contains("城镇职工基本医疗保险")) {
+            mPatinetBean.setMedicaretype("cpc_yblx_czzgjbylbx");
+        } else if (comeType.contains("城镇居民基本医疗保险")) {
+            mPatinetBean.setMedicaretype("cpc_yblx_czjmjbylbx");
+        } else if (comeType.contains("自费")) {
+            mPatinetBean.setMedicaretype("cpc_yblx_zf");
+        } else if (comeType.contains("军免")) {
+            mPatinetBean.setMedicaretype("cpc_yblx_jm");
+        }
+
+        /**
+         * 大病医保
+         */
+        String seriousMedicare = sbSeriousMedicareActNpmr.getRightText().toString();
+        if (seriousMedicare.contains("是")) {
+            mPatinetBean.setSeriousillnessmedicare("1");
+        } else {
+            mPatinetBean.setSeriousillnessmedicare("0");
+        }
+
+        /**
+         * 发病区间
+         */
+        String disStartRange = sbDisStartRangeActNpmr.getRightText().toString();
+        if (disStartRange.contains("凌晨(0点到6点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_0-6");
+        } else if (disStartRange.contains("清晨(6到8点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_6-8");
+        } else if (disStartRange.contains("上午(8到12点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_8-12");
+        } else if (disStartRange.contains("中午(12到14点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_12-14");
+        } else if (disStartRange.contains("下午(14到17点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_14-17");
+        } else if (disStartRange.contains("傍晚(17到19点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_17-19");
+        } else if (disStartRange.contains("晚上(19到24点)")) {
+            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_19-24");
+        }
+
+        /**
+         * 调用新建接口
+         */
+        newPatientMedicalRecord(mPatinetBean);
+
+
+    }
+
+    /**
+     * 获得来院方式的时间和Edit值
+     *
+     * @param comeType
+     * @return
+     */
+    private ArrayList<String> getComeHosType(String comeType) {
+        switch (comeType) {
+            case "本院急救车":
+                return getTimeAndEdit();
+            case "当地120":
+
+                return getTimeAndEdit();
+            case "外院转院":
+
+
+                return getTimeAndEdit();
+            case "自行来院":
+
+                return getTimeAndEdit();
+
+
+            case "在院卒中":
+
+                return getTimeAndEdit();
+
+        }
+        return null;
+    }
+
+    /**
+     * 获得时间和输入值集合
+     *
+     * @return ArrayList<String>
+     */
+    private ArrayList<String> getTimeAndEdit() {
+
+        ArrayList<String> times = new ArrayList<>();
+        for (int i = 0; i < llComeHosActNpmr.getChildCount(); i++) {
+            View v = llComeHosActNpmr.getChildAt(i);
+            if (v instanceof ItemEditBar) {
+                ItemEditBar ItemEditBar = (ItemEditBar) llComeHosActNpmr.getChildAt(i);
+                times.add(ItemEditBar.getEditContent());
+
+            } else if (v instanceof TextTimeBar) {
+                TextTimeBar textTimeBar = (TextTimeBar) llComeHosActNpmr.getChildAt(i);
+                times.add(textTimeBar.getTime());
+            }
+        }
+
+        return times;
 
     }
 
@@ -502,8 +725,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
      */
     private void showPickerView() {
         List<String> strings = new ArrayList<>();
-       String[] OPTION = new String[]{"汉族", "蒙古族", "回族", "藏族", "维吾尔族", "苗族", "彝族", "壮族", "布依族", "朝鲜族", "满族", "侗族", "瑶族", "白族", "土家族", "哈尼族", "哈萨克族", "傣族", "黎族", "傈僳族", "佤族", "畲族", "高山族", "拉祜族", "水族", "东乡族", "纳西族", "景颇族", "柯尔克孜族", "土族", "达斡尔族", "仫佬族", "羌族", "布朗族", "撒拉族", "毛难族"
-                , "仡佬族", "锡伯族", "阿昌族", "普米族", "塔吉克族", "怒族", "乌孜别克族", "俄罗斯族", "鄂温克族", "崩龙族", "保安族", "裕固族", "京族", "塔塔尔族", "独龙族", "鄂伦春族", "赫哲族", "门巴族", "珞巴族", "基诺族", "其他", "外国血统"};
         for (int i = 0; i < OPTION.length; i++) {
             strings.add(OPTION[i]);
         }
@@ -798,13 +1019,15 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         public void setIdnum(String idnum) {
             this.idnum = idnum;
         }
+
     }
 
 
     /**
      * 新建患者信息
      */
-    private void newPatientMedicalRecord(NewPatientMedicalRecordBean newPatientMedicalRecordBean) {
+    private void newPatientMedicalRecord(NewPatientMedicalRecordBean
+                                                 newPatientMedicalRecordBean) {
         String request = GsonUtils.getGson().toJson(newPatientMedicalRecordBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -816,7 +1039,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                showToast("保存数据成功");
+                                showToast("保存数据成功" + response.body().getResult() + "***" + response.body().getMessage() + "***" + response.body().getData());
                                 // TODO
                             } else {
                                 showToast(response.body().getMessage());
@@ -826,7 +1049,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
+                        showToast(call.toString());
                     }
                 });
     }
