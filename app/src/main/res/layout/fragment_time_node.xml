@@ -2,22 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragment.TimeNodeFragment">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/include_bottom_view"
-        layout="@layout/view_two_horizontal_bottom_button"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/buttom_normal_height"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_content_frag_time_node"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/include_bottom_view"
+        android:layout_above="@id/btn_save"
         android:overScrollMode="never"
         android:scrollbars="none"
         tools:itemCount="5"

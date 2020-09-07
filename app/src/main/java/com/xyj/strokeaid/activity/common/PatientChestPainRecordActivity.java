@@ -10,8 +10,6 @@ import android.widget.Chronometer;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -37,7 +35,6 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainInitDrugFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainManagementFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainScoringToolsFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
 import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
@@ -45,13 +42,13 @@ import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.chestpain.TreatmentDecisionFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
+import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * PatientChestPainRecordActivity
@@ -219,6 +216,9 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 case 13:
                     // 患者转归
                     return PatientSumFragment.newInstance(patientId,docId);
+                case 14:
+                    // 时间节点
+                    return TimeNodeFragment.newInstance(patientId);
                 default:
                     return EmptyFragment.newInstance();
             }

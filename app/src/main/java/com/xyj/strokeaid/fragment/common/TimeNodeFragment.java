@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.fragment.stroke;
+package com.xyj.strokeaid.fragment.common;
 
 import android.os.Bundle;
 import android.view.View;
@@ -44,8 +44,7 @@ public class TimeNodeFragment extends BaseFragment {
     @BindView(R.id.rv_content_frag_time_node)
     RecyclerView rvContentFragTimeNode;
 
-    private String mPatientId;
-    private String mDocId;
+    private String mRecordId;
 
     private TimeNodeRvAdapter mTimeNodeRvAdapter;
     private List<TimeNodeBean> mTimeNodeBeans;
@@ -55,11 +54,10 @@ public class TimeNodeFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static TimeNodeFragment newInstance(String patientId, String docId) {
+    public static TimeNodeFragment newInstance(String recordId) {
         TimeNodeFragment fragment = new TimeNodeFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -68,8 +66,7 @@ public class TimeNodeFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

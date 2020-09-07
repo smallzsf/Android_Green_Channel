@@ -14,8 +14,6 @@ import android.widget.Chronometer;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
@@ -47,12 +45,11 @@ import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.stroke.TimeNodeFragment;
+import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.stroke.TransferFragment;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -285,7 +282,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return TransferFragment.newInstance(patientId, docId);
                 case 13:
                     // 时间节点
-                    return TimeNodeFragment.newInstance(patientId, docId);
+                    return TimeNodeFragment.newInstance(patientId);
                 default:
                     return EmptyFragment.newInstance();
             }
