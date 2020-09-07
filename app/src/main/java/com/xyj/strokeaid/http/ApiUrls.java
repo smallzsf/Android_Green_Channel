@@ -160,6 +160,26 @@ public class ApiUrls {
 
     }
 
+    /**
+     * 生命体征查询
+     */
+    public static final String NET_URL_CHEST_PAIN_GET_VITALSIGNS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/getByRecordId";
+
+    /**
+     * 生命体征编辑
+     */
+    public static final String NET_URL_CHEST_PAIN_GET_EDIT_VITALSIGNS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/edit";
+
+    /**
+     * 胸痛中心-胸痛诊疗-心电图主表 查询
+     */
+    public static final String NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/getByRecordId";
+
+    /**
+     * 胸痛中心-胸痛诊疗-心电图主表 添加
+     */
+    public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+
 }
 
     

@@ -141,9 +141,9 @@ public class ChangePasswordActivity extends BaseActivity {
 
                     }
                 });
-
-
     }
+
+
 
     private ChangePasswordPostBean getRequestBean(String oldPwd, String newPwd) {
 

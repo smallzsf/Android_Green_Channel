@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -15,11 +16,21 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainEcgExaminFragment
@@ -31,14 +42,24 @@ import butterknife.BindView;
  */
 public class ChestPainEcgExaminFragment extends BaseFragment {
 
-    @BindView(R.id.rb_electrocardiogram_has)
+    @BindView(R.id.rb_electrocardiogram_has) //有
     RadioButton rbElectrocardiogramHas;
     @BindView(R.id.rb_electrocardiogram_none)
-    RadioButton rbElectrocardiogramNone;
+    RadioButton rbElectrocardiogramNone;//无
     @BindView(R.id.rg_electrocardiogram)
-    RadioGroup rgElectrocardiogram;
+    RadioGroup rgElectrocardiogram;//心电图
     @BindView(R.id.tv_add_record)
-    TextView tvAddRecord;
+    TextView tvAddRecord;//新增心电记录
+
+    @BindView(R.id.ttbl_ecg_check_time)
+    TextTimeBar rrbElectrocardTime;//心电检查时间
+
+    @BindView(R.id.ttbl_ecg_diagnosis_time)
+    TextTimeBar rrbElectrocardDiagnosisTime;//诊断时间
+
+    @BindView(R.id.ed_ecg_diagnosis_conclusion)
+    EditText rrbElectrocardDiagnosisConclusion;//请输入心电图诊断结论
+
     @BindView(R.id.ll_ecg_record_one)
     LinearLayout llEcgRecordOne;
     @BindView(R.id.iv_ecg_record_close_two)
@@ -50,13 +71,13 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     @BindView(R.id.ll_ecg_record_three)
     LinearLayout llEcgRecordThree;
     @BindView(R.id.rb_ecg_transmission_120)
-    RadioButton rbEcgTransmission120;
+    RadioButton rbEcgTransmission120;//接收120/网络医院心电图"
     @BindView(R.id.rb_ecg_transmission_none)
-    RadioButton rbEcgTransmissionNone;
+    RadioButton rbEcgTransmissionNone;//未传输
     @BindView(R.id.rg_ecg_transmission)
-    RadioGroup rgEcgTransmission;
+    RadioGroup rgEcgTransmission;//远程心电传输
     @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
+    EditSpinner esVitalSignAware;//传输方式
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
@@ -131,7 +152,6 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -166,8 +186,35 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
         tvAddRecord.setOnClickListener(onClickListener);
         ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
         ivEcgRecordCloseThree.setOnClickListener(onClickListener);
-
-
     }
 
+
+    /**
+     * 生命体征编辑
+     */
+    private void editVitalSigns(SendAddVitalSignsDataBean sendAddVitalSignsDataBean) {
+        String request = GsonUtils.getGson().toJson(sendAddVitalSignsDataBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .editVitalSigns(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存成功");
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
 }

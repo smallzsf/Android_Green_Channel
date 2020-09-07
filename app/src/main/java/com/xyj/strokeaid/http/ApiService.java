@@ -4,6 +4,8 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
+import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
+import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendCTDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
@@ -168,11 +170,30 @@ public interface ApiService {
     Call<BaseObjectBean> diseaseRecordGetByRecordid(@Body RequestBody info);
 
     /**
-     * 新建患者信息
+     * 生命体征查询
      * @param info
      * @return
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_RECORD)
-    Call<BaseObjectBean> newPatienMedical(@Body RequestBody info);
+    @POST(ApiUrls.NET_URL_CHEST_PAIN_GET_VITALSIGNS)
+    Call<RequestGetVitalSignsBean> getVitalSigns(@Body RequestBody info);
+
+
+    /**
+     * 生命体征编辑
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_PAIN_GET_EDIT_VITALSIGNS)
+    Call<BaseObjectBean> editVitalSigns(@Body RequestBody info);
+
+    /**
+     * 胸痛中心-胸痛诊疗-心电图主表 查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY)
+    Call<RequestElectrocardiogramDataBean> getECGInquiry(@Body RequestBody info);
 }

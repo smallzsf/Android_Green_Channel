@@ -111,12 +111,14 @@
                 android:orientation="vertical">
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_check_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="心电检查时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_diagnosis_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
@@ -142,6 +144,7 @@
                     android:orientation="vertical">
 
                     <EditText
+                        android:id="@+id/ed_ecg_diagnosis_conclusion"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -223,6 +226,7 @@
                 </ImageView>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_check_time1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_1"
@@ -230,6 +234,7 @@
                     tl:title="心电检查时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_diagnosis_time1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_1"
@@ -259,6 +264,7 @@
                     android:orientation="vertical">
 
                     <EditText
+                        android:id="@+id/ed_ecg_diagnosis_conclusion1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -328,7 +334,7 @@
                 android:layout_marginBottom="@dimen/dp_7"
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_ecg_record_close_three"
@@ -341,6 +347,7 @@
                 </ImageView>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_check_time2"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_1"
@@ -349,6 +356,7 @@
                     tl:title="心电检查时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttbl_ecg_diagnosis_time2"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginLeft="@dimen/dp_1"
@@ -378,6 +386,7 @@
                     android:orientation="vertical">
 
                     <EditText
+                        android:id="@+id/ed_ecg_diagnosis_conclusion2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
@@ -483,6 +492,7 @@
                 </RadioGroup>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/rtb_ecg_receiving_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
