@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_in_hos_fisher_frag_ss"
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 app:title="入院Fisher分级" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
          <!--   <com.xyj.strokeaid.view.NihssItemBar
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院Hunt-Hess评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_live_chads2_frag_ss"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院CHADS2评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_has_bled_frag_ss"
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 app:title="HAS-BLED评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <com.xyj.strokeaid.view.NihssItemBar
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 app:title="洼田吞咽评定" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     app:title="体积" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <com.xyj.strokeaid.view.NihssItemBar
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     app:title="位置" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <com.xyj.strokeaid.view.NihssItemBar

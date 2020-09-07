@@ -40,9 +40,9 @@ import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
 import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.chestpain.TreatmentDecisionFragment;
+import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -193,11 +193,11 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     // 血液检查
                     return ChestPainBloodTestFragment.newInstance(patientId, docId);
                 case 6:
-                    //  辅助检查
-                    return ChestPainAssistantTestFragment.newInstance(patientId, docId);
+                    //  影像检查
+                    return ChestPainAssistantTestFragment.newInstance(patientId);
                 case 7:
                     // 初始诊断
-                    return  OriginalDiagnoseFragment.newInstance(patientId,docId);
+                    return OriginalDiagnoseFragment.newInstance(patientId);
                 case 8:
                     // 初始药物
                     return ChestPainInitDrugFragment.newInstance(patientId, docId);
@@ -215,10 +215,10 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     return ChestPainManagementFragment.newInstance();
                 case 13:
                     // 患者转归
-                    return PatientSumFragment.newInstance(patientId,docId);
+                    return PatientSumFragment.newInstance(patientId, docId);
                 case 14:
                     // 时间节点
-                    return TimeNodeFragment.newInstance(patientId);
+                    return TimeNodeFragment.newInstance(patientId, 2);
                 default:
                     return EmptyFragment.newInstance();
             }

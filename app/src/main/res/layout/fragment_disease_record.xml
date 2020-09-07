@@ -70,7 +70,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_marginBottom="@dimen/dp_5"
                 zhy:max_select="1" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <TextView
                 style="@style/Text_Dark_Content_Style"
@@ -145,7 +145,7 @@
                 android:layout_marginBottom="@dimen/dp_5"
                 zhy:max_select="1" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -244,7 +244,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -272,7 +272,7 @@
                     android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -13,14 +13,14 @@
 
         <include layout="@layout/layout_original_top" />
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <include layout="@layout/layout_check_shadow" />
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <include layout="@layout/layout_ct" />
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             </RadioGroup>
         </LinearLayout>
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <com.xyj.strokeaid.view.TextTimeBar
             android:id="@+id/tv_cure_time"
@@ -80,13 +80,13 @@
             android:layout_height="@dimen/item_normal_height"
             app:title="开始抗凝剂治疗时间" />
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
         <!--治疗策略-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginLeft="@dimen/item_normal_margin"
+            android:layout_marginRight="@dimen/item_normal_margin"
             android:orientation="vertical">
 
             <TextView
@@ -137,15 +137,15 @@
 
         </LinearLayout>
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <LinearLayout
             android:id="@+id/ll_taboo"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
             android:layout_margin="@dimen/dp_12"
-            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginLeft="@dimen/item_normal_margin"
+            android:layout_marginRight="@dimen/item_normal_margin"
             android:background="@drawable/shape_edittext_bg"
             android:visibility="gone">
 
@@ -186,7 +186,7 @@
             </RadioGroup>
         </LinearLayout>
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <include layout="@layout/view_two_horizontal_bottom_button" />
     </LinearLayout>

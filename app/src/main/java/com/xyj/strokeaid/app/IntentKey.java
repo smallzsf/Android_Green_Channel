@@ -40,4 +40,14 @@ public final class IntentKey {
      * 2、 查看
      */
     public static final String VIEW_TYPE = "VIEW_TYPE";
+
+    /**
+     * 胸痛 诊断类型
+     */
+    public static final String DIAGNOSE_TYPE = "DIAGNOSE_TYPE";
+
+    /**
+     * 患者自愿放弃后续治疗
+     */
+    public static final String PATIENT_GIVE_UP = "PATIENT_GIVE_UP";
 }

@@ -20,13 +20,13 @@
             app:title="确诊时间" />
 
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
         <!--院内-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
-            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+            android:layout_marginLeft="@dimen/item_normal_margin"
+            android:layout_marginRight="@dimen/item_normal_margin">
 
             <TextView
                 android:id="@+id/give_up_cure"
@@ -136,15 +136,15 @@
             </RadioGroup>
         </LinearLayout>
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <!--NYHA分级-->
         <LinearLayout
             android:id="@+id/ll_nyha"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
-            android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-            android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+            android:layout_marginLeft="@dimen/item_normal_margin"
+            android:layout_marginRight="@dimen/item_normal_margin"
             android:visibility="gone">
 
             <TextView
@@ -201,7 +201,7 @@
             </RadioGroup>
         </LinearLayout>
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
         <!--住院期间并发症-->
         <include layout="@layout/layout_inner_complication" />
 

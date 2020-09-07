@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
+
+        <TextView
+            android:id="@+id/give_up_cure"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="患者自愿放弃治疗" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_give_up_yes"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_give_up_no"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="否" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <include layout="@layout/include_diagnose_time_and_doc" />
+
+    <View style="@style/horizontal_divider" />
+
+    <include layout="@layout/include_non_acs_heart"/>
+
+    <View style="@style/horizontal_divider" />
+
+    <include layout="@layout/include_treatment_measure" />
+
+</LinearLayout>

@@ -239,6 +239,7 @@
         <activity android:name=".activity.score.TSActivity" />
         <activity android:name=".activity.score.ISSActivity" />
         <activity android:name=".activity.score.TIActivity" />
+        <activity android:name=".activity.common.TimeNodeActivity" />
     </application>
 
 </manifest>

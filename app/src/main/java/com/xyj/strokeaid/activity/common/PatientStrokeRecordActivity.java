@@ -282,7 +282,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return TransferFragment.newInstance(patientId, docId);
                 case 13:
                     // 时间节点
-                    return TimeNodeFragment.newInstance(patientId);
+                    return TimeNodeFragment.newInstance(patientId, 1);
                 default:
                     return EmptyFragment.newInstance();
             }

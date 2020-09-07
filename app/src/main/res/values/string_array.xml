@@ -130,4 +130,26 @@
         <item>神经内科</item>
         <item>其他</item>
     </string-array>
+
+    <string-array name="original_diagnose">
+        <item>STEMI</item>
+        <item>NSTEMI</item>
+        <item>UA</item>
+        <item>主动脉夹层</item>
+        <item>肺动脉拴塞</item>
+        <item>非ACS心源性胸痛</item>
+        <item>其他非心源性胸痛</item>
+        <item>待查</item>
+    </string-array>
+
+    <string-array name="confirm_diagnose">
+        <item>STEMI</item>
+        <item>NSTEMI</item>
+        <item>UA</item>
+        <item>主动脉夹层</item>
+        <item>肺动脉拴塞</item>
+        <item>非ACS心源性胸痛</item>
+        <item>其他非心源性胸痛</item>
+    </string-array>
+
 </resources>

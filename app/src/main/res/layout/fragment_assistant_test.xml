@@ -1,115 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    xmlns:zhy="http://schemas.android.com/tools"
-    android:id="@+id/ll_vital_signs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
     android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/dp_7"
-        android:text="影像检查"
-        android:textColor="@color/black"
-        android:textSize="@dimen/item_title_size" />
-
-
-    <RadioGroup
-        android:id="@+id/rg_chest_pain_diseaseRecord"
+    <include
+        android:id="@+id/ll_bottom_button"
+        layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/item_normal_margin" />
+
+    <TextView
+        android:id="@+id/tv_title_frag_at"
+        style="@style/Text_Blue_Content_Style"
+        android:text="影像检查" />
+
+    <LinearLayout
+        android:id="@+id/ll_image_check_types"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_below="@id/tv_title_frag_at"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <RadioButton
-            android:id="@+id/rb_emergency_ct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="急诊CT"></RadioButton>
+        <CheckBox
+            android:id="@+id/cb_emergency_ct"
+            style="@style/XyjCheckBoxHorizontalWeight"
+            android:text="急诊CT" />
 
-        <RadioButton
-            android:id="@+id/rb_color_ultrasound"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="彩超"></RadioButton>
+        <CheckBox
+            android:id="@+id/cb_color_ultrasound"
+            style="@style/XyjCheckBoxHorizontalWeight"
+            android:text="彩超" />
 
-        <RadioButton
-            android:id="@+id/rb_not_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="未做"></RadioButton>
+        <CheckBox
+            android:id="@+id/cb_not_done"
+            style="@style/XyjCheckBoxHorizontalWeight"
+            android:text="未做" />
 
-    </RadioGroup>
+    </LinearLayout>
 
 
     <ScrollView
-        android:id="@+id/sv_emergency_ct"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_button"
+        android:layout_below="@id/ll_image_check_types"
         android:overScrollMode="never"
-        android:scrollbars="none"
-        android:visibility="gone"
-       >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--  <com.flyco.tablayout.SegmentTabLayout
-                  android:layout_marginBottom="@dimen/dp_12"
-                  android:layout_marginTop="@dimen/dp_12"
-                  android:id="@+id/stl_title_frag_od"
-                  android:layout_width="match_parent"
-                  android:layout_height="@dimen/item_normal_height"
-                  android:layout_gravity="center_horizontal"
-                  android:layout_marginStart="@dimen/dp_8"
-                  android:layout_marginEnd="@dimen/dp_8"
-                  tl:tl_bar_color="@color/white"
-                  tl:tl_indicator_color="@color/colorPrimary"
-                  tl:tl_indicator_corner_radius="8dp"
-                  tl:tl_tab_padding="20dp"
-                  tl:tl_textsize="@dimen/item_title_size" />-->
-
             <LinearLayout
                 android:id="@+id/ll_emergency_ct"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/item_normal_margin">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:text="检查地点"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        android:gravity="center_vertical"
+                        android:text="检查地点:" />
 
-                    <EditText
-                        android:id="@+id/et_ct_place"
+                    <RadioGroup
+                        android:id="@+id/rg_emergency_ct_place"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:layout_marginLeft="@dimen/item_normal_margin"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单行输入"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:singleLine="true"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_emergency_room"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="急诊" />
+
+                        <RadioButton
+                            android:id="@+id/rb_non_emergency_room"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="非急诊" />
+
+                        <RadioButton
+                            android:id="@+id/rb_other_place"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="其他" />
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -117,93 +108,67 @@
                     android:id="@+id/ttb_notice"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    tl:title="通知时间" />
+                    tl:bottomLineVisible="true"
+                    tl:title="通知时间"
+                    tl:topLineVisible="true" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_getready"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
                     tl:title="准备完成时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_arrival"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
                     tl:title="患者到达时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_check"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
                     tl:title="患者检查时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_ct_report"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
                     tl:title="CT报告时间" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_7"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="生成报告"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_12"
-                    android:layout_marginTop="@dimen/dp_12"
-                    android:background="@color/color_bg"
                     android:gravity="center_vertical"
-                    android:orientation="vertical">
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="诊断结果" />
 
-                    <TextView
-                        style="@style/Text_Dark_Content_Style"
-                        android:text="诊断结果" />
-
-
-                    <EditText
-                        android:id="@+id/et_check_result"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_90"
-                        android:layout_marginTop="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:layout_marginBottom="@dimen/dp_10"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="start"
-                        android:hint="请输入诊断结果"
-                        android:paddingLeft="@dimen/dp_6"
-                        android:paddingTop="@dimen/dp_6"
-                        android:textSize="@dimen/item_content_size" />
-
-
-                    <com.zhy.view.flowlayout.TagFlowLayout
-                        android:id="@+id/tfl_action_in_chief"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/dp_5"
-                        android:maxLength="100"
-                        zhy:max_select="1"></com.zhy.view.flowlayout.TagFlowLayout>
-
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/et_check_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start|top"
+                    android:hint="请输入诊断结果"
+                    android:padding="@dimen/item_normal_margin"
+                    android:textSize="@dimen/item_content_size" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_12"
+                    android:layout_marginEnd="@dimen/dp_12"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
@@ -217,7 +182,6 @@
                         android:id="@+id/tv_ct_check_post"
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
@@ -229,6 +193,8 @@
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
 
+                <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -238,7 +204,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
@@ -263,128 +228,48 @@
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
+
             </LinearLayout>
 
-
-
-
-            <include layout="@layout/view_two_horizontal_bottom_button"
-                android:layout_marginTop="@dimen/dp_20"
+            <LinearLayout
+                android:id="@+id/ll_ultrasound_color"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="match_parent" />
+                android:orientation="vertical"
+                android:visibility="gone">
 
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_color_ct_notice"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
+                    tl:title="通知彩超室"
+                    tl:topLineVisible="true" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_color_ct_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
+                    tl:title="彩超检查时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_color_ct_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:bottomLineVisible="true"
+                    tl:title="彩超结果时间" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
         </LinearLayout>
 
     </ScrollView>
 
 
-    <LinearLayout
-        android:id="@+id/ll_ultrasound_color"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-       >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dp_12"
-                android:gravity="center"
-                android:text="检查地点"
-                android:textColor="@color/color_222222"
-                android:textSize="@dimen/item_title_size" />
-
-            <EditText
-                android:id="@+id/et_color_ct_place"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="@dimen/dp_12"
-                android:layout_marginStart="@dimen/dp_12"
-                android:background="@drawable/shape_grey_stroke"
-                android:hint="单行输入"
-                android:inputType="text"
-                android:paddingStart="@dimen/dp_8"
-                android:singleLine="true"
-                android:textColor="@color/color_222222"
-                android:textColorHint="@color/color_666666"
-                android:textSize="13sp" />
-
-        </LinearLayout>
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/ttb_color_ct_notice"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            tl:title="通知彩超室时间" />
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/ttb_color_ct_check"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            tl:title="彩超检查时间" />
-
-        <com.xyj.strokeaid.view.TextTimeBar
-            android:id="@+id/ttb_color_ct_result"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            tl:title="彩超结果时间" />
-
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/title_bar_height"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/dp_8"
-            android:layout_marginTop="@dimen/dp_20"
-            android:paddingEnd="@dimen/dp_8">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_get_data_color_ct"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/buttom_normal_height"
-                android:layout_weight="1"
-                android:background="@drawable/login_btn_bg"
-                android:gravity="center"
-                android:text="@string/get_data"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/item_title_size" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_confirm_color_ct"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/buttom_normal_height"
-                android:layout_marginStart="@dimen/dp_18"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:background="@drawable/login_btn_bg"
-                android:text="@string/save"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/item_title_size" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <!--<include
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />-->
-
-
-    <!--   <include
-           android:id="@+id/menu"
-           layout="@layout/view_bottom_menu"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true" />-->
-</LinearLayout>
+</RelativeLayout>

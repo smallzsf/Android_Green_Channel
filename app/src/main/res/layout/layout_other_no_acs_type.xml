@@ -102,8 +102,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_strategy"

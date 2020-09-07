@@ -4,11 +4,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,10 +24,6 @@ import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
-import com.zhy.view.flowlayout.TagFlowLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -46,32 +43,20 @@ import retrofit2.Response;
  */
 public class ChestPainAssistantTestFragment extends BaseFragment {
 
-    /*   @BindView(R.id.stl_title_frag_od)
-       SegmentTabLayout stlTitleFragOd;*/
-    @BindView(R.id.tfl_action_in_chief)
-    TagFlowLayout tflActionInChief;
-    @BindView(R.id.ll_emergency_ct)
-    LinearLayout llEmergencyCt;
-    @BindView(R.id.ll_ultrasound_color)
-    LinearLayout llUltrasoundColor;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_vital_signs)
-    LinearLayout llVitalSigns;
-    @BindView(R.id.rg_chest_pain_diseaseRecord)
-    RadioGroup rgChestPainDiseaseRecord;
-    @BindView(R.id.sv_emergency_ct)
-    ScrollView svEmergencyCt;
-    @BindView(R.id.rb_emergency_ct)
-    RadioButton rbEmergencyCt;
-    @BindView(R.id.rb_color_ultrasound)
-    RadioButton rbColorUltrasound;
-    @BindView(R.id.rb_not_done)
-    RadioButton rbNotDone;
-    @BindView(R.id.et_ct_place)
-    EditText etCtPlace;
+    @BindView(R.id.tv_title_frag_at)
+    TextView tvTitleFragAt;
+    @BindView(R.id.cb_emergency_ct)
+    CheckBox cbEmergencyCt;
+    @BindView(R.id.cb_color_ultrasound)
+    CheckBox cbColorUltrasound;
+    @BindView(R.id.cb_not_done)
+    CheckBox cbNotDone;
+    @BindView(R.id.ll_image_check_types)
+    LinearLayout llImageCheckTypes;
+    @BindView(R.id.rb_non_emergency_room)
+    RadioButton rbNonEmergencyRoom;
+    @BindView(R.id.rb_other_place)
+    RadioButton rbOtherPlace;
     @BindView(R.id.ttb_notice)
     TextTimeBar ttbNotice;
     @BindView(R.id.ttb_getready)
@@ -80,44 +65,44 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     TextTimeBar ttbArrival;
     @BindView(R.id.ttb_check)
     TextTimeBar ttbCheck;
+    @BindView(R.id.ttb_ct_report)
+    TextTimeBar ttbCtReport;
     @BindView(R.id.et_check_result)
     EditText etCheckResult;
     @BindView(R.id.tv_ct_check_post)
     TextView tvCtCheckPost;
     @BindView(R.id.tv_ct_result_post)
     TextView tvCtResultPost;
-    @BindView(R.id.et_color_ct_place)
-    EditText etColorCtPlace;
+    @BindView(R.id.ll_emergency_ct)
+    LinearLayout llEmergencyCt;
     @BindView(R.id.ttb_color_ct_notice)
     TextTimeBar ttbColorCtNotice;
     @BindView(R.id.ttb_color_ct_check)
     TextTimeBar ttbColorCtCheck;
     @BindView(R.id.ttb_color_ct_result)
     TextTimeBar ttbColorCtResult;
-    @BindView(R.id.btn_get_data_color_ct)
-    AppCompatButton btnGetDataColorCt;
-    @BindView(R.id.btn_confirm_color_ct)
-    AppCompatButton btnConfirmColorCt;
-    @BindView(R.id.ttb_ct_report)
-    TextTimeBar ttbCtReport;
+    @BindView(R.id.ll_ultrasound_color)
+    LinearLayout llUltrasoundColor;
+    @BindView(R.id.rb_emergency_room)
+    RadioButton rbEmergencyRoom;
+    @BindView(R.id.rg_emergency_ct_place)
+    RadioGroup rgEmergencyCtPlace;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
 
-    private String mPatientId;
-    private String mDocId;
-    private List<String> list;
-
-    private int titlePosition = 0;
     private ChestPainImageExaminationBean.DataBean data;
-
+    private String mRecordId;
 
     public ChestPainAssistantTestFragment() {
 
     }
 
-    public static ChestPainAssistantTestFragment newInstance(String patientId, String docId) {
+    public static ChestPainAssistantTestFragment newInstance(String recordId) {
         ChestPainAssistantTestFragment fragment = new ChestPainAssistantTestFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -126,8 +111,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.PATIENT_ID);
         }
     }
 
@@ -138,33 +122,11 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
-
         loadData();
-
-        //  refrashTitleData();
-
-    }
-
-    private void refrashTitleData() {
-        if (titlePosition == 0) {
-            llEmergencyCt.setVisibility(View.VISIBLE);
-            llUltrasoundColor.setVisibility(View.GONE);
-        } else {
-            llEmergencyCt.setVisibility(View.GONE);
-            llUltrasoundColor.setVisibility(View.VISIBLE);
-        }
     }
 
 
     private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-//        esVitalSignAware.setItemData(list);
 
         RecordIdUtil p = new RecordIdUtil();
         p.setRecordId(RecordIdUtil.RECORD_ID);
@@ -204,27 +166,25 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (data == null) {
             return;
         }
-        switch (data.getImageexam()) {
-            case "cpc_imageexam_ct":
-                //急诊ct
-                rbEmergencyCt.setChecked(true);
-                break;
-            case "cpc_imageexam_cdu":
-                //彩超
-                rbColorUltrasound.setChecked(true);
-                break;
-            case "cpc_imageexam_none":
-                //未做
-                rbNotDone.setChecked(true);
-                break;
-            default:
-                rbNotDone.setChecked(true);
-                break;
+        if (data.getImageexam().contains("cpc_imageexam_none")) {
+            cbNotDone.setChecked(true);
+        } else {
+            if (data.getImageexam().contains("cpc_imageexam_ct")) {
+                cbEmergencyCt.setChecked(true);
+            }
+            if (data.getImageexam().contains("cpc_imageexam_cdu")) {
+                cbColorUltrasound.setChecked(true);
+            }
         }
-        if (!TextUtils.isEmpty(data.getCtexamdepartment())) {
-            etCtPlace.setText(data.getCtexamdepartment());
-            etColorCtPlace.setText(data.getCtexamdepartment());
+        String ctexamdepartment = data.getCtexamdepartment();
+        if (TextUtils.equals("cpc_ctjcdd_jz", ctexamdepartment)) {
+            rgEmergencyCtPlace.check(R.id.rb_emergency_room);
+        } else if (TextUtils.equals("cpc_ctjcdd_fjz", ctexamdepartment)) {
+            rgEmergencyCtPlace.check(R.id.rb_non_emergency_room);
+        } else if (TextUtils.equals("cpc_ctjcdd_qt", ctexamdepartment)) {
+            rgEmergencyCtPlace.check(R.id.rb_other_place);
         }
+
         if (!TextUtils.isEmpty(data.getCduexamnoticetime())) {
             ttbNotice.setTime(data.getCduexamnoticetime());
         }
@@ -259,44 +219,39 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
-      /*  stlTitleFragOd.setTabData(Constants.CHEST_OTHER_DISPOSAL_TITLES);
-        stlTitleFragOd.setOnTabSelectListener(new OnTabSelectListener() {
+        cbNotDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onTabSelect(int position) {
-                Log.e("zhangshifu", "" + position);
-                titlePosition = position;
-                refrashTitleData();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llEmergencyCt.setVisibility(isChecked ? View.GONE : View.VISIBLE);
+                llUltrasoundColor.setVisibility(isChecked ? View.GONE : View.VISIBLE);
+                if (isChecked) {
+                    cbColorUltrasound.setChecked(false);
+                    cbEmergencyCt.setChecked(false);
+                }
             }
-
+        });
+        cbEmergencyCt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onTabReselect(int position) {
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llEmergencyCt.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                if (isChecked) {
+                    cbNotDone.setChecked(false);
+                }
             }
-        });*/
-
-        rgChestPainDiseaseRecord.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        });
+        cbColorUltrasound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_emergency_ct:
-                        svEmergencyCt.setVisibility(View.VISIBLE);
-                        llUltrasoundColor.setVisibility(View.GONE);
-                        break;
-                    case R.id.rb_color_ultrasound:
-                        svEmergencyCt.setVisibility(View.GONE);
-                        llUltrasoundColor.setVisibility(View.VISIBLE);
-                        break;
-                    case R.id.rb_not_done:
-                        svEmergencyCt.setVisibility(View.GONE);
-                        llUltrasoundColor.setVisibility(View.GONE);
-                        break;
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llUltrasoundColor.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                if (isChecked) {
+                    cbNotDone.setChecked(false);
                 }
             }
         });
     }
 
-    @OnClick({R.id.tv_ct_check_post, R.id.tv_ct_result_post, R.id.ttb_color_ct_result, R.id.btn_confirm_color_ct, R.id.btn_get_data_color_ct, R.id.btn_get_data, R.id.btn_confirm})
+    @OnClick({R.id.tv_ct_check_post, R.id.tv_ct_result_post, R.id.ttb_color_ct_result
+            , R.id.btn_get_data, R.id.btn_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_ct_check_post:
@@ -306,42 +261,49 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                 //ct报告上传
                 break;
             case R.id.btn_confirm:
-            case R.id.btn_confirm_color_ct:
-                saveData();
+                preSave();
                 break;
             case R.id.btn_get_data:
-            case R.id.btn_get_data_color_ct:
-//                loadData();
-                data =GsonUtils.getGson().fromJson(mDefaultMMKV.decodeString("影像页面数据"),ChestPainImageExaminationBean.DataBean.class);
-                if (data!=null)
-                checkViews();
+                data = GsonUtils.getGson().fromJson(mDefaultMMKV.decodeString("影像页面数据"), ChestPainImageExaminationBean.DataBean.class);
+                if (data != null) {
+                    checkViews();
+                }
+                break;
+            default:
                 break;
 
         }
     }
 
-    /**
-     * 保存数据
-     */
-    private void saveData() {
+    private void preSave() {
         if (data == null) {
             data = new ChestPainImageExaminationBean.DataBean();
         }
         data.setRecordId(RecordIdUtil.RECORD_ID);
-        if (rbEmergencyCt.isChecked()) {
-            data.setImageexam("cpc_imageexam_ct");
-            if (!TextUtils.isEmpty(etCtPlace.getText().toString().trim())) {
-                data.setCtexamdepartment(etCtPlace.getText().toString().trim());
-            }
-        }
-        if (rbColorUltrasound.isChecked()) {
-            data.setImageexam("cpc_imageexam_cdu");
-            if (!TextUtils.isEmpty(etColorCtPlace.getText().toString().trim())) {
-                data.setCtexamdepartment(etColorCtPlace.getText().toString().trim());
-            }
-        }
-        if (rbNotDone.isChecked()) {
+
+        if (cbNotDone.isChecked()) {
             data.setImageexam("cpc_imageexam_none");
+            saveData();
+            return;
+        } else {
+            StringBuilder imageexam = new StringBuilder();
+            if (cbEmergencyCt.isChecked()) {
+                imageexam.append("cpc_imageexam_ct");
+            }
+            if (cbColorUltrasound.isChecked()) {
+                if (imageexam.length() > 0) {
+                    imageexam.append(",");
+                }
+                imageexam.append("cpc_imageexam_cdu");
+            }
+            data.setImageexam(imageexam.toString());
+        }
+        if (rgEmergencyCtPlace.getCheckedRadioButtonId() == R.id.rb_emergency_room) {
+            data.setCtexamdepartment("cpc_ctjcdd_jz");
+        } else if (rgEmergencyCtPlace.getCheckedRadioButtonId() == R.id.rb_non_emergency_room) {
+            data.setCtexamdepartment("cpc_ctjcdd_fjz");
+        } else if (rgEmergencyCtPlace.getCheckedRadioButtonId() == R.id.rb_other_place) {
+            data.setCtexamdepartment("cpc_ctjcdd_qt");
         }
         if (!TextUtils.isEmpty(ttbNotice.getTime())) {
             data.setCtexamnoticetime(ttbNotice.getTime());
@@ -370,12 +332,15 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (!TextUtils.isEmpty(ttbColorCtResult.getTime())) {
             data.setCduexamreporttime(ttbColorCtResult.getTime());
         }
-        mDefaultMMKV.encode("影像页面数据",GsonUtils.getGson().toJson(data));
-        Log.d("数据保存", "影像页面保存数据: "+data.toString());
+        mDefaultMMKV.encode("影像页面数据", GsonUtils.getGson().toJson(data));
+        Log.d("数据保存", "影像页面保存数据: " + data.toString());
+        saveData();
+    }
 
-
-
-
+    /**
+     * 保存数据
+     */
+    private void saveData() {
         String request = GsonUtils.getGson().toJson(data);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -386,11 +351,9 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
                         Log.e("zhangshifu", "onResponse" + response);
-                        if (response!=null&&response.body()!=null)
-                        {
+                        if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
-                            if (body.getResult()==1)
-                            {
+                            if (body.getResult() == 1) {
                                 showToast("数据保存成功");
                             }
                         }

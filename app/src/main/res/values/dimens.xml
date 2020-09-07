@@ -15,7 +15,7 @@
     <dimen name="tab_normal_height">35dp</dimen>
     <dimen name="tab_text_size">13sp</dimen>
     <dimen name="item_normal_margin">12dp</dimen>
-    <dimen name="item_title_min_width">80dp</dimen>
+    <dimen name="item_title_min_width">90dp</dimen>
 
     <dimen name="item_title_height">50dp</dimen>
     <dimen name="item_large_height">50dp</dimen>
@@ -579,7 +579,6 @@
     <dimen name="tooltip_y_offset_non_touch">0dp</dimen>
     <dimen name="tooltip_y_offset_touch">16dp</dimen>
     <dimen name="vital_sign_item_height">40dp</dimen>
-    <dimen name="vital_sign_item_margin_left_right">20dp</dimen>
     <dimen name="vital_sign_title_width">90dp</dimen>
     <dimen name="vital_sign_unit_width">50dp</dimen>
     <dimen name="login_item_title">58dp</dimen>

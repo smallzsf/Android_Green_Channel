@@ -1,15 +1,11 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.xyj.strokeaid.R;
@@ -17,11 +13,9 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import butterknife.BindView;
-
 
 
 /**
@@ -32,216 +26,95 @@ import butterknife.BindView;
  */
 public class OriginalDiagnoseFragment extends BaseFragment {
 
-
-
-    @BindView(R.id.awareness)
-    TextView mAwareness;
     @BindView(R.id.es_title_select)
-    EditSpinner mEsTitleSelect;
-    @BindView(R.id.fl_main)
-    FrameLayout mFlMain;
-    List<String> titles = new ArrayList<>();
+    EditSpinner esTitleSelect;
+    @BindView(R.id.fl_content_frag_od)
+    FrameLayout flContentFragOd;
 
-    private OriginalStatusFragment1 mOriginalStatusFragment1 = null;
-    private OriginalStatusFragment2 mOriginalStatusFragment2 = null;
-    private OriginalStatusFragment3 mOriginalStatusFragment3 = null;
-    private OriginalStatusFragment4 mOriginalStatusFragment4 = null;
-    private OriginalStatusFragment5 mOriginalStatusFragment5 = null;
-    private OriginalStatusFragment6 mOriginalStatusFragment6 = null;
-    private OriginalStatusFragment7 mOriginalStatusFragment7 = null;
-    private FragmentManager fm;
+    private DiagnoseStemiFragment mStemiFragment;
+    private DiagnoseNstemiAndUaFragment mNstemiFragment;
+    private DiagnoseNstemiAndUaFragment mUaFragment;
+    private DiagnoseZdmjcFragment mZdmjcFragment;
+    private DiagnoseFdmssFragment mFdmssFragment;
+    private DiagnoseNonAcsFragment mNonAcsFragment;
+    private DiagnoseNonHeartPainFragment mNonHeartPainFragment;
+    private DiagnoseWaitDiagnoseFragment mWaitDiagnoseFragment;
 
-    public static OriginalDiagnoseFragment newInstance(String patientId, String docId) {
+    private FragmentTransaction mFragmentTransaction = null;
+    private BaseFragment mCurrentFragment;
+
+    private String mRecordId;
+
+    public OriginalDiagnoseFragment() {
+
+    }
+
+    public static OriginalDiagnoseFragment newInstance(String recordId) {
         OriginalDiagnoseFragment fragment = new OriginalDiagnoseFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_original_diagnose;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void initView(@NonNull View view) {
-
-        initview();
-        initData();
-        initEvent();
-
-
-
-    }
-
-    private void initview() {
-        fm = getChildFragmentManager();
-        mOriginalStatusFragment1 = OriginalStatusFragment1.newInstance("STEMI");//创建
-        fm.beginTransaction().replace(R.id.fl_main, mOriginalStatusFragment1).commitAllowingStateLoss();
-    }
-
-    private void initData() {
-        titles.add("STEMI");
-        titles.add("NSTEMI");
-        titles.add("UA");
-        titles.add("主动脉夹层");
-        titles.add("肺动脉拴塞");
-        titles.add("非ACS心源性胸痛");
-        titles.add("其他非心源性胸痛");
-        titles.add("待查");
-        mEsTitleSelect.setItemData(titles);
-
-    }
-
-    private void initEvent() {
-
-
-        mEsTitleSelect.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
-            @Override
-            public void getSeletedString(String text) {
-                selectFragment(text);
-            }
-        });
+        mFragmentTransaction = getChildFragmentManager().beginTransaction();
+        esTitleSelect.setItemData(Arrays.asList(getResources().getStringArray(R.array.original_diagnose)));
     }
 
     @Override
     protected void initListener() {
+        esTitleSelect.setOnSelectIndexAndStringLitner(new EditSpinner.OnSelectIndexAndStringLitner() {
+            @Override
+            public void getSeletedStringAndIndex(String text, int position) {
+                switch (position) {
+                    case 0:
+                        // STEMI
+                        if (mStemiFragment == null) {
+                            mStemiFragment = DiagnoseStemiFragment.newInstance(mRecordId, "cpc_cbzdv2_stemi");
+                        }
+                        if (mCurrentFragment == null) {
+                            mCurrentFragment = mStemiFragment;
+                            mFragmentTransaction.add(R.id.fl_content_frag_od, mStemiFragment).commitNow();
+                        } else {
+                            mFragmentTransaction.hide(mCurrentFragment).show(mStemiFragment).commitNow();;
+                            mCurrentFragment = mStemiFragment;
+                        }
+                        break;
 
+                    case 1:
+                        // NSTEMI
+                        if (mNstemiFragment == null) {
+                            mNstemiFragment = DiagnoseNstemiAndUaFragment.newInstance(mRecordId, "cpc_cbzdv2_nstemi");
+                        }
+                        if (mCurrentFragment == null) {
+                            mCurrentFragment = mNstemiFragment;
+                            mFragmentTransaction.add(R.id.fl_content_frag_od, mNstemiFragment).commitNow();
+                        } else {
+                            mFragmentTransaction.hide(mCurrentFragment).show(mNstemiFragment).commitNow();
+                            mCurrentFragment = mNstemiFragment;
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
-    //根据ID选择碎片的方法
-    private void selectFragment(String type){
-        //创建碎片事务管理  每一次碎片的显示与隐藏都要通过事务管理来操作
-       FragmentTransaction ft = fm.beginTransaction();
-//        hideFragment(ft);
-        switch (type) {
-            case "STEMI":
-//                if(mOriginalStatusFragment1==null){//为空，创建
-//                    mOriginalStatusFragment1=OriginalStatusFragment1.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment1);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment1);//不为空，直接显示
-//                }
-                if(mOriginalStatusFragment1==null){
-                    mOriginalStatusFragment1=OriginalStatusFragment1.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment1);
-                break;
-            case "NSTEMI":
-            case "UA":
-//                if(mOriginalStatusFragment2==null){//为空，创建
-//                    mOriginalStatusFragment2=OriginalStatusFragment2.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment2);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment2);//不为空，直接显示
-//                }
-                if(mOriginalStatusFragment2==null){
-                    mOriginalStatusFragment2=OriginalStatusFragment2.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment2);
-                break;
-
-            case "主动脉夹层":
-//                if(mOriginalStatusFragment3==null){//为空，创建
-//                    mOriginalStatusFragment3=OriginalStatusFragment3.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment3);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment3);//不为空，直接显示
-//                }
-                if(mOriginalStatusFragment3==null){
-                    mOriginalStatusFragment3=OriginalStatusFragment3.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment3);
-
-                break;
-            case "肺动脉拴塞":
-//                if(mOriginalStatusFragment4==null){//为空，创建
-//                    mOriginalStatusFragment4=OriginalStatusFragment4.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment4);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment4);//不为空，直接显示
-//                }
-                if(mOriginalStatusFragment4==null){
-                    mOriginalStatusFragment4=OriginalStatusFragment4.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment4);
-
-
-                break;
-            case "非ACS心源性胸痛":
-//                if(mOriginalStatusFragment5==null){//为空，创建
-//                    mOriginalStatusFragment5=OriginalStatusFragment5.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment5);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment5);//不为空，直接显示
-//                }
-
-                if(mOriginalStatusFragment5==null){
-                    mOriginalStatusFragment5=OriginalStatusFragment5.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment5);
-
-                break;
-            case "其他非心源性胸痛":
-//                if(mOriginalStatusFragment6==null){//为空，创建
-//                    mOriginalStatusFragment6=OriginalStatusFragment6.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment6);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment6);//不为空，直接显示
-//                }
-                if(mOriginalStatusFragment6==null){
-                    mOriginalStatusFragment6=OriginalStatusFragment6.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment6);
-
-                break;
-            case "待查":
-//                if(mOriginalStatusFragment==null){//为空，创建
-//                    mOriginalStatusFragment7=OriginalStatusFragment7.newInstance(type);//创建
-//                    ft.add(R.id.fl_main, mOriginalStatusFragment7);//将碎片添加到专门存放碎片的容器中
-//                }else{
-//                    ft.show(mOriginalStatusFragment7);//不为空，直接显示
-//                }
-
-                if(mOriginalStatusFragment7==null){
-                    mOriginalStatusFragment7=OriginalStatusFragment7.newInstance(type);//创建
-                }
-                ft.replace(R.id.fl_main, mOriginalStatusFragment7);
-
-                break;
-            default:
-                break;
-        }
-
-        ft.commitNowAllowingStateLoss();//提交
-    }
-
-    //隐藏所有碎片的方法
-    private void hideFragment(FragmentTransaction ft){
-//        FragmentTransaction ft=getChildFragmentManager().beginTransaction();
-        if(mOriginalStatusFragment1!=null){
-            ft.hide(mOriginalStatusFragment1);
-        }
-        if(mOriginalStatusFragment2!=null){
-            ft.hide(mOriginalStatusFragment2);
-        }
-        if(mOriginalStatusFragment3!=null){
-            ft.hide(mOriginalStatusFragment3);
-        }
-        if(mOriginalStatusFragment4!=null){
-            ft.hide(mOriginalStatusFragment4);
-        }
-        if(mOriginalStatusFragment5!=null){
-            ft.hide(mOriginalStatusFragment5);
-        }
-        if(mOriginalStatusFragment6!=null){
-            ft.hide(mOriginalStatusFragment6);
-        }
-        if(mOriginalStatusFragment7!=null){
-            ft.hide(mOriginalStatusFragment7);
-        }
-        ft.commitNowAllowingStateLoss();
-    }
 }

@@ -20,6 +20,11 @@ public final class RouteUrl {
      */
     public static final String PERSONAL_INFO = "/app/personal/info";
 
+    /**
+     * 时间轴
+     */
+    public static final String TIME_NODE_VIEW = "/app/common/timenode";
+
     public static final class Stroke {
         /**
          * 卒中患者病历页面

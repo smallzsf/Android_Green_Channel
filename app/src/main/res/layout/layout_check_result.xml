@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_end_label"
@@ -58,7 +58,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <TextView
         android:id="@+id/tv_end_title"
@@ -121,8 +121,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_bnp_label"
@@ -161,7 +161,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <LinearLayout
         android:id="@+id/ll_bnp"
         android:layout_width="match_parent"
@@ -209,8 +209,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_tc_label"
@@ -249,7 +249,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <LinearLayout
         android:id="@+id/ll_tc"
         android:layout_width="match_parent"
@@ -294,8 +294,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_tg_label"
@@ -334,7 +334,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <LinearLayout
         android:id="@+id/ll_tg"
         android:layout_width="match_parent"
@@ -379,8 +379,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_hdl_label"
@@ -419,7 +419,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <LinearLayout
         android:id="@+id/ll_hdl"
         android:layout_width="match_parent"
@@ -464,8 +464,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_ldl_label"
@@ -504,7 +504,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <LinearLayout
         android:id="@+id/ll_ldl"
         android:layout_width="match_parent"
@@ -549,8 +549,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_uc_label"
@@ -633,8 +633,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_va_label"
@@ -677,8 +677,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_lva_label"

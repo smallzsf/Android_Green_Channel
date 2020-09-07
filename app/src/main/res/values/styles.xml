@@ -35,6 +35,26 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="XyjTextTitel">
+        <item name="android:paddingStart">@dimen/item_normal_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="XyjTextSubTitel">
+        <item name="android:paddingStart">@dimen/item_normal_margin</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_width">@dimen/item_title_min_width</item>
+        <item name="android:textSize">@dimen/item_title_size</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="tv_small">
         <item name="android:textSize">@dimen/item_content_size</item>
         <item name="android:textColor">@color/color_222222</item>

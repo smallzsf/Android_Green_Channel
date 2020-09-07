@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
+
+        <TextView
+            android:id="@+id/give_up_cure"
+            style="@style/tv_normal_titel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="患者自愿放弃治疗" />
+
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_give_up_yes"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_give_up_no"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="否" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_first_diagnose_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="初步诊断时间" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/item_normal_margin">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/item_normal_margin"
+            android:text="诊断医生" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_diagnose_doc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+    </LinearLayout>
+
+    <View style="@style/horizontal_divider" />
+
+    <LinearLayout
+        android:id="@+id/ll_jclx"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/XyjTextSubTitel"
+            android:text="夹层类型" />
+
+        <RadioGroup
+            android:id="@+id/rg_jclx"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_jclx_a"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="A型" />
+
+
+            <RadioButton
+                android:id="@+id/rb_jclx_b"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="B型" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/XyjTextSubTitel"
+        android:text="治疗策略" />
+
+    <com.xyj.strokeaid.view.MyRadioGroup
+        android:id="@+id/rg_treat_strategy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_treat_strategy_1"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="紧急介入治疗" />
+
+            <RadioButton
+                android:id="@+id/rb_treat_strategy_2"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="择期介入治疗" />
+
+            <RadioButton
+                android:id="@+id/rb_treat_strategy_3"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="保守治疗" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_treat_strategy_4"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="外科手术" />
+
+            <RadioButton
+                android:id="@+id/rb_treat_strategy_5"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:layout_weight="2"
+                android:text="其它（介入失败转为手术）" />
+
+        </LinearLayout>
+
+    </com.xyj.strokeaid.view.MyRadioGroup>
+
+
+    <View style="@style/horizontal_divider" />
+
+
+</LinearLayout>

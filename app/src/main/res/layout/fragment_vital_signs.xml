@@ -38,8 +38,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <TextView
                     android:id="@+id/awareness"
@@ -66,14 +66,14 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/breath_layout"
@@ -117,13 +117,13 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/pulse_layout"
@@ -166,13 +166,13 @@
                     android:textSize="@dimen/item_title_size" />
             </RelativeLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/heart_rate_layout"
@@ -216,13 +216,13 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/systolic_blood_pressure_layout"
@@ -266,13 +266,13 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/diastolic_blood_pressure_layout"
@@ -317,13 +317,13 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/blood_oxygen_saturation_layout"
@@ -368,13 +368,13 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout"
@@ -418,7 +418,7 @@
             </RelativeLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
         </LinearLayout>
 

@@ -33,8 +33,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <TextView
                     android:id="@+id/awareness"
@@ -70,8 +70,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/breath_layout"
@@ -114,8 +114,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/pulse_layout"
@@ -159,8 +159,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/heart_rate_layout"
@@ -204,8 +204,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/systolic_blood_pressure_layout"
@@ -248,8 +248,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/diastolic_blood_pressure_layout"
@@ -293,8 +293,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/blood_oxygen_saturation_layout"
@@ -338,8 +338,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout"
@@ -383,8 +383,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout1"
@@ -427,8 +427,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout11"
@@ -471,8 +471,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout111"
@@ -513,8 +513,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout11111"
@@ -555,8 +555,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout112"
@@ -598,8 +598,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout113"
@@ -641,8 +641,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout114"
@@ -684,8 +684,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout115"
@@ -726,8 +726,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout117"
@@ -768,8 +768,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/vital_sign_item_height"
-                android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-                android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
 
                 <LinearLayout
                     android:id="@+id/body_temperature_layout116"

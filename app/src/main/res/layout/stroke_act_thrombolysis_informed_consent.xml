@@ -40,7 +40,7 @@
             app:rightImage="@drawable/ic_arrow_down_blue" />
     </LinearLayout>
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
     <com.xyj.strokeaid.view.TextTimeBar
@@ -51,7 +51,7 @@
         app:title="开始谈话"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
     <com.xyj.strokeaid.view.TextTimeBar
@@ -62,7 +62,7 @@
         app:title="结束谈话"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
     <LinearLayout
@@ -91,7 +91,7 @@
             app:rightImage="@drawable/ic_arrow_down_blue" />
     </LinearLayout>
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
     <Button

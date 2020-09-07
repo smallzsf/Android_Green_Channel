@@ -45,7 +45,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     private Animation mResetAnimation;
     public OnSelectStringLitner onSelectStringLitner;
     public OnSelectIndexAndStringLitner mOnSelectIndexAndStringLitner;
-    private int mSelectIndex = 0;
+    private List<String> mData;
 
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -56,6 +56,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
 
     public void setItemData(List<String> data) {
+        mData = data;
         adapter = new SimpleAdapter(mContext, data);
         setAdapter(adapter);
     }
@@ -187,7 +188,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         editText.setText(((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position));
         mRightImageTopView.setClickable(false);
-        mSelectIndex = position;
+        if (mOnSelectIndexAndStringLitner != null) {
+            mOnSelectIndexAndStringLitner.getSeletedStringAndIndex(mData.get(position), position);
+        }
         popupWindow.dismiss();
     }
 
@@ -206,9 +209,6 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         String key = s.toString();
         if (onSelectStringLitner != null) {
             onSelectStringLitner.getSeletedString(key);
-        }
-        if (mOnSelectIndexAndStringLitner != null) {
-            mOnSelectIndexAndStringLitner.getSeletedStringAndIndex(key, mSelectIndex);
         }
         editText.setSelection(0);
         if (!TextUtils.isEmpty(key)) {

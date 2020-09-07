@@ -37,14 +37,13 @@ import butterknife.OnClick;
  */
 public class TimeNodeFragment extends BaseFragment {
 
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
     @BindView(R.id.rv_content_frag_time_node)
     RecyclerView rvContentFragTimeNode;
 
     private String mRecordId;
+    private int mDiseaseViewType;
 
     private TimeNodeRvAdapter mTimeNodeRvAdapter;
     private List<TimeNodeBean> mTimeNodeBeans;
@@ -54,10 +53,19 @@ public class TimeNodeFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static TimeNodeFragment newInstance(String recordId) {
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param recordId        记录ID
+     * @param diseaseViewType 疾病类型
+     * @return A new instance of fragment StrokeGetInvolvedFragment.
+     */
+    public static TimeNodeFragment newInstance(String recordId, int diseaseViewType) {
         TimeNodeFragment fragment = new TimeNodeFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.RECORD_ID, recordId);
+        args.putInt(IntentKey.DISEASE_VIEW_TYPE, diseaseViewType);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,8 +75,10 @@ public class TimeNodeFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+            mDiseaseViewType = getArguments().getInt(IntentKey.DISEASE_VIEW_TYPE, 1);
         }
     }
+
 
     @Override
     protected int getLayoutId() {
@@ -105,17 +115,7 @@ public class TimeNodeFragment extends BaseFragment {
         });
     }
 
-    @OnClick({R.id.btn_get_data, R.id.btn_confirm})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_get_data:
-                break;
-            case R.id.btn_confirm:
-                break;
-            default:
-                break;
-        }
-    }
+
 
 
     /**

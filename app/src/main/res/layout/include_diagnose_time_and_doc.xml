@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_diagnose_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:title="初步诊断时间" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/item_normal_margin">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/item_normal_margin"
+            android:text="诊断医生" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_diagnose_doc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -39,7 +39,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/item_title_size" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <RadioGroup
                 android:id="@+id/rg_approach"
@@ -90,7 +90,7 @@
 
             </RadioGroup>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -120,7 +120,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -161,7 +161,7 @@
                 android:padding="10dp"
                 zhy:max_select="-1" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -173,7 +173,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/item_title_size" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -234,7 +234,7 @@
 
             </RadioGroup>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -305,7 +305,7 @@
 
             </RadioGroup>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -346,7 +346,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -395,7 +395,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -444,7 +444,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -492,7 +492,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -541,7 +541,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -553,7 +553,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/item_title_size" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/tag_intraoperative_complications"

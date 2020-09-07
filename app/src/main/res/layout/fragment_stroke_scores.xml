@@ -34,7 +34,7 @@
                 app:nib_score_visible="true"
                 app:title="发病前mRS评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_in_hos_mrs_frag_ss"
@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 app:title="入院mRS评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_24_mrs_frag_ss"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 app:title="溶栓后24h mRS评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,7 +127,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,7 +181,7 @@
                     android:layout_height="wrap_content"
                     app:title="睁眼状态" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_lh_gcs_speak_frag_ss"
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     app:title="语言状态" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <com.xyj.strokeaid.view.NihssItemBar
                     android:id="@+id/nib_lh_gcs_sport_frag_ss"
@@ -199,7 +199,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_in_hos_fisher_frag_ss"
@@ -207,7 +207,7 @@
                 android:layout_height="wrap_content"
                 app:title="入院Fisher分级" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <com.xyj.strokeaid.view.NihssItemBar
@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院Hunt-Hess评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_live_chads2_frag_ss"
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院CHADS2评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_has_bled_frag_ss"
@@ -232,7 +232,7 @@
                 android:layout_height="wrap_content"
                 app:title="HAS-BLED评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <com.xyj.strokeaid.view.NihssItemBar
@@ -241,7 +241,7 @@
                 android:layout_height="wrap_content"
                 app:title="洼田吞咽评定" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -294,7 +294,7 @@
                     android:layout_height="wrap_content"
                     app:title="体积" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <com.xyj.strokeaid.view.NihssItemBar
@@ -303,7 +303,7 @@
                     android:layout_height="wrap_content"
                     app:title="位置" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <com.xyj.strokeaid.view.NihssItemBar

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_non_heart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/item_normal_margin"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:gravity="center_vertical"
+            android:text="其他非心源性胸痛类型" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_1"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="呼吸系统病" />
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_2"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="消化系统病" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_3"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="神经系统病" />
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_4"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="精神系统病" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_5"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="肌肉骨骼病" />
+
+            <CheckBox
+                android:id="@+id/cb_non_heart_6"
+                style="@style/XyjCheckBoxHorizontalWeight"
+                android:text="皮肤系统病" />
+
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/cb_non_heart_7"
+            style="@style/XyjCheckBox"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:text="其他" />
+
+    </LinearLayout>
+</LinearLayout>

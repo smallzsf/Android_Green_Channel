@@ -25,6 +25,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
@@ -188,6 +189,37 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             @Override
             public void onTabReselect(int position) {
 
+            }
+        });
+
+        mPatientRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
+                if (view.getId() == R.id.tv_detail_item_patient) {
+                    //查看详情
+                    String destination = "";
+                    if (mDiseaseType == 2) {
+                        destination = RouteUrl.ChestPain.CHEST_PAIN_HOME;
+                    } else if (mDiseaseType == 3) {
+                        destination = RouteUrl.Trauma.TRAUMA_HOME;
+                    } else if (mDiseaseType == 4) {
+                        destination = RouteUrl.MaternalTreat.MATERNAL_TREAT_HOME;
+                    } else if (mDiseaseType == 5) {
+                        destination = RouteUrl.ChildTreat.CHILD_TREAT_HOME;
+                    } else {
+                        destination = RouteUrl.Stroke.STROKE_HOME;
+                    }
+                    ARouter.getInstance().build(destination)
+                            .withInt(IntentKey.PATIENT_ID, mPatientBeans.get(position).getId())
+                            .withString(IntentKey.DOC_ID, mDocId)
+                            .navigation();
+                } else if (view.getId() == R.id.tv_time_node_item_patient) {
+                    // 查看时间轴
+                    ARouter.getInstance().build(RouteUrl.TIME_NODE_VIEW)
+                            .withString(IntentKey.RECORD_ID, mPatientBeans.get(position).getName())
+                            .withInt(IntentKey.VIEW_TYPE, mDiseaseType)
+                            .navigation();
+                }
             }
         });
 

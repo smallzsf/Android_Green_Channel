@@ -30,7 +30,7 @@
             app:tsb_title="是否溶栓" />
 
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <LinearLayout
             android:id="@+id/ll_refuse_act_sti"
@@ -95,7 +95,7 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -143,7 +143,7 @@
                 </RadioGroup>
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -189,7 +189,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -226,7 +226,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <com.xyj.strokeaid.view.TextTimeBar
@@ -236,7 +236,7 @@
                 android:background="@color/white"
                 app:title="开始溶栓" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -267,7 +267,7 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
         </LinearLayout>
 

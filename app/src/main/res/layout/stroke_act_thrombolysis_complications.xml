@@ -28,7 +28,7 @@
             app:tsb_switch="true"
             app:tsb_title="是否溶栓" />
 
-        <include layout="@layout/include_line" />
+        <View style="@style/horizontal_divider" />
 
         <LinearLayout
             android:id="@+id/ll_have_act_stc"

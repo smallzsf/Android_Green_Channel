@@ -14,18 +14,18 @@
     <include layout="@layout/layout_original_top" />
 
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
     <include layout="@layout/layout_heart_level"/>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <!--诊断-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_detour"
@@ -64,15 +64,15 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <!--直达科室-->
     <RelativeLayout
         android:id="@+id/rl_until"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:visibility="gone">
 
         <TextView
@@ -98,7 +98,7 @@
 
 
     </RelativeLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
 
         <com.xyj.strokeaid.view.TextTimeBar
@@ -108,14 +108,14 @@
             app:title="到达时间"
             android:visibility="gone"/>
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <!--绕行ccu-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_detour_ccu"
@@ -153,7 +153,7 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
         <include layout="@layout/layout_grace_assess"/>
     </LinearLayout>

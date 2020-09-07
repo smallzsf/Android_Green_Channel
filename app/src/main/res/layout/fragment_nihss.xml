@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 app:title="1a.意识水平" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_1b_frag_nihss"
@@ -74,7 +74,7 @@
                 app:title="1b.意识水平提问" />
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_1c_frag_nihss"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 app:title="1c.意识水平指令" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_2_frag_nihss"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 app:title="2.凝视" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_3_frag_nihss"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 app:title="3.视野" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_4_frag_nihss"
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 app:title="4.面瘫" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_5a_frag_nihss"
@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 app:title="5a.上肢运动左侧" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_5b_frag_nihss"
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 app:title="5b.上肢运动右侧" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_6a_frag_nihss"
@@ -130,7 +130,7 @@
                 android:layout_height="wrap_content"
                 app:title="6a.下肢运动左侧" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_6b_frag_nihss"
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 app:title="6b.下肢运动右侧" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_7_frag_nihss"
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 app:title="7.共济失调" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_8_frag_nihss"
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 app:title="8.感觉" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_9_frag_nihss"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 app:title="9.语言" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_10_frag_nihss"
@@ -170,7 +170,7 @@
                 android:layout_height="wrap_content"
                 app:title="10.构音障碍" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_11_frag_nihss"
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 app:title="11.忽视症" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
         </LinearLayout>
 

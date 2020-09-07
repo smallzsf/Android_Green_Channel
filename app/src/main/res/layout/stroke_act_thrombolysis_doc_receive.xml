@@ -76,7 +76,7 @@
     </LinearLayout>
 
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,7 +104,7 @@
             app:rightImage="@drawable/ic_arrow_down_blue" />
     </LinearLayout>
 
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 
     <View
         android:layout_width="match_parent"

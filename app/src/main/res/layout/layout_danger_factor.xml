@@ -16,8 +16,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_bp_label"
@@ -55,13 +55,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--高血脂-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_bf_label"
@@ -99,13 +99,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--糖尿病-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_diabetic_label"
@@ -143,13 +143,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--吸烟-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_smoke_label"
@@ -188,14 +188,14 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--状态-->
     <LinearLayout
         android:id="@+id/ll_smoke_status"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:visibility="gone">
 
         <TextView
@@ -234,13 +234,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--肥胖-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_fat_label"
@@ -278,13 +278,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--早发CVD家族史-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_cvd_label"
@@ -323,7 +323,7 @@
 
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <!--我是一条分割线-->
     <TextView
         android:layout_width="wrap_content"
@@ -337,8 +337,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_chd_label"
@@ -377,14 +377,14 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--血运重建史-->
     <LinearLayout
         android:id="@+id/ll_xy"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:visibility="gone">
 
         <TextView
@@ -425,14 +425,14 @@
         </RadioGroup>
 
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--心房颤动-->
     <LinearLayout
         android:id="@+id/ll_xf"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         >
 
         <TextView
@@ -472,14 +472,14 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--分型-->
     <LinearLayout
         android:id="@+id/ll_fx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:orientation="vertical"
         android:visibility="gone"
         >
@@ -547,13 +547,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--慢性心力衰竭-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_slow_label"
@@ -592,14 +592,14 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <!--NYHA分级-->
     <LinearLayout
         android:id="@+id/ll_factor_nyha"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:visibility="gone">
 
         <TextView
@@ -658,13 +658,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--心脏瓣膜病-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_bm_label"
@@ -702,13 +702,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--脑血管疾病-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_stroke_label"
@@ -747,14 +747,14 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--描述-->
     <LinearLayout
         android:id="@+id/ll_desc"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin"
         android:visibility="gone">
 
         <TextView
@@ -793,13 +793,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--外周动脉疾病-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_pa_label"
@@ -836,13 +836,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--主动脉瘤-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_aa_label"
@@ -880,13 +880,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--COPD-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_copd_label"
@@ -924,13 +924,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--慢性肾病-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_ss_label"
@@ -968,13 +968,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--贫血-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_px_label"
@@ -1012,13 +1012,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--消化性溃疡-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_pu_label"
@@ -1056,13 +1056,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 <!--甲状腺功能异常-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_ta_label"
@@ -1100,13 +1100,13 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
     <!--恶性肿瘤-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginLeft="@dimen/vital_sign_item_margin_left_right"
-        android:layout_marginRight="@dimen/vital_sign_item_margin_left_right">
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
 
         <TextView
             android:id="@+id/tv_mc_label"
@@ -1144,5 +1144,5 @@
                 />
         </RadioGroup>
     </LinearLayout>
-    <include layout="@layout/include_line" />
+    <View style="@style/horizontal_divider" />
 </LinearLayout>

@@ -132,7 +132,7 @@
                     android:textSize="@dimen/item_title_size" />
 
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -165,7 +165,7 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -249,7 +249,7 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -282,7 +282,7 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -368,7 +368,7 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/item_title_size" />
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -401,7 +401,7 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

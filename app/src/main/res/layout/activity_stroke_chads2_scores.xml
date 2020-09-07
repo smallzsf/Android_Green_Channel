@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <com.xyj.strokeaid.view.NihssItemBar
                 android:id="@+id/nib_live_chads2_frag_ss"
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 app:title="住院CHADS2评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
         </LinearLayout>

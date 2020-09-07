@@ -29,7 +29,7 @@
                 app:nib_score_visible="true"
                 app:title="发病前mRS评分" />
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
         </LinearLayout>

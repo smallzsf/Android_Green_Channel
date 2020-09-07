@@ -66,7 +66,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:id="@+id/ll_progress_site"
@@ -119,7 +119,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <LinearLayout
@@ -162,7 +162,7 @@
                 </LinearLayout>
 
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
             </LinearLayout>
@@ -198,7 +198,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:id="@+id/ll_other_diagnostic"
@@ -238,7 +238,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
             </LinearLayout>
 
             <LinearLayout
@@ -277,7 +277,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <LinearLayout
@@ -309,7 +309,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
             </LinearLayout>
 
@@ -350,7 +350,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
 
                 <LinearLayout
@@ -382,7 +382,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
             </LinearLayout>
 
 
@@ -436,7 +436,7 @@
 
                 </LinearLayout>
 
-                <include layout="@layout/include_line" />
+                <View style="@style/horizontal_divider" />
 
             </LinearLayout>
 
@@ -482,7 +482,7 @@
                     android:src="@drawable/ic_refresh" />
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -513,7 +513,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -543,7 +543,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
         </LinearLayout>
@@ -603,7 +603,7 @@
                     android:src="@drawable/ic_refresh" />
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
 
@@ -635,7 +635,7 @@
             </LinearLayout>
 
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -701,7 +701,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
             <LinearLayout
@@ -731,7 +731,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
 
@@ -762,7 +762,7 @@
 
             </LinearLayout>
 
-            <include layout="@layout/include_line" />
+            <View style="@style/horizontal_divider" />
 
 
         </LinearLayout>
