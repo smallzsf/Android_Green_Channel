@@ -63,20 +63,19 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
-    private String mPatientId;
-    private String mDocId;
 
     private int ecgRecordItem = 1;
 
-    public ChestPainEcgExaminFragment() {
+    private String mRecordId;
+
+    private ChestPainEcgExaminFragment() {
 
     }
 
-    public static ChestPainEcgExaminFragment newInstance(String patientId, String docId) {
+    public static ChestPainEcgExaminFragment newInstance(String recordId) {
         ChestPainEcgExaminFragment fragment = new ChestPainEcgExaminFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -85,11 +84,9 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_ecg_examin;

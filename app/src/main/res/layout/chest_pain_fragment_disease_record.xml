@@ -3,10 +3,11 @@
     xmlns:zhy="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ll_root"
     android:orientation="vertical">
 
-
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/sl_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -114,6 +115,7 @@
 
 
             <LinearLayout
+                android:id="@+id/ll_remark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -142,16 +144,6 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_start_frag_sg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_margin="@dimen/item_normal_margin"
-        android:background="@drawable/login_btn_bg"
-        android:gravity="center"
-        android:text="保存"
-        android:textColor="@android:color/white"
-        android:textSize="16dp" />
+    <include layout="@layout/view_bottom_save_button" />
 
 </LinearLayout>

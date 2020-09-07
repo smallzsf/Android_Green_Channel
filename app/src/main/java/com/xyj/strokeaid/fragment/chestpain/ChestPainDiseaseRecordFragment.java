@@ -6,12 +6,13 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.widget.NestedScrollView;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
@@ -53,26 +54,30 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     TextView appTvConditonRecord;
     @BindView(R.id.et_symptom)
     EditText etSymptom;
-    @BindView(R.id.btn_start_frag_sg)
-    AppCompatButton btnStartFragSg;
-
-    private String mPatientId;
-    private String mDocId;
-
+    @BindView(R.id.ll_remark)
+    LinearLayout llRemark;
     List<String> detailedDataList = new ArrayList<>();
+    @BindView(R.id.sl_content)
+    NestedScrollView slContent;
+    @BindView(R.id.ll_root)
+    LinearLayout llRoot;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
+
     private Map<Integer, Boolean> mapDataSelect = new HashMap<>();
     private MyAdapter adapter;
+    private int mMaxSrollHeight = 0;
 
+    private String mRecordId;
 
-    public ChestPainDiseaseRecordFragment() {
+    private ChestPainDiseaseRecordFragment() {
 
     }
 
-    public static ChestPainDiseaseRecordFragment newInstance(String patientId, String docId) {
+    public static ChestPainDiseaseRecordFragment newInstance(String recordId) {
         ChestPainDiseaseRecordFragment fragment = new ChestPainDiseaseRecordFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -81,8 +86,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -206,6 +210,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         rbPersistentChestPain.setOnClickListener(onClickListener);
         rbIntermittentChestPain.setOnClickListener(onClickListener);
         rbRelievedChestPain.setOnClickListener(onClickListener);
+
     }
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {

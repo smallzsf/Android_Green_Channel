@@ -201,7 +201,9 @@
         <activity android:name=".activity.stroke.GetInvolvedInformedConsentActivity" />
         <activity android:name=".activity.stroke.AspectScoreActivity" />
         <activity android:name=".activity.set.ChangePasswordActivity" />
-        <activity android:name=".activity.common.PatientChestPainRecordActivity" />
+        <activity android:name=".activity.common.PatientChestPainRecordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
 
         <!--   高德定位service     -->
         <service android:name="com.amap.api.location.APSService" />

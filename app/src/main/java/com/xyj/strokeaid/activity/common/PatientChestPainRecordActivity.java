@@ -72,10 +72,8 @@ public class PatientChestPainRecordActivity extends BaseActivity {
     @BindView(R.id.tv_hos_time_include_ct)
     Chronometer tvHosTimeIncludeCt;
 
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -111,7 +109,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         rvMenuActPcpr.setAdapter(mMenuRvAdapter);
 
         vpContentActPcpr.setUserInputEnabled(false);
-        vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "", ""));
+        vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "752594697788198912"));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -126,7 +124,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 .setOnTitleClickListener(v ->
                         ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                                 .withInt(IntentKey.VIEW_TYPE, 2)
-                                .withString(IntentKey.PATIENT_ID, mPatientId)
+                                .withString(IntentKey.RECORD_ID, mRecordId)
                                 .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -161,13 +159,11 @@ public class PatientChestPainRecordActivity extends BaseActivity {
 
     private class ChestPainRecordVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public ChestPainRecordVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+        public ChestPainRecordVpAdapter(@NonNull FragmentActivity fragmentActivity, String recordId) {
             super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
         @NonNull
@@ -176,49 +172,49 @@ public class PatientChestPainRecordActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 分诊信息
-                    return TriageInfoFragment.newInstance(patientId, 2);
+                    return TriageInfoFragment.newInstance(recordId, 2);
                 case 1:
                     // 生命体征
-                    return ChestPainVitalSignsFragment.newInstance(patientId, docId);
+                    return ChestPainVitalSignsFragment.newInstance(recordId);
                 case 2:
                     //  病情信息
-                    return ChestPainDiseaseRecordFragment.newInstance(patientId, docId);
+                    return ChestPainDiseaseRecordFragment.newInstance(recordId);
                 case 3:
                     //  心电检查
-                    return ChestPainEcgExaminFragment.newInstance(patientId, docId);
+                    return ChestPainEcgExaminFragment.newInstance(recordId);
                 case 4:
                     // 会诊信息
-                    return ChestPainIntraConsultFragment.newInstance(patientId, docId);
+                    return ChestPainIntraConsultFragment.newInstance(recordId);
                 case 5:
                     // 血液检查
-                    return ChestPainBloodTestFragment.newInstance(patientId, docId);
+                    return ChestPainBloodTestFragment.newInstance(recordId);
                 case 6:
                     //  影像检查
-                    return ChestPainAssistantTestFragment.newInstance(patientId);
+                    return ChestPainAssistantTestFragment.newInstance(recordId);
                 case 7:
                     // 初始诊断
-                    return OriginalDiagnoseFragment.newInstance(patientId);
+                    return OriginalDiagnoseFragment.newInstance(recordId);
                 case 8:
                     // 初始药物
-                    return ChestPainInitDrugFragment.newInstance(patientId, docId);
+                    return ChestPainInitDrugFragment.newInstance(recordId);
                 case 9:
                     // 治疗决策
-                    return TreatmentDecisionFragment.newInstance(patientId);
+                    return TreatmentDecisionFragment.newInstance(recordId);
                 case 10:
                     // 静脉溶栓
-                    return ChestPainIntraThromFragment.newInstance(patientId, docId);
+                    return ChestPainIntraThromFragment.newInstance(recordId);
                 case 11:
                     // 手术治疗
-                    return SurgicalTreatmentFragment.newInstance(patientId, docId);
+                    return SurgicalTreatmentFragment.newInstance(recordId);
                 case 12:
                     // 其他处置
                     return ChestPainManagementFragment.newInstance();
                 case 13:
                     // 患者转归
-                    return PatientSumFragment.newInstance(patientId, docId);
+                    return PatientSumFragment.newInstance(recordId);
                 case 14:
                     // 时间节点
-                    return TimeNodeFragment.newInstance(patientId, 2);
+                    return TimeNodeFragment.newInstance(recordId, 2);
                 default:
                     return EmptyFragment.newInstance();
             }

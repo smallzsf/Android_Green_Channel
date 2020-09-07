@@ -14,8 +14,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import butterknife.BindView;
 
@@ -94,19 +93,17 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    private String mPatientId;
-    private String mDocId;
-    private List<String> list;
+
+    private String mRecordId;
 
     public ChestPainVitalSignsFragment() {
 
     }
 
-    public static ChestPainVitalSignsFragment newInstance(String patientId, String docId) {
+    public static ChestPainVitalSignsFragment newInstance(String recordId) {
         ChestPainVitalSignsFragment fragment = new ChestPainVitalSignsFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -115,8 +112,7 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -127,24 +123,9 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        btnGetData.setText("获取数据");
-        btnConfirm.setText("确定");
-        loadData();
-
+        esVitalSignAware.setItemData(Arrays.asList(getResources().getStringArray(R.array.chest_pain_state_of_consciousness)));
 
     }
-
-
-    private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-        esVitalSignAware.setItemData(list);
-    }
-
 
     @Override
     protected void initListener() {

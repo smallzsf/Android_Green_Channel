@@ -89,18 +89,17 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
-    private String mPatientId;
-    private String mDocId;
 
-    public ChestPainInitDrugFragment() {
+    private String mRecordId;
+
+    private ChestPainInitDrugFragment() {
 
     }
 
-    public static ChestPainInitDrugFragment newInstance(String patientId, String docId) {
+    public static ChestPainInitDrugFragment newInstance(String recordId) {
         ChestPainInitDrugFragment fragment = new ChestPainInitDrugFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -109,8 +108,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

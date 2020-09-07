@@ -527,5 +527,4 @@
 
     <include layout="@layout/view_two_horizontal_bottom_button" />
 
-
 </LinearLayout>

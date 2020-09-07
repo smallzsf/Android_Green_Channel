@@ -36,15 +36,16 @@ public class SurgicalTreatmentFragment extends BaseFragment implements View.OnCl
     RelativeLayout rl_operation_result;
 
 
-    public SurgicalTreatmentFragment() {
+    private String mRecordId;
+
+    private SurgicalTreatmentFragment() {
 
     }
 
-    public static SurgicalTreatmentFragment newInstance(String patientId, String docId) {
+    public static SurgicalTreatmentFragment newInstance(String recordId) {
         SurgicalTreatmentFragment fragment = new SurgicalTreatmentFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,8 +54,7 @@ public class SurgicalTreatmentFragment extends BaseFragment implements View.OnCl
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

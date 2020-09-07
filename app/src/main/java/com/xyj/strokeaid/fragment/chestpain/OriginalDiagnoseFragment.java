@@ -39,8 +39,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private DiagnoseNonAcsFragment mNonAcsFragment;
     private DiagnoseNonHeartPainFragment mNonHeartPainFragment;
     private DiagnoseWaitDiagnoseFragment mWaitDiagnoseFragment;
-
-    private FragmentTransaction mFragmentTransaction = null;
     private BaseFragment mCurrentFragment;
 
     private String mRecordId;
@@ -72,7 +70,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        mFragmentTransaction = getChildFragmentManager().beginTransaction();
+
         esTitleSelect.setItemData(Arrays.asList(getResources().getStringArray(R.array.original_diagnose)));
     }
 
@@ -81,38 +79,71 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         esTitleSelect.setOnSelectIndexAndStringLitner(new EditSpinner.OnSelectIndexAndStringLitner() {
             @Override
             public void getSeletedStringAndIndex(String text, int position) {
+                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+                if (mCurrentFragment != null) {
+                    fragmentTransaction.hide(mCurrentFragment);
+                }
                 switch (position) {
                     case 0:
                         // STEMI
                         if (mStemiFragment == null) {
                             mStemiFragment = DiagnoseStemiFragment.newInstance(mRecordId, "cpc_cbzdv2_stemi");
                         }
-                        if (mCurrentFragment == null) {
-                            mCurrentFragment = mStemiFragment;
-                            mFragmentTransaction.add(R.id.fl_content_frag_od, mStemiFragment).commitNow();
-                        } else {
-                            mFragmentTransaction.hide(mCurrentFragment).show(mStemiFragment).commitNow();;
-                            mCurrentFragment = mStemiFragment;
-                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mStemiFragment);
                         break;
-
                     case 1:
                         // NSTEMI
                         if (mNstemiFragment == null) {
                             mNstemiFragment = DiagnoseNstemiAndUaFragment.newInstance(mRecordId, "cpc_cbzdv2_nstemi");
                         }
-                        if (mCurrentFragment == null) {
-                            mCurrentFragment = mNstemiFragment;
-                            mFragmentTransaction.add(R.id.fl_content_frag_od, mNstemiFragment).commitNow();
-                        } else {
-                            mFragmentTransaction.hide(mCurrentFragment).show(mNstemiFragment).commitNow();
-                            mCurrentFragment = mNstemiFragment;
-                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mNstemiFragment);
                         break;
-
+                    case 2:
+                        // UA
+                        if (mUaFragment == null) {
+                            mUaFragment = DiagnoseNstemiAndUaFragment.newInstance(mRecordId, "cpc_cbzdv2_ua");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mUaFragment);
+                        break;
+                    case 3:
+                        // NSTEMI
+                        if (mZdmjcFragment == null) {
+                            mZdmjcFragment = DiagnoseZdmjcFragment.newInstance(mRecordId, "cpc_cbzdv2_zdmjc");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mZdmjcFragment);
+                        break;
+                    case 4:
+                        // NSTEMI
+                        if (mFdmssFragment == null) {
+                            mFdmssFragment = DiagnoseFdmssFragment.newInstance(mRecordId, "cpc_cbzdv2_fdmss");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mFdmssFragment);
+                        break;
+                    case 5:
+                        // NSTEMI
+                        if (mNonAcsFragment == null) {
+                            mNonAcsFragment = DiagnoseNonAcsFragment.newInstance(mRecordId, "cpc_cbzdv2_facsxyxxt");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mNonAcsFragment);
+                        break;
+                    case 6:
+                        // NSTEMI
+                        if (mNonHeartPainFragment == null) {
+                            mNonHeartPainFragment = DiagnoseNonHeartPainFragment.newInstance(mRecordId, "cpc_cbzdv2_facsxyxxt");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mNonHeartPainFragment);
+                        break;
+                    case 7:
+                        // NSTEMI
+                        if (mWaitDiagnoseFragment == null) {
+                            mWaitDiagnoseFragment = DiagnoseWaitDiagnoseFragment.newInstance(mRecordId, "cpc_cbzdv2_dc");
+                        }
+                        fragmentTransaction.replace(R.id.fl_content_frag_od, mWaitDiagnoseFragment);
+                        break;
                     default:
                         break;
                 }
+                fragmentTransaction.commitAllowingStateLoss();
             }
         });
     }
