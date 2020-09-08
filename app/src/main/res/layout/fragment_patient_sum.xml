@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -38,28 +38,15 @@
         android:id="@+id/ttb_confirm_time"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_below="@id/ll_head"
+        app:bottomLineVisible="true"
         app:title="确诊时间" />
-
-    <View style="@style/horizontal_divider" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/buttom_normal_height"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/item_normal_margin"
-        android:background="@drawable/login_btn_bg"
-        android:gravity="center"
-        android:text="保存"
-        android:textColor="@android:color/white"
-        android:textSize="16dp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btn_save"
-        android:layout_below="@id/ttb_confirm_time">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -492,4 +479,15 @@
     </androidx.core.widget.NestedScrollView>
 
 
-</RelativeLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

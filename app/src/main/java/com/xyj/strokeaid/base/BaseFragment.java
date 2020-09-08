@@ -2,13 +2,11 @@ package com.xyj.strokeaid.base;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +25,8 @@ import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.LoadingDialogFragment;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -55,7 +55,7 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mActivity = (Activity) context;
-        this.context  = context;
+        this.context = context;
     }
 
     @Override
@@ -137,6 +137,9 @@ public abstract class BaseFragment extends Fragment {
         }
         if (mLoadingDialogFragment != null) {
             mLoadingDialogFragment.dismiss();
+        }
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
         }
     }
 

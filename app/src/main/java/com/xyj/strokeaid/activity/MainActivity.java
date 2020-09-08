@@ -30,6 +30,7 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.tencent.bugly.beta.Beta;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;

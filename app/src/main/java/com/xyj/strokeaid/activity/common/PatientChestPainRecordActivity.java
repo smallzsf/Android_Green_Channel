@@ -27,6 +27,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.event.RefreshEvent;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainAssistantTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainBloodTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainDiseaseRecordFragment;
@@ -44,6 +45,10 @@ import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;

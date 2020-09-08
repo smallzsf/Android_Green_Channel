@@ -1,20 +1,19 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.chestpain.ChestPainOperationInfoActivity;
-import com.xyj.strokeaid.activity.chestpain.ChestPainOperationResultActivity;
-import com.xyj.strokeaid.activity.chestpain.SurgicalPreparationActivtty;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.helper.RouterHelper;
+import com.xyj.strokeaid.view.SettingBar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * SurgicalTreatmentFragment
@@ -24,17 +23,14 @@ import butterknife.BindView;
  * @date : 2020/9/2
  * email ：122724021@qq.com
  */
-public class SurgicalTreatmentFragment extends BaseFragment implements View.OnClickListener {
-    private String mPatientId;
-    private String mDocId;
+public class SurgicalTreatmentFragment extends BaseFragment {
 
-    @BindView(R.id.rl_operation_before)
-    RelativeLayout rl_operation_before;
-    @BindView(R.id.rl_operation_info)
-    RelativeLayout rl_operation_info;
-    @BindView(R.id.rl_operation_result)
-    RelativeLayout rl_operation_result;
-
+    @BindView(R.id.sb_operation_before)
+    SettingBar sbOperationBefore;
+    @BindView(R.id.sb_operation_info)
+    SettingBar sbOperationInfo;
+    @BindView(R.id.sb_operation_result)
+    SettingBar sbOperationResult;
 
     private String mRecordId;
 
@@ -70,28 +66,26 @@ public class SurgicalTreatmentFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected void initListener() {
-        rl_operation_before.setOnClickListener(this);
-        rl_operation_info.setOnClickListener(this);
-        rl_operation_result.setOnClickListener(this);
+
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_operation_before:
+
+    @OnClick({R.id.sb_operation_before, R.id.sb_operation_info, R.id.sb_operation_result})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.sb_operation_before:
                 //术前准备
-                Intent intentOperationBefore = new Intent(getActivity(), SurgicalPreparationActivtty.class);
-                startActivity(intentOperationBefore);
+                RouterHelper.navWithRecordId(RouteUrl.ChestPain.CHEST_PAIN_OPERATION_BEFORE, mRecordId);
                 break;
-            case R.id.rl_operation_info:
+            case R.id.sb_operation_info:
                 //手术信
-                Intent intentInfo = new Intent(getContext(), ChestPainOperationInfoActivity.class);
-                startActivity(intentInfo);
+                RouterHelper.navWithRecordId(RouteUrl.ChestPain.CHEST_PAIN_OPERATION_INFO, mRecordId);
                 break;
-            case R.id.rl_operation_result:
+            case R.id.sb_operation_result:
                 //结果信息
-                Intent intentResult = new Intent(getContext(), ChestPainOperationResultActivity.class);
-                startActivity(intentResult);
+                RouterHelper.navWithRecordId(RouteUrl.ChestPain.CHEST_PAIN_OPERATION_RESULT, mRecordId);
+                break;
+            default:
                 break;
         }
     }
