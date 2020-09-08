@@ -29,6 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@drawable/shape_patient_record_menu_bg"
+        android:overScrollMode="never"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_time_act_pcpr"

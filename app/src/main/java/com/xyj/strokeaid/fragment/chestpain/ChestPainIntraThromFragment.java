@@ -14,6 +14,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,6 +40,8 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     RadioButton rbTabooHas;
     @BindView(R.id.rb_taboo_none)
     RadioButton rbTabooNone;
+    @BindView(R.id.ll_no_suitable)
+    LinearLayout llNoSuitable;
     @BindView(R.id.rb_thrombolytic_therapy_has)
     RadioButton rbThrombolyticTherapyHas;
     @BindView(R.id.rb_thrombolytic_therapy_none)
@@ -53,36 +56,36 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     RadioButton rbHeartDepartment;
     @BindView(R.id.rb_other_department)
     RadioButton rbOtherDepartment;
-    @BindView(R.id.rb_intrac_has)
-    RadioButton rbIntracHas;
-    @BindView(R.id.rb_intrac_none)
-    RadioButton rbIntracNone;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_vital_signs)
-    LinearLayout llVitalSigns;
-    @BindView(R.id.ll_no_suitable)
-    LinearLayout llNoSuitable;
-    @BindView(R.id.ll_suitable)
-    LinearLayout llSuitable;
     @BindView(R.id.edit_spinner_medicine)
     EditSpinner editSpinnerMedicine;
     @BindView(R.id.edit_spinner_dose)
     EditSpinner editSpinnerDose;
-    private String mPatientId;
-    private String mDocId;
+    @BindView(R.id.rb_intrac_has)
+    RadioButton rbIntracHas;
+    @BindView(R.id.rb_intrac_none)
+    RadioButton rbIntracNone;
+    @BindView(R.id.ll_suitable)
+    LinearLayout llSuitable;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    private String mRecordId;
 
     public ChestPainIntraThromFragment() {
-
     }
 
-    public static ChestPainIntraThromFragment newInstance(String patientId, String docId) {
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param recordId 记录ID
+     * @return A new instance of fragment StrokeGetInvolvedFragment.
+     */
+    public static ChestPainIntraThromFragment newInstance(String recordId) {
         ChestPainIntraThromFragment fragment = new ChestPainIntraThromFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -91,8 +94,7 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -112,16 +114,10 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
 
 
     private void loadData() {
-        List<String> medicineList = new ArrayList<>();
-        medicineList.add("第一代");
-        editSpinnerMedicine.setItemData(medicineList);
-
-//        esVitalSignAware.setItemData(list);
+        // 溶栓药物种类
+        editSpinnerMedicine.setItemData(Arrays.asList(getResources().getStringArray(R.array.thrombolytic_drug)));
         //剂量
-        List<String> doseList = new ArrayList<>();
-        doseList.add("全量");
-        editSpinnerDose.setItemData(doseList);
-
+        editSpinnerDose.setItemData(Arrays.asList(getResources().getStringArray(R.array.thrombolytic_drug_dose)));
     }
 
 
@@ -159,6 +155,8 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
                 // 溶栓其他筛查
                 llNoSuitable.setVisibility(View.GONE);
                 llSuitable.setVisibility(View.GONE);
+                break;
+            default:
                 break;
         }
     }

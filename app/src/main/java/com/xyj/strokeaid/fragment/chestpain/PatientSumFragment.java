@@ -138,13 +138,26 @@ public class PatientSumFragment extends BaseFragment {
     @BindView(R.id.ll_non_heart)
     LinearLayout llNonHeart;
 
-    public static PatientSumFragment newInstance(String patientId, String docId) {
+    private String mRecordId;
+
+    private PatientSumFragment() {
+
+    }
+
+    public static PatientSumFragment newInstance(String recordId) {
         PatientSumFragment fragment = new PatientSumFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
     }
 
     @Override

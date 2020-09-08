@@ -8,17 +8,17 @@
     android:background="@color/color_bg"
     android:orientation="vertical">
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <TextView
                 style="@style/Text_Blue_Content_Style"
@@ -72,8 +72,8 @@
                         android:id="@+id/es_vital_sign_aware"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_30"
-                        android:layout_marginLeft="@dimen/item_normal_margin"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/item_normal_margin"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
@@ -251,6 +251,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:title="会诊时间" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/space_height" />
             </LinearLayout>
 
 
@@ -258,19 +262,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <!--  <include layout="@layout/view_two_bottom_button" />-->
+    <include layout="@layout/view_bottom_save_button" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_start_frag_sg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/login_btn_bg"
-        android:gravity="center"
-        android:text="启动绿道"
-        android:textColor="@android:color/white"
-        android:textSize="16dp" />
 </LinearLayout>

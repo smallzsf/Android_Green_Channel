@@ -1,99 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/rl_operation_before"
+    <com.xyj.strokeaid.view.SettingBar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40">
+        android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="术前准备"
+        android:id="@+id/sb_operation_before"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="术前准备"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/common_icon_right_arrow_222222" />
-
-        <View
-            style="@style/horizontal_divider"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_operation_info"
+    <com.xyj.strokeaid.view.SettingBar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/rl_operation_before">
+        android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="手术信息"
+        android:id="@+id/sb_operation_info"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="手术信息"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/common_icon_right_arrow_222222" />
-
-        <View
-            style="@style/horizontal_divider"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_operation_result"
+    <com.xyj.strokeaid.view.SettingBar
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_40"
-        android:layout_below="@id/rl_operation_info">
+        android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="结果信息"
+        android:id="@+id/sb_operation_result"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_20"
-            android:text="结果信息"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_13" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"
-            android:src="@drawable/common_icon_right_arrow_222222" />
-
-        <View
-            style="@style/horizontal_divider"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="@dimen/dp_12"
-            android:layout_marginRight="@dimen/dp_12"/>
-    </RelativeLayout>
-
-</RelativeLayout>
+</LinearLayout>
 

@@ -150,6 +150,10 @@ public final class RouteUrl {
          * 胸痛患者病历页面
          */
         public static final String CHEST_PAIN_HOME = "/app/chestpain/home";
+
+        public static final String CHEST_PAIN_OPERATION_BEFORE = "/app/chestpain/opbefore";
+        public static final String CHEST_PAIN_OPERATION_INFO = "/app/chestpain/opinfo";
+        public static final String CHEST_PAIN_OPERATION_RESULT = "/app/chestpain/opresult";
     }
 
     public static final class Trauma {

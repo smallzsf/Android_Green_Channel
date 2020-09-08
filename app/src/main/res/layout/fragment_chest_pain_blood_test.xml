@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:id="@+id/llVitalSigns"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,155 +21,71 @@
 
 
             <LinearLayout
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
+                android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_troponin_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="@dimen/item_normal_height"
-                        android:paddingStart="@dimen/dp_12"
+                        android:paddingStart="@dimen/item_normal_margin"
                         android:paddingEnd="@dimen/dp_12">
 
-                        <ImageView
-                            android:id="@+id/iv_troponin"
-                            android:layout_width="@dimen/item_normal_height"
-                            android:layout_height="@dimen/item_normal_height"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentEnd="true"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_arrow_down_blue" />
-
                         <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:text="肌钙蛋白"
+                            android:textColor="@color/text_color_normal"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/sv_troponin"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/item_normal_height"
-                            android:layout_alignParentStart="true"
-                            android:layout_marginEnd="@dimen/dp_12"
-                            android:layout_toStartOf="@id/iv_troponin"
-                            android:gravity="center_vertical"
-                            android:maxLength="10"
-                            android:maxLines="2"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size"
-                            android:text="肌钙蛋白" />
-                    </RelativeLayout>
+                            android:checked="false" />
+
+                    </LinearLayout>
                 </LinearLayout>
+
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_troponin_data"
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
-
-                    <com.xyj.strokeaid.view.TextTimeBar
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/dp_1"
-                        android:layout_marginRight="@dimen/dp_1"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        tl:title="抽血送检时间（肌钙蛋白）" />
-
-                    <com.xyj.strokeaid.view.TextTimeBar
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/dp_1"
-                        android:layout_marginRight="@dimen/dp_1"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        tl:title="报告完成时间（肌钙蛋白）" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_marginRight="@dimen/dp_7"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/item_normal_height"
-                            android:layout_centerVertical="true"
-                            android:gravity="center"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="肌钙蛋白"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
-
-                        <RadioGroup
-                            android:layout_marginLeft="@dimen/dp_7"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal"
-                            android:weightSum="3">
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_has"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:checked="true"
-                                android:text="是"
-                                android:textSize="@dimen/item_content_size" />
-
-                            <RadioButton
-                                android:id="@+id/rb_troponin_none"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="否"
-                                android:textSize="@dimen/item_content_size" />
-
-                        </RadioGroup>
-                        <TextView
-                            android:id="@+id/tv_add_troponin"
-                            android:layout_marginRight="@dimen/dp_12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="@dimen/item_normal_height"
-                            android:layout_centerVertical="true"
-                            android:gravity="center"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="新增检查记录"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
-                    </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         android:id="@+id/ll_troponin_first"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:padding="@dimen/dp_4">
 
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="@dimen/item_normal_height"
-                                android:layout_centerVertical="true"
                                 android:gravity="center"
                                 android:maxLength="6"
                                 android:maxLines="1"
@@ -179,10 +95,10 @@
                                 android:textSize="@dimen/item_title_size" />
 
                             <RadioGroup
-                                android:layout_marginLeft="@dimen/dp_30"
-                                android:layout_width="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_weight="1"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
@@ -206,21 +122,32 @@
                                     android:textSize="@dimen/item_content_size" />
 
                             </RadioGroup>
+
+                            <ImageView
+                                android:id="@+id/iv_add_troponin"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="@dimen/item_normal_margin"
+                                android:src="@drawable/icon_add" />
                         </LinearLayout>
+
+                        <View style="@style/horizontal_divider" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:orientation="horizontal"
                             android:layout_marginBottom="@dimen/dp_7"
-                            >
+                            android:orientation="horizontal">
+
                             <EditText
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/shape_grey_stroke"
                                 android:hint="单行输入"
-                                android:layout_weight="1"
                                 android:inputType="text"
                                 android:paddingStart="@dimen/dp_8"
                                 android:textColor="@color/color_222222"
@@ -230,7 +157,8 @@
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
-                                android:layout_marginRight="@dimen/dp_3"
+                                android:layout_marginStart="@dimen/dp_4"
+                                android:layout_marginEnd="@dimen/dp_4"
                                 android:gravity="center"
                                 app:Background="@drawable/bg_view_frame"
                                 app:hint="ng/L"
@@ -239,27 +167,40 @@
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
-                                android:layout_marginRight="@dimen/dp_3"
+                                android:layout_marginEnd="@dimen/dp_3"
                                 android:gravity="center"
                                 app:Background="@drawable/bg_view_frame"
                                 app:hint="阴性"
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                         </LinearLayout>
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            app:bottomLineVisible="true"
+                            app:topLineVisible="true"
+                            tl:title="抽血完成时间" />
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            tl:title="报告完成时间" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_troponin_two"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:visibility="visible">
 
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
                             android:orientation="horizontal">
 
@@ -276,10 +217,10 @@
                                 android:textSize="@dimen/item_title_size" />
 
                             <RadioGroup
-                                android:layout_marginLeft="@dimen/dp_30"
                                 android:layout_width="wrap_content"
-                                android:layout_weight="1"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_weight="1"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
@@ -303,21 +244,31 @@
                                     android:textSize="@dimen/item_content_size" />
 
                             </RadioGroup>
+
+                            <ImageView
+                                android:id="@+id/iv_delete_troponin_1"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="@dimen/item_normal_margin"
+                                android:src="@drawable/icon_sub" />
+
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:orientation="horizontal"
                             android:layout_marginBottom="@dimen/dp_7"
-                            >
+                            android:orientation="horizontal">
+
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/shape_grey_stroke"
                                 android:hint="单行输入"
-                                android:layout_weight="1"
                                 android:inputType="text"
                                 android:paddingStart="@dimen/dp_8"
                                 android:textColor="@color/color_222222"
@@ -343,20 +294,35 @@
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                         </LinearLayout>
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            app:bottomLineVisible="true"
+                            tl:title="抽血完成时间" />
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            app:bottomLineVisible="true"
+                            tl:title="报告完成时间" />
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/ll_troponin_three"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_height="wrap_content">
+                        android:visibility="visible">
 
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
                             android:orientation="horizontal">
 
@@ -373,10 +339,10 @@
                                 android:textSize="@dimen/item_title_size" />
 
                             <RadioGroup
-                                android:layout_marginLeft="@dimen/dp_30"
                                 android:layout_width="wrap_content"
-                                android:layout_weight="1"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/dp_30"
+                                android:layout_weight="1"
                                 android:orientation="horizontal"
                                 android:weightSum="3">
 
@@ -400,21 +366,32 @@
                                     android:textSize="@dimen/item_content_size" />
 
                             </RadioGroup>
+
+
+                            <ImageView
+                                android:id="@+id/iv_delete_troponin_2"
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginEnd="@dimen/item_normal_margin"
+                                android:src="@drawable/icon_sub" />
+
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_7"
                             android:layout_marginRight="@dimen/dp_7"
-                            android:orientation="horizontal"
                             android:layout_marginBottom="@dimen/dp_7"
-                            >
+                            android:orientation="horizontal">
+
                             <EditText
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_weight="1"
                                 android:background="@drawable/shape_grey_stroke"
                                 android:hint="单行输入"
-                                android:layout_weight="1"
                                 android:inputType="text"
                                 android:paddingStart="@dimen/dp_8"
                                 android:textColor="@color/color_222222"
@@ -440,6 +417,20 @@
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                         </LinearLayout>
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            app:bottomLineVisible="true"
+                            tl:title="抽血完成时间" />
+
+                        <com.xyj.strokeaid.view.TextTimeBar
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:background="@color/white"
+                            app:bottomLineVisible="true"
+                            tl:title="报告完成时间" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -447,55 +438,52 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/ll_preoperative_anticoagulation_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/dp_7"
+                    android:minHeight="@dimen/item_normal_height"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
                         android:gravity="center_vertical"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="血清肌酐" />
-                    <ImageView
-                        android:id="@+id/iv_preoperative_anticoagulation"
-                        android:layout_width="@dimen/item_normal_height"
+                        android:text="血清肌酐（Cr）"
+                        android:textColor="@color/text_color_normal"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_preoperative_anticoagulation"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                        android:checked="false" />
 
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
@@ -515,32 +503,34 @@
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_dimer_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:paddingStart="@dimen/dp_7"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:text="D-二聚体"
                         android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="D-二聚体" />
+                        android:textSize="@dimen/item_title_size" />
+
                     <ImageView
                         android:id="@+id/iv_dimer"
                         android:layout_width="@dimen/item_normal_height"
@@ -553,19 +543,20 @@
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_dimer_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
@@ -576,9 +567,9 @@
                         android:id="@+id/eds_preoperative_anticoagulation"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
+                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/dp_7"
                         android:layout_marginRight="@dimen/dp_3"
-                        android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
@@ -590,30 +581,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_bnp_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:paddingStart="@dimen/dp_12"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:text="BNP"
                         android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="BNP" />
+                        android:textSize="@dimen/item_title_size" />
+
                     <ImageView
                         android:id="@+id/iv_bnp"
                         android:layout_width="@dimen/item_normal_height"
@@ -626,24 +618,26 @@
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_bnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
                         android:textColorHint="@color/color_666666"
                         android:textSize="13sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
@@ -660,30 +654,31 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_nt_probnp_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:paddingStart="@dimen/dp_12"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:text="NT-proBNP"
                         android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="NT-proBNP" />
+                        android:textSize="@dimen/item_title_size" />
+
                     <ImageView
                         android:id="@+id/iv_nt_probnp"
                         android:layout_width="@dimen/item_normal_height"
@@ -696,24 +691,26 @@
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_nt_probnp_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
                         android:textColorHint="@color/color_666666"
                         android:textSize="13sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_30"
@@ -727,32 +724,34 @@
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_myo_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:paddingStart="@dimen/dp_7"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:text="Myo"
                         android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="Myo" />
+                        android:textSize="@dimen/item_title_size" />
+
                     <ImageView
                         android:id="@+id/iv_myo"
                         android:layout_width="@dimen/item_normal_height"
@@ -765,19 +764,20 @@
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_myo_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
@@ -787,9 +787,9 @@
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
-                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
@@ -798,32 +798,34 @@
 
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:background="@drawable/shape_edittext_bg"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginLeft="@dimen/dp_7"
+                android:layout_marginTop="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_7"
-                android:orientation="vertical"
-                >
+                android:background="@drawable/shape_edittext_bg"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_ckmb_title"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:paddingStart="@dimen/dp_7"
                     android:paddingEnd="@dimen/dp_12">
+
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
+                        android:text="CKMB"
                         android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size"
-                        android:text="CKMB" />
+                        android:textSize="@dimen/item_title_size" />
+
                     <ImageView
                         android:id="@+id/iv_ckmb"
                         android:layout_width="@dimen/item_normal_height"
@@ -836,19 +838,20 @@
                 </LinearLayout>
 
                 <View style="@style/horizontal_divider" />
+
                 <LinearLayout
                     android:id="@+id/ll_ckmb_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:layout_weight="1"
                         android:background="@drawable/shape_grey_stroke"
                         android:hint="单行输入"
-                        android:layout_weight="1"
                         android:inputType="text"
                         android:paddingStart="@dimen/dp_8"
                         android:textColor="@color/color_222222"
@@ -858,9 +861,9 @@
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
-                        android:layout_marginRight="@dimen/dp_3"
-                        android:layout_marginLeft="@dimen/dp_7"
                         android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_7"
+                        android:layout_marginRight="@dimen/dp_3"
                         android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
@@ -869,6 +872,10 @@
 
                 </LinearLayout>
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

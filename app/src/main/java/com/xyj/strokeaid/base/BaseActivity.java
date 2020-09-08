@@ -1,7 +1,6 @@
 package com.xyj.strokeaid.base;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +29,8 @@ import com.xyj.strokeaid.helper.KeyboardUtils;
 import com.xyj.strokeaid.view.LoadingDialogFragment;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayDeque;
 import java.util.Date;
@@ -100,6 +101,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         if (mLoadingDialogFragment != null) {
             mLoadingDialogFragment.dismiss();
+        }
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
         }
     }
 

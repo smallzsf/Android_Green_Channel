@@ -22,8 +22,7 @@ import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import okhttp3.MediaType;
@@ -60,13 +59,10 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
 
     @BindView(R.id.unit_times_minute)
     TextView unitTimesMinute;
-
     @BindView(R.id.pulse)
     TextView pulse;
-
     @BindView(R.id.pulse_layout)
     LinearLayout pulseLayout;
-
     @BindView(R.id.et_pulse_content)
     EditText etPulseContent; //脉搏
 
@@ -76,7 +72,6 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     TextView heartRate;
     @BindView(R.id.heart_rate_layout)
     LinearLayout heartRateLayout;
-
     @BindView(R.id.et_heart_rate_content)
     EditText etHeartRateContent;//心率
 
@@ -86,7 +81,6 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     TextView systolicBloodPressure;
     @BindView(R.id.systolic_blood_pressure_layout)
     LinearLayout systolicBloodPressureLayout;
-
     @BindView(R.id.et_systolic_blood_pressure_content)
     EditText etSystolicBloodPressureContent; //收缩压
 
@@ -96,7 +90,6 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     TextView diastolicBloodPressure;
     @BindView(R.id.diastolic_blood_pressure_layout)
     LinearLayout diastolicBloodPressureLayout;
-
     @BindView(R.id.et_diastolic_blood_pressure_content)
     EditText etDiastolicBloodPressureContent;//舒张压
 
@@ -106,7 +99,6 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     TextView bloodOxygenSaturation;
     @BindView(R.id.blood_oxygen_saturation_layout)
     LinearLayout bloodOxygenSaturationLayout;
-
     @BindView(R.id.et_blood_oxygen_saturation_content)
     EditText etBloodOxygenSaturationContent;//血氧饱和度
 
@@ -116,29 +108,25 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     TextView bodyTemperature;
     @BindView(R.id.body_temperature_layout)
     LinearLayout bodyTemperatureLayout;
-
     @BindView(R.id.et_body_temperature_content)
     EditText etBodyTemperatureContent;//体温
     @BindView(R.id.body_temperature_unit_celsius)
     TextView bodyTemperatureUnitCelsius;
     @BindView(R.id.btn_get_data)
-
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    private String mPatientId;
-    private String mDocId;
-    private List<String> list;
+
+    private String mRecordId;
 
     public ChestPainVitalSignsFragment() {
 
     }
 
-    public static ChestPainVitalSignsFragment newInstance(String patientId, String docId) {
+    public static ChestPainVitalSignsFragment newInstance(String recordId) {
         ChestPainVitalSignsFragment fragment = new ChestPainVitalSignsFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -147,8 +135,7 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -159,6 +146,7 @@ public class ChestPainVitalSignsFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+        esVitalSignAware.setItemData(Arrays.asList(getResources().getStringArray(R.array.chest_pain_state_of_consciousness)));
         btnGetData.setText("获取数据");
         btnConfirm.setText("保存");
         btnGetData.setOnClickListener(v -> {

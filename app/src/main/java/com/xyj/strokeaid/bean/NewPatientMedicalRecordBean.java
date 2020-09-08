@@ -9,7 +9,6 @@ public class NewPatientMedicalRecordBean {
 
     /**
      * id :
-     * operationid :
      * emergencyType :
      * empId :
      * fullname :
@@ -50,11 +49,6 @@ public class NewPatientMedicalRecordBean {
      * emergencytime :来院方式-接诊时间
      * emergencynurse :来院方式-接诊护士
      * emergencydoctor :来院方式-接诊医生
-     * notes :          备注
-     * updatedBy :     更新人
-     * updatedByName : 更新人姓名
-     * updatedByDate : 更新时间
-     * tenantId :    租户
      * timeofcall :  呼救时间
      * dispatch120time :120派车时间
      * depart120time : 120出车时间
@@ -67,13 +61,13 @@ public class NewPatientMedicalRecordBean {
      * decidetranstime :决定转院时间
      * leaveattackdepartmenttime : 离开科室时间
      * behospitalizedway :  入院途径1急诊 2门诊 3其他医疗机构转入4其他
+     * medicaretype
+     * seriousillnessmedicare
+     * attacktimeinterval
      */
 
 
-
-
     private String id;
-    private String operationid;
     private String emergencyType;
     private String empId;
     private String fullname;
@@ -114,11 +108,6 @@ public class NewPatientMedicalRecordBean {
     private String emergencytime;
     private String emergencynurse;
     private String emergencydoctor;
-    private String notes;
-    private String updatedBy;
-    private String updatedByName;
-    private String updatedByDate;
-    private String tenantId;
     private String timeofcall;
     private String dispatch120time;
     private String depart120time;
@@ -131,6 +120,11 @@ public class NewPatientMedicalRecordBean {
     private String decidetranstime;
     private String leaveattackdepartmenttime;
     private String behospitalizedway;
+    private String medicaretype;
+    private String seriousillnessmedicare;
+    private String attacktimeinterval;
+
+
 
     public String getId() {
         return id;
@@ -138,14 +132,6 @@ public class NewPatientMedicalRecordBean {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getOperationid() {
-        return operationid;
-    }
-
-    public void setOperationid(String operationid) {
-        this.operationid = operationid;
     }
 
     public String getEmergencyType() {
@@ -468,46 +454,6 @@ public class NewPatientMedicalRecordBean {
         this.emergencydoctor = emergencydoctor;
     }
 
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-    }
-
-    public String getUpdatedByName() {
-        return updatedByName;
-    }
-
-    public void setUpdatedByName(String updatedByName) {
-        this.updatedByName = updatedByName;
-    }
-
-    public String getUpdatedByDate() {
-        return updatedByDate;
-    }
-
-    public void setUpdatedByDate(String updatedByDate) {
-        this.updatedByDate = updatedByDate;
-    }
-
-    public String getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(String tenantId) {
-        this.tenantId = tenantId;
-    }
-
     public String getTimeofcall() {
         return timeofcall;
     }
@@ -602,5 +548,29 @@ public class NewPatientMedicalRecordBean {
 
     public void setBehospitalizedway(String behospitalizedway) {
         this.behospitalizedway = behospitalizedway;
+    }
+
+    public String getMedicaretype() {
+        return medicaretype;
+    }
+
+    public void setMedicaretype(String medicaretype) {
+        this.medicaretype = medicaretype;
+    }
+
+    public String getSeriousillnessmedicare() {
+        return seriousillnessmedicare;
+    }
+
+    public void setSeriousillnessmedicare(String seriousillnessmedicare) {
+        this.seriousillnessmedicare = seriousillnessmedicare;
+    }
+
+    public String getAttacktimeinterval() {
+        return attacktimeinterval;
+    }
+
+    public void setAttacktimeinterval(String attacktimeinterval) {
+        this.attacktimeinterval = attacktimeinterval;
     }
 }

@@ -50,4 +50,16 @@ public final class RouterHelper {
                 .navigation();
     }
 
+
+    public static void navWithRecordId(String navigation, String recordId) {
+        if (TextUtils.isEmpty(navigation) || TextUtils.isEmpty(recordId)) {
+            LogUtils.e("navigation or recordId is null!!!");
+            return;
+        }
+        ARouter.getInstance()
+                .build(navigation)
+                .withString(IntentKey.RECORD_ID, recordId)
+                .navigation();
+    }
+
 }

@@ -1,7 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -10,10 +9,7 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -32,9 +28,7 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 public class ChestPainIntraConsultFragment extends BaseFragment {
-/*
-    @BindView(R.id.stl_title_frag_od)
-    SegmentTabLayout stlTitleFragOd;*/
+
     @BindView(R.id.es_vital_sign_aware)
     EditSpinner esVitalSignAware;
     @BindView(R.id.rb_on_site_consultation)
@@ -59,26 +53,23 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     TextTimeBar ttbArrivalTimeOut;
     @BindView(R.id.ll_intrac_consult_out)
     LinearLayout llIntracConsultOut;
-  /*  @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.btn_cancel)
-    AppCompatButton btnCancel;*/
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
-    private String mPatientId;
-    private String mDocId;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
 
     private int titlePosition = 0;
 
-    public ChestPainIntraConsultFragment() {
+    private String mRecordId;
+
+    private ChestPainIntraConsultFragment() {
 
     }
 
-    public static ChestPainIntraConsultFragment newInstance(String patientId, String docId) {
+    public static ChestPainIntraConsultFragment newInstance(String recordId) {
         ChestPainIntraConsultFragment fragment = new ChestPainIntraConsultFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -87,8 +78,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -115,7 +105,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
         itemData.add("3");
         esVitalSignAware.setItemData(itemData);
         esVitalSignAwareOut.setItemData(itemData);
-       // refrashTitleData();
+        // refrashTitleData();
     }
 
 

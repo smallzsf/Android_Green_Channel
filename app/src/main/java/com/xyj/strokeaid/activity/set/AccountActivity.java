@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.tencent.bugly.beta.Beta;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.login.LoginActivity;
 import com.xyj.strokeaid.app.MmkvKey;
@@ -100,6 +101,12 @@ public class AccountActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(mContext, ChangePasswordActivity.class));
+            }
+        });
+        sbVersionPwdActAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

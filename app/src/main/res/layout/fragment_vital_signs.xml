@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_vital_signs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
-    android:orientation="vertical"
-    android:id="@+id/ll_vital_signs"
-    tools:context=".fragment.VitalSignsFragment">
-
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,47 +19,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!--
-
-                        <com.xyj.strokeaid.view.BaseTitleBar
-                            android:id="@+id/titlebar"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/title_bar_height"
-                            app:rightIconVisible="false"
-                            app:rightTextVisible="true"
-                            app:title="生命体征" />
-            -->
-
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginLeft="@dimen/item_normal_margin"
-                android:layout_marginRight="@dimen/item_normal_margin">
+                android:layout_marginRight="@dimen/item_normal_margin"
+                android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/awareness"
-                    android:layout_width="@dimen/vital_sign_title_width"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/vital_sign_awareness"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/item_title_size" />
-
+                    style="@style/XyjTextSubTitel"
+                    android:text="@string/vital_sign_awareness" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:id="@+id/es_vital_sign_aware"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_30"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/awareness"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
                     app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
-
-            </RelativeLayout>
+            </LinearLayout>
 
 
             <View style="@style/horizontal_divider" />
@@ -429,14 +404,6 @@
         layout="@layout/view_two_horizontal_bottom_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/dp_8" />
+        android:layout_margin="@dimen/item_normal_margin" />
 
-
-    <!--   <include
-           android:id="@+id/menu"
-           layout="@layout/view_bottom_menu"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true" />-->
 </LinearLayout>

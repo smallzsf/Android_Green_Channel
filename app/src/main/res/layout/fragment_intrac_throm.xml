@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_vital_signs"
-    android:layout_width="match_parent"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_ffffff"
+    android:background="@color/color_bg"
     android:orientation="vertical">
 
 
@@ -21,42 +20,25 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp_12"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_7"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="溶栓筛查"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-            </LinearLayout>
+            <TextView
+                style="@style/XyjTextTitel"
+                android:text="溶栓筛查" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
                 android:orientation="horizontal">
 
                 <RadioGroup
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
                     <RadioButton
                         android:id="@+id/rb_suitable"
-                        style="@style/tv_small"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:checked="true"
@@ -66,7 +48,7 @@
                     <RadioButton
 
                         android:id="@+id/rb_no_suitable"
-                        style="@style/tv_small"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/dp_12"
@@ -77,7 +59,7 @@
                     <RadioButton
 
                         android:id="@+id/rb_not_screened"
-                        style="@style/tv_small"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="为筛查"
@@ -90,11 +72,11 @@
 
             <LinearLayout
                 android:id="@+id/ll_no_suitable"
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
-                android:orientation="horizontal">
+
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -110,9 +92,9 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <RadioGroup
-                    android:layout_marginLeft="@dimen/dp_30"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_30"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
@@ -144,30 +126,18 @@
                 android:id="@+id/ll_suitable"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_7"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="溶栓治疗"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="溶栓治疗" />
 
                     <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_30"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -175,8 +145,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_thrombolytic_therapy_has"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:checked="true"
@@ -185,8 +155,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_thrombolytic_therapy_none"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="否"
@@ -195,28 +165,17 @@
                     </RadioGroup>
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_marginLeft="@dimen/dp_7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="直达溶栓场所"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="直达溶栓场所" />
 
                     <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_30"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -224,8 +183,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_thrombolytic_site_has"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:checked="true"
@@ -234,8 +193,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_thrombolytic_site_none"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="否"
@@ -248,33 +207,24 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
+
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_7"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="溶栓场所"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="溶栓场所" />
 
                     <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_12"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_12"
                         android:orientation="horizontal"
                         android:weightSum="3">
 
                         <RadioButton
                             android:id="@+id/rb_emergency_department"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:checked="true"
@@ -283,8 +233,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_heart_department"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="本院心内科"
@@ -292,8 +242,8 @@
 
                         <RadioButton
                             android:id="@+id/rb_other_department"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
+                            style="@style/XyjRadionButton"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="其他科室"
@@ -306,41 +256,37 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
+                    app:topLineVisible="true"
                     tl:title="开始知情谈话" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="签署知情协议" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="开始溶栓" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="溶栓结束" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="药物"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="药物" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -358,22 +304,14 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/vital_sign_item_height"
-                    android:layout_marginRight="@dimen/dp_12">
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="剂量"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="剂量" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
@@ -393,24 +331,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="溶栓再通"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        style="@style/XyjTextSubTitel"
+                        android:text="溶栓再通" />
 
                     <RadioGroup
-                        android:layout_marginLeft="@dimen/dp_30"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
@@ -418,22 +346,13 @@
 
                         <RadioButton
                             android:id="@+id/rb_intrac_has"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="是"
-                            android:textSize="@dimen/item_content_size" />
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="是" />
 
                         <RadioButton
                             android:id="@+id/rb_intrac_none"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="否"
-                            android:textSize="@dimen/item_content_size" />
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="否" />
 
                     </RadioGroup>
 
