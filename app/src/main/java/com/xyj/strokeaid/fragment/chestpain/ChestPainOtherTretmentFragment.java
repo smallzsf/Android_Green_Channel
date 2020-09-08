@@ -23,7 +23,7 @@ import butterknife.BindView;
  * @Description: 胸痛其他处置
  * @Date: 2020/9/4 20:05
  */
-public class ChestPainManagementFragment extends BaseFragment {
+public class ChestPainOtherTretmentFragment extends BaseFragment {
 
 
     @BindView(R.id.btn_save)
@@ -152,8 +152,8 @@ public class ChestPainManagementFragment extends BaseFragment {
     LinearLayout mLinearLayoutOutOtherDepart;
     LinearLayout mLinearLayoutOutDeath;
 
-    public static ChestPainManagementFragment newInstance() {
-        ChestPainManagementFragment fragment = new ChestPainManagementFragment();
+    public static ChestPainOtherTretmentFragment newInstance() {
+        ChestPainOtherTretmentFragment fragment = new ChestPainOtherTretmentFragment();
         return fragment;
     }
 

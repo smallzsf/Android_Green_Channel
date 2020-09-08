@@ -167,6 +167,23 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_INTRA_CONSULT_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHeartConsultation/edit";
 
+        /**
+         * 胸痛 患者转归 获取
+         */
+        public static final String NET_URL_CHEST_PAIN_PATIENT_OUTCOME_GET = "yjjk-gateway/yjjk-cdm-api/v1/dischargeDdiagnosis/get";
+        /**
+         * 胸痛 患者转归 保存
+         */
+        public static final String NET_URL_CHEST_PAIN_PATIENT_OUTCOME_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/dischargeDdiagnosis/edit";
+
+        /**
+         * 胸痛 其他处置 获取
+         */
+        public static final String NET_URL_CHEST_PAIN_OTHER_TRETMENT_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDischargedInformation/getByRecordId";
+        /**
+         * 胸痛 其他处置 保存
+         */
+        public static final String NET_URL_CHEST_PAIN_OTHER_TRETMENT_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDischargedInformation/edit";
 
     }
 

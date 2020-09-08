@@ -9,6 +9,8 @@ import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
+import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
@@ -214,7 +216,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRA_CONSULT_GET)
-    Call<BaseObjectBean<IntraConsultBean>> getIntraConsult(@Body RequestBody info);
+    Call<BaseObjectBean<IntraConsultBean>> getChestPainIntraConsult(@Body RequestBody info);
 
     /**
      * 胸痛--会诊信息 保存
@@ -223,5 +225,43 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRA_CONSULT_SAVE)
-    Call<BaseObjectBean> saveIntraConsult(@Body RequestBody info);
+    Call<BaseObjectBean> saveChestPainIntraConsult(@Body RequestBody info);
+
+
+    /**
+     * 胸痛--患者转归 查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_PATIENT_OUTCOME_GET)
+    Call<BaseObjectBean<PatientOutcomeBean>> getChestPainPatientOutcome(@Body RequestBody info);
+
+    /**
+     * 胸痛--患者转归 保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_PATIENT_OUTCOME_SAVE)
+    Call<BaseObjectBean> saveChestPainPatientOutcome(@Body RequestBody info);
+
+
+    /**
+     * 胸痛--其他处置 查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OTHER_TRETMENT_GET)
+    Call<BaseObjectBean<OtherTreatmentBean>> getChestPainOtherTreatment(@Body RequestBody info);
+
+    /**
+     * 胸痛--其他处置 保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OTHER_TRETMENT_SAVE)
+    Call<BaseObjectBean> saveChestPainOtherTreatment(@Body RequestBody info);
 }

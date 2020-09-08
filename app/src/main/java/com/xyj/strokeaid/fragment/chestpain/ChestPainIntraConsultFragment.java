@@ -134,7 +134,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
         }
         RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient.getInstance().getApi()
-                .getIntraConsult(recordIdBean.getResuestBody(recordIdBean))
+                .getChestPainIntraConsult(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<IntraConsultBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<IntraConsultBean>> call, Response<BaseObjectBean<IntraConsultBean>> response) {
@@ -309,7 +309,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
         showLoadingDialog();
         RetrofitClient.getInstance()
                 .getApi()
-                .saveIntraConsult(mIntraConsultBean.getResuestBody(mIntraConsultBean))
+                .saveChestPainIntraConsult(mIntraConsultBean.getResuestBody(mIntraConsultBean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {

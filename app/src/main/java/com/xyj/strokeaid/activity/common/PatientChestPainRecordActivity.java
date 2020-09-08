@@ -27,7 +27,6 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
-import com.xyj.strokeaid.event.RefreshEvent;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainAssistantTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainBloodTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainDiseaseRecordFragment;
@@ -35,20 +34,16 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainEcgExaminFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainInitDrugFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainManagementFragment;
+import com.xyj.strokeaid.fragment.chestpain.ChestPainOtherTretmentFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
-import com.xyj.strokeaid.fragment.chestpain.PatientSumFragment;
+import com.xyj.strokeaid.fragment.chestpain.PatientOutcomeFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.chestpain.TreatmentDecisionFragment;
 import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -213,10 +208,10 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     return SurgicalTreatmentFragment.newInstance(recordId);
                 case 12:
                     // 其他处置
-                    return ChestPainManagementFragment.newInstance();
+                    return ChestPainOtherTretmentFragment.newInstance();
                 case 13:
                     // 患者转归
-                    return PatientSumFragment.newInstance(recordId);
+                    return PatientOutcomeFragment.newInstance(recordId);
                 case 14:
                     // 时间节点
                     return TimeNodeFragment.newInstance(recordId, 2);
