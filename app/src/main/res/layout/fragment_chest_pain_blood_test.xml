@@ -65,6 +65,7 @@
                     android:id="@+id/ll_troponin_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
 
@@ -125,9 +126,9 @@
 
                             <ImageView
                                 android:id="@+id/iv_add_troponin"
-                                android:layout_width="25dp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="25dp"
-                                android:layout_gravity="center_vertical"
+                                android:layout_gravity="center|right"
                                 android:layout_marginEnd="@dimen/item_normal_margin"
                                 android:src="@drawable/icon_add" />
                         </LinearLayout>
@@ -194,7 +195,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -217,7 +219,7 @@
                                 android:textSize="@dimen/item_title_size" />
 
                             <RadioGroup
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="@dimen/dp_30"
                                 android:layout_weight="1"
@@ -247,8 +249,8 @@
 
                             <ImageView
                                 android:id="@+id/iv_delete_troponin_1"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="@dimen/item_normal_margin"
                                 android:src="@drawable/icon_sub" />
@@ -316,7 +318,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone"
+                      >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -339,7 +342,7 @@
                                 android:textSize="@dimen/item_title_size" />
 
                             <RadioGroup
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="@dimen/dp_30"
                                 android:layout_weight="1"
@@ -370,8 +373,8 @@
 
                             <ImageView
                                 android:id="@+id/iv_delete_troponin_2"
-                                android:layout_width="25dp"
-                                android:layout_height="25dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginEnd="@dimen/item_normal_margin"
                                 android:src="@drawable/icon_sub" />
@@ -476,6 +479,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -517,28 +521,47 @@
                     android:id="@+id/ll_dimer_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/item_normal_height"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_7"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
+                    <!--
+
+                                        <TextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="@dimen/item_normal_height"
+                                            android:layout_marginEnd="@dimen/dp_12"
+                                            android:layout_weight="1"
+                                            android:gravity="center_vertical"
+                                            android:text="D-二聚体"
+                                            android:textColor="@color/color_222222"
+                                            android:textSize="@dimen/item_title_size" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_dimer"
+                                            android:layout_width="@dimen/item_normal_height"
+                                            android:layout_height="@dimen/item_normal_height"
+                                            android:layout_alignParentTop="true"
+                                            android:layout_alignParentEnd="true"
+                                            android:scaleType="center"
+                                            android:src="@drawable/ic_arrow_down_blue" />
+                    -->
+
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="D-二聚体"
-                        android:textColor="@color/color_222222"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="@dimen/item_title_size" />
 
-                    <ImageView
-                        android:id="@+id/iv_dimer"
-                        android:layout_width="@dimen/item_normal_height"
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_dimer"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                        android:checked="false" />
 
                 </LinearLayout>
 
@@ -549,6 +572,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -592,28 +616,46 @@
                     android:id="@+id/ll_bnp_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/item_normal_height"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_12"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
+
+                    <!--      <TextView
+                              android:layout_width="0dp"
+                              android:layout_height="@dimen/item_normal_height"
+                              android:layout_marginEnd="@dimen/dp_12"
+                              android:layout_weight="1"
+                              android:gravity="center_vertical"
+                              android:text="BNP"
+                              android:textColor="@color/color_222222"
+                              android:textSize="@dimen/item_title_size" />
+
+                          <ImageView
+                              android:id="@+id/iv_bnp"
+                              android:layout_width="@dimen/item_normal_height"
+                              android:layout_height="@dimen/item_normal_height"
+                              android:layout_alignParentTop="true"
+                              android:layout_alignParentEnd="true"
+                              android:scaleType="center"
+                              android:src="@drawable/ic_arrow_down_blue" />-->
+
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:text="BNP"
-                        android:textColor="@color/color_222222"
+                        android:textColor="@color/text_color_normal"
                         android:textSize="@dimen/item_title_size" />
 
-                    <ImageView
-                        android:id="@+id/iv_bnp"
-                        android:layout_width="@dimen/item_normal_height"
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_bnp"
+                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                        android:checked="false" />
+
 
                 </LinearLayout>
 
@@ -624,6 +666,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -650,6 +693,7 @@
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -665,11 +709,12 @@
                     android:id="@+id/ll_nt_probnp_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/item_normal_height"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_12"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-                    <TextView
+                  <!--  <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
@@ -686,7 +731,23 @@
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                        android:src="@drawable/ic_arrow_down_blue" />-->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="NT-proBNP"
+                        android:textColor="@color/text_color_normal"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_nt_probnp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:checked="false" />
+
 
                 </LinearLayout>
 
@@ -697,6 +758,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -738,11 +800,12 @@
                     android:id="@+id/ll_myo_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/item_normal_height"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_7"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-                    <TextView
+           <!--         <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginEnd="@dimen/dp_12"
@@ -760,6 +823,23 @@
                         android:layout_alignParentEnd="true"
                         android:scaleType="center"
                         android:src="@drawable/ic_arrow_down_blue" />
+-->
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Myo"
+                        android:textColor="@color/text_color_normal"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_myo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:checked="false" />
+
 
                 </LinearLayout>
 
@@ -770,6 +850,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText
@@ -812,10 +893,12 @@
                     android:id="@+id/ll_ckmb_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:minHeight="@dimen/item_normal_height"
                     android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_7"
+                    android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
+<!--
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
@@ -834,6 +917,23 @@
                         android:layout_alignParentEnd="true"
                         android:scaleType="center"
                         android:src="@drawable/ic_arrow_down_blue" />
+-->
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="CKMB"
+                        android:textColor="@color/text_color_normal"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/sv_ckmb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:checked="false" />
 
                 </LinearLayout>
 
@@ -844,6 +944,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <EditText

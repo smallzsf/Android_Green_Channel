@@ -42,8 +42,6 @@ import retrofit2.Response;
 public class ChestPainVitalSignsFragment extends BaseFragment {
 
 
-    @BindView(R.id.awareness)
-    TextView awareness;
 
     @BindView(R.id.es_vital_sign_aware)
     EditSpinner esVitalSignAware; //意识

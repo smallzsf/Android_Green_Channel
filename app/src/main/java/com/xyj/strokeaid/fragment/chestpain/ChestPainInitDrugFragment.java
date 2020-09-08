@@ -2,12 +2,12 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
@@ -29,8 +29,7 @@ import butterknife.BindView;
  */
 public class ChestPainInitDrugFragment extends BaseFragment implements View.OnClickListener {
 
-    @BindView(R.id.iv_antihemotherapy)
-    ImageView ivAntihemotherapy;
+
     @BindView(R.id.rb_taboo_has)
     RadioButton rbTabooHas;
     @BindView(R.id.rb_taboo_none)
@@ -47,8 +46,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     LinearLayout llAntihemotherapyData;
     @BindView(R.id.ll_antihemotherapy_title)
     LinearLayout llAntihemotherapyTitle;
-    @BindView(R.id.iv_preoperative_anticoagulation)
-    ImageView ivPreoperativeAnticoagulation;
     @BindView(R.id.ll_preoperative_anticoagulation_title)
     LinearLayout llPreoperativeAnticoagulationTitle;
     @BindView(R.id.rb_preoperative_has)
@@ -59,8 +56,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     EditSpinner edsPreoperativeAnticoagulation;
     @BindView(R.id.ll_preoperative_anticoagulation_data)
     LinearLayout llPreoperativeAnticoagulationData;
-    @BindView(R.id.iv_statin_therapy)
-    ImageView ivStatinTherapy;
     @BindView(R.id.ll_statin_therapy_title)
     LinearLayout llStatinTherapyTitle;
     @BindView(R.id.rb_statin_has)
@@ -71,8 +66,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     EditSpinner edsStatinTherapy;
     @BindView(R.id.ll_statin_therapy_data)
     LinearLayout llStatinTherapyData;
-    @BindView(R.id.iv_beta_blockers)
-    ImageView ivBetaBlockers;
     @BindView(R.id.ll_beta_blockers_title)
     LinearLayout llBetaBlockersTitle;
     @BindView(R.id.rb_block_has)
@@ -89,6 +82,14 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
+    @BindView(R.id.sv_antihemotherapy)
+    SwitchCompat svAntihemotherapy;
+    @BindView(R.id.sv_preoperative_anticoagulation)
+    SwitchCompat svPreoperativeAnticoagulation;
+    @BindView(R.id.sv_statin_therapy)
+    SwitchCompat svStatinTherapy;
+    @BindView(R.id.sv_beta_blockers)
+    SwitchCompat svBetaBlockers;
 
     private String mRecordId;
 
@@ -146,37 +147,46 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 
     @Override
     protected void initListener() {
-        llBetaBlockersTitle.setOnClickListener(this);
+ /*       llBetaBlockersTitle.setOnClickListener(this);
         llAntihemotherapyTitle.setOnClickListener(this);
         llStatinTherapyTitle.setOnClickListener(this);
-        llPreoperativeAnticoagulationTitle.setOnClickListener(this);
+        llPreoperativeAnticoagulationTitle.setOnClickListener(this);*/
+        svAntihemotherapy.setOnClickListener(this);
+        svPreoperativeAnticoagulation.setOnClickListener(this);
+        svStatinTherapy.setOnClickListener(this);
+        svBetaBlockers.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ll_beta_blockers_title:
-                refrashItemVis(llBetaBlockersData, ivBetaBlockers);
+            case R.id.sv_antihemotherapy:
+                refrashItemVis(llAntihemotherapyData, svAntihemotherapy);
                 break;
-            case R.id.ll_antihemotherapy_title:
-                refrashItemVis(llAntihemotherapyData, ivAntihemotherapy);
+            case R.id.sv_preoperative_anticoagulation:
+                refrashItemVis(llPreoperativeAnticoagulationData, svPreoperativeAnticoagulation);
                 break;
-            case R.id.ll_statin_therapy_title:
-                refrashItemVis(llStatinTherapyData, ivStatinTherapy);
+            case R.id.sv_statin_therapy:
+                refrashItemVis(llStatinTherapyData, svStatinTherapy);
                 break;
-            case R.id.ll_preoperative_anticoagulation_title:
-                refrashItemVis(llPreoperativeAnticoagulationData, ivPreoperativeAnticoagulation);
+            case R.id.sv_beta_blockers:
+                refrashItemVis(llBetaBlockersData, svBetaBlockers);
                 break;
         }
     }
 
-    private void refrashItemVis(View view, ImageView imageView) {
-        if (view.getVisibility() == View.VISIBLE) {
+    private void refrashItemVis(View view, SwitchCompat switchCompat) {
+       /* if (view.getVisibility() == View.VISIBLE) {
             view.setVisibility(View.GONE);
             imageView.setImageResource(R.drawable.ic_arrow_up_blue);
         } else {
             view.setVisibility(View.VISIBLE);
             imageView.setImageResource(R.drawable.ic_arrow_down_blue);
+        }*/
+        if (switchCompat.isChecked()) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
         }
     }
 }

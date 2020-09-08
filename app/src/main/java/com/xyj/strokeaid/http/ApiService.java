@@ -169,6 +169,17 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_DOSEASE_RECORD_GETBYRECORDID)
     Call<BaseObjectBean> diseaseRecordGetByRecordid(@Body RequestBody info);
 
+
+    /**
+     * 新建患者信息
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_RECORD)
+    Call<BaseObjectBean> newPatienMedical(@Body RequestBody info);
+
+
     /**
      * 生命体征查询
      * @param info

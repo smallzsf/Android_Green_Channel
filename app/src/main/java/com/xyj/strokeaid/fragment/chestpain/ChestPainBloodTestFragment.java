@@ -37,8 +37,6 @@ import retrofit2.Response;
 public class ChestPainBloodTestFragment extends BaseFragment implements View.OnClickListener {
 
 
-    @BindView(R.id.sv_troponin)
-    SwitchCompat svTroponin;
     @BindView(R.id.rb_troponin_tnt_first)
     RadioButton rbTroponinTntFirst;
     @BindView(R.id.rb_troponin_tnl_first)
@@ -59,38 +57,26 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     LinearLayout llTroponinThree;
     @BindView(R.id.ll_troponin_data)
     LinearLayout llTroponinData;
-    @BindView(R.id.sv_preoperative_anticoagulation)
-    SwitchCompat svPreoperativeAnticoagulation;
     @BindView(R.id.ll_preoperative_anticoagulation_data)
     LinearLayout llPreoperativeAnticoagulationData;
-    @BindView(R.id.iv_dimer)
-    ImageView ivDimer;
     @BindView(R.id.ll_dimer_title)
     LinearLayout llDimerTitle;
     @BindView(R.id.eds_preoperative_anticoagulation)
     EditSpinner edsPreoperativeAnticoagulation;
     @BindView(R.id.ll_dimer_data)
     LinearLayout llDimerData;
-    @BindView(R.id.iv_bnp)
-    ImageView ivBnp;
     @BindView(R.id.ll_bnp_title)
     LinearLayout llBnpTitle;
     @BindView(R.id.ll_bnp_data)
     LinearLayout llBnpData;
-    @BindView(R.id.iv_nt_probnp)
-    ImageView ivNtProbnp;
     @BindView(R.id.ll_nt_probnp_title)
     LinearLayout llNtProbnpTitle;
     @BindView(R.id.ll_nt_probnp_data)
     LinearLayout llNtProbnpData;
-    @BindView(R.id.iv_myo)
-    ImageView ivMyo;
     @BindView(R.id.ll_myo_title)
     LinearLayout llMyoTitle;
     @BindView(R.id.ll_myo_data)
     LinearLayout llMyoData;
-    @BindView(R.id.iv_ckmb)
-    ImageView ivCkmb;
     @BindView(R.id.ll_ckmb_title)
     LinearLayout llCkmbTitle;
     @BindView(R.id.ll_ckmb_data)
@@ -107,7 +93,21 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     ImageView ivDeleteTroponin1;
     @BindView(R.id.iv_delete_troponin_2)
     ImageView ivDeleteTroponin2;
-    private int troponinDataNum = 0;
+    @BindView(R.id.sv_troponin)
+    SwitchCompat svTroponin;
+    @BindView(R.id.sv_preoperative_anticoagulation)
+    SwitchCompat svPreoperativeAnticoagulation;
+    @BindView(R.id.sv_dimer)
+    SwitchCompat svDimer;
+    @BindView(R.id.sv_bnp)
+    SwitchCompat svBnp;
+    @BindView(R.id.sv_nt_probnp)
+    SwitchCompat svNtProbnp;
+    @BindView(R.id.sv_myo)
+    SwitchCompat svMyo;
+    @BindView(R.id.sv_ckmb)
+    SwitchCompat svCkmb;
+    private int troponinDataNum = 1;
 
     private String mRecordId;
 
@@ -168,52 +168,84 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     @Override
     protected void initListener() {
         svTroponin.setOnClickListener(this);
+        svPreoperativeAnticoagulation.setOnClickListener(this);
+        svDimer.setOnClickListener(this);
+        svBnp.setOnClickListener(this);
+        svNtProbnp.setOnClickListener(this);
+        svMyo.setOnClickListener(this);
+        svCkmb.setOnClickListener(this);
         llBnpTitle.setOnClickListener(this);
         llMyoTitle.setOnClickListener(this);
         llNtProbnpTitle.setOnClickListener(this);
         llDimerTitle.setOnClickListener(this);
         llCkmbTitle.setOnClickListener(this);
+        ivAddTroponin.setOnClickListener(this);
+        ivDeleteTroponin1.setOnClickListener(this);
+        ivDeleteTroponin2.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.sv_troponin:
+                refrashItemVis(llTroponinData, svTroponin);
+                break;
+            case R.id.sv_preoperative_anticoagulation:
+                refrashItemVis(llPreoperativeAnticoagulationData, svPreoperativeAnticoagulation);
+                break;
+            case R.id.sv_bnp:
+                refrashItemVis(llBnpData, svBnp);
+                break;
+            case R.id.sv_myo:
+                refrashItemVis(llMyoData, svMyo);
+                break;
+            case R.id.sv_nt_probnp:
+                refrashItemVis(llNtProbnpData, svNtProbnp);
+                break;
+            case R.id.sv_dimer:
+                refrashItemVis(llDimerData, svDimer);
+                break;
+            case R.id.sv_ckmb:
+                refrashItemVis(llCkmbData, svCkmb);
+                break;
             case R.id.iv_add_troponin:
                 troponinDataNum++;
                 refrashRecordItem();
                 break;
-            case R.id.ll_bnp_title:
-                refrashItemVis(llBnpData, ivBnp);
+            case R.id.iv_delete_troponin_1:
+                troponinDataNum--;
+               // refrashRecordItem();
+                llTroponinTwo.setVisibility(View.GONE);
                 break;
-            case R.id.ll_myo_title:
-                refrashItemVis(llMyoData, ivMyo);
+            case R.id.iv_delete_troponin_2:
+                troponinDataNum--;
+             //   refrashRecordItem();
+                llTroponinThree.setVisibility(View.GONE);
                 break;
-            case R.id.ll_nt_probnp_title:
-                refrashItemVis(llNtProbnpData, ivNtProbnp);
-                break;
-            case R.id.ll_dimer_title:
-                refrashItemVis(llDimerData, ivDimer);
-                break;
-            case R.id.ll_ckmb_title:
-                refrashItemVis(llCkmbData, ivCkmb);
-                break;
+
             default:
                 break;
         }
     }
 
-    private void refrashItemVis(View view, ImageView imageView) {
-        if (view.getVisibility() == View.VISIBLE) {
+    private void refrashItemVis(View view, SwitchCompat switchCompat) {
+       /* if (view.getVisibility() == View.VISIBLE) {
             view.setVisibility(View.GONE);
-            imageView.setImageResource(R.drawable.ic_arrow_up_blue);
+            //  imageView.setImageResource(R.drawable.ic_arrow_up_blue);
         } else {
             view.setVisibility(View.VISIBLE);
-            imageView.setImageResource(R.drawable.ic_arrow_down_blue);
-        }
+            //  imageView.setImageResource(R.drawable.ic_arrow_down_blue);
+        }*/
+
+         if (switchCompat.isChecked()){
+             view.setVisibility(View.VISIBLE);
+         }else {
+             view.setVisibility(View.GONE);
+         }
     }
 
     private void refrashRecordItem() {
-        refrashRecordItem(llTroponinFirst, 1);
+      //   refrashRecordItem(llTroponinFirst, 1);
         refrashRecordItem(llTroponinTwo, 2);
         refrashRecordItem(llTroponinThree, 3);
     }
