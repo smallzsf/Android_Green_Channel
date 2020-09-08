@@ -140,7 +140,7 @@ public class PatientSumFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private PatientSumFragment() {
+    public PatientSumFragment() {
 
     }
 

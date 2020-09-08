@@ -21,7 +21,7 @@ public class DiagnoseNonAcsFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseNonAcsFragment() {
+    public DiagnoseNonAcsFragment() {
     }
 
 

@@ -97,6 +97,7 @@ dependencies {
     implementation 'com.amap.api:location:4.6.0'
     // bugly
     implementation 'com.tencent.bugly:crashreport_upgrade:1.4.5'
+    implementation 'com.tencent.bugly:nativecrashreport:3.7.3'
     // 友盟
     implementation 'com.umeng.umsdk:common:9.1.0'
     implementation 'com.umeng.umsdk:asms:1.1.3'

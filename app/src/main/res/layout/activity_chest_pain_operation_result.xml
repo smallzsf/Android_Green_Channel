@@ -470,6 +470,7 @@
                     <RadioButton
                         android:id="@+id/rb_ECMO_true"
                         style="@style/tv_small"
+                        android:tag="cpc_bool_false"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"

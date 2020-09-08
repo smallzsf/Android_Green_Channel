@@ -62,7 +62,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private ChestPainIntraConsultFragment() {
+    public ChestPainIntraConsultFragment() {
 
     }
 

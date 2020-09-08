@@ -93,7 +93,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 
     private String mRecordId;
 
-    private ChestPainInitDrugFragment() {
+    public ChestPainInitDrugFragment() {
 
     }
 

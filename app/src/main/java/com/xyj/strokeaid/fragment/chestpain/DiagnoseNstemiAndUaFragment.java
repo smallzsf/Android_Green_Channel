@@ -21,7 +21,7 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseNstemiAndUaFragment() {
+    public DiagnoseNstemiAndUaFragment() {
     }
 
     public static DiagnoseNstemiAndUaFragment newInstance(String recordId, String diagnose) {

@@ -111,7 +111,7 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
     private String mRecordId;
 
-    private ChestPainBloodTestFragment() {
+    public ChestPainBloodTestFragment() {
 
     }
 

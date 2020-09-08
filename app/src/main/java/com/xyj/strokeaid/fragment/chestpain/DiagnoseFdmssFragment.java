@@ -21,7 +21,7 @@ public class DiagnoseFdmssFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseFdmssFragment() {
+    public DiagnoseFdmssFragment() {
     }
 
     public static DiagnoseFdmssFragment newInstance(String recordId, String diagnose) {

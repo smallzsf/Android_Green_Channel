@@ -43,7 +43,7 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
  * @date : 2020/9/2
  * email ：122724021@qq.com
  */
-
+@Route(path = RouteUrl.ChestPain.CHEST_PAIN_OPERATION_INFO)
 public class ChestPainOperationInfoActivity extends BaseActivity {
 
     //    @BindView(R.id.iv_left_base_title_bar)

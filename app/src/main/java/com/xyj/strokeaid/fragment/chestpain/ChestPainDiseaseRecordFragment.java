@@ -70,7 +70,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private ChestPainDiseaseRecordFragment() {
+    public ChestPainDiseaseRecordFragment() {
 
     }
 

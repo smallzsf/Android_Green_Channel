@@ -34,7 +34,7 @@ public class SurgicalTreatmentFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private SurgicalTreatmentFragment() {
+    public SurgicalTreatmentFragment() {
 
     }
 

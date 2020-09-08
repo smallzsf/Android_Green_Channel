@@ -132,7 +132,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private TreatmentDecisionFragment() {
+    public TreatmentDecisionFragment() {
     }
 
     /**

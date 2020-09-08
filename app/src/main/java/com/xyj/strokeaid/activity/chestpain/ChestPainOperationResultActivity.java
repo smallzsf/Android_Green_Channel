@@ -12,8 +12,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.GenderSelectBean;
 import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
@@ -40,6 +42,7 @@ import butterknife.OnClick;
  * @date : 2020/9/2
  * email ：122724021@qq.com
  */
+@Route(path = RouteUrl.ChestPain.CHEST_PAIN_OPERATION_RESULT)
 public class ChestPainOperationResultActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_npmr)
@@ -208,32 +211,38 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         resetRadioButton(rgLeftVentAssistDevice, bean.getIsleftventassistdevice());
 
         List<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> data = bean.getCoronaryangiographyarray();
-        for (int i = 0; i < data.size(); i++) {
-            ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean = data.get(i);
-            for (int j = 0; j < genderList.size(); j++) {
-                String s = genderList.get(j);
-                if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
-                    tagGenderAdapter.setSelected(j, s);
+        if (data != null) {
+            for (int i = 0; i < data.size(); i++) {
+                ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean = data.get(i);
+                for (int j = 0; j < genderList.size(); j++) {
+                    String s = genderList.get(j);
+                    if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                        tagGenderAdapter.setSelected(j, s);
+                    }
                 }
-            }
 
-            for (int j = 0; j < genderListMore.size(); j++) {
-                String s = genderListMore.get(j);
-                if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
-                    tagGenderMoreAdapter.setSelected(j, s);
+                for (int j = 0; j < genderListMore.size(); j++) {
+                    String s = genderListMore.get(j);
+                    if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                        tagGenderMoreAdapter.setSelected(j, s);
+                    }
                 }
             }
         }
+
 //        setIntraoperativecomplications
         Set<Integer> selectIntraoPosition = new HashSet<>();
         String intraoperativecomplications = bean.getIntraoperativecomplications();
         List<String> intraoValueList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications));
-        for (int i = 0; i < intraoValueList.size(); i++) {
-            String s = intraoValueList.get(i);
-            if (intraoperativecomplications.contains(s)) {
-                tagIntraoAdapter.setSelected(i, s);
+        if (!TextUtils.isEmpty(intraoperativecomplications) && intraoValueList != null) {
+            for (int i = 0; i < intraoValueList.size(); i++) {
+                String s = intraoValueList.get(i);
+                if (intraoperativecomplications.contains(s)) {
+                    tagIntraoAdapter.setSelected(i, s);
+                }
             }
         }
+
 
     }
 

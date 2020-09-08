@@ -21,7 +21,7 @@ public class DiagnoseWaitDiagnoseFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseWaitDiagnoseFragment() {
+    public DiagnoseWaitDiagnoseFragment() {
     }
 
 

@@ -21,7 +21,7 @@ public class DiagnoseNonHeartPainFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseNonHeartPainFragment() {
+    public DiagnoseNonHeartPainFragment() {
     }
 
 

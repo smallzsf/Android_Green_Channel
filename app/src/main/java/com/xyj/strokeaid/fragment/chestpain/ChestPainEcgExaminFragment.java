@@ -89,7 +89,7 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     private String mRecordId;
 
-    private ChestPainEcgExaminFragment() {
+    public ChestPainEcgExaminFragment() {
 
     }
 

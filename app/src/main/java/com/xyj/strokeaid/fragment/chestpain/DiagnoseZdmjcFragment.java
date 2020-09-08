@@ -21,7 +21,7 @@ public class DiagnoseZdmjcFragment extends BaseFragment {
     private String mRecordId;
     private String mDiagnoseType;
 
-    private DiagnoseZdmjcFragment() {
+    public DiagnoseZdmjcFragment() {
     }
 
     public static DiagnoseZdmjcFragment newInstance(String recordId, String diagnose) {

@@ -26,12 +26,17 @@ public class TokenConfig {
      */
     public static void saveToken(String token) {
 
-        if (TextUtils.isEmpty(token)){
+        if (TextUtils.isEmpty(token)) {
             return;
         }
         LogUtils.d("TokenConfig", token);
-        sToken = token;
-        MMKV.defaultMMKV().encode(MmkvKey.TOKEN, token);
+        if (token.contains("Bearer ")) {
+            String[] strings = token.split(" ");
+            sToken = strings[1];
+        } else {
+            sToken = token;
+        }
+        MMKV.defaultMMKV().encode(MmkvKey.TOKEN, sToken);
     }
 
     /**
@@ -46,7 +51,7 @@ public class TokenConfig {
      * 是否持有token
      *
      * @return true 持有
-     *         false 未持有
+     * false 未持有
      */
     public static boolean isHaveToken() {
         return !TextUtils.isEmpty(MMKV.defaultMMKV().decodeString(MmkvKey.TOKEN));
