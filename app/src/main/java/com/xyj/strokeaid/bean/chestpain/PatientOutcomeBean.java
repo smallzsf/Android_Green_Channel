@@ -96,12 +96,13 @@ public class PatientOutcomeBean extends BaseBean<PatientOutcomeBean> {
      * "cpc_unacs_zdmgbjxz": "主动脉管壁间血肿",
      * "cpc_unacs_tbxdmzyyhxky": "透壁性动脉粥样硬化性溃疡",
      * "cpc_unacs_zdml": "主动脉瘤",
-     * "cpc_un
+     * "cpc_unacs_zlxqx":"张力性气胸"
      */
     private String dischargedunacs;
 
     /**
-     * 其它非心源性胸痛类型（"cpc_otherunacs_hxxtb": "呼吸系统病",
+     * 其它非心源性胸痛类型（
+     * "cpc_otherunacs_hxxtb": "呼吸系统病",
      * "cpc_otherunacs_xhxtb": "消化系统病",
      * "cpc_otherunacs_sjxtb": "神经系统病",
      * "cpc_otherunacs_jsxtb": "精神系统病",
