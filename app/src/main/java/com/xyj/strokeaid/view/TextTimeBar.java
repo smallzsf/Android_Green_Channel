@@ -107,8 +107,8 @@ public class TextTimeBar extends RelativeLayout {
     public String getTime(){
         String time="";
         if (tvTimeViewTtb != null) {
-            if (!TextUtils.isEmpty(tvTimeViewTtb.getText().toString().trim())) {
-                return tvTimeViewTtb.getText().toString().trim();
+            if (!TextUtils.isEmpty(tvTimeViewTtb.getText().toString())) {
+                return tvTimeViewTtb.getText().toString();
             }
         }
         return time;

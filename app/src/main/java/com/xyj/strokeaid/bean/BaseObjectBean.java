@@ -1,5 +1,15 @@
 package com.xyj.strokeaid.bean;
 
+import android.text.TextUtils;
+
+import androidx.annotation.NonNull;
+
+import com.google.gson.JsonSyntaxException;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+
 /**
  * @author azheng
  * @date 2018/4/24.

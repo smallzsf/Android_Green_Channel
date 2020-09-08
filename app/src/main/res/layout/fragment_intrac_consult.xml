@@ -2,10 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ll_auxiliary_exam"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_bg"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
@@ -22,34 +20,77 @@
 
             <TextView
                 style="@style/Text_Blue_Content_Style"
-                android:text="心内会诊" />
+                android:text="心内科会诊" />
 
-
-            <!--         <com.flyco.tablayout.SegmentTabLayout
-                         android:layout_marginBottom="@dimen/dp_12"
-                         android:layout_marginTop="@dimen/dp_12"
-                         android:id="@+id/stl_title_frag_od"
-                         android:layout_width="match_parent"
-                         android:layout_height="@dimen/item_normal_height"
-                         android:layout_gravity="center_horizontal"
-                         android:layout_marginStart="@dimen/dp_8"
-                         android:layout_marginEnd="@dimen/dp_8"
-                         tl:tl_bar_color="@color/white"
-                         tl:tl_indicator_color="@color/colorPrimary"
-                         tl:tl_indicator_corner_radius="8dp"
-                         tl:tl_tab_padding="20dp"
-                         tl:tl_textsize="@dimen/item_title_size" />-->
-
-            <LinearLayout
-                android:id="@+id/ll_intrac_consult_in"
+            <RadioGroup
+                android:id="@+id/rg_cardiology"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
+                <RadioButton
+                    android:id="@+id/rb_cardiology_site"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="现场会诊" />
+
+                <RadioButton
+                    android:id="@+id/rb_cardiology_remote"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="远程会诊" />
+
+                <RadioButton
+                    android:id="@+id/rb_cardiology_no"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="否" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/ll_cardiology"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/vital_sign_item_height"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:gravity="center_vertical"
+                        android:text="申请人" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_cardiology_proposer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_marginLeft="@dimen/item_normal_margin"
+                        android:gravity="center"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_cardiology_proposer_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:topLineVisible="true"
                     tl:title="申请时间" />
 
                 <LinearLayout
@@ -59,22 +100,19 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
                         android:layout_height="@dimen/item_normal_height"
                         android:layout_marginLeft="@dimen/dp_12"
-                        android:gravity="center"
-                        android:text="心内科医生"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        android:gravity="center_vertical"
+                        android:text="心内科医生" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/es_vital_sign_aware"
+                        android:id="@+id/es_cardiology_doc"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_30"
-                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/item_normal_margin"
-                        android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="请选择"
@@ -83,81 +121,88 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/dp_12"
-                        android:gravity="center"
-
-                        android:text="会诊方式"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <RadioGroup
-                        android:id="@+id/rg_consultation"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_12"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <RadioButton
-                            android:id="@+id/rb_on_site_consultation"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="现场会诊"
-                            android:textSize="@dimen/item_content_size" />
-
-                        <RadioButton
-                            android:id="@+id/rb_remote_consultation"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="远程会诊"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:id="@+id/ttb_arrival_time"
+                    android:id="@+id/ttb_cardiology_doc_arrive"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    tl:title="到达时间" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:topLineVisible="true"
                     tl:title="会诊时间" />
             </LinearLayout>
 
             <TextView
                 style="@style/Text_Blue_Content_Style"
-                android:text="外科会诊" />
+                android:text="心外科会诊" />
 
-
-            <LinearLayout
-                android:id="@+id/ll_intrac_consult_out"
+            <RadioGroup
+                android:id="@+id/rg_cardial_surgery"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/rb_cardial_surgery_site"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="现场会诊" />
+
+                <RadioButton
+                    android:id="@+id/rb_cardial_surgery_remote"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="远程会诊" />
+
+                <RadioButton
+                    android:id="@+id/rb_cardial_surgery_no"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:text="否" />
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/ll_cardial_surgery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/vital_sign_item_height"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginLeft="@dimen/dp_12"
+                        android:gravity="center_vertical"
+                        android:text="申请人" />
+
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_cardial_surgery_proposer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_30"
+                        android:layout_marginLeft="@dimen/item_normal_margin"
+                        android:gravity="center"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+                </LinearLayout>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_cardial_surgery_proposer_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:topLineVisible="true"
                     tl:title="申请时间" />
 
                 <LinearLayout
@@ -167,96 +212,35 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:text="外科医生"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                        android:gravity="center_vertical"
+                        android:text="心内科医生" />
 
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/es_vital_sign_aware_out"
+                        android:id="@+id/es_cardial_surgery_doc"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/dp_30"
-                        android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/item_normal_margin"
-                        android:layout_toRightOf="@+id/awareness"
                         android:gravity="center"
                         app:Background="@drawable/bg_view_frame"
                         app:hint="请选择"
                         app:rightImage="@drawable/ic_arrow_down_blue" />
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:text="会诊方式"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <RadioGroup
-                        android:id="@+id/rg_consultation_out"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/dp_12"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <RadioButton
-                            android:id="@+id/rb_on_site_consultation_out"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:checked="true"
-                            android:text="现场会诊"
-                            android:textSize="@dimen/item_content_size" />
-
-                        <RadioButton
-                            android:id="@+id/rb_remote_consultation_out"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="远程会诊"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </RadioGroup>
 
                 </LinearLayout>
 
-
                 <com.xyj.strokeaid.view.TextTimeBar
-                    android:id="@+id/ttb_arrival_time_out"
+                    android:id="@+id/ttb_cardial_surgery_doc_arrive"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    tl:title="到达时间" />
-
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:topLineVisible="true"
                     tl:title="会诊时间" />
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/space_height" />
             </LinearLayout>
-
 
         </LinearLayout>
 

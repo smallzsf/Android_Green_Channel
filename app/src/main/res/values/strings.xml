@@ -921,4 +921,16 @@
     <string name="app_intervene_nurse">介入护士</string>
     <string name="app_interventional_recanalization">介入再通</string>
 
+    <string name="http_tip_data_parse_error">数据解析错误，请联系管理员</string>
+    <string name="http_tip_server_error">哎呀~服务出错了，我们正在紧张地修复，您可以稍等一会儿再试一次。</string>
+    <string name="http_tip_data_result_error">数据错误，请联系管理员</string>
+    <string name="http_tip_data_no_result_error">未查询到数据，请联系管理员</string>
+    <string name="http_tip_data_save_error">保存失败，请联系管理员</string>
+    <string name="http_tip_data_server_error">服务异常，请联系管理员</string>
+    <string name="http_tip_data_save_success">保存成功</string>
+    <string name="http_tip_data_delete_success">删除成功</string>
+    <string name="http_tip_data_save_success_with_string">%s保存成功</string>
+    <string name="http_tip_emp_data_error">获取基础信息错误，请联系管理员</string>
+
+
 </resources>

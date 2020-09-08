@@ -1,20 +1,19 @@
 package com.xyj.strokeaid.http;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
 import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
-import com.xyj.strokeaid.bean.SendCTDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
@@ -207,4 +206,22 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY)
     Call<RequestElectrocardiogramDataBean> getECGInquiry(@Body RequestBody info);
+
+    /**
+     * 胸痛--会诊信息 查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRA_CONSULT_GET)
+    Call<BaseObjectBean<IntraConsultBean>> getIntraConsult(@Body RequestBody info);
+
+    /**
+     * 胸痛--会诊信息 保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRA_CONSULT_SAVE)
+    Call<BaseObjectBean> saveIntraConsult(@Body RequestBody info);
 }

@@ -158,6 +158,16 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/edit";
 
+        /**
+         * 胸痛 会诊信息 获取
+         */
+        public static final String NET_URL_CHEST_PAIN_INTRA_CONSULT_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHeartConsultation/get";
+        /**
+         * 胸痛 会诊信息 保存
+         */
+        public static final String NET_URL_CHEST_PAIN_INTRA_CONSULT_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHeartConsultation/edit";
+
+
     }
 
     /**
