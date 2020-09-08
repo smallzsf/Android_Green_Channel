@@ -37,7 +37,6 @@ import retrofit2.Response;
  */
 public class ChestPainIntraConsultFragment extends BaseFragment {
 
-
     @BindView(R.id.rb_cardiology_site)
     RadioButton rbCardiologySite;
     @BindView(R.id.rb_cardiology_remote)

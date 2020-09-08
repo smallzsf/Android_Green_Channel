@@ -185,6 +185,17 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_OTHER_TRETMENT_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDischargedInformation/edit";
 
+        /**
+         * 胸痛中心-静脉溶栓
+         */
+        public static final String NET_URL_CHEST_PAIN_GET_INTRAVENOUS_THROMBOLYSIS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/get";
+
+        /**
+         * 胸痛中心-静脉溶栓保存
+         */
+        public static final String NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/edit";
+
+
     }
 
     /**
@@ -206,6 +217,8 @@ public class ApiUrls {
      * 胸痛中心-胸痛诊疗-心电图主表 添加
      */
     public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+
+
 
 }
 

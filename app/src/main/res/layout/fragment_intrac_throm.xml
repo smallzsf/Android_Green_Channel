@@ -30,6 +30,7 @@
                 android:orientation="horizontal">
 
                 <RadioGroup
+                    android:id="@+id/rg_suitable"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/dp_12"
@@ -46,7 +47,6 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
-
                         android:id="@+id/rb_no_suitable"
                         style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
@@ -74,7 +74,6 @@
                 android:id="@+id/ll_no_suitable"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-
                 android:orientation="horizontal"
                 android:visibility="gone">
 
@@ -254,6 +253,7 @@
                 </LinearLayout>
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/rrb_start_talk"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
@@ -261,18 +261,21 @@
                     tl:title="开始知情谈话" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/rrb_sign_agreement"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="签署知情协议" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/rrb_start_thrombolysis"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="开始溶栓" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/rrb_start_thrombolysis_finish"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"

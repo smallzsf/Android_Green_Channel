@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,12 +13,21 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
+import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
+import com.xyj.strokeaid.bean.SendEmergencyCenterChestpainBean;
+import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
+import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @Description: 胸痛其他处置
@@ -168,6 +178,7 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
         mLinearLayoutOutHos = view.findViewById(R.id.include_pain_in_leave_hospital);
         mLinearLayoutOutOtherHos = view.findViewById(R.id.include_pain_in_transfer_department);
         mLinearLayoutOutOtherDepart = view.findViewById(R.id.include_pain_in_transfer_hospital);
+        loadRecordData("1111");
     }
 
 
@@ -215,6 +226,47 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
                 }
             }
         });
+    }
+
+
+    private void loadRecordData(String recordId) {
+        if (TextUtils.isEmpty(recordId)) {
+            return;
+        }
+        SendEmergencyCenterChestpainBean recordIdBean = new SendEmergencyCenterChestpainBean();
+        recordIdBean.setRecordId(recordId);
+        RetrofitClient.getInstance()
+                .getApi()
+                .getChestPainOtherTreatment(recordIdBean.getResuestBody(recordIdBean))
+                .enqueue(new Callback<BaseObjectBean<OtherTreatmentBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<OtherTreatmentBean>> call, Response<BaseObjectBean<OtherTreatmentBean>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                OtherTreatmentBean mIntraConsultBean = response.body().getData();
+                                if (mIntraConsultBean != null) {
+                                    // 请求成功
+                                    showToast("获取数据成功");
+
+                                }else{
+                                    showToast("数据异常");
+                                }
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<OtherTreatmentBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
     }
 
 

@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -8,9 +9,18 @@ import android.widget.RadioButton;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.umeng.commonsdk.debug.E;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
+import com.xyj.strokeaid.bean.IntraConsultBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
+import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
+import com.xyj.strokeaid.bean.SendEmergencyCenterChestpainBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -18,6 +28,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainDiseaseRecordFragment
@@ -70,6 +83,21 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+
+    @BindView(R.id.rrb_start_talk)
+    TextTimeBar ttbStartTalk;
+
+    @BindView(R.id.rrb_sign_agreement)
+    TextTimeBar ttbSignAgreement;
+
+    @BindView(R.id.rrb_start_thrombolysis)
+    TextTimeBar ttbStartThrombolysis;
+
+    @BindView(R.id.rrb_start_thrombolysis_finish)
+    TextTimeBar ttbStartThrombolysisFinish;
+
+
+
     private String mRecordId;
 
     public ChestPainIntraThromFragment() {
@@ -95,6 +123,7 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+            mRecordId = "1111";
         }
     }
 
@@ -118,6 +147,8 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
         editSpinnerMedicine.setItemData(Arrays.asList(getResources().getStringArray(R.array.thrombolytic_drug)));
         //剂量
         editSpinnerDose.setItemData(Arrays.asList(getResources().getStringArray(R.array.thrombolytic_drug_dose)));
+
+        loadRecordData(mRecordId);
     }
 
 
@@ -129,6 +160,8 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
         rbOtherDepartment.setOnClickListener(this);
         rbIntracHas.setOnClickListener(this);
         rbIntracNone.setOnClickListener(this);
+        btnConfirm.setOnClickListener(this);
+        btnGetData.setOnClickListener(this);
     }
 
     @Override
@@ -156,8 +189,215 @@ public class ChestPainIntraThromFragment extends BaseFragment implements View.On
                 llNoSuitable.setVisibility(View.GONE);
                 llSuitable.setVisibility(View.GONE);
                 break;
+
+            case R.id.rb_thrombolytic_therapy_has:
+                // 溶栓治疗点击是
+                break;
+
+            case R.id.rb_thrombolytic_therapy_none:
+                // 溶栓治疗点击否
+                break;
+
+            case R.id.rb_thrombolytic_site_has:
+                // 直达溶栓场所点击是
+                break;
+
+            case R.id.rb_thrombolytic_site_none:
+                // 直达溶栓场所点击否
+                break;
+            case R.id.btn_confirm:
+                // 保存
+                EmergencyCenterChestpainHospitalData emergencyCenterChestpainHospitalData = new EmergencyCenterChestpainHospitalData();
+                emergencyCenterChestpainHospitalData.setRecordId(mRecordId);
+                emergencyCenterChestpainHospitalData.setId(mRecordId);
+                if(rbSuitable.isChecked()){
+                    emergencyCenterChestpainHospitalData.setThrombolysisscreenresult("cpc_rsscjg_hs");
+                }
+                if(rbNoSuitable.isChecked()){
+                    emergencyCenterChestpainHospitalData.setThrombolysisscreenresult("cpc_rsscjg_bhs");
+                }
+                if(rbNotScreened.isChecked()){
+                    emergencyCenterChestpainHospitalData.setThrombolysisscreenresult("cpc_rsscjg_wsc");
+                }
+                if(rbIntracHas.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisreuslt("cpc_bool_true");
+                }
+                if(rbIntracNone.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisreuslt("cpc_bool_false");
+                }
+
+                if(rbThrombolyticTherapyHas.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysiscontraindication("cpc_bool_true");
+                }
+                if(rbThrombolyticTherapyNone.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysiscontraindication("cpc_bool_false");
+                }
+                if(rbEmergencyDepartment.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisroom("cpc_ynrscs_byjzk");
+                }
+                if(rbHeartDepartment.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisroom("cpc_ynrscs_byxnk");
+                }
+                if(rbOtherDepartment.isChecked()){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisroom("cpc_ynrscs_qtks");
+                }
+                emergencyCenterChestpainHospitalData.setAfterthrombolysisbegintime(ttbStartThrombolysis.getTime());
+                emergencyCenterChestpainHospitalData.setAfterthrombolysisendtime(ttbStartThrombolysisFinish.getTime());
+                emergencyCenterChestpainHospitalData.setAfterthrombolysispatientcommunicationsbegintime(ttbStartTalk.getTime());
+                emergencyCenterChestpainHospitalData.setAfterthrombolysispatientcommunicationsendtime(ttbSignAgreement.getTime());
+
+
+                if(TextUtils.equals(editSpinnerMedicine.getText(),"第一代")){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisdrug("cpc_rsywv2_dyd");
+                }
+                if(TextUtils.equals(editSpinnerMedicine.getText(),"第二代")){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisdrug("cpc_rsywv2_ded");
+                }
+                if(TextUtils.equals(editSpinnerMedicine.getText(),"第三代")){
+                    emergencyCenterChestpainHospitalData.setAfterthrombolysisdrug("cpc_rsywv2_dsd");
+                }
+
+                emergencyCenterChestpainHospitalData.setAfterthrombolysisdrugdosage(editSpinnerDose.getText());
+                saveRecordData(emergencyCenterChestpainHospitalData);
+                break;
+
+            case R.id.btn_get_data:
+                loadRecordData(mRecordId);
             default:
                 break;
         }
     }
+
+
+    private void loadRecordData(String recordId) {
+        if (TextUtils.isEmpty(recordId)) {
+            return;
+        }
+        SendEmergencyCenterChestpainBean recordIdBean = new SendEmergencyCenterChestpainBean();
+        recordIdBean.setRecordId(recordId);
+        RetrofitClient.getInstance()
+                .getApi()
+                .getIntravenousThrombolysis(recordIdBean.getResuestBody(recordIdBean))
+                .enqueue(new Callback<RequestEmergencyCenterChestpainDataBean>() {
+                    @Override
+                    public void onResponse(Call<RequestEmergencyCenterChestpainDataBean> call, Response<RequestEmergencyCenterChestpainDataBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                EmergencyCenterChestpainHospitalData mIntraConsultBean = response.body().getData();
+                                if (mIntraConsultBean != null) {
+                                    // 请求成功
+                                    showToast("获取数据成功");
+                                    setDataToView(mIntraConsultBean);
+                                }else{
+                                    showToast("数据异常");
+                                }
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RequestEmergencyCenterChestpainDataBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
+    }
+
+
+    private void saveRecordData(EmergencyCenterChestpainHospitalData data) {
+        RetrofitClient.getInstance()
+                .getApi()
+                .saveIntravenousThrombolysis(data.getResuestBody(data))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存成功");
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
+    }
+
+
+    private void setDataToView(EmergencyCenterChestpainHospitalData data){
+
+        if(TextUtils.equals(data.getThrombolysisscreenresult(),"cpc_rsscjg_hs")){
+            rbSuitable.setChecked(true);
+        }
+
+        if(TextUtils.equals(data.getThrombolysisscreenresult(),"cpc_rsscjg_bhs")){
+            rbSuitable.setChecked(true);
+        }
+        if(TextUtils.equals(data.getThrombolysisscreenresult(),"cpc_rsscjg_wsc")){
+            rbNotScreened.setChecked(true);
+        }
+
+        if(TextUtils.equals(data.getAfterthrombolysisreuslt(),"cpc_bool_true")){
+            rbIntracHas.setChecked(true);
+        }
+        if(TextUtils.equals(data.getAfterthrombolysisreuslt(),"cpc_bool_false")){
+            rbIntracNone.setChecked(true);
+        }
+
+        if(TextUtils.equals(data.getAfterthrombolysiscontraindication(),"cpc_bool_true")){
+            rbThrombolyticTherapyHas.setChecked(true);
+        }
+
+        if(TextUtils.equals(data.getAfterthrombolysiscontraindication(),"cpc_bool_false")){
+            rbThrombolyticTherapyNone.setChecked(true);
+        }
+
+
+        if(TextUtils.equals(data.getAfterthrombolysisroom(),"cpc_ynrscs_byjzk")){
+            rbEmergencyDepartment.setChecked(true);
+        }
+
+        if(TextUtils.equals(data.getAfterthrombolysisroom(),"cpc_ynrscs_byxnk")){
+            rbHeartDepartment.setChecked(true);
+        }
+        if(TextUtils.equals(data.getAfterthrombolysisroom(),"cpc_ynrscs_qtks")){
+            rbOtherDepartment.setChecked(true);
+        }
+
+        ttbStartThrombolysis.setTime(data.getAfterthrombolysisendtime());
+
+        ttbStartThrombolysisFinish.setTime(data.getAfterthrombolysisendtime());
+
+        ttbStartTalk.setTime(data.getAfterthrombolysispatientcommunicationsbegintime());
+
+        ttbSignAgreement.setTime(data.getAfterthrombolysispatientcommunicationsendtime());
+        if(TextUtils.equals(data.getAfterthrombolysisdrug(),"cpc_rsywv2_dyd")){
+            editSpinnerMedicine.setText("第一代");
+        }
+        if(TextUtils.equals(data.getAfterthrombolysisdrug(),"cpc_rsywv2_ded")){
+            editSpinnerMedicine.setText("第二代");
+        }
+        if(TextUtils.equals(data.getAfterthrombolysisdrug(),"cpc_rsywv2_dsd")){
+            editSpinnerMedicine.setText("第三代");
+        }
+        editSpinnerDose.setText(data.getAfterthrombolysisdrugdosage());
+    }
+
+
+
 }

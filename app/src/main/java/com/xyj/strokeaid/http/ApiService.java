@@ -1,11 +1,13 @@
 package com.xyj.strokeaid.http;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
 import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
+import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
@@ -264,4 +266,22 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OTHER_TRETMENT_SAVE)
     Call<BaseObjectBean> saveChestPainOtherTreatment(@Body RequestBody info);
+
+    /**
+     * 胸痛--静脉溶栓
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_GET_INTRAVENOUS_THROMBOLYSIS)
+    Call<RequestEmergencyCenterChestpainDataBean> getIntravenousThrombolysis(@Body RequestBody info);
+
+    /**
+     * 胸痛--静脉溶栓 保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE)
+    Call<BaseObjectBean> saveIntravenousThrombolysis(@Body RequestBody info);
 }
