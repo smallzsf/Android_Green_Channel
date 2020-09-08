@@ -242,6 +242,11 @@
                     tl:title="会诊时间" />
             </LinearLayout>
 
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

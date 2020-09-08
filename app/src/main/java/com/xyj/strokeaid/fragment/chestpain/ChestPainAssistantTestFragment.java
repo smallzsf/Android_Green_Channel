@@ -166,14 +166,16 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (data == null) {
             return;
         }
-        if (data.getImageexam().contains("cpc_imageexam_none")) {
-            cbNotDone.setChecked(true);
-        } else {
-            if (data.getImageexam().contains("cpc_imageexam_ct")) {
-                cbEmergencyCt.setChecked(true);
-            }
-            if (data.getImageexam().contains("cpc_imageexam_cdu")) {
-                cbColorUltrasound.setChecked(true);
+        if (!TextUtils.isEmpty(data.getImageexam())){
+            if (data.getImageexam().contains("cpc_imageexam_none")) {
+                cbNotDone.setChecked(true);
+            } else {
+                if (data.getImageexam().contains("cpc_imageexam_ct")) {
+                    cbEmergencyCt.setChecked(true);
+                }
+                if (data.getImageexam().contains("cpc_imageexam_cdu")) {
+                    cbColorUltrasound.setChecked(true);
+                }
             }
         }
         String ctexamdepartment = data.getCtexamdepartment();

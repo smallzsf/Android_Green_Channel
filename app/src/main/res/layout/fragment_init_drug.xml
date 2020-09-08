@@ -98,8 +98,8 @@
                     android:id="@+id/ll_antihemotherapy_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/ll_no_suitable"
@@ -274,36 +274,36 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
 
-              <!--  <LinearLayout
-                    android:id="@+id/ll_preoperative_anticoagulation_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_12"
-                    android:paddingEnd="@dimen/dp_12">
+                <!--  <LinearLayout
+                      android:id="@+id/ll_preoperative_anticoagulation_title"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal"
+                      android:paddingStart="@dimen/dp_12"
+                      android:paddingEnd="@dimen/dp_12">
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="术前抗凝"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                      <TextView
+                          android:layout_width="0dp"
+                          android:layout_height="@dimen/item_normal_height"
+                          android:layout_marginEnd="@dimen/dp_12"
+                          android:layout_weight="1"
+                          android:gravity="center_vertical"
+                          android:text="术前抗凝"
+                          android:textColor="@color/color_222222"
+                          android:textSize="@dimen/item_title_size" />
 
-                    <ImageView
-                        android:id="@+id/iv_preoperative_anticoagulation"
-                        android:layout_width="@dimen/item_normal_height"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                      <ImageView
+                          android:id="@+id/iv_preoperative_anticoagulation"
+                          android:layout_width="@dimen/item_normal_height"
+                          android:layout_height="@dimen/item_normal_height"
+                          android:layout_alignParentTop="true"
+                          android:layout_alignParentEnd="true"
+                          android:scaleType="center"
+                          android:src="@drawable/ic_arrow_down_blue" />
 
 
-                </LinearLayout>
--->
+                  </LinearLayout>
+  -->
 
                 <LinearLayout
                     android:id="@+id/ll_preoperative_anticoagulation_title"
@@ -336,8 +336,8 @@
                     android:id="@+id/ll_preoperative_anticoagulation_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -454,39 +454,39 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
 
-             <!--   <LinearLayout
-                    android:id="@+id/ll_statin_therapy_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/item_normal_height"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_12"
-                    android:paddingEnd="@dimen/dp_12">
+                <!--   <LinearLayout
+                       android:id="@+id/ll_statin_therapy_title"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:minHeight="@dimen/item_normal_height"
+                       android:orientation="horizontal"
+                       android:paddingStart="@dimen/dp_12"
+                       android:paddingEnd="@dimen/dp_12">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_toStartOf="@id/iv_arrow_view_nib"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="他汀治疗"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="@dimen/item_normal_height"
+                           android:layout_alignParentStart="true"
+                           android:layout_marginEnd="@dimen/dp_12"
+                           android:layout_toStartOf="@id/iv_arrow_view_nib"
+                           android:layout_weight="1"
+                           android:gravity="center_vertical"
+                           android:text="他汀治疗"
+                           android:textColor="@color/color_222222"
+                           android:textSize="@dimen/item_title_size" />
 
-                    <ImageView
-                        android:id="@+id/iv_statin_therapy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                       <ImageView
+                           android:id="@+id/iv_statin_therapy"
+                           android:layout_width="wrap_content"
+                           android:layout_height="@dimen/item_normal_height"
+                           android:layout_alignParentTop="true"
+                           android:layout_alignParentEnd="true"
+                           android:scaleType="center"
+                           android:src="@drawable/ic_arrow_down_blue" />
 
 
-                </LinearLayout>
--->
+                   </LinearLayout>
+   -->
 
                 <LinearLayout
                     android:id="@+id/ll_statin_therapy_title"
@@ -520,8 +520,8 @@
                     android:id="@+id/ll_statin_therapy_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -637,41 +637,41 @@
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
 
-             <!--   <LinearLayout
-                    android:id="@+id/ll_beta_blockers_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="@dimen/item_normal_height"
-                    android:orientation="horizontal"
-                    android:paddingStart="@dimen/dp_12"
-                    android:paddingEnd="@dimen/dp_12">
+                <!--   <LinearLayout
+                       android:id="@+id/ll_beta_blockers_title"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:minHeight="@dimen/item_normal_height"
+                       android:orientation="horizontal"
+                       android:paddingStart="@dimen/dp_12"
+                       android:paddingEnd="@dimen/dp_12">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_toStartOf="@id/iv_arrow_view_nib"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:maxLength="10"
-                        android:maxLines="2"
-                        android:text="β受体阻滞剂"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                       <TextView
+                           android:layout_width="wrap_content"
+                           android:layout_height="@dimen/item_normal_height"
+                           android:layout_alignParentStart="true"
+                           android:layout_marginEnd="@dimen/dp_12"
+                           android:layout_toStartOf="@id/iv_arrow_view_nib"
+                           android:layout_weight="1"
+                           android:gravity="center_vertical"
+                           android:maxLength="10"
+                           android:maxLines="2"
+                           android:text="β受体阻滞剂"
+                           android:textColor="@color/color_222222"
+                           android:textSize="@dimen/item_title_size" />
 
-                    <ImageView
-                        android:id="@+id/iv_beta_blockers"
-                        android:layout_width="@dimen/item_normal_height"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
+                       <ImageView
+                           android:id="@+id/iv_beta_blockers"
+                           android:layout_width="@dimen/item_normal_height"
+                           android:layout_height="@dimen/item_normal_height"
+                           android:layout_alignParentTop="true"
+                           android:layout_alignParentEnd="true"
+                           android:scaleType="center"
+                           android:src="@drawable/ic_arrow_down_blue" />
 
 
-                </LinearLayout>
--->
+                   </LinearLayout>
+   -->
 
                 <LinearLayout
                     android:id="@+id/ll_beta_blockers_title"
@@ -704,8 +704,8 @@
                     android:id="@+id/ll_beta_blockers_data"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -815,6 +815,9 @@
 
             <View style="@style/horizontal_divider" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
         </LinearLayout>
 
     </ScrollView>

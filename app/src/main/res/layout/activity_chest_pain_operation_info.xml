@@ -352,6 +352,11 @@
                 android:visibility="gone"
                 zhy:max_select="-1"></com.zhy.view.flowlayout.TagFlowLayout>
 
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
         </LinearLayout>
 
     </ScrollView>
