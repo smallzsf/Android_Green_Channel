@@ -2,10 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/ll_vital_signs"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_ffffff"
     android:orientation="vertical">
 
 
@@ -501,7 +499,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="术前抗凝"
+                        android:text="他汀治疗"
                         android:textColor="@color/text_color_normal"
                         android:textSize="@dimen/item_title_size" />
 
@@ -636,42 +634,6 @@
                 android:layout_marginTop="@dimen/dp_12"
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical">
-
-                <!--   <LinearLayout
-                       android:id="@+id/ll_beta_blockers_title"
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:minHeight="@dimen/item_normal_height"
-                       android:orientation="horizontal"
-                       android:paddingStart="@dimen/dp_12"
-                       android:paddingEnd="@dimen/dp_12">
-
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="@dimen/item_normal_height"
-                           android:layout_alignParentStart="true"
-                           android:layout_marginEnd="@dimen/dp_12"
-                           android:layout_toStartOf="@id/iv_arrow_view_nib"
-                           android:layout_weight="1"
-                           android:gravity="center_vertical"
-                           android:maxLength="10"
-                           android:maxLines="2"
-                           android:text="β受体阻滞剂"
-                           android:textColor="@color/color_222222"
-                           android:textSize="@dimen/item_title_size" />
-
-                       <ImageView
-                           android:id="@+id/iv_beta_blockers"
-                           android:layout_width="@dimen/item_normal_height"
-                           android:layout_height="@dimen/item_normal_height"
-                           android:layout_alignParentTop="true"
-                           android:layout_alignParentEnd="true"
-                           android:scaleType="center"
-                           android:src="@drawable/ic_arrow_down_blue" />
-
-
-                   </LinearLayout>
-   -->
 
                 <LinearLayout
                     android:id="@+id/ll_beta_blockers_title"
@@ -811,9 +773,36 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
+
             </LinearLayout>
 
-            <View style="@style/horizontal_divider" />
+            <LinearLayout
+                android:id="@+id/ll_acei_arb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:background="@drawable/shape_edittext_bg"
+                android:minHeight="@dimen/item_normal_height"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="ACEI/ARB"
+                    android:textColor="@color/text_color_normal"
+                    android:textSize="@dimen/item_title_size" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/sv_acei_arb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:checked="false" />
+
+            </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"

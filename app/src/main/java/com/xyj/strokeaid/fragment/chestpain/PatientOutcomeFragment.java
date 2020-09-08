@@ -45,12 +45,10 @@ public class PatientOutcomeFragment extends BaseFragment {
     EditSpinner esTitleSelect;
     @BindView(R.id.ttb_confirm_time)
     TextTimeBar ttbConfirmTime;
-    @BindView(R.id.btn_save)
-    AppCompatButton btnSave;
-    @BindView(R.id.rb_rg_heart_failure_yes)
-    RadioButton rbRgHeartFailureYes;
-    @BindView(R.id.rb_rg_heart_failure_no)
-    RadioButton rbRgHeartFailureNo;
+    @BindView(R.id.rb_heart_failure_yes)
+    RadioButton rbHeartFailureYes;
+    @BindView(R.id.rb_heart_failure_no)
+    RadioButton rbHeartFailureNo;
     @BindView(R.id.rg_heart_failure)
     RadioGroup rgHeartFailure;
     @BindView(R.id.cb_setmi_1)
@@ -77,8 +75,18 @@ public class PatientOutcomeFragment extends BaseFragment {
     CheckBox cbSetmi11;
     @BindView(R.id.cb_setmi_12)
     CheckBox cbSetmi12;
+    @BindView(R.id.cb_setmi_13)
+    CheckBox cbSetmi13;
     @BindView(R.id.ll_stemi)
     LinearLayout llStemi;
+    @BindView(R.id.cb_non_acs_1)
+    CheckBox cbNonAcs1;
+    @BindView(R.id.cb_non_acs_2)
+    CheckBox cbNonAcs2;
+    @BindView(R.id.cb_non_acs_3)
+    CheckBox cbNonAcs3;
+    @BindView(R.id.cb_non_acs_4)
+    CheckBox cbNonAcs4;
     @BindView(R.id.cb_non_acs_5)
     CheckBox cbNonAcs5;
     @BindView(R.id.cb_non_acs_6)
@@ -89,8 +97,6 @@ public class PatientOutcomeFragment extends BaseFragment {
     CheckBox cbNonAcs8;
     @BindView(R.id.cb_non_acs_9)
     CheckBox cbNonAcs9;
-    @BindView(R.id.cb_non_acs_24)
-    CheckBox cbNonAcs24;
     @BindView(R.id.cb_non_acs_10)
     CheckBox cbNonAcs10;
     @BindView(R.id.cb_non_acs_11)
@@ -113,20 +119,14 @@ public class PatientOutcomeFragment extends BaseFragment {
     CheckBox cbNonAcs19;
     @BindView(R.id.cb_non_acs_20)
     CheckBox cbNonAcs20;
-    @BindView(R.id.cb_non_acs_23)
-    CheckBox cbNonAcs23;
-    @BindView(R.id.cb_non_acs_1)
-    CheckBox cbNonAcs1;
-    @BindView(R.id.cb_non_acs_2)
-    CheckBox cbNonAcs2;
-    @BindView(R.id.cb_non_acs_3)
-    CheckBox cbNonAcs3;
-    @BindView(R.id.cb_non_acs_4)
-    CheckBox cbNonAcs4;
     @BindView(R.id.cb_non_acs_21)
     CheckBox cbNonAcs21;
     @BindView(R.id.cb_non_acs_22)
     CheckBox cbNonAcs22;
+    @BindView(R.id.cb_non_acs_23)
+    CheckBox cbNonAcs23;
+    @BindView(R.id.cb_non_acs_24)
+    CheckBox cbNonAcs24;
     @BindView(R.id.ll_non_acs)
     LinearLayout llNonAcs;
     @BindView(R.id.cb_non_heart_1)
@@ -145,11 +145,14 @@ public class PatientOutcomeFragment extends BaseFragment {
     CheckBox cbNonHeart7;
     @BindView(R.id.ll_non_heart)
     LinearLayout llNonHeart;
-
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
     private String mRecordId;
     private PatientOutcomeBean mOutcomeBean;
     private HashMap<String, String> mDiagnoseMap;
     private HashMap<String, String> mComplicationMap;
+    private HashMap<String, String> mUnacsMap;
+    private HashMap<String, String> mOtherunacsMap;
 
     public PatientOutcomeFragment() {
 
@@ -178,7 +181,7 @@ public class PatientOutcomeFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        mDiagnoseMap = new HashMap<>();
+        mDiagnoseMap = new HashMap<>(7);
         List<String> diagnoseStrings = Arrays.asList(getResources().getStringArray(R.array.confirm_diagnose));
         mDiagnoseMap.put(diagnoseStrings.get(0), "cpc_cyzdv2_stemi");
         mDiagnoseMap.put(diagnoseStrings.get(1), "cpc_cyzdv2_nstemi");
@@ -188,10 +191,21 @@ public class PatientOutcomeFragment extends BaseFragment {
         mDiagnoseMap.put(diagnoseStrings.get(5), "cpc_cyzdv2_facs");
         mDiagnoseMap.put(diagnoseStrings.get(6), "cpc_cyzdv2_otherxyxt");
 
-//        mComplicationMap = new HashMap<>();
-//        List<String> diagnoseStrings = Arrays.asList(getResources().getStringArray(R.array.confirm_diagnose));
-//        mComplicationMap.put(diagnoseStrings.get(0), "cpc_cyzdv2_stemi");
-//        mComplicationMap.put(diagnoseStrings.get(1), "cpc_cyzdv2_nstemi");
+        mComplicationMap = new HashMap<>(13);
+        List<String> complicationStrings = Arrays.asList(getResources().getStringArray(R.array.chest_pain_non_acs_complication));
+        mComplicationMap.put(complicationStrings.get(0), "cpc_complication_xk");
+        mComplicationMap.put(complicationStrings.get(1), "cpc_complication_jxxbfz");
+        mComplicationMap.put(complicationStrings.get(2), "cpc_complication_gr");
+        mComplicationMap.put(complicationStrings.get(3), "cpc_complication_zfxg");
+        mComplicationMap.put(complicationStrings.get(4), "cpc_complication_xs");
+        mComplicationMap.put(complicationStrings.get(5), "cpc_complication_cz");
+        mComplicationMap.put(complicationStrings.get(6), "cpc_complication_tia");
+        mComplicationMap.put(complicationStrings.get(7), "cpc_complication_cx");
+        mComplicationMap.put(complicationStrings.get(8), "cpc_complication_hxsj");
+        mComplicationMap.put(complicationStrings.get(9), "cpc_complication_ssj");
+        mComplicationMap.put(complicationStrings.get(10), "cpc_complication_sw");
+        mComplicationMap.put(complicationStrings.get(11), "cpc_complication_exxlsc");
+        mComplicationMap.put(complicationStrings.get(12), "cpc_complication_wu");
 
         esTitleSelect.setItemData(Arrays.asList(Constants.CHEST_PAIN_DIAGNOSE_CONTENT));
         loadViewData(mRecordId);
@@ -221,6 +235,12 @@ public class PatientOutcomeFragment extends BaseFragment {
                     llNonAcs.setVisibility(View.GONE);
                     llNonHeart.setVisibility(View.GONE);
                 }
+            }
+        });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getViewData();
             }
         });
     }
@@ -300,12 +320,15 @@ public class PatientOutcomeFragment extends BaseFragment {
             if (dischargeddiagnosis.contains("cpc_cyzdv2_stemi")) {
                 llStemi.setVisibility(View.VISIBLE);
                 esTitleSelect.setText("STEMI");
+                setStemiView(bean);
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_nstemi")) {
                 llStemi.setVisibility(View.VISIBLE);
                 esTitleSelect.setText("NSTEMI");
+                setStemiView(bean);
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_ua")) {
                 llStemi.setVisibility(View.VISIBLE);
                 esTitleSelect.setText("UA");
+                setStemiView(bean);
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_zdmjc")) {
                 esTitleSelect.setText("主动脉夹层");
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_fdmss")) {
@@ -313,15 +336,101 @@ public class PatientOutcomeFragment extends BaseFragment {
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_facs")) {
                 llNonAcs.setVisibility(View.VISIBLE);
                 esTitleSelect.setText("非ACS心源性胸痛");
+                setUnacsView(bean);
             } else if (dischargeddiagnosis.contains("cpc_cyzdv2_otherxyxt")) {
                 llNonHeart.setVisibility(View.VISIBLE);
                 esTitleSelect.setText("其它非心源性胸痛");
+                setOtherHeartView(bean);
             }
         }
         // 确诊时间
         ttbConfirmTime.setTime(bean.getDischargeddiagnosistime());
-        //
 
+    }
+
+    private void setStemiView(PatientOutcomeBean bean) {
+        // 院内新发心力衰竭
+        String isheartfailureinhospital = bean.getIsheartfailureinhospital();
+        if (!TextUtils.isEmpty(isheartfailureinhospital)) {
+            if (isheartfailureinhospital.contains("cpc_bool_true")) {
+                rgHeartFailure.check(R.id.rb_heart_failure_yes);
+            } else if (isheartfailureinhospital.contains("cpc_bool_false")) {
+                rgHeartFailure.check(R.id.rb_heart_failure_no);
+            }
+        }
+        // 住院期间并发症
+        String complication = bean.getComplication();
+        if (!TextUtils.isEmpty(complication)) {
+            if (complication.contains("cpc_complication_wu")) {
+                cbSetmi13.setChecked(true);
+            } else {
+                cbSetmi1.setChecked(complication.contains("cpc_complication_xk"));
+                cbSetmi2.setChecked(complication.contains("cpc_complication_jxxbfz"));
+                cbSetmi3.setChecked(complication.contains("cpc_complication_gr"));
+                cbSetmi4.setChecked(complication.contains("cpc_complication_zfxg"));
+                cbSetmi5.setChecked(complication.contains("cpc_complication_xs"));
+                cbSetmi6.setChecked(complication.contains("cpc_complication_cz"));
+                cbSetmi7.setChecked(complication.contains("cpc_complication_tia"));
+                cbSetmi8.setChecked(complication.contains("cpc_complication_cx"));
+                cbSetmi9.setChecked(complication.contains("cpc_complication_hxsj"));
+                cbSetmi10.setChecked(complication.contains("cpc_complication_ssj"));
+                cbSetmi11.setChecked(complication.contains("cpc_complication_sw"));
+                cbSetmi12.setChecked(complication.contains("cpc_complication_exxlsc"));
+            }
+        }
+    }
+
+    /**
+     * 非ACS心源性胸痛类型
+     *
+     * @param bean
+     */
+    private void setUnacsView(PatientOutcomeBean bean) {
+        String dischargedunacs = bean.getDischargedunacs();
+        if (!TextUtils.isEmpty(dischargedunacs)) {
+            cbNonAcs1.setChecked(dischargedunacs.contains("cpc_unacs_xlsc"));
+            cbNonAcs2.setChecked(dischargedunacs.contains("cpc_unacs_kzxxjb"));
+            cbNonAcs3.setChecked(dischargedunacs.contains("cpc_unacs_qxxxjb"));
+            cbNonAcs4.setChecked(dischargedunacs.contains("cpc_unacs_fhxxjb"));
+            cbNonAcs5.setChecked(dischargedunacs.contains("cpc_unacs_xjb"));
+            cbNonAcs6.setChecked(dischargedunacs.contains("cpc_unacs_gxb"));
+            cbNonAcs7.setChecked(dischargedunacs.contains("cpc_unacs_bmxxjb"));
+            cbNonAcs8.setChecked(dischargedunacs.contains("cpc_unacs_cjxxjgs"));
+            cbNonAcs9.setChecked(dischargedunacs.contains("cpc_unacs_xjt"));
+            cbNonAcs10.setChecked(dischargedunacs.contains("cpc_unacs_xj"));
+            cbNonAcs11.setChecked(dischargedunacs.contains("cpc_unacs_fc"));
+            cbNonAcs12.setChecked(dischargedunacs.contains("cpc_unacs_gxy"));
+            cbNonAcs13.setChecked(dischargedunacs.contains("cpc_unacs_xs"));
+            cbNonAcs14.setChecked(dischargedunacs.contains("cpc_unacs_fp"));
+            cbNonAcs15.setChecked(dischargedunacs.contains("cpc_unacs_sz"));
+            cbNonAcs16.setChecked(dischargedunacs.contains("cpc_unacs_fz"));
+            cbNonAcs17.setChecked(dischargedunacs.contains("cpc_unacs_sss"));
+            cbNonAcs18.setChecked(dischargedunacs.contains("cpc_unacs_xby"));
+            cbNonAcs19.setChecked(dischargedunacs.contains("cpc_unacs_xjq"));
+            cbNonAcs20.setChecked(dischargedunacs.contains("cpc_unacs_xbjy"));
+            cbNonAcs21.setChecked(dischargedunacs.contains("cpc_unacs_zdmgbjxz"));
+            cbNonAcs22.setChecked(dischargedunacs.contains("cpc_unacs_tbxdmzyyhxky"));
+            cbNonAcs23.setChecked(dischargedunacs.contains("cpc_unacs_zdml"));
+            cbNonAcs24.setChecked(dischargedunacs.contains("cpc_unacs_zlxqx"));
+        }
+    }
+
+    /**
+     * 其它非心源性胸痛类型
+     *
+     * @param bean
+     */
+    private void setOtherHeartView(PatientOutcomeBean bean) {
+        String dischargedotheracs = bean.getDischargedotheracs();
+        if (!TextUtils.isEmpty(dischargedotheracs)) {
+            cbNonHeart1.setChecked(dischargedotheracs.contains("cpc_otherunacs_hxxtb"));
+            cbNonHeart2.setChecked(dischargedotheracs.contains("cpc_otherunacs_xhxtb"));
+            cbNonHeart3.setChecked(dischargedotheracs.contains("cpc_otherunacs_sjxtb"));
+            cbNonHeart4.setChecked(dischargedotheracs.contains("cpc_otherunacs_jsxtb"));
+            cbNonHeart5.setChecked(dischargedotheracs.contains("cpc_otherunacs_jrggb"));
+            cbNonHeart6.setChecked(dischargedotheracs.contains("cpc_otherunacs_pfxtb"));
+            cbNonHeart7.setChecked(dischargedotheracs.contains("cpc_otherunacs_qt"));
+        }
     }
 
     private void getViewData() {
@@ -330,6 +439,55 @@ public class PatientOutcomeFragment extends BaseFragment {
         }
         mOutcomeBean.setRecordId(mRecordId);
         // 诊断
+        String diagnose = esTitleSelect.getText();
+        List<String> diagnoseStrings = Arrays.asList(getResources().getStringArray(R.array.confirm_diagnose));
+        for (int i = 0; i < diagnoseStrings.size(); i++) {
+            if (TextUtils.equals(diagnose, diagnoseStrings.get(i))) {
+                mOutcomeBean.setDischargeddiagnosis(mDiagnoseMap.get(diagnose));
+            }
+        }
+        // 确诊时间
+        mOutcomeBean.setDischargeddiagnosistime(ttbConfirmTime.getTime());
+        if (TextUtils.equals(diagnose, "STEMI")
+                || TextUtils.equals(diagnose, "NSTEMI")
+                || TextUtils.equals(diagnose, "UA")) {
+            if (rgHeartFailure.getCheckedRadioButtonId() == R.id.rb_heart_failure_yes) {
+                mOutcomeBean.setIsheartfailureinhospital("cpc_bool_true");
+            } else if (rgHeartFailure.getCheckedRadioButtonId() == R.id.rb_heart_failure_no) {
+                mOutcomeBean.setIsheartfailureinhospital("cpc_bool_false");
+            }
+            String checkBoxValue = getCheckBoxValue(cbSetmi1, cbSetmi2, cbSetmi3, cbSetmi4, cbSetmi5,
+                    cbSetmi6, cbSetmi7, cbSetmi8, cbSetmi9, cbSetmi10, cbSetmi11, cbSetmi12, cbSetmi13);
+            mOutcomeBean.setComplication(checkBoxValue);
+        } else if (TextUtils.equals(diagnose, "非ACS心源性胸痛")) {
+            String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+                    cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
+                    , cbNonAcs14, cbNonAcs15, cbNonAcs16, cbNonAcs17, cbNonAcs18, cbNonAcs19, cbNonAcs20
+                    , cbNonAcs21, cbNonAcs22, cbNonAcs23, cbNonAcs24);
+            mOutcomeBean.setDischargedunacs(checkBoxValue);
+        } else if (TextUtils.equals(diagnose, "其它非心源性胸痛")) {
+            String checkBoxValue = getCheckBoxValue(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5,
+                    cbNonHeart6, cbNonHeart7);
+            mOutcomeBean.setDischargedotheracs(checkBoxValue);
+        }
+        saveViewData();
+    }
+
+    private String getCheckBoxValue(CheckBox... checkBoxes) {
+        if (checkBoxes != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isChecked()) {
+                    if (stringBuilder.length() > 0) {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append(checkBox.getTag().toString());
+                }
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
     }
 
 

@@ -170,4 +170,20 @@
         <item>对任何刺激无反应</item>
     </string-array>
 
+    <string-array name="chest_pain_non_acs_complication">
+        <item>休克</item>
+        <item>机械性并发症</item>
+        <item>感染</item>
+        <item>再发心梗</item>
+        <item>血栓</item>
+        <item>缺血性卒中</item>
+        <item>TIA</item>
+        <item>出血</item>
+        <item>呼吸衰竭</item>
+        <item>肾衰竭</item>
+        <item>死亡</item>
+        <item>恶性心律失常</item>
+        <item>无</item>
+    </string-array>
+
 </resources>
