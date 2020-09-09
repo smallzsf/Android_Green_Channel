@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
+import com.bigkoo.pickerview.view.TimePickerView;
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.helper.CalendarUtils;
 
@@ -45,7 +47,8 @@ public class TextTimeBar extends RelativeLayout {
     /**
      * 时间显示类型
      */
-    private int timeType;
+    private int timeType = CalendarUtils.TYPE_ALL;
+    private TimePickerView mTimePickerView;
 
     public TextTimeBar(Context context) {
         this(context, null);
@@ -94,6 +97,29 @@ public class TextTimeBar extends RelativeLayout {
             tvTimeViewTtb.setText(now);
         });
 
+        tvTimeViewTtb.setOnClickListener(v -> {
+            Calendar startTime = Calendar.getInstance();
+            startTime.set(1900, 0, 1);
+            if (mTimePickerView == null) {
+                mTimePickerView = new TimePickerBuilder(getContext(), new OnTimeSelectListener() {
+                    @Override
+                    public void onTimeSelect(Date date, View v) {
+                        String time = CalendarUtils.parseDate(timeType, date);
+                        LogUtils.d(time);
+                        tvTimeViewTtb.setText(time);
+                    }
+                })
+                        .isDialog(false)
+                        .setType(new boolean[]{true, true, true, true, true, true})
+                        .setRangDate(startTime, Calendar.getInstance())
+                        .setOutSideCancelable(true)
+                        .build();
+            }
+            if (mTimePickerView.isShowing()) {
+                mTimePickerView.dismiss();
+            }
+            mTimePickerView.show();
+        });
     }
 
     public void setTimeZoneClickListener(OnClickListener listener) {
@@ -112,6 +138,10 @@ public class TextTimeBar extends RelativeLayout {
         }
     }
 
+    /**
+     * 设置转换的时间戳格式， 默认显示 yyyy-MM-dd HH:mm:ss
+     * @param type
+     */
     public void setTimeType(@CalendarUtils.FormatType int type) {
         this.timeType = type;
     }
@@ -145,33 +175,6 @@ public class TextTimeBar extends RelativeLayout {
             viewBottomLineViewTtb.setVisibility(visible ? VISIBLE : GONE);
         }
     }
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param textTimeBar 显示时间的 TextView
-     */
-//    protected void showTimePickView(TextTimeBar textTimeBar) {
-//        Calendar startTime = Calendar.getInstance();
-//        startTime.set(1900, 0, 1);
-//        if (mTimePickerView == null) {
-//            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
-//                @Override
-//                public void onTimeSelect(Date date, View v) {
-//                    refreshTime(textTimeBar, date);
-//                }
-//            })
-//                    .isDialog(false)
-//                    .setRangDate(startTime, Calendar.getInstance())
-//                    .setOutSideCancelable(true)
-//                    .build();
-//        }
-//        if (mTimePickerView.isShowing()) {
-//            mTimePickerView.dismiss();
-//        }
-//        mTimePickerView.show();
-//    }
-
 }
 
     
