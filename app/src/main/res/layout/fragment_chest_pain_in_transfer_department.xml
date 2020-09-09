@@ -15,35 +15,12 @@
         app:title="转科时间"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
-    <LinearLayout
+    <com.xyj.strokeaid.view.ItemEditBar
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-        <TextView
-            android:layout_width="@dimen/vital_sign_title_width"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/item_normal_margin"
-            android:gravity="center_vertical"
-            android:text="接诊科室"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/item_title_size" />
-
-
-        <com.xyj.strokeaid.view.editspinner.EditSpinner
-            android:id="@+id/es_transfer_depart"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/item_normal_margin"
-            android:gravity="center"
-            app:Background="@drawable/bg_view_frame"
-            app:hint="请选择"
-            app:rightImage="@drawable/ic_arrow_down_blue" />
-
-    </LinearLayout>
-
-    <View style="@style/horizontal_divider" />
+        app:ieb_title="接诊科室"
+        app:ieb_bottom_line_visible="true"
+        android:id="@+id/ieb_transfer_depart_name"/>
 
     <TextView
         android:layout_width="match_parent"

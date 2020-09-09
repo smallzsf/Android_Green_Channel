@@ -364,7 +364,7 @@
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_gravity="top"
                     android:gravity="center_vertical"
-                    android:text="离院宣传"
+                    android:text="离院宣教"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_14" />
 
@@ -374,6 +374,8 @@
                     android:orientation="vertical">
 
                     <CheckBox
+                        android:id="@+id/cb_lyxc_jy"
+                        android:tag="cpc_missioneducation_jy"
                         style="@style/XyjCheckBox"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
@@ -381,30 +383,40 @@
 
                     <CheckBox
                         style="@style/XyjCheckBox"
+                        android:id="@+id/cb_lyxc_gljcfy"
+                        android:tag="cpc_missioneducation_gljcfy"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
                         android:text="规律坚持服药" />
 
                     <CheckBox
                         style="@style/XyjCheckBox"
+                        android:id="@+id/cb_lyxc_jyzsfzl"
+                        android:tag="cpc_missioneducation_jyzsfzl"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
                         android:text="遵医嘱随访治疗" />
 
                     <CheckBox
                         style="@style/XyjCheckBox"
+                        android:id="@+id/cb_lyxc_shqjth"
+                        android:tag="cpc_missioneducation_shqjth"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
                         android:text="生活起居调护" />
 
                     <CheckBox
                         style="@style/XyjCheckBox"
+                        android:id="@+id/cb_lyxc_xxgwxyskz"
+                        android:tag="cpc_missioneducation_xxgwxyskz"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
                         android:text="心血管危险因素控制（降压、调脂、血糖控制、限酒、控制体重）" />
 
                     <CheckBox
                         style="@style/XyjCheckBox"
+                        android:id="@+id/cb_lyxc_wxj"
+                        android:tag="cpc_missioneducation_wxj"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_small_height"
                         android:text="未宣教" />
@@ -431,49 +443,7 @@
             <include
                 android:id="@+id/include_pain_in_transfer_hospital"
                 layout="@layout/fragment_chest_pain_in_transfer_hospital"
-                android:visibility="gone" />
-
-            <TextView
-                style="@style/Text_Blue_Content_Style"
-                android:text="患者情况备注" />
-
-            <LinearLayout
-                android:id="@+id/ll_family_refuse_reason"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/item_normal_margin"
-                android:layout_marginTop="@dimen/dp_4"
-                android:layout_marginEnd="@dimen/item_normal_margin"
-                android:layout_marginBottom="@dimen/dp_4"
-                android:background="@drawable/shape_grey_stroke_with_white_bg"
-                android:orientation="vertical"
-                android:visibility="visible">
-
-                <EditText
-                    android:id="@+id/et_refuse_reason"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:gravity="top"
-                    android:hint="患者情况备注..."
-                    android:maxLength="300"
-                    android:minHeight="80dp"
-                    android:padding="10dp"
-                    android:textColor="@color/color_222222"
-                    android:textColorHint="@color/color_999999"
-                    android:textSize="@dimen/item_content_size" />
-
-                <TextView
-                    android:id="@+id/tv_refuse_reason_num"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="@dimen/dp_4"
-                    android:text="0/300"
-                    android:textColor="@color/color_222222"
-                    android:textSize="13sp" />
-            </LinearLayout>
+                android:visibility="visible" />
 
             <Space
                 android:layout_width="match_parent"

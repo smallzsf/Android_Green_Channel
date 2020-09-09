@@ -19,7 +19,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:overScrollMode="never"
         android:scrollbars="none">
 
@@ -107,18 +108,18 @@
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_dis_start_act_npmr"
                 android:layout_width="match_parent"
-                app:topLineVisible="true"
                 android:layout_height="@dimen/item_normal_height"
-                app:bottomLineVisible="true"
                 android:visibility="gone"
-                app:title="发病时间" />
+                app:bottomLineVisible="true"
+                app:title="发病时间"
+                app:topLineVisible="true" />
 
             <com.xyj.strokeaid.view.SettingBar
                 android:id="@+id/sb_dis_start_range_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                app:bar_bottomLineVisible="true"
                 android:visibility="gone"
+                app:bar_bottomLineVisible="true"
                 app:bar_leftText="发病区间" />
 
             <com.xyj.strokeaid.view.ItemEditBar
@@ -290,15 +291,6 @@
                 app:ieb_edit_hint="请输入联系电话"
                 app:ieb_title="联系电话" />
 
-            <Button
-                android:id="@+id/btn_save_act_npmr"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/buttom_normal_height"
-                android:layout_margin="@dimen/item_normal_margin"
-                android:background="@drawable/shape_corner_20_with_blue"
-                android:gravity="center"
-                android:text="@string/save"
-                android:textColor="@color/app_ffffff" />
 
             <Space
                 android:layout_width="match_parent"
@@ -308,4 +300,14 @@
 
 
     </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/btn_save_act_npmr"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/shape_corner_20_with_blue"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white" />
 </LinearLayout>

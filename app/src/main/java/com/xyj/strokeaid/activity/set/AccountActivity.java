@@ -3,7 +3,6 @@ package com.xyj.strokeaid.activity.set;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -76,7 +75,7 @@ public class AccountActivity extends BaseActivity {
         }
 
         // 初始化用户信息
-        if (UserInfoCache.getInstance().getUserInfo()!=null){
+        if (UserInfoCache.getInstance().getUserInfo() != null) {
             name = UserInfoCache.getInstance().getUserInfo().getName();
             orgName = UserInfoCache.getInstance().getUserInfo().getOrgName();
         }
@@ -106,7 +105,7 @@ public class AccountActivity extends BaseActivity {
         sbVersionPwdActAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Beta.checkUpgrade();
             }
         });
     }

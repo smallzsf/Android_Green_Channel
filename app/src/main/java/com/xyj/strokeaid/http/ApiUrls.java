@@ -51,6 +51,15 @@ public class ApiUrls {
      */
     public static final String NET_URL_USER_UPDATE_PASSWORD = "yjjk-gateway/yjjk-pt-api/v1/user/updatePassword";
 
+
+    /**
+     * 通用获取接口
+     */
+    public static final String NET_URL_COMMON_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
+    /**
+     * 通用保存接口
+     */
+    public static final String NET_URL_COMMON_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
     /**
      * 新建患者信息
      */
