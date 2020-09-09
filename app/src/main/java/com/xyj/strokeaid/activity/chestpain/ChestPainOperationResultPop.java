@@ -139,7 +139,7 @@ public class ChestPainOperationResultPop extends PopupWindow {
     @BindView(R.id.rg_pci)
     RadioGroup rgPci;
 
-    ChestPainOperationResultUtil resultUtil;
+    DistListUtil resultUtil;
     @BindView(R.id.rg_timi_after)
     RadioGroup rgTimiAfter;
     @BindView(R.id.rg_stents_implanted_num)
@@ -156,7 +156,7 @@ public class ChestPainOperationResultPop extends PopupWindow {
         super(contentView, width, height, focusable);
         this.context = context;
         popupWindowView = contentView;
-        resultUtil = new ChestPainOperationResultUtil(context);
+        resultUtil = new DistListUtil(context);
 
 //        popupWindowView = getLayoutInflater().inflate(R.layout.pop_gender_diversity_detail, null, false);
         ButterKnife.bind(this, popupWindowView);

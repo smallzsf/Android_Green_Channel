@@ -160,7 +160,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     // 通过点击弹出 popupwindow 时设置
     private GenderSelectBean popGenderSelectBean;
 
-    private ChestPainOperationResultUtil chestUtil;
+    private DistListUtil chestUtil;
     private TagAdapter<String> tagIntraoAdapter;
 
     @Override
@@ -199,7 +199,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
     private void initData() {
         bean = new ChestPainOperationRsultBean();
-        chestUtil = new ChestPainOperationResultUtil(this);
+        chestUtil = new DistListUtil(this);
         //显示前项
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity);
         chestUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);

@@ -19,6 +19,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.chestpain.EmergencyCenterChestpainDrugPo;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -97,19 +100,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
     private String mRecordId;
-    private String DOSE_0 = "0mg";
-    private String DOSE_90 = "90mg";
-    private String DOSE_100 = "100mg";
-    private String DOSE_180 = "180mg";
-    private String DOSE_300 = "300mg";
-    private String DOSE_600 = "600mg";
-    private String otherDoses = "其他剂量";
-
-    private String cpc_knyw_ptgs = "普通肝素";
-    private String cpc_knyw_dfzgs = "低分子肝素";
-    private String cpc_knyw_bfrd = "比伐卢定";
-    private String cpc_knyw_hdgkn = "磺达肝癸钠";
-
 
     public ChestPainInitDrugFragment() {
 
@@ -146,35 +136,172 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        resetShowData();
+    }
+
+    private void resetShowData() {
+        RecordIdUtil src = new RecordIdUtil();
+        src.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(src);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .getChestPainsuEmergencyCenter(requestBody)
+                .enqueue(new Callback<BaseObjectBean<EmergencyCenterChestpainDrugPo>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<EmergencyCenterChestpainDrugPo>> call, Response<BaseObjectBean<EmergencyCenterChestpainDrugPo>> response) {
+                        Log.e("zhangshifu", "onResponse: " + response.toString());
+                        if (response.body() == null) {
+                            return;
+                        }
+                        if (response.body().getResult() != 1) {
+                            return;
+                        }
+                        resetShowView(response.body().getData());
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<EmergencyCenterChestpainDrugPo>> call, Throwable t) {
+
+                    }
+                });
+
+    }
+
+    private void resetShowView(EmergencyCenterChestpainDrugPo bean) {
+        if (bean == null) {
+            return;
+        }
+        String acsaspirintime = bean.getAcsaspirintime();
+        if (TextUtils.isEmpty(acsaspirintime)) {
+            ttbAntihemotherapyTime.setTime(acsaspirintime);
+        }
+        String text = bean.getAcsaspirindosage();
+        iebAntihemotherapyValue.setEditContent("");
+//        if (TextUtils.equals(DOSE_0, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(0);
+//        } else if (TextUtils.equals(DOSE_100, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(1);
+//        } else if (TextUtils.equals(DOSE_300, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(2);
+//        } else if (TextUtils.equals(otherDoses, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(3);
+//            String otheracstigrilodosage = bean.getOtheracstigrilodosage();
+//            iebAntihemotherapyValue.setEditContent(otheracstigrilodosage);
+//        }
+//
+//        // 表示选中抗血小板治疗
+//        //edit_spinner_amoxicillin 阿莫西林
+//        text = bean.getAcstigrilodosage();
+//        iebAntihemotherapyValue.setEditContent("");
+//        if (TextUtils.equals(DOSE_0, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(0);
+//        } else if (TextUtils.equals(DOSE_100, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(1);
+//        } else if (TextUtils.equals(DOSE_300, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(2);
+//        } else if (TextUtils.equals(otherDoses, text)) {
+//            editSpinnerAmoxicillin.setSelectPosition(3);
+//            iebAntihemotherapyValue.setEditContent(bean.getOtheracstigrilodosage());
+//        }
+//
+//        //edit_spinner_clopidogrel 氯呲格雷g
+////        String clopidogrelText = editSpinnerClopidogrel.getText().trim();
+//        String clopidogrelText = bean.getAcschlorpyridindosage();
+//        iebClopidogrelValue.setEditContent("");
+//        if (TextUtils.equals(DOSE_0, clopidogrelText)) {
+//            editSpinnerClopidogrel.setSelectPosition(0);
+//        } else if (TextUtils.equals(DOSE_300, clopidogrelText)) {
+//            editSpinnerClopidogrel.setSelectPosition(1);
+//        } else if (TextUtils.equals(DOSE_600, clopidogrelText)) {
+//            editSpinnerClopidogrel.setSelectPosition(2);
+//        } else if (TextUtils.equals(otherDoses, clopidogrelText)) {
+//            editSpinnerClopidogrel.setSelectPosition(3);
+//            iebClopidogrelValue.setEditContent(bean.getOtheracschlorpyridindosage());
+//        }
+//
+//        //替格瑞洛  edit_spinner_ticagrelor
+//        String ticagrelorText = editSpinnerTicagrelor.getText().trim();
+//        bean.setAcstigrilotime(time);
+//        if (TextUtils.equals(DOSE_0, ticagrelorText)) {
+//            bean.setAcstigrilodosage("cpc_tigrilodosage_0mg");
+//        } else if (TextUtils.equals(DOSE_90, ticagrelorText)) {
+//            bean.setAcstigrilodosage("cpc_tigrilodosage_90mg");
+//        } else if (TextUtils.equals(DOSE_180, ticagrelorText)) {
+//            bean.setAcstigrilodosage("cpc_tigrilodosage_180mg");
+//        } else if (TextUtils.equals(otherDoses, ticagrelorText)) {
+//            bean.setAcstigrilodosage("cpc_tigrilodosage_other");
+//            bean.setOtheracstigrilodosage(iebTicagrelorValue.getEditContent());
+//        } else {
+//            bean.setAcstigrilotime("");
+//        }
+//        //sv_preoperative_anticoagulation
+//        if (svPreoperativeAnticoagulation.isChecked()) {
+//            // 表示选中了术前抗凝
+////            acsisanticoagulantmedicine
+//            bean.setAcsisanticoagulantmedicine(Constants.BOOL_TRUE);
+//            String time = ttbPreoperativeAnticoagulationTime.getTime();
+//            String acsanticoagulationdrug = "";
+//            String text = edsPreoperativeAnticoagulation.getText();
+//            if (TextUtils.equals(cpc_knyw_ptgs, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_ptgs";
+//            } else if (TextUtils.equals(cpc_knyw_dfzgs, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_dfzgs";
+//            } else if (TextUtils.equals(cpc_knyw_bfrd, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_bfrd";
+//            } else if (TextUtils.equals(cpc_knyw_hdgkn, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_hdgkn";
+//            } else {
+//                time = "";
+//            }
+//            bean.setAcsanticoagulantmedicinetime(time);
+//            bean.setAcsanticoagulationdrug(acsanticoagulationdrug);
+//            // 设置剂量 值
+////            et_preoperative_anticoagulation_dose.
+//            String dose = etPreoperativeAnticoagulationDose.getText().toString().trim();
+//
+////                    et_preoperative_anticoagulation_unit
+//            String unit = etPreoperativeAnticoagulationUnit.getText().toString()
+//                    .trim();
+//            bean.setAcsanticoagulationdrugdosage(dose);
+//            bean.setAcsanticoagulationdrugunit(unit);
+//
+//        } else {
+//            bean.setAcsisanticoagulantmedicine(Constants.BOOL_FALSE);
+//        }
+        //sv_statin_therapy
+        if (svStatinTherapy.isChecked()) {
+            // 表示选中了他定治疗
+            bean.setAcsatorvastatindosage(iebAtorvastatinValue.getEditContent());
+            bean.setAcsrosuvastatindosage(iebRosuvastatinValue.getEditContent());
+            bean.setIs24intensivestatin(Constants.BOOL_TRUE);
+        } else {
+            bean.setIs24intensivestatin(Constants.BOOL_FALSE);
+        }
+        //sv_beta_blockers
+        if (svBetaBlockers.isChecked()) {
+            // 表示选中了受阻滞剂
+            bean.setIsusebetablocker(Constants.BOOL_TRUE);
+        } else {
+            bean.setIsusebetablocker(Constants.BOOL_FALSE);
+        }
+        if (svAceiArb.isChecked()) {
+            // 表示选中了acei
+            bean.setAcsisaceiarb(Constants.BOOL_TRUE);
+        } else {
+            bean.setAcsisaceiarb(Constants.BOOL_FALSE);
+        }
+    }
+
     private void loadData() {
-        List<String> list = new ArrayList<>();
-        list.add(DOSE_0);
-        list.add(DOSE_100);
-        list.add(DOSE_300);
-        list.add(otherDoses);
-        editSpinnerAmoxicillin.setItemData(list);
-        list = new ArrayList<>();
-        list.add(DOSE_0);
-        list.add(DOSE_300);
-        list.add(DOSE_600);
-        list.add(otherDoses);
-        editSpinnerClopidogrel.setItemData(list);
-        list = new ArrayList<>();
-        list.add(DOSE_0);
-        list.add(DOSE_90);
-        list.add(DOSE_180);
-        list.add(otherDoses);
-        editSpinnerTicagrelor.setItemData(list);
-
-
-        List<String> administrationDataList = new ArrayList<>();
-
-
-        administrationDataList.add(cpc_knyw_ptgs);
-        administrationDataList.add(cpc_knyw_dfzgs);
-        administrationDataList.add(cpc_knyw_bfrd);
-        administrationDataList.add(cpc_knyw_hdgkn);
-        edsPreoperativeAnticoagulation.setItemData(administrationDataList);
+        editSpinnerAmoxicillin.setStringArrayId(R.array.cpc_aspirindosage);
+        editSpinnerClopidogrel.setStringArrayId(R.array.cpc_chlorpyridindosage);
+        editSpinnerTicagrelor.setStringArrayId(R.array.cpc_tigrilodosage);
+        edsPreoperativeAnticoagulation.setStringArrayId(R.array.cpc_knyw);
     }
 
 
@@ -225,51 +352,51 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
             String text = editSpinnerAmoxicillin.getText().trim();
             String time = ttbAntihemotherapyTime.getTime();
             bean.setAcsaspirintime(time);
-            if (TextUtils.equals(DOSE_0, text)) {
-                bean.setAcsaspirindosage("cpc_aspirindosage_0mg");
-            } else if (TextUtils.equals(DOSE_100, text)) {
-                bean.setAcsaspirindosage("cpc_aspirindosage_100mg");
-            } else if (TextUtils.equals(DOSE_300, text)) {
-                bean.setAcsaspirindosage("cpc_aspirindosage_300mg");
-            } else if (TextUtils.equals(otherDoses, text)) {
-                bean.setAcsaspirindosage("cpc_aspirindosage_other");
-                bean.setOtheracstigrilodosage(iebAntihemotherapyValue.getEditContent());
-            }else {
-                bean.setAcsaspirintime("");
-            }
-
-            //edit_spinner_clopidogrel 氯呲格雷
-            String clopidogrelText = editSpinnerClopidogrel.getText().trim();
-            bean.setAcschlorpyridintime(time);
-            if (TextUtils.equals(DOSE_0, clopidogrelText)) {
-                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_0mg");
-            } else if (TextUtils.equals(DOSE_300, clopidogrelText)) {
-                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_300mg");
-            } else if (TextUtils.equals(DOSE_600, clopidogrelText)) {
-                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_600mg");
-            } else if (TextUtils.equals(otherDoses, clopidogrelText)) {
-                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_other");
-//                ieb_clopidogrel_value
-                bean.setOtheracschlorpyridindosage(iebClopidogrelValue.getEditContent());
-            }else {
-                bean.setAcschlorpyridintime("");
-            }
-
-            //替格瑞洛  edit_spinner_ticagrelor
-            String ticagrelorText = editSpinnerTicagrelor.getText().trim();
-            bean.setAcstigrilotime(time);
-            if (TextUtils.equals(DOSE_0, ticagrelorText)) {
-                bean.setAcstigrilodosage("cpc_tigrilodosage_0mg");
-            } else if (TextUtils.equals(DOSE_90, ticagrelorText)) {
-                bean.setAcstigrilodosage("cpc_tigrilodosage_90mg");
-            } else if (TextUtils.equals(DOSE_180, ticagrelorText)) {
-                bean.setAcstigrilodosage("cpc_tigrilodosage_180mg");
-            } else if (TextUtils.equals(otherDoses, ticagrelorText)) {
-                bean.setAcstigrilodosage("cpc_tigrilodosage_other");
-                bean.setOtheracstigrilodosage(iebTicagrelorValue.getEditContent());
-            }else {
-                bean.setAcstigrilotime("");
-            }
+//            if (TextUtils.equals(DOSE_0, text)) {
+//                bean.setAcsaspirindosage("cpc_aspirindosage_0mg");
+//            } else if (TextUtils.equals(DOSE_100, text)) {
+//                bean.setAcsaspirindosage("cpc_aspirindosage_100mg");
+//            } else if (TextUtils.equals(DOSE_300, text)) {
+//                bean.setAcsaspirindosage("cpc_aspirindosage_300mg");
+//            } else if (TextUtils.equals(otherDoses, text)) {
+//                bean.setAcsaspirindosage("cpc_aspirindosage_other");
+//                bean.setOtheracstigrilodosage(iebAntihemotherapyValue.getEditContent());
+//            } else {
+//                bean.setAcsaspirintime("");
+//            }
+//
+//            //edit_spinner_clopidogrel 氯呲格雷
+//            String clopidogrelText = editSpinnerClopidogrel.getText().trim();
+//            bean.setAcschlorpyridintime(time);
+//            if (TextUtils.equals(DOSE_0, clopidogrelText)) {
+//                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_0mg");
+//            } else if (TextUtils.equals(DOSE_300, clopidogrelText)) {
+//                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_300mg");
+//            } else if (TextUtils.equals(DOSE_600, clopidogrelText)) {
+//                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_600mg");
+//            } else if (TextUtils.equals(otherDoses, clopidogrelText)) {
+//                bean.setAcschlorpyridindosage("cpc_chlorpyridindosage_other");
+////                ieb_clopidogrel_value
+//                bean.setOtheracschlorpyridindosage(iebClopidogrelValue.getEditContent());
+//            } else {
+//                bean.setAcschlorpyridintime("");
+//            }
+//
+//            //替格瑞洛  edit_spinner_ticagrelor
+//            String ticagrelorText = editSpinnerTicagrelor.getText().trim();
+//            bean.setAcstigrilotime(time);
+//            if (TextUtils.equals(DOSE_0, ticagrelorText)) {
+//                bean.setAcstigrilodosage("cpc_tigrilodosage_0mg");
+//            } else if (TextUtils.equals(DOSE_90, ticagrelorText)) {
+//                bean.setAcstigrilodosage("cpc_tigrilodosage_90mg");
+//            } else if (TextUtils.equals(DOSE_180, ticagrelorText)) {
+//                bean.setAcstigrilodosage("cpc_tigrilodosage_180mg");
+//            } else if (TextUtils.equals(otherDoses, ticagrelorText)) {
+//                bean.setAcstigrilodosage("cpc_tigrilodosage_other");
+//                bean.setOtheracstigrilodosage(iebTicagrelorValue.getEditContent());
+//            } else {
+//                bean.setAcstigrilotime("");
+//            }
         }
         //sv_preoperative_anticoagulation
         if (svPreoperativeAnticoagulation.isChecked()) {
@@ -279,17 +406,18 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
             String time = ttbPreoperativeAnticoagulationTime.getTime();
             String acsanticoagulationdrug = "";
             String text = edsPreoperativeAnticoagulation.getText();
-            if (TextUtils.equals(cpc_knyw_ptgs, text)) {
-                acsanticoagulationdrug = "cpc_knyw_ptgs";
-            } else if (TextUtils.equals(cpc_knyw_dfzgs, text)) {
-                acsanticoagulationdrug = "cpc_knyw_dfzgs";
-            } else if (TextUtils.equals(cpc_knyw_bfrd, text)) {
-                acsanticoagulationdrug = "cpc_knyw_bfrd";
-            } else if (TextUtils.equals(cpc_knyw_hdgkn, text)) {
-                acsanticoagulationdrug = "cpc_knyw_hdgkn";
-            }else {
-                time = "";
-            }
+            String[] selectData = edsPreoperativeAnticoagulation.getSelectData();
+//            if (TextUtils.equals(cpc_knyw_ptgs, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_ptgs";
+//            } else if (TextUtils.equals(cpc_knyw_dfzgs, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_dfzgs";
+//            } else if (TextUtils.equals(cpc_knyw_bfrd, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_bfrd";
+//            } else if (TextUtils.equals(cpc_knyw_hdgkn, text)) {
+//                acsanticoagulationdrug = "cpc_knyw_hdgkn";
+//            } else {
+//                time = "";
+//            }
             bean.setAcsanticoagulantmedicinetime(time);
             bean.setAcsanticoagulationdrug(acsanticoagulationdrug);
             // 设置剂量 值
@@ -327,8 +455,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         } else {
             bean.setAcsisaceiarb(Constants.BOOL_FALSE);
         }
-
-
         save(bean);
 
     }

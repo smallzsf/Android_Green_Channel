@@ -124,6 +124,35 @@
         <item>无:cpc_intraoperativemanagement_wu</item>
     </string-array>
 
+
+    <string-array name="cpc_aspirindosage">
+        <item>0mg:cpc_aspirindosage_0mg</item>
+        <item>100mg:cpc_aspirindosage_100mg</item>
+        <item>300mg:cpc_aspirindosage_300mg</item>
+        <item>其他剂量:cpc_aspirindosage_other</item>
+    </string-array>
+    <string-array name="cpc_chlorpyridindosage">
+        <item>0mg:cpc_chlorpyridindosage_0mg</item>
+        <item>300mg:cpc_chlorpyridindosage_300mg</item>
+        <item>600mg:cpc_chlorpyridindosage_600mg</item>
+        <item>其他剂量:cpc_chlorpyridindosage_other</item>
+    </string-array>
+
+    <string-array name="cpc_tigrilodosage">
+        <item>0mg:cpc_tigrilodosage_0mg</item>
+        <item>90mg:cpc_tigrilodosage_90mg</item>
+        <item>180mg:cpc_tigrilodosage_180mg</item>
+        <item>其他剂量:cpc_tigrilodosage_other</item>
+    </string-array>
+
+
+    <string-array name="cpc_knyw">
+        <item>普通肝素:cpc_knyw_ptgs</item>
+        <item>低分子肝素:cpc_knyw_dfzgs</item>
+        <item>比伐卢定:cpc_knyw_bfrd</item>
+        <item>磺达肝癸钠:cpc_knyw_hdgkn</item>
+    </string-array>
+
     <string-array name="accepts_location">
         <item>急诊</item>
         <item>门诊</item>

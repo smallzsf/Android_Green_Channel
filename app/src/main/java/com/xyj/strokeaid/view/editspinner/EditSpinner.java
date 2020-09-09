@@ -24,7 +24,9 @@ import android.widget.RelativeLayout;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 
+import com.umeng.commonsdk.debug.D;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.chestpain.DistListUtil;
 
 import java.util.List;
 
@@ -47,11 +49,24 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public OnSelectIndexAndStringLitner mOnSelectIndexAndStringLitner;
     private List<String> mData;
 
+    private boolean isSplite = false;
+
+    DistListUtil distListUtil;
+    private int dataRrrayId;
+
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
+        distListUtil = new DistListUtil(context);
         initView(attrs);
         initAnimation();
+    }
+
+    public void setStringArrayId(int id) {
+        this.dataRrrayId = id;
+        distListUtil.initGenderMap(id);
+        List<String> keyDataList = distListUtil.getKeyDataList(id);
+        setItemData(keyDataList);
     }
 
 
@@ -59,6 +74,21 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         mData = data;
         adapter = new SimpleAdapter(mContext, data);
         setAdapter(adapter);
+    }
+
+    public String[] getSelectData() {
+        // 第一个是key 第二个是value
+        String text = getText();
+        String valueDataToStringKey = distListUtil.getValueDataToStringKey(dataRrrayId, text);
+        return new String[]{text, valueDataToStringKey};
+    }
+
+    public void setSelectPosition(int position) {
+        if (mData.size() < position || position == 0) {
+            return;
+        }
+        String s = mData.get(position);
+        setText(s);
     }
 
     public void setText(String text) {
