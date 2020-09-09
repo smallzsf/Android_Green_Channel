@@ -1,6 +1,9 @@
 package com.xyj.strokeaid.helper;
 
 import android.text.TextUtils;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.ArrayRes;
 
@@ -82,6 +85,59 @@ public final class KeyValueHelper {
             map.put(split[1], split[0]);
         }
         return map.get(key);
+    }
+
+    /**
+     * 获取radio button中被选中的button的tag
+     *
+     * @param radioButtons 设置过tag的buttons
+     * @return
+     */
+    public static String getRadioGroupsKey(RadioButton... radioButtons) {
+        if (radioButtons != null && radioButtons.length > 0) {
+            for (RadioButton radioButton : radioButtons) {
+                if (radioButton.isChecked()) {
+                    return radioButton.getTag().toString();
+                }
+            }
+        }
+
+        return "";
+    }
+
+    /**
+     * 获取radio button中被选中的button的tag
+     *
+     * @param radioGroup 含有设置过tag的buttons
+     * @return
+     */
+    public static String getRadioGroupsKey(RadioGroup radioGroup) {
+        int checkedRadioButtonId = radioGroup.getCheckedRadioButtonId();
+        RadioButton viewById = radioGroup.findViewById(checkedRadioButtonId);
+        return viewById.getTag().toString();
+    }
+
+    /**
+     * 获取checkBoxes中被选中的 checkbox 的tag
+     *
+     * @param checkBoxes 设置过tag的checkBoxes
+     * @return
+     */
+    public static String getCheckboxsKey(CheckBox... checkBoxes) {
+        if (checkBoxes != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isChecked()) {
+                    if (stringBuilder.length() > 0) {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append(checkBox.getTag().toString());
+                }
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
     }
 
 }
