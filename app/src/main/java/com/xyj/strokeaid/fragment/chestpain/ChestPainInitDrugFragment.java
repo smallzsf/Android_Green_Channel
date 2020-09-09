@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,7 +15,12 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.chestpain.EmergencyCenterChestpainDrugPo;
+import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -23,6 +29,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainDiseaseRecordFragment
@@ -248,24 +259,66 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         if (svPreoperativeAnticoagulation.isChecked()) {
             // 表示选中了术前抗凝
 //            acsisanticoagulantmedicine
-            bean.setAcsisanticoagulantmedicine(Constants.);
+            bean.setAcsisanticoagulantmedicine(Constants.BOOL_TRUE);
+        } else {
+            bean.setAcsisanticoagulantmedicine(Constants.BOOL_FALSE);
         }
         //sv_statin_therapy
         if (svStatinTherapy.isChecked()) {
             // 表示选中了他定治疗
 //            ieb_atorvastatin_value  阿托伐他汀
 //            ieb_rosuvastatin_value  瑞舒伐他汀
+            bean.setIs24intensivestatin(Constants.BOOL_TRUE);
+        } else {
+            bean.setIs24intensivestatin(Constants.BOOL_FALSE);
         }
         //sv_beta_blockers
         if (svBetaBlockers.isChecked()) {
             // 表示选中了受阻滞剂
-
+            bean.setIsusebetablocker(Constants.BOOL_TRUE);
+        } else {
+            bean.setIsusebetablocker(Constants.BOOL_FALSE);
         }
-
         //sv_acei_arb
         if (svAceiArb.isChecked()) {
             // 表示选中了acei
+            bean.setAcsisaceiarb(Constants.BOOL_TRUE);
+        } else {
+            bean.setAcsisaceiarb(Constants.BOOL_FALSE);
         }
+        save(bean);
+
+    }
+
+    /**
+     * 保存数据接口调用成功
+     * @param bean
+     */
+    public void save(EmergencyCenterChestpainDrugPo bean) {
+        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .saveChestPainsuEmergencyCenter(bean.getResuestBody(bean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse" + response);
+                        if (response != null && response.body() != null) {
+                            BaseObjectBean body = response.body();
+                            if (body.getResult() == 1) {
+                                showToast("数据保存成功");
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
+
 
     }
 

@@ -44,4 +44,12 @@ public interface ChestPainApiService {
     Call<BaseObjectBean> getChestPainOpeationResult(@Body RequestBody info);
 
 
+    /**
+     * 手术信息，结果信息 保存
+     * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/edit
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET)
+    Call<BaseObjectBean> saveChestPainsuEmergencyCenter(@Body RequestBody info);
+
 }

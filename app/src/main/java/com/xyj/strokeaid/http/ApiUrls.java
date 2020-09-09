@@ -221,6 +221,10 @@ public class ApiUrls {
          * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get
          */
         public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_GET= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get";
+        /**
+         * 胸痛--初始药物--保存 胸痛中心-初步诊断
+         */
+        public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/edit";
 
 
     }

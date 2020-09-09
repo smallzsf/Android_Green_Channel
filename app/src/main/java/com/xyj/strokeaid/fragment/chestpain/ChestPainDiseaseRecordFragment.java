@@ -467,7 +467,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     }
 
 
-    private String getCheckBoxValue(CheckBox... checkBoxes) {
+    public String getCheckBoxValue(CheckBox... checkBoxes) {
         if (checkBoxes != null) {
             StringBuilder stringBuilder = new StringBuilder();
             for (CheckBox checkBox : checkBoxes) {

@@ -582,7 +582,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                                 showToast("数据保存成功");
                             }
                         }
-
                     }
 
 
