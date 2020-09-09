@@ -202,6 +202,13 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResult/edit";
 
 
+        /**
+         * 胸痛中心-手术信息-结果获取
+         * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_GET= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get";
+
+
     }
 
     /**

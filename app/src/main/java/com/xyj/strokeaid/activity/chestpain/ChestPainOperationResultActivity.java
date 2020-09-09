@@ -275,6 +275,26 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
     // TODO 通过网络请求得到这个javabean 自动回显数据
     private ChestPainOperationRsultBean resetShowNet() {
+        RecordIdUtil src = new RecordIdUtil();
+        src.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(src);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .getChestPainOpeationResult(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse");
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
         return new ChestPainOperationRsultBean();
     }
 
@@ -573,27 +593,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                 });
 
 
-
-//        RecordIdUtil src = new RecordIdUtil();
-//        src.setRecordId(RecordIdUtil.RECORD_ID);
-//        String request = GsonUtils.getGson().toJson(src);
-//        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-//        RetrofitClient
-//                .getInstance()
-//                .getCPApi()
-//                .getChestPainBloodText(requestBody)
-//                .enqueue(new Callback<String>() {
-
-//                    @Override
-//                    public void onResponse(Call<String> call, Response<String> response) {
-//                        Log.e("zhangshifu", "onResponse");
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<String> call, Throwable t) {
-//                        Log.e("zhangshifu", "onFailure");
-//                    }
-//                });
     }
 
     @Override
