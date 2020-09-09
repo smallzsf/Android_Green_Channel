@@ -36,19 +36,21 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:tag="cpc_zljgv2_zy"
                 android:id="@+id/rb_treat_result_cure"
                 style="@style/XyjRadionButtonHorizontalWeight"
                 android:text="治愈" />
 
             <RadioButton
+                android:tag="cpc_zljgv2_hz"
                 android:id="@+id/rb_treat_result_better"
                 style="@style/XyjRadionButtonHorizontalWeight"
                 android:text="好转" />
 
             <RadioButton
+                android:tag="cpc_zljgv2_auto"
                 android:id="@+id/rb_treat_result_leave_self"
                 style="@style/XyjRadionButtonHorizontalWeight"
-
                 android:text="自动离院" />
 
         </LinearLayout>
@@ -59,6 +61,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:tag="cpc_zljgv2_qtyy"
                 android:id="@+id/rb_treat_result_other"
                 style="@style/XyjRadionButtonHorizontalWeight"
                 android:text="其他原因离院" />

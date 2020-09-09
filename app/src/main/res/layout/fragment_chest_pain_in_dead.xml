@@ -62,46 +62,25 @@
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
         android:gravity="center_vertical"
-        android:text="死亡原因"
+        android:text="死亡描述"
         android:textColor="@color/color_222222"
         android:textSize="@dimen/item_title_size" />
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/et_death_reason"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/item_normal_margin"
         android:layout_marginTop="@dimen/dp_4"
         android:layout_marginEnd="@dimen/item_normal_margin"
-        android:layout_marginBottom="@dimen/dp_4"
         android:background="@drawable/shape_grey_stroke_with_white_bg"
-        android:orientation="vertical"
-        android:visibility="visible">
-
-        <EditText
-            android:id="@+id/et_death_reason"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:gravity="top"
-            android:hint="死亡描述..."
-            android:maxLength="300"
-            android:minHeight="80dp"
-            android:padding="10dp"
-            android:textColor="@color/color_222222"
-            android:textColorHint="@color/color_999999"
-            android:textSize="@dimen/item_content_size" />
-
-        <TextView
-            android:id="@+id/tv_death_reason_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="@dimen/dp_4"
-            android:text="0/300"
-            android:textColor="@color/color_222222"
-            android:textSize="13sp" />
-    </LinearLayout>
-
+        android:gravity="top"
+        android:hint="死亡描述..."
+        android:maxLength="300"
+        android:minHeight="80dp"
+        android:padding="10dp"
+        android:textColor="@color/color_222222"
+        android:textColorHint="@color/color_999999"
+        android:textSize="@dimen/item_content_size" />
 
 </LinearLayout>

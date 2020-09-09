@@ -263,4 +263,48 @@
         <item>依洛尤单抗</item>
     </string-array>
 
+    <string-array name="chest_pain_prognosis_result_key">
+        <item>cpc_hzzgv2_cy</item>
+        <item>cpc_hzzgv2_qtyy</item>
+        <item>cpc_hzzgv2_qtks</item>
+        <item>cpc_hzzgv2_sw</item>
+    </string-array>
+
+    <string-array name="chest_pain_prognosis_result_value">
+        <item>出院</item>
+        <item>转送其它医院</item>
+        <item>转送其它科室</item>
+        <item>死亡</item>
+    </string-array>
+
+    <string-array name="chest_pain_death_reason_key">
+        <item>cpc_swyy_xyx</item>
+        <item>cpc_swyy_fxyx</item>
+    </string-array>
+
+    <string-array name="chest_pain_death_reason_value">
+        <item>心源性</item>
+        <item>非心源性</item>
+    </string-array>
+
+    <string-array name="chest_pain_treatment_result_key">
+        <item>cpc_zljgv2_zy</item>
+        <item>cpc_zljgv2_hz</item>
+        <item>cpc_zljgv2_auto</item>
+        <item>cpc_zljgv2_qtyy</item>
+    </string-array>
+
+    <string-array name="chest_pain_treatment_result_value">
+        <item>治愈</item>
+        <item>好转</item>
+        <item>自动离院</item>
+        <item>其它原因离院</item>
+    </string-array>
+
+    <string-array name="chest_pain_heart_tansfer_way">
+        <item>实时监控:cpc_transway_timemonitor</item>
+        <item>微信群:cpc_transway_wechat</item>
+        <item>其他:cpc_transway_other</item>
+    </string-array>
+
 </resources>

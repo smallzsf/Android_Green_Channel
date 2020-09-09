@@ -14,35 +14,12 @@
         app:bottomLineVisible="true"
         app:title="离开本院时间" />
 
-    <LinearLayout
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_transfer_hos_name"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/tv_normal_titel"
-            android:layout_width="@dimen/item_title_min_width"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="医院名称" />
-
-        <EditText
-            android:id="@+id/et_transfer_hos_name"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/item_normal_margin"
-            android:layout_marginTop="@dimen/dp_4"
-            android:layout_marginBottom="@dimen/dp_4"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="center_vertical"
-            android:hint="请输入医院名称"
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_5"
-            android:textSize="@dimen/item_content_size" />
-
-    </LinearLayout>
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="医院名称" />
 
     <View style="@style/horizontal_divider" />
 
@@ -134,9 +111,11 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_pci_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -202,7 +181,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/item_normal_margin"
             android:gravity="center_vertical"
-            android:text="远程心电图传输"
+            android:text="远程心电传输"
             android:textColor="@color/color_222222"
             android:textSize="@dimen/item_title_size" />
 
@@ -285,7 +264,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/item_normal_margin"
             android:gravity="center_vertical"
-            android:text="溶栓后24H内造影"
+            android:text="溶栓24H内造影"
             android:textColor="@color/color_222222"
             android:textSize="@dimen/item_title_size" />
 

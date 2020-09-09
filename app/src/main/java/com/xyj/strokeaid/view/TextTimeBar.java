@@ -110,6 +110,7 @@ public class TextTimeBar extends RelativeLayout {
                     }
                 })
                         .isDialog(false)
+                        .setDate(Calendar.getInstance())
                         .setType(new boolean[]{true, true, true, true, true, true})
                         .setRangDate(startTime, Calendar.getInstance())
                         .setOutSideCancelable(true)
