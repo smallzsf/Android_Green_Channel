@@ -132,6 +132,35 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         btnConfirm.setText("确定");
         btnGetData.setOnClickListener(this);
         btnConfirm.setOnClickListener(this);
+        refrashViewOpen();
+    }
+
+    public void refrashViewOpen(){
+
+        refrashItemVis(llAntihemotherapyData, svAntihemotherapy);
+        refrashItemVis(llPreoperativeAnticoagulationData, svPreoperativeAnticoagulation);
+        refrashItemVis(llStatinTherapyData, svStatinTherapy);
+        refrashOtherView();
+    }
+
+    private void refrashOtherView(){
+        if (editSpinnerAmoxicillin.checkLastItem()){
+            iebAntihemotherapyValue.setVisibility(View.VISIBLE);
+        }else {
+            iebAntihemotherapyValue.setVisibility(View.GONE);
+        }
+
+        if (editSpinnerTicagrelor.checkLastItem()) {
+            iebTicagrelorValue.setVisibility(View.VISIBLE);
+        }else {
+            iebTicagrelorValue.setVisibility(View.GONE);
+        }
+        if (editSpinnerClopidogrel.checkLastItem()) {
+            iebClopidogrelValue.setVisibility(View.VISIBLE);
+        }else {
+            iebClopidogrelValue.setVisibility(View.GONE);
+        }
+
     }
 
 
@@ -277,6 +306,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         } else {
             svAceiArb.setChecked(false);
         }
+        refrashViewOpen();
     }
 
     private void loadData() {
@@ -284,7 +314,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         editSpinnerClopidogrel.setStringArrayId(R.array.cpc_chlorpyridindosage);
         editSpinnerTicagrelor.setStringArrayId(R.array.cpc_tigrilodosage);
         edsPreoperativeAnticoagulation.setStringArrayId(R.array.cpc_knyw);
-
 
         resetShowData();
     }
@@ -296,6 +325,16 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         svPreoperativeAnticoagulation.setOnClickListener(this);
         svStatinTherapy.setOnClickListener(this);
         svBetaBlockers.setOnClickListener(this);
+
+        EditSpinner.OnSelectStringLitner onSelectStringLitner = new EditSpinner.OnSelectStringLitner() {
+            @Override
+            public void getSeletedString(String text) {
+                refrashOtherView();
+            }
+        };
+        editSpinnerTicagrelor.setOnSelectStringLitner(onSelectStringLitner);
+        editSpinnerAmoxicillin.setOnSelectStringLitner(onSelectStringLitner);
+        editSpinnerClopidogrel.setOnSelectStringLitner(onSelectStringLitner);
     }
 
     @Override
