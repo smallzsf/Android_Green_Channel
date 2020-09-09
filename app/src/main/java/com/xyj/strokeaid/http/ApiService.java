@@ -3,6 +3,7 @@ package com.xyj.strokeaid.http;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
 import com.xyj.strokeaid.bean.IntraConsultBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
@@ -53,69 +54,70 @@ public interface ApiService {
 
     /**
      * 获取CT 数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_SEND_CT)
     Call<RequestCTDataBean> sendCT(@Body RequestBody info);
 
     /**
      * 添加CT 数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_ADD_CT)
     Call<BaseObjectBean> addCT(@Body RequestBody info);
 
     /**
      * 获取影像数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_IMAGE_EXAMINATE)
     Call<RequestImageExaminteDataBean> getImgeExaminate(@Body RequestBody info);
 
     /**
      * 上传影像数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_ADD_IMAGE_EXAMINATE)
     Call<BaseObjectBean> addImgeExaminate(@Body RequestBody info);
 
     /**
      * 获取血液数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_GET_BLOOD_DATA)
     Call<RequestBloodDataBean> getBloodData(@Body RequestBody info);
 
     /**
      * 上传血液数据
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_ADD_BLOOD_DATA)
     Call<RequestBloodDataBean> addBloodData(@Body RequestBody info);
 
     /**
      * mRS评分
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_MRS)
     Call<BaseObjectBean> addMrs(@Body RequestBody info);
 
     /**
      * CGS评分
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_CGS)
     Call<BaseObjectBean> addCgs(@Body RequestBody info);
 
     /**
      * 洼田吞咽评定
-     * */
+     */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_SWALLOW)
     Call<BaseObjectBean> addSwallow(@Body RequestBody info);
 
     /**
      * 病情记录添加
+     *
      * @param info
      * @return
      */
@@ -125,6 +127,7 @@ public interface ApiService {
 
     /**
      * 病情记录修改
+     *
      * @param info
      * @return
      */
@@ -135,6 +138,7 @@ public interface ApiService {
 
     /**
      * 病情评估根据recordId删除
+     *
      * @param info
      * @return
      */
@@ -144,6 +148,7 @@ public interface ApiService {
 
     /**
      * 病情评估先删后插
+     *
      * @param info
      * @return
      */
@@ -152,9 +157,9 @@ public interface ApiService {
     Call<BaseObjectBean> diseaseRecordEdit(@Body RequestBody info);
 
 
-
     /**
      * 病情评估获取
+     *
      * @param info
      * @return
      */
@@ -164,7 +169,8 @@ public interface ApiService {
 
 
     /**
-     *  病情评估根据recordid获取
+     * 病情评估根据recordid获取
+     *
      * @param info
      * @return
      */
@@ -175,6 +181,7 @@ public interface ApiService {
 
     /**
      * 新建患者信息
+     *
      * @param info
      * @return
      */
@@ -185,6 +192,7 @@ public interface ApiService {
 
     /**
      * 生命体征查询
+     *
      * @param info
      * @return
      */
@@ -195,6 +203,7 @@ public interface ApiService {
 
     /**
      * 生命体征编辑
+     *
      * @param info
      * @return
      */
@@ -204,12 +213,31 @@ public interface ApiService {
 
     /**
      * 胸痛中心-胸痛诊疗-心电图主表 查询
+     *
      * @param info
      * @return
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY)
     Call<RequestElectrocardiogramDataBean> getECGInquiry(@Body RequestBody info);
+
+
+    /**
+     * 胸痛 病情记录保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_DISEASERECORD_SAVE)
+    Call<BaseObjectBean> saveChestPainDiseaseRecord(@Body RequestBody info);
+
+
+    /**
+     * 胸痛 病情记录查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_DISEASERECORD_GET)
+    Call<BaseObjectBean<ChestPainDiseaseRecordBean>> getChestPainDiseaseRecord(@Body RequestBody info);
+
+
 
     /**
      * 胸痛--会诊信息 查询

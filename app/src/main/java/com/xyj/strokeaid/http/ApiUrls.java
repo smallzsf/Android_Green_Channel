@@ -159,6 +159,20 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/edit";
 
         /**
+         * 胸痛 病情记录保存
+         */
+        public static final String NET_URL_CHEST_PAIN_DISEASERECORD_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/editForApp";
+
+        /**
+         * 胸痛 病情记录查询
+         */
+        public static final String NET_URL_CHEST_PAIN_DISEASERECORD_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/get";
+
+
+
+
+
+        /**
          * 胸痛 会诊信息 获取
          */
         public static final String NET_URL_CHEST_PAIN_INTRA_CONSULT_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHeartConsultation/get";
@@ -194,6 +208,19 @@ public class ApiUrls {
          * 胸痛中心-静脉溶栓保存
          */
         public static final String NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/edit";
+
+
+        /**
+         * 胸痛中心-手术信息-结果保存
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResult/edit";
+
+
+        /**
+         * 胸痛中心-手术信息-结果获取
+         * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_GET= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get";
 
 
     }

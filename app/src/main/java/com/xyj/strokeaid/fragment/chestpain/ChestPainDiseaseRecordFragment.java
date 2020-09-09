@@ -1,9 +1,8 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -14,10 +13,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.widget.NestedScrollView;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
-import com.xyj.strokeaid.view.XyjGridView;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
@@ -26,7 +31,12 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainDiseaseRecordFragment
@@ -44,8 +54,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     RadioButton rbIntermittentChestPain;
     @BindView(R.id.rb_relieved_chest_pain)
     RadioButton rbRelievedChestPain;
-    @BindView(R.id.gv_detailed)
-    XyjGridView gvDetailed;
+    /*  @BindView(R.id.gv_detailed)
+      XyjGridView gvDetailed;*/
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
@@ -63,12 +73,48 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     LinearLayout llRoot;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
+    @BindView(R.id.cb_non_acs_1)
+    CheckBox cbNonAcs1;
+    @BindView(R.id.cb_non_acs_2)
+    CheckBox cbNonAcs2;
+    @BindView(R.id.cb_non_acs_3)
+    CheckBox cbNonAcs3;
+    @BindView(R.id.cb_non_acs_4)
+    CheckBox cbNonAcs4;
+    @BindView(R.id.cb_non_acs_5)
+    CheckBox cbNonAcs5;
+    @BindView(R.id.cb_non_acs_6)
+    CheckBox cbNonAcs6;
+    @BindView(R.id.cb_non_acs_7)
+    CheckBox cbNonAcs7;
+    @BindView(R.id.cb_non_acs_8)
+    CheckBox cbNonAcs8;
+    @BindView(R.id.cb_non_acs_9)
+    CheckBox cbNonAcs9;
+    @BindView(R.id.cb_non_acs_10)
+    CheckBox cbNonAcs10;
+    @BindView(R.id.cb_non_acs_11)
+    CheckBox cbNonAcs11;
+    @BindView(R.id.cb_non_acs_12)
+    CheckBox cbNonAcs12;
+    @BindView(R.id.cb_non_acs_13)
+    CheckBox cbNonAcs13;
+    @BindView(R.id.cb_non_acs_14)
+    CheckBox cbNonAcs14;
+    @BindView(R.id.cb_non_acs_15)
+    CheckBox cbNonAcs15;
+    @BindView(R.id.ll_non_acs)
+    LinearLayout llNonAcs;
+
 
     private Map<Integer, Boolean> mapDataSelect = new HashMap<>();
-    private MyAdapter adapter;
+    //   private MyAdapter adapter;
     private int mMaxSrollHeight = 0;
 
     private String mRecordId;
+    private ChestPainDiseaseRecordRequest chestPainDiseaseRecordRequest = null;
+    private StringBuilder selectIndex;
+    private int num;
 
     public ChestPainDiseaseRecordFragment() {
 
@@ -97,14 +143,17 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+/*
         loadData();
 
-        refrashAdapter(true);
+        refrashAdapter(true);*/
 
+        //查询数据
+        queryData();
 
     }
 
+/*
     private void refrashAdapter(boolean b) {
 
         if (b || adapter == null) {
@@ -113,9 +162,25 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         } else {
             adapter.notifyDataSetChanged();
         }
+    }*/
+
+    @OnClick({R.id.rb_persistent_chest_pain, R.id.rb_intermittent_chest_pain, R.id.rb_relieved_chest_pain, R.id.btn_save})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.rb_persistent_chest_pain:
+                break;
+            case R.id.rb_intermittent_chest_pain:
+                break;
+            case R.id.rb_relieved_chest_pain:
+                break;
+            case R.id.btn_save:
+                //保存数据
+                saveData();
+                break;
+        }
     }
 
-
+/*
     private class MyAdapter extends BaseAdapter {
 
         @Override
@@ -147,7 +212,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
             if (mapDataSelect.containsKey(position)) {
                 isSelect = mapDataSelect.get(position);
             }
-            viewHolder.cbSelect.setSelected(isSelect);
+            viewHolder.cbSelect.setChecked(isSelect);
             MyClickListener onClickListener = new MyClickListener(position);
             viewHolder.cbSelect.setOnClickListener(onClickListener);
             viewHolder.text.setOnClickListener(onClickListener);
@@ -183,9 +248,9 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
             mapDataSelect.put(position, !isSelect);
             refrashAdapter(false);
         }
-    }
+    }*/
 
-    private void loadData() {
+ /*   private void loadData() {
         detailedDataList.add("呼吸困难");
         detailedDataList.add("胸痛");
         detailedDataList.add("齿痛");
@@ -201,7 +266,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         detailedDataList.add("乏力");
         detailedDataList.add("气喘");
         detailedDataList.add("其他");
-    }
+    }*/
 
 
     @Override
@@ -231,4 +296,192 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
         }
     };
+
+    /**
+     * 保存数据
+     */
+    private void saveData() {
+        if (chestPainDiseaseRecordRequest == null) {
+            chestPainDiseaseRecordRequest = new ChestPainDiseaseRecordRequest();
+        }
+
+        chestPainDiseaseRecordRequest.setRecordId(RecordIdUtil.RECORD_ID);
+
+
+        /**
+         * 病情评估 conditionassessment
+         */
+        if (rbIntermittentChestPain.isChecked()) {
+            chestPainDiseaseRecordRequest.setConditionassessment("cpc_bqpg_cxxxm");
+        } else if (rbPersistentChestPain.isChecked()) {
+            chestPainDiseaseRecordRequest.setConditionassessment("cpc_bqpg_jxxxm");
+        } else {
+            chestPainDiseaseRecordRequest.setConditionassessment("cpc_bqpg_zzyhj");
+        }
+
+        /**
+         * 病情评估  病情评估明细
+         */
+        String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+                cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
+                , cbNonAcs14, cbNonAcs15);
+        chestPainDiseaseRecordRequest.setConditionassessmentdetail(checkBoxValue);
+
+        //病情评估主诉  chiefcomplaint
+        chestPainDiseaseRecordRequest.setChiefcomplaint(etMajorComplaintFrag.getText().toString());
+        //病情评估备注 conditionassessmentremark
+        chestPainDiseaseRecordRequest.setConditionassessmentremark(etSymptom.getText().toString());
+        //保存
+        chestPainDiseaseRecordSave(chestPainDiseaseRecordRequest);
+
+    }
+
+
+    /**
+     * 查询数据
+     */
+    private void queryData() {
+        //调用获取数据接口
+        RecordIdUtil p = new RecordIdUtil();
+        p.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(p);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getChestPainDiseaseRecord(requestBody)
+                .enqueue(new Callback<BaseObjectBean<ChestPainDiseaseRecordBean>>() {
+
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Response<BaseObjectBean<ChestPainDiseaseRecordBean>> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取数据成功");
+                                if (response.body().getData() != null) {
+                                    ChestPainDiseaseRecordBean chestPainDiseaseRecordBean = response.body().getData();
+                                    //保存胸痛病情记录获取的数据
+                                    queryDataChestPainDiseaseRecord(chestPainDiseaseRecordBean);
+                                }
+
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Throwable t) {
+                        LogUtils.d(call.toString());
+                    }
+                });
+    }
+
+
+    /**
+     * 胸痛 病情记录保存
+     */
+    private void chestPainDiseaseRecordSave(ChestPainDiseaseRecordRequest chestPainDiseaseRecordRequest) {
+
+
+        String request = GsonUtils.getGson().toJson(chestPainDiseaseRecordRequest);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveChestPainDiseaseRecord(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     * 查询数据
+     *
+     * @param chestPainDiseaseRecordBean
+     */
+    private void queryDataChestPainDiseaseRecord(ChestPainDiseaseRecordBean chestPainDiseaseRecordBean) {
+
+        /**
+         * 病情评估
+         *   "cpc_bqpg_cxxxm": "持续性胸闷/胸痛",
+         *  "cpc_bqpg_jxxxm": "间歇性胸闷/胸痛",
+         *   "cpc_bqpg_zzyhj": "症状已缓解"
+         */
+        if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_cxxxm")) {
+            rbIntermittentChestPain.setChecked(true);
+        } else if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_jxxxm")) {
+            rbPersistentChestPain.setChecked(true);
+        } else {
+            rbRelievedChestPain.setChecked(true);
+        }
+        /**
+         * 病情评估明细
+         */
+        String dischargedunacs = chestPainDiseaseRecordBean.getConditionassessmentdetail();
+        if (!TextUtils.isEmpty(dischargedunacs)) {
+            cbNonAcs1.setChecked(dischargedunacs.contains("cpc_unacs_xlsc"));
+            cbNonAcs2.setChecked(dischargedunacs.contains("cpc_unacs_kzxxjb"));
+            cbNonAcs3.setChecked(dischargedunacs.contains("cpc_unacs_qxxxjb"));
+            cbNonAcs4.setChecked(dischargedunacs.contains("cpc_unacs_fhxxjb"));
+            cbNonAcs5.setChecked(dischargedunacs.contains("cpc_unacs_xjb"));
+            cbNonAcs6.setChecked(dischargedunacs.contains("cpc_unacs_gxb"));
+            cbNonAcs7.setChecked(dischargedunacs.contains("cpc_unacs_bmxxjb"));
+            cbNonAcs8.setChecked(dischargedunacs.contains("cpc_unacs_cjxxjgs"));
+            cbNonAcs9.setChecked(dischargedunacs.contains("cpc_unacs_xjt"));
+            cbNonAcs10.setChecked(dischargedunacs.contains("cpc_unacs_xj"));
+            cbNonAcs11.setChecked(dischargedunacs.contains("cpc_unacs_fc"));
+            cbNonAcs12.setChecked(dischargedunacs.contains("cpc_unacs_gxy"));
+            cbNonAcs13.setChecked(dischargedunacs.contains("cpc_unacs_xs"));
+            cbNonAcs14.setChecked(dischargedunacs.contains("cpc_unacs_fp"));
+            cbNonAcs15.setChecked(dischargedunacs.contains("cpc_unacs_sz"));
+        }
+
+
+        /**
+         * 主诉
+         */
+        etMajorComplaintFrag.setText(chestPainDiseaseRecordBean.getChiefcomplaint());
+
+
+        /**
+         * 备注
+         */
+        etSymptom.setText(chestPainDiseaseRecordBean.getConditionassessmentremark());
+
+    }
+
+
+    private String getCheckBoxValue(CheckBox... checkBoxes) {
+        if (checkBoxes != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isChecked()) {
+                    if (stringBuilder.length() > 0) {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append(checkBox.getTag().toString());
+                }
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
+    }
+
 }

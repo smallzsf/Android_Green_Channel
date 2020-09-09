@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.activity.chestpain;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,9 +18,14 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.GenderSelectBean;
 import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
+import com.xyj.strokeaid.view.ItemEditBar;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -32,7 +38,13 @@ import java.util.Map;
 import java.util.Set;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * ChestPainOperationInfoActivity
@@ -119,6 +131,8 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     RadioButton rbVentricularAssistFalse;
     @BindView(R.id.rg_left_vent_assist_device)
     RadioGroup rgLeftVentAssistDevice;
+    @BindView(R.id.idb_cpc_funcexam_value)
+    ItemEditBar idbCpcFuncexamValue;
 
     private List<GenderSelectBean> selectList = new ArrayList<>();
     private List<String> intraoperativeList;
@@ -136,7 +150,8 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     /**
      * 选中的部位设置信息
      */
-    private Map<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean> coronaryangiographyarrayBeanMap = new HashMap<>();
+    private Map<String, ChestPainOperationRsultBean.CoronaryangiographyarrayBean>
+            coronaryangiographyarrayBeanMap = new HashMap<>();
 
     /**
      * 界面管理bean 以及接口通信
@@ -192,7 +207,7 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         initFlowLayout();
 
         bean = resetShowNet();
-        resetShow();
+//        resetShow();
     }
 
     private void resetShow() {
@@ -260,6 +275,26 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
     // TODO 通过网络请求得到这个javabean 自动回显数据
     private ChestPainOperationRsultBean resetShowNet() {
+        RecordIdUtil src = new RecordIdUtil();
+        src.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(src);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .getChestPainOpeationResult(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse");
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
         return new ChestPainOperationRsultBean();
     }
 
@@ -290,8 +325,9 @@ public class ChestPainOperationResultActivity extends BaseActivity {
      * 冠脉造影流布局
      */
     private void initFlowLayout() {
-
         intraoperativeList = chestUtil.getMapGenderDataList().get(chestUtil.getGenderMapKey(R.array.chest_pain_operation_intraoperative_complications));
+        refrashIntraoAdapter(false);
+
         //术中并发症流布局
         tagIntraoperativeComplications.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
             @Override
@@ -520,12 +556,49 @@ public class ChestPainOperationResultActivity extends BaseActivity {
             value = getRadioButtonTag(rgLeftVentAssistDevice);
             bean.setIsleftventassistdevice(value);
 
+//            functiondetectionvalue
+            String editContent = idbCpcFuncexamValue.getEditContent();
+            bean.setFunctiondetectionvalue(editContent);
             save(bean);
+
         }
     };
 
     public void save(ChestPainOperationRsultBean bean) {
+        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(bean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .saveChestPainOpeationResult(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse" + response);
+                        if (response != null && response.body() != null) {
+                            BaseObjectBean body = response.body();
+                            if (body.getResult() == 1) {
+                                showToast("数据保存成功");
+                            }
+                        }
+
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
+
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
