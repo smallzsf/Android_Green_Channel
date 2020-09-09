@@ -70,8 +70,20 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         setItemData(keyDataList);
     }
 
+    public boolean checkLastItem() {
+        return (this.getItemSize() - 1) == this.getSelectPosition();
+    }
+
+    public boolean checkFirstItem() {
+        return 0 == this.getSelectPosition();
+    }
+
+    public int getSelectPosition() {
+        return selectPosition;
+    }
+
     public void setStringArrayNormalKey(String keyData) {
-        String data = distListUtil.getValueDataToStringKey(dataRrrayId, keyData);
+        String data = distListUtil.getKeyDataToStringKey(dataRrrayId, keyData);
         setText(data);
     }
 
@@ -91,7 +103,11 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public String[] getSelectData() {
         // 第一个是key 第二个是value
         String text = getText();
-        String valueDataToStringKey = distListUtil.getValueDataToStringKey(dataRrrayId, text);
+        String valueDataToStringKey =
+                distListUtil.getValueDataToStringKey(dataRrrayId, text);
+        if (TextUtils.isEmpty(valueDataToStringKey)) {
+            valueDataToStringKey = "";
+        }
         return new String[]{text, valueDataToStringKey};
     }
 
@@ -111,6 +127,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
             }
         }
         editText.setText(text);
+        if (popupWindow != null && popupWindow.isShowing()){
+            popupWindow.dismiss();
+        }
     }
 
     public void setTextColor(@ColorInt int color) {
@@ -175,11 +194,12 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         tArray.recycle();
     }
 
-    private final void setBaseAdapter(BaseAdapter adapter) {
+    private void setBaseAdapter(BaseAdapter adapter) {
         if (popupWindow == null) {
             initPopupWindow();
         }
         popupWindow.setAdapter(adapter);
+
     }
 
     private void initPopupWindow() {
