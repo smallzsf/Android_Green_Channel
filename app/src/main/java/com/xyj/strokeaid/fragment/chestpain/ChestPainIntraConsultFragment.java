@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 /**
  * ChestPainDiseaseRecordFragment
- * description:  心内会诊
+ * description: 会诊信息
  *
  * @author : 张世福
  * @date : 2020/8/26
@@ -108,9 +108,13 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     protected void initView(@NonNull View view) {
         showLoadingDialog();
         loadDocData();
-        loadRecordData(mRecordId);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadRecordData(mRecordId);
+    }
 
     private void loadDocData() {
         // 获取心内科医生列表

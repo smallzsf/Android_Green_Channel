@@ -152,6 +152,37 @@
         <item>比伐卢定:cpc_knyw_bfrd</item>
         <item>磺达肝癸钠:cpc_knyw_hdgkn</item>
     </string-array>
+    <string-array name="ckmb_unit">
+        <item>ng/mL:cpc_ckmbdwV2_ngPerml</item>
+        <item>ug/L:cpc_ckmbdwV2_ugPerl</item>
+        <item>u/L:cpc_ckmbdwV2_uPerl</item>
+    </string-array>
+
+    <string-array name="myo_unit">
+        <item>ng/mL:cpc_myodwV2_ngPerml</item>
+        <item>ug/L:cpc_myodwV2_ugPerl</item>
+    </string-array>
+
+    <string-array name="ddimer_unit">
+        <item>ng/mL:cpc_ddimdwV2_ngPerml</item>
+        <item>ug/mL:cpc_ddimdwV2_ugPerml</item>
+        <item>ug/L:cpc_ddimdwV2_ugPerl</item>
+        <item>mg/L:cpc_ddimdwV2_mgPerl</item>
+    </string-array>
+
+    <string-array name="tn_status">
+        <item>阳性:cpc_yyx_xx</item>
+        <item>阴性:cpc_yyx_yx</item>
+    </string-array>
+
+    <string-array name="tn_unit">
+        <item>ng/mL:cpc_tndw_ngml</item>
+        <item>ng/ml:cpc_tndw_ngPerml</item>
+        <item>ng/L:cpc_tndw_ngPerl</item>
+        <item>ug/L:cpc_tndw_ugPerl</item>
+        <item>mg/L:cpc_tndw_mgPerl</item>
+    </string-array>
+
 
     <string-array name="accepts_location">
         <item>急诊</item>

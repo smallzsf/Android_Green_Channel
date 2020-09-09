@@ -257,8 +257,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                 }
             }
         }
-
-
     }
 
     private void resetRadioButton(RadioGroup rg, String value) {

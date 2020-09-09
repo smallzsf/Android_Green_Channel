@@ -144,6 +144,7 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/et_troponin_first"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -156,6 +157,7 @@
                                 android:textSize="13sp" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_troponin_unit_first"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginStart="@dimen/dp_4"
@@ -166,6 +168,7 @@
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_yin_yang_first"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginEnd="@dimen/dp_3"
@@ -177,6 +180,7 @@
                         </LinearLayout>
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_draw_blood_time_first"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             app:bottomLineVisible="true"
@@ -184,6 +188,7 @@
                             tl:title="抽血完成时间" />
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_report_time_first"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             tl:title="报告完成时间" />
@@ -266,6 +271,7 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/et_troponin_two"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -278,6 +284,7 @@
                                 android:textSize="13sp" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_troponin_unit_two"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginRight="@dimen/dp_3"
@@ -287,6 +294,7 @@
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_yin_yang_two"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginRight="@dimen/dp_3"
@@ -298,6 +306,7 @@
                         </LinearLayout>
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_draw_blood_time_two"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
@@ -305,6 +314,7 @@
                             tl:title="抽血完成时间" />
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_report_time_two"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
@@ -390,6 +400,7 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/et_troponin_three"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -402,6 +413,7 @@
                                 android:textSize="13sp" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_troponin_unit_three"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginRight="@dimen/dp_3"
@@ -411,6 +423,7 @@
                                 app:rightImage="@drawable/ic_arrow_down_blue" />
 
                             <com.xyj.strokeaid.view.editspinner.EditSpinner
+                                android:id="@+id/eds_yin_yang_three"
                                 android:layout_width="@dimen/dp_90"
                                 android:layout_height="@dimen/dp_30"
                                 android:layout_marginRight="@dimen/dp_3"
@@ -422,6 +435,7 @@
                         </LinearLayout>
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_draw_blood_time_three"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
@@ -429,6 +443,7 @@
                             tl:title="抽血完成时间" />
 
                         <com.xyj.strokeaid.view.TextTimeBar
+                            android:id="@+id/ttb_report_time_three"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/item_normal_height"
                             android:background="@color/white"
@@ -465,7 +480,7 @@
                         android:textSize="@dimen/item_title_size" />
 
                     <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/sv_preoperative_anticoagulation"
+                        android:id="@+id/sv_serum_creatinine"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
                         android:checked="false" />
@@ -475,7 +490,7 @@
                 <View style="@style/horizontal_divider" />
 
                 <LinearLayout
-                    android:id="@+id/ll_preoperative_anticoagulation_data"
+                    android:id="@+id/ll_serum_creatinine_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dp_7"
@@ -483,6 +498,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_serum_creatinine"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -525,27 +541,6 @@
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
-                    <!--
-
-                                        <TextView
-                                            android:layout_width="0dp"
-                                            android:layout_height="@dimen/item_normal_height"
-                                            android:layout_marginEnd="@dimen/dp_12"
-                                            android:layout_weight="1"
-                                            android:gravity="center_vertical"
-                                            android:text="D-二聚体"
-                                            android:textColor="@color/color_222222"
-                                            android:textSize="@dimen/item_title_size" />
-
-                                        <ImageView
-                                            android:id="@+id/iv_dimer"
-                                            android:layout_width="@dimen/item_normal_height"
-                                            android:layout_height="@dimen/item_normal_height"
-                                            android:layout_alignParentTop="true"
-                                            android:layout_alignParentEnd="true"
-                                            android:scaleType="center"
-                                            android:src="@drawable/ic_arrow_down_blue" />
-                    -->
 
 
                     <TextView
@@ -576,6 +571,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_dimer_value"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -588,7 +584,7 @@
                         android:textSize="13sp" />
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/eds_preoperative_anticoagulation"
+                        android:id="@+id/eds_dimer"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
@@ -621,26 +617,6 @@
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-                    <!--      <TextView
-                              android:layout_width="0dp"
-                              android:layout_height="@dimen/item_normal_height"
-                              android:layout_marginEnd="@dimen/dp_12"
-                              android:layout_weight="1"
-                              android:gravity="center_vertical"
-                              android:text="BNP"
-                              android:textColor="@color/color_222222"
-                              android:textSize="@dimen/item_title_size" />
-
-                          <ImageView
-                              android:id="@+id/iv_bnp"
-                              android:layout_width="@dimen/item_normal_height"
-                              android:layout_height="@dimen/item_normal_height"
-                              android:layout_alignParentTop="true"
-                              android:layout_alignParentEnd="true"
-                              android:scaleType="center"
-                              android:src="@drawable/ic_arrow_down_blue" />-->
-
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -670,6 +646,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_bnp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -714,25 +691,6 @@
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-                  <!--  <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="NT-proBNP"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <ImageView
-                        android:id="@+id/iv_nt_probnp"
-                        android:layout_width="@dimen/item_normal_height"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />-->
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -762,6 +720,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_nt_probnp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -805,25 +764,6 @@
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-           <!--         <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="Myo"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <ImageView
-                        android:id="@+id/iv_myo"
-                        android:layout_width="@dimen/item_normal_height"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
--->
 
                     <TextView
                         android:layout_width="0dp"
@@ -854,6 +794,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_myo_value"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -866,6 +807,7 @@
                         android:textSize="13sp" />
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/eds_myo_unit"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
@@ -898,28 +840,6 @@
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/dp_12">
 
-<!--
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginEnd="@dimen/dp_12"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:text="CKMB"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <ImageView
-                        android:id="@+id/iv_ckmb"
-                        android:layout_width="@dimen/item_normal_height"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_arrow_down_blue" />
--->
-
-
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -948,6 +868,7 @@
                     android:orientation="horizontal">
 
                     <EditText
+                        android:id="@+id/et_ckmb_value"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -960,6 +881,7 @@
                         android:textSize="13sp" />
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/eds_ckmb_unit"
                         android:layout_width="@dimen/dp_90"
                         android:layout_height="@dimen/dp_30"
                         android:layout_centerVertical="true"
