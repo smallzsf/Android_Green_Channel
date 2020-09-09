@@ -58,13 +58,13 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public EditSpinner(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
-        distListUtil = new DistListUtil(context);
         initView(attrs);
         initAnimation();
     }
 
     public void setStringArrayId(int id) {
         this.dataRrrayId = id;
+        distListUtil = new DistListUtil(this.mContext);
         distListUtil.initGenderMap(id);
         List<String> keyDataList = distListUtil.getKeyDataList(id);
         setItemData(keyDataList);
@@ -83,6 +83,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     }
 
     public void setStringArrayNormalKey(String keyData) {
+        if (distListUtil == null) {
+            return;
+        }
         String data = distListUtil.getKeyDataToStringKey(dataRrrayId, keyData);
         setText(data);
     }
@@ -101,6 +104,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     }
 
     public String[] getSelectData() {
+        if (distListUtil == null) {
+            return new String[]{"",""};
+        }
         // 第一个是key 第二个是value
         String text = getText();
         String valueDataToStringKey =

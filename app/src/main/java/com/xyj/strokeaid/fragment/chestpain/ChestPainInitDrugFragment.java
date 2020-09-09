@@ -187,7 +187,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 //
 //        // 表示选中抗血小板治疗
         //edit_spinner_amoxicillin 阿莫西林
-        text = bean.getAcstigrilodosage();
+        text = bean.getAcsaspirindosage();
         editSpinnerAmoxicillin.setStringArrayNormalKey(text);
         iebAntihemotherapyValue.setEditContent(bean.getOtheracstigrilodosage());
 //
