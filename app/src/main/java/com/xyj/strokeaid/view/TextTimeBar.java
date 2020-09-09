@@ -10,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.helper.CalendarUtils;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -38,6 +41,11 @@ public class TextTimeBar extends RelativeLayout {
     View viewTopLineViewTtb;
     @BindView(R.id.view_bottom_line_view_ttb)
     View viewBottomLineViewTtb;
+
+    /**
+     * 时间显示类型
+     */
+    private int timeType;
 
     public TextTimeBar(Context context) {
         this(context, null);
@@ -104,8 +112,12 @@ public class TextTimeBar extends RelativeLayout {
         }
     }
 
-    public String getTime(){
-        String time="";
+    public void setTimeType(@CalendarUtils.FormatType int type) {
+        this.timeType = type;
+    }
+
+    public String getTime() {
+        String time = "";
         if (tvTimeViewTtb != null) {
             if (!TextUtils.isEmpty(tvTimeViewTtb.getText().toString())) {
                 return tvTimeViewTtb.getText().toString();
@@ -133,6 +145,32 @@ public class TextTimeBar extends RelativeLayout {
             viewBottomLineViewTtb.setVisibility(visible ? VISIBLE : GONE);
         }
     }
+
+    /**
+     * 显示时间选择控件
+     *
+     * @param textTimeBar 显示时间的 TextView
+     */
+//    protected void showTimePickView(TextTimeBar textTimeBar) {
+//        Calendar startTime = Calendar.getInstance();
+//        startTime.set(1900, 0, 1);
+//        if (mTimePickerView == null) {
+//            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
+//                @Override
+//                public void onTimeSelect(Date date, View v) {
+//                    refreshTime(textTimeBar, date);
+//                }
+//            })
+//                    .isDialog(false)
+//                    .setRangDate(startTime, Calendar.getInstance())
+//                    .setOutSideCancelable(true)
+//                    .build();
+//        }
+//        if (mTimePickerView.isShowing()) {
+//            mTimePickerView.dismiss();
+//        }
+//        mTimePickerView.show();
+//    }
 
 }
 

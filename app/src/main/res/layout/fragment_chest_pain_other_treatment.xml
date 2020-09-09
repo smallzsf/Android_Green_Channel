@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_save"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/buttom_normal_height"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/item_normal_margin"
-        android:background="@drawable/login_btn_bg"
-        android:gravity="center"
-        android:text="保存"
-        android:textColor="@android:color/white"
-        android:textSize="16dp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/btn_save"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:overScrollMode="never"
         android:scrollbars="none">
 
@@ -179,6 +168,89 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
             </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="PCSK9"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_pcsk9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_pcsk9_yes"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="是" />
+
+                    <RadioButton
+                        android:id="@+id/rb_pcsk9_no"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="否" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:id="@+id/ll_pcks9_drug"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="@dimen/vital_sign_title_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="药物名称"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_pcsk9_drug_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_pcsk9_dose"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:visibility="gone"
+                app:ieb_title="单次剂量"
+                app:ieb_unit_text="mg"
+                app:ieb_unit_visible="true" />
 
             <TextView
                 style="@style/Text_Blue_Content_Style"
@@ -410,4 +482,15 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-</RelativeLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

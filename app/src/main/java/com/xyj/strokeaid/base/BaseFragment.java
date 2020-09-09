@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -287,6 +288,23 @@ public abstract class BaseFragment extends Fragment {
 
     public String getUserId() {
         return UserInfoCache.getInstance().getUserInfo().getId();
+    }
+
+    public String getCheckBoxValue(CheckBox... checkBoxes) {
+        if (checkBoxes != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isChecked()) {
+                    if (stringBuilder.length() > 0) {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append(checkBox.getTag().toString());
+                }
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
     }
 
     /**

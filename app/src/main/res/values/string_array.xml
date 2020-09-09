@@ -186,4 +186,52 @@
         <item>无</item>
     </string-array>
 
+    <string-array name="chest_pain_in_hos_usage_drug_sugar_value">
+        <item>磺脲类</item>
+        <item>双胍类</item>
+        <item>α糖苷酶抑制剂</item>
+        <item>DPP-4抑制剂</item>
+        <item>GLP-1受体激动剂</item>
+        <item>SGLT-2抑制剂</item>
+        <item>胰岛素及胰岛素类似物</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="chest_pain_in_hos_usage_drug_sugar_key">
+        <item>cpc_jtyw_hnl</item>
+        <item>cpc_jtyw_sgl</item>
+        <item>cpc_jtyw_alphatgmyzj</item>
+        <item>cpc_jtyw_dpp4yzj</item>
+        <item>cpc_jtyw_glp1stjdj</item>
+        <item>cpc_jtyw_sglt2yzj</item>
+        <item>cpc_jtyw_ydsjydslsw</item>
+        <item>cpc_jtyw_qt</item>
+    </string-array>
+
+    <string-array name="chest_pain_in_hos_usage_drug_anticoagulant_key">
+        <item>cpc_kfknyw_hfl</item>
+        <item>cpc_kfknyw_dbjqz</item>
+        <item>cpc_kfknyw_lfsb</item>
+        <item>cpc_kfknyw_apsb</item>
+        <item>cpc_kfknyw_qt</item>
+    </string-array>
+
+    <string-array name="chest_pain_in_hos_usage_drug_anticoagulant_value">
+        <item>华法林</item>
+        <item>达比加群酯</item>
+        <item>利伐沙班</item>
+        <item>阿哌沙班</item>
+        <item>其他</item>
+    </string-array>
+
+    <string-array name="chest_pain_in_hos_usage_drug_pcsk9_key">
+        <item>cpc_pcsk9_alxydk</item>
+        <item>cpc_pcsk9_ylydk</item>
+    </string-array>
+
+    <string-array name="chest_pain_in_hos_usage_drug_pcsk9_value">
+        <item>阿利西尤单抗</item>
+        <item>依洛尤单抗</item>
+    </string-array>
+
 </resources>

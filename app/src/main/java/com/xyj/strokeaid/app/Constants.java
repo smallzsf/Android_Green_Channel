@@ -97,6 +97,9 @@ public class Constants {
     public static final String[] CHEST_PAIN_DIAGNOSE_CONTENT = new String[]{
             "STEMI", "NSTEMI", "UA", "主动脉夹层", "肺动脉栓塞", "非ACS心源性胸痛", "其他非心源性胸痛"
     };
+
+    public  static final String BOOL_TRUE = "cpc_bool_true";
+    public  static final String BOOL_FALSE = "cpc_bool_false";
 }
 
     

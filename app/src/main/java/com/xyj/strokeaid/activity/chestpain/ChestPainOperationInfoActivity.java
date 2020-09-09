@@ -2,11 +2,8 @@ package com.xyj.strokeaid.activity.chestpain;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
-import androidx.constraintlayout.widget.Guideline;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -31,7 +28,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import retrofit2.http.Path;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
@@ -46,12 +42,6 @@ import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 @Route(path = RouteUrl.ChestPain.CHEST_PAIN_OPERATION_INFO)
 public class ChestPainOperationInfoActivity extends BaseActivity {
 
-    //    @BindView(R.id.iv_left_base_title_bar)
-//    ImageView ivBack;
-//    @BindView(R.id.tv_title_base_title_bar)
-//    TextView tvTitle;
-//    @BindView(R.id.tv_right_base_title_bar)
-//    TextView tvSave;
     @BindView(R.id.title_bar_act_npmr)
     BaseTitleBar titleBarActNpmr;
     @BindView(R.id.tag_reason_delay)
@@ -65,8 +55,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     TextTimeBar tvTimeBegin;       //手术开始时间
     @BindView(R.id.tv_time_puncture)
     TextTimeBar tvTimePuncture;       //开始穿刺时间
-    @BindView(R.id.tv_success_time_puncture)
-    TextTimeBar tvSuccessTimePuncture;       //穿刺成功时间
+
     @BindView(R.id.tv_time_anticoagulant_administration)
     TextTimeBar tvTimeAnticoagulantAdministration;       //抗凝给药时间
     @BindView(R.id.tv_time_radiography)
@@ -78,10 +67,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     @BindView(R.id.tv_over_time)
     TextTimeBar tvOverTime;       //手术结束时间
 
-    @BindView(R.id.es_preliminary_diagnosis_doctor)
-    EditSpinner es_preliminary_diagnosis_doctor;    //初步诊断
-    @BindView(R.id.es_type)
-    EditSpinner es_type;        //手术类型
     @BindView(R.id.es_medicinal_name)
     EditSpinner es_medicinal_name;  //药品名称
 
@@ -96,8 +81,11 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     private List<String> NSTEMIlist = new ArrayList<>();
     private List<String> UAList = new ArrayList<>();
 
-    @OnClick({R.id.iv_left_base_title_bar, R.id.tv_right_base_title_bar, R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient, R.id.tv_time_begin, R.id.tv_time_puncture,
-            R.id.tv_success_time_puncture, R.id.tv_time_anticoagulant_administration, R.id.tv_time_radiography, R.id.tv_talk_time_again, R.id.tv_through_time_guide_wire, R.id.tv_over_time,
+    @OnClick({R.id.iv_left_base_title_bar, R.id.tv_right_base_title_bar,
+            R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient,
+            R.id.tv_time_begin, R.id.tv_time_puncture,
+            R.id.tv_time_anticoagulant_administration, R.id.tv_time_radiography,
+            R.id.tv_talk_time_again, R.id.tv_through_time_guide_wire, R.id.tv_over_time,
             R.id.rb_delay_false, R.id.rb_delay_true})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -193,26 +181,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .build();
 
                 mDialogAll3.show(getSupportFragmentManager(), "All");
-                break;
-            case R.id.tv_success_time_puncture: //穿刺成功时间
-                TimePickerDialog mDialogAll4 = new TimePickerDialog.Builder()
-                        .setType(Type.ALL)
-                        .setTitleStringId("选择时间")
-                        .setThemeColor(getResources().getColor(R.color.colorPrimary))
-                        //当前文本颜色
-                        .setWheelItemTextSelectorColor(getResources().getColor(R.color.colorPrimary))
-                        .setCallBack(new OnDateSetListener() {
-                            @Override
-                            public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                                tvSuccessTimePuncture.setTime(CalendarUtils.parseDate(TYPE_ALL, new Date(millseconds)));
-                            }
-                        })
-                        //是否可循环
-                        .setCyclic(false)
-                        .setToolBarTextColor(R.color.colorPrimary)
-                        .build();
-
-                mDialogAll4.show(getSupportFragmentManager(), "All");
                 break;
             case R.id.tv_time_anticoagulant_administration: //抗凝给药时间
                 TimePickerDialog mDialogAll5 = new TimePickerDialog.Builder()
@@ -351,10 +319,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
     @Override
     public void initListener() {
-        preliminaryDiagnosisList.add("STEMI");
-        preliminaryDiagnosisList.add("NSTEMI");
-        preliminaryDiagnosisList.add("UA");
-        es_preliminary_diagnosis_doctor.setItemData(preliminaryDiagnosisList);
 
         STEMIList.add("直接PCI");
         STEMIList.add("溶栓后补救PCI");
@@ -371,22 +335,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         UAList.add("24H内介入治疗");
         UAList.add("72H内介入治疗");
         UAList.add("择期介入");
-
-        es_preliminary_diagnosis_doctor.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
-            @Override
-            public void getSeletedString(String text) {
-                if (text.equals("STEMI")) {
-                    es_type.setText("请选择");
-                    es_type.setItemData(STEMIList);
-                } else if (text.equals("NSTEMI")) {
-                    es_type.setText("请选择");
-                    es_type.setItemData(NSTEMIlist);
-                } else if (text.equals("UA")) {
-                    es_type.setText("请选择");
-                    es_type.setItemData(UAList);
-                }
-            }
-        });
 
     }
 }

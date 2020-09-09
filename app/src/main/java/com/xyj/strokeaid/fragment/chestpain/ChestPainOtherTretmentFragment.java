@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -12,17 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
-import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
-import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
-import com.xyj.strokeaid.bean.SendEmergencyCenterChestpainBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -162,23 +167,93 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
     LinearLayout mLinearLayoutOutOtherDepart;
     LinearLayout mLinearLayoutOutDeath;
 
-    public static ChestPainOtherTretmentFragment newInstance() {
+    @BindView(R.id.rb_pcsk9_yes)
+    RadioButton rbPcsk9Yes;
+    @BindView(R.id.rb_pcsk9_no)
+    RadioButton rbPcsk9No;
+    @BindView(R.id.rg_pcsk9)
+    RadioGroup rgPcsk9;
+    @BindView(R.id.es_pcsk9_drug_name)
+    EditSpinner esPcsk9DrugName;
+    @BindView(R.id.ll_pcks9_drug)
+    LinearLayout llPcks9Drug;
+    @BindView(R.id.ieb_pcsk9_dose)
+    ItemEditBar iebPcsk9Dose;
+
+    private OtherTreatmentBean mOtherTreatmentBean;
+    private String mRecordId;
+    private HashMap<String, String> mSuagrDrugMap;
+    private HashMap<String, String> mAntiDrugMap;
+    private HashMap<String, String> mPcsk9DrugMap;
+    List<String> sugarKey;
+    List<String> sugarValue;
+
+    public ChestPainOtherTretmentFragment() {
+
+    }
+
+    public static ChestPainOtherTretmentFragment newInstance(String recordId) {
         ChestPainOtherTretmentFragment fragment = new ChestPainOtherTretmentFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.RECORD_ID, recordId);
+        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadViewData(mRecordId);
+    }
+
+    @Override
     protected int getLayoutId() {
-        return R.layout.fragment_chest_pain;
+        return R.layout.fragment_chest_pain_other_treatment;
     }
 
     @Override
     protected void initView(@NonNull View view) {
         mLinearLayoutOutDeath = view.findViewById(R.id.include_pain_in_dead);
         mLinearLayoutOutHos = view.findViewById(R.id.include_pain_in_leave_hospital);
-        mLinearLayoutOutOtherHos = view.findViewById(R.id.include_pain_in_transfer_department);
-        mLinearLayoutOutOtherDepart = view.findViewById(R.id.include_pain_in_transfer_hospital);
-        loadRecordData("1111");
+        mLinearLayoutOutOtherHos = view.findViewById(R.id.include_pain_in_transfer_hospital);
+        mLinearLayoutOutOtherDepart = view.findViewById(R.id.include_pain_in_transfer_department);
+
+        initLocalData();
+    }
+
+    private void initLocalData() {
+        // 降糖药
+         sugarKey = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_sugar_key));
+       sugarValue = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_sugar_value));
+        mSuagrDrugMap = new HashMap<>(sugarKey.size());
+        for (int i = 0; i < sugarKey.size(); i++) {
+            mSuagrDrugMap.put(sugarValue.get(i), sugarKey.get(i));
+        }
+        esSugar.setItemData(sugarValue);
+        // 抗凝药
+        List<String> antiKey = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_anticoagulant_key));
+        List<String> antiValue = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_anticoagulant_value));
+        mAntiDrugMap = new HashMap<>(antiKey.size());
+        for (int i = 0; i < antiKey.size(); i++) {
+            mAntiDrugMap.put(antiValue.get(i), antiKey.get(i));
+        }
+        esAnticoagulant.setItemData(antiValue);
+        // pcsk9
+        List<String> pcskKey = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_pcsk9_key));
+        List<String> pcskValue = Arrays.asList(getResources().getStringArray(R.array.chest_pain_in_hos_usage_drug_pcsk9_value));
+        mPcsk9DrugMap = new HashMap<>(pcskKey.size());
+        for (int i = 0; i < pcskKey.size(); i++) {
+            mPcsk9DrugMap.put(pcskValue.get(i), pcskKey.get(i));
+        }
+        esPcsk9DrugName.setItemData(pcskValue);
     }
 
 
@@ -197,6 +272,16 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
                 llAnticoagulantDrug.setVisibility(View.VISIBLE);
             } else if (checkedId == R.id.rb_anticoagulant_no) {
                 llAnticoagulantDrug.setVisibility(View.GONE);
+            }
+        });
+
+        rgPcsk9.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rb_pcsk9_yes) {
+                llPcks9Drug.setVisibility(View.VISIBLE);
+                iebPcsk9Dose.setVisibility(View.VISIBLE);
+            } else if (checkedId == R.id.rb_pcsk9_no) {
+                llPcks9Drug.setVisibility(View.GONE);
+                iebPcsk9Dose.setVisibility(View.GONE);
             }
         });
 
@@ -228,13 +313,9 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
         });
     }
 
-
-    private void loadRecordData(String recordId) {
-        if (TextUtils.isEmpty(recordId)) {
-            return;
-        }
-        SendEmergencyCenterChestpainBean recordIdBean = new SendEmergencyCenterChestpainBean();
-        recordIdBean.setRecordId(recordId);
+    private void loadViewData(String recordId) {
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient.getInstance()
                 .getApi()
                 .getChestPainOtherTreatment(recordIdBean.getResuestBody(recordIdBean))
@@ -244,13 +325,11 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
                         hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                OtherTreatmentBean mIntraConsultBean = response.body().getData();
-                                if (mIntraConsultBean != null) {
+                                mOtherTreatmentBean = response.body().getData();
+                                if (mOtherTreatmentBean != null) {
                                     // 请求成功
-                                    showToast("获取数据成功");
-
-                                }else{
-                                    showToast("数据异常");
+                                    // 填充页面
+                                    setViewData(mOtherTreatmentBean);
                                 }
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
@@ -266,7 +345,71 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
                         showToast(R.string.http_tip_server_error);
                     }
                 });
+    }
 
+    /**
+     * 默认 databean 不为null 且有数据
+     */
+    private void saveViewData() {
+        RetrofitClient.getInstance()
+                .getApi()
+                .saveChestPainOtherTreatment(mOtherTreatmentBean.getResuestBody(mOtherTreatmentBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
+    }
+
+    private void setViewData(OtherTreatmentBean bean) {
+        if (bean == null) {
+            return;
+        }
+        // 住院用药
+        String isinhospitalhypoglycemicdrug = bean.getIsinhospitalhypoglycemicdrug();
+        if (!TextUtils.isEmpty(isinhospitalhypoglycemicdrug)) {
+            if (TextUtils.equals(isinhospitalhypoglycemicdrug, Constants.BOOL_TRUE)) {
+                rgSugar.check(R.id.rb_sugar_yes);
+                llBloodSugarDrug.setVisibility(View.VISIBLE);
+
+                String inhospitalhypoglycemicdrugname = bean.getInhospitalhypoglycemicdrugname();
+                if (!TextUtils.isEmpty(inhospitalhypoglycemicdrugname)) {
+
+                }
+
+
+            } else if (TextUtils.equals(isinhospitalhypoglycemicdrug, Constants.BOOL_FALSE)) {
+                rgSugar.check(R.id.rb_sugar_no);
+            }
+        }
+
+    }
+
+    private void getViewData() {
+        if (mOtherTreatmentBean == null) {
+            mOtherTreatmentBean = new OtherTreatmentBean();
+        }
+        mOtherTreatmentBean.setRecordId(mRecordId);
+
+
+        saveViewData();
     }
 
 
