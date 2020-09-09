@@ -99,6 +99,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
+
     private String mRecordId;
 
     public ChestPainInitDrugFragment() {

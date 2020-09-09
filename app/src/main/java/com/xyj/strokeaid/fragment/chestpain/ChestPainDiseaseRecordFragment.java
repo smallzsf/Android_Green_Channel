@@ -305,11 +305,14 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
             chestPainDiseaseRecordRequest = new ChestPainDiseaseRecordRequest();
         }
 
-        chestPainDiseaseRecordRequest.setRecordId(RecordIdUtil.RECORD_ID);
+        chestPainDiseaseRecordRequest.setRecordId(mRecordId);
 
 
         /**
-         * 病情评估 conditionassessment
+         * 病情评估
+         *                 "cpc_bqpg_cxxxm": "持续性胸闷/胸痛",
+         *                 "cpc_bqpg_jxxxm": "间歇性胸闷/胸痛",
+         *                 "cpc_bqpg_zzyhj": "症状已缓解"
          */
         if (rbIntermittentChestPain.isChecked()) {
             chestPainDiseaseRecordRequest.setConditionassessment("cpc_bqpg_cxxxm");
@@ -343,7 +346,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     private void queryData() {
         //调用获取数据接口
         RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(RecordIdUtil.RECORD_ID);
+        p.setRecordId(mRecordId);
         String request = GsonUtils.getGson().toJson(p);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -359,7 +362,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                                 showToast("获取数据成功");
                                 if (response.body().getData() != null) {
                                     ChestPainDiseaseRecordBean chestPainDiseaseRecordBean = response.body().getData();
-                                    //保存胸痛病情记录获取的数据
+                                    //胸痛病情记录获取的数据
                                     queryDataChestPainDiseaseRecord(chestPainDiseaseRecordBean);
                                 }
 
@@ -430,26 +433,29 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         } else {
             rbRelievedChestPain.setChecked(true);
         }
+
+
+
         /**
          * 病情评估明细
          */
         String dischargedunacs = chestPainDiseaseRecordBean.getConditionassessmentdetail();
         if (!TextUtils.isEmpty(dischargedunacs)) {
-            cbNonAcs1.setChecked(dischargedunacs.contains("cpc_unacs_xlsc"));
-            cbNonAcs2.setChecked(dischargedunacs.contains("cpc_unacs_kzxxjb"));
-            cbNonAcs3.setChecked(dischargedunacs.contains("cpc_unacs_qxxxjb"));
-            cbNonAcs4.setChecked(dischargedunacs.contains("cpc_unacs_fhxxjb"));
-            cbNonAcs5.setChecked(dischargedunacs.contains("cpc_unacs_xjb"));
-            cbNonAcs6.setChecked(dischargedunacs.contains("cpc_unacs_gxb"));
-            cbNonAcs7.setChecked(dischargedunacs.contains("cpc_unacs_bmxxjb"));
-            cbNonAcs8.setChecked(dischargedunacs.contains("cpc_unacs_cjxxjgs"));
-            cbNonAcs9.setChecked(dischargedunacs.contains("cpc_unacs_xjt"));
-            cbNonAcs10.setChecked(dischargedunacs.contains("cpc_unacs_xj"));
-            cbNonAcs11.setChecked(dischargedunacs.contains("cpc_unacs_fc"));
-            cbNonAcs12.setChecked(dischargedunacs.contains("cpc_unacs_gxy"));
-            cbNonAcs13.setChecked(dischargedunacs.contains("cpc_unacs_xs"));
-            cbNonAcs14.setChecked(dischargedunacs.contains("cpc_unacs_fp"));
-            cbNonAcs15.setChecked(dischargedunacs.contains("cpc_unacs_sz"));
+            cbNonAcs1.setChecked(dischargedunacs.contains("cpc_bqpgmx_hxkn"));
+            cbNonAcs2.setChecked(dischargedunacs.contains("cpc_bqpgmx_ft"));
+            cbNonAcs3.setChecked(dischargedunacs.contains("cpc_bqpgmx_ct"));
+            cbNonAcs4.setChecked(dischargedunacs.contains("cpc_bqpgmx_jbt"));
+            cbNonAcs5.setChecked(dischargedunacs.contains("cpc_bqpgmx_hbcx"));
+            cbNonAcs6.setChecked(dischargedunacs.contains("cpc_bqpgmx_hbxs"));
+            cbNonAcs7.setChecked(dischargedunacs.contains("cpc_bqpgmx_hbexxlsc"));
+            cbNonAcs8.setChecked(dischargedunacs.contains("cpc_bqpgmx_bmyydhj"));
+            cbNonAcs9.setChecked(dischargedunacs.contains("cpc_bqpgmx_zh"));
+            cbNonAcs10.setChecked(dischargedunacs.contains("cpc_bqpgmx_xhxj"));
+            cbNonAcs11.setChecked(dischargedunacs.contains("cpc_bqpgmx_fzba"));
+            cbNonAcs12.setChecked(dischargedunacs.contains("cpc_bqpgmx_jqbsfg"));
+            cbNonAcs13.setChecked(dischargedunacs.contains("cpc_bqpgmx_fl"));
+            cbNonAcs14.setChecked(dischargedunacs.contains("cpc_bqpgmx_qc"));
+            cbNonAcs15.setChecked(dischargedunacs.contains("cpc_bqpgmx_qt"));
         }
 
 
@@ -465,5 +471,26 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         etSymptom.setText(chestPainDiseaseRecordBean.getConditionassessmentremark());
 
     }
+
+
+/*
+    private   String getCheckBoxValue(CheckBox... checkBoxes) {
+        if (checkBoxes != null) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (CheckBox checkBox : checkBoxes) {
+                if (checkBox.isChecked()) {
+                    if (stringBuilder.length() > 0) {
+                        stringBuilder.append(",");
+                    }
+                    stringBuilder.append(checkBox.getTag().toString());
+                }
+            }
+            return stringBuilder.toString();
+        } else {
+            return "";
+        }
+    }
+
+*/
 
 }

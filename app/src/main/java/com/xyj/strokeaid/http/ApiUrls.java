@@ -240,6 +240,20 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/getByRecordId";
 
 
+
+        /**
+         * 胸痛中心-手术信息-保存
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/room/edit";
+
+
+
+        /**
+         * 胸痛中心-手术信息-获取
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_GET= "yjjk-gateway/yjjk-cdm-api/v1/room/get";
+
+
     }
 
     /**

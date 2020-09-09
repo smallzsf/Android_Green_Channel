@@ -14,6 +14,7 @@ import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
@@ -333,4 +334,31 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE)
     Call<BaseObjectBean> saveIntravenousThrombolysis(@Body RequestBody info);
+
+
+
+
+    /**
+     * 胸痛中心-手术信息-保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE)
+    Call<BaseObjectBean> saveChestPainOperationInfo(@Body RequestBody info);
+
+
+    /**
+     * 胸痛中心-手术信息-获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_INFO_GET)
+    Call<BaseObjectBean<OperationInfoBean>> getChestPainOperationInfo(@Body RequestBody info);
+
+
+
+
+
 }

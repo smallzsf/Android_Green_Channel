@@ -282,7 +282,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public final void afterTextChanged(Editable s) {
-        String key = s.toString();
+        String key = s.toString().trim();
         if (onSelectStringLitner != null) {
             onSelectStringLitner.getSeletedString(key);
         }
