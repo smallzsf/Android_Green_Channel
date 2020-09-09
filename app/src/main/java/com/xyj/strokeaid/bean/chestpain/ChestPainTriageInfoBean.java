@@ -18,21 +18,21 @@ public class ChestPainTriageInfoBean {
      * 后台
      * 来院方式-患者到院时间(到达医院大门时间)
      */
-    private String arrivegatetime;
+    protected String arrivegatetime;
     /**
      * app
      * 患者到达急诊
      * 后台
      * 来院方式-患者到达急诊时间
      */
-    private String arrivedertime;
+    protected String arrivedertime;
     /**
      * app
      * 急诊分诊时间
      * 后台
      * 来院方式-接诊时间
      */
-    private String receptiontime;
+    protected String receptiontime;
 
     /**
      * app
@@ -40,29 +40,84 @@ public class ChestPainTriageInfoBean {
      * 后台
      * 来院方式-接诊护士
      */
-    private String emergencynursereception;
+    protected String emergencynursereception;
     /**
      * app
      * 接诊地点
      * 后台
      * 来院方式-接诊地点
      */
-    private String receptionlocation;
+    protected String receptionlocation;
     /**
      * app
      * 急诊医生接诊
      * 后台
      * 来院方式-急诊医生接诊
      */
-    private String emergencydoctorreceptiontime;
+    protected String emergencydoctorreceptiontime;
     /**
      * app
      * 急诊医生
      * 后台
      * 来院方式-急诊医生
      */
-    private String emergencydoctorreception;
+    protected String emergencydoctorreception;
 
+    public String getArrivegatetime() {
+        return arrivegatetime;
+    }
+
+    public void setArrivegatetime(String arrivegatetime) {
+        this.arrivegatetime = arrivegatetime;
+    }
+
+    public String getArrivedertime() {
+        return arrivedertime;
+    }
+
+    public void setArrivedertime(String arrivedertime) {
+        this.arrivedertime = arrivedertime;
+    }
+
+    public String getReceptiontime() {
+        return receptiontime;
+    }
+
+    public void setReceptiontime(String receptiontime) {
+        this.receptiontime = receptiontime;
+    }
+
+    public String getEmergencynursereception() {
+        return emergencynursereception;
+    }
+
+    public void setEmergencynursereception(String emergencynursereception) {
+        this.emergencynursereception = emergencynursereception;
+    }
+
+    public String getReceptionlocation() {
+        return receptionlocation;
+    }
+
+    public void setReceptionlocation(String receptionlocation) {
+        this.receptionlocation = receptionlocation;
+    }
+
+    public String getEmergencydoctorreceptiontime() {
+        return emergencydoctorreceptiontime;
+    }
+
+    public void setEmergencydoctorreceptiontime(String emergencydoctorreceptiontime) {
+        this.emergencydoctorreceptiontime = emergencydoctorreceptiontime;
+    }
+
+    public String getEmergencydoctorreception() {
+        return emergencydoctorreception;
+    }
+
+    public void setEmergencydoctorreception(String emergencydoctorreception) {
+        this.emergencydoctorreception = emergencydoctorreception;
+    }
 }
 
     

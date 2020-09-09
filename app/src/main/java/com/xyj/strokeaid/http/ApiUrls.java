@@ -55,11 +55,11 @@ public class ApiUrls {
     /**
      * 通用获取接口
      */
-    public static final String NET_URL_COMMON_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
+    public static final String NET_URL_COMMON_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByKeyList";
     /**
      * 通用保存接口
      */
-    public static final String NET_URL_COMMON_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
+    public static final String NET_URL_COMMON_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/editForApp";
     /**
      * 新建患者信息
      */
