@@ -48,8 +48,9 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public OnSelectStringLitner onSelectStringLitner;
     public OnSelectIndexAndStringLitner mOnSelectIndexAndStringLitner;
     private List<String> mData;
-
     private boolean isSplite = false;
+
+    private int selectPosition = 0;
 
     DistListUtil distListUtil;
     private int dataRrrayId;
@@ -69,6 +70,17 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
         setItemData(keyDataList);
     }
 
+    public void setStringArrayNormalKey(String keyData) {
+        String data = distListUtil.getValueDataToStringKey(dataRrrayId, keyData);
+        setText(data);
+    }
+
+    public int getItemSize() {
+        if (mData != null) {
+            return mData.size();
+        }
+        return -1;
+    }
 
     public void setItemData(List<String> data) {
         mData = data;
@@ -92,6 +104,12 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     }
 
     public void setText(String text) {
+        selectPosition = -1;
+        for (int i = 0; i < mData.size(); i++) {
+            if (TextUtils.equals(mData.get(i), text)) {
+                selectPosition = i;
+            }
+        }
         editText.setText(text);
     }
 
@@ -216,10 +234,11 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public final void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        editText.setText(((BaseEditSpinnerAdapter) parent.getAdapter()).getItemString(position));
+        String selectText = mData.get(position);
+        setText(selectText);
         mRightImageTopView.setClickable(false);
         if (mOnSelectIndexAndStringLitner != null) {
-            mOnSelectIndexAndStringLitner.getSeletedStringAndIndex(mData.get(position), position);
+            mOnSelectIndexAndStringLitner.getSeletedStringAndIndex(selectText, position);
         }
         popupWindow.dismiss();
     }

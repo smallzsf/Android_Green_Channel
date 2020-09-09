@@ -352,6 +352,9 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
             String text = editSpinnerAmoxicillin.getText().trim();
             String time = ttbAntihemotherapyTime.getTime();
             bean.setAcsaspirintime(time);
+            String[] selectData = editSpinnerAmoxicillin.getSelectData();
+            bean.setAcsaspirindosage(selectData[1]);
+
 //            if (TextUtils.equals(DOSE_0, text)) {
 //                bean.setAcsaspirindosage("cpc_aspirindosage_0mg");
 //            } else if (TextUtils.equals(DOSE_100, text)) {

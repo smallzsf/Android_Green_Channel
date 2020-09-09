@@ -79,6 +79,43 @@ public class DistListUtil {
     }
 
 
+    /**
+     * @param arrayId  array 字符串文件id
+     * @param data 字符串 冒号之后的文字
+     * @return 冒号之前文字对照的角标
+     */
+    public int getValueDataToPosition(int arrayId, String data) {
+        List<String> valueDataList = getValueDataList(arrayId);
+        for (int i = 0; i < valueDataList.size(); i++) {
+            if (TextUtils.equals(data, valueDataList.get(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * @param arrayId  array 字符串文件id
+     * @param data 冒号之后的文字
+     * @return 冒号之后的文字
+     */
+    public String getKeyDataToStringKey(int arrayId, String data) {
+        int keyDataToPosition = getValueDataToPosition(arrayId, data);
+        List<String> keyDataList = getKeyDataList(arrayId);
+        if (keyDataList.size() <= keyDataToPosition) {
+            return "";
+        }
+        if (keyDataToPosition == -1) {
+            return "";
+        }
+        return keyDataList.get(keyDataToPosition);
+    }
+
+    /**
+     * @param arrayId  array 字符串文件id
+     * @param data 字符串 冒号之前的文字
+     * @return 冒号之前文字对照的角标
+     */
     public int getKeyDataToPosition(int arrayId, String data) {
         List<String> keyDataList = getKeyDataList(arrayId);
         for (int i = 0; i < keyDataList.size(); i++) {
@@ -89,6 +126,11 @@ public class DistListUtil {
         return -1;
     }
 
+    /**
+     * @param arrayId  array 字符串文件id
+     * @param data 冒号之前的文字
+     * @return 冒号之后的文字
+     */
     public String getValueDataToStringKey(int arrayId, String data) {
         int keyDataToPosition = getKeyDataToPosition(arrayId, data);
         List<String> valueDataList = getValueDataList(arrayId);
