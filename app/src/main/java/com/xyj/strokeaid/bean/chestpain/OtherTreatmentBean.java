@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.bean.chestpain;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * OtherTreatmentBean
  * description: TODO
@@ -8,7 +10,7 @@ package com.xyj.strokeaid.bean.chestpain;
  * @date : 2020/9/8
  * email ：licy3051@qq.com
  */
-public class OtherTreatmentBean {
+public class OtherTreatmentBean extends BaseBean<OtherTreatmentBean> {
 
     /**
      *

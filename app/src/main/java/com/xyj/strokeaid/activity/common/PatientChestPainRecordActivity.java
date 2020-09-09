@@ -208,7 +208,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     return SurgicalTreatmentFragment.newInstance(recordId);
                 case 12:
                     // 其他处置
-                    return ChestPainOtherTretmentFragment.newInstance();
+                    return ChestPainOtherTretmentFragment.newInstance(recordId);
                 case 13:
                     // 患者转归
                     return PatientOutcomeFragment.newInstance(recordId);
