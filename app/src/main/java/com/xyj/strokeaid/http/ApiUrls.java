@@ -196,6 +196,12 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/edit";
 
 
+        /**
+         * 胸痛中心-手术信息-结果保存
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResult/edit";
+
+
     }
 
     /**

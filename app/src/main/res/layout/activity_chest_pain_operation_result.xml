@@ -307,7 +307,21 @@
 
             <View style="@style/horizontal_divider" />
 
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/idb_cpc_funcexam_value"
+                android:layout_width="match_parent"
+                android:inputType="number|numberDecimal"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_hint="请输入"
+                app:ieb_title="数值"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                >
+
+            </com.xyj.strokeaid.view.ItemEditBar>
+
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal"

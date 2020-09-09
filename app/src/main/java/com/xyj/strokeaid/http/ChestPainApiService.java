@@ -32,5 +32,12 @@ public interface ChestPainApiService {
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_SAVE)
     Call<BaseObjectBean> saveChestPainImageExamination(@Body RequestBody info);
 
+    /**
+     * 胸痛 影像检查保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE)
+    Call<BaseObjectBean> saveChestPainOpeationResult(@Body RequestBody info);
+
 
 }
