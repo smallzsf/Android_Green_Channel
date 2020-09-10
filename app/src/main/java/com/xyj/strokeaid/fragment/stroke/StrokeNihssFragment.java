@@ -74,19 +74,15 @@ public class StrokeNihssFragment extends BaseFragment {
     NihssItemBar nib11FragNihss;
 
 
-    private String mPatientId;
-    private String mDocId;
+    private String mRecordId;
 
     public StrokeNihssFragment() {
-        // Required empty public constructor
     }
 
-    public static StrokeNihssFragment newInstance(String patientId, String docId) {
+    public static StrokeNihssFragment newInstance(String recordId) {
         StrokeNihssFragment fragment = new StrokeNihssFragment();
-        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -95,8 +91,7 @@ public class StrokeNihssFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

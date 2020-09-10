@@ -19,6 +19,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
 
 import java.util.ArrayList;
@@ -31,46 +32,27 @@ import butterknife.BindView;
  *
  * @author Licy
  */
-public class StrokeAngioplastyFragment extends BaseFragment {
+public class StrokeAngioplastyFragment extends BaseStrokeFragment {
 
     @BindView(R.id.rv_content_frag_stoke_ang)
     RecyclerView rvContentFragStokeAng;
     @BindView(R.id.srl_fresh_frag_stoke_ang)
     SwipeRefreshLayout srlFreshFragStokeAng;
 
-    private String mPatientId;
-    private String mDocId;
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
     private StrokeAngioplastyFragment() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param patientId 患者ID
-     * @param docId     医生id
-     * @return A new instance of fragment StrokeAngioplastyFragment.
-     */
-    public static StrokeAngioplastyFragment newInstance(String patientId, String docId) {
+    public static StrokeAngioplastyFragment newInstance(String recordId) {
         StrokeAngioplastyFragment fragment = new StrokeAngioplastyFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected void initView(@NonNull View view) {

@@ -41,7 +41,7 @@ import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreContentFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
@@ -78,10 +78,8 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     RecyclerView rvMenuActPsr;
     @BindView(R.id.vp_content_act_psr)
     ViewPager2 vpContentActPsr;
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -116,7 +114,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         rvMenuActPsr.setAdapter(mMenuRvAdapter);
 
         vpContentActPsr.setUserInputEnabled(false);
-        vpContentActPsr.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, "", ""));
+        vpContentActPsr.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, mRecordId));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -140,7 +138,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
             public void onClick(View v) {
                 ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                         .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
+                        .withString(IntentKey.RECORD_ID, mRecordId)
                         .navigation();
             }
         });
@@ -225,13 +223,11 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     private class GreenChannelVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public GreenChannelVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+        public GreenChannelVpAdapter(@NonNull FragmentActivity fragmentActivity, String recordId) {
             super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
         @NonNull
@@ -241,48 +237,46 @@ public class PatientStrokeRecordActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 分诊信息
-                    return TriageInfoFragment.newInstance(patientId, 1);
+                    return TriageInfoFragment.newInstance(recordId, 1);
                 case 1:
                     // 生命体征
-                    return StrokeVitalSignsFragment.newInstance(patientId, docId);
+                    return StrokeVitalSignsFragment.newInstance(recordId);
                 case 2:
                     // 病情记录
-                    return DiseaseRecordFragment.newInstance(patientId, docId);
+                    return DiseaseRecordFragment.newInstance(recordId);
                 case 3:
                     // NIHSS评分
-                    return StrokeNihssFragment.newInstance(patientId, docId);
+                    return StrokeNihssFragment.newInstance(recordId);
                 case 4:
                     // 启动绿道
-                    return StartGreenwayFragment.newInstance(patientId, docId);
+                    return StartGreenwayFragment.newInstance(recordId);
                 case 5:
                     // 血液检查
-                    //  return BloodExamFragment.newInstance(patientId, docId);
-                    return StrokeBloodExaminationFragment.newInstance(patientId, docId);
+                    return StrokeBloodExaminationFragment.newInstance(recordId);
                 case 6:
                     // 辅助检查
-                    return AuxiliaryExamFragment.newInstance(patientId, docId);
+                    return AuxiliaryExamFragment.newInstance(recordId);
                 case 7:
                     // 评分工具
-                //    return StrokeScoresFragment.newInstance(patientId, docId);
-                    return StrokeNewScoreFragment.newInstance(patientId, docId);
+                    return StrokeNewScoreContentFragment.newInstance(recordId);
                 case 8:
                     // 诊断评估
-                return DiagnosticEvaluationFragment.newInstance(patientId, docId);
+                return DiagnosticEvaluationFragment.newInstance(recordId);
                 case 9:
                     // 药物治疗
-                    return StrokeMedicationFragment.newInstance(patientId, docId);
+                    return StrokeMedicationFragment.newInstance(recordId);
                 case 10:
                     // 手术治疗
-                    return StrokeOperationFragment.newInstance(patientId, docId);
+                    return StrokeOperationFragment.newInstance(recordId);
                 case 11:
                     // 其他处置
-                    return OtherDisposalFragment.newInstance(patientId, docId);
+                    return OtherDisposalFragment.newInstance(recordId);
                 case 12:
                     // 转归交接
-                    return TransferFragment.newInstance(patientId, docId);
+                    return TransferFragment.newInstance(recordId);
                 case 13:
                     // 时间节点
-                    return TimeNodeFragment.newInstance(patientId, 1);
+                    return TimeNodeFragment.newInstance(recordId, 1);
                 default:
                     return EmptyFragment.newInstance();
             }

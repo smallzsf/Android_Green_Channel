@@ -131,9 +131,6 @@
             android:name=".activity.set.SetActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.stroke.StrokeMainActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.set.AccountActivity"
             android:screenOrientation="portrait" />
         <activity

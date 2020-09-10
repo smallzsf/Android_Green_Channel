@@ -16,6 +16,7 @@ import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 
 import butterknife.BindView;
 
@@ -27,37 +28,23 @@ import butterknife.BindView;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class StrokeOperationFragment extends BaseFragment {
+public class StrokeOperationFragment extends BaseStrokeFragment {
 
     @BindView(R.id.stl_title_frag_stroke_medice)
     SegmentTabLayout stlTitleFragStrokeMedice;
     @BindView(R.id.vp_content_frag_stroke_medice)
     ViewPager2 vpContentFragStrokeMedice;
     public static final String[] STROKE_OPERATIVE_TREATEMENT = new String[]{"介入", "脑出血", "动脉瘤", "CEA"};
-    private String mPatientId;
-    private String mDocId;
 
-    public StrokeOperationFragment() {
-        // Required empty public constructor
-    }
 
-    public static StrokeOperationFragment newInstance(String patientId, String docId) {
+    public static StrokeOperationFragment newInstance(String recordId) {
         StrokeOperationFragment fragment = new StrokeOperationFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -68,7 +55,7 @@ public class StrokeOperationFragment extends BaseFragment {
     protected void initView(@NonNull View view) {
         stlTitleFragStrokeMedice.setTabData(STROKE_OPERATIVE_TREATEMENT);
 
-        vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mPatientId, mDocId));
+        vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mRecordId));
     }
 
     @Override
@@ -89,38 +76,25 @@ public class StrokeOperationFragment extends BaseFragment {
 
     private class StrokeMedicationVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public StrokeMedicationVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
-            super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
-
-        public StrokeMedicationVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
+        public StrokeMedicationVpAdapter(@NonNull Fragment fragment, String recordId) {
             super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
-        public StrokeMedicationVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
 
         @NonNull
         @Override
         public Fragment createFragment(int position) {
             if (position == 0) {
-                return StrokeGetInvolvedFragment.newInstance(patientId, docId);
+                return StrokeGetInvolvedFragment.newInstance(recordId);
             } else if (position == 1) {
-                return StrokeSanguineousApoplexyFragment.newInstance(patientId, docId);
+                return StrokeSanguineousApoplexyFragment.newInstance(recordId);
             } else if (position == 2) {
-                return StrokArterialAneurysmFragment.newInstance(patientId, docId);
+                return StrokArterialAneurysmFragment.newInstance(recordId);
             } else {
-                return StrokEcaFragment.newInstance(patientId, docId);
+                return StrokEcaFragment.newInstance(recordId);
             }
 
         }

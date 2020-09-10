@@ -38,27 +38,17 @@ public class StrokeThrombolysisFragment extends BaseFragment {
     @BindView(R.id.srl_fresh_frag_stoke_thrombolytic)
     SwipeRefreshLayout srlFreshFragStokeThrombolytic;
 
-    private String mPatientId;
-    private String mDocId;
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
+    private String mRecordId;
 
     public StrokeThrombolysisFragment() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param patientId 患者ID
-     * @param docId     医生id
-     * @return A new instance of fragment StrokeAngioplastyFragment.
-     */
-    public static StrokeThrombolysisFragment newInstance(String patientId, String docId) {
+    public static StrokeThrombolysisFragment newInstance(String recordId) {
         StrokeThrombolysisFragment fragment = new StrokeThrombolysisFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -67,8 +57,7 @@ public class StrokeThrombolysisFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

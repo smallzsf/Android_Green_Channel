@@ -13,13 +13,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.DiseaseRecordRequest;
-import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -76,11 +74,6 @@ public class DiseaseRecordFragment extends BaseFragment {
     @BindView(R.id.llVitalSigns)
     LinearLayout llVitalSigns;
 
-
-
-    private String mPatientId;
-    private String mDocId;
-
     //主诉值
     private String[] mVals = new String[]{"发现", "突发", "被发现", "右侧肢体无力", "左侧肢体无力", "人事不清", "头晕、行走不稳", "言语障碍", "（）小时", "（）天", "加重（）小时"};
     //既往史值
@@ -92,16 +85,15 @@ public class DiseaseRecordFragment extends BaseFragment {
     private String[] mVals5 = new String[]{"胰岛素", "磺酰脲类", "双胍类", "α糖苷酶抑制剂", "胰岛素增敏剂", "非磺酰脲类促胰岛素分泌剂"};
     private String[] mVals6 = new String[]{"他汀类", "烟酸及其衍生物", "贝特类", "胆固醇吸收抑制剂"};
 
+    private String mRecordId;
+
     public DiseaseRecordFragment() {
-        // Required empty public constructor
     }
 
-    public static DiseaseRecordFragment newInstance(String patientId, String docId) {
+    public static DiseaseRecordFragment newInstance(String recordId) {
         DiseaseRecordFragment fragment = new DiseaseRecordFragment();
-        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -110,8 +102,7 @@ public class DiseaseRecordFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -371,7 +362,7 @@ public class DiseaseRecordFragment extends BaseFragment {
     /**
      * 病情评估先删后插
      */
-    private void diseaseRecordEdit(DiseaseRecordRequest.DiseaseRecordEdit   diseaseRecordEdit) {
+    private void diseaseRecordEdit(DiseaseRecordRequest.DiseaseRecordEdit diseaseRecordEdit) {
         String request = GsonUtils.getGson().toJson(diseaseRecordEdit);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -400,9 +391,9 @@ public class DiseaseRecordFragment extends BaseFragment {
 
 
     /**
-     *  病情评估获取
+     * 病情评估获取
      */
-    private void diseaseRecordGet(DiseaseRecordRequest.DiseaseRecordGet   diseaseRecordGet) {
+    private void diseaseRecordGet(DiseaseRecordRequest.DiseaseRecordGet diseaseRecordGet) {
         String request = GsonUtils.getGson().toJson(diseaseRecordGet);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -431,9 +422,9 @@ public class DiseaseRecordFragment extends BaseFragment {
 
 
     /**
-     *  病情评估根据recordid获取
+     * 病情评估根据recordid获取
      */
-    private void diseaseRecordGetByRecordid(DiseaseRecordRequest.DiseaseRecordGetByRecordId   diseaseRecordGetByRecordid) {
+    private void diseaseRecordGetByRecordid(DiseaseRecordRequest.DiseaseRecordGetByRecordId diseaseRecordGetByRecordid) {
         String request = GsonUtils.getGson().toJson(diseaseRecordGetByRecordid);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -459,7 +450,6 @@ public class DiseaseRecordFragment extends BaseFragment {
                     }
                 });
     }
-
 
 
 }

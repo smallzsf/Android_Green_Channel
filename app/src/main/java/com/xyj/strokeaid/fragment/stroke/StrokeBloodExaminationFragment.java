@@ -37,29 +37,24 @@ public class StrokeBloodExaminationFragment extends BaseFragment {
     public static final String[] STROKE_TAB_TITLES = new String[]{"血糖", "血脂四项", "凝血功能", "其它"};
     public static final String[]  CHEST_PAIN_TAB_TITLES = new String[]{"生物标识物", "凝血功能", "血常规", "血生化"};
 
-    private String mPatientId;
-    private String mDocId;
+    private String mRecordId;
 
     public StrokeBloodExaminationFragment() {
-        // Required empty public constructor
     }
 
-    public static StrokeBloodExaminationFragment newInstance(String patientId, String docId) {
+    public static StrokeBloodExaminationFragment newInstance(String recordId) {
         StrokeBloodExaminationFragment fragment = new StrokeBloodExaminationFragment();
-        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

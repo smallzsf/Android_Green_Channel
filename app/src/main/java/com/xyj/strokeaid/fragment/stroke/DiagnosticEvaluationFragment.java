@@ -40,8 +40,6 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     RadioButton rbProgressivity;
     @BindView(R.id.rg_have_disease_way)
     RadioGroup rgHaveDiseaseWay;
-    /* @BindView(R.id.doctor_name_line)
-     View doctorNameLine;*/
     @BindView(R.id.rb_court)
     RadioButton rbCourt;
     @BindView(R.id.rb_lobby)
@@ -101,8 +99,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
 
     @BindView(R.id.ll_diagnostic_evaluation)
     LinearLayout llDiagnosticEvaluation;
-    private String mPatientId;
-    private String mDocId;
+
 
     private ArrayList<String> nosogenesisList;
 
@@ -110,16 +107,15 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
      * 0 == 入院诊断
      * 1 == 出院诊断
      */
+    private String mRecordId;
 
     public DiagnosticEvaluationFragment() {
-        // Required empty public constructor
     }
 
-    public static DiagnosticEvaluationFragment newInstance(String patientId, String docId) {
+    public static DiagnosticEvaluationFragment newInstance(String recordId) {
         DiagnosticEvaluationFragment fragment = new DiagnosticEvaluationFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -128,8 +124,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

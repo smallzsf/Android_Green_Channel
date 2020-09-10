@@ -66,22 +66,19 @@ public class StartGreenwayFragment extends BaseFragment {
          @BindView(R.id.btn_start_frag_sg)
          AppCompatButton btnStart;
      */
-    private String mPatientId;
-    private String mDocId;
+
 
     private StrokeHosRvAdapter mStrokeHosRvAdapter;
     private List<StrokeHosBean> mStrokeHosBeans;
+    private String mRecordId;
 
     public StartGreenwayFragment() {
-        // Required empty public constructor
     }
 
-    public static StartGreenwayFragment newInstance(String patientId, String docId) {
+    public static StartGreenwayFragment newInstance(String recordId) {
         StartGreenwayFragment fragment = new StartGreenwayFragment();
-        LogUtils.d(fragment.getClass() + "newInstance");
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -90,8 +87,7 @@ public class StartGreenwayFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 

@@ -18,6 +18,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.RouterHelper;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
 
@@ -31,45 +32,26 @@ import butterknife.BindView;
  * @Author: crq
  * @CreateDate: 2020/8/29 9:42
  */
-public class StrokeGetInvolvedFragment extends BaseFragment {
+public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
     @BindView(R.id.rv_content_frag_stoke_thrombolytic)
     RecyclerView rvContentFragStokeThrombolytic;
     @BindView(R.id.srl_fresh_frag_stoke_thrombolytic)
     SwipeRefreshLayout srlFreshFragStokeThrombolytic;
 
-    private String mPatientId;
-    private String mDocId;
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
 
     public StrokeGetInvolvedFragment() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param patientId 患者ID
-     * @param docId     医生id
-     * @return A new instance of fragment StrokeGetInvolvedFragment.
-     */
-    public static StrokeGetInvolvedFragment newInstance(String patientId, String docId) {
+    public static StrokeGetInvolvedFragment newInstance(String recordId) {
         StrokeGetInvolvedFragment fragment = new StrokeGetInvolvedFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected void initView(@NonNull View view) {

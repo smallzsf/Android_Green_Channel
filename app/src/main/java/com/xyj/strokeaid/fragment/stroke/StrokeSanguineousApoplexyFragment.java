@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -22,10 +23,8 @@ import butterknife.BindView;
  * @Author: crq
  * @CreateDate: 2020/8/29 9:57
  */
-public class StrokeSanguineousApoplexyFragment extends BaseFragment {
+public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
 
-    private String mPatientId;
-    private String mDocId;
 
     /**
      * 开始时间
@@ -154,23 +153,14 @@ public class StrokeSanguineousApoplexyFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static StrokeSanguineousApoplexyFragment newInstance(String patientId, String docId) {
+    public static StrokeSanguineousApoplexyFragment newInstance(String recordId) {
         StrokeSanguineousApoplexyFragment fragment = new StrokeSanguineousApoplexyFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {

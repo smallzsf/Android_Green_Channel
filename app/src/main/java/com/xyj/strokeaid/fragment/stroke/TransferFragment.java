@@ -81,9 +81,6 @@ public class TransferFragment extends BaseFragment {
     private String[] mVals = new String[]{"无溶栓能力", "无介入能力", "家属意愿"};
     private String[] mVals1 = new String[]{"未给溶栓药物", "已给溶栓药物"};
 
-
-    private String mPatientId;
-    private String mDocId;
     private ArrayList<String> list;
 
     public TransferFragment() {
@@ -100,24 +97,14 @@ public class TransferFragment extends BaseFragment {
     }
 
 
-    public static TransferFragment newInstance(String patientId, String docId) {
+    public static TransferFragment newInstance(String recordId) {
         TransferFragment fragment = new TransferFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {

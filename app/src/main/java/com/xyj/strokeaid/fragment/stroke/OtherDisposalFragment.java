@@ -67,34 +67,20 @@ public class OtherDisposalFragment extends BaseFragment {
     LinearLayout llEduTypeFragOd;
     @BindView(R.id.ll_edu_frag_od)
     LinearLayout llEduFragOd;
-    private String mPatientId;
-    private String mDocId;
+
     /**
      * 0 == 康复治疗
      * 1 == 健康教育
      */
     private int mPageType = 0;
 
-    public OtherDisposalFragment() {
-        // Required empty public constructor
-    }
 
-    public static OtherDisposalFragment newInstance(String patientId, String docId) {
+    public static OtherDisposalFragment newInstance(String recordId) {
         OtherDisposalFragment fragment = new OtherDisposalFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
     }
 
     @Override

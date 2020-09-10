@@ -307,4 +307,11 @@
         <item>其他:cpc_transway_other</item>
     </string-array>
 
+    <string-array name="stroke_state_of_consciousness">
+        <item>清醒:cpc_smtzys_qx</item>
+        <item>对语言有反应:cpc_smtzys_yyfy</item>
+        <item>对刺激有反应:cpc_smtzys_ctfy</item>
+        <item>对任何刺激无反应:cpc_smtzys_rhcj</item>
+    </string-array>
+
 </resources>

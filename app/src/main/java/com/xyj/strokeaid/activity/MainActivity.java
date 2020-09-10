@@ -351,30 +351,30 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                     mDiseasePop.dismiss();
                 }
             });
-
-            TextView tvMaternal = view.findViewById(R.id.tv_maternal_pop_diseases);
-            tvMaternal.setOnClickListener(v -> {
-                mDiseaseType = 4;
-                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
-                tvDiseaseViewSearch.setText("危重孕产妇");
-                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
-                mPatientRvAdapter.notifyDataSetChanged();
-                if (mDiseasePop != null) {
-                    mDiseasePop.dismiss();
-                }
-            });
-
-            TextView tvChild = view.findViewById(R.id.tv_child_pop_diseases);
-            tvChild.setOnClickListener(v -> {
-                mDiseaseType = 5;
-                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
-                tvDiseaseViewSearch.setText("危重儿童");
-                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
-                mPatientRvAdapter.notifyDataSetChanged();
-                if (mDiseasePop != null) {
-                    mDiseasePop.dismiss();
-                }
-            });
+//
+//            TextView tvMaternal = view.findViewById(R.id.tv_maternal_pop_diseases);
+//            tvMaternal.setOnClickListener(v -> {
+//                mDiseaseType = 4;
+//                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
+//                tvDiseaseViewSearch.setText("危重孕产妇");
+//                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+//                mPatientRvAdapter.notifyDataSetChanged();
+//                if (mDiseasePop != null) {
+//                    mDiseasePop.dismiss();
+//                }
+//            });
+//
+//            TextView tvChild = view.findViewById(R.id.tv_child_pop_diseases);
+//            tvChild.setOnClickListener(v -> {
+//                mDiseaseType = 5;
+//                mDefaultMMKV.encode(MmkvKey.HOME_DISEASE_TYPE, mDiseaseType);
+//                tvDiseaseViewSearch.setText("危重儿童");
+//                mPatientBeans.get(0).setDiseaseType(mDiseaseType);
+//                mPatientRvAdapter.notifyDataSetChanged();
+//                if (mDiseasePop != null) {
+//                    mDiseasePop.dismiss();
+//                }
+//            });
 
             mDiseasePop = new PopupWindow(context);
             mDiseasePop.setContentView(view);
