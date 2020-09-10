@@ -2,6 +2,7 @@ package com.xyj.strokeaid.http;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
@@ -13,6 +14,9 @@ import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
+import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
 
@@ -32,6 +36,23 @@ import retrofit2.http.POST;
  * email ：licy3051@qq.com
  */
 public interface ApiService {
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveChestPainTriageInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<ChestPainTriageInfoBean>> getChestPainTriageInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeTrigaeInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeTrigaeInfoBean>> getStrokeTrigaeInfo(@Body RequestBody info);
+
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_LOGIN)
@@ -313,4 +334,31 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE)
     Call<BaseObjectBean> saveIntravenousThrombolysis(@Body RequestBody info);
+
+
+
+
+    /**
+     * 胸痛中心-手术信息-保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE)
+    Call<BaseObjectBean> saveChestPainOperationInfo(@Body RequestBody info);
+
+
+    /**
+     * 胸痛中心-手术信息-获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_INFO_GET)
+    Call<BaseObjectBean<OperationInfoBean>> getChestPainOperationInfo(@Body RequestBody info);
+
+
+
+
+
 }

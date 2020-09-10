@@ -85,7 +85,6 @@
                 android:visibility="visible">
 
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,13 +99,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_1"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_xlsc"
+                            android:tag="cpc_bqpgmx_hxkn"
                             android:text="呼吸困难" />
 
                       <CheckBox
                             android:id="@+id/cb_non_acs_2"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_kzxxjb"
+                            android:tag="cpc_bqpgmx_ft"
                             android:text="胸痛" />
 
 
@@ -119,13 +118,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_3"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_qxxxjb"
+                            android:tag="cpc_bqpgmx_ct"
                             android:text="齿痛" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_4"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_fhxxjb"
+                            android:tag="cpc_bqpgmx_jbt"
                             android:text="肩背痛" />
 
 
@@ -138,13 +137,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_5"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_xjb"
+                            android:tag="cpc_bqpgmx_hbcx"
                             android:text="合并出血" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_6"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_gxb"
+                            android:tag="cpc_bqpgmx_hbxs"
                             android:text="合并心衰" />
 
 
@@ -158,13 +157,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_7"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_bmxxjb"
+                            android:tag="cpc_bqpgmx_hbexxlsc"
                             android:text="合并恶性心律失常" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_8"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_cjxxjgs"
+                            android:tag="cpc_bqpgmx_bmyydhj"
                             android:text="不明原因的昏厥" />
 
                     </LinearLayout>
@@ -177,13 +176,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_9"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_xjt"
+                            android:tag="cpc_bqpgmx_zh"
                             android:text="自汗、大汗淋漓" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_10"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_xj"
+                            android:tag="cpc_bqpgmx_xhxj"
                             android:text="心慌心悸" />
                     </LinearLayout>
 
@@ -195,13 +194,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_11"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_fc"
+                            android:tag="cpc_bqpgmx_fzba"
                             android:text="烦躁不安" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_12"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_gxy"
+                            android:tag="cpc_bqpgmx_jqbsfg"
                             android:text="颈前部束缚感" />
                     </LinearLayout>
 
@@ -213,13 +212,13 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_13"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_xs"
+                            android:tag="cpc_bqpgmx_fl"
                             android:text="乏力" />
 
                         <CheckBox
                             android:id="@+id/cb_non_acs_14"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_fp"
+                            android:tag="cpc_bqpgmx_qc"
                             android:text="气喘" />
 
 
@@ -233,14 +232,10 @@
                         <CheckBox
                             android:id="@+id/cb_non_acs_15"
                             style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_sz"
+                            android:tag="cpc_bqpgmx_qt"
                             android:text="其它" />
 
-                        <!--<CheckBox
-                            android:id="@+id/cb_non_acs_16"
-                            style="@style/XyjCheckBoxHorizontalWeight"
-                            android:tag="cpc_unacs_fz"
-                            android:text="房早" />-->
+
 
                     </LinearLayout>
 

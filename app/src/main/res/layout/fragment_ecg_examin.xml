@@ -22,84 +22,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="心电图"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
+                    android:gravity="center_vertical"
+                    android:text="心电图" />
 
                 <RadioGroup
                     android:id="@+id/rg_electrocardiogram"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_marginEnd="52dp"
+                    android:layout_weight="1"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
                     <RadioButton
                         android:id="@+id/rb_electrocardiogram_has"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="有"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="有" />
 
                     <RadioButton
-
                         android:id="@+id/rb_electrocardiogram_none"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="无"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="无" />
 
                 </RadioGroup>
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/iv_add_ecg_record"
+                    android:layout_width="@dimen/dp_40"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_add" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
-
-                <TextView
-                    android:id="@+id/tv_add_record"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="新增心电记录"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
             </LinearLayout>
 
             <LinearLayout
@@ -122,7 +85,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
-                    tl:title="诊断时间" />
+                    tl:title="心电图诊断时间" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -136,37 +99,20 @@
 
                 <View style="@style/horizontal_divider" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/ed_ecg_diagnosis_conclusion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
                     android:background="@drawable/shape_grey_stroke_with_white_bg"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/ed_ecg_diagnosis_conclusion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="top"
-                        android:hint="请输入心电图诊断结论..."
-                        android:maxLength="300"
-                        android:minHeight="100dp"
-                        android:padding="10dp"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_999999"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="@dimen/dp_4"
-                        android:text="0/300"
-                        android:textColor="@color/color_222222"
-                        android:textSize="13sp" />
-                </LinearLayout>
+                    android:layout_margin="12dp"
+                    android:gravity="top"
+                    android:hint="请输入心电图诊断结论..."
+                    android:maxLength="300"
+                    android:minHeight="100dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/item_content_size" />
 
                 <View style="@style/horizontal_divider" />
 
@@ -203,7 +149,6 @@
                 </LinearLayout>
             </LinearLayout>
 
-
             <LinearLayout
                 android:id="@+id/ll_ecg_record_two"
                 android:layout_width="match_parent"
@@ -213,7 +158,7 @@
                 android:layout_marginBottom="@dimen/dp_7"
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_ecg_record_close_two"
@@ -244,7 +189,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
                     android:gravity="center"
                     android:maxLength="6"
@@ -256,37 +200,20 @@
 
                 <View style="@style/horizontal_divider" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/ed_ecg_diagnosis_conclusion1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:background="@drawable/shape_grey_stroke_with_white_bg"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/ed_ecg_diagnosis_conclusion1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="top"
-                        android:hint="请输入诊断报告结果..."
-                        android:maxLength="300"
-                        android:minHeight="100dp"
-                        android:padding="10dp"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_999999"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="@dimen/dp_4"
-                        android:text="0/300"
-                        android:textColor="@color/color_222222"
-                        android:textSize="13sp" />
-                </LinearLayout>
+                    android:gravity="top"
+                    android:hint="请输入诊断报告结果..."
+                    android:maxLength="300"
+                    android:minHeight="100dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/item_content_size" />
 
                 <View style="@style/horizontal_divider" />
 
@@ -299,12 +226,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
                         android:text="心电报告文件"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/item_title_size" />
@@ -312,7 +235,6 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"
@@ -366,7 +288,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
                     android:gravity="center"
                     android:maxLength="6"
@@ -378,37 +299,20 @@
 
                 <View style="@style/horizontal_divider" />
 
-                <LinearLayout
+                <EditText
+                    android:id="@+id/ed_ecg_diagnosis_conclusion2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="12dp"
                     android:background="@drawable/shape_grey_stroke_with_white_bg"
-                    android:orientation="vertical">
-
-                    <EditText
-                        android:id="@+id/ed_ecg_diagnosis_conclusion2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:gravity="top"
-                        android:hint="请输入诊断报告结果..."
-                        android:maxLength="300"
-                        android:minHeight="100dp"
-                        android:padding="10dp"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_999999"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="@dimen/dp_4"
-                        android:text="0/300"
-                        android:textColor="@color/color_222222"
-                        android:textSize="13sp" />
-                </LinearLayout>
+                    android:gravity="top"
+                    android:hint="请输入诊断报告结果..."
+                    android:maxLength="300"
+                    android:minHeight="100dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/item_content_size" />
 
                 <View style="@style/horizontal_divider" />
 
@@ -421,7 +325,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:gravity="center"
                         android:maxLength="6"
@@ -434,7 +337,6 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/dp_12"
                         android:layout_weight="1"
                         android:gravity="center_vertical|right"

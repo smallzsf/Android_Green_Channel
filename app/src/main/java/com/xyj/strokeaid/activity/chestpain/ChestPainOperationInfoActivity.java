@@ -1,19 +1,31 @@
 package com.xyj.strokeaid.activity.chestpain;
 
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -24,10 +36,19 @@ import com.zhy.view.flowlayout.TagFlowLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
@@ -74,12 +95,23 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     RadioButton rbTrue;
     @BindView(R.id.rb_delay_false)
     RadioButton rbFalse;
+    @BindView(R.id.et_doctor_input)
+    EditText etDoctorInput;
+    @BindView(R.id.et_recorder_input)
+    EditText etRecorderInput;
+    @BindView(R.id.et_dosage)
+    EditText etDosage;
+    @BindView(R.id.et_unit)
+    EditText etUnit;
     private boolean delayType = false;
     //初步诊断
     private List<String> preliminaryDiagnosisList = new ArrayList<>();
     private List<String> STEMIList = new ArrayList<>();
     private List<String> NSTEMIlist = new ArrayList<>();
     private List<String> UAList = new ArrayList<>();
+    private OperationInfoBean operationInfoBean = null;
+    HashMap<String, String> medicinalHashMap = null;
+    private HashMap<String, String> delayHashMap = null;
 
     @OnClick({R.id.iv_left_base_title_bar, R.id.tv_right_base_title_bar,
             R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient,
@@ -93,6 +125,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_right_base_title_bar:  //保存
+                saveData();
                 break;
             case R.id.rb_delay_true:
                 delayType = true;
@@ -285,6 +318,92 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         }
     }
 
+
+    /**
+     * 保存胸痛手术信息数据
+     */
+    private void saveData() {
+        if (operationInfoBean == null) {
+            operationInfoBean = new OperationInfoBean();
+            return;
+        }
+        //调用获取数据接口
+        RecordIdUtil p = new RecordIdUtil();
+        p.setRecordId("213242341");
+        operationInfoBean.setRecordId(p.getRecordId());
+        //介入医师 pcimedicalstaffid
+        String etDoctor = etDoctorInput.getText().toString().trim();
+        operationInfoBean.setPcimedicalstaffid(etDoctor);
+        //手术记录人 operationfillerid
+        String etRecorder = etRecorderInput.getText().toString().trim();
+        operationInfoBean.setOperationfillerid(etRecorder);
+
+
+        //time 9
+        String time1 = tvActivationTime.getTime();//导管室激活时间
+        String time2 = tvArriveTime.getTime();  //患者到达时间
+        String time3 = tvTimeBegin.getTime(); //手术开始时间
+        String time4 = tvTimePuncture.getTime();//开始穿刺时间
+        String time5 = tvTimeAnticoagulantAdministration.getTime(); //抗凝给药时间
+        String time6 = tvTimeRadiography.getTime();//造影开始时间
+        String time7 = tvTalkTimeAgain.getTime();//再次谈话时间
+        String time8 = tvThroughTimeGuideWire.getTime();  //导丝通过时间
+        String time9 = tvOverTime.getTime();//手术结束时间
+        operationInfoBean.setPcipatientcommunicationagainendtime(time7);//再次谈话时间  再次知情同意
+        operationInfoBean.setActivedsaroomtime(time1);//导管室激活时间
+        operationInfoBean.setPatientarriveddsaroomtime(time2);//患者到达导管室
+        operationInfoBean.setPuncturebegintime(time4);//开始穿刺时间
+        operationInfoBean.setCagbegintime(time6);//造影开始时间
+        operationInfoBean.setSiroperationguidewirepasstime(time8);//导丝通过时间
+        operationInfoBean.setPciendtime(time9);//手术结束时间
+        operationInfoBean.setSsanticoagulantmedicinetime(time5);//抗凝给药时间
+
+
+        /**术中抗凝药物（"cpc_knyw_ptgs": "普 ssanticoagulationdrug
+         *  "cpc_knyw_ptgs": "普通肝素",
+         *                 "cpc_knyw_dfzgs": "低分子肝素",
+         *                 "cpc_knyw_bfrd": "比伐卢定",
+         *                 "cpc_knyw_hdgkn": "磺达肝癸钠"
+         */
+
+        String[] selectData = es_medicinal_name.getSelectData();
+        operationInfoBean.setSsanticoagulationdrug(selectData[1]);
+
+
+        //中抗凝药物剂量  sssanticoagulationdrugdosage
+        operationInfoBean.setSssanticoagulationdrugdosage(etDosage.getText().toString().trim());
+        //术中抗凝药物剂量(单位) sssanticoagulationdrugunit
+        operationInfoBean.setSssanticoagulationdrugunit(etUnit.getText().toString().trim());
+      /*
+        DistListUtil distListUtil = new DistListUtil(this.mContext);
+        distListUtil.initGenderMap(id);
+
+        //术中并发症流布局
+        tagFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+            @Override
+            public void onSelected(Set<Integer> selectPosSet) {
+                HashSet<Integer> selectPos = (HashSet<Integer>) selectPosSet;
+                String genderMapValueKey = chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications);
+                List<String> strings = chestUtil.getMapGenderDataList().get(genderMapValueKey);
+                String data = "";
+                for (Integer selectPo : selectPos) {
+                    String s = strings.get(selectPo);
+                    if (TextUtils.isEmpty(data)) {
+                        data += s;
+                    } else {
+                        data += ("," + s);
+                    }
+                }
+//                intraoperativecomplications
+                bean.setIntraoperativecomplications(data);
+            }
+        });
+*/
+
+        chestPainChestPainOperationInfoSave(operationInfoBean);
+
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_chest_pain_operation_info;
@@ -297,6 +416,37 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        //术中抗凝药物
+   /*
+
+        //**
+         *是否延误
+         *//*
+        delayHashMap = new HashMap<>();
+        delayHashMap.put("症状不明显延误诊断", "cpc_delayreason_zzbmx");
+        delayHashMap.put("家属未到场", "cpc_delayreason_jswdc");
+        delayHashMap.put("医生决策延误", "cpc_delayreason_ysjcyw");
+        delayHashMap.put("排队挂号、缴费、办住院时间长", "cpc_delayreason_pdgh");
+        delayHashMap.put("急诊科处理时间长", "cpc_delayreason_jzkclsjc");
+        delayHashMap.put("手术期间出现并发症", "cpc_delayreason_ssqjcxbfz");
+        delayHashMap.put("超过再灌注时间", "cpc_delayreason_cgzgzsj");
+        delayHashMap.put("未实施绕行急诊方案", "cpc_delayreason_wssrxjzfa");
+        delayHashMap.put("导管室人员未到位", "cpc_delayreason_dgsrywdw");
+        delayHashMap.put("药物缺乏", "cpc_delayreason_ywqf");
+        delayHashMap.put("知情同意时间过长", "cpc_delayreason_zqtysjgc");
+        delayHashMap.put("病情不稳定", "cpc_delayreason_bqbwd");
+        delayHashMap.put("绕行急诊科但未直接入导管室", "cpc_delayreason_rxjzk");
+        delayHashMap.put("导管室占台", "cpc_delayreason_dgszt");
+        delayHashMap.put("转运时间长", "cpc_delayreason_zysjc");
+        delayHashMap.put("经费问题", "cpc_delayreason_jfwt");
+        delayHashMap.put("心内科会诊时间长", "cpc_delayreason_xnkhzsjc");
+        delayHashMap.put("血管通路困难", "cpc_delayreason_xgtlkn");
+        delayHashMap.put("难以绕行病变区域", "cpc_delayreason_nyrxbbqy");
+        delayHashMap.put("心脏骤停或需要气管插管再PCI", "cpc_delayreason_xzzt");
+        delayHashMap.put("急需影像学资料再行PCI", "cpc_delayreason_jxyxxzl");
+        delayHashMap.put("其它原因", "cpc_delayreason_qt");*/
+
+
         titleBarActNpmr.setLeftLayoutClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -313,9 +463,20 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
             }
         });
 
-        List<String> list = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_medicinal));
-        es_medicinal_name.setItemData(list);
+
+        /**
+         * editSpinner设置数据
+         */
+
+        es_medicinal_name.setStringArrayId(R.array.chest_pain_operation_medicinal);
+      /*  List<String> list = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_medicinal));
+        es_medicinal_name.setItemData(list);*/
+        /**
+         * 获取手术信息数据
+         */
+        chestPainChestPainOperationInfoGet();
     }
+
 
     @Override
     public void initListener() {
@@ -336,5 +497,110 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         UAList.add("72H内介入治疗");
         UAList.add("择期介入");
 
+
     }
+
+    /**
+     * 胸痛 手术信息保存
+     */
+    private void chestPainChestPainOperationInfoSave(OperationInfoBean operationInfoBean) {
+
+
+        String request = GsonUtils.getGson().toJson(operationInfoBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveChestPainOperationInfo(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    /**
+     * 胸痛 手术信息获取
+     */
+    private void chestPainChestPainOperationInfoGet() {
+
+        //调用获取数据接口
+        RecordIdUtil p = new RecordIdUtil();
+        p.setRecordId("213242341");
+        String request = GsonUtils.getGson().toJson(p);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getChestPainOperationInfo(requestBody)
+                .enqueue(new Callback<BaseObjectBean<OperationInfoBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<OperationInfoBean>> call, Response<BaseObjectBean<OperationInfoBean>> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                if (response.body().getData() != null) {
+                                    showToast("获取数据成功");
+                                    OperationInfoBean data = response.body().getData();
+                                    getOperationInfo(data);
+                                }
+
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<OperationInfoBean>> call, Throwable t) {
+                        LogUtils.d(call.toString());
+                    }
+                });
+    }
+
+    /**
+     * 获取数据
+     *
+     * @param data
+     */
+    private void getOperationInfo(OperationInfoBean data) {
+        //介入医师 pcimedicalstaffid
+        etDoctorInput.setText(data.getPcimedicalstaffid());
+        //手术记录人 operationfillerid
+        etRecorderInput.setText(data.getOperationfillerid());
+
+        tvTalkTimeAgain.setTime(data.getPcipatientcommunicationagainendtime());//再次谈话时间  再次知情同意
+        tvActivationTime.setTime(data.getActivedsaroomtime());//导管室激活时间
+        tvArriveTime.setTime(data.getPatientarriveddsaroomtime());//患者到达导管室
+        tvTimePuncture.setTime(data.getPuncturebegintime());//开始穿刺时间
+        tvTimeRadiography.setTime(data.getCagbegintime());//造影开始时间
+        tvThroughTimeGuideWire.setTime(data.getSiroperationguidewirepasstime());//导丝通过时间
+        tvOverTime.setTime(data.getPciendtime());//手术结束时间
+        tvTimeAnticoagulantAdministration.setTime(data.getSsanticoagulantmedicinetime());
+        ;//抗凝给药时间
+
+        // ssanticoagulationdrug
+        String text = data.getSsanticoagulationdrug();
+        es_medicinal_name.setStringArrayNormalKey(text);
+        //中抗凝药物剂量  sssanticoagulationdrugdosage
+        etDosage.setText(data.getSssanticoagulationdrugdosage());
+        //术中抗凝药物剂量(单位) sssanticoagulationdrugunit
+        etUnit.setText(data.getSssanticoagulationdrugunit());
+
+    }
+
+
 }

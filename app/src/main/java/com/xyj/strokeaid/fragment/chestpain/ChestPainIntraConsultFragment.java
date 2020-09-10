@@ -172,52 +172,54 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
             return;
         }
         // 心内科
-        if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_no")) {
-            llCardiology.setVisibility(View.GONE);
-            rgCardiology.check(R.id.rb_cardiology_no);
-        } else {
-            llCardiology.setVisibility(View.VISIBLE);
-            if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_scene")) {
-                // 现场
-                rgCardiology.check(R.id.rb_cardiology_site);
-            } else if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_longDistance")) {
-                // 远程
-                rgCardiology.check(R.id.rb_cardiology_remote);
+        if (!TextUtils.isEmpty(intraConsultBean.getInternalmedicineconsultation())) {
+            if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_no")) {
+                llCardiology.setVisibility(View.GONE);
+                rgCardiology.check(R.id.rb_cardiology_no);
+            } else {
+                llCardiology.setVisibility(View.VISIBLE);
+                if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_scene")) {
+                    // 现场
+                    rgCardiology.check(R.id.rb_cardiology_site);
+                } else if (intraConsultBean.getInternalmedicineconsultation().contains("cpc_internalMedicine_longDistance")) {
+                    // 远程
+                    rgCardiology.check(R.id.rb_cardiology_remote);
+                }
+                // 申请人
+                esCardiologyProposer.setText(mIntraConsultBean.getInternalmedicineconsultationapplicantid());
+                // 申请时间
+                ttbCardiologyProposerTime.setTime(mIntraConsultBean.getInternalmedicinenotifiedconsultationtime());
+                // 心内科医生
+                esCardiologyDoc.setText(mIntraConsultBean.getInternalmedicineconsultationdoctorid());
+                // 会诊时间
+                ttbCardiologyDocArrive.setTime(mIntraConsultBean.getInternalmedicineconsultationtime());
             }
-            // 申请人
-            esCardiologyProposer.setText(mIntraConsultBean.getInternalmedicineconsultationapplicantid());
-            // 申请时间
-            ttbCardiologyProposerTime.setTime(mIntraConsultBean.getInternalmedicinenotifiedconsultationtime());
-            // 心内科医生
-            esCardiologyDoc.setText(mIntraConsultBean.getInternalmedicineconsultationdoctorid());
-            // 会诊时间
-            ttbCardiologyDocArrive.setTime(mIntraConsultBean.getInternalmedicineconsultationtime());
         }
+        if (!TextUtils.isEmpty(intraConsultBean.getSurgeryconsultation())) {
+            // 心外科
+            if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_no")) {
+                llCardialSurgery.setVisibility(View.GONE);
+                rgCardialSurgery.check(R.id.rb_cardial_surgery_no);
+            } else {
+                llCardialSurgery.setVisibility(View.VISIBLE);
+                if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_scene")) {
+                    // 现场
+                    rgCardialSurgery.check(R.id.rb_cardial_surgery_site);
+                } else if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_longDistance")) {
+                    // 远程
+                    rgCardialSurgery.check(R.id.rb_cardial_surgery_remote);
+                }
 
-        // 心外科
-        if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_no")) {
-            llCardialSurgery.setVisibility(View.GONE);
-            rgCardialSurgery.check(R.id.rb_cardial_surgery_no);
-        } else {
-            llCardialSurgery.setVisibility(View.VISIBLE);
-            if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_scene")) {
-                // 现场
-                rgCardialSurgery.check(R.id.rb_cardial_surgery_site);
-            } else if (intraConsultBean.getSurgeryconsultation().contains("cpc_surgery_longDistance")) {
-                // 远程
-                rgCardialSurgery.check(R.id.rb_cardial_surgery_remote);
+                // 申请人
+                esCardialSurgeryProposer.setText(mIntraConsultBean.getSurgeryconsultationapplicantid());
+                // 申请时间
+                ttbCardialSurgeryProposerTime.setTime(mIntraConsultBean.getSurgerynotifiedconsultationtime());
+                // 心外科医生
+                esCardialSurgeryDoc.setText(mIntraConsultBean.getSurgeryconsultationdoctorid());
+                // 会诊时间
+                ttbCardialSurgeryDocArrive.setTime(mIntraConsultBean.getSurgeryconsultationtime());
             }
-
-            // 申请人
-            esCardialSurgeryProposer.setText(mIntraConsultBean.getSurgeryconsultationapplicantid());
-            // 申请时间
-            ttbCardialSurgeryProposerTime.setTime(mIntraConsultBean.getSurgerynotifiedconsultationtime());
-            // 心外科医生
-            esCardialSurgeryDoc.setText(mIntraConsultBean.getSurgeryconsultationdoctorid());
-            // 会诊时间
-            ttbCardialSurgeryDocArrive.setTime(mIntraConsultBean.getSurgeryconsultationtime());
         }
-
     }
 
 

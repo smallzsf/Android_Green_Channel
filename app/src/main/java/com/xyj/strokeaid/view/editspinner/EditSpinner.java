@@ -24,7 +24,6 @@ import android.widget.RelativeLayout;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 
-import com.umeng.commonsdk.debug.D;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.activity.chestpain.DistListUtil;
 
@@ -127,13 +126,15 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     public void setText(String text) {
         selectPosition = -1;
-        for (int i = 0; i < mData.size(); i++) {
-            if (TextUtils.equals(mData.get(i), text)) {
-                selectPosition = i;
+        editText.setText(text);
+        if (mData != null) {
+            for (int i = 0; i < mData.size(); i++) {
+                if (TextUtils.equals(mData.get(i), text)) {
+                    selectPosition = i;
+                }
             }
         }
-        editText.setText(text);
-        if (popupWindow != null && popupWindow.isShowing()){
+        if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
         }
     }
@@ -281,7 +282,7 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     @Override
     public final void afterTextChanged(Editable s) {
-        String key = s.toString();
+        String key = s.toString().trim();
         if (onSelectStringLitner != null) {
             onSelectStringLitner.getSeletedString(key);
         }

@@ -10,6 +10,10 @@ package com.xyj.strokeaid.bean.chestpain;
  */
 public class OperationInfoBean {
 
+    private String id;
+    private String recordId;
+
+
     /**
      * 介入医师
      */
@@ -83,6 +87,134 @@ public class OperationInfoBean {
      */
     private String cagresult;
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
+
+    public String getPcimedicalstaffid() {
+        return pcimedicalstaffid;
+    }
+
+    public void setPcimedicalstaffid(String pcimedicalstaffid) {
+        this.pcimedicalstaffid = pcimedicalstaffid;
+    }
+
+    public String getOperationfillerid() {
+        return operationfillerid;
+    }
+
+    public void setOperationfillerid(String operationfillerid) {
+        this.operationfillerid = operationfillerid;
+    }
+
+    public String getPcipatientcommunicationagainendtime() {
+        return pcipatientcommunicationagainendtime;
+    }
+
+    public void setPcipatientcommunicationagainendtime(String pcipatientcommunicationagainendtime) {
+        this.pcipatientcommunicationagainendtime = pcipatientcommunicationagainendtime;
+    }
+
+    public String getActivedsaroomtime() {
+        return activedsaroomtime;
+    }
+
+    public void setActivedsaroomtime(String activedsaroomtime) {
+        this.activedsaroomtime = activedsaroomtime;
+    }
+
+    public String getPatientarriveddsaroomtime() {
+        return patientarriveddsaroomtime;
+    }
+
+    public void setPatientarriveddsaroomtime(String patientarriveddsaroomtime) {
+        this.patientarriveddsaroomtime = patientarriveddsaroomtime;
+    }
+
+    public String getPuncturebegintime() {
+        return puncturebegintime;
+    }
+
+    public void setPuncturebegintime(String puncturebegintime) {
+        this.puncturebegintime = puncturebegintime;
+    }
+
+    public String getCagbegintime() {
+        return cagbegintime;
+    }
+
+    public void setCagbegintime(String cagbegintime) {
+        this.cagbegintime = cagbegintime;
+    }
+
+    public String getSiroperationguidewirepasstime() {
+        return siroperationguidewirepasstime;
+    }
+
+    public void setSiroperationguidewirepasstime(String siroperationguidewirepasstime) {
+        this.siroperationguidewirepasstime = siroperationguidewirepasstime;
+    }
+
+    public String getPciendtime() {
+        return pciendtime;
+    }
+
+    public void setPciendtime(String pciendtime) {
+        this.pciendtime = pciendtime;
+    }
+
+    public String getSsanticoagulantmedicinetime() {
+        return ssanticoagulantmedicinetime;
+    }
+
+    public void setSsanticoagulantmedicinetime(String ssanticoagulantmedicinetime) {
+        this.ssanticoagulantmedicinetime = ssanticoagulantmedicinetime;
+    }
+
+    public String getSsanticoagulationdrug() {
+        return ssanticoagulationdrug;
+    }
+
+    public void setSsanticoagulationdrug(String ssanticoagulationdrug) {
+        this.ssanticoagulationdrug = ssanticoagulationdrug;
+    }
+
+    public String getSssanticoagulationdrugdosage() {
+        return sssanticoagulationdrugdosage;
+    }
+
+    public void setSssanticoagulationdrugdosage(String sssanticoagulationdrugdosage) {
+        this.sssanticoagulationdrugdosage = sssanticoagulationdrugdosage;
+    }
+
+    public String getSssanticoagulationdrugunit() {
+        return sssanticoagulationdrugunit;
+    }
+
+    public void setSssanticoagulationdrugunit(String sssanticoagulationdrugunit) {
+        this.sssanticoagulationdrugunit = sssanticoagulationdrugunit;
+    }
+
+    public String getCagresult() {
+        return cagresult;
+    }
+
+    public void setCagresult(String cagresult) {
+        this.cagresult = cagresult;
+    }
 }
 
     

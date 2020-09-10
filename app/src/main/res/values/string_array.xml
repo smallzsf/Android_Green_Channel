@@ -61,10 +61,10 @@
     </string-array>
 
     <string-array name="chest_pain_operation_medicinal">
-        <item>普通肝素</item>
-        <item>低分子肝素</item>
-        <item>比伐卢定</item>
-        <item>磺达肝癸钠</item>
+        <item>普通肝素:cpc_knyw_ptgs</item>
+        <item>低分子肝素:cpc_knyw_dfzgs</item>
+        <item>比伐卢定:cpc_knyw_bfrd</item>
+        <item>磺达肝癸钠:cpc_knyw_hdgkn</item>
     </string-array>
 
     <string-array name="chest_pain_operation_intraoperative_complications">

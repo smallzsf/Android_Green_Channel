@@ -15,8 +15,8 @@ public class ApiUrls {
     public static final String PRODUCTION_ENVIRONMENT_FOR_API = "https://ykj.yjjk.net.cn/";
     public static final String PRODUCTION_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk.net.cn/";
 
-    public static final String DEVELOP_ENVIRONMENT_FOR_API = "https://ykj.yjjk366.com/";
-    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_API = "http://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "http://ykj.yjjk366.com/";
 
     /**
      * PRODUCTION_ENVIRONMENT_FILE_SERVER
@@ -55,11 +55,11 @@ public class ApiUrls {
     /**
      * 通用获取接口
      */
-    public static final String NET_URL_COMMON_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
+    public static final String NET_URL_COMMON_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByKeyList";
     /**
      * 通用保存接口
      */
-    public static final String NET_URL_COMMON_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getByRecordID";
+    public static final String NET_URL_COMMON_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/editForApp";
     /**
      * 新建患者信息
      */
@@ -243,6 +243,29 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_LABORATORY_EXAMINATION_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit";
 
+
+
+        /**
+         * 胸痛中心-手术信息-保存
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/room/edit";
+
+
+
+        /**
+         * 胸痛中心-手术信息-获取
+         */
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_GET= "yjjk-gateway/yjjk-cdm-api/v1/room/get";
+
+        /**
+         * 胸痛中心-胸痛诊疗-心电图-详情获取
+         */
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcgDetail/getByRecordId";
+
+        /**
+         * 胸痛中心-胸痛诊疗-心电图 主表添加
+         */
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
 
     }
 

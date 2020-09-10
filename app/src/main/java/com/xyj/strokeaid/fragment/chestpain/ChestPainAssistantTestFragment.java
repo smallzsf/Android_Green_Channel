@@ -3,6 +3,7 @@ package com.xyj.strokeaid.fragment.chestpain;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,15 +16,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.blankj.utilcode.util.LogUtils;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.bean.file.FileInfoBean;
+import com.xyj.strokeaid.http.FileServiceImpl;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -94,6 +103,9 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
     private ChestPainImageExaminationBean.DataBean data;
     private String mRecordId;
+    private SparseArray<LocalMedia> mLocalMedias;
+    private final int CT_PHOTO = 1;
+    private final int CT_REPORT = 2;
 
     public ChestPainAssistantTestFragment() {
 
@@ -122,6 +134,8 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+        mLocalMedias = new SparseArray<>();
+
         loadData();
     }
 
@@ -166,7 +180,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (data == null) {
             return;
         }
-        if (!TextUtils.isEmpty(data.getImageexam())){
+        if (!TextUtils.isEmpty(data.getImageexam())) {
             if (data.getImageexam().contains("cpc_imageexam_none")) {
                 cbNotDone.setChecked(true);
             } else {
@@ -258,9 +272,91 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.tv_ct_check_post:
                 //ct片子上传
+                showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 拍照
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }, new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 相册
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            if (data != null) {
+                                                LogUtils.d(data.toString());
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
                 break;
             case R.id.tv_ct_result_post:
                 //ct报告上传
+                showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 拍照
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_REPORT, localMedia);
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }, new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 相册
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_REPORT, localMedia);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
                 break;
             case R.id.btn_confirm:
                 preSave();

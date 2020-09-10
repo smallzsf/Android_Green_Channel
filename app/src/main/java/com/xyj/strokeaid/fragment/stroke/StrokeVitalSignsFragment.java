@@ -32,8 +32,6 @@ import butterknife.BindView;
 public class StrokeVitalSignsFragment extends BaseFragment {
 
 
-    @BindView(R.id.awareness)
-    TextView awareness;
     @BindView(R.id.es_vital_sign_aware)
     EditSpinner esVitalSignAware;
     @BindView(R.id.breath)

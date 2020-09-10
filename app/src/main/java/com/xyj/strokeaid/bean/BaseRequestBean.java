@@ -14,12 +14,30 @@ import java.util.List;
  * @date : 2020/9/9
  * email ：licy3051@qq.com
  */
-public abstract class BaseRequestBean<T extends Object> extends BaseBean<BaseRequestBean> {
+public class BaseRequestBean<T extends Object> extends BaseBean<BaseRequestBean> {
 
 
+    /**
+     * 患者主表id
+     */
     private String recordId;
-    private List<String> listString;
+    /**
+     * 疾病类型   2 胸痛
+     */
+    private int emergencyType;
+    private List<String> keyList;
     private T data;
+
+    public BaseRequestBean(String recordId, int emergencyType, T data) {
+        this.recordId = recordId;
+        this.emergencyType = emergencyType;
+        this.data = data;
+        this.keyList = new ArrayList<>();
+        Field[] declaredFields = data.getClass().getDeclaredFields();
+        for (Field declaredField : declaredFields) {
+            keyList.add(declaredField.getName());
+        }
+    }
 
     public String getRecordId() {
         return recordId;
@@ -27,15 +45,6 @@ public abstract class BaseRequestBean<T extends Object> extends BaseBean<BaseReq
 
     public void setRecordId(String recordId) {
         this.recordId = recordId;
-    }
-
-    public List<String> getListString() {
-        this.listString = new ArrayList<>();
-        Field[] declaredFields = data.getClass().getDeclaredFields();
-        for (Field declaredField : declaredFields) {
-            listString.add(declaredField.getName());
-        }
-        return listString;
     }
 
 }
