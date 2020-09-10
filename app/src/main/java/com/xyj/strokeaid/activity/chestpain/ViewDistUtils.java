@@ -81,10 +81,8 @@ public class ViewDistUtils<T extends CompoundButton> {
             mapTextToView.put(text, view);
             view.setText(text);
             view.setOnClickListener(clickListener);
-//            setViewData(view, text);
         }
     }
-
 
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
@@ -109,6 +107,9 @@ public class ViewDistUtils<T extends CompoundButton> {
         String selectText = String.valueOf(t.getText());
         selectViewKey = distListUtil.getValueDataToStringKey(dataRrrayId, selectText);
         t.setChecked(true);
+        if (listener != null) {
+            listener.onClick(t);
+        }
     }
 
     public void setStringArrayNormalKey(String keyData) {
@@ -130,5 +131,15 @@ public class ViewDistUtils<T extends CompoundButton> {
     public String getSelectViewKey() {
         return selectViewKey;
     }
+    private ViewClickListener listener;
+
+    private void setViewClickListener(ViewClickListener listener) {
+        this.listener = listener;
+    }
+
+    private interface ViewClickListener<T> {
+        void onClick(T view);
+    }
+
 
 }
