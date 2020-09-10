@@ -1,495 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <TextView
                 style="@style/Text_Blue_Content_Style"
                 android:text="患者转归" />
+
             <com.zhy.view.flowlayout.FlowLayout
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
                 <RadioButton
                     android:id="@+id/rb_leave_hospital"
+                    style="@style/XyjRadionButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp_5"
-                    android:text="出院"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:text="出院" />
+
                 <RadioButton
                     android:id="@+id/rb_transform_hospital"
+                    style="@style/XyjRadionButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp_5"
-                    android:text="转送其它医院"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:text="转送其它医院" />
+
                 <RadioButton
                     android:id="@+id/rb_transform_department"
+                    style="@style/XyjRadionButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp_5"
-                    android:text="转送其它科室"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:text="转送其它科室" />
+
                 <RadioButton
                     android:id="@+id/rb_die"
+                    style="@style/XyjRadionButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/dp_5"
-                    android:text="死亡"
-                    android:textSize="@dimen/item_content_size" />
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:text="死亡" />
 
             </com.zhy.view.flowlayout.FlowLayout>
-            <LinearLayout
-                android:paddingStart="@dimen/dp_20"
-                android:paddingEnd="@dimen/dp_20"
-                android:gravity="center_vertical"
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_live_hos_days"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="@dimen/item_content_size"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="住院天数"/>
-                <EditText
-                    android:id="@+id/et_hospitalization_day"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="left"
-                    android:hint="单行输入"
-                    android:padding="@dimen/dp_5"
-                    android:textSize="@dimen/item_content_size" />
-                <TextView
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/item_content_size"
-                    android:text="天"/>
-            </LinearLayout>
-            <LinearLayout
-                android:paddingStart="@dimen/dp_20"
-                android:paddingEnd="@dimen/dp_20"
-                android:gravity="center_vertical"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="住院天数"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="天"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_live_icu_days"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="@dimen/item_content_size"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="住ICU天数"/>
-                <EditText
-                    android:id="@+id/et_ICU_day"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="left"
-                    android:hint="单行输入"
-                    android:padding="@dimen/dp_5"
-                    android:textSize="@dimen/item_content_size" />
-                <TextView
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/item_content_size"
-                    android:text="天"/>
-            </LinearLayout>
-            <LinearLayout
-                android:paddingStart="@dimen/dp_20"
-                android:paddingEnd="@dimen/dp_20"
-                android:gravity="center_vertical"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="住ICU天数"
+                app:ieb_unit_text="天"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_breath_machine_times"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="@dimen/item_content_size"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="呼吸机使用时长"/>
-                <EditText
-                    android:id="@+id/et_respirator_timer"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="left"
-                    android:hint="单行输入"
-                    android:padding="@dimen/dp_5"
-                    android:textSize="@dimen/item_content_size" />
-                <TextView
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/item_content_size"
-                    android:text="小时"/>
-            </LinearLayout>
-            <LinearLayout
-                android:paddingStart="@dimen/dp_20"
-                android:paddingEnd="@dimen/dp_20"
-                android:gravity="center_vertical"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="呼吸机使用时长"
+                app:ieb_unit_text="小时"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_total_cost"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_40"
-                android:orientation="horizontal">
-                <TextView
-                    android:textSize="@dimen/item_content_size"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="总费用"/>
-                <EditText
-                    android:id="@+id/et_totalcost"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_edittext_bg"
-                    android:gravity="left"
-                    android:hint="单行输入"
-                    android:padding="@dimen/dp_5"
-                    android:textSize="@dimen/item_content_size" />
-                <TextView
-                    android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/item_content_size"
-                    android:text="元"/>
-            </LinearLayout>
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="总费用"
+                app:ieb_unit_text="元"
+                app:ieb_unit_visible="true" />
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/ll_leavehospital"
-                android:paddingEnd="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
-                    android:text="出院"
-                    android:textSize="@dimen/item_content_size"/>
+                android:visibility="gone">
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_leave_hospital"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     app:title="出院时间" />
+
                 <TextView
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
-                    android:text="治疗结果"
-                    android:textSize="@dimen/item_content_size"/>
-                <com.zhy.view.flowlayout.FlowLayout
-                    android:paddingStart="@dimen/dp_12"
-                    android:paddingEnd="@dimen/dp_12"
+                    style="@style/tv_normal_titel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/dp_40"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="治疗结果" />
+
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12">
+
                     <RadioButton
                         android:id="@+id/rb_result_ok"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:text="治愈"
-                        android:textSize="@dimen/item_content_size" />
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginEnd="@dimen/item_normal_margin"
+                        android:text="治愈" />
+
                     <RadioButton
                         android:id="@+id/rb_result_better"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:text="好转"
-                        android:textSize="@dimen/item_content_size" />
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginEnd="@dimen/item_normal_margin"
+                        android:text="好转" />
+
                     <RadioButton
                         android:id="@+id/rb_leave_self"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:text="自动离院"
-                        android:textSize="@dimen/item_content_size" />
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginEnd="@dimen/item_normal_margin"
+                        android:text="自动离院" />
+
                     <RadioButton
                         android:id="@+id/rb_result_other"
+                        style="@style/XyjRadionButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/dp_5"
-                        android:text="其它原因离院"
-                        android:textSize="@dimen/item_content_size" />
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginEnd="@dimen/item_normal_margin"
+                        android:text="其它原因离院" />
 
                 </com.zhy.view.flowlayout.FlowLayout>
 
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/ll_transferhospital"
-                android:paddingEnd="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
-                    android:text="转送其它医院"
-                    android:textSize="@dimen/item_content_size"/>
+                android:visibility="gone">
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_leave_hospital_door"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
-                    app:title="离开本院大门时间" />
+                    app:title="离开本院大门" />
+
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_hos_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="医院名称"
+                    app:ieb_unit_text="小时"
+                    app:ieb_unit_visible="true" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_40"
-                        android:text="医院名称"
-                        android:textSize="@dimen/item_content_size"/>
-                    <EditText
-                        android:id="@+id/et_hospitalization_name"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="left"
-                        android:hint="单行输入"
-                        android:padding="@dimen/dp_5"
-                        android:textSize="@dimen/item_content_size" />
-
-                </LinearLayout>
-                <LinearLayout
                     android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/item_normal_margin">
+
                     <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
                         android:layout_height="@dimen/dp_40"
-                        android:text="网络医院"
-                        android:textSize="@dimen/item_content_size"/>
+                        android:gravity="center_vertical"
+                        android:text="网络医院" />
+
                     <RadioGroup
                         android:id="@+id/rg_is_net"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    <RadioButton
-                        android:id="@+id/rb_nethospital_true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="是"
-                        />
-                    <RadioButton
-                        android:id="@+id/rb_nethospital_flase"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="否"
-                        />
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_marginStart="@dimen/item_normal_margin"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_nethospital_true"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="是" />
+
+                        <RadioButton
+                            android:id="@+id/rb_nethospital_flase"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="否" />
                     </RadioGroup>
                 </LinearLayout>
 
 
-
-
-
             </LinearLayout>
+
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/ll_transferdepartment"
-                android:paddingEnd="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
-                    android:text="转送其它科室"
-                    android:textSize="@dimen/item_content_size"/>
+                android:visibility="gone">
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_transfer_department"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     app:title="转科时间" />
-                <LinearLayout
+
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="接诊科室" />
 
-                    <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_40"
-                        android:text="接诊科室"
-                        android:textSize="@dimen/item_content_size"/>
-                    <EditText
-                        android:id="@+id/et_reception_department"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="left"
-                        android:hint="单行输入"
-                        android:padding="@dimen/dp_5"
-                        android:textSize="@dimen/item_content_size" />
-
-                </LinearLayout>
-                <LinearLayout
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_40"
-                        android:text="转科原因"
-                        android:textSize="@dimen/item_content_size"/>
-                    <EditText
-                        android:id="@+id/et_transfer_reason"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="left"
-                        android:hint="单行输入"
-                        android:padding="@dimen/dp_5"
-                        android:textSize="@dimen/item_content_size" />
-
-                </LinearLayout>
-
-
-
-
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="转科原因" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/ll_die"
-                android:visibility="gone"
-                android:paddingEnd="@dimen/dp_20"
-                android:paddingStart="@dimen/dp_20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:gravity="center_vertical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp_40"
-                    android:text="死亡"
-                    android:textSize="@dimen/item_content_size"/>
+                android:visibility="gone">
 
-                <LinearLayout
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="死亡地点" />
 
-                    <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_40"
-                        android:text="死亡地点"
-                        android:textSize="@dimen/item_content_size"/>
-                    <EditText
-                        android:id="@+id/et_die_location"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="left"
-                        android:hint="单行输入"
-                        android:padding="@dimen/dp_5"
-                        android:textSize="@dimen/item_content_size" />
-
-                </LinearLayout>
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttb_die_date"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     app:title="死亡时间" />
-                <LinearLayout
+
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_40"
-                    android:orientation="horizontal"
-                    >
-
-                    <TextView
-                        android:gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp_40"
-                        android:text="死亡原因"
-                        android:textSize="@dimen/item_content_size"/>
-                    <EditText
-                        android:id="@+id/et_die_reason"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_edittext_bg"
-                        android:gravity="left"
-                        android:hint="单行输入"
-                        android:padding="@dimen/dp_5"
-                        android:textSize="@dimen/item_content_size" />
-
-                </LinearLayout>
-
-
-
-
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="死亡原因" />
 
             </LinearLayout>
 
-
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
         </LinearLayout>
 
 
-
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+
 
 </LinearLayout>

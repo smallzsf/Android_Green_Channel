@@ -66,10 +66,8 @@ public class TraumaPatientActivity extends BaseActivity {
     @BindView(R.id.vp_content_act_tp)
     ViewPager2 vpContentActTp;
 
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -105,7 +103,7 @@ public class TraumaPatientActivity extends BaseActivity {
         rvMenuActTp.setAdapter(mMenuRvAdapter);
 
         vpContentActTp.setUserInputEnabled(false);
-        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, "", ""));
+        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, mRecordId));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -120,7 +118,7 @@ public class TraumaPatientActivity extends BaseActivity {
                 .setLeftLayoutClickListener(v -> finish())
                 .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                         .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
+                        .withString(IntentKey.RECORD_ID, mRecordId)
                         .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -153,16 +151,13 @@ public class TraumaPatientActivity extends BaseActivity {
     }
 
 
-
     private class TraumaMenuVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public TraumaMenuVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+        public TraumaMenuVpAdapter(@NonNull FragmentActivity fragmentActivity, String recordId) {
             super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
         @NonNull
@@ -171,31 +166,31 @@ public class TraumaPatientActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 发病现场
-                    return DiseaseSceneFragment.newInstance(patientId, docId);
+                    return DiseaseSceneFragment.newInstance(recordId, recordId);
                 case 1:
                     // 急诊救治
-                    return DiseaseTreatmentFragment.newInstance(patientId, docId);
+                    return DiseaseTreatmentFragment.newInstance(recordId, recordId);
                 case 2:
                     //检验信息
-                    return InspectionInformationFragment.newInstance(patientId, docId);
+                    return InspectionInformationFragment.newInstance(recordId, recordId);
                 case 3:
                     //心电检查
-                    return ElectrocardiographCheckFragment.newInstance(patientId, docId);
+                    return ElectrocardiographCheckFragment.newInstance(recordId, recordId);
                 case 4:
                     //影像检查
-                    return ImageCheckFragment.newInstance(patientId, docId);
+                    return ImageCheckFragment.newInstance(recordId, recordId);
                 case 5:
                     //会诊信息
-                    return ConsultationInfoFragment.newInstance(patientId, docId);
+                    return ConsultationInfoFragment.newInstance(recordId, recordId);
                 case 6:
                     //手术信息
-                    return OperationInfoFragment.newInstance(patientId, docId);
+                    return OperationInfoFragment.newInstance(recordId, recordId);
                 case 7:
                     // 評分工具
-                    return TraumaStrokeScoresFragment.newInstance(patientId, docId);
+                    return TraumaStrokeScoresFragment.newInstance(recordId, recordId);
                 case 8:
                     //患者转归
-                    return OutcomeOfPatientsFragment.newInstance(patientId, docId);
+                    return OutcomeOfPatientsFragment.newInstance(recordId);
 
                 default:
                     return EmptyFragment.newInstance();

@@ -2,228 +2,234 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1">
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="创伤科"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_trauma"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_trauma_select"
+                style="@style/Text_Blue_Content_Style"
+                android:text="创伤科" />
 
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
 
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
+                <EditText
+                    android:id="@+id/et_trauma"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
 
+                <TextView
+                    android:id="@+id/tv_trauma_select"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="神经外科" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_neurosurgery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_neurosurgery_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="骨科" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_orthopaedics"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_orthopaedics_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="胸外科" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_chestsurgery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_chestsurgery_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="普外科" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_generalsurgery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_generalsurgery_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="泌尿外科" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_40"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/et_urology"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="left"
+                    android:hint="单行输入"
+                    android:padding="@dimen/dp_5"
+                    android:textSize="@dimen/item_content_size" />
+
+                <TextView
+                    android:id="@+id/tv_urology_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/dp_20"
+                    android:paddingRight="@dimen/dp_20"
+                    android:text="选择" />
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="神经外科"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
+    </androidx.core.widget.NestedScrollView>
 
-            <EditText
-                android:id="@+id/et_neurosurgery"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
-
-            <TextView
-android:id="@+id/tv_neurosurgery_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
-
-
-
-        </LinearLayout>
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="骨科"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_orthopaedics"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
-
-            <TextView
-android:id="@+id/tv_orthopaedics_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
-
-
-
-        </LinearLayout>
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="胸外科"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_chestsurgery"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
-
-            <TextView
-android:id="@+id/tv_chestsurgery_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
-
-
-
-        </LinearLayout>
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="普外科"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_generalsurgery"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
-
-            <TextView
-android:id="@+id/tv_generalsurgery_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
-
-
-
-        </LinearLayout>
-        <TextView
-            style="@style/Text_Blue_Content_Style"
-            android:text="泌尿外科"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_40"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/et_urology"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/dp_20"
-                android:layout_weight="1"
-                android:background="@drawable/shape_edittext_bg"
-                android:gravity="left"
-                android:hint="单行输入"
-                android:padding="@dimen/dp_5"
-                android:textSize="@dimen/item_content_size" />
-
-            <TextView
-                android:id="@+id/tv_urology_select"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-
-                android:gravity="center"
-                android:paddingLeft="@dimen/dp_20"
-                android:paddingRight="@dimen/dp_20"
-                android:text="选择" />
-
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn"
         android:layout_width="match_parent"
