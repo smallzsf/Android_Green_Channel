@@ -338,4 +338,12 @@
         <item>其他:cpc_transway_other</item>
     </string-array>
 
+    <string-array name="chest_pain_treament_decision">
+        <item>直接PCI:cpc_stemi_zgzcsv2_zjpci</item>
+        <item>溶栓:cpc_stemi_zgzcsv2_rs</item>
+        <item>择期介入:cpc_stemi_zgzcsv2_zqjr</item>
+        <item>CABG:cpc_stemi_zgzcsv2_cabg</item>
+        <item>转运PCI:cpc_stemi_zgzcsv2_zypci</item>
+    </string-array>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -10,16 +11,26 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.chestpain.DistListUtil;
+import com.xyj.strokeaid.activity.chestpain.RadioButtonDistUtil;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.chestpain.ReperfusionMeasuresBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * TreatmentDecisionFragment
@@ -129,8 +140,14 @@ public class TreatmentDecisionFragment extends BaseFragment {
     MyRadioGroup rgReperfusionWays;
     @BindView(R.id.ll_thrombolysis)
     LinearLayout llThrombolysis;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
 
     private String mRecordId;
+
+    DistListUtil distListUtil = new DistListUtil(context);
+
+    RadioButtonDistUtil radioButtonDistUtil;
 
     public TreatmentDecisionFragment() {
     }
@@ -165,7 +182,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        distListUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);
     }
 
     @Override
@@ -235,6 +252,70 @@ public class TreatmentDecisionFragment extends BaseFragment {
                 }
             }
         });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveData();
+            }
+        });
+    }
+
+    private void saveData() {
+        ReperfusionMeasuresBean bean = new ReperfusionMeasuresBean();
+//        rb_reperfusion_yes
+        if (!rbReperfusionNo.isChecked() && !rbReperfusionYes.isChecked()) {
+            showToast("保存失败，未设置信息");
+            return;
+        }
+        if (!rbReperfusionYes.isChecked()) {
+//            rb_into_measure_level_1
+            if (!rbIntoMeasureLevel1.isChecked()) {
+                // 直接PCI
+
+            } else if (rbIntoMeasureLevel2.isChecked()) {
+                // 溶栓
+            } else if (rbIntoMeasureLevel2.isChecked()) {
+                //  择期介入
+            } else if (rbIntoMeasureLevel2.isChecked()) {
+                // CABG
+            } else if (rbIntoMeasureLevel2.isChecked()) {
+                // 转运pci
+            }
+        }
+        // 保存到网络
+        save(bean);
+    }
+
+    /**
+     * 保存到网络
+     *
+     * @param bean
+     */
+    private void save(ReperfusionMeasuresBean bean) {
+        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .saveChestPainsuEmergencyCenter(bean.getResuestBody(bean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse" + response);
+                        if (response != null && response.body() != null) {
+                            BaseObjectBean body = response.body();
+                            if (body.getResult() == 1) {
+                                showToast("数据保存成功");
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
+
 
     }
 }
