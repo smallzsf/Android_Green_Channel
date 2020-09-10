@@ -28,8 +28,6 @@ import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
-import com.luck.picture.lib.permissions.Permission;
-import com.luck.picture.lib.permissions.RxPermissions;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
@@ -41,9 +39,7 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.functions.Consumer;
 
 import static com.xyj.strokeaid.helper.CalendarUtils.TYPE_ALL;
 
@@ -173,22 +169,22 @@ public class EcgExamnationMainActivity extends BaseActivity implements OnDateSet
                 break;
             case R.id.iv_photo:
                 //获取写的权限
-                RxPermissions rxPermission = new RxPermissions(EcgExamnationMainActivity.this);
-                rxPermission.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .subscribe(new Consumer<Permission>() {
-                            @Override
-                            public void accept(Permission permission) {
-                                if (permission.granted) {// 用户已经同意该权限
-                                    //第一种方式，弹出选择和拍照的dialog
-                                    showPop();
-
-                                    //第二种方式，直接进入相册，但是 是有拍照得按钮的
-//                                showAlbum();
-                                } else {
-                                    Toast.makeText(EcgExamnationMainActivity.this, "拒绝", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+//                RxPermissions rxPermission = new RxPermissions(EcgExamnationMainActivity.this);
+//                rxPermission.requestEach(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                        .subscribe(new Consumer<Permission>() {
+//                            @Override
+//                            public void accept(Permission permission) {
+//                                if (permission.granted) {// 用户已经同意该权限
+//                                    //第一种方式，弹出选择和拍照的dialog
+//                                    showPop();
+//
+//                                    //第二种方式，直接进入相册，但是 是有拍照得按钮的
+////                                showAlbum();
+//                                } else {
+//                                    Toast.makeText(EcgExamnationMainActivity.this, "拒绝", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
 
                 break;
             case R.id.iv_heart:

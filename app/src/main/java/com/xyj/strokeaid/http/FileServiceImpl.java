@@ -4,6 +4,8 @@ import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.file.FileInfoBean;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -20,19 +22,21 @@ import retrofit2.Callback;
  */
 public class FileServiceImpl {
 
-    public static void uploadFile(String tableName,  String filePath, Callback<BaseArrayBean<FileInfoBean>> callback) {
+    public static void uploadImage(String tableName,  String filePath, Callback<BaseArrayBean<FileInfoBean>> callback) {
 
         File file = new File(filePath);
-        RequestBody fileRb = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-//        MultipartBody.Part part = MultipartBody.Part.createFormData("picture", file.getName(), fileRQ);
-        RequestBody body = new MultipartBody.Builder()
-                .addFormDataPart("tableName", tableName)
-                .addFormDataPart("upload", file.getName(), fileRb)
-                .build();
+        // 创建 RequestBody，用于封装构建RequestBody
+        RequestBody requestFile = RequestBody.create(MediaType.parse("image/jpg"), file);
+
+        // MultipartBody.Part  和后端约定好Key，这里的partName是用file
+        MultipartBody.Part body = MultipartBody.Part.createFormData("upload", file.getName(), requestFile);
+
+        // 添加描述
+        RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), tableName);
         RetrofitClient
                 .getInstance()
                 .create(FileService.class)
-                .uplaodFile(body)
+                .uplaodFile(description,body )
                 .enqueue(callback);
     }
 }

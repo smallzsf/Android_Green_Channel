@@ -21,11 +21,17 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.XXPermissions;
+import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
+import com.luck.picture.lib.config.PictureMimeType;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.tencent.mmkv.MMKV;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
+import com.xyj.strokeaid.view.ActionSheet;
 import com.xyj.strokeaid.view.LoadingDialogFragment;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -424,6 +430,54 @@ public abstract class BaseActivity extends AppCompatActivity {
                 });
     }
 
+    protected void showPhotoSelector(OnResultCallbackListener<LocalMedia>[] listeners) {
+        ActionSheet.createBuilder(this, getSupportFragmentManager())
+                .setCancelButtonTitle("取消")
+                .setOtherButtonTitles("拍照", "相册")
+                .setCancelableOnTouchOutside(true)
+                .setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+
+                    }
+
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                        switch (index) {
+                            case 0:
+                                openCamera(listeners[0]);
+                                break;
+                            case 1:
+                                openPhotoAlbum(listeners[1]);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }).show();
+    }
+
+    protected void openPhotoAlbum(OnResultCallbackListener<LocalMedia> listener) {
+        if (listener == null){
+            return;
+        }
+        PictureSelector.create(this)
+                .openGallery(PictureMimeType.ofImage())
+                .maxSelectNum(1)
+                .minSelectNum(1)
+                .imageSpanCount(4)
+                .selectionMode(PictureConfig.SINGLE)
+                .forResult(listener);
+    }
+
+    protected void openCamera(OnResultCallbackListener<LocalMedia> listener) {
+        if (listener == null){
+            return;
+        }
+        PictureSelector.create(this)
+                .openCamera(PictureMimeType.ofImage())
+                .forResult(listener);
+    }
 }
 
     

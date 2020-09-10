@@ -17,31 +17,31 @@ public class BaseArrayBean<T> {
      * result : [] 数组
      */
 
-    private int errorCode;
-    private String errorMsg;
-    private List<T> result;
+    private int result;
+    private String message;
+    private List<T> data;
 
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public List<T> getResult() {
+    public int getResult() {
         return result;
     }
 
-    public void setResult(List<T> result) {
+    public void setResult(int result) {
         this.result = result;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<T> getData() {
+        return data;
+    }
+
+    public void setData(List<T> data) {
+        this.data = data;
     }
 }

@@ -15,8 +15,8 @@ public class ApiUrls {
     public static final String PRODUCTION_ENVIRONMENT_FOR_API = "https://ykj.yjjk.net.cn/";
     public static final String PRODUCTION_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk.net.cn/";
 
-    public static final String DEVELOP_ENVIRONMENT_FOR_API = "https://ykj.yjjk366.com/";
-    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_API = "http://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "http://ykj.yjjk366.com/";
 
     /**
      * PRODUCTION_ENVIRONMENT_FILE_SERVER

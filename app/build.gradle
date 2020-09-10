@@ -224,8 +224,9 @@ dependencies {
     // https://github.com/hongyangAndroid/FlowLayout
     implementation 'com.hyman:flowlayout-lib:1.1.2'
 
-    /*PictureSelector*/
-    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.0'
+    // PictureSelector
+    // https://github.com/LuckSiege/PictureSelector/blob/master/README_CN.md
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
 
     // lottie
     // https://github.com/airbnb/lottie-android
