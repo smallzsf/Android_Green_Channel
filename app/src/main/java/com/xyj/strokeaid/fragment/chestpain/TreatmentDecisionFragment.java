@@ -182,7 +182,13 @@ public class TreatmentDecisionFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        distListUtil.initGenderMap(R.array.chest_pain_operation_gender_diversity_more);
+
+        radioButtonDistUtil.addView(rbIntoMeasureLevel1);
+        radioButtonDistUtil.addView(rbIntoMeasureLevel2);
+        radioButtonDistUtil.addView(rbIntoMeasureLevel3);
+        radioButtonDistUtil.addView(rbIntoMeasureLevel4);
+        radioButtonDistUtil.addView(rbIntoMeasureLevel5);
+        radioButtonDistUtil.setStringArrayId(R.array.chest_pain_treament_decision);
     }
 
     @Override

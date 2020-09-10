@@ -1,10 +1,12 @@
 package com.xyj.strokeaid.activity.chestpain;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +18,9 @@ public class ViewDistUtils<T extends CompoundButton> {
     private int dataRrrayId;
 
     private List<T> viewList;
+
+    private T selectView;
+    private String selectViewKey;
 
     private Map<String, T> mapTextToView = new HashMap<>();
     private String tag;
@@ -41,6 +46,15 @@ public class ViewDistUtils<T extends CompoundButton> {
         this.setViewText();
     }
 
+    public void addView(T t) {
+        if (viewList == null) {
+            viewList = new ArrayList<>();
+        }
+        viewList.add(t);
+        this.setViewText();
+    }
+
+
     public void setStringArrayId(int id) {
         dataRrrayId = id;
         distListUtil.initGenderMap(id);
@@ -49,6 +63,9 @@ public class ViewDistUtils<T extends CompoundButton> {
 
     private void setViewText() {
         List<String> keyDataList = distListUtil.getKeyDataList(dataRrrayId);
+        if (keyDataList == null || keyDataList.isEmpty()) {
+            return;
+        }
         if (viewList == null || viewList.isEmpty()) {
             return;
         }
@@ -80,11 +97,19 @@ public class ViewDistUtils<T extends CompoundButton> {
                 T viewItem = viewList.get(i);
                 viewItem.setChecked(false);
             }
-            T viewButton = (T) view;
-            viewButton.setChecked(true);
+            setSelectView((T) view);
         }
     };
 
+    public void setSelectView(T t) {
+        if (distListUtil == null) {
+            return;
+        }
+        selectView = t;
+        String selectText = String.valueOf(t.getText());
+        selectViewKey = distListUtil.getValueDataToStringKey(dataRrrayId, selectText);
+        t.setChecked(true);
+    }
 
     public void setStringArrayNormalKey(String keyData) {
         if (distListUtil == null) {
@@ -95,9 +120,15 @@ public class ViewDistUtils<T extends CompoundButton> {
             return;
         }
         T t = mapTextToView.get(data);
-        t.setText(data);
-        t.setChecked(true);
+        this.setSelectView(t);
     }
 
+    public T getSelectView() {
+        return selectView;
+    }
+
+    public String getSelectViewKey() {
+        return selectViewKey;
+    }
 
 }
