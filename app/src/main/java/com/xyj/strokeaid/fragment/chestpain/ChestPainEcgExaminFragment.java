@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,13 +42,13 @@ import retrofit2.Response;
 public class ChestPainEcgExaminFragment extends BaseFragment {
 
     @BindView(R.id.rb_electrocardiogram_has) //有
-    RadioButton rbElectrocardiogramHas;
+            RadioButton rbElectrocardiogramHas;
     @BindView(R.id.rb_electrocardiogram_none)
     RadioButton rbElectrocardiogramNone;//无
     @BindView(R.id.rg_electrocardiogram)
     RadioGroup rgElectrocardiogram;//心电图
-    @BindView(R.id.tv_add_record)
-    TextView tvAddRecord;//新增心电记录
+    @BindView(R.id.iv_add_ecg_record)
+    ImageView ivAddRecord;//新增心电记录
 
     @BindView(R.id.ttbl_ecg_check_time)
     TextTimeBar rrbElectrocardTime;//心电检查时间
@@ -108,6 +107,7 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
             mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_ecg_examin;
@@ -137,7 +137,6 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     private void loadData() {
 
 
-
         ArrayList<String> itemData = new ArrayList<>();
         itemData.add("实时监控");
         itemData.add("微信群");
@@ -149,13 +148,27 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+        rgElectrocardiogram.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rb_electrocardiogram_none) {
+                    ecgRecordItem = 0;
+                    ivAddRecord.setVisibility(View.GONE);
+                } else if (checkedId == R.id.rb_electrocardiogram_has) {
+                    ivAddRecord.setVisibility(View.VISIBLE);
+                    ecgRecordItem = 1;
+                }
+                refrashRecordItem();
+            }
+        });
+
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch (view.getId()) {
-                    case R.id.tv_add_record:
+                    case R.id.iv_add_ecg_record:
                         if (ecgRecordItem >= 3) {
-                            Toast.makeText(context, "最多只能添加三条心电记录", Toast.LENGTH_LONG).show();
+                            showToast("最多只能添加三条心电记录");
                             return;
                         }
                         ecgRecordItem++;
@@ -166,21 +179,14 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
                         ecgRecordItem--;
                         refrashRecordItem();
                         break;
-                    case R.id.rb_electrocardiogram_none:
-                    case R.id.rb_electrocardiogram_has:
-                        if (rbElectrocardiogramHas.isChecked()) {
-                            ecgRecordItem = 1;
-                        } else {
-                            ecgRecordItem = 0;
-                        }
-                        refrashRecordItem();
+                    default:
                         break;
                 }
             }
         };
         rbElectrocardiogramHas.setOnClickListener(onClickListener);
         rbElectrocardiogramNone.setOnClickListener(onClickListener);
-        tvAddRecord.setOnClickListener(onClickListener);
+        ivAddRecord.setOnClickListener(onClickListener);
         ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
         ivEcgRecordCloseThree.setOnClickListener(onClickListener);
     }
@@ -213,5 +219,10 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
                     }
                 });
+    }
+
+
+    private void uploadFile(){
+
     }
 }

@@ -17,7 +17,13 @@ import java.util.List;
 public class BaseRequestBean<T extends Object> extends BaseBean<BaseRequestBean> {
 
 
+    /**
+     * 患者主表id
+     */
     private String recordId;
+    /**
+     * 疾病类型   2 胸痛
+     */
     private int emergencyType;
     private List<String> keyList;
     private T data;

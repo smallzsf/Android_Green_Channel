@@ -134,4 +134,15 @@ public class RetrofitClient {
 
         return cpApiService;
     }
+
+
+    /**
+     * 获取对应的Service
+     * @param service Service 的 class
+     * @param <T>
+     * @return
+     */
+    public <T> T create(Class<T> service){
+        return retrofit.create(service);
+    }
 }
