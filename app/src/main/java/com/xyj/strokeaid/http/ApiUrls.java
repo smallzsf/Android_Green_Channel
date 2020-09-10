@@ -253,6 +253,15 @@ public class ApiUrls {
          */
         public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_GET= "yjjk-gateway/yjjk-cdm-api/v1/room/get";
 
+        /**
+         * 胸痛中心-胸痛诊疗-心电图-详情获取
+         */
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcgDetail/getByRecordId";
+
+        /**
+         * 胸痛中心-胸痛诊疗-心电图 主表添加
+         */
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
 
     }
 

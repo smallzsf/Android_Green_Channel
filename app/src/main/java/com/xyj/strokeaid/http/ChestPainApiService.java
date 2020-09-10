@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.http;
 
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.ChestpainEcgDetailBean;
 import com.xyj.strokeaid.bean.chestpain.EmergencyCenterChestpainDrugPo;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
 
@@ -60,4 +61,17 @@ public interface ChestPainApiService {
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET)
     Call<BaseObjectBean<EmergencyCenterChestpainDrugPo>> getChestPainsuEmergencyCenter(@Body RequestBody info);
 
+    /**
+     * 胸痛中心-胸痛诊疗-心电图 主表获取
+     * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/getByRecordId   */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ECG_DETAIL_GET)
+    Call<BaseObjectBean<ChestpainEcgDetailBean>> getChestPainsuEcgDetail(@Body RequestBody info);
+
+    /**
+     * 胸痛中心-胸痛诊疗-心电图 主表添加
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE)
+    Call<BaseObjectBean> saveChestPainsuEcgDetail(@Body RequestBody info);
 }
