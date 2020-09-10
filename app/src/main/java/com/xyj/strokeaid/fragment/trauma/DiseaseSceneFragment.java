@@ -15,7 +15,9 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
+import com.zhy.view.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -191,6 +193,18 @@ public class DiseaseSceneFragment extends BaseFragment {
     LinearLayout llDeath;
     @BindView(R.id.eds_treating_jie)
     EditSpinner edsTreatingJie;
+    @BindView(R.id.ttb_diagnose_time)
+    TextTimeBar ttbDiagnoseTime;
+    @BindView(R.id.cb_fluid_infusion)
+    CheckBox cbFluidInfusion;
+    @BindView(R.id.cb_ventilation_way)
+    CheckBox cbVentilationWay;
+    @BindView(R.id.ll_fluid_infusion)
+    LinearLayout llFluidInfusion;
+    @BindView(R.id.fl_ventilation_way)
+    FlowLayout flVentilationWay;
+    @BindView(R.id.et_other_deal_way)
+    EditText etOtherDealWay;
     private String mPatientId;
     private String mDocId;
 
@@ -348,15 +362,15 @@ public class DiseaseSceneFragment extends BaseFragment {
         edsTreatingJie.setItemData(data);
     }
 
-    private void refrashEdsTreatingJieStatus(String text){
+    private void refrashEdsTreatingJieStatus(String text) {
         llDeath.setVisibility(View.VISIBLE);
         llTallransferredToDepartment.setVisibility(View.VISIBLE);
-        if (TextUtils.equals("转入本院",text)){
+        if (TextUtils.equals("转入本院", text)) {
             llDeath.setVisibility(View.GONE);
-        }else if (TextUtils.equals("转入其它医院",text)){
+        } else if (TextUtils.equals("转入其它医院", text)) {
             llDeath.setVisibility(View.GONE);
             llTallransferredToDepartment.setVisibility(View.GONE);
-        }else {
+        } else {
             llTallransferredToDepartment.setVisibility(View.GONE);
         }
     }
