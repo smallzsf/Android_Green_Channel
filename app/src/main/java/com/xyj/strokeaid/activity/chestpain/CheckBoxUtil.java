@@ -8,13 +8,4 @@ public class CheckBoxUtil extends ViewDistUtils<CheckBox> {
         super(context);
     }
 
-    @Override
-    public void setSelectView(CheckBox view) {
-        view.setChecked(true);
-    }
-
-    @Override
-    public void setViewData(CheckBox view, String text) {
-        view.setText(text);
-    }
 }

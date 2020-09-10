@@ -1,12 +1,15 @@
 package com.xyj.strokeaid.activity.chestpain;
 
 import android.content.Context;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ViewDistUtils<T> {
+public class ViewDistUtils<T extends CompoundButton> {
 
     DistListUtil distListUtil = null;
 
@@ -27,6 +30,10 @@ public abstract class ViewDistUtils<T> {
 
     public String getTag() {
         return tag;
+    }
+
+    public List<T> getViewList() {
+        return viewList;
     }
 
     public void setViewList(List<T> list) {
@@ -55,9 +62,28 @@ public abstract class ViewDistUtils<T> {
                 text = keyDataList.get(i);
             }
             mapTextToView.put(text, view);
-            setViewData(view, text);
+            view.setText(text);
+            view.setOnClickListener(clickListener);
+//            setViewData(view, text);
         }
     }
+
+
+    View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            List<T> viewList = getViewList();
+            if (viewList == null) {
+                return;
+            }
+            for (int i = 0; i < viewList.size(); i++) {
+                T viewItem = viewList.get(i);
+                viewItem.setChecked(false);
+            }
+            T viewButton = (T) view;
+            viewButton.setChecked(true);
+        }
+    };
 
 
     public void setStringArrayNormalKey(String keyData) {
@@ -69,12 +95,9 @@ public abstract class ViewDistUtils<T> {
             return;
         }
         T t = mapTextToView.get(data);
-        setSelectView(t);
+        t.setText(data);
+        t.setChecked(true);
     }
-
-    public abstract void setSelectView(T view);
-
-    public abstract void setViewData(T view, String text);
 
 
 }
