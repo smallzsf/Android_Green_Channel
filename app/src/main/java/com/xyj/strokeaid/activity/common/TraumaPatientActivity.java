@@ -181,7 +181,7 @@ public class TraumaPatientActivity extends BaseActivity {
                     return ImageCheckFragment.newInstance(recordId, recordId);
                 case 5:
                     //会诊信息
-                    return ConsultationInfoFragment.newInstance(recordId, recordId);
+                    return ConsultationInfoFragment.newInstance(recordId);
                 case 6:
                     //手术信息
                     return OperationInfoFragment.newInstance(recordId, recordId);

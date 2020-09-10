@@ -19,18 +19,23 @@
             android:gravity="center_vertical"
             android:text="其他非心源性胸痛类型" />
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+
             <CheckBox
                 android:id="@+id/cb_non_heart_1"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_hxxtb"
                 android:text="呼吸系统病" />
 
             <CheckBox
                 android:id="@+id/cb_non_heart_2"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_xhxtb"
                 android:text="消化系统病" />
 
         </LinearLayout>
@@ -39,14 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <CheckBox
                 android:id="@+id/cb_non_heart_3"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_sjxtb"
                 android:text="神经系统病" />
 
             <CheckBox
                 android:id="@+id/cb_non_heart_4"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_jsxtb"
                 android:text="精神系统病" />
 
         </LinearLayout>
@@ -55,14 +63,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+
             <CheckBox
                 android:id="@+id/cb_non_heart_5"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_jrggb"
                 android:text="肌肉骨骼病" />
 
             <CheckBox
                 android:id="@+id/cb_non_heart_6"
                 style="@style/XyjCheckBoxHorizontalWeight"
+                android:tag="cpc_otherunacs_pfxtb"
                 android:text="皮肤系统病" />
 
 
@@ -73,6 +85,7 @@
             style="@style/XyjCheckBox"
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_normal_height"
+            android:tag="cpc_otherunacs_qt"
             android:text="其他" />
 
     </LinearLayout>

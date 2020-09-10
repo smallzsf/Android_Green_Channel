@@ -13,6 +13,8 @@
 
         <include layout="@layout/include_original_diagnose_zdmjc" />
 
+        <include layout="@layout/view_bottom_save_button" />
+
     </LinearLayout>
 
 

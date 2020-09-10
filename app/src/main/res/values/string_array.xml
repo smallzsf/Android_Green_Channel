@@ -37,27 +37,30 @@
         <item>出院时NIHSS评分</item>
     </string-array>
 
+
+
     <string-array name="chest_pain_operation_delay_reason">
-        <item>症状不明显延误诊断</item>
-        <item>家属未到场</item>
-        <item>医生决策延误</item>
-        <item>排队挂号、缴费、办住院时间长</item>
-        <item>急诊科处理时间长</item>
-        <item>手术期间出现并发症</item>
-        <item>未实施绕行急诊方案</item>
-        <item>导管室人员未到位</item>
-        <item>药物缺乏</item>
-        <item>知情同意时间过长</item>
-        <item>病情不稳定</item>
-        <item>绕行急诊科但未直接入导管室</item>
-        <item>导管室占台</item>
-        <item>转运时间长</item>
-        <item>经费问题</item>
-        <item>心内科会诊时间长</item>
-        <item>血管通路困难</item>
-        <item>难以绕行病变区域</item>
-        <item>急需影像学资料再行PCI</item>
-        <item>其他原因</item>
+        <item>症状不明显延误诊断:cpc_delayreason_zzbmx</item>
+        <item>家属未到场:cpc_delayreason_jswdc</item>
+        <item>医生决策延误:cpc_delayreason_ysjcyw</item>
+        <item>排队挂号、缴费、办住院时间长:cpc_delayreason_pdgh</item>
+        <item>急诊科处理时间长:cpc_delayreason_jzkclsjc</item>
+        <item>手术期间出现并发症:cpc_delayreason_ssqjcxbfz</item>
+        <item>超过再灌注时间:cpc_delayreason_cgzgzsj</item>
+        <item>未实施绕行急诊方案:cpc_delayreason_wssrxjzfa</item>
+        <item>导管室人员未到位:cpc_delayreason_dgsrywdw</item>
+        <item>药物缺乏:cpc_delayreason_ywqf</item>
+        <item>知情同意时间过长:cpc_delayreason_zqtysjgc</item>
+        <item>病情不稳定:cpc_delayreason_bqbwd</item>
+        <item>绕行急诊科但未直接入导管室:cpc_delayreason_rxjzk</item>
+        <item>导管室占台:cpc_delayreason_dgszt</item>
+        <item>转运时间长:cpc_delayreason_zysjc</item>
+        <item>经费问题:cpc_delayreason_jfwt</item>
+        <item>心内科会诊时间长:cpc_delayreason_xnkhzsjc</item>
+        <item>血管通路困难:cpc_delayreason_xgtlkn</item>
+        <item>难以绕行病变区域:cpc_delayreason_nyrxbbqy</item>
+        <item>急需影像学资料再行PCI:cpc_delayreason_jxyxxzl</item>
+        <item>其他原因:cpc_delayreason_qt</item>
     </string-array>
 
     <string-array name="chest_pain_operation_medicinal">

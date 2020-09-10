@@ -12,7 +12,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 
 /**
  * @ClassName: OriginalStatus1
- * @Description:
+ * @Description: 其它非心源性胸痛
  * @Author: 小黑
  * @Date: 2020/9/3 0:05
  */
