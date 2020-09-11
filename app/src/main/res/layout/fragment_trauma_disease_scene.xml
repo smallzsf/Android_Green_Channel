@@ -793,16 +793,13 @@
     </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_start_frag_sg"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginBottom="30dp"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
-        android:text="启动绿道"
+        android:text="保存"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
 

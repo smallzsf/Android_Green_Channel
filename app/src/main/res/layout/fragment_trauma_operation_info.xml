@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/llVitalSigns"
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dp_30"
         android:layout_weight="1"
         android:overScrollMode="never"
-        android:layout_marginBottom="@dimen/dp_30"
         android:scrollbars="none">
 
         <LinearLayout
@@ -20,21 +19,17 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                app:bottomLineVisible="true"
+                android:layout_height="@dimen/item_normal_height"
+                tl:title="患者到达时间" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <com.xyj.strokeaid.view.TextTimeBar
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
-                    tl:title="患者到达时间" />
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
 
                 <TextView
@@ -42,7 +37,7 @@
                     android:text="术前生命体征" />
 
                 <LinearLayout
-                   android:layout_width="match_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -441,6 +436,7 @@
                 android:layout_marginTop="@dimen/dp_12"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
+
                 <TextView
                     style="@style/Text_Blue_Content_Style"
                     android:text="手术信息" />
@@ -450,21 +446,25 @@
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="麻醉开始时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="麻醉结束时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="手术开始时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:background="@color/white"
                     tl:title="手术结束时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
@@ -475,94 +475,99 @@
                     android:id="@+id/tv_note"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_30"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_gravity="center_vertical"
-                    android:text="术中出量"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
+                    android:text="术中出量"
                     android:textColor="@color/app_223b53"
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="出血量"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="ml">
+                    tl:ieb_unit_text="ml"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="尿量"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="ml">
-                </com.xyj.strokeaid.view.ItemEditBar>
+                    tl:ieb_unit_text="ml"
+                    tl:ieb_unit_visible="true"></com.xyj.strokeaid.view.ItemEditBar>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_30"
-                    android:layout_marginLeft="@dimen/dp_12"
                     android:layout_gravity="center_vertical"
-                    android:text="术中入量"
+                    android:layout_marginLeft="@dimen/dp_12"
                     android:gravity="center_vertical"
+                    android:text="术中入量"
                     android:textColor="@color/app_223b53"
                     android:textSize="@dimen/item_title_size" />
 
 
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="晶体液"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="ml">
+                    tl:ieb_unit_text="ml"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="胶体液"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="ml">
+                    tl:ieb_unit_text="ml"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="RBC"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="U">
+                    tl:ieb_unit_text="U"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="血浆"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="ml">
+                    tl:ieb_unit_text="ml"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="冷沉淀"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="单位">
+                    tl:ieb_unit_text="单位"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
+
                 <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    tl:ieb_edit_hint="单行输入"
                     android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_edit_hint="单行输入"
                     tl:ieb_title="血小板"
-                    tl:ieb_unit_visible="true"
-                    tl:ieb_unit_text="单位">
+                    tl:ieb_unit_text="单位"
+                    tl:ieb_unit_visible="true">
 
                 </com.xyj.strokeaid.view.ItemEditBar>
 
@@ -570,17 +575,18 @@
 
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
 
                 <TextView
                     style="@style/Text_Blue_Content_Style"
                     android:text="术后生命体征" />
 
-                <include layout="@layout/layout_view_declaration_of_signs"/>
+                <include layout="@layout/layout_view_declaration_of_signs" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
@@ -594,16 +600,13 @@
     </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_start_frag_sg"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
-        android:layout_marginStart="@dimen/dp_12"
-        android:layout_marginTop="@dimen/dp_12"
-        android:layout_marginEnd="@dimen/dp_12"
-        android:layout_marginBottom="30dp"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
-        android:text="启动绿道"
+        android:text="保存"
         android:textColor="@android:color/white"
         android:textSize="16dp" />
 
