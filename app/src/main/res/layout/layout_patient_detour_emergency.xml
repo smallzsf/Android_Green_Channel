@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/XyjTextSubTitel"
+        android:text="直达科室" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.xyj.strokeaid.view.MyRadioGroup
+            android:id="@+id/rg_detour_emergent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_arrival_cath_lab"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:tag="cpc_zdksv2_dsa"
+                        android:text="到达导管室" />
+
+                    <RadioButton
+                        android:id="@+id/rb_cardiology_ward"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:tag="cpc_zdksv2_xnkbf"
+                        android:text="心内科病房" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/rb_arrival_cuu"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:tag="cpc_zdksv2_ccu"
+                        android:text="到达CCU" />
+
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:tag="cpc_zdksv2_qt"
+                        android:text="其它" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </com.xyj.strokeaid.view.MyRadioGroup>
+
+    </LinearLayout>
+
+
+    <View style="@style/horizontal_divider" />
+
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/tv_arrival_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_large_height"
+        app:bottomLineVisible="true"
+        app:title="到达时间" />
+
+
+</LinearLayout>
