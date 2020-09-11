@@ -13,7 +13,7 @@
         android:background="@drawable/shape_btn_blue"
         android:text="@string/get_data"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="12sp" />
 
 
@@ -27,7 +27,7 @@
         android:background="@drawable/shape_btn_blue"
         android:text="@string/save"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="12sp" />
 
     <androidx.appcompat.widget.AppCompatButton

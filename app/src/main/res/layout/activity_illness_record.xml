@@ -181,7 +181,7 @@
         android:layout_marginBottom="88dp"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/save"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

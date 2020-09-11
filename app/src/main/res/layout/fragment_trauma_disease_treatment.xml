@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,57 +22,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    tl:bottomLineVisible="true"
                     tl:title="患者到达时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    tl:bottomLineVisible="true"
                     tl:title="医生到达时间" />
 
-
-                <LinearLayout
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="接诊医生"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dp_30"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单行输入"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:singleLine="true"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
+                    android:layout_height="@dimen/item_normal_height"
+                    tl:ieb_bottom_line_visible="true"
+                    tl:ieb_title="接诊医生" />
 
             </LinearLayout>
+
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_marginTop="@dimen/dp_10"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/Text_Blue_Content_Style"
@@ -85,7 +59,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -96,311 +69,307 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+
                     tl:title="静脉通路时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+
                     tl:title="气管插管时间" />
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+
                     tl:title="心肺复苏时间" />
 
-                <LinearLayout
+                <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="@dimen/dp_80">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="补液："
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
-                    <LinearLayout
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_bandage"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="伤口包扎" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_limbs"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="肢体固定" />
+
+                    <CheckBox
+                        android:id="@+id/cb_chest_puncture"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="胸部穿刺" />
+
+                    <CheckBox
+                        android:id="@+id/cb_abdominal_puncture"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="腹部穿刺" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_chest"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="胸廓固定" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_pelvis"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="骨盆固定" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_neck"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="颈托" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_vertebra"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="脊椎固定" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_fracture_out"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="骨折夹板外固定" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_suture"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="清创缝合" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_catheter"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="安置导管" />
+
+                    <CheckBox
+                        android:id="@+id/cb_ventilation_other"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="其他" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fluid_infusion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.xyj.strokeaid.view.ItemEditBar
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        >
-                        <com.xyj.strokeaid.view.ItemEditBar
-                            android:layout_weight="1"
-                            android:layout_width="match_parent"
-                            tl:ieb_edit_hint="单行输入"
-                            android:layout_height="match_parent"
-                            app:ieb_bottom_line_visible="true"
-                            tl:ieb_title="晶体"
-                            tl:ieb_unit_visible="true"
-                            tl:ieb_unit_text="ml">
+                        android:layout_height="@dimen/item_normal_height"
+                        app:ieb_bottom_line_visible="true"
+                        app:ieb_edit_hint="单行输入"
+                        app:ieb_title="晶体"
+                        app:ieb_unit_text="ml"
+                        app:ieb_unit_visible="true">
 
-                        </com.xyj.strokeaid.view.ItemEditBar>
-                        <com.xyj.strokeaid.view.ItemEditBar
-                            android:layout_weight="1"
-                            android:minHeight="@dimen/dp_40"
-                            android:layout_width="match_parent"
-                            tl:ieb_title="胶体"
-                            tl:ieb_edit_hint="单行输入"
-                            tl:ieb_unit_visible="true"
-                            app:ieb_bottom_line_visible="true"
-                            tl:ieb_unit_text="ml"
-                            android:layout_height="match_parent">
+                    </com.xyj.strokeaid.view.ItemEditBar>
 
-                        </com.xyj.strokeaid.view.ItemEditBar>
+                    <com.xyj.strokeaid.view.ItemEditBar
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:ieb_bottom_line_visible="true"
+                        app:ieb_edit_hint="单行输入"
+                        app:ieb_title="胶体"
+                        app:ieb_unit_text="ml"
+                        app:ieb_unit_visible="true">
 
-                    </LinearLayout>
-
+                    </com.xyj.strokeaid.view.ItemEditBar>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:orientation="vertical"
+                    android:id="@+id/ll_chest_puncture"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="通气方式："
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <com.zhy.view.flowlayout.FlowLayout
+                    <com.xyj.strokeaid.view.ItemEditBar
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
-                        <RadioButton
-                            android:id="@+id/rb_simple_respirator"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="简易呼吸器"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_ILMA"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="喉罩通气"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_nasal_catheter_ventilation"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="鼻导管通气"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_oropharyngeal_ventilation"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="口咽管通气"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_nasotracheal_tube"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="经鼻气管内插管"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_orotracheal_intubation"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="经口气管内插管"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_tracheotomy"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="气管切开"
-                            android:textSize="@dimen/item_content_size" />
-                        <RadioButton
-                            android:id="@+id/rb_ricothyroidotomy"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="环甲膜切开手术"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </com.zhy.view.flowlayout.FlowLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="处理方式："
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <com.zhy.view.flowlayout.FlowLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        >
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_bandage"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="伤口包扎"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_limbs"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="肢体固定"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_chest"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="胸廓固定"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_pelvis"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="骨盆固定"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_neck"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="颈托"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_vertebra"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="脊椎固定"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_fracture_out"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="骨折夹板外固定"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_suture"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="清创缝合"
-                            android:textSize="@dimen/item_content_size" />
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_catheter"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:text="安置导管"
-                            android:textSize="@dimen/item_content_size" />
-
-                    </com.zhy.view.flowlayout.FlowLayout>
+                        app:ieb_bottom_line_visible="true"
+                        app:ieb_title="血液"
+                        app:ieb_top_line_visible="true"
+                        app:ieb_unit_text="ml"
+                        app:ieb_unit_visible="true" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        >
-                        <CheckBox
-                            android:id="@+id/cb_ventilation_other"
-                            style="@style/tv_small"
-                            android:layout_width="wrap_content"
-                            android:checked="true"
-                            android:layout_height="match_parent"
-                            android:text="其他"
-                            android:textSize="@dimen/item_content_size" />
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_12">
 
-                        <EditText
-                            android:layout_marginLeft="@dimen/dp_7"
-                            android:layout_width="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_height="@dimen/dp_30"
-                            android:background="@drawable/shape_grey_stroke"
-                            android:hint="单行输入"
-                            android:layout_marginRight="@dimen/dp_12"
-                            android:singleLine="true"
-                            android:inputType="text"
-                            android:paddingStart="@dimen/dp_8"
+                        <TextView
+                            android:layout_width="@dimen/dp_68"
+                            android:layout_height="wrap_content"
+                            android:text="凝固"
                             android:textColor="@color/color_222222"
-                            android:textColorHint="@color/color_666666"
-                            android:textSize="13sp" />
+                            android:textSize="@dimen/item_title_size" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_chest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_chest_solidify_yes"
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:checked="true"
+                                android:text="凝固"
+                                android:textSize="@dimen/item_content_size" />
+
+                            <RadioButton
+                                android:id="@+id/rb_chest_solidify_no"
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:text="不凝固"
+                                android:textSize="@dimen/item_content_size" />
+                        </RadioGroup>
                     </LinearLayout>
+
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ll_abdominal_puncture"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.xyj.strokeaid.view.ItemEditBar
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        app:ieb_bottom_line_visible="true"
+                        app:ieb_title="血液"
+                        app:ieb_top_line_visible="true"
+                        app:ieb_unit_text="ml"
+                        app:ieb_unit_visible="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/dp_12"
+                        android:paddingEnd="@dimen/dp_12">
+
+                        <TextView
+                            android:layout_width="@dimen/dp_68"
+                            android:layout_height="wrap_content"
+                            android:text="凝固"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_abdominal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_abdominal_solidify_yes"
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:checked="true"
+                                android:text="凝固"
+                                android:textSize="@dimen/item_content_size" />
+
+                            <RadioButton
+                                android:id="@+id/rb_abdominal_solidify_no"
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="@dimen/dp_30"
+                                android:text="不凝固"
+                                android:textSize="@dimen/item_content_size" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+
+                    <RadioButton
+                        android:id="@+id/rb_simple_respirator"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="简易呼吸器" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ILMA"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="喉罩通气" />
+
+                    <RadioButton
+                        android:id="@+id/rb_nasal_catheter_ventilation"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="鼻导管通气" />
+
+                    <RadioButton
+                        android:id="@+id/rb_oropharyngeal_ventilation"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="口咽管通气" />
+
+                    <RadioButton
+                        android:id="@+id/rb_nasotracheal_tube"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="经鼻气管内插管" />
+
+                    <RadioButton
+                        android:id="@+id/rb_orotracheal_intubation"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="经口气管内插管" />
+
+                    <RadioButton
+                        android:id="@+id/rb_tracheotomy"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="气管切开" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ricothyroidotomy"
+                        style="@style/XyjFlowCheckBox"
+
+                        android:text="环甲膜切开手术" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+                <EditText
+                    android:id="@+id/et_other_deal_way"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入其他处理方式"
+                    android:textSize="@dimen/item_content_size"
+                    android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -411,51 +380,39 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_width="wrap_content"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="@dimen/item_title_min_width"
                             android:layout_height="@dimen/item_normal_height"
+                            android:layout_marginLeft="@dimen/dp_12"
                             android:gravity="center_vertical"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="输血"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
+                            android:text="输血" />
+
                         <RadioGroup
                             android:id="@+id/rg_blood_transfusion"
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_marginRight="@dimen/dp_12"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp_12"
+                            android:layout_marginRight="@dimen/dp_12"
                             android:orientation="horizontal"
                             android:weightSum="3">
 
                             <RadioButton
                                 android:id="@+id/rb_blood_transfusion"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:checked="true"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="是"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="是" />
 
                             <RadioButton
                                 android:id="@+id/rb_blood_transfusion_no"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="否"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="否" />
 
                         </RadioGroup>
 
@@ -464,62 +421,53 @@
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="申请用血时间" />
+
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="输血开始时间" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_width="wrap_content"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="@dimen/item_title_min_width"
                             android:layout_height="@dimen/item_normal_height"
+                            android:layout_marginLeft="@dimen/dp_12"
                             android:gravity="center_vertical"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="建立人工气道"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
+                            android:text="建立人工气道" />
+
                         <RadioGroup
                             android:id="@+id/rg_artificial_to"
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_marginRight="@dimen/dp_12"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp_12"
+                            android:layout_marginRight="@dimen/dp_12"
                             android:orientation="horizontal"
                             android:weightSum="3">
 
                             <RadioButton
                                 android:id="@+id/rb_artificial_to"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:checked="true"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="是"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+
+                                android:text="是" />
 
                             <RadioButton
                                 android:id="@+id/rb_artificial_to_no"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="否"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="否" />
 
                         </RadioGroup>
 
@@ -528,62 +476,53 @@
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="开始时间" />
+
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="完成时间" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_width="wrap_content"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="@dimen/item_title_min_width"
                             android:layout_height="@dimen/item_normal_height"
+                            android:layout_marginLeft="@dimen/dp_12"
                             android:gravity="center_vertical"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="胸腔闭式引流"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
+                            android:text="胸腔闭式引流" />
+
                         <RadioGroup
                             android:id="@+id/rg_closed_thoracic_drainage"
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_marginRight="@dimen/dp_12"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp_12"
+                            android:layout_marginRight="@dimen/dp_12"
                             android:orientation="horizontal"
                             android:weightSum="3">
 
                             <RadioButton
                                 android:id="@+id/rb_closed_thoracic_drainage"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:checked="true"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="是"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+
+                                android:text="是" />
 
                             <RadioButton
                                 android:id="@+id/rb_closed_thoracic_drainage_no"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="否"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="否" />
 
                         </RadioGroup>
 
@@ -592,62 +531,52 @@
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="开始时间" />
+
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
+                        app:bottomLineVisible="true"
                         tl:title="结束时间" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
+
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:orientation="horizontal"
                         android:layout_height="wrap_content"
-                        >
+                        android:orientation="horizontal">
+
                         <TextView
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_width="wrap_content"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="@dimen/item_title_min_width"
                             android:layout_height="@dimen/item_normal_height"
+                            android:layout_marginLeft="@dimen/dp_12"
                             android:gravity="center_vertical"
-                            android:maxLength="6"
-                            android:maxLines="1"
-                            android:minWidth="60dp"
-                            android:text="骨盆带"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/item_title_size" />
+                            android:text="骨盆带" />
+
                         <RadioGroup
                             android:id="@+id/rg_pelvic_girdle"
-                            android:layout_marginLeft="@dimen/dp_12"
-                            android:layout_marginRight="@dimen/dp_12"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/dp_12"
+                            android:layout_marginRight="@dimen/dp_12"
                             android:orientation="horizontal"
                             android:weightSum="3">
 
                             <RadioButton
                                 android:id="@+id/rb_pelvic_girdle"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:checked="true"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="是"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="是" />
 
                             <RadioButton
                                 android:id="@+id/rb_pelvic_girdle_no"
-                                style="@style/tv_small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:text="否"
-                                android:textSize="@dimen/item_content_size" />
+                                style="@style/XyjRadionButtonHorizontalWeight"
+                                android:text="否" />
 
                         </RadioGroup>
 
@@ -656,17 +585,69 @@
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        tl:title="开始时间" />
+                        app:bottomLineVisible="true"
+                        app:title="开始时间" />
+
                     <com.xyj.strokeaid.view.TextTimeBar
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/item_normal_height"
-                        android:background="@color/white"
-                        tl:title="结束时间" />
+                        app:bottomLineVisible="true"
+                        app:title="结束时间" />
                 </LinearLayout>
 
 
             </LinearLayout>
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="紧急会诊" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="通知时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="会诊医生到达" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:ieb_bottom_line_visible="true"
+                tl:ieb_title="会诊医生" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:layout_marginRight="@dimen/item_normal_margin">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/vital_sign_title_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="病人去向" />
+
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
 
         </LinearLayout>
 
@@ -680,7 +661,7 @@
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="保存"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 </LinearLayout>

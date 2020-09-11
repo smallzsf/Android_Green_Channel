@@ -175,7 +175,7 @@
                     android:id="@+id/ttb_leave_hospital_door"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     app:title="离开本院大门" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
@@ -235,7 +235,7 @@
                     android:id="@+id/ttb_transfer_department"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     app:title="转科时间" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
@@ -296,7 +296,7 @@
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="保存"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 

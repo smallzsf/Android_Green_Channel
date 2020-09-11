@@ -10,7 +10,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/dp_30"
         android:layout_weight="1"
         android:overScrollMode="never"
         android:scrollbars="none">
@@ -31,104 +30,72 @@
 
                 <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <RadioButton
                         android:id="@+id/rb_reason_traffic_accident"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="交通事故"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="交通事故" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_produce_accident"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="生产事故"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="生产事故" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_height_fall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="高空坠落"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="高空坠落" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_suicide"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="自杀"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="自杀" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_murder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="他杀"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="他杀" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_fight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="斗殴"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="斗殴" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_fight_group"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="群殴"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="群殴" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_knife"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="刀伤"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="刀伤" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_gun"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="枪伤"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="枪伤" />
 
                     <RadioButton
                         android:id="@+id/rb_reason_other"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="其他"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="其他" />
+
                 </com.zhy.view.flowlayout.FlowLayout>
+
+                <View style="@style/horizontal_divider" />
 
                 <EditText
                     android:id="@+id/et_reason_trauma_reason"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:layout_marginEnd="@dimen/dp_12"
-                    android:background="@drawable/shape_grey_stroke"
                     android:hint="创伤原因"
+                    style="@style/et_hole_line"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
-                    android:singleLine="true"
-                    android:textColor="@color/color_222222"
-                    android:textColorHint="@color/color_666666"
-                    android:textSize="13sp" />
+                    android:singleLine="true" />
 
             </LinearLayout>
 
@@ -139,101 +106,70 @@
 
                 <TextView
                     style="@style/Text_Blue_Content_Style"
-                    android:layout_marginTop="@dimen/dp_10"
                     android:text="创伤部位" />
 
                 <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <CheckBox
                         android:id="@+id/cb_position_head"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="头颈部"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="头颈部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_face"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="面部"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="面部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_chest"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="胸部"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="胸部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_belly"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="腹部"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="腹部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_limb"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="四肢"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="四肢" />
 
                     <CheckBox
                         android:id="@+id/cb_position_body"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="体表"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="体表" />
 
                     <CheckBox
                         android:id="@+id/cb_position_pelvis"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="盆骨"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="盆骨" />
 
                     <CheckBox
                         android:id="@+id/cb_position_spine"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="脊柱"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="脊柱" />
 
                     <CheckBox
                         android:id="@+id/cb_position_other"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="其他"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="其他" />
                 </com.zhy.view.flowlayout.FlowLayout>
+
+                <View style="@style/horizontal_divider" />
 
                 <EditText
                     android:id="@+id/et_position_trauma_part"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:layout_marginEnd="@dimen/dp_12"
-                    android:background="@drawable/shape_grey_stroke"
-                    android:hint="创伤部位"
+                    style="@style/et_hole_line"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
-                    android:textColor="@color/color_222222"
-                    android:textColorHint="@color/color_666666"
-                    android:textSize="13sp" />
+                    android:hint="创伤部位" />
             </LinearLayout>
 
             <LinearLayout
@@ -243,87 +179,62 @@
 
                 <TextView
                     style="@style/Text_Blue_Content_Style"
-                    android:layout_marginTop="@dimen/dp_10"
                     android:text="受伤性质" />
 
                 <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <CheckBox
                         android:id="@+id/cb_injury_laceration"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="挫裂伤"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="挫裂伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_stab"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="刀刺伤"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="刀刺伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_fall"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="坠落伤"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="坠落伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_impact"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="撞击伤"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="撞击伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_tumble"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="摔伤"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="摔伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_trample"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="踩踏"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="踩踏" />
 
                     <CheckBox
                         android:id="@+id/cb_intrury_other"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="盆骨"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="其他" />
 
 
                 </com.zhy.view.flowlayout.FlowLayout>
 
+                <View style="@style/horizontal_divider" />
+
                 <EditText
                     android:id="@+id/et_nature_of_injury_other"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"
-                    android:layout_marginStart="@dimen/dp_12"
-                    android:layout_marginEnd="@dimen/dp_12"
-                    android:background="@drawable/shape_grey_stroke"
-                    android:hint="受伤性质"
+                    style="@style/et_hole_line"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
-                    android:textColor="@color/color_222222"
-                    android:textColorHint="@color/color_666666"
-                    android:textSize="13sp" />
+                    android:hint="受伤性质" />
             </LinearLayout>
 
             <LinearLayout
@@ -333,7 +244,6 @@
 
                 <TextView
                     style="@style/Text_Blue_Content_Style"
-                    android:layout_marginTop="@dimen/dp_10"
                     android:text="初步诊断" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
@@ -358,45 +268,16 @@
                     android:paddingTop="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
 
-                <LinearLayout
+                <com.xyj.strokeaid.view.ItemEditBar
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/dp_12"
-                        android:gravity="center"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        android:minWidth="60dp"
-                        android:text="首诊医生"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/item_title_size" />
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单行输入"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:singleLine="true"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
-
-                </LinearLayout>
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_title="首诊医生" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
                 android:orientation="vertical">
 
 
@@ -404,13 +285,12 @@
                     style="@style/Text_Blue_Content_Style"
                     android:text="生命体征" />
 
-                <include layout="@layout/layout_view_declaration_of_signs"></include>
+                <include layout="@layout/layout_view_declaration_of_signs" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_12"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -421,120 +301,78 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="静脉通路时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="气管插管时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
+                    app:bottomLineVisible="true"
                     tl:title="心肺复苏时间" />
 
                 <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <CheckBox
                         android:id="@+id/cb_fluid_infusion"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="补液"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="补液" />
+
+
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_way"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="通气方式"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="通气方式" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_bandage"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="伤口包扎"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="伤口包扎" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_limbs"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="肢体固定"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="肢体固定" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_chest"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="胸廓固定"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="胸廓固定" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_pelvis"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="骨盆固定"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="骨盆固定" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_neck"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="颈托"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="颈托" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_vertebra"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="脊椎固定"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="脊椎固定" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_fracture_out"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="骨折夹板外固定"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="骨折夹板外固定" />
 
                     <CheckBox
                         android:id="@+id/cb_ventilation_other"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:checked="true"
-                        android:text="其他"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="其他" />
 
                 </com.zhy.view.flowlayout.FlowLayout>
 
@@ -571,58 +409,35 @@
                 <com.zhy.view.flowlayout.FlowLayout
                     android:id="@+id/fl_ventilation_way"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <RadioButton
                         android:id="@+id/rb_simple_respirator"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="简易呼吸器"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="简易呼吸器" />
 
                     <RadioButton
                         android:id="@+id/rb_ILMA"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="喉罩通气"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="喉罩通气" />
 
                     <RadioButton
                         android:id="@+id/rb_nasal_catheter_ventilation"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="鼻导管通气"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="鼻导管通气" />
 
                     <RadioButton
                         android:id="@+id/rb_oropharyngeal_ventilation"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="口咽管通气"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="口咽管通气" />
 
 
                     <RadioButton
                         android:id="@+id/rb_ricothyroidotomy"
-                        style="@style/tv_small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checked="true"
-                        android:text="环甲膜切开手术"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowCheckBox"
+                        android:text="环甲膜切开手术" />
 
                 </com.zhy.view.flowlayout.FlowLayout>
 
@@ -638,8 +453,8 @@
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="请输入其他处理方式"
-                    android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
+                    android:paddingLeft="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
 
 
@@ -648,7 +463,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_10"
                 android:background="@color/colorPrimary22"
                 android:orientation="horizontal">
 
@@ -695,52 +509,29 @@
 
                 <com.zhy.view.flowlayout.FlowLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
 
                     <RadioButton
                         android:id="@+id/rb_department_emergency"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="急诊科"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="急诊科" />
 
                     <RadioButton
                         android:id="@+id/rb_department_icu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ICU/EICU"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="ICU/EICU" />
 
                     <RadioButton
                         android:id="@+id/rb_department_operation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="手术室"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="手术室" />
 
                     <RadioButton
                         android:id="@+id/rb_department_specialist"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="专科病房"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_content_size" />
-
-                    <EditText
-                        android:layout_width="@dimen/dp_130"
-                        android:layout_height="@dimen/dp_30"
-                        android:layout_marginRight="@dimen/dp_12"
-                        android:background="@drawable/shape_grey_stroke"
-                        android:hint="单行输入"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/dp_8"
-                        android:singleLine="true"
-                        android:textColor="@color/color_222222"
-                        android:textColorHint="@color/color_666666"
-                        android:textSize="13sp" />
+                        style="@style/XyjFlowRadionButton"
+                        android:text="专科病房" />
 
                 </com.zhy.view.flowlayout.FlowLayout>
 
@@ -756,21 +547,15 @@
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:background="@color/white"
                     tl:title="死亡时间" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:gravity="center"
-                    android:maxLength="6"
-                    android:maxLines="1"
-                    android:minWidth="60dp"
-                    android:text="死亡原因"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
+                    android:gravity="center_vertical"
+                    android:text="死亡原因" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -782,8 +567,8 @@
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="多行输入"
-                    android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
+                    android:paddingLeft="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 
@@ -800,7 +585,7 @@
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="保存"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 </LinearLayout>

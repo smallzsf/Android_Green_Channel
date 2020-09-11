@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/item_normal_margin">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center"
+                android:text="新增影像检查"
+                android:textColor="@color/color_222222"
+                android:textSize="15dp" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_doctor_advice_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="20dp"
+                app:bottomLineVisible="true"
+                app:title="医嘱开立时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_patient_arrive_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="患者到达时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_patient_leave_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="患者离开时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_check_finish_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="检查完成时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_check_report_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="检查报告时间" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginEnd="@dimen/dp_12"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Text_Dark_Content_Style"
+                    android:text="诊断结果" />
+
+                <EditText
+                    android:id="@+id/et_report"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_90"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    android:background="@drawable/shape_edittext_bg"
+                    android:gravity="start"
+                    android:hint="请输入诊断结果"
+                    android:padding="@dimen/item_normal_margin"
+                    android:textSize="@dimen/item_content_size" />
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_check_photo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bar_bottomLineVisible="true"
+                app:bar_leftText="检查片子"
+                app:bar_rightText="上传"
+                app:bar_rightTextVisible="true"
+                app:bar_topLineVisible="true" />
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_check_report"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bar_bottomLineVisible="true"
+                app:bar_leftText="检查报告"
+                app:bar_rightText="上传"
+                app:bar_rightTextVisible="true" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/buttom_normal_height"
+            android:layout_weight="1"
+            android:background="@drawable/login_btn_bg"
+            android:gravity="center"
+            android:text="保存"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/buttom_normal_height"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:layout_weight="1"
+            android:background="@drawable/login_btn_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

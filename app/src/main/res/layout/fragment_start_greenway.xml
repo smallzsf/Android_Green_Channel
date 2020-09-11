@@ -290,7 +290,7 @@
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="启动绿道"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 

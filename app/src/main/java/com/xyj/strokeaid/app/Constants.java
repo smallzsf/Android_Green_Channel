@@ -60,8 +60,8 @@ public class Constants {
             "心电检查",
             "影像检查",
             "会诊信息",
+            "EICU/ICU",
             "手术信息",
-            "评分工具",
             "患者转归"};
 
     public static final String[] GREEN_CHANNEL_MATERNAL_MENU_TITLES = new String[]{
@@ -87,8 +87,8 @@ public class Constants {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.INTERNET,
-            Manifest.permission.MODIFY_AUDIO_SETTINGS,
-            Manifest.permission.WRITE_SETTINGS,
+//            Manifest.permission.MODIFY_AUDIO_SETTINGS,
+//            Manifest.permission.WRITE_SETTINGS,
             Manifest.permission.ACCESS_WIFI_STATE,
             Manifest.permission.CHANGE_WIFI_STATE,
             Manifest.permission.REQUEST_INSTALL_PACKAGES

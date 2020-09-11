@@ -7,14 +7,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
@@ -24,85 +24,30 @@ import java.util.Map;
 
 import butterknife.BindView;
 
-public class DiseaseTreatmentFragment extends BaseFragment {
+/**
+ * 急诊救治
+ *
+ * @author Licy
+ */
+public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
 
 
-    @BindView(R.id.awareness)
-    TextView awareness;
     @BindView(R.id.es_vital_sign_aware)
     EditSpinner esVitalSignAware;
-    @BindView(R.id.breath)
-    TextView breath;
-    @BindView(R.id.breath_layout)
-    LinearLayout breathLayout;
-    @BindView(R.id.et_breath_rate_content)
-    EditText etBreathRateContent;
-    @BindView(R.id.unit_times_minute)
-    TextView unitTimesMinute;
-    @BindView(R.id.pulse)
-    TextView pulse;
-    @BindView(R.id.pulse_layout)
-    LinearLayout pulseLayout;
-    @BindView(R.id.et_pulse_content)
-    EditText etPulseContent;
-    @BindView(R.id.pulse_unit_times_minute)
-    TextView pulseUnitTimesMinute;
-    @BindView(R.id.heart_rate)
-    TextView heartRate;
-    @BindView(R.id.heart_rate_layout)
-    LinearLayout heartRateLayout;
-    @BindView(R.id.et_heart_rate_content)
-    EditText etHeartRateContent;
-    @BindView(R.id.heart_rate_unit_times_minute)
-    TextView heartRateUnitTimesMinute;
-    @BindView(R.id.systolic_blood_pressure)
-    TextView systolicBloodPressure;
-    @BindView(R.id.systolic_blood_pressure_layout)
-    LinearLayout systolicBloodPressureLayout;
-    @BindView(R.id.et_systolic_blood_pressure_content)
-    EditText etSystolicBloodPressureContent;
-    @BindView(R.id.systolic_blood_pressure_unit_mm_hg)
-    TextView systolicBloodPressureUnitMmHg;
-    @BindView(R.id.diastolic_blood_pressure)
-    TextView diastolicBloodPressure;
-    @BindView(R.id.diastolic_blood_pressure_layout)
-    LinearLayout diastolicBloodPressureLayout;
-    @BindView(R.id.et_diastolic_blood_pressure_content)
-    EditText etDiastolicBloodPressureContent;
-    @BindView(R.id.diastolic_blood_pressure_unit_mm_hg)
-    TextView diastolicBloodPressureUnitMmHg;
-    @BindView(R.id.blood_oxygen_saturation)
-    TextView bloodOxygenSaturation;
-    @BindView(R.id.blood_oxygen_saturation_layout)
-    LinearLayout bloodOxygenSaturationLayout;
-    @BindView(R.id.et_blood_oxygen_saturation_content)
-    EditText etBloodOxygenSaturationContent;
-    @BindView(R.id.blood_oxygen_saturation_unit_percent)
-    TextView bloodOxygenSaturationUnitPercent;
-    @BindView(R.id.body_temperature)
-    TextView bodyTemperature;
-    @BindView(R.id.body_temperature_layout)
-    LinearLayout bodyTemperatureLayout;
-    @BindView(R.id.et_body_temperature_content)
-    EditText etBodyTemperatureContent;
-    @BindView(R.id.body_temperature_unit_celsius)
-    TextView bodyTemperatureUnitCelsius;
-    @BindView(R.id.rb_simple_respirator)
-    RadioButton rbSimpleRespirator;
-    @BindView(R.id.rb_ILMA)
-    RadioButton rbILMA;
-    @BindView(R.id.rb_nasal_catheter_ventilation)
-    RadioButton rbNasalCatheterVentilation;
-    @BindView(R.id.rb_oropharyngeal_ventilation)
-    RadioButton rbOropharyngealVentilation;
-    @BindView(R.id.rb_nasotracheal_tube)
-    RadioButton rbNasotrachealTube;
-    @BindView(R.id.rb_orotracheal_intubation)
-    RadioButton rbOrotrachealIntubation;
-    @BindView(R.id.rb_tracheotomy)
-    RadioButton rbTracheotomy;
-    @BindView(R.id.rb_ricothyroidotomy)
-    RadioButton rbRicothyroidotomy;
+    @BindView(R.id.ieb_breath)
+    ItemEditBar iebBreath;
+    @BindView(R.id.ieb_pulse)
+    ItemEditBar iebPulse;
+    @BindView(R.id.ieb_heart_rate)
+    ItemEditBar iebHeartRate;
+    @BindView(R.id.ieb_high_pressure)
+    ItemEditBar iebHighPressure;
+    @BindView(R.id.ieb_low_pressure)
+    ItemEditBar iebLowPressure;
+    @BindView(R.id.ieb_spo2)
+    ItemEditBar iebSpo2;
+    @BindView(R.id.ieb_temperature)
+    ItemEditBar iebTemperature;
     @BindView(R.id.cb_ventilation_bandage)
     CheckBox cbVentilationBandage;
     @BindView(R.id.cb_ventilation_limbs)
@@ -123,6 +68,26 @@ public class DiseaseTreatmentFragment extends BaseFragment {
     CheckBox cbVentilationCatheter;
     @BindView(R.id.cb_ventilation_other)
     CheckBox cbVentilationOther;
+    @BindView(R.id.ll_fluid_infusion)
+    LinearLayout llFluidInfusion;
+    @BindView(R.id.rb_simple_respirator)
+    RadioButton rbSimpleRespirator;
+    @BindView(R.id.rb_ILMA)
+    RadioButton rbILMA;
+    @BindView(R.id.rb_nasal_catheter_ventilation)
+    RadioButton rbNasalCatheterVentilation;
+    @BindView(R.id.rb_oropharyngeal_ventilation)
+    RadioButton rbOropharyngealVentilation;
+    @BindView(R.id.rb_nasotracheal_tube)
+    RadioButton rbNasotrachealTube;
+    @BindView(R.id.rb_orotracheal_intubation)
+    RadioButton rbOrotrachealIntubation;
+    @BindView(R.id.rb_tracheotomy)
+    RadioButton rbTracheotomy;
+    @BindView(R.id.rb_ricothyroidotomy)
+    RadioButton rbRicothyroidotomy;
+    @BindView(R.id.et_other_deal_way)
+    EditText etOtherDealWay;
     @BindView(R.id.rb_blood_transfusion)
     RadioButton rbBloodTransfusion;
     @BindView(R.id.rb_blood_transfusion_no)
@@ -147,39 +112,19 @@ public class DiseaseTreatmentFragment extends BaseFragment {
     RadioButton rbPelvicGirdleNo;
     @BindView(R.id.rg_pelvic_girdle)
     RadioGroup rgPelvicGirdle;
-    @BindView(R.id.btn_start_frag_sg)
-    AppCompatButton btnStartFragSg;
-    @BindView(R.id.llVitalSigns)
-    LinearLayout llVitalSigns;
-    private String mPatientId;
-    private String mDocId;
-
-
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_simple_respirator;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
 
 
-    public DiseaseTreatmentFragment() {
-
-    }
-
-    public static DiseaseTreatmentFragment newInstance(String patientId, String docId) {
-        DiseaseTreatmentFragment fragment = new DiseaseTreatmentFragment();
+    public static TraumaEmergencyTreatmentFragment newInstance(String recordId) {
+        TraumaEmergencyTreatmentFragment fragment = new TraumaEmergencyTreatmentFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
     }
 
     @Override
@@ -205,7 +150,6 @@ public class DiseaseTreatmentFragment extends BaseFragment {
             radioButton.setOnClickListener(onRadioClickListener);
         }
         refrashRadioStatus();
-
 
 
         loadData();

@@ -12,7 +12,7 @@
         android:background="@drawable/login_btn_bg"
         android:text="@string/lab_confirm"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -23,7 +23,7 @@
         android:background="@drawable/login_btn_bg"
         android:text="@string/lab_cancel"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
 </LinearLayout>

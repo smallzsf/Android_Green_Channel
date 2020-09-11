@@ -28,7 +28,7 @@ import butterknife.OnClick;
  *
  * @author Licy
  */
-public class OutcomeOfPatientsFragment extends BaseStrokeFragment {
+public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
 
 
     @BindView(R.id.rb_leave_hospital)
@@ -91,12 +91,12 @@ public class OutcomeOfPatientsFragment extends BaseStrokeFragment {
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
 
 
-    public OutcomeOfPatientsFragment() {
+    public TraumaPatientOutcomeFragment() {
 
     }
 
-    public static OutcomeOfPatientsFragment newInstance(String recordId) {
-        OutcomeOfPatientsFragment fragment = new OutcomeOfPatientsFragment();
+    public static TraumaPatientOutcomeFragment newInstance(String recordId) {
+        TraumaPatientOutcomeFragment fragment = new TraumaPatientOutcomeFragment();
         Bundle args = new Bundle();
         args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
@@ -106,7 +106,7 @@ public class OutcomeOfPatientsFragment extends BaseStrokeFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_trauma_outcomeofpatients;
+        return R.layout.fragment_trauma_patient_outcome;
     }
 
     @Override

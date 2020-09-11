@@ -22,15 +22,13 @@
             android:id="@+id/es_vital_sign_aware"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
             android:gravity="center"
             app:Background="@drawable/bg_view_frame"
             app:hint="请选择"
             app:rightImage="@drawable/ic_arrow_down_blue" />
 
-
     </LinearLayout>
-
-
 
     <com.xyj.strokeaid.view.ItemEditBar
         android:id="@+id/ieb_breath"

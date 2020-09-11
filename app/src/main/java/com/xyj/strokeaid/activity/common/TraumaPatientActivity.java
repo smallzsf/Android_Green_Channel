@@ -28,15 +28,15 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
-import com.xyj.strokeaid.fragment.trauma.DiseaseSceneFragment;
-import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
-import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
-import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
-import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
-import com.xyj.strokeaid.fragment.trauma.OperationInfoFragment;
-import com.xyj.strokeaid.fragment.trauma.OutcomeOfPatientsFragment;
-import com.xyj.strokeaid.fragment.trauma.TraumaStrokeScoresFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaConsultationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaDiseaseSceneFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEmergencyTreatmentFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEcgCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaImageCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaInspectionInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEicuInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaOperationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaPatientOutcomeFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -166,32 +166,31 @@ public class TraumaPatientActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 发病现场
-                    return DiseaseSceneFragment.newInstance(recordId, recordId);
+                    return TraumaDiseaseSceneFragment.newInstance(recordId);
                 case 1:
                     // 急诊救治
-                    return DiseaseTreatmentFragment.newInstance(recordId, recordId);
+                    return TraumaEmergencyTreatmentFragment.newInstance(recordId);
                 case 2:
-                    //检验信息
-                    return InspectionInformationFragment.newInstance(recordId, recordId);
+                    // 检验信息
+                    return TraumaInspectionInfoFragment.newInstance(recordId);
                 case 3:
-                    //心电检查
-                    return ElectrocardiographCheckFragment.newInstance(recordId, recordId);
+                    // 心电检查
+                    return TraumaEcgCheckFragment.newInstance(recordId);
                 case 4:
-                    //影像检查
-                    return ImageCheckFragment.newInstance(recordId, recordId);
+                    // 影像检查
+                    return TraumaImageCheckFragment.newInstance(recordId);
                 case 5:
-                    //会诊信息
-                    return ConsultationInfoFragment.newInstance(recordId);
+                    // 会诊信息
+                    return TraumaConsultationInfoFragment.newInstance(recordId);
                 case 6:
-                    //手术信息
-                    return OperationInfoFragment.newInstance(recordId, recordId);
+                    // EICU/ICU信息
+                    return TraumaEicuInfoFragment.newInstance(recordId);
                 case 7:
-                    // 評分工具
-                    return TraumaStrokeScoresFragment.newInstance(recordId, recordId);
+                    // 手术信息
+                    return TraumaOperationInfoFragment.newInstance(recordId);
                 case 8:
-                    //患者转归
-                    return OutcomeOfPatientsFragment.newInstance(recordId);
-
+                    // 患者转归
+                    return TraumaPatientOutcomeFragment.newInstance(recordId);
                 default:
                     return EmptyFragment.newInstance();
             }
