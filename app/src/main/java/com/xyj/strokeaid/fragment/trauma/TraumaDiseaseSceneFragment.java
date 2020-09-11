@@ -96,8 +96,7 @@ public class TraumaDiseaseSceneFragment extends BaseStrokeFragment {
     TextTimeBar ttbDiagnoseTime;
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
+
     @BindView(R.id.ieb_breath)
     ItemEditBar iebBreath;
     @BindView(R.id.ieb_pulse)
@@ -164,8 +163,8 @@ public class TraumaDiseaseSceneFragment extends BaseStrokeFragment {
     LinearLayout llDeath;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
-    @BindView(R.id.llVitalSigns)
-    LinearLayout llVitalSigns;
+    @BindView(R.id.es_conscious_state)
+    EditSpinner esConsciousState;
 
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
     private Map<String, Integer> mapNormalRadioIds = new HashMap<>();

@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/llVitalSigns"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -285,7 +284,7 @@
                     style="@style/Text_Blue_Content_Style"
                     android:text="生命体征" />
 
-                <include layout="@layout/layout_view_declaration_of_signs" />
+                <include layout="@layout/include_vital_signs" />
             </LinearLayout>
 
             <LinearLayout

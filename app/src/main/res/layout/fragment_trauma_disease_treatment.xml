@@ -52,7 +52,7 @@
                     style="@style/Text_Blue_Content_Style"
                     android:text="生命体征" />
 
-                <include layout="@layout/layout_view_declaration_of_signs" />
+                <include layout="@layout/include_vital_signs" />
             </LinearLayout>
 
 

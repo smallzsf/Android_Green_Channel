@@ -19,7 +19,7 @@
             android:text="@string/vital_sign_awareness" />
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
-            android:id="@+id/es_vital_sign_aware"
+            android:id="@+id/es_conscious_state"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/item_normal_margin"

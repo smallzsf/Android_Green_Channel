@@ -16,7 +16,6 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.StrokeProcessRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.StrokeProcessBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.RouterHelper;
@@ -79,7 +78,7 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_stroke_thrombolysis;
+        return R.layout.stroke_fragment_thrombolysis;
     }
 
     @Override

@@ -103,8 +103,8 @@
                     android:id="@+id/ed_ecg_diagnosis_conclusion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_grey_stroke_with_white_bg"
                     android:layout_margin="12dp"
+                    android:background="@drawable/shape_grey_stroke_with_white_bg"
                     android:gravity="top"
                     android:hint="请输入心电图诊断结论..."
                     android:maxLength="300"
@@ -417,7 +417,7 @@
                         android:textSize="@dimen/item_title_size" />
 
                     <com.xyj.strokeaid.view.editspinner.EditSpinner
-                        android:id="@+id/es_vital_sign_aware"
+                        android:id="@+id/es_transfer_type"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"

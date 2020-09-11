@@ -34,6 +34,7 @@ import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
+import com.xyj.strokeaid.fragment.common.VitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -45,7 +46,6 @@ import com.xyj.strokeaid.fragment.stroke.StrokeEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeTransferFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -239,7 +239,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return TriageInfoFragment.newInstance(recordId, 1);
                 case 1:
                     // 生命体征
-                    return StrokeVitalSignsFragment.newInstance(recordId);
+                    return VitalSignsFragment.newInstance(recordId, 1);
                 case 2:
                     // 病情记录
                     return DiseaseRecordFragment.newInstance(recordId);

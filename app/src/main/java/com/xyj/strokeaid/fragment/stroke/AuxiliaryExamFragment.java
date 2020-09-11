@@ -100,8 +100,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
 
     protected TimePickerView mTimePickerView;
 
@@ -130,9 +128,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        View llBottom = getActivity().findViewById(R.id.ll_bottom);
-        HideBottonUtils.getInstance().getHideBotton(llAuxiliaryExam, llBottom);
     }
 
     @Override

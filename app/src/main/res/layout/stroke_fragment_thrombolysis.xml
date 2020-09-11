@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_add_patient"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="谈话医生" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="开始知情同意" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="签署知情同意" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="家属意见" />
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_family_opinion_agree"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="同意" />
+
+                    <RadioButton
+                        android:id="@+id/rb_family_opinion_disagree"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="拒绝" />
+
+                </RadioGroup>
+
+
+
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/ll_bottom"
+        layout="@layout/view_two_horizontal_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/item_normal_margin" />
+
+</LinearLayout>

@@ -67,10 +67,7 @@ public class StrokeMedicationFragment extends BaseFragment {
         // 禁止滑动
         vpContentFragStrokeMedice.setUserInputEnabled(false);
         vpContentFragStrokeMedice.setOffscreenPageLimit(Constants.STROKE_MEDICATION_TITLES.length);
-
         vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mRecordId));
-
-
     }
 
     @Override
@@ -78,7 +75,7 @@ public class StrokeMedicationFragment extends BaseFragment {
         stlTitleFragStrokeMedice.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-                vpContentFragStrokeMedice.setCurrentItem(position);
+                vpContentFragStrokeMedice.setCurrentItem(position,false);
             }
 
             @Override
@@ -104,10 +101,8 @@ public class StrokeMedicationFragment extends BaseFragment {
         public Fragment createFragment(int position) {
             if (position == 0) {
                 return StrokeThrombolysisFragment.newInstance(recordId);
-            } else if (position == 1) {
+            } else  {
                 return StrokeInHosDrugFragment.newInstance(recordId);
-            } else {
-                return StrokeOutHosDrugFragment.newInstance(recordId);
             }
         }
 

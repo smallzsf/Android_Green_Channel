@@ -31,9 +31,6 @@ import butterknife.BindView;
  */
 public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
 
-
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;
     @BindView(R.id.ieb_breath)
     ItemEditBar iebBreath;
     @BindView(R.id.ieb_pulse)
@@ -114,6 +111,28 @@ public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
     RadioGroup rgPelvicGirdle;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
+    @BindView(R.id.es_conscious_state)
+    EditSpinner esConsciousState;
+    @BindView(R.id.cb_chest_puncture)
+    CheckBox cbChestPuncture;
+    @BindView(R.id.cb_abdominal_puncture)
+    CheckBox cbAbdominalPuncture;
+    @BindView(R.id.rb_chest_solidify_yes)
+    RadioButton rbChestSolidifyYes;
+    @BindView(R.id.rb_chest_solidify_no)
+    RadioButton rbChestSolidifyNo;
+    @BindView(R.id.rg_chest)
+    RadioGroup rgChest;
+    @BindView(R.id.ll_chest_puncture)
+    LinearLayout llChestPuncture;
+    @BindView(R.id.rb_abdominal_solidify_yes)
+    RadioButton rbAbdominalSolidifyYes;
+    @BindView(R.id.rb_abdominal_solidify_no)
+    RadioButton rbAbdominalSolidifyNo;
+    @BindView(R.id.rg_abdominal)
+    RadioGroup rgAbdominal;
+    @BindView(R.id.ll_abdominal_puncture)
+    LinearLayout llAbdominalPuncture;
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_simple_respirator;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
@@ -188,7 +207,7 @@ public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
         list.add("对语言有反应");
         list.add("对刺激有反应");
         list.add("对任何刺激无反应");
-        esVitalSignAware.setItemData(list);
+        esConsciousState.setItemData(list);
     }
 
 
