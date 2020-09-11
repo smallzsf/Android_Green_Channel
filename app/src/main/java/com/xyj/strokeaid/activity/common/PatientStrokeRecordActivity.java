@@ -41,12 +41,11 @@ import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreContentFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeTransferFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
 import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
-import com.xyj.strokeaid.fragment.stroke.TransferFragment;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -257,24 +256,21 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     // 辅助检查
                     return AuxiliaryExamFragment.newInstance(recordId);
                 case 7:
-                    // 评分工具
-                    return StrokeNewScoreContentFragment.newInstance(recordId);
-                case 8:
                     // 诊断评估
                 return DiagnosticEvaluationFragment.newInstance(recordId);
-                case 9:
+                case 8:
                     // 药物治疗
                     return StrokeMedicationFragment.newInstance(recordId);
-                case 10:
+                case 9:
                     // 手术治疗
                     return StrokeOperationFragment.newInstance(recordId);
-                case 11:
+                case 10:
                     // 其他处置
                     return OtherDisposalFragment.newInstance(recordId);
-                case 12:
+                case 11:
                     // 转归交接
-                    return TransferFragment.newInstance(recordId);
-                case 13:
+                    return StrokeTransferFragment.newInstance(recordId);
+                case 12:
                     // 时间节点
                     return TimeNodeFragment.newInstance(recordId, 1);
                 default:

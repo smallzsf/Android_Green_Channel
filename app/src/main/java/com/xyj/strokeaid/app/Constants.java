@@ -24,17 +24,17 @@ public class Constants {
             "分诊信息",
             "生命体征",
             "病情记录",
-            "NIHSS    ",
+            "卒中评估",
             "启动绿道",
             "血液检查",
             "辅助检查",
-            "评分工具",
             "诊断评估",
             "药物治疗",
             "手术治疗",
             "其他处置",
             "转归交接",
-            "时间节点"};
+            "时间节点"
+    };
 
     public static final String[] GREEN_CHANNEL_CHEST_PAIN_MENU_TITLES = new String[]{
             "分诊信息",

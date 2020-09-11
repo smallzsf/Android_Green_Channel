@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="出院诊断" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="诊断结果" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_diagnose_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_diagnose_detail_result"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <Space
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_diagnose_detail_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="诊断时间"
+                app:topLineVisible="true" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="诊断时间"
+                app:topLineVisible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="住院天数"
+                app:ieb_unit_text="天"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="总费用"
+                app:ieb_unit_text="元"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="出院NIHSS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="患者转归" />
+
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/rg_patient_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_patient_out_treating"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="救治中" />
+
+                    <RadioButton
+                        android:id="@+id/rb_patient_out_leave"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="出院" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_patient_out_transfer"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="转送其他科室" />
+
+                    <RadioButton
+                        android:id="@+id/rb_patient_out_death"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="死亡" />
+
+                </LinearLayout>
+
+            </com.xyj.strokeaid.view.MyRadioGroup>
+
+
+            <LinearLayout
+                android:id="@+id/sv_leave_hospital"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="出院时间"
+                    app:topLineVisible="true" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="离院方式" />
+
+                <RadioGroup
+                    android:id="@+id/rg_departure_hospital"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/item_normal_margin">
+
+                    <RadioButton
+                        android:id="@+id/rb_leave_hospital"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="医嘱离院" />
+
+                    <RadioButton
+                        android:id="@+id/rb_transform_hospital"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="医嘱转院" />
+
+                    <RadioButton
+                        android:id="@+id/rb_township_health_center"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="医嘱转社区卫生服务机构/乡镇卫生院" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_no_leave_hospital"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="非医嘱离院" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_die"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="死亡" />
+
+
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="其它" />
+
+                </RadioGroup>
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="治疗效果" />
+
+                <RadioGroup
+                    android:id="@+id/rg_treat_result"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/item_normal_margin">
+
+                    <RadioButton
+                        android:id="@+id/rb_treat_result_cure"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="治愈" />
+
+                    <RadioButton
+                        android:id="@+id/rb_treat_result_better"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="好转" />
+
+                    <RadioButton
+                        android:id="@+id/rb_treat_result_head_death"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="脑死亡离院" />
+
+                    <RadioButton
+                        android:id="@+id/rb_treat_result_other"
+                        style="@style/XyjRadionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="其他原因离院" />
+
+                </RadioGroup>
+
+                <View style="@style/horizontal_divider" />
+
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_jyy"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="降压药" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_jty"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="降糖药" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_tzy"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="调脂药" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_kny"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="抗凝药" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_kxxby"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="抗血小板药" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_zyzl"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="中药治疗" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_qt"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="其他" />
+
+                    <CheckBox
+                        android:id="@+id/cb_cydy_wu"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="无" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_death"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="死亡时间"
+                    app:topLineVisible="true" />
+
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_hxxhsj"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="呼吸循环衰竭" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_nxgb"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="脑血管病" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_fbgr"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="肺部感染" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_sxhdcx"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="上消化道出血" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_jxsgnsj"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="急性肾功能衰竭" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_sshzd"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="损伤和中毒" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_qt"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="其他" />
+
+                    <CheckBox
+                        android:id="@+id/cb_swyy_bx"
+                        style="@style/XyjFlowCheckBox"
+                        android:text="不详" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_tranfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="转科时间"
+                    app:topLineVisible="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12">
+
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="接诊科室" />
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_receiving_department"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue" />
+                </LinearLayout>
+
+
+                <EditText
+                    android:id="@+id/et_transfer_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginTop="@dimen/dp_4"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:background="@drawable/shape_grey_stroke_with_white_bg"
+                    android:gravity="top"
+                    android:hint="转科原因..."
+                    android:maxLength="300"
+                    android:minHeight="80dp"
+                    android:padding="10dp"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="@dimen/item_content_size" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+</LinearLayout>

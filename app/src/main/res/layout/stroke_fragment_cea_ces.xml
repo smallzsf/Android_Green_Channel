@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.stroke.StrokCeaCesFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/XyjTextTitel"
+                    android:text="是否有症状" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_symptom_no_fgm_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="无" />
+
+                    <RadioButton
+                        android:id="@+id/rb_symptom_yes_fgm_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:layout_weight="2"
+                        android:text="有（缺血症状或脑梗死）" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_start_time_fgm_cea"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="开始时间"
+                app:topLineVisible="true" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/XyjTextSubTitel"
+                    android:text="手术部位" />
+
+                <CheckBox
+                    android:id="@+id/ck_local_lica_fgm_cea"
+                    style="@style/XyjCheckBoxHorizontalWeight"
+                    android:text="LICA" />
+
+                <CheckBox
+                    android:id="@+id/ck_local_rica_fgm_cea"
+                    style="@style/XyjCheckBoxHorizontalWeight"
+                    android:text="RICA" />
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/XyjTextSubTitel"
+                    android:text="麻醉方式" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_all_anaesthesia_fgm_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="全麻" />
+
+                    <RadioButton
+                        android:id="@+id/rb_local_anaesthesia_fgm_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="局麻" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/XyjTextTitel"
+                    android:text="实施监测手段" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/item_normal_margin">
+
+                    <CheckBox
+                        android:id="@+id/ck_tcd_fgm_cea"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="TCD" />
+
+                    <CheckBox
+                        android:id="@+id/ck_ndt_fgm_cea"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="脑电图" />
+
+                    <CheckBox
+                        android:id="@+id/ck_other_fgm_cea"
+                        style="@style/XyjCheckBoxHorizontalWeight"
+                        android:text="其他" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/XyjTextTitel"
+                    android:text="手术采取方式" />
+
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/item_normal_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_bzcea_fgm_cea"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="标准式CEA" />
+
+                        <RadioButton
+                            android:id="@+id/rb_wfcea_fgm_cea"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="外翻式CEA" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_ces_fgm_cea"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="CES" />
+
+                        <RadioButton
+                            android:id="@+id/rb_fhss_fgm_cea"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="复合手术" />
+                    </LinearLayout>
+
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/XyjTextSubTitel"
+                    android:text="是否采用补片" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_sfcybp_yes"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="是" />
+
+                    <RadioButton
+                        android:id="@+id/rb_sfcybp_no"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="否" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+
+            <TextView
+                style="@style/XyjTextSubTitel"
+                android:text="并发症" />
+
+            <com.zhy.view.flowlayout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
+                <CheckBox
+                    android:id="@+id/cb_fluid_infusion"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="无" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_way"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="脑梗死" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_bandage"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="高灌注" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_limbs"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="脑出血" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_chest"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="周围神经损伤" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_pelvis"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="切口感染" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_neck"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="继发性癫痫" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_vertebra"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="肺部感染" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_fracture_out"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="泌尿系统感染" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_other"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="其他" />
+
+            </com.zhy.view.flowlayout.FlowLayout>
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>
