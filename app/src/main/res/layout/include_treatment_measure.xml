@@ -26,16 +26,19 @@
             <RadioButton
                 android:id="@+id/rb_treat_strategy_1"
                 style="@style/XyjRadionButtonHorizontalWeight"
+                android:tag="cpc_clcs_srbf"
                 android:text="收入病房" />
 
             <RadioButton
                 android:id="@+id/rb_treat_strategy_2"
                 style="@style/XyjRadionButtonHorizontalWeight"
+                android:tag="cpc_clcs_jzlg"
                 android:text="急诊留观" />
 
             <RadioButton
                 android:id="@+id/rb_treat_strategy_3"
                 style="@style/XyjRadionButtonHorizontalWeight"
+                android:tag="cpc_clcs_mzzl"
                 android:text="门诊治疗" />
 
 
@@ -50,6 +53,7 @@
             <RadioButton
                 android:id="@+id/rb_treat_strategy_4"
                 style="@style/XyjRadionButtonHorizontalWeight"
+                android:tag="cpc_clcs_sf"
                 android:text="随访" />
 
 

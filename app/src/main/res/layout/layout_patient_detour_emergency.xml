@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <com.xyj.strokeaid.view.MyRadioGroup
-            android:id="@+id/rg_detour_emergent"
+            android:id="@+id/rg_my_nonstop_office"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_normal_margin"

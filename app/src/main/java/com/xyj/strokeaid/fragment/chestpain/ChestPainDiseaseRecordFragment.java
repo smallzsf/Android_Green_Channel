@@ -430,19 +430,22 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
          *  "cpc_bqpg_jxxxm": "间歇性胸闷/胸痛",
          *   "cpc_bqpg_zzyhj": "症状已缓解"
          */
-        if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_cxxxm")) {
-            rbIntermittentChestPain.setChecked(true);
-        } else if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_jxxxm")) {
-            rbPersistentChestPain.setChecked(true);
-        } else {
-            rbRelievedChestPain.setChecked(true);
-        }
+        if (!TextUtils.isEmpty(chestPainDiseaseRecordBean.getConditionassessment())){
+            if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_cxxxm")) {
+                rbIntermittentChestPain.setChecked(true);
+            } else if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_jxxxm")) {
+                rbPersistentChestPain.setChecked(true);
+            } else {
+                rbRelievedChestPain.setChecked(true);
+            }
 
+        }
 
 
         /**
          * 病情评估明细
          */
+
         String dischargedunacs = chestPainDiseaseRecordBean.getConditionassessmentdetail();
         if (!TextUtils.isEmpty(dischargedunacs)) {
             cbNonAcs1.setChecked(dischargedunacs.contains("cpc_bqpgmx_hxkn"));

@@ -286,7 +286,7 @@ public class ApiUrls {
         /**
          * 胸痛--初始诊断--患者绕行--编辑
          */
-        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_EDIT= "yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/edit";
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/edit";
 
         /**
          * 胸痛--初始诊断--患者绕行--查询

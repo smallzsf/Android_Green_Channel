@@ -317,4 +317,9 @@
         <item>对任何刺激无反应:cpc_smtzys_rhcj</item>
     </string-array>
 
+    <string-array name="chest_pain_diagnose_patients_detour">
+        <item>收入心内病房:cpc_xthzqx_srxnbf</item>
+        <item>收入急诊病房:cpc_xthzqx_srjzbf</item>
+        <item>其他:cpc_xthzqx_other</item>
+    </string-array>
 </resources>

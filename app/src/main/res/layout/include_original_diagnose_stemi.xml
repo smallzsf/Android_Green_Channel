@@ -164,6 +164,8 @@
     </LinearLayout>
 
 
+
+
     <View style="@style/horizontal_divider" />
 
 
@@ -300,74 +302,7 @@
 
     <include layout="@layout/layout_patient_detour_cuu"></include>
 
-    <LinearLayout
-        android:id="@+id/ll_fdmss"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/XyjTextSubTitel"
-            android:text="危险分层" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.xyj.strokeaid.view.MyRadioGroup
-                android:id="@+id/mrg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/item_normal_margin"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/item_normal_height"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/rb_low_danger"
-                            style="@style/XyjRadionButtonHorizontalWeight"
-                            android:tag="cpc_fdmss_dw"
-                            android:text="低危" />
-
-
-                        <RadioButton
-                            android:id="@+id/rb_center_danger"
-                            style="@style/XyjRadionButtonHorizontalWeight"
-                            android:tag="cpc_fdmss_zw"
-                            android:text="中危" />
-
-
-                        <RadioButton
-                            android:id="@+id/rb_high_danger"
-                            style="@style/XyjRadionButtonHorizontalWeight"
-                            android:tag="cpc_fdmss_gw"
-                            android:text="高危" />
-
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-
-            </com.xyj.strokeaid.view.MyRadioGroup>
-
-        </LinearLayout>
-
-
-        <View style="@style/horizontal_divider" />
+  <!--
 
 
         <com.xyj.strokeaid.view.TextTimeBar
@@ -496,6 +431,6 @@
 
 
     </LinearLayout>
-
+-->
 
 </LinearLayout>

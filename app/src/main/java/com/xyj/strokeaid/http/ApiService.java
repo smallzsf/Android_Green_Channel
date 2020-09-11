@@ -14,6 +14,9 @@ import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
+import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
@@ -375,7 +378,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_GET)
-    Call<BaseObjectBean> getChestPainDiagnoseGraceGet(@Body RequestBody info);
+    Call<BaseObjectBean<ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean>> getChestPainDiagnoseGraceGet(@Body RequestBody info);
 
 
     /**
@@ -385,7 +388,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GET)
-    Call<BaseObjectBean> getChestPainDiagnoseGet(@Body RequestBody info);
+    Call<BaseObjectBean<ChestPainDiagnosisBean.ChestPainResponseBean>> getChestPainDiagnoseGet(@Body RequestBody info);
 
 
     /**
@@ -413,7 +416,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_GET)
-    Call<BaseObjectBean> getChestPainDiagnosePatientsDetourGet(@Body RequestBody info);
+    Call<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>> getChestPainDiagnosePatientsDetourGet(@Body RequestBody info);
 
 
 
