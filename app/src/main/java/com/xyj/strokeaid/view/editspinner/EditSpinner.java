@@ -25,7 +25,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.chestpain.DistListUtil;
+import com.xyj.strokeaid.distutil.DistListUtil;
 
 import java.util.List;
 

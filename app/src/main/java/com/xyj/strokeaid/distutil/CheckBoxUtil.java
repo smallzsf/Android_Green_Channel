@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.activity.chestpain;
+package com.xyj.strokeaid.distutil;
 
 import android.content.Context;
 import android.widget.CheckBox;

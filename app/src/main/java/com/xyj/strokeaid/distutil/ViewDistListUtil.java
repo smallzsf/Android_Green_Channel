@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.activity.chestpain;
+package com.xyj.strokeaid.distutil;
 
 import java.util.ArrayList;
 import java.util.List;

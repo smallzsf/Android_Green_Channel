@@ -1,10 +1,8 @@
-package com.xyj.strokeaid.activity.chestpain;
+package com.xyj.strokeaid.distutil;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.RadioButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
