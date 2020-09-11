@@ -236,7 +236,13 @@ public class TreatmentDecisionFragment extends BaseFragment {
             }
         });
 
+
+
+
     }
+
+
+
 }
 
     
