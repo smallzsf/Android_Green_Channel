@@ -277,6 +277,9 @@ public class TreatmentDecisionFragment extends BaseFragment {
 //            rb_into_measure_level_1
             if (!rbIntoMeasureLevel1.isChecked()) {
                 // 直接PCI
+                String selectViewKey = radioButtonDistUtil.getSelectViewKey();
+                bean.setStemireperfusionmeasure(selectViewKey);
+
 
             } else if (rbIntoMeasureLevel2.isChecked()) {
                 // 溶栓
