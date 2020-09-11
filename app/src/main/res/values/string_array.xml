@@ -37,8 +37,6 @@
         <item>出院时NIHSS评分</item>
     </string-array>
 
-
-
     <string-array name="chest_pain_operation_delay_reason">
         <item>症状不明显延误诊断:cpc_delayreason_zzbmx</item>
         <item>家属未到场:cpc_delayreason_jswdc</item>
@@ -155,6 +153,37 @@
         <item>比伐卢定:cpc_knyw_bfrd</item>
         <item>磺达肝癸钠:cpc_knyw_hdgkn</item>
     </string-array>
+    <string-array name="ckmb_unit">
+        <item>ng/mL:cpc_ckmbdwV2_ngPerml</item>
+        <item>ug/L:cpc_ckmbdwV2_ugPerl</item>
+        <item>u/L:cpc_ckmbdwV2_uPerl</item>
+    </string-array>
+
+    <string-array name="myo_unit">
+        <item>ng/mL:cpc_myodwV2_ngPerml</item>
+        <item>ug/L:cpc_myodwV2_ugPerl</item>
+    </string-array>
+
+    <string-array name="ddimer_unit">
+        <item>ng/mL:cpc_ddimdwV2_ngPerml</item>
+        <item>ug/mL:cpc_ddimdwV2_ugPerml</item>
+        <item>ug/L:cpc_ddimdwV2_ugPerl</item>
+        <item>mg/L:cpc_ddimdwV2_mgPerl</item>
+    </string-array>
+
+    <string-array name="tn_status">
+        <item>阳性:cpc_yyx_xx</item>
+        <item>阴性:cpc_yyx_yx</item>
+    </string-array>
+
+    <string-array name="tn_unit">
+        <item>ng/mL:cpc_tndw_ngml</item>
+        <item>ng/ml:cpc_tndw_ngPerml</item>
+        <item>ng/L:cpc_tndw_ngPerl</item>
+        <item>ug/L:cpc_tndw_ugPerl</item>
+        <item>mg/L:cpc_tndw_mgPerl</item>
+    </string-array>
+
 
     <string-array name="accepts_location">
         <item>急诊</item>
@@ -315,6 +344,14 @@
         <item>对语言有反应:cpc_smtzys_yyfy</item>
         <item>对刺激有反应:cpc_smtzys_ctfy</item>
         <item>对任何刺激无反应:cpc_smtzys_rhcj</item>
+    </string-array>
+
+    <string-array name="chest_pain_treament_decision">
+        <item>直接PCI:cpc_stemi_zgzcsv2_zjpci</item>
+        <item>溶栓:cpc_stemi_zgzcsv2_rs</item>
+        <item>择期介入:cpc_stemi_zgzcsv2_zqjr</item>
+        <item>CABG:cpc_stemi_zgzcsv2_cabg</item>
+        <item>转运PCI:cpc_stemi_zgzcsv2_zypci</item>
     </string-array>
 
 </resources>

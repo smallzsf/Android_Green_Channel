@@ -257,8 +257,6 @@ public class ChestPainOperationResultActivity extends BaseActivity {
                 }
             }
         }
-
-
     }
 
     private void resetRadioButton(RadioGroup rg, String value) {
@@ -594,10 +592,4 @@ public class ChestPainOperationResultActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }
