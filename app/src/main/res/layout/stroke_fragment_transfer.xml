@@ -476,6 +476,44 @@
 
             </LinearLayout>
 
+            <TextView
+                style="@style/Text_Blue_Content_Style"
+                android:text="患者转归" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="出院mRS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="出院NIHSS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="出院GCS"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

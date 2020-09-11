@@ -32,6 +32,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
@@ -40,12 +41,11 @@ import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeTransferFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -244,8 +244,8 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     // 病情记录
                     return DiseaseRecordFragment.newInstance(recordId);
                 case 3:
-                    // NIHSS评分
-                    return StrokeNihssFragment.newInstance(recordId);
+                    // 卒中评估
+                    return StrokeEvaluationFragment.newInstance(recordId);
                 case 4:
                     // 启动绿道
                     return StartGreenwayFragment.newInstance(recordId);
@@ -257,7 +257,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return AuxiliaryExamFragment.newInstance(recordId);
                 case 7:
                     // 诊断评估
-                return DiagnosticEvaluationFragment.newInstance(recordId);
+                    return DiagnosticEvaluationFragment.newInstance(recordId);
                 case 8:
                     // 药物治疗
                     return StrokeMedicationFragment.newInstance(recordId);
