@@ -358,6 +358,64 @@ public interface ApiService {
     Call<BaseObjectBean<OperationInfoBean>> getChestPainOperationInfo(@Body RequestBody info);
 
 
+    /**
+     * 胸痛--初始诊断--Grace--保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_SAVE)
+    Call<BaseObjectBean> getChestPainDiagnoseGraceSave(@Body RequestBody info);
+
+
+    /**
+     * 胸痛--初始诊断--Grace--获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_GET)
+    Call<BaseObjectBean> getChestPainDiagnoseGraceGet(@Body RequestBody info);
+
+
+    /**
+     * 胸痛--初始诊断--查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GET)
+    Call<BaseObjectBean> getChestPainDiagnoseGet(@Body RequestBody info);
+
+
+    /**
+     * 胸痛--初始诊断--保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_SAVE)
+    Call<BaseObjectBean> getChestPainDiagnoseSave(@Body RequestBody info);
+
+    /**
+     * 胸痛--初始诊断--患者绕行--编辑
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_EDIT)
+    Call<BaseObjectBean> getChestPainDiagnosePatientsDetourEdit(@Body RequestBody info);
+
+    /**
+     * 胸痛--初始诊断--患者绕行--查询
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_GET)
+    Call<BaseObjectBean> getChestPainDiagnosePatientsDetourGet(@Body RequestBody info);
+
+
 
 
 

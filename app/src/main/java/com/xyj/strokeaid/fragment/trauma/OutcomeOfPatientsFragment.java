@@ -2,16 +2,17 @@ package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.util.ArrayList;
@@ -24,8 +25,10 @@ import butterknife.OnClick;
 
 /**
  * 患者转归
+ *
+ * @author Licy
  */
-public class OutcomeOfPatientsFragment extends BaseFragment {
+public class OutcomeOfPatientsFragment extends BaseStrokeFragment {
 
 
     @BindView(R.id.rb_leave_hospital)
@@ -36,14 +39,14 @@ public class OutcomeOfPatientsFragment extends BaseFragment {
     RadioButton rbTransformDepartment;
     @BindView(R.id.rb_die)
     RadioButton rbDie;
-    @BindView(R.id.et_hospitalization_day)
-    EditText etHospitalizationDay;
-    @BindView(R.id.et_ICU_day)
-    EditText etICUDay;
-    @BindView(R.id.et_respirator_timer)
-    EditText etRespiratorTimer;
-    @BindView(R.id.et_totalcost)
-    EditText etTotalcost;
+    @BindView(R.id.ieb_live_hos_days)
+    ItemEditBar iebLiveHosDays;
+    @BindView(R.id.ieb_live_icu_days)
+    ItemEditBar iebLiveIcuDays;
+    @BindView(R.id.ieb_breath_machine_times)
+    ItemEditBar iebBreathMachineTimes;
+    @BindView(R.id.ieb_total_cost)
+    ItemEditBar iebTotalCost;
     @BindView(R.id.ttb_leave_hospital)
     TextTimeBar ttbLeaveHospital;
     @BindView(R.id.rb_result_ok)
@@ -58,36 +61,26 @@ public class OutcomeOfPatientsFragment extends BaseFragment {
     LinearLayout llLeavehospital;
     @BindView(R.id.ttb_leave_hospital_door)
     TextTimeBar ttbLeaveHospitalDoor;
-    @BindView(R.id.et_hospitalization_name)
-    EditText etHospitalizationName;
+    @BindView(R.id.ieb_hos_name)
+    ItemEditBar iebHosName;
     @BindView(R.id.rb_nethospital_true)
     RadioButton rbNethospitalTrue;
     @BindView(R.id.rb_nethospital_flase)
     RadioButton rbNethospitalFlase;
+    @BindView(R.id.rg_is_net)
+    RadioGroup rgIsNet;
     @BindView(R.id.ll_transferhospital)
     LinearLayout llTransferhospital;
     @BindView(R.id.ttb_transfer_department)
     TextTimeBar ttbTransferDepartment;
-    @BindView(R.id.et_reception_department)
-    EditText etReceptionDepartment;
-    @BindView(R.id.et_transfer_reason)
-    EditText etTransferReason;
     @BindView(R.id.ll_transferdepartment)
     LinearLayout llTransferdepartment;
-    @BindView(R.id.et_die_location)
-    EditText etDieLocation;
     @BindView(R.id.ttb_die_date)
     TextTimeBar ttbDieDate;
-    @BindView(R.id.et_die_reason)
-    EditText etDieReason;
     @BindView(R.id.ll_die)
     LinearLayout llDie;
-    @BindView(R.id.rg_is_net)
-    RadioGroup rgIsNet;
-    private String mPatientId;
-    private String mDocId;
-
-
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
     private List<RadioButton> outcomeList = new ArrayList();
     private int checkRadioId = R.id.rb_die;
     /**
@@ -102,23 +95,14 @@ public class OutcomeOfPatientsFragment extends BaseFragment {
 
     }
 
-    public static OutcomeOfPatientsFragment newInstance(String patientId, String docId) {
+    public static OutcomeOfPatientsFragment newInstance(String recordId) {
         OutcomeOfPatientsFragment fragment = new OutcomeOfPatientsFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {

@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.view.SelectDataDialog;
 
 import butterknife.BindView;
@@ -18,8 +19,9 @@ import butterknife.OnClick;
 
 /**
  * 会诊信息
+ * @author Licy
  */
-public class ConsultationInfoFragment extends BaseFragment {
+public class ConsultationInfoFragment extends BaseStrokeFragment {
 
     @BindView(R.id.et_trauma)
     EditText etTrauma;
@@ -47,30 +49,20 @@ public class ConsultationInfoFragment extends BaseFragment {
     TextView tvUrologySelect;
     @BindView(R.id.btn)
     AppCompatButton btn;
-    private String mPatientId;
-    private String mDocId;
+
 
     public ConsultationInfoFragment() {
 
     }
 
-    public static ConsultationInfoFragment newInstance(String patientId, String docId) {
+    public static ConsultationInfoFragment newInstance(String recordId) {
         ConsultationInfoFragment fragment = new ConsultationInfoFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {

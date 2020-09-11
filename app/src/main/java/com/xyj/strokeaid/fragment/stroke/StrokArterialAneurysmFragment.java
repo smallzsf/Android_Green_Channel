@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.view.TextTimeBar;
 
 import butterknife.BindView;
@@ -23,10 +24,7 @@ import butterknife.BindView;
  * @Author: crq
  * @CreateDate: 2020/8/29 9:57
  */
-public class StrokArterialAneurysmFragment extends BaseFragment {
-
-    private String mPatientId;
-    private String mDocId;
+public class StrokArterialAneurysmFragment extends BaseStrokeFragment {
 
     /**
      * 颅内血管检查方式 多选 CTA
@@ -483,30 +481,18 @@ public class StrokArterialAneurysmFragment extends BaseFragment {
     LinearLayout ckAneurysmIntervention;
 
 
-
-
-
     public StrokArterialAneurysmFragment() {
         // Required empty public constructor
     }
 
-    public static StrokArterialAneurysmFragment newInstance(String patientId, String docId) {
+    public static StrokArterialAneurysmFragment newInstance(String recordId) {
         StrokArterialAneurysmFragment fragment = new StrokArterialAneurysmFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {

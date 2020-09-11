@@ -367,7 +367,10 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                                 }
 
                             } else {
-                                showToast(response.body().getMessage());
+                                     showToast(TextUtils.isEmpty(response.body().getMessage())
+                                            ? getString(R.string.http_tip_data_save_error)
+                                            : response.body().getMessage());
+
                             }
                         }
                     }
@@ -376,6 +379,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
+                        showToast(call.toString());
                     }
                 });
     }
@@ -407,7 +411,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
+                        showToast(call.toString());
                     }
                 });
     }

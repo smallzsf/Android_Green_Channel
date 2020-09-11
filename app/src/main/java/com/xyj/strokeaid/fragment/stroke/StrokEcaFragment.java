@@ -22,9 +22,6 @@ import butterknife.BindView;
  */
 public class StrokEcaFragment extends BaseFragment {
 
-    private String mPatientId;
-    private String mDocId;
-
     /**
      * 开始时间
      * */
@@ -187,22 +184,12 @@ public class StrokEcaFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static StrokEcaFragment newInstance(String patientId, String docId) {
+    public static StrokEcaFragment newInstance(String recordId) {
         StrokEcaFragment fragment = new StrokEcaFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
     }
 
     @Override

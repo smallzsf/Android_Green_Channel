@@ -9,15 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -96,32 +92,6 @@ public class StrokeVitalSignsFragment extends BaseFragment {
     AppCompatButton btnConfirm;
     @BindView(R.id.ll_vital_signs)
     LinearLayout llVitalSigns;
-    private String mPatientId;
-    private String mDocId;
-    private List<String> list;
-
-    public StrokeVitalSignsFragment() {
-
-    }
-
-    public static StrokeVitalSignsFragment newInstance(String patientId, String docId) {
-        StrokeVitalSignsFragment fragment = new StrokeVitalSignsFragment();
-        LogUtils.d(fragment.getClass() + "newInstance");
-        Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -130,11 +100,7 @@ public class StrokeVitalSignsFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        btnGetData.setText("获取数据");
-        btnConfirm.setText("确定");
-        loadData();
-
-
+        esVitalSignAware.setStringArrayId(R.array.stroke_state_of_consciousness);
     }
 
 
@@ -147,20 +113,26 @@ public class StrokeVitalSignsFragment extends BaseFragment {
     }
 
 
-    private void loadData() {
-        list = new ArrayList<>();
-        list.add("请选择");
-        list.add("清醒");
-        list.add("对语言有反应");
-        list.add("对刺激有反应");
-        list.add("对任何刺激无反应");
-        esVitalSignAware.setItemData(list);
-    }
-
-
     @Override
     protected void initListener() {
 
+    }
+
+    private String mRecordId;
+    public StrokeVitalSignsFragment() {}
+    public static StrokeVitalSignsFragment newInstance(String recordId) {
+        StrokeVitalSignsFragment fragment = new StrokeVitalSignsFragment();
+        Bundle args = new Bundle();
+        args.putString(IntentKey.RECORD_ID, recordId);
+        fragment.setArguments(args);
+        return fragment;
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
     }
 
 }

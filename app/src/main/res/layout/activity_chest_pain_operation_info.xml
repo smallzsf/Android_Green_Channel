@@ -126,12 +126,12 @@
                 app:bottomLineVisible="true"
                 app:title="患者到达时间" />
 
-            <com.xyj.strokeaid.view.TextTimeBar
+        <!--    <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_begin"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_large_height"
                 app:bottomLineVisible="true"
-                app:title="手术开始时间" />
+                app:title="手术开始时间" />-->
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/tv_time_puncture"
@@ -237,7 +237,7 @@
 
             <View style="@style/horizontal_divider" />
 
-            <LinearLayout
+          <!--  <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_title_height"
                 android:gravity="center_vertical"
@@ -280,7 +280,7 @@
                 </RadioGroup>
 
             </LinearLayout>
-
+-->
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/tag_reason_delay"
                 android:layout_width="fill_parent"

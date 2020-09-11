@@ -9,6 +9,16 @@ import androidx.annotation.Nullable;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @ClassName: OriginalStatus1
@@ -57,5 +67,7 @@ public class DiagnoseNonAcsFragment extends BaseFragment {
     protected void initListener() {
 
     }
+
+
 
 }

@@ -53,14 +53,7 @@ public class TimeNodeFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param recordId        记录ID
-     * @param diseaseViewType 疾病类型
-     * @return A new instance of fragment StrokeGetInvolvedFragment.
-     */
+
     public static TimeNodeFragment newInstance(String recordId, int diseaseViewType) {
         TimeNodeFragment fragment = new TimeNodeFragment();
         Bundle args = new Bundle();

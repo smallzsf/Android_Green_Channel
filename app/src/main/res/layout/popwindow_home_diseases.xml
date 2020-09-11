@@ -37,26 +37,26 @@
         android:textColor="@color/color_222222"
         android:textSize="@dimen/item_title_size" />
 
-    <View style="@style/horizontal_divider" />
+<!--    <View style="@style/horizontal_divider" />-->
 
-    <TextView
-        android:id="@+id/tv_maternal_pop_diseases"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:gravity="center"
-        android:text="危重孕产妇"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/item_title_size" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_maternal_pop_diseases"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/item_normal_height"-->
+<!--        android:gravity="center"-->
+<!--        android:text="危重孕产妇"-->
+<!--        android:textColor="@color/color_222222"-->
+<!--        android:textSize="@dimen/item_title_size" />-->
 
-    <View style="@style/horizontal_divider" />
+<!--    <View style="@style/horizontal_divider" />-->
 
-    <TextView
-        android:id="@+id/tv_child_pop_diseases"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:gravity="center"
-        android:text="危重儿童"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/item_title_size" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_child_pop_diseases"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/item_normal_height"-->
+<!--        android:gravity="center"-->
+<!--        android:text="危重儿童"-->
+<!--        android:textColor="@color/color_222222"-->
+<!--        android:textSize="@dimen/item_title_size" />-->
 
 </LinearLayout>

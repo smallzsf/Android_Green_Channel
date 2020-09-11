@@ -35,18 +35,15 @@ public class StrokeMedicationFragment extends BaseFragment {
     @BindView(R.id.vp_content_frag_stroke_medice)
     ViewPager2 vpContentFragStrokeMedice;
 
-    private String mPatientId;
-    private String mDocId;
+    private String mRecordId;
 
     public StrokeMedicationFragment() {
-        // Required empty public constructor
     }
 
-    public static StrokeMedicationFragment newInstance(String patientId, String docId) {
+    public static StrokeMedicationFragment newInstance(String recordId) {
         StrokeMedicationFragment fragment = new StrokeMedicationFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,8 +52,7 @@ public class StrokeMedicationFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -72,7 +68,7 @@ public class StrokeMedicationFragment extends BaseFragment {
         vpContentFragStrokeMedice.setUserInputEnabled(false);
         vpContentFragStrokeMedice.setOffscreenPageLimit(Constants.STROKE_MEDICATION_TITLES.length);
 
-        vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mPatientId, mDocId));
+        vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mRecordId));
 
 
     }
@@ -94,36 +90,24 @@ public class StrokeMedicationFragment extends BaseFragment {
 
     private class StrokeMedicationVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public StrokeMedicationVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
-            super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
 
-        public StrokeMedicationVpAdapter(@NonNull Fragment fragment, String patientId, String docId) {
+        public StrokeMedicationVpAdapter(@NonNull Fragment fragment, String recordId) {
             super(fragment);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
-        public StrokeMedicationVpAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String patientId, String docId) {
-            super(fragmentManager, lifecycle);
-            this.patientId = patientId;
-            this.docId = docId;
-        }
 
         @NonNull
         @Override
         public Fragment createFragment(int position) {
             if (position == 0) {
-                return StrokeThrombolysisFragment.newInstance(patientId, docId);
+                return StrokeThrombolysisFragment.newInstance(recordId);
             } else if (position == 1) {
-                return StrokeInHosDrugFragment.newInstance(patientId, docId);
+                return StrokeInHosDrugFragment.newInstance(recordId);
             } else {
-                return StrokeOutHosDrugFragment.newInstance(patientId, docId);
+                return StrokeOutHosDrugFragment.newInstance(recordId);
             }
         }
 

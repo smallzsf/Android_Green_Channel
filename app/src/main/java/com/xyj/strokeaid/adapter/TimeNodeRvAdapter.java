@@ -1,5 +1,9 @@
 package com.xyj.strokeaid.adapter;
 
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.blankj.utilcode.util.SizeUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.xyj.strokeaid.R;
@@ -28,6 +32,15 @@ public class TimeNodeRvAdapter extends BaseQuickAdapter<TimeNodeBean, BaseViewHo
     protected void convert(@NotNull BaseViewHolder baseViewHolder, TimeNodeBean timeNodeBean) {
         baseViewHolder.setText(R.id.tv_desc_item_time_node, timeNodeBean.getDesc())
                 .setText(R.id.tv_time_item_time_node, timeNodeBean.getTime());
+        View view = baseViewHolder.getView(R.id.view_middle);
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view.getLayoutParams();
+        if (getItemPosition(timeNodeBean) == 0) {
+            layoutParams.setMargins(0, SizeUtils.dp2px(8), 0, 0);
+        } else {
+            layoutParams.setMargins(0, 0, 0, 0);
+        }
+
 
     }
 }

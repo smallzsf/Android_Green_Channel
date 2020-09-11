@@ -15,8 +15,8 @@ public class ApiUrls {
     public static final String PRODUCTION_ENVIRONMENT_FOR_API = "https://ykj.yjjk.net.cn/";
     public static final String PRODUCTION_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk.net.cn/";
 
-    public static final String DEVELOP_ENVIRONMENT_FOR_API = "https://ykj.yjjk366.com/";
-    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "https://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_API = "http://ykj.yjjk366.com/";
+    public static final String DEVELOP_ENVIRONMENT_FOR_FILE = "http://ykj.yjjk366.com/";
 
     /**
      * PRODUCTION_ENVIRONMENT_FILE_SERVER
@@ -262,6 +262,36 @@ public class ApiUrls {
          * 胸痛中心-胸痛诊疗-心电图 主表添加
          */
         public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+
+        /**
+         * 胸痛--初始诊断--Grace--保存
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainGraceScore/edit";
+
+        /**
+         * 胸痛--初始诊断--Grace--获取
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainGraceScore/get";
+
+        /**
+         * 胸痛--初始诊断--查询
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GET= "yjjk-gateway/yjjk-cdm-api/v1/chestpainDiagnosis/get";
+
+        /**
+         * 胸痛--初始诊断--保存
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainDiagnosis/edit";
+
+        /**
+         * 胸痛--初始诊断--患者绕行--编辑
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_EDIT= "yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/edit";
+
+        /**
+         * 胸痛--初始诊断--患者绕行--查询
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/getByRecordId";
 
     }
 
