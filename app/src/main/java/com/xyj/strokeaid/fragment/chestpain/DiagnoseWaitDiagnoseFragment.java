@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -24,6 +25,8 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * @ClassName: OriginalStatus1
@@ -181,6 +184,10 @@ public class DiagnoseWaitDiagnoseFragment extends BaseFragment {
         chestPainDiagnosisBean.setRecordId(mRecordId);
         //	initialdiagnosis	初步诊断("cpc_cbzdv2_stemi": "STEM
         chestPainDiagnosisBean.setInitialdiagnosis(mDiagnoseType);
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("initialdiagnosis",mDiagnoseType);
+        editor.commit();
         if (rbGiveUpYes.isChecked()) {
             chestPainDiagnosisBean.setGiveuptreatment(Constants.BOOL_TRUE);
         } else {

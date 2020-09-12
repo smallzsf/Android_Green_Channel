@@ -1,16 +1,19 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
+import com.umeng.vt.diff.Event;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -23,7 +26,12 @@ import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import okhttp3.MediaType;
@@ -32,10 +40,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 /**
  * @ClassName: OriginalDiagnoseFragment
- * @Description:
+ * @Description:初始诊断
  * @Author: 小黑
  * @Date: 2020/9/2 19:09
  */
@@ -57,6 +67,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private BaseFragment mCurrentFragment;
 
     private String mRecordId;
+    private  int selectTitlePosition=0;
+
 
     public OriginalDiagnoseFragment() {
 
@@ -76,6 +88,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
         if (getArguments() != null) {
             mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
+
     }
 
     @Override
@@ -86,11 +99,98 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
 
-        esTitleSelect.setItemData(Arrays.asList(getResources().getStringArray(R.array.original_diagnose)));
+        /**
+         * editSpinner设置数据
+         */
+        esTitleSelect.setStringArrayId(R.array.original_diagnose);
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("sp",MODE_PRIVATE);
+        String initialdiagnosis = sharedPreferences.getString("initialdiagnosis", "");
+        if (!TextUtils.isEmpty(initialdiagnosis)){
+            esTitleSelect.setStringArrayNormalKey(initialdiagnosis);
+            int selectPosition = esTitleSelect.getSelectPosition();
+            FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+            if (mCurrentFragment != null) {
+                fragmentTransaction.hide(mCurrentFragment);
+            }
+            switch (selectPosition) {
+                case 0:
+                    // STEMI
+                    if (mStemiFragment == null) {
+                        mStemiFragment = DiagnoseStemiFragment.newInstance(mRecordId, "cpc_cbzdv2_stemi");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mStemiFragment);
+                    break;
+                case 1:
+                    // NSTEMI
+                    if (mNstemiFragment == null) {
+                        mNstemiFragment = DiagnoseNstemiAndUaFragment.newInstance(mRecordId, "cpc_cbzdv2_nstemi");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mNstemiFragment);
+                    break;
+                case 2:
+                    // UA
+                    if (mUaFragment == null) {
+                        mUaFragment = DiagnoseNstemiAndUaFragment.newInstance(mRecordId, "cpc_cbzdv2_ua");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mUaFragment);
+                    break;
+                case 3:
+                    // 主动脉夹层
+                    if (mZdmjcFragment == null) {
+                        mZdmjcFragment = DiagnoseZdmjcFragment.newInstance(mRecordId, "cpc_cbzdv2_zdmjc");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mZdmjcFragment);
+                    break;
+                case 4:
+                    // 肺动脉塞栓
+                    if (mFdmssFragment == null) {
+                        mFdmssFragment = DiagnoseFdmssFragment.newInstance(mRecordId, "cpc_cbzdv2_fdmss");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mFdmssFragment);
+                    break;
+                case 5:
+                    // 非ACS心源性胸痛
+                    if (mNonAcsFragment == null) {
+                        mNonAcsFragment = DiagnoseNonAcsFragment.newInstance(mRecordId, "cpc_cbzdv2_facsxyxxt");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mNonAcsFragment);
+                    break;
+                case 6:
+                    // 其它非心源性胸痛
+                    if (mNonHeartPainFragment == null) {
+                        mNonHeartPainFragment = DiagnoseNonHeartPainFragment.newInstance(mRecordId, "cpc_cbzdv2_qtfxyxxt");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mNonHeartPainFragment);
+                    break;
+                case 7:
+                    // 待查
+                    if (mWaitDiagnoseFragment == null) {
+                        mWaitDiagnoseFragment = DiagnoseWaitDiagnoseFragment.newInstance(mRecordId, "cpc_cbzdv2_dc");
+                    }
+                    fragmentTransaction.replace(R.id.fl_content_frag_od, mWaitDiagnoseFragment);
+                    break;
+                default:
+                    break;
+            }
+            fragmentTransaction.commitAllowingStateLoss();
+        }
+
+  /*      es_medicinal_name.setStringArrayId(R.array.chest_pain_operation_medicinal);
+  *         String text = data.getSsanticoagulationdrug();
+        es_medicinal_name.setStringArrayNormalKey(text);*/
+
+
     }
+
 
     @Override
     protected void initListener() {
+
+/*
+        UsingFragment usingFragment = (UsingFragment)getChildFragmentManager()
+        usingFragment.initData2(false);    //调用子Fragment UsingFragment中的initData2()*/
+
+
         esTitleSelect.setOnSelectIndexAndStringLitner(new EditSpinner.OnSelectIndexAndStringLitner() {
             @Override
             public void getSeletedStringAndIndex(String text, int position) {
@@ -144,7 +244,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                     case 6:
                         // 其它非心源性胸痛
                         if (mNonHeartPainFragment == null) {
-                            mNonHeartPainFragment = DiagnoseNonHeartPainFragment.newInstance(mRecordId, "cpc_cbzdv2_facsxyxxt");
+                            mNonHeartPainFragment = DiagnoseNonHeartPainFragment.newInstance(mRecordId, "cpc_cbzdv2_qtfxyxxt");
                         }
                         fragmentTransaction.replace(R.id.fl_content_frag_od, mNonHeartPainFragment);
                         break;
@@ -218,9 +318,10 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                                 if (response.body().getData() != null) {
                                     showToast("查询数据成功");
                                     ChestPainDiagnosisBean.ChestPainResponseBean data = response.body().getData();
-                                    if (onGetChestPainDiagnoseData!=null){
-                                         onGetChestPainDiagnoseData.getChestPainDiagnoseData(data);
-                                     }
+
+                                    if (onGetChestPainDiagnoseData != null) {
+                                        onGetChestPainDiagnoseData.getChestPainDiagnoseData(data);
+                                    }
                                 }
                             } else {
                                 showToast(response.body().getMessage());
@@ -305,7 +406,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     }
 
 
-
     /**
      * 胸痛--初始诊断--Grace--保存
      */
@@ -354,7 +454,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean data = response.body().getData();
-                                if (onGetChestPainDiagnoseGraceData!=null){
+                                if (onGetChestPainDiagnoseGraceData != null) {
                                     onGetChestPainDiagnoseGraceData.getChestPainDiagnoseGraceData(data);
                                 }
                             } else {
@@ -381,7 +481,6 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     public void setOnGetChestPainDiagnoseGraceData(OnGetChestPainDiagnoseGraceData onGetChestPainDiagnoseGraceData) {
         this.onGetChestPainDiagnoseGraceData = onGetChestPainDiagnoseGraceData;
     }
-
 
 
     //返回胸痛--初始诊断-获取bean
