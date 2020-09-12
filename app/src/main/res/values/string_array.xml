@@ -359,4 +359,41 @@
         <item>收入急诊病房:cpc_xthzqx_srjzbf</item>
         <item>其他:cpc_xthzqx_other</item>
     </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_kxxby">
+        <item>阿司匹林:cpc_jwyysbxx_aspl</item>
+        <item>氯吡格雷:cpc_jwyysbxx_lbgl</item>
+        <item>替格普洛:cpc_jwyysbxx_tgpl</item>
+        <item>西洛他唑:cpc_jwyysbxx_xltc</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_kny">
+        <item>华法林:cpc_jwyysbxx_hfl</item>
+        <item>利伐沙班:cpc_jwyysbxx_lfsb</item>
+        <item>达比加群:cpc_jwyysbxx_dbjq</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jyy">
+        <item>利尿剂:cpc_jwyysbxx_lnj</item>
+        <item>β受体阻滞剂:cpc_jwyysbxx_zzj</item>
+        <item>钙拮抗剂:cpc_jwyysbxx_gjkj</item>
+        <item>ACEI:cpc_jwyysbxx_acei</item>
+        <item>ARB:cpc_jwyysbxx_arb</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jty">
+        <item>胰岛素:cpc_jwyysbxx_yds</item>
+        <item>磺酰脲类:cpc_jwyysbxx_hxnl</item>
+        <item>双胍类:cpc_jwyysbxx_sgl</item>
+        <item>α糖苷酶抑制剂:cpc_jwyysbxx_yzj</item>
+        <item>胰岛素增敏剂:cpc_jwyysbxx_ydszmj</item>
+        <item>非磺酰脲类促胰岛素分泌剂:cpc_jwyysbxx_fbj</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jzy">
+        <item>他汀类:cpc_jwyysbxx_ttl</item>
+        <item>烟酸及其衍生物:cpc_jwyysbxx_ysw</item>
+        <item>贝特类:cpc_jwyysbxx_btl</item>
+        <item>胆固醇吸收抑制剂:cpc_jwyysbxx_dgcxsyjj</item>
+    </string-array>
 </resources>
