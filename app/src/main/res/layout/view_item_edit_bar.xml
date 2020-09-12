@@ -46,8 +46,9 @@
 
         <TextView
             android:id="@+id/tv_content_view_ieb"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:layout_marginStart="@dimen/item_normal_margin"
             android:layout_marginTop="@dimen/dp_4"
             android:layout_marginEnd="@dimen/item_normal_margin"
