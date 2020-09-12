@@ -208,7 +208,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                         destination = RouteUrl.Stroke.STROKE_HOME;
                     }
                     ARouter.getInstance().build(destination)
-                            .withString(IntentKey.PATIENT_ID, mainListBeans.get(position).getId())
+                            .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
                             .withString(IntentKey.DOC_ID, mDocId)
                             .navigation();
                 } else if (view.getId() == R.id.tv_time_node_item_patient) {

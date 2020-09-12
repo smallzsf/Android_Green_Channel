@@ -103,16 +103,17 @@ public class TimeNodeFragment extends BaseFragment {
 
     @Override
     protected void initListener() {
+
         mTimeNodeRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
                 if (view.getId() == R.id.tv_time_item_time_node) {
                     // 显示时间选择器
-                    showTimePickView(position);
+//                    showTimePickView(position);
                 } else if (view.getId() == R.id.iv_refresh_item_time_node) {
                     String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date());
 //                    mTimeNodeBeans.get(position).setTime(time);
-                    mTimeNodeRvAdapter.notifyItemChanged(position);
+//                    mTimeNodeRvAdapter.notifyItemChanged(position);
                 }
             }
         });
@@ -128,14 +129,17 @@ public class TimeNodeFragment extends BaseFragment {
 
         RetrofitClient.getInstance().getApi()
                 .getTimerLine(timeLinePost.getResuestBody(timeLinePost))
-                .enqueue(new Callback<BaseObjectBean<TimeNodeBean>>() {
+                .enqueue(new Callback<BaseObjectBean<List<TimeNodeBean>>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean<TimeNodeBean>> call, Response<BaseObjectBean<TimeNodeBean>> response) {
+                    public void onResponse(Call<BaseObjectBean<List<TimeNodeBean>>> call, Response<BaseObjectBean<List<TimeNodeBean>>> response) {
                         hideLoadingDialog();
                         if (response.body() != null) {
-
                             if (response.body().getResult() == 1) {
 
+                                if (response.body().getData() != null) {
+                                    mTimeNodeBeans.addAll(response.body().getData());
+                                    mTimeNodeRvAdapter.setList(mTimeNodeBeans);
+                                }
 
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
@@ -146,7 +150,7 @@ public class TimeNodeFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<TimeNodeBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseObjectBean<List<TimeNodeBean>>> call, Throwable t) {
                         hideLoadingDialog();
                         showToast(R.string.http_tip_server_error);
                     }

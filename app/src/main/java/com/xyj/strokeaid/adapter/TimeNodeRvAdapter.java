@@ -32,8 +32,8 @@ public class TimeNodeRvAdapter extends BaseQuickAdapter<TimeNodeBean, BaseViewHo
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, TimeNodeBean timeNodeBean) {
 
-        baseViewHolder.setText(R.id.tv_desc_item_time_node, "")
-                .setText(R.id.tv_time_item_time_node, "");
+        baseViewHolder.setText(R.id.tv_desc_item_time_node, timeNodeBean.getNode_label())
+                .setText(R.id.tv_time_item_time_node, timeNodeBean.getDate());
 
         View view = baseViewHolder.getView(R.id.view_middle);
 

@@ -441,6 +441,6 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
-    Call<BaseObjectBean<TimeNodeBean>> getTimerLine(@Body RequestBody info);
+    Call<BaseObjectBean<List<TimeNodeBean>>> getTimerLine(@Body RequestBody info);
 
 }
