@@ -193,14 +193,14 @@
     </string-array>
 
     <string-array name="original_diagnose">
-        <item>STEMI</item>
-        <item>NSTEMI</item>
-        <item>UA</item>
-        <item>主动脉夹层</item>
-        <item>肺动脉拴塞</item>
-        <item>非ACS心源性胸痛</item>
-        <item>其他非心源性胸痛</item>
-        <item>待查</item>
+        <item>STEMI:cpc_cbzdv2_stemi</item>
+        <item>NSTEMI:cpc_cbzdv2_nstemi</item>
+        <item>UA:cpc_cbzdv2_ua</item>
+        <item>主动脉夹层:cpc_cbzdv2_zdmjc</item>
+        <item>肺动脉拴:cpc_cbzdv2_fdmss</item>
+        <item>非ACS心源性胸痛:cpc_cbzdv2_facsxyxxt</item>
+        <item>其他非心源性胸痛:cpc_cbzdv2_qtfxyxxt</item>
+        <item>待查:cpc_cbzdv2_dc</item>
     </string-array>
 
     <string-array name="confirm_diagnose">
