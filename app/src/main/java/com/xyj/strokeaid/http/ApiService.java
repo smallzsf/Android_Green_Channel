@@ -7,6 +7,7 @@ import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.LoginBean;
+import com.xyj.strokeaid.bean.MainBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
 import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
@@ -17,6 +18,7 @@ import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
 import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
@@ -25,6 +27,8 @@ import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+
+import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
@@ -434,7 +438,24 @@ public interface ApiService {
     Call<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>> getChestPainDiagnosePatientsDetourGet(@Body RequestBody info);
 
 
+    /**
+     *  主页 卒中、胸痛、创伤列表查询
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT)
+    Call<BaseObjectBean<MainBean>> getMainList(@Body RequestBody info);
 
-
+    /**
+     *  获取时间线
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
+    Call<BaseObjectBean<List<TimeNodeBean>>> getTimerLine(@Body RequestBody info);
 
 }

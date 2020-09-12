@@ -14,7 +14,8 @@
         android:gravity="center"
         android:text="保存"
         android:textColor="@color/white"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_content_frag_time_node"

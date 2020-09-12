@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
@@ -29,6 +31,8 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * @ClassName: OriginalStatus1
@@ -418,12 +422,12 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
                 if (data.getKillliplevel().equals((String) rbHeartFuncLevel4.getTag())) {
                     rbHeartFuncLevel4.setChecked(true);
                 }
-                if (data.getKillliplevel().equals("")) {
-                    rbHeartFuncLevel1.setChecked(false);
-                    rbHeartFuncLevel2.setChecked(false);
-                    rbHeartFuncLevel3.setChecked(false);
-                    rbHeartFuncLevel4.setChecked(false);
-                }
+             }else {
+
+                rbHeartFuncLevel1.setChecked(false);
+                rbHeartFuncLevel2.setChecked(false);
+                rbHeartFuncLevel3.setChecked(false);
+                rbHeartFuncLevel4.setChecked(false);
             }
         }
 
@@ -487,6 +491,10 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
         chestPainDiagnosisBean.setRecordId(mRecordId);
         //	initialdiagnosis	初步诊断("cpc_cbzdv2_stemi": "STEM
         chestPainDiagnosisBean.setInitialdiagnosis(mDiagnoseType);
+        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("initialdiagnosis",mDiagnoseType);
+        editor.commit();
         if (rbGiveUpYes.isChecked()) {
             chestPainDiagnosisBean.setGiveuptreatment(Constants.BOOL_TRUE);
         } else {

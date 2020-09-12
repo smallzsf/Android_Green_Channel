@@ -238,6 +238,10 @@ public class ApiUrls {
          * 胸痛--初始药物--获取 胸痛中心-初步诊断
          */
         public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/getByRecordId";
+        /**
+         * yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit
+         */
+        public static final String NET_URL_CHEST_PAIN_LABORATORY_EXAMINATION_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit";
 
 
 
@@ -315,7 +319,15 @@ public class ApiUrls {
      */
     public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
 
+    /**
+     * 主页 卒中、胸痛、创伤列表查询
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
 
+    /**
+     * 获取时间线
+     */
+    public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
 }
 

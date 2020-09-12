@@ -32,6 +32,7 @@ import butterknife.BindView;
  * @CreateDate: 2020/8/29 9:42
  */
 public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
+
     @BindView(R.id.rv_content_frag_stoke_thrombolytic)
     RecyclerView rvContentFragStokeThrombolytic;
     @BindView(R.id.srl_fresh_frag_stoke_thrombolytic)
@@ -78,7 +79,7 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.stroke_fragment_thrombolysis;
+        return R.layout.fragment_get_involved;
     }
 
     @Override

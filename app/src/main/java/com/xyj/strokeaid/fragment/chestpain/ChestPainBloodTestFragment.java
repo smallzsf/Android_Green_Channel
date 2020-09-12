@@ -3,21 +3,30 @@ package com.xyj.strokeaid.fragment.chestpain;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainBloodTestBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import okhttp3.MediaType;
@@ -57,12 +66,8 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     LinearLayout llTroponinThree;
     @BindView(R.id.ll_troponin_data)
     LinearLayout llTroponinData;
-    @BindView(R.id.ll_preoperative_anticoagulation_data)
-    LinearLayout llPreoperativeAnticoagulationData;
     @BindView(R.id.ll_dimer_title)
     LinearLayout llDimerTitle;
-    @BindView(R.id.eds_preoperative_anticoagulation)
-    EditSpinner edsPreoperativeAnticoagulation;
     @BindView(R.id.ll_dimer_data)
     LinearLayout llDimerData;
     @BindView(R.id.ll_bnp_title)
@@ -95,8 +100,6 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     ImageView ivDeleteTroponin2;
     @BindView(R.id.sv_troponin)
     SwitchCompat svTroponin;
-    @BindView(R.id.sv_preoperative_anticoagulation)
-    SwitchCompat svPreoperativeAnticoagulation;
     @BindView(R.id.sv_dimer)
     SwitchCompat svDimer;
     @BindView(R.id.sv_bnp)
@@ -107,6 +110,58 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     SwitchCompat svMyo;
     @BindView(R.id.sv_ckmb)
     SwitchCompat svCkmb;
+    @BindView(R.id.et_troponin_first)
+    EditText etTroponinFirst;
+    @BindView(R.id.eds_troponin_unit_first)
+    EditSpinner edsTroponinUnitFirst;
+    @BindView(R.id.eds_yin_yang_first)
+    EditSpinner edsYinYangFirst;
+    @BindView(R.id.ttb_draw_blood_time_first)
+    TextTimeBar ttbDrawBloodTimeFirst;
+    @BindView(R.id.ttb_report_time_first)
+    TextTimeBar ttbReportTimeFirst;
+    @BindView(R.id.et_troponin_two)
+    EditText etTroponinTwo;
+    @BindView(R.id.eds_troponin_unit_two)
+    EditSpinner edsTroponinUnitTwo;
+    @BindView(R.id.eds_yin_yang_two)
+    EditSpinner edsYinYangTwo;
+    @BindView(R.id.ttb_draw_blood_time_two)
+    TextTimeBar ttbDrawBloodTimeTwo;
+    @BindView(R.id.ttb_report_time_two)
+    TextTimeBar ttbReportTimeTwo;
+    @BindView(R.id.et_troponin_three)
+    EditText etTroponinThree;
+    @BindView(R.id.eds_troponin_unit_three)
+    EditSpinner edsTroponinUnitThree;
+    @BindView(R.id.eds_yin_yang_three)
+    EditSpinner edsYinYangThree;
+    @BindView(R.id.ttb_draw_blood_time_three)
+    TextTimeBar ttbDrawBloodTimeThree;
+    @BindView(R.id.ttb_report_time_three)
+    TextTimeBar ttbReportTimeThree;
+    @BindView(R.id.et_dimer_value)
+    EditText etDimerValue;
+    @BindView(R.id.eds_dimer)
+    EditSpinner edsDimer;
+    @BindView(R.id.et_bnp)
+    EditText etBnp;
+    @BindView(R.id.et_nt_probnp)
+    EditText etNtProbnp;
+    @BindView(R.id.et_myo_value)
+    EditText etMyoValue;
+    @BindView(R.id.eds_myo_unit)
+    EditSpinner edsMyoUnit;
+    @BindView(R.id.et_ckmb_value)
+    EditText etCkmbValue;
+    @BindView(R.id.eds_ckmb_unit)
+    EditSpinner edsCkmbUnit;
+    @BindView(R.id.sv_serum_creatinine)
+    SwitchCompat svSerumCreatinine;
+    @BindView(R.id.et_serum_creatinine)
+    EditText etSerumCreatinine;
+    @BindView(R.id.ll_serum_creatinine_data)
+    LinearLayout llSerumCreatinineData;
     private int troponinDataNum = 1;
 
     private String mRecordId;
@@ -138,9 +193,32 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
     @Override
     protected void initView(@NonNull View view) {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initSpinner();
         loadData();
     }
 
+    private void initSpinner() {
+
+        edsCkmbUnit.setStringArrayId(R.array.ckmb_unit);
+        edsMyoUnit.setStringArrayId(R.array.myo_unit);
+        edsDimer.setStringArrayId(R.array.ddimer_unit);
+
+        edsYinYangFirst.setStringArrayId(R.array.tn_status);
+        edsTroponinUnitFirst.setStringArrayId(R.array.tn_unit);
+
+        edsYinYangThree.setStringArrayId(R.array.tn_status);
+        edsTroponinUnitThree.setStringArrayId(R.array.tn_unit);
+
+        edsYinYangTwo.setStringArrayId(R.array.tn_status);
+        edsTroponinUnitTwo.setStringArrayId(R.array.tn_unit);
+
+    }
 
     private void loadData() {
         RecordIdUtil src = new RecordIdUtil();
@@ -168,7 +246,7 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     @Override
     protected void initListener() {
         svTroponin.setOnClickListener(this);
-        svPreoperativeAnticoagulation.setOnClickListener(this);
+        svSerumCreatinine.setOnClickListener(this);
         svDimer.setOnClickListener(this);
         svBnp.setOnClickListener(this);
         svNtProbnp.setOnClickListener(this);
@@ -182,6 +260,7 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
         ivAddTroponin.setOnClickListener(this);
         ivDeleteTroponin1.setOnClickListener(this);
         ivDeleteTroponin2.setOnClickListener(this);
+        btnConfirm.setOnClickListener(this);
     }
 
     @Override
@@ -190,8 +269,8 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
             case R.id.sv_troponin:
                 refrashItemVis(llTroponinData, svTroponin);
                 break;
-            case R.id.sv_preoperative_anticoagulation:
-                refrashItemVis(llPreoperativeAnticoagulationData, svPreoperativeAnticoagulation);
+            case R.id.sv_serum_creatinine:
+                refrashItemVis(llSerumCreatinineData, svSerumCreatinine);
                 break;
             case R.id.sv_bnp:
                 refrashItemVis(llBnpData, svBnp);
@@ -214,38 +293,172 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
                 break;
             case R.id.iv_delete_troponin_1:
                 troponinDataNum--;
-               // refrashRecordItem();
                 llTroponinTwo.setVisibility(View.GONE);
                 break;
             case R.id.iv_delete_troponin_2:
                 troponinDataNum--;
-             //   refrashRecordItem();
                 llTroponinThree.setVisibility(View.GONE);
                 break;
+            case R.id.btn_get_data:
 
-            default:
+                break;
+            case R.id.btn_confirm:// 确定
+                save();
                 break;
         }
     }
 
-    private void refrashItemVis(View view, SwitchCompat switchCompat) {
-       /* if (view.getVisibility() == View.VISIBLE) {
-            view.setVisibility(View.GONE);
-            //  imageView.setImageResource(R.drawable.ic_arrow_up_blue);
-        } else {
-            view.setVisibility(View.VISIBLE);
-            //  imageView.setImageResource(R.drawable.ic_arrow_down_blue);
-        }*/
+    public void save() {
+        ChestPainBloodTestBean bean = new ChestPainBloodTestBean();
+        if (svCkmb.isChecked()) {
+            List<ChestPainBloodTestBean.TnarrayBean> tnarray = bean.getTnarray();
 
-         if (switchCompat.isChecked()){
-             view.setVisibility(View.VISIBLE);
-         }else {
-             view.setVisibility(View.GONE);
-         }
+            if (tnarray == null) {
+                tnarray = new ArrayList<>();
+            }
+            ChestPainBloodTestBean.TnarrayBean tnarrayBean = null;
+            if (troponinDataNum > 0) {
+                tnarrayBean = new ChestPainBloodTestBean.TnarrayBean();
+                // 抽血完成时间
+                tnarrayBean.setPoctdrawbloodtime(ttbDrawBloodTimeFirst.getTime());
+                // 报告完成时间
+                tnarrayBean.setPoctreporttime(ttbReportTimeFirst.getTime());
+                tnarrayBean.setTnunit(edsTroponinUnitFirst.getSelectData()[0]);
+                tnarrayBean.setTnstatus(edsYinYangFirst.getSelectData()[0]);
+                if (rbTroponinTnlFirst.isChecked()) {
+                    tnarrayBean.setTnunit("cpc_tntype_tni");
+                } else {
+                    tnarrayBean.setTnunit("cpc_tntype_tnt");
+                }
+                tnarray.add(tnarrayBean);
+            }
+            if (troponinDataNum > 1) {
+                tnarrayBean = new ChestPainBloodTestBean.TnarrayBean();
+                // 抽血完成时间
+                tnarrayBean.setPoctdrawbloodtime(ttbDrawBloodTimeTwo.getTime());
+                // 报告完成时间
+                tnarrayBean.setPoctreporttime(ttbReportTimeTwo.getTime());
+                tnarrayBean.setTnunit(edsTroponinUnitTwo.getSelectData()[0]);
+                tnarrayBean.setTnstatus(edsYinYangTwo.getSelectData()[0]);
+                if (rbTroponinTnlTwo.isChecked()) {
+                    tnarrayBean.setTnunit("cpc_tntype_tni");
+                } else {
+                    tnarrayBean.setTnunit("cpc_tntype_tnt");
+                }
+                tnarray.add(tnarrayBean);
+            }
+            if (troponinDataNum > 2) {
+                tnarrayBean = new ChestPainBloodTestBean.TnarrayBean();
+                // 抽血完成时间
+                tnarrayBean.setPoctdrawbloodtime(ttbDrawBloodTimeThree.getTime());
+                // 报告完成时间
+                tnarrayBean.setPoctreporttime(ttbReportTimeThree.getTime());
+                tnarrayBean.setTnunit(edsTroponinUnitThree.getSelectData()[0]);
+                tnarrayBean.setTnstatus(edsYinYangThree.getSelectData()[0]);
+                if (rbTroponinTnlThree.isChecked()) {
+                    tnarrayBean.setTnunit("cpc_tntype_tni");
+                } else {
+                    tnarrayBean.setTnunit("cpc_tntype_tnt");
+                }
+                tnarray.add(tnarrayBean);
+            }
+            bean.setTnarray(tnarray);
+        }
+//        血清肌酐
+        if (svSerumCreatinine.isChecked()) {
+            String trim = etSerumCreatinine.getText().toString().trim();
+            bean.setIscr(Constants.BOOL_TRUE);
+            bean.setCrvalue(trim);
+        } else {
+            bean.setIscr(Constants.BOOL_FALSE);
+        }
+        // 二聚体
+        if (svDimer.isChecked()) {
+            bean.setIsddimer(Constants.BOOL_TRUE);
+            String trim = etDimerValue.getText().toString().trim();
+            bean.setDdimervalue(trim);
+            bean.setDdimerunit(edsDimer.getSelectData()[0]);
+        } else {
+            bean.setIsddimer(Constants.BOOL_FALSE);
+        }
+
+        if (svBnp.isChecked()) {
+            bean.setIsbnp(Constants.BOOL_TRUE);
+            String trim = etBnp.getText().toString().trim();
+            bean.setBnpvalue(trim);
+        } else {
+            bean.setIsbnp(Constants.BOOL_FALSE);
+        }
+
+        if (svNtProbnp.isChecked()) {
+            bean.setIsntprobnp(Constants.BOOL_TRUE);
+            String trim = etBnp.getText().toString().trim();
+            bean.setNtprobnpvalue(trim);
+        } else {
+            bean.setIsntprobnp(Constants.BOOL_FALSE);
+        }
+
+        if (svMyo.isChecked()) {
+            bean.setIsmyo(Constants.BOOL_TRUE);
+            String trim = etMyoValue.getText().toString().trim();
+            bean.setMyovalue(trim);
+            bean.setMyounit(edsMyoUnit.getSelectData()[0]);
+        } else {
+            bean.setIsmyo(Constants.BOOL_FALSE);
+        }
+        if (svCkmb.isChecked()) {
+            bean.setIsckmb(Constants.BOOL_TRUE);
+            String trim = etCkmbValue.getText().toString().trim();
+            bean.setCkmbvalue(trim);
+            bean.setCkmbunit(edsCkmbUnit.getSelectData()[0]);
+        } else {
+            bean.setIsckmb(Constants.BOOL_FALSE);
+        }
+        this.save(bean);
+    }
+    /**
+     * 保存数据接口调用成功
+     *
+     * @param bean
+     */
+    public void save(ChestPainBloodTestBean bean) {
+        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .postChestPainLaboraoryExamination(bean.getResuestBody(bean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        Log.e("zhangshifu", "onResponse" + response);
+                        if (response != null && response.body() != null) {
+                            BaseObjectBean body = response.body();
+                            if (body.getResult() == 1) {
+                                showToast("数据保存成功");
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        Log.e("zhangshifu", "onFailure");
+                    }
+                });
+
+
+    }
+
+
+    private void refrashItemVis(View view, SwitchCompat switchCompat) {
+        if (switchCompat.isChecked()) {
+            view.setVisibility(View.VISIBLE);
+        } else {
+            view.setVisibility(View.GONE);
+        }
     }
 
     private void refrashRecordItem() {
-      //   refrashRecordItem(llTroponinFirst, 1);
         refrashRecordItem(llTroponinTwo, 2);
         refrashRecordItem(llTroponinThree, 3);
     }
