@@ -107,12 +107,7 @@ public class ChildTreatCenterActivity extends BaseActivity {
     @Override
     public void initListener() {
         // 设置标题跳转
-        titleBarActCtc
-                .setLeftLayoutClickListener(v -> finish())
-                .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                        .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
-                        .navigation());
+        titleBarActCtc.setLeftLayoutClickListener(v -> finish());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override

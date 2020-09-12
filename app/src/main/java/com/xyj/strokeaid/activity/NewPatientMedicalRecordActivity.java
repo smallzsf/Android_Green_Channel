@@ -1,19 +1,17 @@
 package com.xyj.strokeaid.activity;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -23,22 +21,22 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
-import com.bigkoo.pickerview.configure.PickerOptions;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
-import com.bigkoo.pickerview.view.BasePickerView;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
+import com.didichuxing.doraemonkit.widget.tableview.utils.DensityUtils;
 import com.eid.reader.EIDReader;
 import com.eid.reader.IIDDataCallback;
-import com.google.gson.annotations.SerializedName;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
-import com.xyj.strokeaid.bean.DiseaseRecordRequest;
-import com.xyj.strokeaid.bean.NewPatientMedicalRecordBean;
+import com.xyj.strokeaid.bean.DeviceBindBean;
+import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
+import com.xyj.strokeaid.bean.RequestIdBean;
+import com.xyj.strokeaid.http.DeviceService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ActionSheet;
@@ -47,23 +45,14 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.loc.di.e;
 
 /**
  * NewPatientMedicalRecordActivity
@@ -75,8 +64,27 @@ import static com.loc.di.e;
  */
 @Route(path = RouteUrl.NEW_PATIENT)
 public class NewPatientMedicalRecordActivity extends BaseActivity implements IIDDataCallback {
+
+    /**
+     * 查看类型
+     * 1、 新建
+     * 2、 查看
+     */
     @Autowired(name = IntentKey.VIEW_TYPE)
     int mViewType;
+    /**
+     * 患者类型
+     * 1、 卒中
+     * 2、 胸痛
+     * 3、 创伤
+     * 4、 危重孕产妇
+     * 5、 危重儿童和新生儿
+     */
+    @Autowired(name = IntentKey.DISEASE_VIEW_TYPE)
+    int mDiseaseType;
+    /**
+     * 患者主表id
+     */
     @Autowired(name = IntentKey.RECORD_ID)
     String mRecordId;
 
@@ -144,7 +152,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private AMapLocationClientOption locationOption = null;
     private AMapLocationListener locationListener = null;
     private List<ComeHosBean> mComeHosBeans = null;
-    private NewPatientMedicalRecordBean mPatinetBean = null;
+    private PatientMedicalRecordBean mPatinetBean = null;
     private String[] OPTION = new String[]{"汉族", "蒙古族", "回族", "藏族", "维吾尔族", "苗族", "彝族", "壮族", "布依族", "朝鲜族", "满族", "侗族", "瑶族", "白族", "土家族", "哈尼族", "哈萨克族", "傣族", "黎族", "傈僳族", "佤族", "畲族", "高山族", "拉祜族", "水族", "东乡族", "纳西族", "景颇族", "柯尔克孜族", "土族", "达斡尔族", "仫佬族", "羌族", "布朗族", "撒拉族", "毛难族"
             , "仡佬族", "锡伯族", "阿昌族", "普米族", "塔吉克族", "怒族", "乌孜别克族", "俄罗斯族", "鄂温克族", "崩龙族", "保安族", "裕固族", "京族", "塔塔尔族", "独龙族", "鄂伦春族", "赫哲族", "门巴族", "珞巴族", "基诺族", "其他", "外国血统"};
 
@@ -436,14 +444,109 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     /**
      * 获取数据
      */
-    private void getData() {
+    private void getData(String recordId) {
+        showLoadingDialog();
+        RequestIdBean requestIdBean = new RequestIdBean(recordId);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getPatientInfo(requestIdBean.getResuestBody(requestIdBean))
+                .enqueue(new Callback<BaseObjectBean<PatientMedicalRecordBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<PatientMedicalRecordBean>> call, Response<BaseObjectBean<PatientMedicalRecordBean>> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                mPatinetBean = response.body().getData();
+                                refreshView(mPatinetBean);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                        hideLoadingDialog();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<PatientMedicalRecordBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
 
     }
 
+
     /**
-     * 保存数据
+     * 刷新页面
      */
-    private void saveData() {
+    private void refreshView(PatientMedicalRecordBean bean) {
+        if (bean == null) {
+            return;
+        }
+        // 就诊号
+        iebOutpatientIdActNpmr.setEditContent(bean.getPatientidofambulant());
+        // 住院号
+        iebLiveHosIdActNpmr.setEditContent(bean.getPatientidofhospitalization());
+        // 腕带编号
+        iebWristbandActNpmr.setEditContent(bean.getTimecollectorcode());
+        // 发病地址
+        iebDisAddrActNpmr.setEditContent(bean.getAttackaddress());
+        // 发病时间
+        ttbDisStartActNpmr.setTime(bean.getAttacktime());
+        // 姓名
+        iebNameActNpmr.setEditContent(bean.getFullname());
+        // 身份证号
+        iebIdcardActNpmr.setEditContent(bean.getIdcardno());
+        // 性别
+        if (!TextUtils.isEmpty(bean.getGender())) {
+            if (TextUtils.equals("1", bean.getGender())) {
+                sbSexActNpmr.setRightText("男");
+            } else if (TextUtils.equals("2", bean.getGender())) {
+                sbSexActNpmr.setRightText("女");
+            } else {
+                sbSexActNpmr.setRightText("未知");
+            }
+        } else {
+            sbSexActNpmr.setRightText("未知");
+        }
+        // 年龄
+        iebAgeActNpmr.setEditContent(bean.getAge());
+        // 体重
+        iebWeightActNpmr.setEditContent(bean.getWeight());
+        // 身高
+        iebHeightActNpmr.setEditContent(bean.getHeight());
+        // bmi
+        iebBmiActNpmr.setEditContent(bean.getBmi());
+        // 出生日期
+        sbBirthActNpmr.setRightText(bean.getBirthdate());
+        // 来院方式
+        String comingway = bean.getComingway();
+
+
+//        if ("cpc_lyfsv2_hj120".equals(comingway )) {
+//           //
+//
+//
+//
+//
+//
+//        } else if (comeType.equals("外院转院")) {
+//            mPatinetBean.setComingway("cpc_lyfsv2_zy120");
+//        } else if (comeType.equals("自行来院")) {
+//            mPatinetBean.setComingway("cpc_lyfsv2_zxly");
+//        } else {
+//            mPatinetBean.setComingway("cpc_lyfsv2_ynfb");
+//        }
+        // 入院途径
+
+        //
+        //
+        //
+        //
+        //
+        //
+
 
     }
 
@@ -453,7 +556,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private void preSave() {
 
         if (mPatinetBean == null) {
-            mPatinetBean = new NewPatientMedicalRecordBean();
+            mPatinetBean = new PatientMedicalRecordBean();
         }
 
         if (iebNameActNpmr.getEditContent().equals("")) {
@@ -489,12 +592,11 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         mPatinetBean.setWeight(editIebWeightActNpmr);
         mPatinetBean.setBmi(editIebBmiActNpmr);
         mPatinetBean.setRegisteraddress(editIebDomicileAddrActNpmr);
-        mPatinetBean.setMedicarecardno(editIebMedicareNumActNpmr);
+        mPatinetBean.setMedicarecardcode(editIebMedicareNumActNpmr);
         mPatinetBean.setPatientidofambulant(editIebOutpatientIdActNpmr);
         mPatinetBean.setPatientidofhospitalization(editIebLiveHosIdActNpmr);
         mPatinetBean.setTimecollectorcode(editIebWristbandActNpmr);
 
-        //setting 8
         String sex = sbSexActNpmr.getRightText().toString();
         if (sex.equals("男")) {
             mPatinetBean.setGender("cpc_gender_1");
@@ -520,7 +622,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         } else {
             mPatinetBean.setComingway("cpc_lyfsv2_ynfb");
         }
-        //不同来院方式返回集合
+        // 不同来院方式返回集合
         ArrayList<String> getComeHosList = getComeHosType(comeType);
         LogUtils.d(getComeHosList);
         if (comeType.contains("本院急救车") || comeType.contains("当地120")) {
@@ -531,7 +633,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             //首次医疗接触时间  fmctime
             mPatinetBean.setFmctime(getComeHosList.get(2));
             //到达医院大门时间 arrivegatetime
-            mPatinetBean.setArrivegatetime(getComeHosList.get(3));
+            mPatinetBean.setArrivehospitaltime(getComeHosList.get(3));
             //院内接诊时间  firstdoctorreceptiontime
             mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(4));
         } else if (comeType.contains("外院转院")) {
@@ -544,7 +646,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             //离开转出医院时间  hospitaltransferfromleavetime
             mPatinetBean.setHospitaltransferfromleavetime(getComeHosList.get(3));
             //到达医院大门时间     arrivegatetime
-            mPatinetBean.setArrivegatetime(getComeHosList.get(4));
+            mPatinetBean.setArrivehospitaltime(getComeHosList.get(4));
             //院内接诊时间 firstdoctorreceptiontime
             mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(5));
             //决定转院时间  decidetranstime
@@ -553,7 +655,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             mPatinetBean.setHospitalnametransfrom(getComeHosList.get(7));
         } else if (comeType.contains("自行来院")) {
             ////到达医院大门时间  arrivegatetime
-            mPatinetBean.setArrivegatetime(getComeHosList.get(0));
+            mPatinetBean.setArrivehospitaltime(getComeHosList.get(0));
             //首次医疗接触时间  fmctime
             mPatinetBean.setFmctime(getComeHosList.get(1));
             //院内接诊时间  firstdoctorreceptiontime
@@ -621,8 +723,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         String seriousMedicare = sbSeriousMedicareActNpmr.getRightText().toString();
         if (seriousMedicare.contains("是")) {
             mPatinetBean.setSeriousillnessmedicare("1");
-        } else {
-            mPatinetBean.setSeriousillnessmedicare("0");
+        } else if (seriousMedicare.contains("否")) {
+            mPatinetBean.setSeriousillnessmedicare("-1");
         }
 
         /**
@@ -664,21 +766,13 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             case "本院急救车":
                 return getTimeAndEdit();
             case "当地120":
-
                 return getTimeAndEdit();
             case "外院转院":
-
-
                 return getTimeAndEdit();
             case "自行来院":
-
                 return getTimeAndEdit();
-
-
             case "在院卒中":
-
                 return getTimeAndEdit();
-
         }
         return null;
     }
@@ -707,16 +801,11 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     }
 
-    /**
-     * 刷新页面
-     */
-    private void refreshView() {
-
-    }
-
 
     private void quickCreatPatient() {
-
+        PatientMedicalRecordBean patientMedicalRecordBean = new PatientMedicalRecordBean();
+        patientMedicalRecordBean.setFullname("患者" + System.currentTimeMillis());
+        newPatientMedicalRecord(patientMedicalRecordBean);
     }
 
 
@@ -730,7 +819,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         }
 
         //条件选择器
-        OptionsPickerView pvOptions = new OptionsPickerBuilder(NewPatientMedicalRecordActivity.this, new OnOptionsSelectListener() {
+        OptionsPickerView pvOptions = new OptionsPickerBuilder(mContext, new OnOptionsSelectListener() {
 
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
@@ -808,6 +897,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         for (ComeHosBean comeHosBean : mComeHosBeans) {
             if (comeHosBean.isEditable()) {
                 ItemEditBar itemEditBar = new ItemEditBar(mContext);
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) itemEditBar.getLayoutParams();
+                layoutParams.height = DensityUtils.dp2px(mContext, 40);
+                itemEditBar.setLayoutParams(layoutParams);
                 itemEditBar.setTitle(comeHosBean.getTitel());
                 itemEditBar.setBottomLineVisible(true);
                 llComeHosActNpmr.addView(itemEditBar);
@@ -822,7 +914,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     private List<ComeHosBean> getInHosStrokeContent() {
         ArrayList<ComeHosBean> list = new ArrayList<>();
-        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("首次医疗接触", false));
         list.add(new ComeHosBean("发病科室", true));
         list.add(new ComeHosBean("会诊时间", false));
         list.add(new ComeHosBean("离开科室", false));
@@ -831,19 +923,19 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     private List<ComeHosBean> getComeHosSelfContent() {
         ArrayList<ComeHosBean> list = new ArrayList<>();
-        list.add(new ComeHosBean("到达医院大门时间", false));
-        list.add(new ComeHosBean("首次医疗接触时间", false));
+        list.add(new ComeHosBean("到达医院大门", false));
+        list.add(new ComeHosBean("首次医疗接触", false));
         list.add(new ComeHosBean("院内接诊时间", false));
         return list;
     }
 
     private List<ComeHosBean> getOtherHosContent() {
         ArrayList<ComeHosBean> list = new ArrayList<>();
-        list.add(new ComeHosBean("转出医院入门时间", false));
-        list.add(new ComeHosBean("首次医疗接触时间", false));
-        list.add(new ComeHosBean("转运救护车到达时间", false));
-        list.add(new ComeHosBean("离开转出医院时间", false));
-        list.add(new ComeHosBean("到达医院大门时间", false));
+        list.add(new ComeHosBean("转出医院入门", false));
+        list.add(new ComeHosBean("首次医疗接触", false));
+        list.add(new ComeHosBean("转运救护车到达", false));
+        list.add(new ComeHosBean("离开转出医院", false));
+        list.add(new ComeHosBean("到达医院大门", false));
         list.add(new ComeHosBean("院内接诊时间", false));
         list.add(new ComeHosBean("决定转院时间", false));
         list.add(new ComeHosBean("医院名称", true));
@@ -853,11 +945,80 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private List<ComeHosBean> getOwnAmbulanceContent() {
         ArrayList<ComeHosBean> list = new ArrayList<>();
         list.add(new ComeHosBean("呼救时间", false));
+        list.add(new ComeHosBean("120出车时间", false));
         list.add(new ComeHosBean("到达现场时间", false));
-        list.add(new ComeHosBean("首次医疗接触时间", false));
-        list.add(new ComeHosBean("到达医院大门时间", false));
+        list.add(new ComeHosBean("离开现场时间", false));
+        list.add(new ComeHosBean("首次医疗接触", false));
+        list.add(new ComeHosBean("到达医院大门", false));
         list.add(new ComeHosBean("院内接诊时间", false));
         return list;
+    }
+
+    /**
+     * 新建患者信息
+     */
+    private void newPatientMedicalRecord(PatientMedicalRecordBean newPatientMedicalRecordBean) {
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .newPatienMedical(newPatientMedicalRecordBean.getResuestBody(newPatientMedicalRecordBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功" + response.body().getResult() + "***" + response.body().getMessage() + "***" + response.body().getData());
+                                // TODO
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        showToast(call.toString());
+                    }
+                });
+    }
+
+
+    /**
+     * 获得腕带编号， 生成流水号并绑定给当前用户
+     *
+     * @param wristbandNum
+     */
+    private void bindWristbandId(String wristbandNum) {
+        if (TextUtils.isEmpty(wristbandNum)) {
+            showToast("腕带编号不能为空~");
+            return;
+        }
+        DeviceBindBean deviceBindBean = new DeviceBindBean(wristbandNum);
+        RetrofitClient.getInstance()
+                .create(DeviceService.class)
+                .bindWristband(deviceBindBean.getResuestBody(deviceBindBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                mPatinetBean.setTimecollectorcode(wristbandNum);
+                                mPatinetBean.setTimecollectorserialnumber(response.body().getData().toString());
+                                preSave();
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
     }
 
     private static class ComeHosBean {
@@ -1021,38 +1182,4 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         }
 
     }
-
-
-    /**
-     * 新建患者信息
-     */
-    private void newPatientMedicalRecord(NewPatientMedicalRecordBean
-                                                 newPatientMedicalRecordBean) {
-        String request = GsonUtils.getGson().toJson(newPatientMedicalRecordBean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        RetrofitClient
-                .getInstance()
-                .getApi()
-                .newPatienMedical(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
-                    @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
-                                showToast("保存数据成功" + response.body().getResult() + "***" + response.body().getMessage() + "***" + response.body().getData());
-                                // TODO
-                            } else {
-                                showToast(response.body().getMessage());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
-                    }
-                });
-    }
-
-
 }

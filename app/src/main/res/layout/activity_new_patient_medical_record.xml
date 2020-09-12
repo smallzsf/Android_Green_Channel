@@ -186,6 +186,7 @@
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_enable="false"
                 app:ieb_edit_hint="自动计算"
+                app:ieb_right_icon_visible="false"
                 app:ieb_title="BMI"
                 app:ieb_unit_text="@string/kgm2"
                 app:ieb_unit_visible="true" />
@@ -271,6 +272,7 @@
                 android:id="@+id/ieb_domicile_addr_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:visibility="gone"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_hint="请输入户籍地址"
                 app:ieb_title="户籍地址" />

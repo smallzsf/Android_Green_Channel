@@ -107,12 +107,7 @@ public class MaternalTreatCenterActivity extends BaseActivity {
     @Override
     public void initListener() {
         // 设置标题跳转
-        titleBarActMtc
-                .setLeftLayoutClickListener(v -> finish())
-                .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                        .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
-                        .navigation());
+        titleBarActMtc.setLeftLayoutClickListener(v -> finish());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -133,7 +128,7 @@ public class MaternalTreatCenterActivity extends BaseActivity {
                     mMenuRvAdapter.notifyItemChanged(position);
                     mSelectedTab = position;
                 }
-                vpContentActMtc.setCurrentItem(position,false);
+                vpContentActMtc.setCurrentItem(position, false);
             }
         });
     }

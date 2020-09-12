@@ -138,6 +138,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
             public void onClick(View v) {
                 ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                         .withInt(IntentKey.VIEW_TYPE, 2)
+                        .withInt(IntentKey.DISEASE_VIEW_TYPE, 1)
                         .withString(IntentKey.RECORD_ID, mRecordId)
                         .navigation();
             }

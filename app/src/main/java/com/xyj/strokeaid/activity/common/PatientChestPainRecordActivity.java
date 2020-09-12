@@ -124,6 +124,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                 .setOnTitleClickListener(v ->
                         ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                                 .withInt(IntentKey.VIEW_TYPE, 2)
+                                .withInt(IntentKey.DISEASE_VIEW_TYPE, 2)
                                 .withString(IntentKey.RECORD_ID, mRecordId)
                                 .navigation());
 
