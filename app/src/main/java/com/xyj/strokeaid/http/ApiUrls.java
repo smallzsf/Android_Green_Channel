@@ -315,7 +315,10 @@ public class ApiUrls {
      */
     public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
 
-
+    /**
+     * 主页 卒中、胸痛、创伤列表查询
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
 
 }
 
