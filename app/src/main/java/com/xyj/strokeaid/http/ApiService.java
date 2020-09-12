@@ -15,6 +15,7 @@ import com.xyj.strokeaid.bean.RequestEmergencyCenterChestpainDataBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
 import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
@@ -432,5 +433,14 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT)
     Call<BaseObjectBean<MainBean>> getMainList(@Body RequestBody info);
 
+    /**
+     *  获取时间线
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
+    Call<BaseObjectBean<TimeNodeBean>> getTimerLine(@Body RequestBody info);
 
 }

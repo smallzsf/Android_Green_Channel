@@ -324,6 +324,11 @@ public class ApiUrls {
      */
     public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
 
+    /**
+     * 获取时间线
+     */
+    public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
+
 }
 
     

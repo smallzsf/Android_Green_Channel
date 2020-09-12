@@ -214,7 +214,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 } else if (view.getId() == R.id.tv_time_node_item_patient) {
                     // 查看时间轴
                     ARouter.getInstance().build(RouteUrl.TIME_NODE_VIEW)
-                            .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getFullname())
+                            .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
                             .withInt(IntentKey.VIEW_TYPE, mDiseaseType)
                             .navigation();
                 }
@@ -262,7 +262,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 }
                 break;
             case R.id.iv_search_view_search:
-                // TODO: 2020/8/20 查询
 
                 if (!TextUtils.isEmpty(etSearchViewSearch.getText().toString().trim())) {
                     srlFreshActMain.setRefreshing(true);
@@ -310,9 +309,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         tlTitleActMain.setCurrentTab(mPatientStatusType);
         tvDiseaseViewSearch.setText(getDiseaseStringByType(mDiseaseType));
 
-        showLoadingDialog();
-        getMainRecordList(mDiseaseType, etSearchViewSearch.getText().toString().trim());
-
+        srlFreshActMain.setRefreshing(true);
+        onRefresh();
     }
 
     /**
