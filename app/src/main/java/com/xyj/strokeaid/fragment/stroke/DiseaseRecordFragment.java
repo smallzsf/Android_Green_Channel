@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.chestpain.DistListUtil;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -24,6 +23,7 @@ import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DiseaseRecordRequest;
 import com.xyj.strokeaid.bean.RequestGetDiseaseRecordBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
+import com.xyj.strokeaid.distutil.DistListUtil;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
