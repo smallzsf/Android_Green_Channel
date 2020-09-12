@@ -33,7 +33,7 @@ import retrofit2.Response;
 
 /**
  * TriageInfoFragment
- * description: TODO
+ * description: 卒中分诊信息
  *
  * @author : Licy
  * @date : 2020/9/5

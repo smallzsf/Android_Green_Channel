@@ -32,7 +32,9 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
+import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
+import com.xyj.strokeaid.fragment.common.VitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.AuxiliaryExamFragment;
 import com.xyj.strokeaid.fragment.stroke.DiagnosticEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.DiseaseRecordFragment;
@@ -40,13 +42,10 @@ import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.fragment.stroke.OtherDisposalFragment;
 import com.xyj.strokeaid.fragment.stroke.StartGreenwayFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeBloodExaminationFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeEvaluationFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeMedicationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNewScoreContentFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeNihssFragment;
 import com.xyj.strokeaid.fragment.stroke.StrokeOperationFragment;
-import com.xyj.strokeaid.fragment.stroke.StrokeVitalSignsFragment;
-import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
-import com.xyj.strokeaid.fragment.stroke.TransferFragment;
+import com.xyj.strokeaid.fragment.stroke.StrokeTransferFragment;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -240,13 +239,13 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     return TriageInfoFragment.newInstance(recordId, 1);
                 case 1:
                     // 生命体征
-                    return StrokeVitalSignsFragment.newInstance(recordId);
+                    return VitalSignsFragment.newInstance(recordId, 1);
                 case 2:
                     // 病情记录
                     return DiseaseRecordFragment.newInstance(recordId);
                 case 3:
-                    // NIHSS评分
-                    return StrokeNihssFragment.newInstance(recordId);
+                    // 卒中评估
+                    return StrokeEvaluationFragment.newInstance(recordId);
                 case 4:
                     // 启动绿道
                     return StartGreenwayFragment.newInstance(recordId);
@@ -257,24 +256,21 @@ public class PatientStrokeRecordActivity extends BaseActivity {
                     // 辅助检查
                     return AuxiliaryExamFragment.newInstance(recordId);
                 case 7:
-                    // 评分工具
-                    return StrokeNewScoreContentFragment.newInstance(recordId);
-                case 8:
                     // 诊断评估
-                return DiagnosticEvaluationFragment.newInstance(recordId);
-                case 9:
+                    return DiagnosticEvaluationFragment.newInstance(recordId);
+                case 8:
                     // 药物治疗
                     return StrokeMedicationFragment.newInstance(recordId);
-                case 10:
+                case 9:
                     // 手术治疗
                     return StrokeOperationFragment.newInstance(recordId);
-                case 11:
+                case 10:
                     // 其他处置
                     return OtherDisposalFragment.newInstance(recordId);
-                case 12:
+                case 11:
                     // 转归交接
-                    return TransferFragment.newInstance(recordId);
-                case 13:
+                    return StrokeTransferFragment.newInstance(recordId);
+                case 12:
                     // 时间节点
                     return TimeNodeFragment.newInstance(recordId, 1);
                 default:

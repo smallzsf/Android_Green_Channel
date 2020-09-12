@@ -5,9 +5,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -15,7 +12,6 @@ import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 
 import butterknife.BindView;
@@ -34,6 +30,7 @@ public class StrokeOperationFragment extends BaseStrokeFragment {
     SegmentTabLayout stlTitleFragStrokeMedice;
     @BindView(R.id.vp_content_frag_stroke_medice)
     ViewPager2 vpContentFragStrokeMedice;
+
     public static final String[] STROKE_OPERATIVE_TREATEMENT = new String[]{"介入", "脑出血", "动脉瘤", "CEA"};
 
 
@@ -55,6 +52,7 @@ public class StrokeOperationFragment extends BaseStrokeFragment {
     protected void initView(@NonNull View view) {
         stlTitleFragStrokeMedice.setTabData(STROKE_OPERATIVE_TREATEMENT);
 
+        vpContentFragStrokeMedice.setUserInputEnabled(false);
         vpContentFragStrokeMedice.setAdapter(new StrokeMedicationVpAdapter(this, mRecordId));
     }
 
@@ -74,7 +72,7 @@ public class StrokeOperationFragment extends BaseStrokeFragment {
     }
 
 
-    private class StrokeMedicationVpAdapter extends FragmentStateAdapter {
+    private static class StrokeMedicationVpAdapter extends FragmentStateAdapter {
 
         String recordId;
 
@@ -94,9 +92,8 @@ public class StrokeOperationFragment extends BaseStrokeFragment {
             } else if (position == 2) {
                 return StrokArterialAneurysmFragment.newInstance(recordId);
             } else {
-                return StrokEcaFragment.newInstance(recordId);
+                return StrokCeaCesFragment.newInstance(recordId);
             }
-
         }
 
 

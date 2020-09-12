@@ -35,13 +35,13 @@ import com.xyj.strokeaid.fragment.chestpain.ChestPainInitDrugFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraConsultFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainIntraThromFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainOtherTretmentFragment;
-import com.xyj.strokeaid.fragment.chestpain.ChestPainVitalSignsFragment;
 import com.xyj.strokeaid.fragment.chestpain.OriginalDiagnoseFragment;
 import com.xyj.strokeaid.fragment.chestpain.PatientOutcomeFragment;
 import com.xyj.strokeaid.fragment.chestpain.SurgicalTreatmentFragment;
 import com.xyj.strokeaid.fragment.chestpain.TreatmentDecisionFragment;
 import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
+import com.xyj.strokeaid.fragment.common.VitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -175,7 +175,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
                     return TriageInfoFragment.newInstance(recordId, 2);
                 case 1:
                     // 生命体征
-                    return ChestPainVitalSignsFragment.newInstance(recordId);
+                    return VitalSignsFragment.newInstance(recordId, 2);
                 case 2:
                     //  病情信息
                     return ChestPainDiseaseRecordFragment.newInstance(recordId);

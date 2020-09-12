@@ -8,16 +8,12 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.TextSwitchBar;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * OtherDisposalFragment
@@ -29,12 +25,7 @@ import butterknife.OnClick;
  */
 public class OtherDisposalFragment extends BaseFragment {
 
-    @BindView(R.id.stl_title_frag_od)
-    SegmentTabLayout stlTitleFragOd;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
+
     @BindView(R.id.tsb_accept_recovery_frag_od)
     TextSwitchBar tsbAcceptRecoveryFragOd;
     @BindView(R.id.cb_tradition_frag_od)
@@ -67,13 +58,8 @@ public class OtherDisposalFragment extends BaseFragment {
     LinearLayout llEduTypeFragOd;
     @BindView(R.id.ll_edu_frag_od)
     LinearLayout llEduFragOd;
-
-    /**
-     * 0 == 康复治疗
-     * 1 == 健康教育
-     */
-    private int mPageType = 0;
-
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
 
     public static OtherDisposalFragment newInstance(String recordId) {
         OtherDisposalFragment fragment = new OtherDisposalFragment();
@@ -85,54 +71,16 @@ public class OtherDisposalFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_other_disposal;
+        return R.layout.stroke_fragment_other_disposal;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-        stlTitleFragOd.setTabData(Constants.STROKE_OTHER_DISPOSAL_TITLES);
     }
 
     @Override
     protected void initListener() {
-        stlTitleFragOd.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelect(int position) {
-                if (position == 1) {
-                    // 健康教育
-                    llRecoveryFragOd.setVisibility(View.GONE);
-                    llEduFragOd.setVisibility(View.VISIBLE);
-                } else {
-                    // 康复治疗
-                    llRecoveryFragOd.setVisibility(View.VISIBLE);
-                    llEduFragOd.setVisibility(View.GONE);
-                }
-                mPageType = position;
-            }
 
-            @Override
-            public void onTabReselect(int position) {
-
-            }
-        });
-
-        tsbAcceptRecoveryFragOd.setSwitchClickListener(
-                (buttonView, isChecked) -> llRecoveryTypeFragOd.setVisibility(isChecked ? View.VISIBLE : View.GONE));
-
-        tsbEduFragOd.setSwitchClickListener(
-                (buttonView, isChecked) -> llEduTypeFragOd.setVisibility(isChecked ? View.VISIBLE : View.GONE));
-    }
-
-    @OnClick({R.id.btn_get_data, R.id.btn_confirm})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_get_data:
-                break;
-            case R.id.btn_confirm:
-                break;
-            default:
-                break;
-        }
     }
 
 

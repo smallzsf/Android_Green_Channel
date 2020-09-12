@@ -89,7 +89,7 @@ public class StrokeNewScoreContentFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_stroke_thrombolysis;
+        return R.layout.stroke_fragment_thrombolysis;
     }
 
     @Override

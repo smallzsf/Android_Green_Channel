@@ -77,10 +77,9 @@ import static com.loc.di.e;
 public class NewPatientMedicalRecordActivity extends BaseActivity implements IIDDataCallback {
     @Autowired(name = IntentKey.VIEW_TYPE)
     int mViewType;
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
+
     @BindView(R.id.title_bar_act_npmr)
     BaseTitleBar titleBarActNpmr;
     @BindView(R.id.ieb_outpatient_id_act_npmr)
@@ -246,6 +245,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     @Override
     protected void onResume() {
         super.onResume();
+
     }
 
     @Override

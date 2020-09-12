@@ -100,8 +100,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
 
     protected TimePickerView mTimePickerView;
 
@@ -130,9 +128,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-
-        View llBottom = getActivity().findViewById(R.id.ll_bottom);
-        HideBottonUtils.getInstance().getHideBotton(llAuxiliaryExam, llBottom);
     }
 
     @Override
@@ -149,7 +144,7 @@ public class AuxiliaryExamFragment extends BaseFragment {
     /**
      * 设置显示内容, tablayout 切换时调用
      *
-     * @param type 0、默认状态（血液检查）
+     * @param type 0、默认状态（心电）
      *             1、 CT检查
      *             2、 核磁检查
      *             3、 超声检查
@@ -235,7 +230,7 @@ public class AuxiliaryExamFragment extends BaseFragment {
             // 报告显示
             llPhotoFragAe.setVisibility(View.GONE);
             llReportFragAe.setVisibility(View.VISIBLE);
-            tvReportFragAe.setText("查看血检报告");
+            tvReportFragAe.setText("查看心电报告");
 
             //TODO 接口请求
             SendBloodDataBean sendBloodDataBean = new SendBloodDataBean();

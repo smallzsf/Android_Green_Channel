@@ -50,7 +50,7 @@
             android:text="新增患者"
             android:textColor="@color/white"
             android:textSize="12sp"
-            app:drawableStartCompat="@drawable/icon_add_patient" />
+            app:drawableStartCompat="@drawable/icon_add_patient_white" />
 
         <include
             layout="@layout/view_search"
