@@ -3,6 +3,7 @@ package com.xyj.strokeaid.distutil;
 import android.content.Context;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.RadioButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,9 +18,7 @@ public class ViewDistUtils<T extends CompoundButton> {
 
     private List<T> viewList;
 
-    private T selectView;
-    private String selectViewKey;
-
+    private List<T> selectViews = new ArrayList<>();
     private Map<String, T> mapTextToView = new HashMap<>();
     private String tag;
 
@@ -91,20 +90,28 @@ public class ViewDistUtils<T extends CompoundButton> {
             }
             for (int i = 0; i < viewList.size(); i++) {
                 T viewItem = viewList.get(i);
-                viewItem.setChecked(false);
+                if (viewItem instanceof RadioButton){
+                    viewItem.setChecked(false);
+                }
             }
-            setSelectView((T) view);
+            setSelectViews((T) view);
         }
     };
 
-    public void setSelectView(T t) {
+    public void setSelectViews(T t) {
         if (distListUtil == null) {
             return;
         }
-        selectView = t;
-        String selectText = String.valueOf(t.getText());
-        selectViewKey = distListUtil.getValueDataToStringKey(dataRrrayId, selectText);
-        t.setChecked(true);
+        if (t instanceof RadioButton) {
+            selectViews.clear();
+        }
+        boolean checked = t.isChecked();
+        if (checked){
+            selectViews.remove(t);
+        }else {
+            selectViews.add(t);
+        }
+        t.setChecked(!checked);
         if (listener != null) {
             listener.onClick(t);
         }
@@ -119,16 +126,27 @@ public class ViewDistUtils<T extends CompoundButton> {
             return;
         }
         T t = mapTextToView.get(data);
-        this.setSelectView(t);
+        this.setSelectViews(t);
     }
 
-    public T getSelectView() {
-        return selectView;
+    protected List<T> getSelectViews() {
+        return selectViews;
     }
 
-    public String getSelectViewKey() {
-        return selectViewKey;
+    protected List<String> getSelectViewKeys() {
+        List<String> selectViewKeys = new ArrayList<>();
+        for (int i = 0; i < selectViews.size(); i++) {
+            T t = selectViews.get(i);
+
+            String selectText = String.valueOf(t.getText());
+            String selectViewKey = distListUtil.getValueDataToStringKey(dataRrrayId, selectText);
+            selectViewKeys.add(selectViewKey);
+        }
+
+
+        return selectViewKeys;
     }
+
     private ViewClickListener listener;
 
     private void setViewClickListener(ViewClickListener listener) {
