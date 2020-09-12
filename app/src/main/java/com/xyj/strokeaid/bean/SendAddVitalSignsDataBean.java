@@ -16,9 +16,13 @@ public class SendAddVitalSignsDataBean {
 
     private String  heartrate;//心率
 
-    private String  bloodpressure;//左上肢血压
+//    private String  bloodpressure;//左上肢血压
+//
+//    private String  rightbloodpressure;//右上肢血压
 
-    private String  rightbloodpressure;//右上肢血压
+    private String systolicpressure;//收缩压
+
+    private String diastolicpressure;//舒张压
 
     private String  temperature;//温度
 
@@ -64,21 +68,21 @@ public class SendAddVitalSignsDataBean {
         this.heartrate = heartrate;
     }
 
-    public String getBloodpressure() {
-        return bloodpressure;
-    }
-
-    public void setBloodpressure(String bloodpressure) {
-        this.bloodpressure = bloodpressure;
-    }
-
-    public String getRightbloodpressure() {
-        return rightbloodpressure;
-    }
-
-    public void setRightbloodpressure(String rightbloodpressure) {
-        this.rightbloodpressure = rightbloodpressure;
-    }
+//    public String getBloodpressure() {
+//        return bloodpressure;
+//    }
+//
+//    public void setBloodpressure(String bloodpressure) {
+//        this.bloodpressure = bloodpressure;
+//    }
+//
+//    public String getRightbloodpressure() {
+//        return rightbloodpressure;
+//    }
+//
+//    public void setRightbloodpressure(String rightbloodpressure) {
+//        this.rightbloodpressure = rightbloodpressure;
+//    }
 
     public String getTemperature() {
         return temperature;
@@ -94,5 +98,21 @@ public class SendAddVitalSignsDataBean {
 
     public void setPercentageofoxygensaturation(String percentageofoxygensaturation) {
         this.percentageofoxygensaturation = percentageofoxygensaturation;
+    }
+
+    public String getSystolicpressure() {
+        return systolicpressure;
+    }
+
+    public void setSystolicpressure(String systolicpressure) {
+        this.systolicpressure = systolicpressure;
+    }
+
+    public String getDiastolicpressure() {
+        return diastolicpressure;
+    }
+
+    public void setDiastolicpressure(String diastolicpressure) {
+        this.diastolicpressure = diastolicpressure;
     }
 }

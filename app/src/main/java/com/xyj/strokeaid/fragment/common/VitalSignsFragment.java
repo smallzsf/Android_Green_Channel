@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.fragment.common;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -11,10 +13,14 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.GetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSigns;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
+import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
@@ -96,7 +102,12 @@ public class VitalSignsFragment extends BaseFragment {
 
 
     private void loadData() {
-        getVitalSigns(mRecordId);
+        if (mDiseaseViewType == 2) {
+            getVitalSigns(mRecordId);
+        } else if (mDiseaseViewType == 1) {
+            getStrokeVitalSigns(mRecordId);
+        }
+
     }
 
 
@@ -109,19 +120,100 @@ public class VitalSignsFragment extends BaseFragment {
         btnConfirm.setOnClickListener(v -> {
             SendAddVitalSignsDataBean sendAddVitalSignsDataBean = new SendAddVitalSignsDataBean();
             sendAddVitalSignsDataBean.setRecordId("1111");
-            sendAddVitalSignsDataBean.setConsciousness(esConsciousState.getSelectData()[0]);
-            sendAddVitalSignsDataBean.setBloodpressure(iebLowPressure.getEditContent());
+            sendAddVitalSignsDataBean.setConsciousness(esConsciousState.getSelectData()[1]);
+            sendAddVitalSignsDataBean.setDiastolicpressure(iebLowPressure.getEditContent());
             sendAddVitalSignsDataBean.setBreathrate(iebBreath.getEditContent());
             sendAddVitalSignsDataBean.setHeartrate(iebHeartRate.getEditContent());
             sendAddVitalSignsDataBean.setPulserate(iebPulse.getEditContent());
-            sendAddVitalSignsDataBean.setRightbloodpressure(iebHighPressure.getEditContent());
+            sendAddVitalSignsDataBean.setSystolicpressure(iebHighPressure.getEditContent());
             sendAddVitalSignsDataBean.setTemperature(iebTemperature.getEditContent());
             sendAddVitalSignsDataBean.setPercentageofoxygensaturation(iebSpo2.getEditContent());
-            editVitalSigns(sendAddVitalSignsDataBean);
+            if (mDiseaseViewType == 2) {
+                editVitalSigns(sendAddVitalSignsDataBean);
+            } else if (mDiseaseViewType == 1) {
+                editStrokeVitalSigns(sendAddVitalSignsDataBean);
+            }
+
         });
     }
 
+    private void editStrokeVitalSigns(SendAddVitalSignsDataBean sendAddVitalSignsDataBean) {
+        BaseRequestBean<SendAddVitalSignsDataBean> baseRequestBean =
+                new BaseRequestBean<>(mRecordId, 1, sendAddVitalSignsDataBean);
 
+        RetrofitClient.getInstance()
+                .getApi()
+                .editStrokeVitalSigns(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+    }
+
+    RequestGetVitalSigns requestGetVitalSigns;
+    /**
+     * 生命体征查询
+     */
+    private void getStrokeVitalSigns(String id) {
+        showLoadingDialog();
+        BaseRequestBean<RequestGetVitalSigns> baseRequestBean = new BaseRequestBean<>(
+                id, 1, new RequestGetVitalSigns());
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .getStrokeVitalSignsInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<RequestGetVitalSigns>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<RequestGetVitalSigns>> call,
+                                           Response<BaseResponseBean<RequestGetVitalSigns>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                requestGetVitalSigns = response.body().getData().getData();
+                                if (requestGetVitalSigns != null) {
+                                    Log.e("TAG", "onResponse: "+requestGetVitalSigns.getConsciousness() );
+                                    esConsciousState.setStringArrayNormalKey(requestGetVitalSigns.getConsciousness());
+                                    iebBreath.setEditContent(requestGetVitalSigns.getBreathrate());
+                                    iebPulse.setEditContent(requestGetVitalSigns.getPulserate());
+                                    iebHeartRate.setEditContent(requestGetVitalSigns.getHeartrate());
+                                    iebLowPressure.setEditContent(requestGetVitalSigns.getDiastolicpressure());
+                                    iebHighPressure.setEditContent(requestGetVitalSigns.getSystolicpressure());
+                                    iebSpo2.setEditContent(requestGetVitalSigns.getPercentageofoxygensaturation());
+                                    iebTemperature.setEditContent(requestGetVitalSigns.getTemperature());
+                                }
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<RequestGetVitalSigns>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
+    }
     /**
      * 生命体征查询
      */
@@ -139,14 +231,14 @@ public class VitalSignsFragment extends BaseFragment {
                     public void onResponse(Call<RequestGetVitalSignsBean> call, Response<RequestGetVitalSignsBean> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                RequestGetVitalSigns requestGetVitalSigns = response.body().getData();
+                                requestGetVitalSigns = response.body().getData();
                                 if (requestGetVitalSigns != null) {
                                     esConsciousState.setStringArrayNormalKey(requestGetVitalSigns.getConsciousness());
                                     iebBreath.setEditContent(requestGetVitalSigns.getBreathrate());
                                     iebPulse.setEditContent(requestGetVitalSigns.getPulserate());
                                     iebHeartRate.setEditContent(requestGetVitalSigns.getHeartrate());
-                                    iebLowPressure.setEditContent(requestGetVitalSigns.getBloodpressure());
-                                    iebHighPressure.setEditContent(requestGetVitalSigns.getRightbloodpressure());
+                                    iebLowPressure.setEditContent(requestGetVitalSigns.getDiastolicpressure());
+                                    iebHighPressure.setEditContent(requestGetVitalSigns.getSystolicpressure());
                                     iebSpo2.setEditContent(requestGetVitalSigns.getPercentageofoxygensaturation());
                                     iebTemperature.setEditContent(requestGetVitalSigns.getTemperature());
                                 }

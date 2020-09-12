@@ -259,6 +259,7 @@
                     android:text="@string/history_of_drug_allergy" />
 
                 <EditText
+                    android:id="@+id/et_drugallergy"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
                     android:layout_marginTop="@dimen/dp_7"
@@ -287,6 +288,7 @@
                     android:text="备注" />
 
                 <EditText
+                    android:id="@+id/et_conditionre_mark"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
                     android:layout_marginTop="@dimen/dp_7"

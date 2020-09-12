@@ -2,6 +2,7 @@ package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -14,10 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.chestpain.DistListUtil;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DiseaseRecordRequest;
+import com.xyj.strokeaid.bean.RequestGetDiseaseRecordBean;
+import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -25,6 +31,8 @@ import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import butterknife.BindView;
@@ -67,6 +75,10 @@ public class DiseaseRecordFragment extends BaseFragment {
     TagFlowLayout tflAnticoagulantDrug3;
     @BindView(R.id.tfl_anticoagulant_drug4)
     TagFlowLayout tflAnticoagulantDrug4;
+    @BindView(R.id.et_drugallergy)
+    EditText etDrugallergy;
+    @BindView(R.id.et_conditionre_mark)
+    EditText etConditionreMark;
     @BindView(R.id.btn_get_data)
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
@@ -86,7 +98,8 @@ public class DiseaseRecordFragment extends BaseFragment {
     private String[] mVals6 = new String[]{"他汀类", "烟酸及其衍生物", "贝特类", "胆固醇吸收抑制剂"};
 
     private String mRecordId;
-
+    RequestGetDiseaseRecordBean mRequestGetDiseaseRecordBean;
+    private List<String> selectMedicaldrughistory = new ArrayList<>();;
     public DiseaseRecordFragment() {
     }
 
@@ -103,6 +116,7 @@ public class DiseaseRecordFragment extends BaseFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+
         }
     }
 
@@ -114,7 +128,7 @@ public class DiseaseRecordFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        getDiseaseRecord(mRecordId);
     }
 
 
@@ -124,25 +138,195 @@ public class DiseaseRecordFragment extends BaseFragment {
         View llBottom = getActivity().findViewById(R.id.ll_bottom);
         HideBottonUtils.getInstance().getHideBotton(llVitalSigns, llBottom);
     }
+    List<String> kxxbyKeyDataList;
+    List<String> knyKeyDataList;
+    List<String> JjyKeyDataList;
+    List<String> JtyKeyDataList;
+    List<String> JzyKeyDataList;
 
-
+    List<String> kxxbyValueDataList;
+    List<String> knyValueDataList;
+    List<String> JjyValueDataList;
+    List<String> JtyValueDataList;
+    List<String> JzyValueDataList;
     @Override
     public void initListener() {
         //设置主诉值
-        getEtTransferReason(tflActionInChief, etMajorComplaintFrag, mVals);
+        getEtTransferReason(tflActionInChief, etMajorComplaintFrag, mVals, null);
         //设置既往值
-        getEtTransferReason(tflMedicalHistory, etMedicalHistory, mVals1);
+        getEtTransferReason(tflMedicalHistory, etMedicalHistory, mVals1, null);
         //抗血小板药、抗凝药、降压药、降糖药、降脂药
-        getEtTransferReason(tflAnticoagulantDrug, null, mVals2);
-        getEtTransferReason(tflAnticoagulantDrug1, null, mVals3);
-        getEtTransferReason(tflAnticoagulantDrug2, null, mVals4);
-        getEtTransferReason(tflAnticoagulantDrug3, null, mVals5);
-        getEtTransferReason(tflAnticoagulantDrug4, null, mVals6);
+//        getEtTransferReason(tflAnticoagulantDrug, null, mVals2);
+        DistListUtil distListUtilKxxby = new DistListUtil(context);
+        distListUtilKxxby.initGenderMap(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kxxby);
+        kxxbyKeyDataList = distListUtilKxxby.getKeyDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kxxby);
+        kxxbyValueDataList = distListUtilKxxby.getValueDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kxxby);
+        String[] kxxbyKey = new String[kxxbyKeyDataList.size()];
+        getEtTransferReason(tflAnticoagulantDrug, null,kxxbyKeyDataList.toArray(kxxbyKey) ,kxxbyValueDataList);
 
+        DistListUtil distListUtilKny = new DistListUtil(context);
+        distListUtilKny.initGenderMap(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kny);
+        knyKeyDataList = distListUtilKny.getKeyDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kny);
+        knyValueDataList = distListUtilKny.getValueDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_kny);
+        String[] knyKey = new String[knyKeyDataList.size()];
+        getEtTransferReason(tflAnticoagulantDrug1, null,knyKeyDataList.toArray(knyKey), knyValueDataList);
+
+        DistListUtil distListUtilJjy = new DistListUtil(context);
+        distListUtilJjy.initGenderMap(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jyy);
+        JjyKeyDataList = distListUtilJjy.getKeyDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jyy);
+        JjyValueDataList = distListUtilJjy.getValueDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jyy);
+        String[] JjyKey = new String[JjyKeyDataList.size()];
+        getEtTransferReason(tflAnticoagulantDrug2, null, JjyKeyDataList.toArray(JjyKey), JjyValueDataList);
+
+        DistListUtil distListUtilJty = new DistListUtil(context);
+        distListUtilJty.initGenderMap(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jty);
+        JtyKeyDataList = distListUtilJty.getKeyDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jty);
+        JtyValueDataList = distListUtilJty.getValueDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jty);
+        String[] JtyKey = new String[JtyKeyDataList.size()];
+        getEtTransferReason(tflAnticoagulantDrug3, null, JtyKeyDataList.toArray(JtyKey), JtyValueDataList);
+
+        DistListUtil distListUtilJzy = new DistListUtil(context);
+        distListUtilJzy.initGenderMap(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jzy);
+        JzyKeyDataList = distListUtilJzy.getKeyDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jzy);
+        JzyValueDataList = distListUtilJzy.getValueDataList(R.array.stroke_medicaldrughistory_cpc_jwyysbxx_jzy);
+        String[] JzyKey = new String[JzyKeyDataList.size()];
+        getEtTransferReason(tflAnticoagulantDrug4, null,  JzyKeyDataList.toArray(JzyKey), JzyValueDataList);
+        btnGetData.setOnClickListener(v -> {
+            getDiseaseRecord(mRecordId);
+        });
+
+        btnConfirm.setOnClickListener(v -> {
+
+            RequestGetDiseaseRecordBean requestGetDiseaseRecordBean = new RequestGetDiseaseRecordBean();
+            requestGetDiseaseRecordBean.setRecordId(mRecordId);
+            requestGetDiseaseRecordBean.setChiefcomplaint(etMajorComplaintFrag.getText().toString());
+            requestGetDiseaseRecordBean.setSymptom(etSymptom.getText().toString());
+            requestGetDiseaseRecordBean.setMedicalhistory(etMedicalHistory.getText().toString());
+            requestGetDiseaseRecordBean.setMedicaldrughistory(listToString(selectMedicaldrughistory));
+            requestGetDiseaseRecordBean.setDrugallergy(etDrugallergy.getText().toString());
+            requestGetDiseaseRecordBean.setConditionremark(etConditionreMark.getText().toString());
+
+            saveDiseaseRecord(requestGetDiseaseRecordBean);
+        });
+    }
+
+    public static String listToString(List<String> stringList){
+        if (stringList==null) {
+            return "";
+        }
+        StringBuilder result=new StringBuilder();
+        boolean flag=false;
+        for (String string : stringList) {
+            if (flag) {
+                result.append(",");
+            }else {
+                flag=true;
+            }
+            result.append(string);
+        }
+        return result.toString();
+    }
+
+    /**
+     * 病情记录保存
+     * @param requestGetDiseaseRecordBean
+     */
+    private void saveDiseaseRecord(RequestGetDiseaseRecordBean requestGetDiseaseRecordBean) {
+        BaseRequestBean<RequestGetDiseaseRecordBean> baseRequestBean =
+                new BaseRequestBean<>(mRecordId, 1, requestGetDiseaseRecordBean);
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .editStrokeVitalSigns(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+    }
+
+    /**
+     * 获取病理记录数据
+     */
+    private void getDiseaseRecord(String mRecordId) {
+        showLoadingDialog();
+        BaseRequestBean<RequestGetDiseaseRecordBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, new RequestGetDiseaseRecordBean());
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .GetDiseaseRecordInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<RequestGetDiseaseRecordBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<RequestGetDiseaseRecordBean>> call,
+                                           Response<BaseResponseBean<RequestGetDiseaseRecordBean>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                mRequestGetDiseaseRecordBean = response.body().getData().getData();
+                                if (mRequestGetDiseaseRecordBean != null) {
+                                    etMajorComplaintFrag.setText(mRequestGetDiseaseRecordBean.getChiefcomplaint());
+                                    etSymptom.setText(mRequestGetDiseaseRecordBean.getSymptom());
+                                    etMedicalHistory.setText(mRequestGetDiseaseRecordBean.getMedicalhistory());
+                                    if (!TextUtils.isEmpty(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                        if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().contains(",")){
+                                            String[] medicaldrughistoryStr =  mRequestGetDiseaseRecordBean.getMedicaldrughistory().split(",");
+
+                                            for (int i = 0; i < medicaldrughistoryStr.length; i++) {
+                                                if (kxxbyValueDataList.contains(medicaldrughistoryStr[i])){
+
+                                                }else if (knyValueDataList.contains(medicaldrughistoryStr[i])){
+
+                                                }else if (JjyValueDataList.contains(medicaldrughistoryStr[i])){
+
+                                                }else if (JtyValueDataList.contains(medicaldrughistoryStr[i])){
+
+                                                }else if (JzyValueDataList .contains(medicaldrughistoryStr[i])){
+
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+                                    etDrugallergy.setText(mRequestGetDiseaseRecordBean.getDrugallergy());
+                                    etConditionreMark.setText(mRequestGetDiseaseRecordBean.getConditionremark());
+
+                                }
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<RequestGetDiseaseRecordBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
     }
 
 
-    private void getEtTransferReason(TagFlowLayout tfl, EditText et, String[] mVals) {
+    private void getEtTransferReason(TagFlowLayout tfl, EditText et, String[] mVals, List<String> valueDataList) {
 
 
         if (et != null) {
@@ -253,12 +437,14 @@ public class DiseaseRecordFragment extends BaseFragment {
                     super.onSelected(position, view);
                     //  view.setBackgroundColor(getResources().getColor(R.color.app_00aaff));
                     view.setBackground(getResources().getDrawable(R.drawable.selector_flow_layout_checked_bg));
+                    selectMedicaldrughistory.add(valueDataList.get(position));
                 }
 
                 @Override
                 public void unSelected(int position, View view) {
                     super.unSelected(position, view);
                     view.setBackground(getResources().getDrawable(R.drawable.selector_flow_layout_nomal_bg));
+                    selectMedicaldrughistory.remove(valueDataList.get(position));
                 }
             });
 

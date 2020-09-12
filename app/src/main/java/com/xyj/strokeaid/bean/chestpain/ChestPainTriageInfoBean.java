@@ -18,21 +18,21 @@ public class ChestPainTriageInfoBean {
      * 后台
      * 来院方式-患者到院时间(到达医院大门时间)
      */
-    protected String arrivegatetime;
+    public String arrivegatetime;
     /**
      * app
      * 患者到达急诊
      * 后台
      * 来院方式-患者到达急诊时间
      */
-    protected String arrivedertime;
+    public String arrivedertime;
     /**
      * app
      * 急诊分诊时间
      * 后台
      * 来院方式-接诊时间
      */
-    protected String receptiontime;
+    public String receptiontime;
 
     /**
      * app
@@ -40,28 +40,28 @@ public class ChestPainTriageInfoBean {
      * 后台
      * 来院方式-接诊护士
      */
-    protected String emergencynursereception;
+    public String emergencynursereception;
     /**
      * app
      * 接诊地点
      * 后台
      * 来院方式-接诊地点
      */
-    protected String receptionlocation;
+    public String receptionlocation;
     /**
      * app
      * 急诊医生接诊
      * 后台
      * 来院方式-急诊医生接诊
      */
-    protected String emergencydoctorreceptiontime;
+    public String emergencydoctorreceptiontime;
     /**
      * app
      * 急诊医生
      * 后台
      * 来院方式-急诊医生
      */
-    protected String emergencydoctorreception;
+    public String emergencydoctorreception;
 
     public String getArrivegatetime() {
         return arrivegatetime;

@@ -19,6 +19,7 @@
 
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_fast_ed"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -30,6 +31,7 @@
 
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_nihss"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -41,6 +43,7 @@
 
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ibe_gcs"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -52,6 +55,7 @@
 
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_mrs"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -63,6 +67,7 @@
 
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_aspect_ct"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -73,6 +78,7 @@
                 app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_aspect_mri"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -83,6 +89,7 @@
                 app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_swallowingassessment"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
