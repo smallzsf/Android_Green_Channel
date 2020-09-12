@@ -173,6 +173,17 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_DISEASERECORD_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/editForApp";
 
         /**
+         *  卒中 诊断评估 保存
+         */
+        public static final String NET_URL_DIAGNOSTICEVALUATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/edit";
+
+
+        /**
+         *  卒中 诊断评估 查询
+         */
+        public static final String NET_URL_DIAGNOSTICEVALUATION_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/getByRecordId";
+
+        /**
          * 胸痛 病情记录查询
          */
         public static final String NET_URL_CHEST_PAIN_DISEASERECORD_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/get";

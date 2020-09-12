@@ -3,6 +3,7 @@ package com.xyj.strokeaid.http;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
+import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
 import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
@@ -272,6 +273,20 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_DISEASERECORD_SAVE)
     Call<BaseObjectBean> saveChestPainDiseaseRecord(@Body RequestBody info);
+
+    /**
+     * 卒中 诊断评估 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveDiagnosticEvaluation(@Body RequestBody info);
+
+    /**
+     * 卒中 诊断评估 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseObjectBean<DiagnosticEvaluationBean>> getDiagnosticEvaluation(@Body RequestBody info);
 
 
     /**
