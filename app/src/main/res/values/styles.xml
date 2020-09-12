@@ -207,6 +207,7 @@
 
         <attr name="ieb_right_icon_visible" format="boolean" />
         <attr name="ieb_right_icon" format="reference" />
+        <attr name="ieb_edit_input_type" format="boolean" />
 
     </declare-styleable>
 

@@ -10,11 +10,13 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 
 /**
- * 治疗  --  溶栓
- *
+ * 治疗  --  静脉溶栓
  * @author Licy
  */
 public class StrokeThrombolysisFragment extends BaseStrokeFragment {
+
+    private String mRecordId;
+
 
 
     public static StrokeThrombolysisFragment newInstance(String recordId) {
@@ -23,6 +25,14 @@ public class StrokeThrombolysisFragment extends BaseStrokeFragment {
         args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
     }
 
 

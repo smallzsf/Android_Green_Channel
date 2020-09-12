@@ -36,7 +36,6 @@
             android:layout_marginBottom="@dimen/dp_4"
             android:background="@drawable/shape_edittext_bg"
             android:cursorVisible="true"
-            android:enabled="true"
             android:gravity="center_vertical|end"
             android:textColor="@color/color_222222"
             android:paddingEnd="@dimen/item_normal_margin"
