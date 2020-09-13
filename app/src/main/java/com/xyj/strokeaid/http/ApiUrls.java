@@ -351,6 +351,17 @@ public class ApiUrls {
      */
     public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--获取
+     */
+    public static final String NET_URL_GET_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/get";
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--保存
+     */
+    public static final String NET_URL_SAVE_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
+
 }
 
     

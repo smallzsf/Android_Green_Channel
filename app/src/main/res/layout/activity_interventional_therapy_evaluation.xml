@@ -126,6 +126,7 @@
         </RadioGroup>
 
         <Button
+            android:id="@+id/btn_contraindication_result"
             android:padding="@dimen/dp_5"
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30"
@@ -170,6 +171,7 @@
         </RadioGroup>
 
         <Button
+            android:id="@+id/btn_indication_result"
             android:padding="@dimen/dp_5"
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30"

@@ -29,6 +29,7 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.score.MyindicationPo;
 
 import java.util.List;
 
@@ -495,5 +496,26 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
     Call<BaseObjectBean<List<TimeNodeBean>>> getTimerLine(@Body RequestBody info);
+
+
+    /**
+     *  获取时间线
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_GET_MYINDICATION)
+    Call<BaseObjectBean<MyindicationPo>> getMyindication(@Body RequestBody info);
+
+    /**
+     *  获取时间线
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_MYINDICATION)
+    Call<BaseObjectBean<MyindicationPo>> saveMyindication(@Body RequestBody info);
 
 }

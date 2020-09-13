@@ -1,7 +1,12 @@
 package com.xyj.strokeaid.activity.stroke;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -15,18 +20,28 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapter;
+import com.xyj.strokeaid.adapter.StrokeTCRvAdapterNew;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.bean.score.MyindicationPo;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
-import com.xyj.strokeaid.view.TextSwitchBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @Description: 介入适应症
@@ -36,6 +51,7 @@ import butterknife.OnClick;
 @Route(path = RouteUrl.Stroke.STROKE_GET_INVOLVED_INDICATIONS)
 public class GetInvolvedIndicationsActivity extends BaseActivity {
 
+    private static final String TAG = GetInvolvedIndicationsActivity.class.getSimpleName();
     @Autowired(name = IntentKey.PATIENT_ID)
     String mPatientId;
     @Autowired(name = IntentKey.DOC_ID)
@@ -43,14 +59,14 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     @BindView(R.id.title_bar_act_tc)
     BaseTitleBar titleBarActTc;
     @BindView(R.id.rv_content_act_tc)
-    RecyclerView rvContentActTc;
+    ListView rvContentActTc;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
     @BindView(R.id.btn_cancel)
     AppCompatButton btnCancel;
     private List<StrokeTCBean> mStrokeTCBeans;
-    private StrokeTCRvAdapter mStrokeTCRvAdapter;
-
+    private StrokeTCRvAdapterNew mStrokeTCRvAdapter;
+    private MyindicationPo myindicationPo;
 
     @Override
     public int getLayoutId() {
@@ -65,50 +81,76 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     @Override
     public void initView() {
         // titleBarActTi.setLeftLayoutClickListener(v -> finish());
-        mStrokeTCBeans = prepareData();
-        mStrokeTCRvAdapter = new StrokeTCRvAdapter(R.layout.adapter_header_single_text, R.layout.adapter_rv_stroke_thrombolysis_symptom_item, mStrokeTCBeans);
 
-        rvContentActTc.setLayoutManager(new LinearLayoutManager(mContext));
-        rvContentActTc.setAdapter(mStrokeTCRvAdapter);
-        mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+        mStrokeTCBeans = prepareData();
+        refrashAdapter(true);
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    private void refrashAdapter(boolean isReset) {
+        if (mStrokeTCRvAdapter == null || isReset) {
+            mStrokeTCRvAdapter = new StrokeTCRvAdapterNew(
+                    mContext, mStrokeTCBeans);
+//            rvContentActTc.setLayoutManager(new LinearLayoutManager(mContext));
+            rvContentActTc.setAdapter(mStrokeTCRvAdapter);
+
+            mStrokeTCRvAdapter.setOnSwitchClickListener(onSwitchChangeListener);
+//            mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+        } else {
+            mStrokeTCRvAdapter.notifyDataSetChanged();
+        }
+    }
+
+    StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchChangeListener = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
+            Log.e(TAG, b + " onCheckedChanged: " + position);
+
+            StrokeTCBean bean = mStrokeTCBeans.get(position);
+            bean.setChecked(b);
+            refrashAdapter(false);
+        }
+    };
+
+    private void loadData() {
+
+        RecordIdUtil p = new RecordIdUtil();
+        p.setRecordId(RecordIdUtil.RECORD_ID);
+        String request = GsonUtils.getGson().toJson(p);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getMyindication(requestBody)
+                .enqueue(new Callback<BaseObjectBean<MyindicationPo>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
+                        if (response.body().getResult() == 1) {
+                            myindicationPo = response
+                                    .body().getData();
+
+                            mStrokeTCBeans = prepareData();
+                            refrashAdapter(true);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<MyindicationPo>> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    @Override
     public void initListener() {
-
-
         titleBarActTc.setLeftLayoutClickListener(v -> finish());
 
-        mStrokeTCRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
-                if (view.getId() == R.id.tsb_root) {
-                    final boolean checked = mStrokeTCBeans.get(position).getChecked();
-                    if (!mStrokeTCBeans.get(position).isHeader()) {
-                        mStrokeTCBeans.get(position).setChecked(!checked);
-                        mStrokeTCRvAdapter.notifyItemChanged(position);
-                    }
-                    if (position == 15) {
-                        // 清除1~14项的选中状态
-                        if (!checked) {
-                            mStrokeTCBeans.get(position).setChecked(true);
-                            for (int i = 1; i < 15; i++) {
-                                mStrokeTCBeans.get(i).setChecked(false);
-                            }
-                        }
-                    } else if (position == mStrokeTCBeans.size() - 1) {
-                        // 清除相对禁忌症中1~6项的选中状态
-                        if (!checked) {
-                            mStrokeTCBeans.get(position).setChecked(true);
-                            for (int i = 17; i < mStrokeTCBeans.size() - 1; i++) {
-                                mStrokeTCBeans.get(i).setChecked(false);
-                            }
-                        }
-                    }
-                    mStrokeTCRvAdapter.notifyDataSetChanged();
-                }
-            }
-        });
     }
 
     @Override
@@ -120,7 +162,8 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm:
-                // TODO: 2020/8/21 保存信息
+                save();
+
                 break;
             case R.id.btn_cancel:
                 finish();
@@ -130,15 +173,103 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
         }
     }
 
+    private void save() {
+        myindicationPo = new MyindicationPo();
+        List<StrokeTCBean> strokeTCBeans = mStrokeTCBeans;
+        for (int i = 0; i < strokeTCBeans.size(); i++) {
+            StrokeTCBean strokeTCBean = strokeTCBeans.get(i);
+            if (strokeTCBean == null) {
+                continue;
+            }
+            boolean checked = strokeTCBean.getChecked();
+
+            switch (i) {
+                case 1://embolectomyIndicationAge
+                    myindicationPo.setEmbolectomyIndicationAge((checked ? 1 : -1));
+                    break;
+                case 2://embolectomyIndicationTime
+                    myindicationPo.setEmbolectomyIndicationTime((checked ? 1 : -1));
+                    break;
+                case 3://embolectomyIndicationExclude
+                    myindicationPo.setEmbolectomyIndicationExclude((checked ? 1 : -1));
+                    break;
+                case 4://embolectomyIndicationDxgbs
+                    myindicationPo.setEmbolectomyIndicationDxgbs((checked ? 1 : -1));
+                    break;
+                case 5://embolectomyIndicationAgree
+                    myindicationPo.setEmbolectomyIndicationAgree((checked ? 1 : -1));
+                    break;
+            }
+        }
+        String request = GsonUtils.getGson().toJson(myindicationPo);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveMyindication(requestBody)
+                .enqueue(new Callback<BaseObjectBean<MyindicationPo>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
+                        BaseObjectBean<MyindicationPo> body = response.body();
+                        if (body == null) {
+                            return;
+                        }
+                        if (body.getResult() == 1) {
+                            showToast("保存成功");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<MyindicationPo>> call, Throwable t) {
+
+                    }
+                });
+    }
+
     private List<StrokeTCBean> prepareData() {
         ArrayList<StrokeTCBean> list = new ArrayList<>();
         //   list.add(new StrokeTCBean(true, "静脉溶栓禁忌症", false, ""));
-        list.add(new StrokeTCBean(false, "1.年龄在18岁以上", false, ""));
-        list.add(new StrokeTCBean(false, "2.大血管闭塞卒中患者应尽早实施血管内介入治疗。前循环闭塞发病6h以内，推荐血管介入治疗；前循环闭塞发病在6~24h，经过严格的影像学筛选，推荐血管介入治疗；后循环大血管闭塞发病在24h以内，可行血管介入治疗。", false, ""));
-        list.add(new StrokeTCBean(false, "3.CT排除颅内出血、蛛网膜下腔出血。", false, ""));
-        list.add(new StrokeTCBean(false, "4.急性缺血性脑卒中，影像学检查证实为大血管闭塞。", false, ""));
-        list.add(new StrokeTCBean(false, "5.药物无法控制的严重高血压", false, ""));
-        list.add(new StrokeTCBean(false, "6.患者或法定代理人签署知情同意书", false, ""));
+        StrokeTCBean strokeTCBean = new StrokeTCBean(false, "1.年龄在18岁以上", false, "");
+        list.add(strokeTCBean);
+        strokeTCBean = new StrokeTCBean(false, "2.大血管闭塞卒中患者应尽早实施血管内介入治疗。前循环闭塞发病6h以内，推荐血管介入治疗；前循环闭塞发病在6~24h，经过严格的影像学筛选，推荐血管介入治疗；后循环大血管闭塞发病在24h以内，可行血管介入治疗。", false, "");
+        list.add(strokeTCBean);
+        strokeTCBean = new StrokeTCBean(false, "3.CT排除颅内出血、蛛网膜下腔出血。", false, "");
+        list.add(strokeTCBean);
+        strokeTCBean = new StrokeTCBean(false, "4.急性缺血性脑卒中，影像学检查证实为大血管闭塞。", false, "");
+        list.add(strokeTCBean);
+        strokeTCBean = new StrokeTCBean(false, "5.药物无法控制的严重高血压", false, "");
+        list.add(strokeTCBean);
+        strokeTCBean = new StrokeTCBean(false, "6.患者或法定代理人签署知情同意书", false, "");
+        list.add(strokeTCBean);
+        if (myindicationPo == null) {
+            return list;
+        }
+        for (int i = 0; i < list.size(); i++) {
+            StrokeTCBean bean = list.get(i);
+            if (bean == null) {
+                continue;
+            }
+            boolean checked = bean.getChecked();
+
+            switch (i) {
+                case 1://embolectomyIndicationAge
+                    myindicationPo.setEmbolectomyIndicationAge((checked ? 1 : -1));
+                    break;
+                case 2://embolectomyIndicationTime
+                    checked = myindicationPo.getEmbolectomyIndicationTime() == 1;
+                    break;
+                case 3://embolectomyIndicationExclude
+                    checked = myindicationPo.getEmbolectomyIndicationExclude() == 1;
+                    break;
+                case 4://embolectomyIndicationDxgbs
+                    checked = myindicationPo.getEmbolectomyIndicationDxgbs() == 1;
+                    break;
+                case 5://embolectomyIndicationAgree
+                    checked = myindicationPo.getEmbolectomyIndicationAgree() == 1;
+                    break;
+            }
+            bean.setChecked(checked);
+        }
         return list;
     }
 }
