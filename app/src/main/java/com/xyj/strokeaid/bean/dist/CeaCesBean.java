@@ -4,24 +4,15 @@ package com.xyj.strokeaid.bean.dist;
  * CeaCes网络请求实体类
  */
 public class CeaCesBean {
-    private String recordId;
-    private String ceacaschooseway;//手术采取方式
-    private String ceacascomplication;//并发症
-    private String ceacasdelayreason;//延误原因
-    private String ceacasischoosepatch;//是否采用补片
-    private String ceacasisdelay;//救治是否延误
-    private String ceacasmonitoringmeans;//实施的监测手段
-    private String ceacasnarcosisway;//麻醉方式
-    private String ceacasoperationpart;//手术部位
-    private String ceacasoperationtime;//手术开始时间
-
-    public String getRecordId() {
-        return recordId;
-    }
-
-    public void setRecordId(String recordId) {
-        this.recordId = recordId;
-    }
+    public String ceacaschooseway;//手术采取方式
+    public String ceacascomplication;//并发症
+    public String ceacasdelayreason;//延误原因
+    public String ceacasischoosepatch;//是否采用补片
+    public String ceacasisdelay;//救治是否延误
+    public String ceacasmonitoringmeans;//实施的监测手段
+    public String ceacasnarcosisway;//麻醉方式
+    public String ceacasoperationpart;//手术部位
+    public String ceacasoperationtime;//手术开始时间
 
     public String getCeacaschooseway() {
         return ceacaschooseway;
@@ -93,5 +84,20 @@ public class CeaCesBean {
 
     public void setCeacasoperationtime(String ceacasoperationtime) {
         this.ceacasoperationtime = ceacasoperationtime;
+    }
+
+    @Override
+    public String toString() {
+        return "CeaCesBean{" +
+                "ceacaschooseway='" + ceacaschooseway + '\'' +
+                ", ceacascomplication='" + ceacascomplication + '\'' +
+                ", ceacasdelayreason='" + ceacasdelayreason + '\'' +
+                ", ceacasischoosepatch='" + ceacasischoosepatch + '\'' +
+                ", ceacasisdelay='" + ceacasisdelay + '\'' +
+                ", ceacasmonitoringmeans='" + ceacasmonitoringmeans + '\'' +
+                ", ceacasnarcosisway='" + ceacasnarcosisway + '\'' +
+                ", ceacasoperationpart='" + ceacasoperationpart + '\'' +
+                ", ceacasoperationtime='" + ceacasoperationtime + '\'' +
+                '}';
     }
 }

@@ -20,33 +20,33 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
 
-                <TextView
-                    style="@style/XyjTextTitel"
-                    android:text="是否有症状" />
+<!--                <TextView-->
+<!--                    style="@style/XyjTextTitel"-->
+<!--                    android:text="是否有症状" />-->
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/dp_8"
-                    android:orientation="horizontal">
+<!--                <RadioGroup-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_marginLeft="@dimen/dp_8"-->
+<!--                    android:orientation="horizontal">-->
 
-                    <RadioButton
-                        android:id="@+id/rb_symptom_no_fgm_cea"
-                        style="@style/XyjRadionButtonHorizontalWeight"
-                        android:text="无" />
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_symptom_no_fgm_cea"-->
+<!--                        style="@style/XyjRadionButtonHorizontalWeight"-->
+<!--                        android:text="无" />-->
 
-                    <RadioButton
-                        android:id="@+id/rb_symptom_yes_fgm_cea"
-                        style="@style/XyjRadionButtonHorizontalWeight"
-                        android:layout_weight="2"
-                        android:text="有（缺血症状或脑梗死）" />
-                </RadioGroup>
-            </LinearLayout>
+<!--                    <RadioButton-->
+<!--                        android:id="@+id/rb_symptom_yes_fgm_cea"-->
+<!--                        style="@style/XyjRadionButtonHorizontalWeight"-->
+<!--                        android:layout_weight="2"-->
+<!--                        android:text="有（缺血症状或脑梗死）" />-->
+<!--                </RadioGroup>-->
+<!--            </LinearLayout>-->
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_start_time_fgm_cea"
@@ -339,11 +339,11 @@
             </LinearLayout>
 
             <View style="@style/horizontal_divider" />
-<LinearLayout
-    android:id="@+id/ll_yangwu_cea"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+        <LinearLayout
+         android:id="@+id/ll_yangwu_cea"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical">
             <TextView
                 style="@style/XyjTextSubTitel"
                 android:text="延误原因" />

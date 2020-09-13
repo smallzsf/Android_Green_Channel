@@ -290,7 +290,7 @@ public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
         hemorrhageoperationprognosis = "";//脑出血手术预后
         operationanesthesiamode = "";//脑出血手术麻醉方式
         operationdelayreason = "";//脑出血手术延误原因
-        operationisdelay = "";//脑出血手术是否延误
+        operationisdelay = "-1";//脑出血手术是否延误
         otherhemorrhageoperationcomplication = "";//脑出血手术其他脑部并发症
         otherhemorrhageoperationmode = "";//脑出血手术其他手术方式
     }
@@ -870,7 +870,6 @@ public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
         if ("cpc_ywyy_bqbwd".equals(tagStr)) {
             ck_bqbw_yw.setChecked(true);
         }
-
     }
 
     /**
