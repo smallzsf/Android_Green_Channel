@@ -36,8 +36,7 @@
                 android:layout_gravity="center"
                 android:text="手术过程"
                 android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14"
-                android:textStyle="bold" />
+                android:textSize="@dimen/sp_13" />
 
             <View
                 android:id="@+id/operation_process_line"
@@ -61,8 +60,7 @@
                 android:layout_gravity="center"
                 android:text="术中用药"
                 android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14"
-                android:textStyle="bold" />
+                android:textSize="@dimen/sp_13" />
 
             <View
                 android:id="@+id/surgical_medication_line"
@@ -86,8 +84,7 @@
                 android:layout_gravity="center"
                 android:text="手术耗材"
                 android:textColor="@color/color_222222"
-                android:textSize="@dimen/sp_14"
-                android:textStyle="bold" />
+                android:textSize="@dimen/sp_13" />
 
             <View
                 android:id="@+id/surgical_consumables_line"
@@ -157,44 +154,51 @@
                     android:layout_marginStart="@dimen/dp_12"
                     android:gravity="left"
                     android:minWidth="60dp"
-                    android:text="首次检查:"
+                    android:text="首过检查:"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_first_check"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_scjc_8f_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="8F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_scjc_6f_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="6F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_scjc_8f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="阴性"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_scjc_6f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="阳性"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
 
                     <RadioButton
                         android:id="@+id/rb_scjc_cs_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="长鞘"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="未做"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -222,12 +226,13 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_clbb"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_clbb_yes_act_stroke_operation"
@@ -246,7 +251,7 @@
                         android:text="否"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -273,49 +278,63 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_sqdc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_sqdc0_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_sqdc1_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_sqdc0_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_sqdc2_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_sqdc1_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_sqdc3_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_sqdc2_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_sqdc3_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="3"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -342,56 +361,147 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_sqbscd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_0_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_1_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_0_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_2_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_1_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_3_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_2_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_3_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="3"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
                 style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="left"
+                    android:minWidth="60dp"
+                    android:text="术后闭塞程度（AOL）:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_shbscd"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="3"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_ssks_act_stroke_operation"
@@ -473,141 +583,53 @@
                 app:title="抽吸管管到位"
                 app:ttb_time_hint="2020-08-22 10:58:19" />
 
-
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_cxcs_act_stroke_operation"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="抽吸次数"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
-
-                <TextView
-                    android:id="@+id/tv_cxcs_act_stroke_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_15"
-                    android:layout_weight="1"
-                    android:text="5"
-                    android:textColor="#223b53"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="抽吸次数" />
 
             <View
                 style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_marginTop="@dimen/dp_5" />
 
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_cxsc_act_stroke_operation"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="抽吸时长"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_13" />
-
-                <TextView
-                    android:id="@+id/tv_cxsc_act_stroke_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_15"
-                    android:layout_weight="1"
-                    android:text="5"
-                    android:textColor="#223b53"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="抽吸时长" />
 
             <View
                 style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_marginTop="@dimen/dp_5" />
 
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_qscs_act_stroke_operation"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="取栓次数"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_13" />
-
-                <TextView
-                    android:id="@+id/tv_qscs_act_stroke_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_15"
-                    android:layout_weight="1"
-                    android:text="5"
-                    android:textColor="@color/color_222222"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="取栓次数" />
 
             <View
                 style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_marginTop="@dimen/dp_5" />
 
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_cxtlsc_act_stroke_operation"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="取栓历次停留时间"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_13" />
-
-                <TextView
-                    android:id="@+id/tv_cxtlsc_act_stroke_operation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/dp_15"
-                    android:layout_weight="1"
-                    android:text="5"
-                    android:textColor="@color/color_222222"
-                    android:textSize="14sp" />
-            </LinearLayout>
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="取栓历次停留时间" />
 
             <View
                 style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_marginTop="@dimen/dp_5" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_sclnwdgdw_act_stroke_operation"
@@ -724,67 +746,89 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_sqfj"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_0_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_1_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_0_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_2a_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2a"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_1_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_2b_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2b"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_2c_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2c"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_sqfj_3_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_2a_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2a"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_2b_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2b"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_2c_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2c"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_sqfj_3_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="3"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -811,67 +855,89 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_shfj"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_0_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="0"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_1_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="1"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_0_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="0"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_2a_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2a"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_1_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="1"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_2b_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2b"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_2c_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="2c"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_a_sqfj_3_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="3"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_2a_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2a"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_2b_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2b"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_2c_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="2c"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_a_sqfj_3_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="3"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -907,37 +973,49 @@
 
                         <CheckBox
                             android:id="@+id/checkbox_zjqs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="支架取栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_cs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="抽栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
                         <CheckBox
                             android:id="@+id/checkbox_qncx_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
-                            android:text="球囊成型"
+                            android:layout_weight="1"
+                            android:text="球囊成形"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_zjcx_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
-                            android:text="支架成型"
+                            android:layout_weight="1"
+                            android:text="支架成形"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
                     </LinearLayout>
@@ -949,31 +1027,34 @@
 
                         <CheckBox
                             android:id="@+id/checkbox_dmrs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="动脉溶栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_jxss_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="机械碎栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
-                        <CheckBox
-                            android:id="@+id/checkbox_qt_act_stroke_operation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_8"
-                            android:text="其他"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/sp_13" />
                     </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_qt_act_stroke_operation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:text="其他"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1010,37 +1091,47 @@
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_zjqs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="支架取栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_cs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="抽栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_qncx_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
-                            android:text="球囊成型"
+                            android:layout_weight="1"
+                            android:text="球囊成形"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_zjcx_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
-                            android:text="支架成型"
+                            android:layout_weight="1"
+                            android:text="支架成形"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
                     </LinearLayout>
@@ -1052,31 +1143,35 @@
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_dmrs_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="动脉溶栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
                         <CheckBox
                             android:id="@+id/checkbox_remedy_jxss_act_stroke_operation"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/dp_8"
+                            android:layout_weight="1"
                             android:text="机械碎栓"
                             android:textColor="@color/color_222222"
                             android:textSize="@dimen/sp_13" />
 
-                        <CheckBox
-                            android:id="@+id/checkbox_remedy_qt_act_stroke_operation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/dp_8"
-                            android:text="其他"
-                            android:textColor="@color/color_222222"
-                            android:textSize="@dimen/sp_13" />
                     </LinearLayout>
+
+                    <CheckBox
+                        android:id="@+id/checkbox_remedy_qt_act_stroke_operation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_weight="1"
+                        android:text="其他"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -1162,11 +1257,12 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_rsyw"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_rs_yes_act_stroke_after"
@@ -1185,7 +1281,7 @@
                         android:text="否"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1220,73 +1316,23 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
 
-
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_rs_jl"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="使用剂量" />
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="使用剂量"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:id="@+id/et_rs_jl"
-                    style="@style/patient_et_style"
-                    android:layout_width="wrap_content"
-                    android:gravity="start"
-                    android:hint="剂量"
-                    android:inputType="number"
-                    android:maxLength="3" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
-
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_rs_bw"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:layout_marginTop="@dimen/dp_5"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="使用部位"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:id="@+id/et_rs_bw"
-                    style="@style/patient_et_style"
-                    android:layout_width="wrap_content"
-                    android:gravity="start"
-                    android:hint="部位"
-                    android:inputType="number"
-                    android:maxLength="3" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="使用部位" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1306,11 +1352,12 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_kxxbyw"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_xxb_yes_act_stroke_operation"
@@ -1329,7 +1376,7 @@
                         android:text="否"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1366,37 +1413,14 @@
             </LinearLayout>
 
 
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_xbb_jl"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="使用剂量"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:id="@+id/et_xxb_jl"
-                    style="@style/patient_et_style"
-                    android:layout_width="wrap_content"
-                    android:gravity="start"
-                    android:hint="剂量"
-                    android:inputType="number"
-                    android:maxLength="3" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="使用剂量" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1416,11 +1440,12 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_ywfs"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_jm_act_stroke_operation"
@@ -1439,7 +1464,7 @@
                         android:text="动脉"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1466,11 +1491,12 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_knyw"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_kn_yes_act_stroke_operation"
@@ -1489,7 +1515,7 @@
                         android:text="否"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1525,39 +1551,14 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
             </LinearLayout>
 
-
-            <LinearLayout
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_kn_jl"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_37"
-                android:layout_below="@+id/doctor_name_line"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_12"
-                android:paddingRight="@dimen/dp_10">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="32dp"
-                    android:text="使用剂量"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
-
-                <EditText
-                    android:id="@+id/et_kn_jl"
-                    style="@style/patient_et_style"
-                    android:layout_width="wrap_content"
-                    android:gravity="start"
-                    android:hint="剂量"
-                    android:inputType="number"
-                    android:maxLength="3" />
-            </LinearLayout>
-
-            <View
-                style="@style/horizontal_divider"
-                android:layout_marginTop="@dimen/dp_5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon_visible="false"
+                app:ieb_title="使用剂量" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:id="@+id/ttb_gy_act_stroke_operation"
@@ -1586,31 +1587,215 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/rg_mzfs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dp_12"
+                android:orientation="vertical">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rb_jbm_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="局麻"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-
-                    <RadioButton
-                        android:id="@+id/rb_qbm_act_stroke_operation"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="全麻"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
-            </LinearLayout>
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="颈从麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="静吸复合麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="气管麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="插管全麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="吸入麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="表麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="局麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="腰麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="静脉麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="基础麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="基础麻醉+局麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="骶麻"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="臂丛麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="腰硬联合麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="未麻醉"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="其他"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="无"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/sp_13" />
+                </LinearLayout>
+
+            </com.xyj.strokeaid.view.MyRadioGroup>
 
             <View
                 style="@style/horizontal_divider"
@@ -1636,11 +1821,12 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_ymtmd"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="2">
 
                     <RadioButton
                         android:id="@+id/rb_ymtmd_yes_act_stroke_operation"
@@ -1659,7 +1845,7 @@
                         android:text="否"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1686,12 +1872,14 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_qiao"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
                     android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:weightSum="3">
+
 
                     <RadioButton
                         android:id="@+id/rb_s_8f_act_stroke_operation"
@@ -1711,6 +1899,7 @@
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
 
+
                     <RadioButton
                         android:id="@+id/rb_cs_act_stroke_operation"
                         android:layout_width="0dp"
@@ -1719,7 +1908,7 @@
                         android:text="长鞘"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1747,58 +1936,171 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_zjdg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="6">
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_zjdg_5f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Navein"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_zjdg_6f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="DAC"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_zjdg_7f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="CAT5"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_zjdg_8f_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="CAT6"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Sofia"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="其他"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+            <View
+                style="@style/horizontal_divider"
+                android:layout_marginTop="@dimen/dp_5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rb_scjc_cs_act_stroke_operation" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_7"
+                android:layout_marginBottom="@dimen/dp_3"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/dp_12"
+                android:paddingEnd="@dimen/dp_12">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="left"
+                    android:minWidth="60dp"
+                    android:text="导引导管:"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
+
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_dydg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="5F"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="6F"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="7F"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="8F"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
 
                     <RadioButton
-                        android:id="@+id/rb_zjdg_5f_act_stroke_operation"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="5F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-
-                    <RadioButton
-                        android:id="@+id/rb_zjdg_6f_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="6F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-
-                    <RadioButton
-                        android:id="@+id/rb_zjdg_7f_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="7F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-
-                    <RadioButton
-                        android:id="@+id/rb_zjdg_8f_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="8F"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-
-                    <RadioButton
-                        android:id="@+id/rb_zjdg_fqndg_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:text="非球囊导管"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1824,40 +2126,46 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_wds"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_floopy_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Floopy"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_synchro_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Synchro"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_floopy_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Floopy"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_synchro_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Synchro"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
 
                     <RadioButton
                         android:id="@+id/rb_traxcess_act_stroke_operation"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:text="Traxcess"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1884,49 +2192,62 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_wdg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_rebar18_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Rebar18"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_rebar27_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Rebar27"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_rebar18_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Rebar18"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_headway_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Headway21"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_rebar27_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Rebar27"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_frepass_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Frepass"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_headway_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Headway21"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_frepass_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Frepass"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -1949,62 +2270,73 @@
                     android:layout_height="match_parent"
                     android:gravity="left"
                     android:minWidth="60dp"
-                    android:text="取全支架:"
+                    android:text="取栓支架:"
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_qqzj"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_solitaireab_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="SolitaireAB"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_trevo_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Trevo"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_solitaireab_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="SolitaireAB"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_revive_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Revive"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_trevo_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Trevo"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_solitairefr_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="SolitaireFR"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_revive_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="Revive"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_solitairefr_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="SolitaireFR"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
                     <RadioButton
                         android:id="@+id/rb_st_act_stroke_operation"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:text="神通"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
 
             <View
@@ -2032,58 +2364,70 @@
                     android:textColor="@color/color_222222"
                     android:textSize="@dimen/sp_13" />
 
-                <RadioGroup
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_gg"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/dp_12"
-                    android:orientation="horizontal"
-                    android:weightSum="5">
+                    android:orientation="vertical">
 
-                    <RadioButton
-                        android:id="@+id/rb_415_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="4*15"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rb_420_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="4*20"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_415_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="4*15"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
 
-                    <RadioButton
-                        android:id="@+id/rb_620_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="6*20"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                        <RadioButton
+                            android:id="@+id/rb_420_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="4*20"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
 
-                    <RadioButton
-                        android:id="@+id/rb_630_act_stroke_operation"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="6*30"
-                        android:textColor="@color/color_222222"
-                        android:textSize="@dimen/sp_13" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_620_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="6*20"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+
+                        <RadioButton
+                            android:id="@+id/rb_630_act_stroke_operation"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:text="6*30"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/sp_13" />
+                    </LinearLayout>
+
 
                     <RadioButton
                         android:id="@+id/rb_425_act_stroke_operation"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:text="4*25"
                         android:textColor="@color/color_222222"
                         android:textSize="@dimen/sp_13" />
-                </RadioGroup>
+                </com.xyj.strokeaid.view.MyRadioGroup>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

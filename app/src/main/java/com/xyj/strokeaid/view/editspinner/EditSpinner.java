@@ -27,6 +27,7 @@ import androidx.annotation.DrawableRes;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.distutil.DistListUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,6 +100,18 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
     public void setItemData(List<String> data) {
         mData = data;
         adapter = new SimpleAdapter(mContext, data);
+        setAdapter(adapter);
+    }
+
+    public void setESItemData(List<ESItem> data) {
+        mData = new ArrayList<>();
+
+        if (data!=null){
+            for (ESItem item : data) {
+                mData.add(item.name);
+            }
+        }
+        adapter = new SimpleAdapter(mContext, mData);
         setAdapter(adapter);
     }
 
@@ -325,5 +338,16 @@ public class EditSpinner extends RelativeLayout implements View.OnClickListener,
 
     public void setOnSelectIndexAndStringLitner(OnSelectIndexAndStringLitner onSelectIndexAndStringLitner) {
         mOnSelectIndexAndStringLitner = onSelectIndexAndStringLitner;
+    }
+
+    public static class ESItem{
+        public String name;
+        public String value;
+
+        public ESItem(String value, String name) {
+            this.value = value;
+            this.name = name;
+        }
+
     }
 }
