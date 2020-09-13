@@ -76,7 +76,8 @@ public class ThrombolysisIndicationsActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm:
-                // TODO: 2020/8/21 保存信息
+                save();
+
                 break;
             case R.id.btn_cancel:
                 finish();
@@ -84,6 +85,25 @@ public class ThrombolysisIndicationsActivity extends BaseActivity {
             default:
                 break;
         }
+    }
+
+    private void save() {
+        /**
+         *
+         @BindView(R.id.tsb_age_act_ti)
+         TextSwitchBar tsbAgeActTi;
+         @BindView(R.id.tsb_duration_act_ti)
+         TextSwitchBar tsbDurationActTi;
+         @BindView(R.id.tsb_symptom_act_ti)
+         TextSwitchBar tsbSymptomActTi;
+
+         thrombolysisIndicationAge	年龄≥18岁	是	[string]	查看
+         13	 thrombolysisIndicationTime	症状出现≤4.5h	是	[string]	查看
+         14	 thrombolysisIndicationSymptom	有缺血性脑卒中导致的神经功能缺损症状	是	[string]
+         */
+
+
+
     }
 }
 
