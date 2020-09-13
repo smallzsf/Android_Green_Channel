@@ -1,10 +1,4 @@
-package com.xyj.strokeaid.activity.stroke;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-
-import androidx.appcompat.widget.AppCompatButton;
+package com.xyj.strokeaid.activity.score;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -17,8 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * @Description: Spetzler-Marin评分
