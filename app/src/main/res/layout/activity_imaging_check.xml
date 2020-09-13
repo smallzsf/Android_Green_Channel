@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.detection.ImagingCheckActivity">
+    >
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_image_check"
         android:layout_width="match_parent"

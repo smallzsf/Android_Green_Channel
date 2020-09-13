@@ -108,11 +108,6 @@
         <activity android:name=".activity.stroke.StrokeOperationAfterActivity" />
         <activity android:name=".activity.stroke.StrokeOperationOnActivity" />
         <activity android:name=".activity.stroke.StrokeOperationBeforeActivity" />
-        <activity android:name=".activity.detection.ImagingCheckActivity" />
-        <activity android:name=".activity.detection.PatientArrivalCtActivity" />
-        <activity
-            android:name=".activity.detection.IllnessRecordActivity"
-            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.login.LoginActivity"
             android:screenOrientation="portrait"
