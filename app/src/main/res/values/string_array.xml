@@ -437,4 +437,26 @@
         <item>贝特类:cpc_jwyysbxx_btl</item>
         <item>胆固醇吸收抑制剂:cpc_jwyysbxx_dgcxsyjj</item>
     </string-array>
+
+    <string-array name="doctor_test">
+        <item>周吉从:1</item>
+        <item>李承杨:2</item>
+    </string-array>
+
+    <string-array name="consultation_location">
+        <item>急诊科:Emergency_Department</item>
+        <item>其他:other</item>
+    </string-array>
+
+    <string-array name="contraindication_result">
+        <item>合适:cpc_rsscjg_hs</item>
+        <item>不合适:cpc_rsscjg_bhs</item>
+    </string-array>
+
+    <string-array name="indication_result">
+        <item>是:cpc_bool_true</item>
+        <item>否:cpc_bool_false</item>
+    </string-array>
+
+
 </resources>
