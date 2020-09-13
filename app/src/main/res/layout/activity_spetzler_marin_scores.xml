@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.stroke.StrokeSpetzlerMarinActivity">
+    tools:context=".activity.score.StrokeSpetzlerMarinActivity">
 
     <com.xyj.strokeaid.view.BaseTitleBar
         android:id="@+id/title_bar_act_nihss"

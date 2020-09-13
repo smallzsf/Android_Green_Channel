@@ -86,6 +86,8 @@
         <item>非动脉瘤破裂:cpc_cxxncz_fdmlpl</item>
     </string-array>
 
+
+
     <string-array name="rupturedAneurysm">
         <item>蛛网膜下腔出血:cpc_ruptureofaneurysm_zwmxqcx</item>
         <item>蛛网膜下腔出血合并脑出血:cpc_ruptureofaneurysm_zwmxqcxhbncx</item>
@@ -437,6 +439,13 @@
         <item>贝特类:cpc_jwyysbxx_btl</item>
         <item>胆固醇吸收抑制剂:cpc_jwyysbxx_dgcxsyjj</item>
     </string-array>
+
+    <string-array name="stroke_transfer_ks">
+        <item>接诊科室1:cpc_jzks_ks1</item>
+        <item>接诊科室2:cpc_jzks_ks2</item>
+        <item>接诊科室3:cpc_jzks_ks3</item>
+    </string-array>
+
 
     <string-array name="doctor_test">
         <item>周吉从:1</item>

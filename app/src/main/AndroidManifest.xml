@@ -226,11 +226,11 @@
 
         <activity android:name=".activity.stroke.StrokeMrsScoreActivity" />
         <activity android:name=".activity.stroke.StrokeGcsScoreActivity" />
-        <activity android:name=".activity.stroke.StrokeSpetzlerMarinActivity" />
-        <activity android:name=".activity.stroke.StrokeHuntHessActivity" />
-        <activity android:name=".activity.stroke.StrokeHasBledScoreActivity" />
+        <activity android:name=".activity.score.StrokeSpetzlerMarinActivity" />
+        <activity android:name=".activity.score.StrokeHuntHessActivity" />
+        <activity android:name=".activity.score.StrokeHasBledScoreActivity" />
         <activity android:name=".activity.stroke.StrokeFrogFieldEvaluateActivity" />
-        <activity android:name=".activity.stroke.StrokeFishercCassificationActivity" />
+        <activity android:name=".activity.score.StrokeFishercCassificationActivity" />
         <activity android:name=".activity.stroke.StrokeChadsActivity" />
         <activity android:name=".activity.score.PHIActivity" />
         <activity android:name=".activity.score.TSActivity" />
