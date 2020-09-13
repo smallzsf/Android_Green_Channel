@@ -5,19 +5,28 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.SettingBar;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
- * 治疗  --  静脉溶栓
- * @author Licy
+ * 药物治疗
+ * @author ck
  */
 public class StrokeThrombolysisFragment extends BaseStrokeFragment {
 
+    @BindView(R.id.view_stb_assessment)
+    SettingBar stbAssessment; // 静脉溶栓评估
+    @BindView(R.id.view_stb_treatment)
+    SettingBar stbTreatment; // 静脉溶栓治疗
+
     private String mRecordId;
-
-
 
     public static StrokeThrombolysisFragment newInstance(String recordId) {
         StrokeThrombolysisFragment fragment = new StrokeThrombolysisFragment();
@@ -35,7 +44,6 @@ public class StrokeThrombolysisFragment extends BaseStrokeFragment {
         }
     }
 
-
     @Override
     protected void initView(@NonNull View view) {
 
@@ -43,11 +51,29 @@ public class StrokeThrombolysisFragment extends BaseStrokeFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.stroke_fragment_thrombolysis;
+        return R.layout.fragment_stroke_thrombolysis;
     }
 
     @Override
     protected void initListener() {
 
+    }
+
+    @OnClick({R.id.view_stb_assessment, R.id.view_stb_treatment})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.view_stb_assessment: // 静脉溶栓评估
+                ARouter.getInstance().build(RouteUrl.Stroke.STROKE_THROMBOLYSIS_ASSESSMENT)
+                        .withString(IntentKey.RECORD_ID, mRecordId)
+                        .navigation();
+                break;
+            case R.id.view_stb_treatment: // 静脉溶栓治疗
+                ARouter.getInstance().build(RouteUrl.Stroke.STROKE_THROMBOLYSIS_TREATMENT)
+                        .withString(IntentKey.RECORD_ID, mRecordId)
+                        .navigation();
+                break;
+            default:
+                break;
+        }
     }
 }

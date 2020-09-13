@@ -141,8 +141,14 @@ public final class RouteUrl {
          * Spetzler-Marin评分
          */
         public static final String STROKE_SPETZLER_MARINSCORE = "/app/stroke/spetzler_marin_score";
-
-
+        /**
+         * 溶栓评估
+         */
+        public static final String STROKE_THROMBOLYSIS_ASSESSMENT = "/app/stroke/thrombolysis/assessment";
+        /**
+         * 溶栓治疗
+         */
+        public static final String STROKE_THROMBOLYSIS_TREATMENT = "/app/stroke/thrombolysis/treatment";
     }
 
     public static final class ChestPain {

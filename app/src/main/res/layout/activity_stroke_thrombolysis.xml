@@ -5,6 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_treatment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="静脉溶栓治疗" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -35,6 +41,7 @@
                     android:id="@+id/es_emergency_nurse_frag_ti"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
                     android:layout_marginEnd="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
@@ -42,6 +49,12 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:layout_width="match_parent"
@@ -67,7 +80,6 @@
                     android:gravity="center_vertical"
                     android:text="家属意见" />
 
-
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -78,15 +90,24 @@
                     <RadioButton
                         android:id="@+id/rb_family_opinion_agree"
                         style="@style/XyjRadionButtonHorizontalWeight"
-                        android:text="同意" />
+                        android:text="同意"
+                        android:textSize="@dimen/sp_12" />
 
                     <RadioButton
                         android:id="@+id/rb_family_opinion_disagree"
                         style="@style/XyjRadionButtonHorizontalWeight"
-                        android:text="拒绝" />
+                        android:text="拒绝"
+                        android:textSize="@dimen/sp_12" />
 
                 </RadioGroup>
+
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,11 +142,13 @@
             </LinearLayout>
 
             <com.xyj.strokeaid.view.ItemEditBar
-                android:id="@+id/ieb_breath"
+                android:id="@+id/ieb_thrive"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_input_type="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
                 app:ieb_title="THRIVE评分"
                 app:ieb_top_line_visible="true"
                 app:ieb_unit_text="分"
@@ -136,11 +159,12 @@
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_input_type="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
                 app:ieb_title="溶栓前NIHSS"
                 app:ieb_top_line_visible="true"
                 app:ieb_unit_text="分"
                 app:ieb_unit_visible="true" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -159,6 +183,7 @@
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
                     android:layout_marginEnd="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
@@ -166,6 +191,12 @@
                     app:rightImage="@drawable/ic_arrow_down_blue" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -185,6 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:layout_marginStart="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
                     app:hint="请选择"
@@ -192,6 +224,11 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
                 android:layout_width="match_parent"
@@ -216,8 +253,105 @@
                 app:ieb_unit_visible="false" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="剂量类型" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_dose_pa"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="rt-PA"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_dose_njm"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="尿激酶"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <!--      rt-PA      -->
+            <LinearLayout
+                android:id="@+id/ll_rtpa_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
 
+
+
+
+
+            </LinearLayout>
+
+            <!--   尿激酶   使用剂量      -->
+
+            <LinearLayout
+                android:id="@+id/ll_njm_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="使用剂量" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_dose_100"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="100万u"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_dose_125"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="125万u"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_dose_150"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="150万u"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+            </LinearLayout>
 
 
 
@@ -376,18 +510,22 @@
             </LinearLayout>
 
 
-
-            <include
-                android:id="@+id/ll_bottom"
-                layout="@layout/view_two_horizontal_bottom_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/item_normal_margin" />
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_marginTop="@dimen/dk_dp_20"
+        android:layout_marginBottom="@dimen/dk_dp_20"
+        android:layout_marginLeft="@dimen/dp_26"
+        android:layout_marginRight="@dimen/dp_26"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/item_title_size" />
 
 </LinearLayout>

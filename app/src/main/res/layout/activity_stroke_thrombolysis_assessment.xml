@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_assessment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        app:title="静脉溶栓评估" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="溶栓医生接诊" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/vital_sign_title_width"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:gravity="center_vertical"
+                    android:text="溶栓医生"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/item_title_size" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_emergency_nurse_frag_ti"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="请选择"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="会诊地点" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_exit"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="急救科"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="其他"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="适应症评估" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
+
+                <TextView
+                    android:id="@+id/tv_titlt_indication"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="适应症评估结果" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_toRightOf="@+id/tv_titlt_indication"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_indication_ok"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="合适"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_indication_no"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="不合适"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/iv_right_view_indication"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_score" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="禁忌症评估" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
+
+                <TextView
+                    android:id="@+id/tv_titlt_taboo"
+                    style="@style/tv_normal_titel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="禁忌症评估结果" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_toRightOf="@+id/tv_titlt_taboo"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_taboo_have"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="有"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_taboo_nothing"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="无"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+                <ImageView
+                    android:id="@+id/iv_right_view_taboo"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon_score" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save_data"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_marginTop="@dimen/dk_dp_20"
+        android:layout_marginBottom="@dimen/dk_dp_20"
+        android:layout_marginLeft="@dimen/dp_26"
+        android:layout_marginRight="@dimen/dp_26"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/item_title_size" />
+
+</LinearLayout>
