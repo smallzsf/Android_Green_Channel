@@ -10,12 +10,12 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -271,11 +271,13 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         super.onNewIntent(intent);
         processIntent(intent);
         if (TextUtils.equals("android.nfc.action.TAG_DISCOVERED", intent.getAction())) {
-            if (idReader != null)
+            if (idReader != null) {
                 idReader.enableReaderMode(this);
+            }
         } else {
-            if (idReader != null)
+            if (idReader != null) {
                 idReader.disableReaderMode();
+            }
         }
     }
 
@@ -456,7 +458,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 showBirthPickView(sbBirthActNpmr);
                 break;
             case R.id.sb_come_type_act_npmr:
-                showComeHosActionSheet(sbComeTypeActNpmr, "本院急救车", "当地120", "外院转院", "自行来院", "在院卒中");
+                showComeHosActionSheet(sbComeTypeActNpmr, "本院急救车", "当地120", "外院转院", "自行来院", "在院发病");
                 break;
             case R.id.sb_in_hos_type_act_npmr:
                 showActionSheet(sbInHosTypeActNpmr, "急诊", "门诊", "其他医疗机构转入", "其他");
@@ -570,31 +572,58 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         sbBirthActNpmr.setRightText(bean.getBirthdate());
         // 来院方式
         String comingway = bean.getComingway();
+        if ("cpc_lyfsv2_hj120".equals(comingway)) {
 
+            String helporganization = bean.getHelporganization();
+            if (!TextUtils.isEmpty(helporganization)){
+                if (TextUtils.equals("cpc_hj120v2_cc_zx", helporganization)){
+                    sbComeTypeActNpmr.setRightText("120急救车");
+                }else {
+                    sbComeTypeActNpmr.setRightText("本院救护车");
+                }
+            }
+            List<ComeHosBean> comeHosBeanList = new ArrayList<>();
+            comeHosBeanList.add(new ComeHosBean("呼救时间", "", bean.getTimeofcall(), false));
+            comeHosBeanList.add(new ComeHosBean("120出车时间", "", bean.getDepart120time(), false));
+            comeHosBeanList.add(new ComeHosBean("到达现场时间", "", bean.getArrivescenetime(), false));
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触",  "", bean.getFmctime(),false));
+            comeHosBeanList.add(new ComeHosBean("离开现场时间", "", bean.getLevavescenetime(), false));
+            comeHosBeanList.add(new ComeHosBean("到达医院大门", "", bean.getArrivehospitaltime(), false));
+            comeHosBeanList.add(new ComeHosBean("院内接诊时间", "", bean.getFirstdoctorreceptiontime(), false));
+            showViews(comeHosBeanList);
+        } else if ("cpc_lyfsv2_zy120".equals(comingway)) {
+            sbComeTypeActNpmr.setRightText("转院");
+            List<ComeHosBean> comeHosBeanList = new ArrayList<>();
+            comeHosBeanList.add(new ComeHosBean("转出医院入门", "", bean.getHospitaltransferfromarrivedtime(), false));
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触",  "", bean.getFmctime(),false));
+            comeHosBeanList.add(new ComeHosBean("转运救护车到达", "", bean.getTransferambulancearrivaltime(), false));
+            comeHosBeanList.add(new ComeHosBean("离开转出医院", "", bean.getHospitaltransferfromleavetime(), false));
+            comeHosBeanList.add(new ComeHosBean("到达医院大门", "", bean.getArrivehospitaltime(), false));
+            comeHosBeanList.add(new ComeHosBean("院内接诊时间", "", bean.getFirstdoctorreceptiontime(), false));
+            comeHosBeanList.add(new ComeHosBean("决定转院时间", "", bean.getDecidetranstime(), false));
+            comeHosBeanList.add(new ComeHosBean("医院名称",bean.getHospitalnametransfrom(), "",  false));
+            showViews(comeHosBeanList);
+        } else if ("cpc_lyfsv2_zxly".equals(comingway)) {
+            sbComeTypeActNpmr.setRightText("自行来院");
+            List<ComeHosBean> comeHosBeanList = new ArrayList<>();
+            comeHosBeanList.add(new ComeHosBean("到达医院大门", "", bean.getArrivehospitaltime(), false));
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触", "", bean.getFmctime(), false));
+            comeHosBeanList.add(new ComeHosBean("院内接诊时间", "", bean.getFirstdoctorreceptiontime(), false));
+            showViews(comeHosBeanList);
+        } else if ("cpc_lyfsv2_ynfb".equals(comingway)) {
+            sbComeTypeActNpmr.setRightText("院内发病");
+            List<ComeHosBean> comeHosBeanList = new ArrayList<>();
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触", "", bean.getFmctime(), false));
+            comeHosBeanList.add(new ComeHosBean("发病科室", bean.getAttackdepartment(), "", true));
+            comeHosBeanList.add(new ComeHosBean("会诊时间", "", bean.getEmergencytime(), false));
+            comeHosBeanList.add(new ComeHosBean("离开科室", "", bean.getLeaveattackdepartmenttime(), false));
+            showViews(comeHosBeanList);
+        }
+        // 发病时间
+        ttbDisStartActNpmr.setTime(bean.getAttacktime());
+        // 发病区间
 
-//        if ("cpc_lyfsv2_hj120".equals(comingway )) {
-//           //
-//
-//
-//
-//
-//
-//        } else if (comeType.equals("外院转院")) {
-//            mPatinetBean.setComingway("cpc_lyfsv2_zy120");
-//        } else if (comeType.equals("自行来院")) {
-//            mPatinetBean.setComingway("cpc_lyfsv2_zxly");
-//        } else {
-//            mPatinetBean.setComingway("cpc_lyfsv2_ynfb");
-//        }
-        // 入院途径
-
-        //
-        //
-        //
-        //
-        //
-        //
-
+        // 发病精确时间
 
     }
 
@@ -611,6 +640,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             ToastUtils.showShort("姓名不能为空");
             return;
         }
+        // 疾病类型
+        mPatinetBean.setEmergencyType(String.valueOf(mDiseaseType));
+
         //edit 14
         String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();//就诊id
         String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();//入院id
@@ -676,14 +708,18 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         if (comeType.contains("本院急救车") || comeType.contains("当地120")) {
             //呼救时间 timeofcall
             mPatinetBean.setTimeofcall(getComeHosList.get(0));
+            // 120出车
+            mPatinetBean.setDepart120time(getComeHosList.get(1));
             //到达现场时间  arrive120time
-            mPatinetBean.setArrive120time(getComeHosList.get(1));
+            mPatinetBean.setArrivescenetime(getComeHosList.get(2));
             //首次医疗接触时间  fmctime
-            mPatinetBean.setFmctime(getComeHosList.get(2));
+            mPatinetBean.setFmctime(getComeHosList.get(3));
+            //离开现场时间  fmctime
+            mPatinetBean.setLevavescenetime(getComeHosList.get(4));
             //到达医院大门时间 arrivegatetime
-            mPatinetBean.setArrivehospitaltime(getComeHosList.get(3));
+            mPatinetBean.setArrivehospitaltime(getComeHosList.get(5));
             //院内接诊时间  firstdoctorreceptiontime
-            mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(4));
+            mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(6));
         } else if (comeType.contains("外院转院")) {
             //转出医院入门时间 hospitaltransferfromarrivedtime
             mPatinetBean.setHospitaltransferfromarrivedtime(getComeHosList.get(0));
@@ -708,7 +744,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             mPatinetBean.setFmctime(getComeHosList.get(1));
             //院内接诊时间  firstdoctorreceptiontime
             mPatinetBean.setFirstdoctorreceptiontime(getComeHosList.get(2));
-        } else if (comeType.contains("在院卒中")) {
+        } else if (comeType.contains("在院发病")) {
             //首次医疗接触时间    fmctime
             mPatinetBean.setFmctime(getComeHosList.get(0));
             //发病科室  attackdepartment
@@ -819,7 +855,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 return getTimeAndEdit();
             case "自行来院":
                 return getTimeAndEdit();
-            case "在院卒中":
+            case "在院发病":
                 return getTimeAndEdit();
         }
         return null;
@@ -853,6 +889,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     private void quickCreatPatient() {
         PatientMedicalRecordBean patientMedicalRecordBean = new PatientMedicalRecordBean();
         patientMedicalRecordBean.setFullname("患者" + System.currentTimeMillis());
+        patientMedicalRecordBean.setEmergencyType(String.valueOf(mDiseaseType));
         newPatientMedicalRecord(patientMedicalRecordBean);
     }
 
@@ -935,27 +972,29 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             // 自行来院
             mComeHosBeans = getComeHosSelfContent();
         } else if (type == 4) {
-            // 在院卒中
+            // 在院发病
             mComeHosBeans = getInHosStrokeContent();
         } else {
             mComeHosBeans = new ArrayList<>();
-            mComeHosBeans.add(new ComeHosBean("首次医疗接触时间", false));
         }
+        showViews(mComeHosBeans);
+    }
 
-        for (ComeHosBean comeHosBean : mComeHosBeans) {
+    private void showViews(List<ComeHosBean> comeHosBeans) {
+        for (ComeHosBean comeHosBean : comeHosBeans) {
             if (comeHosBean.isEditable()) {
                 ItemEditBar itemEditBar = new ItemEditBar(mContext);
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) itemEditBar.getLayoutParams();
+                llComeHosActNpmr.addView(itemEditBar);
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) itemEditBar.getLayoutParams();
                 layoutParams.height = DensityUtils.dp2px(mContext, 40);
                 itemEditBar.setLayoutParams(layoutParams);
                 itemEditBar.setTitle(comeHosBean.getTitel());
                 itemEditBar.setBottomLineVisible(true);
-                llComeHosActNpmr.addView(itemEditBar);
             } else {
                 TextTimeBar textTimeBar = new TextTimeBar(mContext);
+                llComeHosActNpmr.addView(textTimeBar);
                 textTimeBar.setTitle(comeHosBean.getTitel());
                 textTimeBar.setBottomLineVisible(true);
-                llComeHosActNpmr.addView(textTimeBar);
             }
         }
     }
@@ -995,8 +1034,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         list.add(new ComeHosBean("呼救时间", false));
         list.add(new ComeHosBean("120出车时间", false));
         list.add(new ComeHosBean("到达现场时间", false));
-        list.add(new ComeHosBean("离开现场时间", false));
         list.add(new ComeHosBean("首次医疗接触", false));
+        list.add(new ComeHosBean("离开现场时间", false));
         list.add(new ComeHosBean("到达医院大门", false));
         list.add(new ComeHosBean("院内接诊时间", false));
         return list;
@@ -1017,6 +1056,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                             if (response.body().getResult() == 1) {
                                 showToast("保存数据成功" + response.body().getResult() + "***" + response.body().getMessage() + "***" + response.body().getData());
                                 // TODO
+                                finish();
                             } else {
                                 showToast(response.body().getMessage());
                             }
@@ -1077,6 +1117,13 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
         public ComeHosBean(String titel, boolean editable) {
             this.titel = titel;
+            this.editable = editable;
+        }
+
+        public ComeHosBean(String titel, String content, String time, boolean editable) {
+            this.titel = titel;
+            this.content = content;
+            this.time = time;
             this.editable = editable;
         }
 

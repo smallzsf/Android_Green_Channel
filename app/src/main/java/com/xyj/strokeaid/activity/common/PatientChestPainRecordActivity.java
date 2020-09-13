@@ -109,7 +109,7 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         rvMenuActPcpr.setAdapter(mMenuRvAdapter);
 
         vpContentActPcpr.setUserInputEnabled(false);
-        vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, "752594697788198912"));
+        vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, mRecordId));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());

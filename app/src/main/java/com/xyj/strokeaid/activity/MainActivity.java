@@ -211,7 +211,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                     }
                     ARouter.getInstance().build(destination)
                             .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
-                            .withString(IntentKey.DOC_ID, mDocId)
                             .navigation();
                 } else if (view.getId() == R.id.tv_time_node_item_patient) {
                     // 查看时间轴
@@ -241,7 +240,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 }
                 ARouter.getInstance().build(destination)
                         .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
-                        .withString(IntentKey.DOC_ID, mDocId)
                         .navigation();
             }
         });
