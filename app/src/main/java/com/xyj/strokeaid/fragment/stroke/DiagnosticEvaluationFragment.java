@@ -22,9 +22,12 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
+import com.xyj.strokeaid.bean.DiagnosticEvaluationEntity;
+import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -297,12 +300,10 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.rb_cerebral_hernia_ture:
-                        llProgressSite.setVisibility(View.GONE);
                         bean.setIsherniainit("cpc_bool_true");
                         break;
 
                     case R.id.rb_cerebral_hernia_false:
-                        llProgressSite.setVisibility(View.VISIBLE);
                         bean.setIsherniainit("cpc_bool_true");
                         break;
                 }
@@ -477,6 +478,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         String checkBoxValueRight = getCheckBoxValue(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
         bean.setHemorrhageinrightinit(checkBoxValueRight);
         bean.setHemorrhageamountinit(iebHemorrhageSize.getEditContent());
+
         if (isDmpl == 1) {
             /**
              * 动脉瘤破裂
@@ -488,7 +490,6 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
              */
             bean.setRuptureofnonaneurysminit(esDmlpl.getSelectData()[1]);
         }
-
         bean.setHunthesslevelinit(iebUntHess.getEditContent());
         bean.setFisherlevelinit(iebFisher.getEditContent());
         bean.setOtherdiagnosticresultinit(etInputWeight.getText().toString().trim());
@@ -496,13 +497,12 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     }
 
     private void dataSave(DiagnosticEvaluationBean bean) {
-        bean.setRecordId("1111");
-        String request = GsonUtils.getGson().toJson(bean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        BaseRequestBean<DiagnosticEvaluationBean> baseRequestBean =
+                new BaseRequestBean<>(mRecordId, 1, bean);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .saveDiagnosticEvaluation(requestBody)
+                .saveDiagnosticEvaluation(baseRequestBean.getResuestBody(baseRequestBean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
@@ -525,84 +525,249 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     //查询数据
     private void queryData() {
         //调用获取数据接口
-//        DiagnosticEvaluationBean p = new DiagnosticEvaluationBean();
+//        DiagnosticEvaluationEntity p = new DiagnosticEvaluationEntity();
 //        p.setRecordId(mRecordId);
 //        String request = GsonUtils.getGson().toJson(p);
 //        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        mRecordId = "1111";
-        BaseRequestBean<DiagnosticEvaluationBean> requestBean = new BaseRequestBean<>(mRecordId, 1, new DiagnosticEvaluationBean());
+        BaseRequestBean<DiagnosticEvaluationBean> requestBean = new BaseRequestBean<>(
+                mRecordId, 1, new DiagnosticEvaluationBean());
         RetrofitClient
                 .getInstance()
                 .getApi()
                 .getDiagnosticEvaluation(requestBean.getResuestBody(requestBean))
-                .enqueue(new Callback<BaseObjectBean<DiagnosticEvaluationBean>>() {
+                .enqueue(new Callback<BaseResponseBean<DiagnosticEvaluationBean>>() {
 
                     @Override
-                    public void onResponse(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Response<BaseObjectBean<DiagnosticEvaluationBean>> response) {
+                    public void onResponse(Call<BaseResponseBean<DiagnosticEvaluationBean>> call, Response<BaseResponseBean<DiagnosticEvaluationBean>> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                showToast("获取数据成功");
-                                if (response.body().getData() != null) {
-                                    bean = response.body().getData();
-                                    queryDataDiagnosticEvaluation();
-                                }
-
+                                bean = response.body().getData().getData();
+                                dataToView(bean);
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
                                         : response.body().getMessage());
-
                             }
                         }
                     }
 
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<DiagnosticEvaluationBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
                         showToast(call.toString());
                     }
                 });
     }
 
-    private void queryDataDiagnosticEvaluation() {
+    private void dataToView(DiagnosticEvaluationBean bean) {
+        ttbDiagnosisProgress.setTime(bean.getEvolvetime());
+        ttbDiagnosis.setTime(bean.getDiagnostictimeinit());
+        String ischemicstrokeinit = bean.getIschemicstrokeinit();
+        if (!TextUtils.isEmpty(ischemicstrokeinit)){
+            if (ischemicstrokeinit.equals("cpc_qxxncz_ngs")){
+                etIschemicStroke.setText("脑梗死");
+            }else if (ischemicstrokeinit.equals("cpc_qxxncz_dzxnqx")){
+                etIschemicStroke.setText("短暂性脑缺血(TIA)");
+            }
+        }
+//        esEmergencyTreatmentDoctor.setText(bean.getEmergencydoctorCzzdinit());
+//        esApoplexyDoctor.setText(bean.getStrokedoctorCzzdinit());
+        /**
+         * 卒中诊断 左 侧的出血部位
+         */
+        String hemorrhageinleftinit = bean.getHemorrhageinleftinit();
+        if (!TextUtils.isEmpty(hemorrhageinleftinit)) {
+            cbCpcLeft1.setChecked(hemorrhageinleftinit.contains("cpc_leftsideofbleedingsite_jdyq"));
+            cbCpcLeft2.setChecked(hemorrhageinleftinit.contains("cpc_leftsideofbleedingsite_msny"));
+            cbCpcLeft3.setChecked(hemorrhageinleftinit.contains("cpc_leftsideofbleedingsite_xn"));
+            cbCpcLeft4.setChecked(hemorrhageinleftinit.contains("cpc_leftsideofbleedingsite_ng"));
+            cbCpcLeft5.setChecked(hemorrhageinleftinit.contains("cpc_leftsideofbleedingsite_ns"));
+        }
+        /**
+         * 卒中诊断 右 侧的出血部位
+         */
+        String hemorrhageinrightinit = bean.getHemorrhageinrightinit();
+        if (!TextUtils.isEmpty(hemorrhageinrightinit)) {
+            cbCpcRight1.setChecked(hemorrhageinrightinit.contains("cpc_rightsideofbleedingsite_jdyq"));
+            cbCpcRight2.setChecked(hemorrhageinrightinit.contains("cpc_rightsideofbleedingsite_msny"));
+            cbCpcRight3.setChecked(hemorrhageinrightinit.contains("cpc_rightsideofbleedingsite_xn"));
+            cbCpcRight4.setChecked(hemorrhageinrightinit.contains("cpc_rightsideofbleedingsite_ng"));
+            cbCpcRight5.setChecked(hemorrhageinrightinit.contains("cpc_rightsideofbleedingsite_ns"));
+        }
+
+        iebHemorrhageSize.setEditContent(bean.getHemorrhageamountinit());
+        iebUntHess.setEditContent(bean.getHunthesslevelinit());
+        iebFisher.setEditContent(bean.getFisherlevelinit());
+        etInputWeight.setText(bean.getOtherdiagnosticresultinit());
+
+        String ruptureofaneurysminit = bean.getRuptureofaneurysminit();
+        String ruptureofnonaneurysminit = bean.getRuptureofnonaneurysminit();
+        if (!TextUtils.isEmpty(ruptureofaneurysminit)){
+            if (ruptureofaneurysminit.equals("cpc_cxxncz_dmlpl")){
+                isDmpl = 1;
+                esCxxcz.setText("动脉瘤破裂");
+                llDmlplUnt.setVisibility(View.VISIBLE);
+                //动脉瘤破裂
+                esDmlpl.setStringArrayId(R.array.rupturedAneurysm);
+                if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
+                    llDmlplUnt.setVisibility(View.VISIBLE);
+                    esDmlpl.setText("蛛网膜下腔出血");
+                }else if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
+                    esDmlpl.setText("蛛网膜下腔出血合并脑出血");
+                    llDmlplUnt.setVisibility(View.VISIBLE);
+                }else {
+                    esDmlpl.setText("其他");
+                    llDmlplUnt.setVisibility(View.GONE);
+                }
+            }
+        } else if (!TextUtils.isEmpty(ruptureofnonaneurysminit)){
+            if (ruptureofnonaneurysminit.equals("cpc_cxxncz_fdmlpl")){
+                isDmpl = 2;
+                esCxxcz.setText("非动脉瘤破裂");
+                llDmlplUnt.setVisibility(View.GONE);
+                //非动脉瘤破裂
+                esDmlpl.setStringArrayId(R.array.ruptureofnonaneurysm);
+                if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_gxyncx")){
+                    esDmlpl.setText("高血压脑出血");
+                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_hmzxgl")){
+                    esDmlpl.setText("海绵状血管瘤");
+                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_djmjx")){
+                    esDmlpl.setText("动静脉畸形（AVM瘘）");
+                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_jmdxsxc")){
+                    esDmlpl.setText("静脉窦血栓形成");
+                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_dfyb")){
+                    esDmlpl.setText("淀粉样变");
+                }else {
+                    esDmlpl.setText("其他");
+                }
+            }
+        }
+
+        //起病方式
+        String modeofonset = bean.getModeofonset();
+        if (!TextUtils.isEmpty(modeofonset)){
+            rgHaveDiseaseWay.check(modeofonset.equals("cpc_evolveaddress_jx") ? R.id.rb_acute : R.id.rb_progressivity);
+            if (modeofonset.equals("cpc_evolveaddress_jx")){
+                llProgressSite.setVisibility(View.GONE);
+            }else if (modeofonset.equals("cpc_evolveaddress_jzx")){
+                llProgressSite.setVisibility(View.VISIBLE);
+            }
+        }
+
+        String ishavesymptomincarotidarteryinit = bean.getIshavesymptomincarotidarteryinit();
+        if (!TextUtils.isEmpty(ishavesymptomincarotidarteryinit)){
+            rgSymptom.check(ishavesymptomincarotidarteryinit.equals("cpc_hascas_true") ? R.id.rb_symptom_yes : R.id.rb_symptom_no );
+        }
+
+        String isnarrowinit = bean.getIsnarrowinit();
+        if (!TextUtils.isEmpty(isnarrowinit)){
+            rgNarrow.check(isnarrowinit.equals("cpc_bool_true") ? R.id.rb_narrow_yes : R.id.rb_narrow_no );
+        }
+        String evolveaddress = bean.getEvolveaddress();
+        if (!TextUtils.isEmpty(evolveaddress)){
+            rgProgressSite.check(evolveaddress.equals("cpc_evolveaddress_yn") ? R.id.rb_court : R.id.rb_lobby );
+        }
+        String isherniainit = bean.getIsherniainit();
+        if (!TextUtils.isEmpty(isherniainit)){
+            rgHaveCerebralHernia.check(isherniainit.equals("cpc_bool_true") ? R.id.rb_cerebral_hernia_ture : R.id.rb_cerebral_hernia_false );
+
+        }
+        String ishadruptureofaneurysminit = bean.getIshadruptureofaneurysminit();
+        if (!TextUtils.isEmpty(ishadruptureofaneurysminit)){
+            rgDmlpls.check(ishadruptureofaneurysminit.equals("cpc_exist_true") ? R.id.rb_dmlpls_ture : R.id.rb_dmlpls_false );
+
+        }
+        //尼莫地平治疗
+        String isusenimodipineinit = bean.getIsusenimodipineinit();
+        if (!TextUtils.isEmpty(isusenimodipineinit)){
+            rgNmdpzl.check(isusenimodipineinit.equals("cpc_bool_true") ? R.id.rb_nmdpzl_ture : R.id.rb_nmdpzl_false );
+
+        }
+        String diagnosticresultinit = bean.getDiagnosticresultinit();
+        if (!TextUtils.isEmpty(diagnosticresultinit)){
+            if (diagnosticresultinit.equals("cpc_czzdjg_qxxncz")){
+                esDiagnosis.setText("缺血性卒中");
+                llIschemicStroke.setVisibility(View.VISIBLE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llIschemicStroke.requestLayout();
+                if (etNosogenesis.getText().contains("其他原因所致的缺血性卒中（SOE）")) {
+                    etNosogenesis.setItemData(nosogenesisList);
+                } else {
+                    llMoyamoyaDisease.setVisibility(View.GONE);
+                }
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_cxxncz")){
+                esDiagnosis.setText("出血性卒中");
+                llHemorrhagicApoplexy.setVisibility(View.VISIBLE);
+                llIschemicStroke.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.VISIBLE);
+                llCpc.setVisibility(View.VISIBLE);
+                llSymptom.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_fpldml")){
+                esDiagnosis.setText("非破裂动脉瘤");
+                llSymptom.setVisibility(View.VISIBLE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_jbdmxzhbs")){
+                esDiagnosis.setText("颈部动脉狭窄或闭塞");
+                llOtherDiagnostic.setVisibility(View.VISIBLE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llIschemicStroke.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_qtnb")){
+                esDiagnosis.setText("其他");
+                llIschemicStroke.setVisibility(View.GONE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
+            }
+            llMoyamoyaDisease.setVisibility(View.GONE);
+        }
+        String pathogenesisinit = bean.getPathogenesisinit();
+        if (!TextUtils.isEmpty(pathogenesisinit)){
+            if (pathogenesisinit.equals("cpc_pathogenesis_laa")){
+                etNosogenesis.setText("大动脉粥样硬化性卒中(LAA)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_ce")){
+                etNosogenesis.setText("心源性脑栓塞(CE)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_saa")){
+                etNosogenesis.setText("小动脉闭塞性卒中或腔隙性卒中(SAA)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_soe")){
+                etNosogenesis.setText("其他原因所致的缺血性卒中(SOE)");
+                llMoyamoyaDisease.setVisibility(View.VISIBLE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_sue")){
+                etNosogenesis.setText("不明原因的缺血性卒中(SUE)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }
+        }
+        //烟雾病
+        String ismoyamoyainit = bean.getIsmoyamoyainit();
+        if (!TextUtils.isEmpty(ismoyamoyainit)){
+            rgMoyamoyaDisease.check(ismoyamoyainit.equals("cpc_bool_true") ? R.id.rb_moyamoya_disease_yes : R.id.rb_moyamoya_disease_no );
+        }
+    }
+
+    private void queryDataDiagnosticEvaluation(DiagnosticEvaluationBean entity) {
 
     }
 
     private void loadData() {
-//        ArrayList<String> diagnosisList = new ArrayList<>();
-//        diagnosisList.add("请选择");
-//        diagnosisList.add("缺血性卒中");
-//        diagnosisList.add("出血性卒中");
-//        diagnosisList.add("非破裂动脉瘤");
-//        diagnosisList.add("颈部动脉狭窄或闭塞");
-//        diagnosisList.add("其它");
-//        esDiagnosis.setItemData(diagnosisList);
         esDiagnosis.setStringArrayId(R.array.diagnosisList);
 
-//        ArrayList<String> ischemicStrokeList = new ArrayList<>();
-//        ischemicStrokeList.add("请选择");
-//        ischemicStrokeList.add("脑梗死");
-//        ischemicStrokeList.add("短暂性脑缺血(TIA)");
-//        etIschemicStroke.setItemData(ischemicStrokeList);
         etIschemicStroke.setStringArrayId(R.array.ischemicStrokeList);
 
-//        nosogenesisList = new ArrayList<>();
-//        nosogenesisList.add("请选择");
-//        nosogenesisList.add("大动脉粥样硬化性卒中（LAA）");
-//        nosogenesisList.add("心源性脑栓塞（CE）");
-//        nosogenesisList.add("小动脉闭塞性卒中或腔隙性卒中（SAA）");
-//        nosogenesisList.add("其他原因所致的缺血性卒中（SOE）");
-//        nosogenesisList.add("不明原因的缺血性卒中（SUE）");
-//        etNosogenesis.setItemData(nosogenesisList);
         etNosogenesis.setStringArrayId(R.array.nosogenesisList);
 
-        //急诊医生
-//        ArrayList<String> hemorrhagicApoplexyList = new ArrayList<>();
-//        hemorrhagicApoplexyList.add("请选择");
-//        hemorrhagicApoplexyList.add("动脉瘤破裂");
-//        hemorrhagicApoplexyList.add("非动脉瘤破裂");
-//        esHemorrhagicApoplexy.setItemData(hemorrhagicApoplexyList);
         esCxxcz.setStringArrayId(R.array.hemorrhagicApoplexyList);
 
         //急诊医生
@@ -634,7 +799,6 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         apoplexyDoctorList.add("赵送会");
         apoplexyDoctorList.add("李建华");
         esApoplexyDoctor.setItemData(apoplexyDoctorList);
-
 
     }
 
