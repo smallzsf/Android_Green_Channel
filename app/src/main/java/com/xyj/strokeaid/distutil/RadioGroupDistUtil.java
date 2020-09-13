@@ -10,8 +10,11 @@ import android.widget.RadioGroup;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.view.MyRadioGroup;
 
+import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class RadioGroupDistUtil extends RadioButtonDistUtil {
     public RadioGroupDistUtil(Context context) {
@@ -67,6 +70,15 @@ public class RadioGroupDistUtil extends RadioButtonDistUtil {
     }
 
     /**
+     * 获取radioGroup中选中的文字
+     */
+    public static String getSelectRadioButtonTag(ViewGroup radioGroup, Map<String, String> map) {
+        String key = getSelectRadioButtonText(radioGroup);
+        return map.get(key);
+    }
+
+
+    /**
      * 根绝文字选中radioButtom
      */
     public static void selectRadioButtonByText(ViewGroup radioGroup, String text) {
@@ -87,5 +99,22 @@ public class RadioGroupDistUtil extends RadioButtonDistUtil {
                 return;
             }
         }
+    }
+
+    /**
+     * 根绝文字选中radioButtom
+     */
+    public static void selectRadioButtonByMap(ViewGroup radioGroup, String key, Map<String, String> map) {
+        selectRadioButtonByText(radioGroup, map.get(key));
+    }
+
+    private static String getKeyOfMap(Map<String, String> map, String value) {
+        Set<String> strings = map.keySet();
+        for (String key : strings) {
+            if (TextUtils.equals(map.get(key), value)) {
+                return key;
+            }
+        }
+        return "";
     }
 }
