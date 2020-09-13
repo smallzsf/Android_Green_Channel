@@ -181,19 +181,19 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
 
             switch (i) {
                 case 1://embolectomyIndicationAge
-                    myindicationPo.setEmbolectomyIndicationAge((checked ? 1 : -1));
+                    myindicationPo.setEmbolectomyIndicationAge((checked ? "1" : "-1"));
                     break;
                 case 2://embolectomyIndicationTime
-                    myindicationPo.setEmbolectomyIndicationTime((checked ? 1 : -1));
+                    myindicationPo.setEmbolectomyIndicationTime((checked ? "1" : "-1"));
                     break;
                 case 3://embolectomyIndicationExclude
-                    myindicationPo.setEmbolectomyIndicationExclude((checked ? 1 : -1));
+                    myindicationPo.setEmbolectomyIndicationExclude((checked ? "1" : "-1"));
                     break;
                 case 4://embolectomyIndicationDxgbs
-                    myindicationPo.setEmbolectomyIndicationDxgbs((checked ? 1 : -1));
+                    myindicationPo.setEmbolectomyIndicationDxgbs((checked ? "1" : "-1"));
                     break;
                 case 5://embolectomyIndicationAgree
-                    myindicationPo.setEmbolectomyIndicationAgree((checked ? 1 : -1));
+                    myindicationPo.setEmbolectomyIndicationAgree((checked ? "1" : "-1"));
                     break;
             }
         }
@@ -252,24 +252,25 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
                 continue;
             }
             boolean checked = bean.getChecked();
-
+            String netText = "";
             switch (i) {
                 case 0://embolectomyIndicationAge
-                    checked = myindicationPo.getEmbolectomyIndicationAge() == 1;
+                    netText = myindicationPo.getEmbolectomyIndicationAge() ;
                     break;
                 case 1://embolectomyIndicationTime
-                    checked = myindicationPo.getEmbolectomyIndicationTime() == 1;
+                    netText = myindicationPo.getEmbolectomyIndicationTime();
                     break;
                 case 2://embolectomyIndicationExclude
-                    checked = myindicationPo.getEmbolectomyIndicationExclude() == 1;
+                    netText = myindicationPo.getEmbolectomyIndicationExclude() ;
                     break;
                 case 3://embolectomyIndicationDxgbs
-                    checked = myindicationPo.getEmbolectomyIndicationDxgbs() == 1;
+                    netText = myindicationPo.getEmbolectomyIndicationDxgbs();
                     break;
                 case 4://embolectomyIndicationAgree
-                    checked = myindicationPo.getEmbolectomyIndicationAgree() == 1;
+                    netText = myindicationPo.getEmbolectomyIndicationAgree();
                     break;
             }
+            checked = "1".equals(netText);
             bean.setChecked(checked);
         }
         return list;

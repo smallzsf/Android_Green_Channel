@@ -631,4 +631,15 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
     Call<BaseResponseBean> saveFamilyOpinion(@Body RequestBody info);
 
+
+    /**
+     * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/add
+     POST
+     静脉溶栓禁忌症评估
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseResponseBean> saveSiscontraindication(@Body RequestBody info);
+
+
 }

@@ -110,7 +110,7 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
                     public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
                         if (response.body().getResult() == 1) {
                             // TODO: 2020/9/13 重现接口验证数据为null
-//                            myindicationPo = response
+//                            bean = response
 //                                    .body().getData();
 
                             mStrokeTCBeans = prepareData();
@@ -196,84 +196,107 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
          *   	 thrombolysisRelativecontraindicationJqwccx	5. 近3周内有胃肠或泌尿系统出血	是	[string]	查看
          *   	 thrombolysisRelativecontraindicationYcf	6 孕产妇	是	[string]	查看
          *   	 thrombolysisRelativecontraindicationNone	7. 无以上禁忌症
-         */List<StrokeTCBean> strokeTCBeans = mStrokeTCBeans;
+         */
+        List<StrokeTCBean> strokeTCBeans = mStrokeTCBeans;
         for (int i = 0; i < strokeTCBeans.size(); i++) {
             StrokeTCBean strokeTCBean = strokeTCBeans.get(i);
             if (strokeTCBean == null) {
                 continue;
             }
             boolean checked = strokeTCBean.getChecked();
-
+            String nextText = "";
             switch (i) {
                 case 1:
 //                thrombolysisContraindicationLrcx	1. 颅内出血（包括脑
+                    nextText = bean.thrombolysisContraindicationLrcx;
                     break;
 //                thrombolysisContraindicationCzlrcx	2. 既往颅内出血史
                 case 2:
+                    nextText = bean.thrombolysisContraindicationCzlrcx;
                     break;
 //                thrombolysisContraindicationCzs	3. 近3个月有严重头
                 case 3:
+                    nextText = bean.thrombolysisContraindicationCzs;
                     break;
 //                thrombolysisContraindicationLrzr	4. 颅内肿瘤、巨大颅
                 case 4:
+                    nextText = bean.thrombolysisContraindicationLrzr;
                     break;
 //                thrombolysisContraindicationJqss	5. 近期（3个月）有
                 case 5:
+                    nextText = bean.thrombolysisContraindicationJqss;
                     break;
 //                thrombolysisContraindicationNzcx	6. 活动性内脏出血
                 case 6:
+                    nextText = bean.thrombolysisContraindicationNzcx;
                     break;
 //                thrombolysisContraindicationDmcc	7. 近1周内有在不易
                 case 7:
+                    nextText = bean.thrombolysisContraindicationDmcc;
                     break;
 //                thrombolysisContraindicationXysg	8. 血压升高：收缩压
                 case 8:
+                    nextText = bean.thrombolysisContraindicationXysg;
                     break;
 //                thrombolysisContraindicationJxcxqx	9. 急性出血倾向，包
                 case 9:
+                    nextText = bean.thrombolysisContraindicationJxcxqx;
                     break;
 //                thrombolysisContraindicationDfzgszl	10. 48h
                 case 10:
+                    nextText = bean.thrombolysisContraindicationDfzgszl;
                     break;
 //                thrombolysisContraindicationKfknj	11. 口服抗凝剂且I
                 case 11:
+                    nextText = bean.thrombolysisContraindicationKfknj;
                     break;
 //                thrombolysisContraindicationJcyc	12. 目前正在使用凝
                 case 12:
+                    nextText = bean.thrombolysisContraindicationJcyc;
                     break;
 //                thrombolysisContraindicationXtd	13. 血糖＜2.7m
                 case 13:
+                    nextText = bean.thrombolysisContraindicationXtd;
                     break;
 //                thrombolysisContraindicationDmjgs	14. 头部CT或MR
                 case 14:
+                    nextText = bean.thrombolysisContraindicationDmjgs;
                     break;
 //                thrombolysisContraindicationNone	15. 无以上禁忌症
                 case 15:
+                    nextText = bean.thrombolysisContraindicationNone;
                     break;
 //                thrombolysisRelativecontraindicationGscz	1.
                 case 16 + 1:
+                    nextText = bean.thrombolysisRelativecontraindicationGscz;
                     break;
 //                thrombolysisRelativecontraindicationSjgnsh	2.
                 case 16 + 2:
+                    nextText = bean.thrombolysisRelativecontraindicationSjgnsh;
                     break;
 //                thrombolysisRelativecontraindicationJqyzws	3.
                 case 16 + 3:
+                    nextText = bean.thrombolysisRelativecontraindicationJqyzws;
                     break;
 //                thrombolysisRelativecontraindicationJqxjgs	4.
                 case 16 + 4:
+                    nextText = bean.thrombolysisRelativecontraindicationJqxjgs;
                     break;
 //                thrombolysisRelativecontraindicationJqwccx	5.
                 case 16 + 5:
+                    nextText = bean.thrombolysisRelativecontraindicationJqwccx;
                     break;
 //                thrombolysisRelativecontraindicationYcf	6 孕
                 case 16 + 6:
+                    nextText = bean.thrombolysisRelativecontraindicationYcf;
                     break;
 //                thrombolysisRelativecontraindicationNone	7.
                 case 16 + 7:
+                    nextText = bean.thrombolysisRelativecontraindicationNone;
                     break;
             }
         }
-        String request = GsonUtils.getGson().toJson(myindicationPo);
+        String request = GsonUtils.getGson().toJson(bean);
         saveNet(request);
 
     }
