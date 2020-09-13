@@ -28,6 +28,7 @@ import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeOperationOnInfoBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
+import com.xyj.strokeaid.bean.StrokeTransferBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
@@ -376,6 +377,20 @@ public interface ApiService {
     Call<BaseResponseBean<StrokeBloodExaminationBean>> getBloodExaminationInfo(@Body RequestBody info);
 
 
+    /**
+     * 卒中 转归交接 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeTransferInfo(@Body RequestBody info);
+
+
+    /**
+     * 卒中 转归交接  获取
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeTransferBean>> getStrokeTransferInfo(@Body RequestBody info);
 
     /**
      * 卒中 诊断评估 查询
