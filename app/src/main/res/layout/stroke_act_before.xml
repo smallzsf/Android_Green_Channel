@@ -37,7 +37,7 @@
             android:gravity="center"
             android:text="选择导室管"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
+            android:textSize="@dimen/sp_13" />
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_cath_act_stroke"
@@ -70,7 +70,7 @@
             android:gravity="center"
             android:text="直达导管室"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
+            android:textSize="@dimen/sp_13" />
 
         <RadioGroup
             android:id="@+id/rg_directdsaroom"
