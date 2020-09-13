@@ -31,6 +31,10 @@ public class ScoreEvent {
      * 12、 iss
      * 13、 grace
      * 14、 phi
+     * 15、 静脉溶栓适应症
+     * 16、 静脉溶栓禁忌症
+     * 17、 介入治疗禁忌症
+     * 18、 介入治疗适应症
      */
     private int type;
 
