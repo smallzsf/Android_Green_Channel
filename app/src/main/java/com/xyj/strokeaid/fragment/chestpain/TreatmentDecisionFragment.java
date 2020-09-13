@@ -182,7 +182,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        radioButtonDistUtil = new RadioButtonDistUtil(context);
         radioButtonDistUtil.addView(rbIntoMeasureLevel1);
         radioButtonDistUtil.addView(rbIntoMeasureLevel2);
         radioButtonDistUtil.addView(rbIntoMeasureLevel3);

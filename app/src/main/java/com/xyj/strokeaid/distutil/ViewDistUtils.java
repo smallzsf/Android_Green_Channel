@@ -84,34 +84,42 @@ public class ViewDistUtils<T extends CompoundButton> {
     View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            List<T> viewList = getViewList();
-            if (viewList == null) {
-                return;
-            }
-            for (int i = 0; i < viewList.size(); i++) {
-                T viewItem = viewList.get(i);
-                if (viewItem instanceof RadioButton){
-                    viewItem.setChecked(false);
+            try {
+                boolean isChecked = ((CompoundButton)view).isChecked();
+
+                List<T> viewList = getViewList();
+                if (viewList == null) {
+                    return;
                 }
+                for (int i = 0; i < viewList.size(); i++) {
+                    T viewItem = viewList.get(i);
+                    if (viewItem.getId() == view.getId()){
+                        continue;
+                    }
+                    if (viewItem instanceof RadioButton) {
+                        viewItem.setChecked(false);
+                    }
+                }
+                setSelectViews((T) view,isChecked);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            setSelectViews((T) view);
         }
     };
 
-    public void setSelectViews(T t) {
+    public void setSelectViews(T t,boolean isChecked) {
         if (distListUtil == null) {
             return;
         }
         if (t instanceof RadioButton) {
             selectViews.clear();
         }
-        boolean checked = t.isChecked();
-        if (checked){
-            selectViews.remove(t);
-        }else {
+        if (isChecked) {
             selectViews.add(t);
+        } else if (selectViews != null &&  selectViews.contains(t)) {
+            selectViews.remove(t);
         }
-        t.setChecked(!checked);
+        t.setChecked(isChecked);
         if (listener != null) {
             listener.onClick(t);
         }
@@ -126,7 +134,7 @@ public class ViewDistUtils<T extends CompoundButton> {
             return;
         }
         T t = mapTextToView.get(data);
-        this.setSelectViews(t);
+        this.setSelectViews(t,true);
     }
 
     protected List<T> getSelectViews() {
