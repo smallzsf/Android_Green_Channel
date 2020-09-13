@@ -458,5 +458,10 @@
         <item>否:cpc_bool_false</item>
     </string-array>
 
+    <string-array name="treatment_decision_family">
+        <item>同意:cpc_jsyj_ty</item>
+        <item>拒绝:cpc_jsyj_jj</item>
+    </string-array>
+
 
 </resources>

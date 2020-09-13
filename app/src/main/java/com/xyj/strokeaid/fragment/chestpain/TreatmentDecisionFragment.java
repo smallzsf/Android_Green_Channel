@@ -151,6 +151,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
     DistListUtil distListUtil = new DistListUtil(context);
 
     RadioButtonDistUtil radioButtonDistUtil;
+    RadioButtonDistUtil radioFamilDistUtil;
 
     public TreatmentDecisionFragment() {
     }
@@ -186,12 +187,12 @@ public class TreatmentDecisionFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
         radioButtonDistUtil = new RadioButtonDistUtil(context);
-        radioButtonDistUtil.addView(rbIntoMeasureLevel1);
-        radioButtonDistUtil.addView(rbIntoMeasureLevel2);
-        radioButtonDistUtil.addView(rbIntoMeasureLevel3);
-        radioButtonDistUtil.addView(rbIntoMeasureLevel4);
-        radioButtonDistUtil.addView(rbIntoMeasureLevel5);
+        radioButtonDistUtil.addView(rgReperfusionWays);
         radioButtonDistUtil.setStringArrayId(R.array.chest_pain_treament_decision);
+
+        radioFamilDistUtil = new RadioButtonDistUtil(context);
+        radioFamilDistUtil.addView(rgFamilyOpinion);
+        radioFamilDistUtil.setStringArrayId(R.array.treatment_decision_family);
 
     }
 
@@ -277,13 +278,33 @@ public class TreatmentDecisionFragment extends BaseFragment {
             showToast("保存失败，未设置信息");
             return;
         }
-        if (!rbReperfusionYes.isChecked()) {
+        if (rbReperfusionYes.isChecked()) {
 //            rb_into_measure_level_1
-            if (!rbIntoMeasureLevel1.isChecked()) {
+            if (rbIntoMeasureLevel1.isChecked()) {
                 // 直接PCI
                 String selectViewKey = radioButtonDistUtil.getSelectViewKey();
                 bean.setStemireperfusionmeasure(selectViewKey);
-
+//                ttb_direct_decide_pci  // 介入时间
+                String time = ttbDirectDecidePci.getTime();
+                bean.setDecidepcitime(time);
+//                es_direct_decide_doc 决定医生
+                bean.setDecidedoctorid(esDirectDecideDoc.getSelectData()[1]);
+//                zdmjpatientdoctorid 谈话医生
+                bean.setZdmjpatientdoctorid(esDirectTalkDoc.getSelectData()[1]);
+//pcipatientcommunicationsbegintime 知情时间
+                bean.setPcipatientcommunicationsbegintime(rlAgreeTime.getTime());
+//pcipatientcommunicationendtime	签署知情同意时间yyyy
+                bean.setPcipatientcommunicationendtime(rlSignTime.getTime());
+//zdmjpatientopinion	家属意见（"cpc_jsyj_ty
+                bean.setZdmjpatientopinion(radioFamilDistUtil.getSelectViewKey());
+//                rb_family_opinion_disagree// 拒绝建议
+                if (rbFamilyOpinionDisagree.isChecked()) {
+                    String trim = etRefuseReason.getText().toString().trim();
+                    bean.setZdmjpatientrefusereason(trim);
+                }
+//                enabledsaroombegintime	启动导管室时间yyyy
+                bean.setEnabledsaroombegintime(ttbStartCatheterRoom.getTime());
+//                zdmjpatientrefusereason
 
             } else if (rbIntoMeasureLevel2.isChecked()) {
                 // 溶栓
@@ -309,7 +330,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .saveChestPainsuEmergencyCenter(bean.getResuestBody(bean))
+                .saveReperfusionmeasures(bean.getResuestBody(bean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
@@ -328,11 +349,6 @@ public class TreatmentDecisionFragment extends BaseFragment {
                         Log.e("zhangshifu", "onFailure");
                     }
                 });
-
-
-
-
-
     }
 
 

@@ -372,6 +372,12 @@ public class ApiUrls {
      */
     public static final String NET_URL_SAVE_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
 
+
+    /**
+     *-App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     */
+    public static final String NET_URL_SAVE_REPERFUSIONMEASURES= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/reperfusionMeasures/edit";
+
 //
 }
 
