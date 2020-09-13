@@ -26,6 +26,7 @@ import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
+import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
@@ -36,6 +37,8 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.dist.CeaCesBean;
+import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 
@@ -74,6 +77,22 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<StrokeTrigaeInfoBean>> getStrokeTrigaeInfo(@Body RequestBody info);
 
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeSangguineousInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeSangguineousBean>> getStrokeSangguineousInfo(@Body RequestBody info);
+
+    /**
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<ThrombolysisTreatmentBean>> getThrombolysisTreatmentInfo(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
@@ -82,6 +101,14 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<RequestGetVitalSigns>> getStrokeVitalSignsInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeCeaCesInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<CeaCesBean>> getStrokeCeaCesInfo(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
@@ -155,6 +182,20 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_MRS)
     Call<BaseObjectBean> addMrs(@Body RequestBody info);
+
+    /**
+     * fast评分
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_FAST)
+    Call<BaseObjectBean> getFastEdScoreSave(@Body RequestBody info);
+
+    /**
+     * Nihss评分
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_NIHSS)
+    Call<BaseObjectBean> addNihss(@Body RequestBody info);
 
     /**
      * CGS评分

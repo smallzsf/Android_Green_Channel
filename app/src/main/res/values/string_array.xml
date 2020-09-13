@@ -473,4 +473,15 @@
     </string-array>
 
 
+
+<!-- 溶栓地点   -->
+    <string-array name="stroke_thrombolysis_address">
+        <item>急诊科:cpc_rsdd_jzk</item>
+        <item>CT室:cpc_rsdd_ct</item>
+        <item>神经内科:cpc_rsdd_sjnk</item>
+        <item>介入室:cpc_rsdd_jrs</item>
+        <item>本院急救车:cpc_rsdd_byjjs</item>
+        <item>本院病房:cpc_rsdd_bybf</item>
+        <item>外院:cpc_rsdd_wy</item>
+    </string-array>
 </resources>

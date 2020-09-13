@@ -61,7 +61,11 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                     SendAddStrokeMrsBean sendAddStrokeMrsBean = new SendAddStrokeMrsBean();
                     sendAddStrokeMrsBean.setMrs(nibBeforeDiseaseMrsFragSs.getScore());
                     sendAddStrokeMrsBean.setScore(nibBeforeDiseaseMrsFragSs.getScore());
-                    addStrokeMrs(sendAddStrokeMrsBean);
+                    if (-2 != nibBeforeDiseaseMrsFragSs.getScore()) {
+                        addStrokeMrs(sendAddStrokeMrsBean);
+                    } else {
+                        showToast("存在未选择选项，请检查！");
+                    }
                 });
         initNihssBars();
     }
@@ -92,6 +96,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
      * 上传MRS评分
      */
     private void addStrokeMrs(SendAddStrokeMrsBean sendAddStrokeMrsBean) {
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(sendAddStrokeMrsBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -101,10 +106,10 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                showToast("保存数据成功");
-                                // TODO
+                                showToast("评分提交成功！");
                             } else {
                                 showToast(response.body().getMessage());
                             }

@@ -114,6 +114,16 @@ public class ApiUrls {
     public static final String NET_URL_NEW_PATIENMEDICAL_ADD_BLOOD_DATA = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeExaminationDetail/add";
 
     /**
+     * FAST评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_FAST = "yjjk-gateway/yjjk-cdm-api/v1/toolfasted/add";
+
+    /**
+     * NIHSS评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_NIHSS = "yjjk-gateway/yjjk-cdm-api/v1/toolnihss/add";
+
+    /**
      * MRS评分
      */
     public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_MRS = "yjjk-gateway/yjjk-cdm-api/v1/mrs/add";

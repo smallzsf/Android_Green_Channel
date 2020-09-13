@@ -256,7 +256,7 @@ public class NihssItemBar extends LinearLayout {
                 }
             }
         }
-        return -1;
+        return -2;
     }
 
     public interface OnScoreChangedListener {

@@ -38,7 +38,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/es_emergency_nurse_frag_ti"
+                    android:id="@+id/es_talk_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/item_normal_margin"
@@ -57,12 +57,14 @@
                 android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_begin_know_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
                 app:title="开始知情同意" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_sign_know_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -127,7 +129,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <TextView
-                    android:id="@+id/tv_book_check_post"
+                    android:id="@+id/tv_book_upload"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_marginStart="@dimen/dp_12"
@@ -155,6 +157,7 @@
                 app:ieb_unit_visible="true" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/itb_brfor_nihss"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -181,6 +184,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_thrombolysis_address"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/item_normal_margin"
@@ -213,10 +217,11 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_thrombolysis_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="@dimen/item_normal_margin"
                     android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
                     app:hint="请选择"
@@ -231,12 +236,14 @@
                 android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_begin_jmrs_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
                 app:title="开始静脉溶栓" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_fbzrs"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
@@ -245,13 +252,13 @@
                 app:ieb_unit_visible="false" />
 
             <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_dyzrs"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_title="到院至溶栓"
                 app:ieb_top_line_visible="true"
                 app:ieb_unit_visible="false" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -263,9 +270,10 @@
                     android:layout_width="@dimen/item_title_min_width"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="剂量类型" />
+                    android:text="溶栓药物" />
 
                 <RadioGroup
+                    android:id="@+id/rg_medicine"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/item_normal_margin"
@@ -273,13 +281,13 @@
                     android:weightSum="3">
 
                     <RadioButton
-                        android:id="@+id/rb_dose_pa"
+                        android:id="@+id/rb_medicine_pa"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="rt-PA"
                         android:textSize="@dimen/sp_12" />
 
                     <RadioButton
-                        android:id="@+id/rb_dose_njm"
+                        android:id="@+id/rb_medicine_njm"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="尿激酶"
                         android:textSize="@dimen/sp_12" />
@@ -299,17 +307,108 @@
                 android:id="@+id/ll_rtpa_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginLeft="@dimen/item_normal_margin">
+
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="@dimen/item_title_min_width"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="剂量类型" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_dose_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/item_normal_margin"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/rb_dose_type_nine"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="0.9mg/kg"
+                            android:textSize="@dimen/sp_12" />
+
+                        <RadioButton
+                            android:id="@+id/rb_dose_type_six"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="0.6mg/kg"
+                            android:textSize="@dimen/sp_12" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/color_EEEEEE" />
 
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_yjjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="预计剂量"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_visible="false" />
 
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_sjjtjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_edit_input_type="true"
+                    app:ieb_title="实际静推剂量"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="mg"
+                    app:ieb_unit_visible="true" />
 
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_sjdzjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_edit_input_type="true"
+                    app:ieb_title="实际滴注剂量"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="mg/h"
+                    app:ieb_unit_visible="true" />
+
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/sjyyjl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_edit_input_type="true"
+                    app:ieb_title="实际用药总量"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="mg"
+                    app:ieb_unit_visible="true" />
+
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_sjjlbz"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_edit_input_type="true"
+                    app:ieb_title="实际剂量标准"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="mg/Kg"
+                    app:ieb_unit_visible="true" />
 
             </LinearLayout>
 
             <!--   尿激酶   使用剂量      -->
-
             <LinearLayout
                 android:id="@+id/ll_njm_layout"
                 android:layout_width="match_parent"
@@ -325,6 +424,7 @@
                     android:text="使用剂量" />
 
                 <RadioGroup
+                    android:id="@+id/rg_use_dose"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/item_normal_margin"
@@ -353,161 +453,197 @@
 
             </LinearLayout>
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin">
 
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="血管再通" />
 
-                <LinearLayout
+                <RadioGroup
+                    android:id="@+id/rg_vessel"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_1"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_hxkn"
-                        android:text="呼吸困难" />
+                    <RadioButton
+                        android:id="@+id/rb_vessel_yes"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="是"
+                        android:textSize="@dimen/sp_12" />
 
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_2"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_ft"
-                        android:text="胸痛" />
+                    <RadioButton
+                        android:id="@+id/rb_vessel_no"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="否"
+                        android:textSize="@dimen/sp_12" />
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_3"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_ct"
-                        android:text="齿痛" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_4"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_jbt"
-                        android:text="肩背痛" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_5"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_hbcx"
-                        android:text="合并出血" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_6"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_hbxs"
-                        android:text="合并心衰" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_7"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_hbexxlsc"
-                        android:text="合并恶性心律失常" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_8"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_bmyydhj"
-                        android:text="不明原因的昏厥" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_9"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_zh"
-                        android:text="自汗、大汗淋漓" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_10"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_xhxj"
-                        android:text="心慌心悸" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_11"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_fzba"
-                        android:text="烦躁不安" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_12"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_jqbsfg"
-                        android:text="颈前部束缚感" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_13"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_fl"
-                        android:text="乏力" />
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_14"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_qc"
-                        android:text="气喘" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-                    <CheckBox
-                        android:id="@+id/cb_non_acs_15"
-                        style="@style/XyjCheckBoxHorizontalWeight"
-                        android:tag="cpc_bqpgmx_qt"
-                        android:text="其它" />
-
-                </LinearLayout>
+                </RadioGroup>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <TextView
+                android:layout_width="@dimen/vital_sign_title_width"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:gravity="center_vertical"
+                android:text="溶栓并发症"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/item_title_size" />
+
+            <com.zhy.view.flowlayout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_lncx"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="颅内出血" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_xhdcx"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="消化道出血" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_yycx"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="牙龈出血" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_otherbwcx"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="其他部位出血" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_zgzss"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="再灌注损伤" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_xgyxcssz"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="血管源性唇舌水肿" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_qt"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="其他" />
+
+                <CheckBox
+                    android:id="@+id/cpc_jmrsbfz_w"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="无" />
+
+            </com.zhy.view.flowlayout.FlowLayout>
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/itb_vessel_other"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:visibility="gone"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="其他"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_visible="false" />
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_now_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="溶栓后即刻NIHSS"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_day_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="溶栓后24hNIHSS"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_weak_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_edit_input_type="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="7±2天 NIHSS"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:gravity="center_vertical"
+                android:text="未行血管内治疗原因"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/item_title_size" />
+
+            <com.zhy.view.flowlayout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
+                <CheckBox
+                    android:id="@+id/cpc_wjyxgnzldyy_fdxgbb"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="非大血管病变" />
+
+                <CheckBox
+                    android:id="@+id/cpc_wjyxgnzldyy_csjc"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="超时间窗" />
+
+                <CheckBox
+                    android:id="@+id/cpc_wjyxgnzldyy_jjz"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="禁忌症" />
+
+                <CheckBox
+                    android:id="@+id/cpc_wjyxgnzldyy_jsjj"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="患者/家属拒绝" />
+
+                <CheckBox
+                    android:id="@+id/cpc_wjyxgnzldyy_qt"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="其他" />
+
+            </com.zhy.view.flowlayout.FlowLayout>
 
 
         </LinearLayout>
@@ -518,10 +654,10 @@
         android:id="@+id/btn_save_data"
         android:layout_width="match_parent"
         android:layout_height="@dimen/buttom_normal_height"
-        android:layout_marginTop="@dimen/dk_dp_20"
-        android:layout_marginBottom="@dimen/dk_dp_20"
         android:layout_marginLeft="@dimen/dp_26"
+        android:layout_marginTop="@dimen/dk_dp_20"
         android:layout_marginRight="@dimen/dp_26"
+        android:layout_marginBottom="@dimen/dk_dp_20"
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="@string/save"
