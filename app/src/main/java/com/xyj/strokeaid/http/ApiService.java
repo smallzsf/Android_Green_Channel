@@ -21,6 +21,9 @@ import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.RequestThriveDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
+import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
+import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
+import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
@@ -291,6 +294,39 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
     Call<BaseObjectBean> saveDiagnosticEvaluation(@Body RequestBody info);
+
+
+    /**
+     * 卒中 其它处置 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveOtherDisposalData(@Body RequestBody info);
+
+    /**
+     * 卒中 其它处置 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeOtherDisposalBean>> getOtherDisposalData(@Body RequestBody info);
+
+
+    /**
+     * 卒中 血液检查  保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveBloodExaminationInfo(@Body RequestBody info);
+
+
+    /**
+     * 卒中 血液检查  获取
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeBloodExaminationBean>> getBloodExaminationInfo(@Body RequestBody info);
+
+
 
     /**
      * 卒中 诊断评估 查询
