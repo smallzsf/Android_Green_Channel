@@ -14,6 +14,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.PreoperativePreparationInfoBean;
+import com.xyj.strokeaid.bean.PreoperativePreparationInfoRequestBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.ItemEditBar;
@@ -159,39 +160,37 @@ public class StrokeOperationBeforeActivity extends BaseActivity {
         ttbActivationCathActStroke.setTime(data.getActivedsaroomtime());
         ttbPatientArrivalActStroke.setTime(data.getPatientarriveddsaroomtime());
         ttbArriveToArrived.setTime(data.getArrivetoarriveddsaroomtime());
-        ttbArriveToArrived.setVisibility(TextUtils.isEmpty(data.getArrivetoarriveddsaroomtime()) ? View.VISIBLE : View.GONE);
+        ttbArriveToArrived.setVisibility(TextUtils.isEmpty(data.getArrivetoarriveddsaroomtime()) ? View.GONE : View.VISIBLE);
         iebRemark.setEditContent(data.getEmbolectomyremark());
 
     }
 
-    private PreoperativePreparationInfoBean getSavedData() {
-        if (data == null) {
-            data = new PreoperativePreparationInfoBean();
-        }
+    private PreoperativePreparationInfoRequestBean getSavedData() {
+        PreoperativePreparationInfoRequestBean savedData = new PreoperativePreparationInfoRequestBean();
         //启动导管室
-        data.setEnabledsaroombegintime(tvStartCatheter.getTime());
+        savedData.setEnabledsaroombegintime(tvStartCatheter.getTime());
         //直达导管室
-        data.setDirectdsaroom(rgDirectdsaroom.getCheckedRadioButtonId() == R.id.rb_directdsaroom_yes ? "1" : "-1");
+        savedData.setDirectdsaroom(rgDirectdsaroom.getCheckedRadioButtonId() == R.id.rb_directdsaroom_yes ? "1" : "-1");
         //TODO 手术室修改
-        data.setEmbolectomyroom("卒中介入手术室");
+        savedData.setEmbolectomyroom("卒中介入手术室");
         //介入医生
-        data.setEmbolectomypatientsurgerydoctor(iebInterveneDoctor.getEditContent());
+        savedData.setEmbolectomypatientsurgerydoctor(iebInterveneDoctor.getEditContent());
         //介入护士
-        data.setEmbolectomypatientsurgerynurse(iebInterveneNurse.getEditContent());
+        savedData.setEmbolectomypatientsurgerynurse(iebInterveneNurse.getEditContent());
         //激活导管室
-        data.setActivedsaroomtime(ttbActivationCathActStroke.getTime());
+        savedData.setActivedsaroomtime(ttbActivationCathActStroke.getTime());
         //患者到达导管室
-        data.setPatientarriveddsaroomtime(ttbPatientArrivalActStroke.getTime());
+        savedData.setPatientarriveddsaroomtime(ttbPatientArrivalActStroke.getTime());
         //到院至到达导管室
-        data.setArrivetoarriveddsaroomtime(ttbArriveToArrived.getTime());
+        //        savedData.setArrivetoarriveddsaroomtime(ttbArriveToArrived.getTime());
         //手术备注信息
-        data.setEmbolectomyremark(iebRemark.getEditContent());
+        savedData.setEmbolectomyremark(iebRemark.getEditContent());
 
-        return data;
+        return savedData;
     }
 
     private void saveData() {
-        BaseRequestBean<PreoperativePreparationInfoBean> baseRequestBean = new BaseRequestBean<>(
+        BaseRequestBean<PreoperativePreparationInfoRequestBean> baseRequestBean = new BaseRequestBean<>(
                 mRecordId, 1, getSavedData());
 
         RetrofitClient.getInstance().getApi()
