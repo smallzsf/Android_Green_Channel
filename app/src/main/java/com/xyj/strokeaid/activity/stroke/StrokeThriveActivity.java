@@ -12,13 +12,28 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RequestThriveDataBean;
+import com.xyj.strokeaid.bean.SendThriveDataBean;
+import com.xyj.strokeaid.event.ScoreEvent;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 
 /**
  * StrokeThriveActivity
@@ -32,18 +47,40 @@ import butterknife.BindView;
 public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.OnScoreChangedListener {
     @BindView(R.id.title_bar_act_nihss)
     BaseTitleBar titleBarActNihss;
+
     @BindView(R.id.ll_score_act_nihss)
     LinearLayout llScoreActNihss;
+
+    /**
+     * 年龄
+     */
     @BindView(R.id.nib_1a_act_nihss)
     NihssItemBar nib1aActNihss;
+
+    /**
+     * nihss
+     */
     @BindView(R.id.nib_1b_act_nihss)
     NihssItemBar nib1bActNihss;
+
+    /**
+     * 高血压
+     */
     @BindView(R.id.nib_1c_act_nihss)
     NihssItemBar nib1cActNihss;
+
+    /**
+     * 糖尿病
+     */
     @BindView(R.id.nib_2_act_nihss)
     NihssItemBar nib2ActNihss;
+
+    /**
+     * 房颤
+     */
     @BindView(R.id.nib_3_act_nihss)
     NihssItemBar nib3ActNihss;
+
  /*   @BindView(R.id.nib_4_act_nihss)
     NihssItemBar nib4ActNihss;
     @BindView(R.id.nib_5a_act_nihss)
@@ -67,10 +104,9 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
 
     @Autowired(name = IntentKey.NIHSS_TYPE)
     int mNihssType;
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId = "1111";
     @BindView(R.id.tv_result_score)
     TextView tvResultScore;
     /**
@@ -92,6 +128,7 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
     public void initView() {
         initTitle();
         initNihssBars();
+
         //显示隐藏
         ArrayList<NihssItemBar> nihssItemBars = new ArrayList<>();
         nihssItemBars.add(nib1aActNihss);
@@ -115,12 +152,27 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
 
     @Override
     public void initListener() {
-     /*   titleBarActNihss.setLeftLayoutClickListener(v -> finish())
+        titleBarActNihss.setLeftLayoutClickListener(v -> finish())
                 .setRightLayoutClickListener(v -> {
-                    int scores = getAllScores();
+                    SendThriveDataBean sendThriveDataBean = new SendThriveDataBean();
+                    sendThriveDataBean.setThriveAge(nib1aActNihss.getScore() + "");
+                    sendThriveDataBean.setThriveNihss(nib1bActNihss.getScore() + "");
+                    sendThriveDataBean.setThriveHypertension(nib1cActNihss.getScore() + "");
+                    sendThriveDataBean.setThriveGlycuresis(nib2ActNihss.getScore() + "");
+                    sendThriveDataBean.setThriveFibrillation(nib3ActNihss.getScore() + "");
+                    sendThriveDataBean.setScore(getAllScores() + "");
+                    sendThriveDataBean.setCreateTime(getTime());
+                    sendThriveDataBean.setCreateBy("");
+                    sendThriveDataBean.setCreateByName("");
+                    sendThriveDataBean.setId(mRecordId);
+                    addFieldEvaluateScore(sendThriveDataBean);
                 });
-*/
+    }
 
+    private String getTime() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");// HH:mm:ss
+        Date date = new Date(System.currentTimeMillis());
+        return simpleDateFormat.format(date);
     }
 
     private void initVisibleGone(ArrayList<NihssItemBar> nihssItemBars) {
@@ -148,6 +200,10 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     private int getAllScores() {
         return 0;
@@ -290,6 +346,42 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
         mTotalScore = mTotalScore - score;
         tvResultScore.setText("评分结果：" + mTotalScore + "分");
     }
+
+
+    /**
+     * 保存数据
+     *
+     * @param sendThriveDataBean 数据
+     */
+    private void addFieldEvaluateScore(SendThriveDataBean sendThriveDataBean) {
+        String request = GsonUtils.getGson().toJson(sendThriveDataBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addThriveScore(requestBody)
+                .enqueue(new Callback<BaseObjectBean<RequestThriveDataBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<RequestThriveDataBean>> call, Response<BaseObjectBean<RequestThriveDataBean>> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                RequestThriveDataBean reQuestThriveDataBean = response.body().getData();
+                                EventBus.getDefault().postSticky(new ScoreEvent(reQuestThriveDataBean.getScore(), 7, mRecordId));
+                                showToast("修改成功");
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<RequestThriveDataBean>> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
 }
 
     

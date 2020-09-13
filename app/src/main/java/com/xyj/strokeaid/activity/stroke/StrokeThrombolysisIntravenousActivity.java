@@ -1,8 +1,6 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -12,7 +10,6 @@ import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * StrokeIntravenousThrombolysisActivity

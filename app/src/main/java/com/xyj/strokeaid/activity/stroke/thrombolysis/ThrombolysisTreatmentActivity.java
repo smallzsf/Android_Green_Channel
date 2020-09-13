@@ -1,6 +1,8 @@
 package com.xyj.strokeaid.activity.stroke.thrombolysis;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -18,9 +20,11 @@ import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.StrokeThriveActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
@@ -29,6 +33,11 @@ import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.BaseTitleBar;
+import com.xyj.strokeaid.view.ItemEditBar;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -154,6 +163,10 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     @BindView(R.id.btn_save_data)
     AppCompatButton btnSaveData;
 
+    @BindView(R.id.ieb_thrive)
+    ItemEditBar iebThrive;
+
+
     private ProgressDialog loading;
     /**
      * 患者主表id
@@ -179,6 +192,12 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        EventBus.getDefault().register(this);
+        iebThrive.setOnClickListener(v -> {
+            Intent intent = new Intent(this, StrokeThriveActivity.class);
+            startActivity(intent);
+        });
+
         loadData(mRecordId);
     }
 
@@ -335,6 +354,11 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
                             loading.dismiss();
                         }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
 
@@ -345,6 +369,19 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 //                                    getDatatoStrokeViews(mStrokeTrigaeInfoBean);
 //                                }
 
+    /**
+     * 事件接收
+     * @param event 事件通知
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveScoreEventBus(ScoreEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (7 == event.getType()) {
+            iebThrive.setEditContent(event.getScore() + "");
+        }
+    }
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)

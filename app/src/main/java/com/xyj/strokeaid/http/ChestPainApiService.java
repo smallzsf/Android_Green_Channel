@@ -84,4 +84,12 @@ public interface ChestPainApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE)
     Call<BaseObjectBean> saveChestPainsuEcgDetail(@Body RequestBody info);
+
+
+    /**
+     * App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE)
+    Call<BaseObjectBean> saveReperfusionmeasures(@Body RequestBody info);
 }

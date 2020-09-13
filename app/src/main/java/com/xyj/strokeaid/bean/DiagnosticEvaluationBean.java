@@ -1,7 +1,6 @@
 package com.xyj.strokeaid.bean;
 
 public class DiagnosticEvaluationBean {
-    private String recordId;
     private String modeofonset;
     private String evolveaddress;
     private String evolvetime;
@@ -29,14 +28,6 @@ public class DiagnosticEvaluationBean {
     private String isnarrowinit;
     private String otherdiagnosticresultinit;
     private String attacktodiagnostictimeinit;
-
-    public String getRecordId() {
-        return recordId;
-    }
-
-    public void setRecordId(String recordId) {
-        this.recordId = recordId;
-    }
 
     public String getModeofonset() {
         return modeofonset;

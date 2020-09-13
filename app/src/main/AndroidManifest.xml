@@ -173,16 +173,16 @@
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" >
 
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="*/*" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>-->
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                <data android:mimeType="*/*" />-->
+<!--            </intent-filter>-->
 
-            <intent-filter>
-                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.nfc.action.TAG_DISCOVERED"/>-->
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--            </intent-filter>-->
 
         </activity>
         <activity
@@ -226,11 +226,11 @@
 
         <activity android:name=".activity.stroke.StrokeMrsScoreActivity" />
         <activity android:name=".activity.stroke.StrokeGcsScoreActivity" />
-        <activity android:name=".activity.stroke.StrokeSpetzlerMarinActivity" />
-        <activity android:name=".activity.stroke.StrokeHuntHessActivity" />
-        <activity android:name=".activity.stroke.StrokeHasBledScoreActivity" />
+        <activity android:name=".activity.score.StrokeSpetzlerMarinActivity" />
+        <activity android:name=".activity.score.StrokeHuntHessActivity" />
+        <activity android:name=".activity.score.StrokeHasBledScoreActivity" />
         <activity android:name=".activity.stroke.StrokeFrogFieldEvaluateActivity" />
-        <activity android:name=".activity.stroke.StrokeFishercCassificationActivity" />
+        <activity android:name=".activity.score.StrokeFishercCassificationActivity" />
         <activity android:name=".activity.stroke.StrokeChadsActivity" />
         <activity android:name=".activity.score.PHIActivity" />
         <activity android:name=".activity.score.TSActivity" />
@@ -241,6 +241,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.stroke.thrombolysis.ThrombolysisTreatmentActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.score.InterventionalTherapyEvaluationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -114,6 +114,16 @@ public class ApiUrls {
     public static final String NET_URL_NEW_PATIENMEDICAL_ADD_BLOOD_DATA = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeExaminationDetail/add";
 
     /**
+     * FAST评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_FAST = "yjjk-gateway/yjjk-cdm-api/v1/toolfasted/add";
+
+    /**
+     * NIHSS评分
+     */
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_NIHSS = "yjjk-gateway/yjjk-cdm-api/v1/toolnihss/add";
+
+    /**
      * MRS评分
      */
     public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_MRS = "yjjk-gateway/yjjk-cdm-api/v1/mrs/add";
@@ -351,6 +361,44 @@ public class ApiUrls {
      */
     public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
+    /**
+     *  卒中、洼田吞咽评分
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_FIELD_EVALUATE= "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
+
+    /**
+     *  THRIVE 评分
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_THRIVE= "yjjk-gateway/yjjk-cdm-api/v1/thrive/add";
+
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--获取
+     */
+    public static final String NET_URL_GET_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/get";
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--保存
+     */
+    public static final String NET_URL_SAVE_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
+
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_GET_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/get";
+
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_SAVE_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
+
+
+    /**
+     *-App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     */
+    public static final String NET_URL_SAVE_REPERFUSIONMEASURES= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/reperfusionMeasures/edit";
+
+//
 }
 
     

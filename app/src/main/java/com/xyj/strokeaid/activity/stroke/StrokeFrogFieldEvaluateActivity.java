@@ -7,7 +7,10 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.ChangePasswordPostBean;
+import com.xyj.strokeaid.bean.RequestFieldEvaluaScoreBeanData;
 import com.xyj.strokeaid.bean.SendAddStrokeSwallowBean;
+import com.xyj.strokeaid.bean.SendFieldEvaluateScoreBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -111,5 +114,38 @@ public class StrokeFrogFieldEvaluateActivity extends BaseActivity {
                 });
     }
 
+
+
+
+//    /**
+//     * 保存数据
+//     *
+//     * @param sendFieldEvaluateScoreBean 数据
+//     */
+//    private void addFieldEvaluateScore(SendFieldEvaluateScoreBean sendFieldEvaluateScoreBean) {
+//        String request = GsonUtils.getGson().toJson(sendFieldEvaluateScoreBean);
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+//        RetrofitClient
+//                .getInstance()
+//                .getApi()
+//                .addFieldEvaluateScore(requestBody)
+//                .enqueue(new Callback<RequestFieldEvaluaScoreBeanData>() {
+//                    @Override
+//                    public void onResponse(Call<RequestFieldEvaluaScoreBeanData> call, Response<RequestFieldEvaluaScoreBeanData> response) {
+//                        if (response.body() != null) {
+//                            if (response.body().getResult() == 1) {
+//                                showToast("修改成功");
+//                            } else {
+//                                showToast(response.body().getMessage());
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<RequestFieldEvaluaScoreBeanData> call, Throwable t) {
+//
+//                    }
+//                });
+//    }
 
 }

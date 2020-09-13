@@ -77,14 +77,11 @@ public class PremorbidMrsActivity extends BaseActivity {
         rvPremorbidMrs.setLayoutManager(new LinearLayoutManager(this));
         PremorbidMrsAdapter premorbidMrsAdapter = new PremorbidMrsAdapter(R.layout.layout_item, strings);
         rvPremorbidMrs.setAdapter(premorbidMrsAdapter);
-
     }
 
     @Override
     public void initListener() {
 
     }
-
-
 
 }

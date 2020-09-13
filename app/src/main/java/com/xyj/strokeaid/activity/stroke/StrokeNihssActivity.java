@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.activity.stroke;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
@@ -10,6 +11,11 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.bean.ToolnihssBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
 
@@ -17,6 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * StrokeNihssActivity
@@ -71,6 +82,8 @@ public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.On
     @Autowired(name = IntentKey.DOC_ID)
     String mDocId;
 
+    ToolnihssBean toolnihssBean;
+
     /**
      * 总分
      */
@@ -112,8 +125,91 @@ public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.On
     public void initListener() {
         titleBarActNihss.setLeftLayoutClickListener(v -> finish())
                 .setRightLayoutClickListener(v -> {
-                    int scores = getAllScores();
+                    if (verifyScore()) {
+                        Log.e("==>toolnihssBean",toolnihssBean.toString());
+                        addStrokeNihss(toolnihssBean);
+                    } else {
+                        showToast("您有未选择的选项，请检查后再次提交！");
+                    }
                 });
+    }
+
+    /**
+     * 上传Nihss评分
+     */
+
+    private void addStrokeNihss(ToolnihssBean toolnihssBean) {
+        showLoadingDialog();
+        String request = GsonUtils.getGson().toJson(toolnihssBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .addNihss(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("评分提交成功！");
+                                finish();
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    /**
+     * 校验选项是否选择完毕
+     *
+     * @return
+     */
+    private boolean verifyScore() {
+        if (-2 != nib1aActNihss.getScore() &&
+                -2 != nib1bActNihss.getScore() &&
+                -2 != nib1cActNihss.getScore() &&
+                -2 != nib2ActNihss.getScore() &&
+                -2 != nib3ActNihss.getScore() &&
+                -2 != nib4ActNihss.getScore() &&
+                -2 != nib5aActNihss.getScore() &&
+                -2 != nib5bActNihss.getScore() &&
+                -2 != nib6aActNihss.getScore() &&
+                -2 != nib6bActNihss.getScore() &&
+                -2 != nib7ActNihss.getScore() &&
+                -2 != nib8ActNihss.getScore() &&
+                -2 != nib9ActNihss.getScore() &&
+                -2 != nib10ActNihss.getScore() &&
+                -2 != nib11ActNihss.getScore()) {
+            if (toolnihssBean == null) {
+                toolnihssBean = new ToolnihssBean();
+            }
+            toolnihssBean.setNihssConsciousness(nib1aActNihss.getScore());
+            toolnihssBean.setNihssConsciousnessquestion(nib1bActNihss.getScore());
+            toolnihssBean.setNihssConsciousnesscommand(nib1cActNihss.getScore());
+            toolnihssBean.setNihssEyeballgaze(nib2ActNihss.getScore());
+            toolnihssBean.setNihssEyssight(nib3ActNihss.getScore());
+            toolnihssBean.setNihssFacialparalysis(nib4ActNihss.getScore());
+            toolnihssBean.setNihssWeaknesstopleft(nib5aActNihss.getScore());
+            toolnihssBean.setNihssWeaknesstopright(nib5bActNihss.getScore());
+            toolnihssBean.setNihssWeaknessbottomleft(nib6aActNihss.getScore());
+            toolnihssBean.setNihssWeaknessbottomright(nib6bActNihss.getScore());
+            toolnihssBean.setNihssAtaxia(nib7ActNihss.getScore());
+            toolnihssBean.setNihssFeel(nib8ActNihss.getScore());
+            toolnihssBean.setNihssLanguage(nib9ActNihss.getScore());
+            toolnihssBean.setNihssSpeech(nib10ActNihss.getScore());
+            toolnihssBean.setNihssSightignore(nib11ActNihss.getScore());
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private int getAllScores() {

@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -13,13 +14,24 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
+import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
+import com.xyj.strokeaid.bean.StrokeTransferBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * TransferFragment
@@ -32,10 +44,28 @@ import butterknife.BindView;
 public class StrokeTransferFragment extends BaseStrokeFragment {
 
 
-    /* @BindView(R.id.es_diagnose_detail_result)
-     EditSpinner esDiagnoseDetailResult;
-     @BindView(R.id.ll_diagnose_detail_result)
-     LinearLayout llDiagnoseDetailResult;*/
+    @BindView(R.id.es_diagnosis)
+    EditSpinner esDiagnosis;
+    @BindView(R.id.ll_diagnosis)
+    LinearLayout llDiagnosis;
+    @BindView(R.id.et_ischemic_stroke)
+    EditSpinner etIschemicStroke;
+    @BindView(R.id.ll_ischemic_stroke)
+    LinearLayout llIschemicStroke;
+    @BindView(R.id.es_hemorrhagic_apoplexy)
+    EditSpinner esHemorrhagicApoplexy;
+    @BindView(R.id.ll_hemorrhagic_apoplexy)
+    LinearLayout llHemorrhagicApoplexy;
+    @BindView(R.id.es_rupture_of_aneurysms)
+    EditSpinner esRuptureOfAneurysms;
+    @BindView(R.id.ll_rupture_of_aneurysms)
+    LinearLayout llRuptureOfAneurysms;
+    @BindView(R.id.es_no_rupture_of_aneurysms)
+    EditSpinner esNoRuptureOfAneurysms;
+    @BindView(R.id.ll_no_rupture_of_aneurysms)
+    LinearLayout llNoRuptureOfAneurysms;
+    @BindView(R.id.ieb_other_diagnostic)
+    ItemEditBar iebOtherDiagnostic;
     @BindView(R.id.rb_patient_out_treating)
     RadioButton rbPatientOutTreating;
     @BindView(R.id.rb_patient_out_leave)
@@ -54,8 +84,6 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
     RadioButton rbTownshipHealthCenter;
     @BindView(R.id.rb_no_leave_hospital)
     RadioButton rbNoLeaveHospital;
-    @BindView(R.id.rb_die)
-    RadioButton rbDie;
     @BindView(R.id.rb_other)
     RadioButton rbOther;
     @BindView(R.id.rg_departure_hospital)
@@ -114,31 +142,13 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
     LinearLayout llTranfer;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
-    @BindView(R.id.es_diagnosis)
-    EditSpinner esDiagnosis;
-    @BindView(R.id.ll_diagnosis)
-    LinearLayout llDiagnosis;
-    @BindView(R.id.et_ischemic_stroke)
-    EditSpinner etIschemicStroke;
-    @BindView(R.id.et_nosogenesis)
-    EditSpinner etNosogenesis;
-    @BindView(R.id.ll_ischemic_stroke)
-    LinearLayout llIschemicStroke;
-    @BindView(R.id.es_hemorrhagic_apoplexy)
-    EditSpinner esHemorrhagicApoplexy;
-    @BindView(R.id.es_hemorrhagic_apoplexy2)
-    EditSpinner esHemorrhagicApoplexy2;
-    @BindView(R.id.ll_hemorrhagic_apoplexy)
-    LinearLayout llHemorrhagicApoplexy;
-    @BindView(R.id.et_input_weight)
-    EditText etInputWeight;
-    @BindView(R.id.ll_other_diagnostic)
-    LinearLayout llOtherDiagnostic;
     private ArrayList<String> diagnosisList;
     private ArrayList<String> nosogenesisList;
-    private ArrayList<String> hemorrhagicApoplexyList;
+
     private ArrayList<String> emergencyTreatmentDoctorList;
     private ArrayList<String> apoplexyDoctorList;
+    private ArrayList<String> ruptureOfAneurysmsList;
+    private StrokeTransferBean strokeTransferBean;
 
 
     public static StrokeTransferFragment newInstance(String recordId) {
@@ -165,12 +175,23 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         }*/
 
         loadData();
+
+        //缺血性卒中
+        llIschemicStroke.setVisibility(View.GONE);
+        //出血性卒中
+        llHemorrhagicApoplexy.setVisibility(View.GONE);
+        //动脉瘤破裂
+        llRuptureOfAneurysms.setVisibility(View.GONE);
+        //非动脉瘤破裂
+        llNoRuptureOfAneurysms.setVisibility(View.GONE);
+        //其它诊断
+        iebOtherDiagnostic.setVisibility(View.GONE);
     }
 
     @Override
     protected void initListener() {
 
-     //诊断结果
+        //诊断结果
         esDiagnosis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
@@ -178,23 +199,21 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
                 if (text.contains("缺血性卒中")) {
                     llIschemicStroke.setVisibility(View.VISIBLE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
+                    iebOtherDiagnostic.setVisibility(View.GONE);
                     llIschemicStroke.requestLayout();
-                    if (etNosogenesis.getText().contains("其他原因所致的缺血性卒中（SOE）")) {
-                        etNosogenesis.setItemData(nosogenesisList);
-                    }
+
                 } else if (text.contains("出血性卒中")) {
                     llHemorrhagicApoplexy.setVisibility(View.VISIBLE);
                     llIschemicStroke.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
+                    iebOtherDiagnostic.setVisibility(View.GONE);
                 } else if (text.contains("其它")) {
-                    llOtherDiagnostic.setVisibility(View.VISIBLE);
+                    iebOtherDiagnostic.setVisibility(View.VISIBLE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
                     llIschemicStroke.setVisibility(View.GONE);
                 } else {
                     llIschemicStroke.setVisibility(View.GONE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
+                    iebOtherDiagnostic.setVisibility(View.GONE);
                 }
 
 
@@ -202,42 +221,191 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         });
 
 
+        //出血性卒中
+        esHemorrhagicApoplexy.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
+            @Override
+            public void getSeletedString(String text) {
+
+                if (text.equals("动脉瘤破裂")) {
+                    llNoRuptureOfAneurysms.setVisibility(View.GONE);
+                    llRuptureOfAneurysms.setVisibility(View.VISIBLE);
+                } else if (text.equals("非动脉瘤破裂")) {
+                    llRuptureOfAneurysms.setVisibility(View.GONE);
+                    llNoRuptureOfAneurysms.setVisibility(View.VISIBLE);
+                } else {
+                    llRuptureOfAneurysms.setVisibility(View.GONE);
+                    llNoRuptureOfAneurysms.setVisibility(View.GONE);
+                }
+
+
+            }
+        });
+
 
     }
 
     private void loadData() {
-        diagnosisList = new ArrayList<>();
-        diagnosisList.add("请选择");
-        diagnosisList.add("缺血性卒中");
-        diagnosisList.add("出血性卒中");
-        diagnosisList.add("非破裂动脉瘤");
-        diagnosisList.add("颈部动脉狭窄或闭塞");
-        diagnosisList.add("其它");
-        esDiagnosis.setItemData(diagnosisList);
+        esDiagnosis.setStringArrayId(R.array.diagnosisList);
+        etIschemicStroke.setStringArrayId(R.array.ischemicStrokeList);
+        esHemorrhagicApoplexy.setStringArrayId(R.array.hemorrhagicApoplexyList);
+        esRuptureOfAneurysms.setStringArrayId(R.array.rupturedAneurysm);
+        esNoRuptureOfAneurysms.setStringArrayId(R.array.ruptureofnonaneurysm);
+        esReceivingDepartment.setStringArrayId(R.array.stroke_transfer_ks);
+    }
 
-        ArrayList<String> ischemicStrokeList = new ArrayList<>();
-        ischemicStrokeList.add("请选择");
-        ischemicStrokeList.add("脑梗死");
-        ischemicStrokeList.add("短暂性脑缺血(TIA)");
-        etIschemicStroke.setItemData(ischemicStrokeList);
 
-        nosogenesisList = new ArrayList<>();
-        nosogenesisList.add("请选择");
-        nosogenesisList.add("大动脉粥样硬化性卒中（LAA）");
-        nosogenesisList.add("心源性脑栓塞（CE）");
-        nosogenesisList.add("小动脉闭塞性卒中或腔隙性卒中（SAA）");
-        nosogenesisList.add("其他原因所致的缺血性卒中（SOE）");
-        nosogenesisList.add("不明原因的缺血性卒中（SUE）");
-        etNosogenesis.setItemData(nosogenesisList);
 
-        //急诊医生
-        hemorrhagicApoplexyList = new ArrayList<>();
-        hemorrhagicApoplexyList.add("请选择");
-        hemorrhagicApoplexyList.add("动脉瘤破裂");
-        hemorrhagicApoplexyList.add("非动脉瘤破裂");
-        esHemorrhagicApoplexy.setItemData(hemorrhagicApoplexyList);
+    @OnClick(R.id.btn_save)
+    public void onViewClicked() {
+        saveStrokeTransferData();
+    }
+
+    /**
+     * 出院诊断-诊断时间
+     */
+    private String diagnostictimeleave;
+
+
+    /**
+     * 出院诊断-住院时间
+     */
+    private String hospitalstaytime;
+
+
+
+    /**
+     * 出院诊断-出院时GCS
+     */
+    private String leavegcs;
+
+    /**
+     * 出院诊断-出院时GCS的评分关联Id
+     */
+    private String leavegcsrelationid;
+
+    /**
+     * 出院诊断-出院时mRS
+     */
+    private String leavemrs;
+
+    /**
+     * 出院诊断-出院时mRS的评分关联Id
+     */
+    private String leavemrsrelationid;
+
+    /**
+     * 出院诊断-出院NIHSS评分
+     */
+    private String leavenihss;
+
+    /**
+     * 出院诊断-出院NIHSS评分的评分关联Id
+     */
+    private String leavenihssrelationid;
+
+    /**
+     * 出院诊断-住院天数
+     */
+    private String numberofdaysinhospital;
+
+    /**
+     * 出院诊断-其他
+     */
+    private String otherdiagnosticresultleave;
+
+
+
+
+    /**
+     * 出院诊断-总费用
+     */
+    private String totalcostinhospital;
+
+    private void saveStrokeTransferData() {
+
+        if (strokeTransferBean == null) {
+            strokeTransferBean = new StrokeTransferBean();
+        }
+
+        strokeTransferBean.setDiagnosticresultleave(esDiagnosis.getSelectData()[1]);
+        strokeTransferBean.setIschemicstrokeleave(etIschemicStroke.getSelectData()[1]);
+        strokeTransferBean.setHemorrhagicstrokeleave(esHemorrhagicApoplexy.getSelectData()[1]);
+        strokeTransferBean.setRuptureofaneurysmleave(esRuptureOfAneurysms.getSelectData()[1]);
+        strokeTransferBean.setRuptureofnonaneurysmleave(esNoRuptureOfAneurysms.getSelectData()[1]);
+        strokeTransferBean.setDepartmenttransto(esReceivingDepartment.getSelectData()[1]);
+
+
+        BaseRequestBean<StrokeTransferBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, strokeTransferBean);
+
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveBloodExaminationInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        showToast(call.toString());
+                    }
+                });
 
 
     }
+
+    private void loadBloodExaminationData() {
+
+        BaseRequestBean<StrokeBloodExaminationBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, new StrokeBloodExaminationBean());
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .getBloodExaminationInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<StrokeBloodExaminationBean>>() {
+
+
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<StrokeBloodExaminationBean>> call,
+                                           Response<BaseResponseBean<StrokeBloodExaminationBean>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                          /*      strokeBloodExaminationBean = response.body().getData().getData();
+                                if (strokeBloodExaminationBean != null) {
+                                    // 请求成功
+                                    // 填充页面
+                                    getStrokeBloodExaminationBean(strokeBloodExaminationBean);
+                                }*/
+
+
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<StrokeBloodExaminationBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+    }
+
 
 }

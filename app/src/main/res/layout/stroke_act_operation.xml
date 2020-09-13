@@ -125,21 +125,22 @@
                     android:layout_marginStart="@dimen/dp_12"
                     android:text="血管闭塞部位"
                     android:textColor="@color/color_222222"
-                    android:textStyle="bold"
-                    android:textSize="14sp" />
+                    android:textSize="@dimen/sp_13" />
 
                 <EditText
                     android:id="@+id/edit_xgbsbw_act_stroke_operation"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_90"
+                    android:layout_marginStart="@dimen/dp_12"
                     android:layout_marginTop="@dimen/dp_7"
+                    android:layout_marginEnd="@dimen/dp_12"
                     android:layout_marginBottom="@dimen/dp_10"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="多行输入"
                     android:paddingLeft="@dimen/dp_6"
                     android:paddingTop="@dimen/dp_6"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/sp_13" />
             </LinearLayout>
 
             <LinearLayout
@@ -153,19 +154,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dp_12"
                     android:gravity="left"
                     android:minWidth="60dp"
                     android:text="首次检查:"
-                    android:layout_marginStart="@dimen/dp_12"
                     android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:orientation="horizontal"
                     android:weightSum="5">
 
                     <RadioButton
@@ -175,7 +175,7 @@
                         android:layout_weight="1"
                         android:text="8F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_scjc_6f_act_stroke_operation"
@@ -184,7 +184,7 @@
                         android:layout_weight="1"
                         android:text="6F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_scjc_cs_act_stroke_operation"
@@ -193,7 +193,7 @@
                         android:layout_weight="1"
                         android:text="长鞘"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -214,20 +214,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/dp_12"
                     android:gravity="center"
                     android:minWidth="60dp"
                     android:text="串联病变:"
-                    android:layout_gravity="center_vertical"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:layout_marginStart="@dimen/dp_12"
+                    android:orientation="horizontal"
                     android:weightSum="6">
 
                     <RadioButton
@@ -237,7 +236,7 @@
                         android:layout_weight="1"
                         android:text="是"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_clbb_no_act_stroke_operation"
@@ -246,7 +245,7 @@
                         android:layout_weight="1"
                         android:text="否"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -272,8 +271,7 @@
                     android:minWidth="60dp"
                     android:text="术前代偿（ACG）:"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -289,7 +287,7 @@
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqdc1_act_stroke_operation"
@@ -298,7 +296,7 @@
                         android:layout_weight="1"
                         android:text="1"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqdc2_act_stroke_operation"
@@ -307,7 +305,7 @@
                         android:layout_weight="1"
                         android:text="2"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqdc3_act_stroke_operation"
@@ -316,7 +314,7 @@
                         android:layout_weight="1"
                         android:text="3"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -342,8 +340,7 @@
                     android:minWidth="60dp"
                     android:text="术前闭塞程度（AOL）:"
                     android:textColor="@color/color_222222"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -359,7 +356,7 @@
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_1_act_stroke_operation"
@@ -368,7 +365,7 @@
                         android:layout_weight="1"
                         android:text="1"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_2_act_stroke_operation"
@@ -377,7 +374,7 @@
                         android:layout_weight="1"
                         android:text="2"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_3_act_stroke_operation"
@@ -386,7 +383,7 @@
                         android:layout_weight="1"
                         android:text="3"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -524,8 +521,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="32dp"
                     android:text="抽吸时长"
-                    android:textColor="@color/app_223b53"
-                    android:textSize="@dimen/sp_14" />
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
 
                 <TextView
                     android:id="@+id/tv_cxsc_act_stroke_operation"
@@ -559,7 +556,7 @@
                     android:layout_marginRight="32dp"
                     android:text="取栓次数"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/sp_13" />
 
                 <TextView
                     android:id="@+id/tv_qscs_act_stroke_operation"
@@ -593,7 +590,7 @@
                     android:layout_marginRight="32dp"
                     android:text="取栓历次停留时间"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14" />
+                    android:textSize="@dimen/sp_13" />
 
                 <TextView
                     android:id="@+id/tv_cxtlsc_act_stroke_operation"
@@ -725,8 +722,7 @@
                     android:minWidth="60dp"
                     android:text="术前TICI分级:"
                     android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -742,7 +738,7 @@
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqfj_1_act_stroke_operation"
@@ -751,7 +747,7 @@
                         android:layout_weight="1"
                         android:text="1"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqfj_2a_act_stroke_operation"
@@ -760,7 +756,7 @@
                         android:layout_weight="1"
                         android:text="2a"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqfj_2b_act_stroke_operation"
@@ -769,7 +765,7 @@
                         android:layout_weight="1"
                         android:text="2b"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqfj_2c_act_stroke_operation"
@@ -778,7 +774,7 @@
                         android:layout_weight="1"
                         android:text="2c"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_sqfj_3_act_stroke_operation"
@@ -787,7 +783,7 @@
                         android:layout_weight="1"
                         android:text="3"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -813,8 +809,7 @@
                     android:minWidth="60dp"
                     android:text="术后TICI分级:"
                     android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -830,7 +825,7 @@
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_a_sqfj_1_act_stroke_operation"
@@ -839,7 +834,7 @@
                         android:layout_weight="1"
                         android:text="1"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_a_sqfj_2a_act_stroke_operation"
@@ -848,7 +843,7 @@
                         android:layout_weight="1"
                         android:text="2a"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_a_sqfj_2b_act_stroke_operation"
@@ -857,7 +852,7 @@
                         android:layout_weight="1"
                         android:text="2b"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_a_sqfj_2c_act_stroke_operation"
@@ -866,7 +861,7 @@
                         android:layout_weight="1"
                         android:text="2c"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_a_sqfj_3_act_stroke_operation"
@@ -875,7 +870,7 @@
                         android:layout_weight="1"
                         android:text="3"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -898,8 +893,7 @@
                     android:layout_marginTop="@dimen/dp_10"
                     android:text="首选开通方法："
                     android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1001,9 +995,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_10"
                     android:text="补救开通方法："
-                    android:textColor="@color/color_333333"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/sp_13" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1099,8 +1092,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dp_12"
                 android:layout_marginTop="@dimen/dp_5"
-                android:layout_marginBottom="@dimen/dp_5"
                 android:layout_marginEnd="@dimen/dp_12"
+                android:layout_marginBottom="@dimen/dp_5"
                 android:orientation="vertical">
 
                 <TextView
@@ -1108,8 +1101,7 @@
                     android:layout_height="wrap_content"
                     android:text="评分"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/dp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -1168,8 +1160,7 @@
                     android:minWidth="60dp"
                     android:text="溶栓药物:"
                     android:textColor="@color/color_222222"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1184,7 +1175,7 @@
                         android:layout_weight="1"
                         android:text="是"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_rs_no_act_stroke_after"
@@ -1193,7 +1184,7 @@
                         android:layout_weight="1"
                         android:text="否"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1313,8 +1304,7 @@
                     android:minWidth="60dp"
                     android:text="抗血小板药物:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1329,7 +1319,7 @@
                         android:layout_weight="1"
                         android:text="是"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_xxb_no_act_stroke_operation"
@@ -1338,7 +1328,7 @@
                         android:layout_weight="1"
                         android:text="否"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1424,8 +1414,7 @@
                     android:minWidth="60dp"
                     android:text="药物方式:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1440,7 +1429,7 @@
                         android:layout_weight="1"
                         android:text="静脉"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_dm_act_stroke_operation"
@@ -1449,7 +1438,7 @@
                         android:layout_weight="1"
                         android:text="动脉"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1475,8 +1464,7 @@
                     android:minWidth="60dp"
                     android:text="抗凝药物:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1491,7 +1479,7 @@
                         android:layout_weight="1"
                         android:text="是"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_kn_no_act_stroke_operation"
@@ -1500,7 +1488,7 @@
                         android:layout_weight="1"
                         android:text="否"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1596,8 +1584,7 @@
                     android:minWidth="60dp"
                     android:text="麻醉方式:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1612,7 +1599,7 @@
                         android:layout_weight="1"
                         android:text="局麻"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_qbm_act_stroke_operation"
@@ -1621,7 +1608,7 @@
                         android:layout_weight="1"
                         android:text="全麻"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1647,8 +1634,7 @@
                     android:minWidth="60dp"
                     android:text="右美托咪定:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1663,7 +1649,7 @@
                         android:layout_weight="1"
                         android:text="是"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_ymtmd_no_act_stroke_operation"
@@ -1672,7 +1658,7 @@
                         android:layout_weight="1"
                         android:text="否"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1698,8 +1684,7 @@
                     android:minWidth="30dp"
                     android:text="鞘:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1715,7 +1700,7 @@
                         android:layout_weight="1"
                         android:text="8F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_s_6f_act_stroke_operation"
@@ -1724,7 +1709,7 @@
                         android:layout_weight="1"
                         android:text="6F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_cs_act_stroke_operation"
@@ -1733,7 +1718,7 @@
                         android:layout_weight="1"
                         android:text="长鞘"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1747,9 +1732,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_7"
+                android:layout_marginBottom="@dimen/dp_3"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:layout_marginBottom="@dimen/dp_3"
                 android:paddingStart="@dimen/dp_12"
                 android:paddingEnd="@dimen/dp_12">
 
@@ -1760,8 +1745,7 @@
                     android:minWidth="60dp"
                     android:text="中间导管:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1777,7 +1761,7 @@
                         android:layout_weight="1"
                         android:text="5F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_zjdg_6f_act_stroke_operation"
@@ -1786,7 +1770,7 @@
                         android:layout_weight="1"
                         android:text="6F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_zjdg_7f_act_stroke_operation"
@@ -1795,7 +1779,7 @@
                         android:layout_weight="1"
                         android:text="7F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_zjdg_8f_act_stroke_operation"
@@ -1804,7 +1788,7 @@
                         android:layout_weight="1"
                         android:text="8F"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_zjdg_fqndg_act_stroke_operation"
@@ -1813,7 +1797,7 @@
                         android:layout_weight="1"
                         android:text="非球囊导管"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1838,8 +1822,7 @@
                     android:gravity="left"
                     android:text="微导丝:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1855,7 +1838,7 @@
                         android:layout_weight="1"
                         android:text="Floopy"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_synchro_act_stroke_operation"
@@ -1864,7 +1847,7 @@
                         android:layout_weight="1"
                         android:text="Synchro"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_traxcess_act_stroke_operation"
@@ -1873,7 +1856,7 @@
                         android:layout_weight="1"
                         android:text="Traxcess"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1899,8 +1882,7 @@
                     android:minWidth="60dp"
                     android:text="微导管:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1916,7 +1898,7 @@
                         android:layout_weight="1"
                         android:text="Rebar18"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_rebar27_act_stroke_operation"
@@ -1925,7 +1907,7 @@
                         android:layout_weight="1"
                         android:text="Rebar27"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_headway_act_stroke_operation"
@@ -1934,7 +1916,7 @@
                         android:layout_weight="1"
                         android:text="Headway21"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_frepass_act_stroke_operation"
@@ -1943,7 +1925,7 @@
                         android:layout_weight="1"
                         android:text="Frepass"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -1969,8 +1951,7 @@
                     android:minWidth="60dp"
                     android:text="取全支架:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -1986,7 +1967,7 @@
                         android:layout_weight="1"
                         android:text="SolitaireAB"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_trevo_act_stroke_operation"
@@ -1995,7 +1976,7 @@
                         android:layout_weight="1"
                         android:text="Trevo"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_revive_act_stroke_operation"
@@ -2004,7 +1985,7 @@
                         android:layout_weight="1"
                         android:text="Revive"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_solitairefr_act_stroke_operation"
@@ -2013,7 +1994,7 @@
                         android:layout_weight="1"
                         android:text="SolitaireFR"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_st_act_stroke_operation"
@@ -2022,7 +2003,7 @@
                         android:layout_weight="1"
                         android:text="神通"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
 
@@ -2049,8 +2030,7 @@
                     android:minWidth="60dp"
                     android:text="规格:"
                     android:textColor="@color/color_222222"
-                    android:textSize="@dimen/sp_14"
-                    android:textStyle="bold" />
+                    android:textSize="@dimen/sp_13" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -2066,7 +2046,7 @@
                         android:layout_weight="1"
                         android:text="4*15"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_420_act_stroke_operation"
@@ -2075,7 +2055,7 @@
                         android:layout_weight="1"
                         android:text="4*20"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_620_act_stroke_operation"
@@ -2084,7 +2064,7 @@
                         android:layout_weight="1"
                         android:text="6*20"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_630_act_stroke_operation"
@@ -2093,7 +2073,7 @@
                         android:layout_weight="1"
                         android:text="6*30"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
 
                     <RadioButton
                         android:id="@+id/rb_425_act_stroke_operation"
@@ -2102,7 +2082,7 @@
                         android:layout_weight="1"
                         android:text="4*25"
                         android:textColor="@color/color_222222"
-                        android:textSize="14sp" />
+                        android:textSize="@dimen/sp_13" />
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>

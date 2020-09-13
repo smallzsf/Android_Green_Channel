@@ -75,8 +75,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initView();
         initListener();
-
-
     }
 
     protected void initImmersionBar() {
@@ -430,7 +428,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 });
     }
 
-    protected void showPhotoSelector(OnResultCallbackListener<LocalMedia>[] listeners) {
+    protected void showPhotoSelector(OnResultCallbackListener<LocalMedia>... listeners) {
         ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
                 .setOtherButtonTitles("拍照", "相册")

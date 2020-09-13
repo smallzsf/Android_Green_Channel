@@ -7,12 +7,16 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.score.InterventionalTherapyEvaluationActivity;
 import com.xyj.strokeaid.activity.stroke.GetInvolvedInformedConsentActivity;
 import com.xyj.strokeaid.activity.stroke.StrokeOperationAfterActivity;
 import com.xyj.strokeaid.activity.stroke.StrokeOperationBeforeActivity;
 import com.xyj.strokeaid.activity.stroke.StrokeOperationOnActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.SettingBar;
+
+import butterknife.BindView;
 import com.xyj.strokeaid.view.SettingBar;
 
 import butterknife.BindView;
@@ -25,8 +29,9 @@ import butterknife.OnClick;
  */
 public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
 
-    @BindView(R.id.sb_jrzt_jrzlpg)
-    SettingBar sbJrztJrzlpg;
+    @BindView(R.id.sb_interventional_therapy_evaluation)
+    SettingBar sbInterventionalTherapyEvaluation;
+
     @BindView(R.id.sb_jrzt_jrzqty)
     SettingBar sbJrztJrzqty;
     @BindView(R.id.sb_jrzt_sqzbxx)
@@ -44,11 +49,8 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
         return fragment;
     }
 
-
     @Override
     protected void initView(@NonNull View view) {
-
-
     }
 
 
@@ -62,12 +64,14 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
 
     }
 
-    @OnClick({R.id.sb_jrzt_jrzlpg, R.id.sb_jrzt_jrzqty, R.id.sb_jrzt_sqzbxx, R.id.sb_jrzt_szzlxx, R.id.sb_jrzt_shjgxx})
+    @OnClick({R.id.sb_interventional_therapy_evaluation, R.id.sb_jrzt_jrzqty, R.id.sb_jrzt_sqzbxx, R.id.sb_jrzt_szzlxx, R.id.sb_jrzt_shjgxx})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.sb_jrzt_jrzlpg:
+            case R.id.sb_interventional_therapy_evaluation:
                 // 介入治疗评估
 //                startActivity(new Intent(mActivity, GetInvolvedInformedConsentActivity.class));
+                startActivity(new Intent(context, InterventionalTherapyEvaluationActivity.class));
+
                 break;
             case R.id.sb_jrzt_jrzqty:
                 // 介入知情同意

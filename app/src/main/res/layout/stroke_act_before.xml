@@ -26,7 +26,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_bar_height"
+        android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/dp_12"
         android:layout_marginEnd="@dimen/dp_12"
         android:orientation="horizontal">
@@ -37,7 +37,7 @@
             android:gravity="center"
             android:text="选择导室管"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14"  />
+            android:textSize="@dimen/sp_13" />
 
         <com.xyj.strokeaid.view.editspinner.EditSpinner
             android:id="@+id/es_cath_act_stroke"
@@ -57,104 +57,88 @@
         app:layout_constraintTop_toBottomOf="@id/es_cath_act_stroke" />
 
     <LinearLayout
+        android:id="@+id/ttb_go_cath_act_stroke"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_37"
-        android:layout_below="@+id/doctor_name_line"
-        android:layout_marginTop="@dimen/dp_5"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_12"
-        android:paddingRight="@dimen/dp_10">
-
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginEnd="@dimen/dp_12"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
-            android:text="@string/app_intervene_doctor"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="直达导管室"
             android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14"  />
+            android:textSize="@dimen/sp_13" />
 
-        <EditText
-            android:id="@+id/et_intervene_doctor"
-            style="@style/patient_et_style"
-            android:layout_width="225dp"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="start"
-            android:hint="@string/single_line_input"
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_6"
-            android:paddingBottom="@dimen/dp_5" />
-
-        <TextView
-            android:id="@+id/tv_intervene_doctor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_15"
+        <RadioGroup
+            android:id="@+id/rg_directdsaroom"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_marginEnd="52dp"
             android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/please_choose"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14"  />
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RadioButton
+                android:id="@+id/rb_directdsaroom_yes"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="是" />
+
+            <RadioButton
+                android:id="@+id/rb_directdsaroom_no"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:checked="true"
+                android:text="否" />
+
+        </RadioGroup>
+
     </LinearLayout>
 
     <View
         style="@style/horizontal_divider"
         android:layout_marginTop="@dimen/dp_5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_intervene_doctor" />
+        app:layout_constraintTop_toBottomOf="@id/es_cath_act_stroke" />
 
-    <LinearLayout
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_intervene_doctor"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_37"
-        android:layout_marginTop="@dimen/dp_5"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingLeft="@dimen/dp_12"
-        android:paddingRight="@dimen/dp_10">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
-            android:text="@string/app_intervene_nurse"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14" />
-
-        <EditText
-            android:id="@+id/et_intervene_nurse"
-            style="@style/patient_et_style"
-            android:layout_width="225dp"
-            android:background="@drawable/shape_edittext_bg"
-            android:gravity="start"
-            android:hint="@string/single_line_input"
-            android:inputType="number"
-            android:paddingLeft="@dimen/dp_6"
-            android:paddingBottom="@dimen/dp_5" />
-
-        <TextView
-            android:id="@+id/tv_intervene_nurse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_15"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/please_choose"
-            android:textColor="@color/color_222222"
-            android:textSize="@dimen/sp_14"  />
-    </LinearLayout>
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_edit_hint="请选择"
+        app:ieb_right_icon="@drawable/icon_add_patient"
+        app:ieb_right_icon_visible="true"
+        app:ieb_title="介入医生" />
 
     <View
         style="@style/horizontal_divider"
         android:layout_marginTop="@dimen/dp_5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_intervene_doctor" />
+        app:layout_constraintTop_toBottomOf="@id/ieb_intervene_doctor" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_intervene_nurse"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_edit_hint="请选择"
+        app:ieb_right_icon="@drawable/icon_add_patient"
+        app:ieb_right_icon_visible="true"
+        app:ieb_title="介入护士" />
+
+    <View
+        style="@style/horizontal_divider"
+        android:layout_marginTop="@dimen/dp_5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ieb_intervene_nurse" />
 
     <com.xyj.strokeaid.view.TextTimeBar
         android:id="@+id/ttb_activation_cath_act_stroke"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        app:bottomLineVisible="true"
         android:layout_marginTop="@dimen/dp_5"
+        app:bottomLineVisible="true"
         app:title="激活导室管"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
@@ -166,31 +150,21 @@
         app:title="患者到达"
         app:ttb_time_hint="2020-08-22 10:58:19" />
 
-    <LinearLayout
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_arrive_to_arrived"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_37"
-        android:layout_below="@+id/doctor_name_line"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_12"
-        android:paddingRight="@dimen/dp_10">
+        android:layout_height="@dimen/item_normal_height"
+        android:visibility="gone"
+        app:bottomLineVisible="true"
+        app:title="到院至到达导管室"
+        app:ttb_time_hint="2020-08-22 10:58:19"
+        app:ttb_edit_enable="false"
+        tools:visibility="visible" />
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="32dp"
-            android:text="@string/preliminary_decision_solution"
-            android:textColor="@color/app_223b53"
-            android:textSize="@dimen/sp_14" />
-
-        <TextView
-            android:id="@+id/tv_inter_recanale_act_stroke"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp_15"
-            android:layout_weight="1"
-            android:text="@string/app_interventional_recanalization"
-            android:textColor="#223b53"
-            android:textSize="14sp" />
-    </LinearLayout>
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_remark"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_right_icon_visible="true"
+        app:ieb_title="手术备注信息" />
 </LinearLayout>
