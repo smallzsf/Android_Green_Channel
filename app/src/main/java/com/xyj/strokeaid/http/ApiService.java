@@ -19,6 +19,7 @@ import com.xyj.strokeaid.bean.RequestGetDiseaseRecordBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSigns;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
+import com.xyj.strokeaid.bean.RequestThriveDataBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
@@ -507,5 +508,12 @@ public interface ApiService {
     Call<BaseResponseBean<PreoperativePreparationInfoBean>> getPreoperativePreparation(@Body RequestBody info);
 
 
+
+    /**
+     * THRIVE 评分
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_EMERGENCYCENTER_THRIVE)
+    Call<BaseObjectBean<RequestThriveDataBean>> addThriveScore(@Body RequestBody info);
 
 }
