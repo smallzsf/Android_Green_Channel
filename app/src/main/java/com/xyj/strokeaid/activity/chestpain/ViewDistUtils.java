@@ -122,6 +122,7 @@ public class ViewDistUtils<T extends CompoundButton> {
         }
         T t = mapTextToView.get(data);
         this.setSelectView(t);
+
     }
 
     public T getSelectView() {
