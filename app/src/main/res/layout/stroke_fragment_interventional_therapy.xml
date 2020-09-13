@@ -6,24 +6,39 @@
     android:orientation="vertical">
 
     <com.xyj.strokeaid.view.SettingBar
+        android:id="@+id/sb_jrzt_jrzlpg"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        app:bar_leftText="介入治疗评估" />
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="介入治疗评估"
+        app:bar_topLineVisible="true" />
 
     <com.xyj.strokeaid.view.SettingBar
+        android:id="@+id/sb_jrzt_jrzqty"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
         app:bar_leftText="介入知情同意" />
 
     <com.xyj.strokeaid.view.SettingBar
+        android:id="@+id/sb_jrzt_sqzbxx"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
-        app:bar_leftText="术中治疗信息" />
-
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="术前准备信息" />
 
     <com.xyj.strokeaid.view.SettingBar
+        android:id="@+id/sb_jrzt_szzlxx"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
+        app:bar_leftText="术中治疗信息" />
+
+    <com.xyj.strokeaid.view.SettingBar
+        android:id="@+id/sb_jrzt_shjgxx"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bar_bottomLineVisible="true"
         app:bar_leftText="术后结果信息" />
 
 </LinearLayout>

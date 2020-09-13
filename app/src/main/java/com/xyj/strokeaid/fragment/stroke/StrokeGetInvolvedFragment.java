@@ -1,13 +1,22 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.GetInvolvedInformedConsentActivity;
+import com.xyj.strokeaid.activity.stroke.StrokeOperationAfterActivity;
+import com.xyj.strokeaid.activity.stroke.StrokeOperationBeforeActivity;
+import com.xyj.strokeaid.activity.stroke.StrokeOperationOnActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.SettingBar;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @Description: 介入
@@ -15,6 +24,17 @@ import com.xyj.strokeaid.fragment.BaseStrokeFragment;
  * @CreateDate: 2020/8/29 9:42
  */
 public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
+
+    @BindView(R.id.sb_jrzt_jrzlpg)
+    SettingBar sbJrztJrzlpg;
+    @BindView(R.id.sb_jrzt_jrzqty)
+    SettingBar sbJrztJrzqty;
+    @BindView(R.id.sb_jrzt_sqzbxx)
+    SettingBar sbJrztSqzbxx;
+    @BindView(R.id.sb_jrzt_szzlxx)
+    SettingBar sbJrztSzzlxx;
+    @BindView(R.id.sb_jrzt_shjgxx)
+    SettingBar sbJrztShjgxx;
 
     public static StrokeGetInvolvedFragment newInstance(String recordId) {
         StrokeGetInvolvedFragment fragment = new StrokeGetInvolvedFragment();
@@ -28,6 +48,7 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
     @Override
     protected void initView(@NonNull View view) {
 
+
     }
 
 
@@ -39,5 +60,33 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
     @Override
     protected void initListener() {
 
+    }
+
+    @OnClick({R.id.sb_jrzt_jrzlpg, R.id.sb_jrzt_jrzqty, R.id.sb_jrzt_sqzbxx, R.id.sb_jrzt_szzlxx, R.id.sb_jrzt_shjgxx})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.sb_jrzt_jrzlpg:
+                // 介入治疗评估
+//                startActivity(new Intent(mActivity, GetInvolvedInformedConsentActivity.class));
+                break;
+            case R.id.sb_jrzt_jrzqty:
+                // 介入知情同意
+                startActivity(new Intent(mActivity, GetInvolvedInformedConsentActivity.class));
+                break;
+            case R.id.sb_jrzt_sqzbxx:
+                // 介入术前信息
+                startActivity(new Intent(mActivity, StrokeOperationBeforeActivity.class));
+                break;
+            case R.id.sb_jrzt_szzlxx:
+                // 介入手术术中治疗信息
+                startActivity(new Intent(mActivity, StrokeOperationOnActivity.class));
+                break;
+            case R.id.sb_jrzt_shjgxx:
+                // 介入手术结果信息
+                startActivity(new Intent(mActivity, StrokeOperationAfterActivity.class));
+                break;
+            default:
+                break;
+        }
     }
 }
