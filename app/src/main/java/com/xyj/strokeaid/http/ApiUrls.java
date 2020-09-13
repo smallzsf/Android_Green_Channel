@@ -362,6 +362,17 @@ public class ApiUrls {
      */
     public static final String NET_URL_SAVE_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
 
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_GET_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/get";
+
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_SAVE_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
+
+//
 }
 
     

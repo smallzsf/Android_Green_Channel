@@ -29,6 +29,7 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 
 import java.util.List;
@@ -499,8 +500,7 @@ public interface ApiService {
 
 
     /**
-     *  获取时间线
-     *
+     *-卒中--手术治疗--介入--适应症评估--获取
      * @param info
      * @return
      */
@@ -509,13 +509,31 @@ public interface ApiService {
     Call<BaseObjectBean<MyindicationPo>> getMyindication(@Body RequestBody info);
 
     /**
-     *  获取时间线
-     *
+     * -卒中--手术治疗--介入--适应症评估--保存
      * @param info
      * @return
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_SAVE_MYINDICATION)
     Call<BaseObjectBean<MyindicationPo>> saveMyindication(@Body RequestBody info);
+
+    /**
+     *  -卒中--手术治疗--介入--禁忌症评估- 获取
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_GET_CONTRAINDICATION)
+    Call<BaseObjectBean<ContraindicationPo>> getContraindication(@Body RequestBody info);
+    /**
+     *  -卒中--手术治疗--介入--禁忌症评估- 获取
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_CONTRAINDICATION)
+    Call<BaseObjectBean<ContraindicationPo>> saveContraindication(@Body RequestBody info);
 
 }

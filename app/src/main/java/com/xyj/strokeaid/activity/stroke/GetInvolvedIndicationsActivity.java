@@ -64,7 +64,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     AppCompatButton btnConfirm;
     @BindView(R.id.btn_cancel)
     AppCompatButton btnCancel;
-    private List<StrokeTCBean> mStrokeTCBeans;
+    public List<StrokeTCBean> mStrokeTCBeans;
     private StrokeTCRvAdapterNew mStrokeTCRvAdapter;
     private MyindicationPo myindicationPo;
 
@@ -80,8 +80,6 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        // titleBarActTi.setLeftLayoutClickListener(v -> finish());
-
         mStrokeTCBeans = prepareData();
         refrashAdapter(true);
     }
@@ -92,7 +90,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
         loadData();
     }
 
-    private void refrashAdapter(boolean isReset) {
+    public void refrashAdapter(boolean isReset) {
         if (mStrokeTCRvAdapter == null || isReset) {
             mStrokeTCRvAdapter = new StrokeTCRvAdapterNew(
                     mContext, mStrokeTCBeans);
@@ -117,7 +115,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
         }
     };
 
-    private void loadData() {
+    public void loadData() {
 
         RecordIdUtil p = new RecordIdUtil();
         p.setRecordId(RecordIdUtil.RECORD_ID);
@@ -131,6 +129,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
                     @Override
                     public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
                         if (response.body().getResult() == 1) {
+                            // TODO: 2020/9/13 重现接口验证数据为null 
                             myindicationPo = response
                                     .body().getData();
 
@@ -173,7 +172,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
         }
     }
 
-    private void save() {
+    public void save() {
         myindicationPo = new MyindicationPo();
         List<StrokeTCBean> strokeTCBeans = mStrokeTCBeans;
         for (int i = 0; i < strokeTCBeans.size(); i++) {
@@ -202,6 +201,10 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
             }
         }
         String request = GsonUtils.getGson().toJson(myindicationPo);
+        saveNet(request);
+    }
+
+    private void saveNet(String request) {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
                 .getInstance()
@@ -216,6 +219,8 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
                         }
                         if (body.getResult() == 1) {
                             showToast("保存成功");
+                            // TODO: 2020/9/13  接口未返回评分结果 需要返回将评分结果返回打开页面 
+                            finish();
                         }
                     }
 
@@ -226,7 +231,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
                 });
     }
 
-    private List<StrokeTCBean> prepareData() {
+    public List<StrokeTCBean> prepareData() {
         ArrayList<StrokeTCBean> list = new ArrayList<>();
         //   list.add(new StrokeTCBean(true, "静脉溶栓禁忌症", false, ""));
         StrokeTCBean strokeTCBean = new StrokeTCBean(false, "1.年龄在18岁以上", false, "");
@@ -252,19 +257,19 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
             boolean checked = bean.getChecked();
 
             switch (i) {
-                case 1://embolectomyIndicationAge
-                    myindicationPo.setEmbolectomyIndicationAge((checked ? 1 : -1));
+                case 0://embolectomyIndicationAge
+                    checked = myindicationPo.getEmbolectomyIndicationAge() == 1;
                     break;
-                case 2://embolectomyIndicationTime
+                case 1://embolectomyIndicationTime
                     checked = myindicationPo.getEmbolectomyIndicationTime() == 1;
                     break;
-                case 3://embolectomyIndicationExclude
+                case 2://embolectomyIndicationExclude
                     checked = myindicationPo.getEmbolectomyIndicationExclude() == 1;
                     break;
-                case 4://embolectomyIndicationDxgbs
+                case 3://embolectomyIndicationDxgbs
                     checked = myindicationPo.getEmbolectomyIndicationDxgbs() == 1;
                     break;
-                case 5://embolectomyIndicationAgree
+                case 4://embolectomyIndicationAgree
                     checked = myindicationPo.getEmbolectomyIndicationAgree() == 1;
                     break;
             }
