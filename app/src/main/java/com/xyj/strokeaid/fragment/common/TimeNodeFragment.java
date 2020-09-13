@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.common;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,13 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.TimeNodeRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.MainBean;
+import com.xyj.strokeaid.bean.MainListPost;
+import com.xyj.strokeaid.bean.TimeLinePost;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.http.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,6 +32,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * TimeNodeFragment
@@ -53,14 +62,6 @@ public class TimeNodeFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param recordId        记录ID
-     * @param diseaseViewType 疾病类型
-     * @return A new instance of fragment StrokeGetInvolvedFragment.
-     */
     public static TimeNodeFragment newInstance(String recordId, int diseaseViewType) {
         TimeNodeFragment fragment = new TimeNodeFragment();
         Bundle args = new Bundle();
@@ -79,7 +80,6 @@ public class TimeNodeFragment extends BaseFragment {
         }
     }
 
-
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_time_node;
@@ -87,34 +87,76 @@ public class TimeNodeFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+
         mTimeNodeBeans = new ArrayList<>();
-        mTimeNodeBeans.add(new TimeNodeBean("发病时间", "2020-08-26 17:34:54"));
-        mTimeNodeBeans.add(new TimeNodeBean("入院时间", "2020-08-26 17:44:54"));
-        mTimeNodeBeans.add(new TimeNodeBean("接诊时间", "2020-08-26 17:54:54"));
         mTimeNodeRvAdapter = new TimeNodeRvAdapter(R.layout.adapter_rv_time_node_item, mTimeNodeBeans);
 
         rvContentFragTimeNode.setLayoutManager(new LinearLayoutManager(mActivity));
         rvContentFragTimeNode.setAdapter(mTimeNodeRvAdapter);
         mTimeNodeRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+
+        if (!TextUtils.isEmpty(mRecordId)) {
+            getTimeLine(mRecordId);
+        }
+
     }
 
     @Override
     protected void initListener() {
+
         mTimeNodeRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
             @Override
             public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
                 if (view.getId() == R.id.tv_time_item_time_node) {
                     // 显示时间选择器
-                    showTimePickView(position);
+//                    showTimePickView(position);
                 } else if (view.getId() == R.id.iv_refresh_item_time_node) {
                     String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date());
-                    mTimeNodeBeans.get(position).setTime(time);
-                    mTimeNodeRvAdapter.notifyItemChanged(position);
+//                    mTimeNodeBeans.get(position).setTime(time);
+//                    mTimeNodeRvAdapter.notifyItemChanged(position);
                 }
             }
         });
     }
 
+    /**
+     *  获取 主页 列表数据  1卒中、2胸痛、3创伤
+     */
+    private void getTimeLine(String recordId) {
+
+        TimeLinePost timeLinePost = new TimeLinePost();
+        timeLinePost.setRecordId(recordId);
+
+        RetrofitClient.getInstance().getApi()
+                .getTimerLine(timeLinePost.getResuestBody(timeLinePost))
+                .enqueue(new Callback<BaseObjectBean<List<TimeNodeBean>>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<List<TimeNodeBean>>> call, Response<BaseObjectBean<List<TimeNodeBean>>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+
+                                if (response.body().getData() != null) {
+                                    mTimeNodeBeans.addAll(response.body().getData());
+                                    mTimeNodeRvAdapter.setList(mTimeNodeBeans);
+                                }
+
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_result_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<List<TimeNodeBean>>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+
+    }
 
 
 
@@ -131,7 +173,7 @@ public class TimeNodeFragment extends BaseFragment {
                     String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date);
                     if (mTimeNodeBeans != null && mTimeNodeRvAdapter != null) {
                         if (mTimeNodeBeans.get(position) != null) {
-                            mTimeNodeBeans.get(position).setTime(time);
+//                            mTimeNodeBeans.get(position).setTime(time);
                             mTimeNodeRvAdapter.notifyItemChanged(position);
                         }
                     }

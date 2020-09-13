@@ -13,8 +13,9 @@
         android:background="@drawable/login_btn_bg"
         android:gravity="center"
         android:text="保存"
-        android:textColor="@android:color/white"
-        android:textSize="16dp" />
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_content_frag_time_node"

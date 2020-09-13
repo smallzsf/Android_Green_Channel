@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary22"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_marginStart="@dimen/dp_12"
+                    android:gravity="center_vertical"
+                    android:text="检验信息" />
+
+                <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/es_inspection_depart"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/item_normal_margin"
+                    android:gravity="center"
+                    app:Background="@drawable/bg_view_frame"
+                    app:hint="转入本院"
+                    app:rightImage="@drawable/ic_arrow_down_blue" />
+
+            </LinearLayout>
+
+            <com.zhy.view.flowlayout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+
+                <CheckBox
+                    android:id="@+id/cb_fluid_infusion"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="血常规" />
+
+                <CheckBox
+                    android:id="@+id/cb_chest_puncture"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="凝血四项" />
+
+                <CheckBox
+                    android:id="@+id/cb_abdominal_puncture"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="血生化" />
+
+                <CheckBox
+                    android:id="@+id/cb_ventilation_way"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="传染病" />
+
+
+            </com.zhy.view.flowlayout.FlowLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_xcg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_nxsx"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_xsh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_crb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+</LinearLayout>

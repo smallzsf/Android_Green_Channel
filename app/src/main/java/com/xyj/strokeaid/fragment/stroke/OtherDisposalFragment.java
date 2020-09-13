@@ -3,21 +3,19 @@ package com.xyj.strokeaid.fragment.stroke;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SwitchCompat;
 
-import com.flyco.tablayout.SegmentTabLayout;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.view.TextSwitchBar;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * OtherDisposalFragment
@@ -29,12 +27,7 @@ import butterknife.OnClick;
  */
 public class OtherDisposalFragment extends BaseFragment {
 
-    @BindView(R.id.stl_title_frag_od)
-    SegmentTabLayout stlTitleFragOd;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
+
     @BindView(R.id.tsb_accept_recovery_frag_od)
     TextSwitchBar tsbAcceptRecoveryFragOd;
     @BindView(R.id.cb_tradition_frag_od)
@@ -67,87 +60,62 @@ public class OtherDisposalFragment extends BaseFragment {
     LinearLayout llEduTypeFragOd;
     @BindView(R.id.ll_edu_frag_od)
     LinearLayout llEduFragOd;
-    private String mPatientId;
-    private String mDocId;
-    /**
-     * 0 == 康复治疗
-     * 1 == 健康教育
-     */
-    private int mPageType = 0;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
 
-    public OtherDisposalFragment() {
-        // Required empty public constructor
-    }
-
-    public static OtherDisposalFragment newInstance(String patientId, String docId) {
+    public static OtherDisposalFragment newInstance(String recordId) {
         OtherDisposalFragment fragment = new OtherDisposalFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
-
-    @Override
     protected int getLayoutId() {
-        return R.layout.fragment_other_disposal;
+        return R.layout.stroke_fragment_other_disposal;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-        stlTitleFragOd.setTabData(Constants.STROKE_OTHER_DISPOSAL_TITLES);
-    }
 
-    @Override
-    protected void initListener() {
-        stlTitleFragOd.setOnTabSelectListener(new OnTabSelectListener() {
+        // scAcceptRecoveryViewTsb.setOnClickListener(this);
+        llRecoveryTypeFragOd.setVisibility(View.GONE);
+        llEduTypeFragOd.setVisibility(View.GONE);
+        tsbAcceptRecoveryFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onTabSelect(int position) {
-                if (position == 1) {
-                    // 健康教育
-                    llRecoveryFragOd.setVisibility(View.GONE);
-                    llEduFragOd.setVisibility(View.VISIBLE);
-                } else {
-                    // 康复治疗
-                    llRecoveryFragOd.setVisibility(View.VISIBLE);
-                    llEduFragOd.setVisibility(View.GONE);
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llRecoveryTypeFragOd.setVisibility(View.VISIBLE);
+                }else {
+                    llRecoveryTypeFragOd.setVisibility(View.GONE);
                 }
-                mPageType = position;
-            }
 
+            }
+        });
+        tsbEduFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onTabReselect(int position) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llEduTypeFragOd.setVisibility(View.VISIBLE);
+                }else {
+                    llEduTypeFragOd.setVisibility(View.GONE);
+                }
 
             }
         });
 
-        tsbAcceptRecoveryFragOd.setSwitchClickListener(
-                (buttonView, isChecked) -> llRecoveryTypeFragOd.setVisibility(isChecked ? View.VISIBLE : View.GONE));
 
-        tsbEduFragOd.setSwitchClickListener(
-                (buttonView, isChecked) -> llEduTypeFragOd.setVisibility(isChecked ? View.VISIBLE : View.GONE));
+
     }
 
-    @OnClick({R.id.btn_get_data, R.id.btn_confirm})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_get_data:
-                break;
-            case R.id.btn_confirm:
-                break;
-            default:
-                break;
-        }
+    @Override
+    protected void initListener() {
+
     }
+
+
+
 
 
 }

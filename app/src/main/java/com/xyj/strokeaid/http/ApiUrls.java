@@ -50,6 +50,20 @@ public class ApiUrls {
      * 修改用户密码
      */
     public static final String NET_URL_USER_UPDATE_PASSWORD = "yjjk-gateway/yjjk-pt-api/v1/user/updatePassword";
+    /**
+     * 腕带设备绑定
+     * {
+     *    "deviceType": 5,
+     *    "deviceNo": "f2fc"
+     * }
+     * deviceType固定为5
+     */
+    public static final String NET_URL_WRISTBAND_BIND = "yjjk-gateway/yjjk-pt-api/v1/devices/bind";
+    /**
+     * 腕带设备解绑定
+     * 同上
+     */
+    public static final String NET_URL_WRISTBAND_UNBIND = "yjjk-gateway/yjjk-pt-api/v1/devices/unbind";
 
 
     /**
@@ -63,17 +77,21 @@ public class ApiUrls {
     /**
      * 新建患者信息
      */
-    public static final String NET_URL_NEW_PATIENMEDICAL_RECORD= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/addForApp";
+    public static final String NET_URL_NEW_PATIENMEDICAL_RECORD = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/addForApp";
+    /**
+     * 查询患者信息
+     */
+    public static final String NET_URL_PATIENMEDICAL_RECORD_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/get";
 
     /**
      * 获取CT信息
      */
-    public static final String NET_URL_NEW_PATIENMEDICAL_SEND_CT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/select";
+    public static final String NET_URL_NEW_PATIENMEDICAL_SEND_CT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/select";
 
     /**
      * 添加CT信息
      */
-    public static final String NET_URL_NEW_PATIENMEDICAL_ADD_CT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/add";
+    public static final String NET_URL_NEW_PATIENMEDICAL_ADD_CT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeCTExam/add";
 
     /**
      * 影像检查
@@ -111,12 +129,10 @@ public class ApiUrls {
     public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_SWALLOW = "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
 
 
-
-
     /**
      * 病情评估添加
      */
-    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DISEASE_RECORD_ADD= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/add";
+    public static final String NET_URL_NEW_PATIENMEDICAL_STROKE_DISEASE_RECORD_ADD = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokePathography/add";
 
 
     /**
@@ -149,7 +165,7 @@ public class ApiUrls {
     /**
      * 胸痛 血液检查
      */
-    public static class ChestPain{
+    public static class ChestPain {
 
         /**
          * 胸痛 血液检查获取
@@ -160,7 +176,7 @@ public class ApiUrls {
         /**
          * 胸痛 影像检查 信息获取
          */
-        public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/get";
+        public static final String NET_URL_CHEST_PAIN_IMAGING_EXAMINATION_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainImagingExamination/get";
 
         /**
          * 胸痛 影像检查 信息上传
@@ -173,12 +189,20 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_DISEASERECORD_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/editForApp";
 
         /**
+         *  卒中 诊断评估 保存
+         */
+        public static final String NET_URL_DIAGNOSTICEVALUATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/edit";
+
+
+        /**
+         *  卒中 诊断评估 查询
+         */
+        public static final String NET_URL_DIAGNOSTICEVALUATION_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/getByRecordId";
+
+        /**
          * 胸痛 病情记录查询
          */
         public static final String NET_URL_CHEST_PAIN_DISEASERECORD_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/get";
-
-
-
 
 
         /**
@@ -211,85 +235,121 @@ public class ApiUrls {
         /**
          * 胸痛中心-静脉溶栓
          */
-        public static final String NET_URL_CHEST_PAIN_GET_INTRAVENOUS_THROMBOLYSIS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/get";
+        public static final String NET_URL_CHEST_PAIN_GET_INTRAVENOUS_THROMBOLYSIS = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/get";
 
         /**
          * 胸痛中心-静脉溶栓保存
          */
-        public static final String NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/edit";
+        public static final String NET_URL_CHEST_PAIN_INTRAVENOUS_THROMBOLYSIS_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainHospitalThrombolyticTherapy/edit";
 
 
         /**
          * 胸痛中心-手术信息-结果保存
          */
-        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResult/edit";
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResult/edit";
 
 
         /**
          * 胸痛中心-手术信息-结果获取
          * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get
          */
-        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_GET= "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get";
+        public static final String NET_URL_CHEST_PAIN_OPERATION_RESULT_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpainOperationResultCoronaryAngiography/get";
         /**
          * 胸痛--初始药物--保存 胸痛中心-初步诊断
          */
-        public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/edit";
+        public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/edit";
         /**
          * 胸痛--初始药物--获取 胸痛中心-初步诊断
          */
-        public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/getByRecordId";
+        public static final String NET_URL_CHEST_PAIN_EMERGENCY_CENTER_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainDrug/getByRecordId";
         /**
          * yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit
          */
-        public static final String NET_URL_CHEST_PAIN_LABORATORY_EXAMINATION_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit";
-
+        public static final String NET_URL_CHEST_PAIN_LABORATORY_EXAMINATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpainLaboratoryExamination/edit";
 
 
         /**
          * 胸痛中心-手术信息-保存
          */
-        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/room/edit";
-
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/room/edit";
 
 
         /**
          * 胸痛中心-手术信息-获取
          */
-        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_GET= "yjjk-gateway/yjjk-cdm-api/v1/room/get";
+        public static final String NET_URL_CHEST_PAIN_OPERATION_INFO_GET = "yjjk-gateway/yjjk-cdm-api/v1/room/get";
 
         /**
          * 胸痛中心-胸痛诊疗-心电图-详情获取
          */
-        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_GET= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcgDetail/getByRecordId";
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcgDetail/getByRecordId";
 
         /**
          * 胸痛中心-胸痛诊疗-心电图 主表添加
          */
-        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+        public static final String NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+
+        /**
+         * 胸痛--初始诊断--Grace--保存
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainGraceScore/edit";
+
+        /**
+         * 胸痛--初始诊断--Grace--获取
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GRACE_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainGraceScore/get";
+
+        /**
+         * 胸痛--初始诊断--查询
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_GET = "yjjk-gateway/yjjk-cdm-api/v1/chestpainDiagnosis/get";
+
+        /**
+         * 胸痛--初始诊断--保存
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpainDiagnosis/edit";
+
+        /**
+         * 胸痛--初始诊断--患者绕行--编辑
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_EDIT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/edit";
+
+        /**
+         * 胸痛--初始诊断--患者绕行--查询
+         */
+        public static final String NET_URL_CHEST_PAIN_ORIGINAL_DIAGNOSE_PATIENTS_DETOUR_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/patientsDetour/getByRecordId";
 
     }
 
     /**
      * 生命体征查询
      */
-    public static final String NET_URL_CHEST_PAIN_GET_VITALSIGNS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/getByRecordId";
+    public static final String NET_URL_CHEST_PAIN_GET_VITALSIGNS = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/getByRecordId";
 
     /**
      * 生命体征编辑
      */
-    public static final String NET_URL_CHEST_PAIN_GET_EDIT_VITALSIGNS= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/edit";
+    public static final String NET_URL_CHEST_PAIN_GET_EDIT_VITALSIGNS = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/vitalSigns/edit";
 
     /**
      * 胸痛中心-胸痛诊疗-心电图主表 查询
      */
-    public static final String NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/getByRecordId";
+    public static final String NET_URL_CHEST_PAIN_GET_ECG_INQUIIRY = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/getByRecordId";
 
     /**
      * 胸痛中心-胸痛诊疗-心电图主表 添加
      */
-    public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
+    public static final String NET_URL_CHEST_PAIN_GET_ECG_EDIT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterChestpainEcg/edit";
 
+    /**
+     * 主页 卒中、胸痛、创伤列表查询
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
 
+    /**
+     * 获取时间线
+     */
+    public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
 }
 

@@ -15,12 +15,11 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChestpainEcgDetailBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
-import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -44,69 +43,63 @@ import retrofit2.Response;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainEcgExaminFragment extends BaseFragment {
+public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
 
-    @BindView(R.id.rb_electrocardiogram_has) //有
-            RadioButton rbElectrocardiogramHas;
+    @BindView(R.id.rb_electrocardiogram_has)
+    RadioButton rbElectrocardiogramHas;
     @BindView(R.id.rb_electrocardiogram_none)
-    RadioButton rbElectrocardiogramNone;//无
+    RadioButton rbElectrocardiogramNone;
     @BindView(R.id.rg_electrocardiogram)
-    RadioGroup rgElectrocardiogram;//心电图
+    RadioGroup rgElectrocardiogram;
     @BindView(R.id.iv_add_ecg_record)
-    ImageView ivAddRecord;//新增心电记录
-
-    @BindView(R.id.ll_ecg_record_one)
-    LinearLayout llEcgRecordOne;
-    @BindView(R.id.iv_ecg_record_close_two)
-    ImageView ivEcgRecordCloseTwo;
-    @BindView(R.id.ll_ecg_record_two)
-    LinearLayout llEcgRecordTwo;
-    @BindView(R.id.iv_ecg_record_close_three)
-    ImageView ivEcgRecordCloseThree;
-    @BindView(R.id.ll_ecg_record_three)
-    LinearLayout llEcgRecordThree;
-    @BindView(R.id.rb_ecg_transmission_120)
-    RadioButton rbEcgTransmission120;//接收120/网络医院心电图"
-    @BindView(R.id.rb_ecg_transmission_none)
-    RadioButton rbEcgTransmissionNone;//未传输
-    @BindView(R.id.rg_ecg_transmission)
-    RadioGroup rgEcgTransmission;//远程心电传输
-    @BindView(R.id.es_vital_sign_aware)
-    EditSpinner esVitalSignAware;//传输方式
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
-    @BindView(R.id.ttbl_ecg_check_time1)
-    TextTimeBar ttblEcgCheckTime1;
-    @BindView(R.id.ttbl_ecg_diagnosis_time1)
-    TextTimeBar ttblEcgDiagnosisTime1;
-    @BindView(R.id.ed_ecg_diagnosis_conclusion1)
-    EditText edEcgDiagnosisConclusion1;
-    @BindView(R.id.ttbl_ecg_check_time2)
-    TextTimeBar ttblEcgCheckTime2;
-    @BindView(R.id.ttbl_ecg_diagnosis_time2)
-    TextTimeBar ttblEcgDiagnosisTime2;
-    @BindView(R.id.ed_ecg_diagnosis_conclusion2)
-    EditText edEcgDiagnosisConclusion2;
-    @BindView(R.id.rtb_ecg_receiving_time)
-    TextTimeBar rtbEcgReceivingTime;
+    ImageView ivAddEcgRecord;
     @BindView(R.id.ttbl_ecg_check_time)
     TextTimeBar ttblEcgCheckTime;
     @BindView(R.id.ttbl_ecg_diagnosis_time)
     TextTimeBar ttblEcgDiagnosisTime;
     @BindView(R.id.ed_ecg_diagnosis_conclusion)
     EditText edEcgDiagnosisConclusion;
+    @BindView(R.id.ll_ecg_record_one)
+    LinearLayout llEcgRecordOne;
+    @BindView(R.id.iv_ecg_record_close_two)
+    ImageView ivEcgRecordCloseTwo;
+    @BindView(R.id.ttbl_ecg_check_time1)
+    TextTimeBar ttblEcgCheckTime1;
+    @BindView(R.id.ttbl_ecg_diagnosis_time1)
+    TextTimeBar ttblEcgDiagnosisTime1;
+    @BindView(R.id.ed_ecg_diagnosis_conclusion1)
+    EditText edEcgDiagnosisConclusion1;
+    @BindView(R.id.ll_ecg_record_two)
+    LinearLayout llEcgRecordTwo;
+    @BindView(R.id.iv_ecg_record_close_three)
+    ImageView ivEcgRecordCloseThree;
+    @BindView(R.id.ttbl_ecg_check_time2)
+    TextTimeBar ttblEcgCheckTime2;
+    @BindView(R.id.ttbl_ecg_diagnosis_time2)
+    TextTimeBar ttblEcgDiagnosisTime2;
+    @BindView(R.id.ed_ecg_diagnosis_conclusion2)
+    EditText edEcgDiagnosisConclusion2;
+    @BindView(R.id.ll_ecg_record_three)
+    LinearLayout llEcgRecordThree;
+    @BindView(R.id.rb_ecg_transmission_120)
+    RadioButton rbEcgTransmission120;
+    @BindView(R.id.rb_ecg_transmission_none)
+    RadioButton rbEcgTransmissionNone;
+    @BindView(R.id.rg_ecg_transmission)
+    RadioGroup rgEcgTransmission;
+    @BindView(R.id.rtb_ecg_receiving_time)
+    TextTimeBar rtbEcgReceivingTime;
+    @BindView(R.id.es_transfer_type)
+    EditSpinner esTransferType;
+    @BindView(R.id.btn_get_data)
+    AppCompatButton btnGetData;
+    @BindView(R.id.btn_confirm)
+    AppCompatButton btnConfirm;
+    @BindView(R.id.ll_auxiliary_exam)
+    LinearLayout llAuxiliaryExam;
 
     private int ecgRecordItem = 1;
 
-    private String mRecordId;
-
-    public ChestPainEcgExaminFragment() {
-
-    }
 
     public static ChestPainEcgExaminFragment newInstance(String recordId) {
         ChestPainEcgExaminFragment fragment = new ChestPainEcgExaminFragment();
@@ -117,16 +110,8 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
-
-    @Override
     protected int getLayoutId() {
-        return R.layout.fragment_ecg_examin;
+        return R.layout.chest_fragment_ecg_examin;
     }
 
     @Override
@@ -174,50 +159,49 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     /**
      * 重新绘制界面使用
-     *
      */
     private void resetShowData(ChestpainEcgDetailBean bean) {
 
 
 //         设置远程心电传输
 //        rb_ecg_transmission_120
-        if ("cpc_ycxdtcsfs_120".equals(bean.getEcgisremotetransmission())){
+        if ("cpc_ycxdtcsfs_120".equals(bean.getEcgisremotetransmission())) {
             rbEcgTransmission120.setChecked(true);
-        }else {
+        } else {
             rbEcgTransmissionNone.setChecked(true);
         }
-        rtbEcgReceivingTime.setTime( bean.getEcgremotetransmissiontime());
-        esVitalSignAware.setStringArrayNormalKey(bean.getEcgremotetransmissionway());
+        rtbEcgReceivingTime.setTime(bean.getEcgremotetransmissiontime());
+        esTransferType.setStringArrayNormalKey(bean.getEcgremotetransmissionway());
 
         // 设置心电图
-        if (Constants.BOOL_TRUE.equals(  bean.getEcgisexist())){
+        if (Constants.BOOL_TRUE.equals(bean.getEcgisexist())) {
             rbElectrocardiogramHas.setChecked(true);
-        }else {
+        } else {
             rbElectrocardiogramNone.setChecked(true);
         }
 
 
         List<ChestpainEcgDetailBean.EcgarrayBean> ecgarray = bean.getEcgarray();
-        if (ecgarray!= null){
+        if (ecgarray != null) {
             ecgRecordItem = ecgarray.size();
         }
         ChestpainEcgDetailBean.EcgarrayBean ecgarrayBean = null;
         if (ecgRecordItem > 0) {
-            ecgarrayBean =  ecgarray.get(0);
+            ecgarrayBean = ecgarray.get(0);
             ttblEcgCheckTime.setTime(ecgarrayBean.getEcgtime());
             ttblEcgDiagnosisTime.setTime(ecgarrayBean.getEcgdiagnosistime());
             edEcgDiagnosisConclusion.setText(ecgarrayBean.getEcgdiagnosed());
         }
 
         if (ecgRecordItem > 1) {
-            ecgarrayBean =  ecgarray.get(1);
+            ecgarrayBean = ecgarray.get(1);
             ttblEcgCheckTime1.setTime(ecgarrayBean.getEcgtime());
             ttblEcgDiagnosisTime1.setTime(ecgarrayBean.getEcgdiagnosistime());
             edEcgDiagnosisConclusion1.setText(ecgarrayBean.getEcgdiagnosed());
         }
 
         if (ecgRecordItem > 2) {
-            ecgarrayBean =  ecgarray.get(2);
+            ecgarrayBean = ecgarray.get(2);
             ttblEcgCheckTime2.setTime(ecgarrayBean.getEcgtime());
             ttblEcgDiagnosisTime2.setTime(ecgarrayBean.getEcgdiagnosistime());
             edEcgDiagnosisConclusion2.setText(ecgarrayBean.getEcgdiagnosed());
@@ -241,7 +225,7 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 
     private void loadData() {
 
-        esVitalSignAware.setStringArrayId(R.array.chest_pain_heart_tansfer_way);
+        esTransferType.setStringArrayId(R.array.chest_pain_heart_tansfer_way);
 
     }
 
@@ -253,9 +237,9 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.rb_electrocardiogram_none) {
                     ecgRecordItem = 0;
-                    ivAddRecord.setVisibility(View.GONE);
+                    ivAddEcgRecord.setVisibility(View.GONE);
                 } else if (checkedId == R.id.rb_electrocardiogram_has) {
-                    ivAddRecord.setVisibility(View.VISIBLE);
+                    ivAddEcgRecord.setVisibility(View.VISIBLE);
                     ecgRecordItem = 1;
                 }
                 refrashRecordItem();
@@ -289,7 +273,7 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
         };
         rbElectrocardiogramHas.setOnClickListener(onClickListener);
         rbElectrocardiogramNone.setOnClickListener(onClickListener);
-        ivAddRecord.setOnClickListener(onClickListener);
+        ivAddEcgRecord.setOnClickListener(onClickListener);
         ivEcgRecordCloseTwo.setOnClickListener(onClickListener);
         ivEcgRecordCloseThree.setOnClickListener(onClickListener);
 
@@ -305,17 +289,17 @@ public class ChestPainEcgExaminFragment extends BaseFragment {
 //        rb_ecg_transmission_120
         if (rbEcgTransmission120.isChecked()) {
             bean.setEcgisremotetransmission("cpc_ycxdtcsfs_120");
-        }else {
+        } else {
             bean.setEcgisremotetransmission("cpc_ycxdtcsfs_wcs");
         }
 //        es_vital_sign_aware
 //        rtb_ecg_receiving_time
         bean.setEcgremotetransmissiontime(rtbEcgReceivingTime.getTime());
-        String[] selectData = esVitalSignAware.getSelectData();
+        String[] selectData = esTransferType.getSelectData();
         bean.setEcgremotetransmissionway(selectData[1]);
 
         // 设置心电图
-        if (!rbElectrocardiogramHas.isChecked()){
+        if (!rbElectrocardiogramHas.isChecked()) {
             bean.setEcgisexist(Constants.BOOL_FALSE);
             return;
         }

@@ -1,19 +1,11 @@
 package com.xyj.strokeaid.activity.chestpain;
 
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -23,26 +15,20 @@ import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.distutil.DistListUtil;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-import com.zhy.view.flowlayout.FlowLayout;
-import com.zhy.view.flowlayout.TagAdapter;
-import com.zhy.view.flowlayout.TagFlowLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -65,15 +51,15 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_npmr)
     BaseTitleBar titleBarActNpmr;
-    @BindView(R.id.tag_reason_delay)
+ /*   @BindView(R.id.tag_reason_delay)
     TagFlowLayout tagFlowLayout;
-
+*/
     @BindView(R.id.tv_activation_time_cath_lab)
     TextTimeBar tvActivationTime;       //导管室激活时间
     @BindView(R.id.tv_arrive_time_patient)
     TextTimeBar tvArriveTime;       //患者到达时间
-    @BindView(R.id.tv_time_begin)
-    TextTimeBar tvTimeBegin;       //手术开始时间
+/*    @BindView(R.id.tv_time_begin)
+    TextTimeBar tvTimeBegin;       *///手术开始时间
     @BindView(R.id.tv_time_puncture)
     TextTimeBar tvTimePuncture;       //开始穿刺时间
 
@@ -91,10 +77,10 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     @BindView(R.id.es_medicinal_name)
     EditSpinner es_medicinal_name;  //药品名称
 
-    @BindView(R.id.rb_delay_true)
+/*    @BindView(R.id.rb_delay_true)
     RadioButton rbTrue;
     @BindView(R.id.rb_delay_false)
-    RadioButton rbFalse;
+    RadioButton rbFalse;*/
     @BindView(R.id.et_doctor_input)
     EditText etDoctorInput;
     @BindView(R.id.et_recorder_input)
@@ -112,13 +98,14 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     private OperationInfoBean operationInfoBean = null;
     HashMap<String, String> medicinalHashMap = null;
     private HashMap<String, String> delayHashMap = null;
+    private List<String> intraoperativeList;
+    private DistListUtil distListUtil;
 
     @OnClick({R.id.iv_left_base_title_bar, R.id.tv_right_base_title_bar,
-            R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient,
-            R.id.tv_time_begin, R.id.tv_time_puncture,
+            R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient, R.id.tv_time_puncture,
             R.id.tv_time_anticoagulant_administration, R.id.tv_time_radiography,
             R.id.tv_talk_time_again, R.id.tv_through_time_guide_wire, R.id.tv_over_time,
-            R.id.rb_delay_false, R.id.rb_delay_true})
+           })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left_base_title_bar:
@@ -127,14 +114,14 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
             case R.id.tv_right_base_title_bar:  //保存
                 saveData();
                 break;
-            case R.id.rb_delay_true:
+      /*      case R.id.rb_delay_true:
                 delayType = true;
                 tagFlowLayout.setVisibility(View.VISIBLE);
                 break;
             case R.id.rb_delay_false:
                 delayType = false;
                 tagFlowLayout.setVisibility(View.GONE);
-                break;
+                break;*/
             case R.id.tv_activation_time_cath_lab: //导管室激活时间
                 TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -175,7 +162,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
                 mDialogAll1.show(getSupportFragmentManager(), "All");
                 break;
-            case R.id.tv_time_begin: //手术开始时间
+        /*    case R.id.tv_time_begin: //手术开始时间
                 TimePickerDialog mDialogAll2 = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
                         .setTitleStringId("选择时间")
@@ -194,7 +181,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         .build();
 
                 mDialogAll2.show(getSupportFragmentManager(), "All");
-                break;
+                break;*/
             case R.id.tv_time_puncture: //开始穿刺时间
                 TimePickerDialog mDialogAll3 = new TimePickerDialog.Builder()
                         .setType(Type.ALL)
@@ -342,7 +329,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         //time 9
         String time1 = tvActivationTime.getTime();//导管室激活时间
         String time2 = tvArriveTime.getTime();  //患者到达时间
-        String time3 = tvTimeBegin.getTime(); //手术开始时间
+       // String time3 = tvTimeBegin.getTime(); //手术开始时间
         String time4 = tvTimePuncture.getTime();//开始穿刺时间
         String time5 = tvTimeAnticoagulantAdministration.getTime(); //抗凝给药时间
         String time6 = tvTimeRadiography.getTime();//造影开始时间
@@ -374,17 +361,16 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         operationInfoBean.setSssanticoagulationdrugdosage(etDosage.getText().toString().trim());
         //术中抗凝药物剂量(单位) sssanticoagulationdrugunit
         operationInfoBean.setSssanticoagulationdrugunit(etUnit.getText().toString().trim());
-      /*
-        DistListUtil distListUtil = new DistListUtil(this.mContext);
-        distListUtil.initGenderMap(id);
+
 
         //术中并发症流布局
-        tagFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
+
+       /* tagFlowLayout.setOnSelectListener(new TagFlowLayout.OnSelectListener() {
             @Override
             public void onSelected(Set<Integer> selectPosSet) {
                 HashSet<Integer> selectPos = (HashSet<Integer>) selectPosSet;
-                String genderMapValueKey = chestUtil.getGenderMapValueKey(R.array.chest_pain_operation_intraoperative_complications);
-                List<String> strings = chestUtil.getMapGenderDataList().get(genderMapValueKey);
+                String genderMapValueKey = distListUtil.getGenderMapValueKey(R.array.chest_pain_operation_delay_reason);
+                List<String> strings = distListUtil.getMapGenderDataList().get(genderMapValueKey);
                 String data = "";
                 for (Integer selectPo : selectPos) {
                     String s = strings.get(selectPo);
@@ -394,15 +380,18 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                         data += ("," + s);
                     }
                 }
-//                intraoperativecomplications
-                bean.setIntraoperativecomplications(data);
+                LogUtils.d(data);
+            //    intraoperativecomplications
+             //   operationInfoBean.setIntraoperativecomplications(data);
             }
-        });
-*/
+        });*/
 
         chestPainChestPainOperationInfoSave(operationInfoBean);
 
     }
+
+
+
 
     @Override
     public int getLayoutId() {
@@ -423,28 +412,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
          *是否延误
          *//*
         delayHashMap = new HashMap<>();
-        delayHashMap.put("症状不明显延误诊断", "cpc_delayreason_zzbmx");
-        delayHashMap.put("家属未到场", "cpc_delayreason_jswdc");
-        delayHashMap.put("医生决策延误", "cpc_delayreason_ysjcyw");
-        delayHashMap.put("排队挂号、缴费、办住院时间长", "cpc_delayreason_pdgh");
-        delayHashMap.put("急诊科处理时间长", "cpc_delayreason_jzkclsjc");
-        delayHashMap.put("手术期间出现并发症", "cpc_delayreason_ssqjcxbfz");
-        delayHashMap.put("超过再灌注时间", "cpc_delayreason_cgzgzsj");
-        delayHashMap.put("未实施绕行急诊方案", "cpc_delayreason_wssrxjzfa");
-        delayHashMap.put("导管室人员未到位", "cpc_delayreason_dgsrywdw");
-        delayHashMap.put("药物缺乏", "cpc_delayreason_ywqf");
-        delayHashMap.put("知情同意时间过长", "cpc_delayreason_zqtysjgc");
-        delayHashMap.put("病情不稳定", "cpc_delayreason_bqbwd");
-        delayHashMap.put("绕行急诊科但未直接入导管室", "cpc_delayreason_rxjzk");
-        delayHashMap.put("导管室占台", "cpc_delayreason_dgszt");
-        delayHashMap.put("转运时间长", "cpc_delayreason_zysjc");
-        delayHashMap.put("经费问题", "cpc_delayreason_jfwt");
-        delayHashMap.put("心内科会诊时间长", "cpc_delayreason_xnkhzsjc");
-        delayHashMap.put("血管通路困难", "cpc_delayreason_xgtlkn");
-        delayHashMap.put("难以绕行病变区域", "cpc_delayreason_nyrxbbqy");
-        delayHashMap.put("心脏骤停或需要气管插管再PCI", "cpc_delayreason_xzzt");
-        delayHashMap.put("急需影像学资料再行PCI", "cpc_delayreason_jxyxxzl");
-        delayHashMap.put("其它原因", "cpc_delayreason_qt");*/
+        */
 
 
         titleBarActNpmr.setLeftLayoutClickListener(new View.OnClickListener() {
@@ -453,15 +421,19 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
                 finish();
             }
         });
+  /*      distListUtil = new DistListUtil(this.mContext);
+        distListUtil.initGenderMap(R.array.chest_pain_operation_delay_reason);
 
-        tagFlowLayout.setAdapter(new TagAdapter<String>(Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_delay_reason))) {
+        intraoperativeList = distListUtil.getMapGenderDataList().get(distListUtil.getGenderMapKey(R.array.chest_pain_operation_delay_reason));
+        tagFlowLayout.setAdapter(new TagAdapter<String>(intraoperativeList) {
             @Override
             public View getView(FlowLayout parent, int position, String o) {
                 TextView view = (TextView) LayoutInflater.from(mContext).inflate(R.layout.adapter_tag_item, parent, false);
                 view.setText(o);
                 return view;
             }
-        });
+        });*/
+
 
 
         /**
@@ -526,6 +498,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        showToast(call.toString());
 
                     }
                 });

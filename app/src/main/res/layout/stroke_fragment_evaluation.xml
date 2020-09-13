@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_fast_ed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="FAST-ED"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_nihss"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="首次NIHSS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ibe_gcs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="首次GCS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_mrs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="发病前mRS"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_aspect_ct"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="ASPECT-CT"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_aspect_mri"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="ASPECT-MRI"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_swallowingassessment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_right_icon="@drawable/icon_score"
+                app:ieb_right_icon_visible="true"
+                app:ieb_title="吞咽功能"
+                app:ieb_unit_text="分"
+                app:ieb_unit_visible="true" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/buttom_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
+        android:background="@drawable/login_btn_bg"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="16dp" />
+
+</LinearLayout>

@@ -120,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_24"
-        android:background="@android:color/white"
+        android:background="@color/white"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -196,7 +196,7 @@
         android:layout_margin="@dimen/dp_12"
         android:background="@drawable/login_btn_bg"
         android:text="@string/login_btn"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="18dp" />
 
 

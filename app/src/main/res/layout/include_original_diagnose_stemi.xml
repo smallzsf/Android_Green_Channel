@@ -92,11 +92,13 @@
             android:layout_marginStart="@dimen/item_normal_margin"
             android:orientation="vertical">
 
+
             <RadioButton
                 android:id="@+id/rb_heart_func_level_1"
                 style="@style/XyjRadionButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:tag="cpc_smtzkillip_I"
                 android:text="I级(no CHF)" />
 
             <RadioButton
@@ -104,6 +106,7 @@
                 style="@style/XyjRadionButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:tag="cpc_smtzkillip_II"
                 android:text="II级(rales and/or JVD)" />
 
             <RadioButton
@@ -111,6 +114,7 @@
                 style="@style/XyjRadionButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:tag="cpc_smtzkillip_III"
                 android:text="III级(pulmonary edema)"
                 android:textSize="@dimen/item_content_size" />
 
@@ -119,6 +123,7 @@
                 style="@style/XyjRadionButton"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
+                android:tag="cpc_smtzkillip_IV"
                 android:text="IV级(cardiogenic shock)" />
 
         </RadioGroup>
@@ -128,6 +133,7 @@
     <View style="@style/horizontal_divider" />
 
     <LinearLayout
+        android:id="@+id/ll_detour_emergent"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal">
@@ -157,7 +163,23 @@
         </RadioGroup>
     </LinearLayout>
 
+
+
+
     <View style="@style/horizontal_divider" />
+
+
+    <include
+        android:id="@+id/ll_patien_detour_emergency"
+        layout="@layout/layout_patient_detour_emergency"
+        android:visibility="gone"></include>
+
+
+    <include
+        android:id="@+id/ll_patien_detour_emergency_no"
+        layout="@layout/layout_patient_detour_emergency_no"
+        android:visibility="gone"></include>
+
 
     <!--绕行急诊 是-->
     <LinearLayout
@@ -248,6 +270,7 @@
 
     <!--绕行ccu-->
     <LinearLayout
+        android:id="@+id/detour_ccu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:orientation="horizontal">
@@ -277,13 +300,137 @@
 
     </LinearLayout>
 
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/ttb_arrive_ccu_time"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:visibility="gone"
-        app:bottomLineVisible="true"
-        app:title="到达CCU时间" />
+    <include layout="@layout/layout_patient_detour_cuu"></include>
 
+  <!--
+
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/tv_arrival_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_large_height"
+            app:bottomLineVisible="true"
+            app:title="开始抗凝治疗时间 " />
+
+
+        <TextView
+            style="@style/XyjTextSubTitel"
+            android:text="溶栓筛查" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/mrg1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+
+                        <RadioButton
+                            android:id="@+id/rb_suitable"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_rsscjg_hs"
+                            android:text="合适" />
+
+                        <RadioButton
+                            android:id="@+id/rb_unsuitable"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_rsscjg_bhs"
+                            android:text="不合适" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_no_screening"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_rsscjg_wsc"
+                            android:text="未筛查" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </com.xyj.strokeaid.view.MyRadioGroup>
+
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/XyjTextSubTitel"
+            android:text="溶栓治疗" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/mrg2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_hava"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_exist_true"
+                            android:text="有" />
+
+                        <RadioButton
+                            android:id="@+id/rb_no"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_exist_false"
+                            android:text="无" />
+
+                        <RadioButton
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:button="@null"
+                            android:tag="cpc_zdksv2_xnkbf" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </com.xyj.strokeaid.view.MyRadioGroup>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+-->
 
 </LinearLayout>

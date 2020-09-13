@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:layout_marginLeft="@dimen/item_normal_margin"
+        android:layout_marginRight="@dimen/item_normal_margin">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/vital_sign_awareness" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/es_conscious_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="请选择"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+    </LinearLayout>
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_breath"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="呼吸"
+        app:ieb_top_line_visible="true"
+        app:ieb_unit_text="次/分钟"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_pulse"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="脉搏"
+        app:ieb_unit_text="次/分钟"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_heart_rate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="心率"
+        app:ieb_unit_text="次/分钟"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_high_pressure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="收缩压"
+        app:ieb_unit_text="mmHg"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_low_pressure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="舒张压"
+        app:ieb_top_line_visible="true"
+        app:ieb_unit_text="mmHg"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_spo2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="血氧饱和度"
+        app:ieb_top_line_visible="true"
+        app:ieb_unit_text="%"
+        app:ieb_unit_visible="true" />
+
+    <com.xyj.strokeaid.view.ItemEditBar
+        android:id="@+id/ieb_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:ieb_bottom_line_visible="true"
+        app:ieb_title="体温"
+        app:ieb_top_line_visible="true"
+        app:ieb_unit_text="摄氏度"
+        app:ieb_unit_visible="true" />
+
+</LinearLayout>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/dp_6"
+    android:layout_marginTop="@dimen/dp_6"
+    tools:context=".fragment.detection.BloodCheckFragment">
+
+    <RadioGroup
+        android:id="@+id/rg_group1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_sex_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="CT平扫" />
+
+        <RadioButton
+            android:id="@+id/rb_sex_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CTA"
+            android:theme="@style/DK.RadioButton.Left" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CTP" />
+    </RadioGroup>
+
+
+    <RadioGroup
+        android:id="@+id/rg_group2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_group1">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本院检查" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="外院检查" />
+
+    </RadioGroup>
+    <View
+        style="@style/ViewLineStyle"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/rg_group2"/>
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/rg_group2">
+
+        <TextView
+            android:id="@+id/tv_time_include_time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:gravity="center"
+            android:text="检查完成"
+            android:textColor="@color/color_222222"
+            android:textSize="15dp"/>
+
+        <include layout="@layout/view_select_time" />
+
+
+    </LinearLayout>
+    <View
+        style="@style/ViewLineStyle"
+        app:layout_constraintTop_toBottomOf="@id/ll_container"
+        app:layout_constraintBottom_toTopOf="@id/ll_container3"
+        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:id="@+id/ll_container3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/rg_group2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/dp_12"
+            android:gravity="center"
+            android:text="检查报告"
+            android:textColor="@color/color_222222"
+            android:textSize="15dp"/>
+        <include layout="@layout/view_select_time"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

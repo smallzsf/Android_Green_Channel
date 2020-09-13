@@ -41,7 +41,7 @@
         android:layout_marginRight="@dimen/dp_23"
         android:background="@drawable/shape_btn_blue"
         android:text="@string/save"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/btn_cancel"

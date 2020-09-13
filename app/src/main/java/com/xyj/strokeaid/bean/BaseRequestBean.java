@@ -33,7 +33,7 @@ public class BaseRequestBean<T extends Object> extends BaseBean<BaseRequestBean>
         this.emergencyType = emergencyType;
         this.data = data;
         this.keyList = new ArrayList<>();
-        Field[] declaredFields = data.getClass().getDeclaredFields();
+        Field[] declaredFields = data.getClass().getFields();
         for (Field declaredField : declaredFields) {
             keyList.add(declaredField.getName());
         }

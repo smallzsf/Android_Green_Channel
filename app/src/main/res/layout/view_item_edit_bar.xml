@@ -1,10 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_root_item_edit_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="@dimen/item_normal_height">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_title_view_ieb"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size"
+            tools:text="腕带ID" />
+
+        <EditText
+            android:id="@+id/et_content_view_ieb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/item_normal_margin"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@drawable/shape_edittext_bg"
+            android:cursorVisible="true"
+            android:visibility="visible"
+            android:enabled="true"
+            android:gravity="center_vertical|end"
+            android:textColor="@color/color_222222"
+            android:paddingEnd="@dimen/item_normal_margin"
+            android:textColorHint="@color/color_999999"
+            android:textCursorDrawable="@drawable/shape_edit_text_cursor"
+            android:textSize="@dimen/item_content_size" />
+
+        <TextView
+            android:id="@+id/tv_content_view_ieb"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/item_normal_margin"
+            android:layout_marginTop="@dimen/dp_4"
+            android:layout_marginEnd="@dimen/item_normal_margin"
+            android:layout_marginBottom="@dimen/dp_4"
+            android:background="@drawable/shape_edittext_bg"
+            android:gravity="center_vertical|end"
+            android:paddingEnd="@dimen/item_normal_margin"
+            android:singleLine="false"
+            android:textColor="@color/color_222222"
+            android:textColorHint="@color/color_999999"
+            android:textSize="@dimen/item_content_size"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_unit_view_ieb"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/item_normal_margin"
+            android:gravity="center"
+            android:minWidth="@dimen/item_unit_width"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size"
+            android:visibility="gone"
+            tools:text="岁岁岁" />
+
+        <ImageView
+            android:id="@+id/iv_right_view_ieb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/item_normal_margin"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_location"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 
     <View
         android:id="@+id/view_top_line_view_ieb"
@@ -17,80 +96,4 @@
         style="@style/horizontal_divider"
         android:layout_alignParentBottom="true"
         android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/tv_title_view_ieb"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/item_normal_margin"
-        android:drawablePadding="5dp"
-        android:gravity="center_vertical"
-        android:minWidth="@dimen/item_title_min_width"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/item_title_size"
-        tools:text="腕带ID" />
-
-    <TextView
-        android:id="@+id/tv_unit_view_ieb"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/item_normal_margin"
-        android:gravity="center"
-        android:minWidth="@dimen/item_unit_width"
-        android:textColor="@color/color_222222"
-        android:textSize="@dimen/item_title_size"
-        android:visibility="gone"
-        tools:text="岁" />
-
-    <ImageView
-        android:id="@+id/iv_right_view_ieb"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="@dimen/item_normal_margin"
-        android:scaleType="center"
-        android:src="@drawable/icon_location"
-        android:visibility="gone" />
-
-    <EditText
-        android:id="@+id/et_content_view_ieb"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/item_normal_margin"
-        android:layout_marginTop="@dimen/dp_4"
-        android:layout_marginEnd="@dimen/item_normal_margin"
-        android:layout_marginBottom="@dimen/dp_4"
-        android:layout_toStartOf="@id/tv_unit_view_ieb"
-        android:layout_toEndOf="@id/tv_title_view_ieb"
-        android:background="@drawable/shape_edittext_bg"
-        android:cursorVisible="true"
-        android:enabled="true"
-        android:gravity="center_vertical|end"
-        android:paddingEnd="@dimen/item_normal_margin"
-        android:textColor="@color/color_444444"
-        android:textColorHint="@color/color_999999"
-        android:textCursorDrawable="@drawable/shape_edit_text_cursor"
-        android:textSize="@dimen/item_content_size" />
-
-    <TextView
-        android:id="@+id/tv_content_view_ieb"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/item_normal_margin"
-        android:layout_marginTop="@dimen/dp_4"
-        android:layout_marginEnd="@dimen/item_normal_margin"
-        android:layout_marginBottom="@dimen/dp_4"
-        android:layout_toStartOf="@id/tv_unit_view_ieb"
-        android:layout_toEndOf="@id/tv_title_view_ieb"
-        android:background="@drawable/shape_edittext_bg"
-        android:gravity="center_vertical|end"
-        android:paddingEnd="@dimen/item_normal_margin"
-        android:singleLine="false"
-        android:textColor="@color/color_444444"
-        android:textColorHint="@color/color_999999"
-        android:textSize="@dimen/item_content_size"
-        android:visibility="gone" />
-
 </RelativeLayout>

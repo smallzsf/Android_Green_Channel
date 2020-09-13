@@ -68,6 +68,12 @@
         <item name="android:button">@drawable/selector_radio_button</item>
     </style>
 
+    <style name="XyjFlowRadionButton" parent="XyjRadionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_marginEnd">@dimen/item_normal_margin</item>
+    </style>
+
     <style name="XyjRadionButtonHorizontalWeight" parent="XyjRadionButton">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">@dimen/item_normal_height</item>
@@ -87,6 +93,11 @@
         <item name="android:layout_weight">1</item>
     </style>
 
+    <style name="XyjFlowCheckBox" parent="XyjCheckBox">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_marginEnd">@dimen/item_normal_margin</item>
+    </style>
 
     <style name="tv_small_hiht">
         <item name="android:padding">@dimen/dp_7</item>
@@ -101,6 +112,35 @@
 
     <style name="et_normal_titel">
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:textColorHint">@color/color_999999</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="et_hole_line">
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginBottom">@dimen/dp_4</item>
+        <item name="android:layout_marginStart">@dimen/item_normal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/item_normal_margin</item>
+        <item name="android:background">@drawable/shape_grey_stroke</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:textColorHint">@color/color_999999</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="et_hole_line_weight">
+        <item name="android:layout_height">@dimen/item_normal_height</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">@dimen/dp_4</item>
+        <item name="android:layout_marginBottom">@dimen/dp_4</item>
+        <item name="android:layout_marginStart">@dimen/item_normal_margin</item>
+        <item name="android:layout_marginEnd">@dimen/item_normal_margin</item>
+        <item name="android:background">@drawable/shape_grey_stroke</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/color_222222</item>
         <item name="android:textColorHint">@color/color_999999</item>
         <item name="android:gravity">center_vertical</item>
@@ -160,7 +200,7 @@
         <attr name="ieb_edit_content" format="string" />
 
         <attr name="ieb_unit_visible" format="boolean" />
-        <attr name="ieb_unit_text" format="string" />
+        <attr name="ieb_unit_text" format="string|reference" />
 
         <attr name="ieb_top_line_visible" format="boolean" />
         <attr name="ieb_bottom_line_visible" format="boolean" />

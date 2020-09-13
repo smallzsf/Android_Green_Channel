@@ -50,4 +50,8 @@ public final class IntentKey {
      * 患者自愿放弃后续治疗
      */
     public static final String PATIENT_GIVE_UP = "PATIENT_GIVE_UP";
+    /**
+     *
+     */
+    public static final String TRAUMA_IMAGE_CHECK_DETAIL_BEAN = "TRAUMA_IMAGE_CHECK_DETAIL_BEAN";
 }

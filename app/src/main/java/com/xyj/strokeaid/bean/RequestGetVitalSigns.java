@@ -1,24 +1,28 @@
 package com.xyj.strokeaid.bean;
 
 public class RequestGetVitalSigns {
+    
+    public String recordId;//记录ID
 
-    private String recordId;//记录ID
+    public String consciousness; //意识
 
-    private String consciousness; //意识
+    public String breathrate;//呼吸
 
-    private String breathrate;//呼吸
+    public String pulserate;//脉搏
 
-    private String pulserate;//脉搏
+    public String heartrate;//心率
 
-    private String heartrate;//心率
+    public String bloodpressure;//左上肢血压
 
-    private String bloodpressure;//左上肢血压
+    public String rightbloodpressure;//右上肢血压
 
-    private String rightbloodpressure;//右上肢血压
+    public String systolicpressure;//收缩压
 
-    private String temperature;//温度
+    public String diastolicpressure;//舒张压
 
-    private String percentageofoxygensaturation;//血氧饱和度
+    public String temperature;//温度
+
+    public String percentageofoxygensaturation;//血氧饱和度
 
     public String getRecordId() {
         return recordId;
@@ -90,5 +94,21 @@ public class RequestGetVitalSigns {
 
     public void setPercentageofoxygensaturation(String percentageofoxygensaturation) {
         this.percentageofoxygensaturation = percentageofoxygensaturation;
+    }
+
+    public String getSystolicpressure() {
+        return systolicpressure;
+    }
+
+    public void setSystolicpressure(String systolicpressure) {
+        this.systolicpressure = systolicpressure;
+    }
+
+    public String getDiastolicpressure() {
+        return diastolicpressure;
+    }
+
+    public void setDiastolicpressure(String diastolicpressure) {
+        this.diastolicpressure = diastolicpressure;
     }
 }

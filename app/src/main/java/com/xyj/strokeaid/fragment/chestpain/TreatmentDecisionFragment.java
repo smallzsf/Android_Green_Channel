@@ -14,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.chestpain.DistListUtil;
-import com.xyj.strokeaid.activity.chestpain.RadioButtonDistUtil;
+import com.xyj.strokeaid.distutil.DistListUtil;
+import com.xyj.strokeaid.distutil.RadioButtonDistUtil;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -326,7 +326,13 @@ public class TreatmentDecisionFragment extends BaseFragment {
                 });
 
 
+
+
+
     }
+
+
+
 }
 
     

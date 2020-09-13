@@ -28,15 +28,15 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
-import com.xyj.strokeaid.fragment.trauma.ConsultationInfoFragment;
-import com.xyj.strokeaid.fragment.trauma.DiseaseSceneFragment;
-import com.xyj.strokeaid.fragment.trauma.DiseaseTreatmentFragment;
-import com.xyj.strokeaid.fragment.trauma.ElectrocardiographCheckFragment;
-import com.xyj.strokeaid.fragment.trauma.ImageCheckFragment;
-import com.xyj.strokeaid.fragment.trauma.InspectionInformationFragment;
-import com.xyj.strokeaid.fragment.trauma.OperationInfoFragment;
-import com.xyj.strokeaid.fragment.trauma.OutcomeOfPatientsFragment;
-import com.xyj.strokeaid.fragment.trauma.TraumaStrokeScoresFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaConsultationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaDiseaseSceneFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEmergencyTreatmentFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEcgCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaImageCheckFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaInspectionInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaEicuInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaOperationInfoFragment;
+import com.xyj.strokeaid.fragment.trauma.TraumaPatientOutcomeFragment;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -66,10 +66,8 @@ public class TraumaPatientActivity extends BaseActivity {
     @BindView(R.id.vp_content_act_tp)
     ViewPager2 vpContentActTp;
 
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -105,7 +103,7 @@ public class TraumaPatientActivity extends BaseActivity {
         rvMenuActTp.setAdapter(mMenuRvAdapter);
 
         vpContentActTp.setUserInputEnabled(false);
-        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, "", ""));
+        vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, mRecordId));
 
         tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
@@ -120,7 +118,8 @@ public class TraumaPatientActivity extends BaseActivity {
                 .setLeftLayoutClickListener(v -> finish())
                 .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                         .withInt(IntentKey.VIEW_TYPE, 2)
-                        .withString(IntentKey.PATIENT_ID, mPatientId)
+                        .withInt(IntentKey.DISEASE_VIEW_TYPE, 3)
+                        .withString(IntentKey.RECORD_ID, mRecordId)
                         .navigation());
 
         mMenuRvAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -153,16 +152,13 @@ public class TraumaPatientActivity extends BaseActivity {
     }
 
 
-
     private class TraumaMenuVpAdapter extends FragmentStateAdapter {
 
-        String patientId;
-        String docId;
+        String recordId;
 
-        public TraumaMenuVpAdapter(@NonNull FragmentActivity fragmentActivity, String patientId, String docId) {
+        public TraumaMenuVpAdapter(@NonNull FragmentActivity fragmentActivity, String recordId) {
             super(fragmentActivity);
-            this.patientId = patientId;
-            this.docId = docId;
+            this.recordId = recordId;
         }
 
         @NonNull
@@ -171,32 +167,31 @@ public class TraumaPatientActivity extends BaseActivity {
             switch (position) {
                 case 0:
                     // 发病现场
-                    return DiseaseSceneFragment.newInstance(patientId, docId);
+                    return TraumaDiseaseSceneFragment.newInstance(recordId);
                 case 1:
                     // 急诊救治
-                    return DiseaseTreatmentFragment.newInstance(patientId, docId);
+                    return TraumaEmergencyTreatmentFragment.newInstance(recordId);
                 case 2:
-                    //检验信息
-                    return InspectionInformationFragment.newInstance(patientId, docId);
+                    // 检验信息
+                    return TraumaInspectionInfoFragment.newInstance(recordId);
                 case 3:
-                    //心电检查
-                    return ElectrocardiographCheckFragment.newInstance(patientId, docId);
+                    // 心电检查
+                    return TraumaEcgCheckFragment.newInstance(recordId);
                 case 4:
-                    //影像检查
-                    return ImageCheckFragment.newInstance(patientId, docId);
+                    // 影像检查
+                    return TraumaImageCheckFragment.newInstance(recordId);
                 case 5:
-                    //会诊信息
-                    return ConsultationInfoFragment.newInstance(patientId, docId);
+                    // 会诊信息
+                    return TraumaConsultationInfoFragment.newInstance(recordId);
                 case 6:
-                    //手术信息
-                    return OperationInfoFragment.newInstance(patientId, docId);
+                    // EICU/ICU信息
+                    return TraumaEicuInfoFragment.newInstance(recordId);
                 case 7:
-                    // 評分工具
-                    return TraumaStrokeScoresFragment.newInstance(patientId, docId);
+                    // 手术信息
+                    return TraumaOperationInfoFragment.newInstance(recordId);
                 case 8:
-                    //患者转归
-                    return OutcomeOfPatientsFragment.newInstance(patientId, docId);
-
+                    // 患者转归
+                    return TraumaPatientOutcomeFragment.newInstance(recordId);
                 default:
                     return EmptyFragment.newInstance();
             }

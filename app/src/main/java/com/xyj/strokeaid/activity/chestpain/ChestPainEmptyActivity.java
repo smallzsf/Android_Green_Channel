@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.distutil.DistListUtil;
 
 public class ChestPainEmptyActivity extends AppCompatActivity {
     DistListUtil util = new DistListUtil(this);

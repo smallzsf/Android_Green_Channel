@@ -29,19 +29,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_5"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xjb"
                     android:text="心肌炎" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_6"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_gxb"
                     android:text="冠心病" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_7"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_bmxxjb"
                     android:text="瓣膜性心脏病" />
             </LinearLayout>
 
@@ -49,19 +54,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_8"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_cjxxjgs"
                     android:text="陈旧性心肌梗死" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_9"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xjt"
                     android:text="心绞痛" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_24"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_zlxqx"
                     android:text="张力性气胸" />
 
             </LinearLayout>
@@ -70,19 +80,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_10"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xj"
                     android:text="心悸" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_11"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_fc"
                     android:text="房颤" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_12"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_gxy"
                     android:text="高血压" />
 
             </LinearLayout>
@@ -91,19 +107,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_13"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xs"
                     android:text="心衰" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_14"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_fp"
                     android:text="房扑" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_15"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_sz"
                     android:text="室早" />
 
             </LinearLayout>
@@ -112,19 +132,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_16"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_fz"
                     android:text="房早" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_17"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_sss"
                     android:text="室上速" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_18"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xby"
                     android:text="心包炎" />
 
             </LinearLayout>
@@ -133,19 +158,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_19"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xbjy"
                     android:text="心包积液" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_20"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xjq"
                     android:text="心肌桥" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_23"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_zdml"
                     android:text="主动脉瘤" />
 
             </LinearLayout>
@@ -155,14 +184,18 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal">
 
+
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_1"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_xlsc"
                     android:text="心律失常" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_2"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_kzxxjb"
                     android:text="扩张性心肌病" />
 
             </LinearLayout>
@@ -171,14 +204,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_3"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_qxxxjb"
                     android:text="缺血性心肌病" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_4"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_fhxxjb"
                     android:text="肥厚性心肌病" />
 
             </LinearLayout>
@@ -188,14 +224,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+
                 <CheckBox
                     android:id="@+id/cb_non_acs_21"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_zdmgbjxz"
                     android:text="主动脉观壁间血肿" />
 
                 <CheckBox
                     android:id="@+id/cb_non_acs_22"
                     style="@style/XyjCheckBoxHorizontalWeight"
+                    android:tag="cpc_unacs_tbxdmzyyhxky"
                     android:text="透壁性动脉粥样硬化性溃疡" />
 
             </LinearLayout>

@@ -36,27 +36,17 @@ public class StrokeNewScoreContentFragment extends BaseFragment {
     @BindView(R.id.srl_fresh_frag_stoke_thrombolytic)
     SwipeRefreshLayout srlFreshFragStokeThrombolytic;
 
-    private String mPatientId;
-    private String mDocId;
     private StrokeProcessRvAdapter mProcessRvAdapter;
     private List<StrokeProcessBean> mStrokeProcessBeans;
+    private String mRecordId;
 
     public StrokeNewScoreContentFragment() {
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param patientId 患者ID
-     * @param docId     医生id
-     * @return A new instance of fragment StrokeAngioplastyFragment.
-     */
-    public static StrokeNewScoreContentFragment newInstance(String patientId, String docId) {
+    public static StrokeNewScoreContentFragment newInstance(String recordId) {
         StrokeNewScoreContentFragment fragment = new StrokeNewScoreContentFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,8 +55,7 @@ public class StrokeNewScoreContentFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -77,7 +66,6 @@ public class StrokeNewScoreContentFragment extends BaseFragment {
         mProcessRvAdapter = new StrokeProcessRvAdapter(R.layout.adapter_rv_stroke_path_item, mStrokeProcessBeans);
 
         rvContentFragStokeThrombolytic.setLayoutManager(new LinearLayoutManager(mActivity));
-     //   rvContentFragStokeThrombolytic.addItemDecoration(new SpacesItemDecoration(0, 0, 0, 1, LinearLayout.VERTICAL));
         rvContentFragStokeThrombolytic.setAdapter(mProcessRvAdapter);
         mProcessRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
     }
@@ -101,7 +89,7 @@ public class StrokeNewScoreContentFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_stroke_thrombolysis;
+        return R.layout.stroke_fragment_thrombolysis;
     }
 
     @Override

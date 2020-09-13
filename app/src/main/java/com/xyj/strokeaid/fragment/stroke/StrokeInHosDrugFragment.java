@@ -20,6 +20,7 @@ import com.xyj.strokeaid.adapter.AfterOperationDrugRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.AfterOperationDrugBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
 
@@ -37,7 +38,7 @@ import butterknife.OnClick;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class StrokeInHosDrugFragment extends BaseFragment {
+public class StrokeInHosDrugFragment extends BaseStrokeFragment {
 
 
     @BindView(R.id.tv_antiplatelet_frag_sihd)
@@ -108,8 +109,6 @@ public class StrokeInHosDrugFragment extends BaseFragment {
     private RadioButton rbAnticoagulantsNo;
     private TextTimeBar ttbAnticoagulants;
 
-    private String mPatientId;
-    private String mDocId;
 
     private AfterOperationDrugRvAdapter mAnticoagulantsRvAdapter;
     private List<AfterOperationDrugBean> mAnticoagulantsBeans;
@@ -126,23 +125,14 @@ public class StrokeInHosDrugFragment extends BaseFragment {
         // Required empty public constructor
     }
 
-    public static StrokeInHosDrugFragment newInstance(String patientId, String docId) {
+    public static StrokeInHosDrugFragment newInstance(String recordId) {
         StrokeInHosDrugFragment fragment = new StrokeInHosDrugFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
-    }
 
     @Override
     public void onResume() {

@@ -1,7 +1,10 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -13,15 +16,31 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
+import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
+import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
+import com.xyj.strokeaid.view.ItemEditBar;
+import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * DiagnosticEvaluationFragment
@@ -33,23 +52,20 @@ import butterknife.BindView;
  */
 public class DiagnosticEvaluationFragment extends BaseFragment {
 
-
     @BindView(R.id.rb_acute)
     RadioButton rbAcute;
     @BindView(R.id.rb_progressivity)
     RadioButton rbProgressivity;
     @BindView(R.id.rg_have_disease_way)
     RadioGroup rgHaveDiseaseWay;
-    /* @BindView(R.id.doctor_name_line)
-     View doctorNameLine;*/
     @BindView(R.id.rb_court)
     RadioButton rbCourt;
     @BindView(R.id.rb_lobby)
     RadioButton rbLobby;
     @BindView(R.id.rg_progress_site)
     RadioGroup rgProgressSite;
-    @BindView(R.id.iv_refresh1)
-    ImageView ivRefresh1;
+    //    @BindView(R.id.iv_refresh1)
+//    ImageView ivRefresh1;
     @BindView(R.id.ll_progress_site)
     LinearLayout llProgressSite;
     @BindView(R.id.es_diagnosis)
@@ -68,20 +84,20 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner etNosogenesis;
     @BindView(R.id.ll_ischemic_stroke)
     LinearLayout llIschemicStroke;
-    @BindView(R.id.tv_name)
-    TextView tvName;
-    @BindView(R.id.app_tv_editSpinner_time)
-    TextView appTvEditSpinnerTime;
-    @BindView(R.id.iv_refresh)
-    ImageView ivRefresh;
+    //    @BindView(R.id.tv_name)
+//    TextView tvName;
+//    @BindView(R.id.app_tv_editSpinner_time)
+//    TextView appTvEditSpinnerTime;
+//    @BindView(R.id.iv_refresh)
+//    ImageView ivRefresh;
     @BindView(R.id.sv_admitting_diagnosis)
     ScrollView svAdmittingDiagnosis;
     @BindView(R.id.sv_discharge_diagnosis)
     ScrollView svDischargeDiagnosis;
-    @BindView(R.id.btn_get_data)
-    AppCompatButton btnGetData;
-    @BindView(R.id.btn_confirm)
-    AppCompatButton btnConfirm;
+    //    @BindView(R.id.btn_get_data)
+//    AppCompatButton btnGetData;
+//    @BindView(R.id.btn_confirm)
+//    AppCompatButton btnConfirm;
     @BindView(R.id.rb_moyamoya_disease_yes)
     RadioButton rbMoyamoyaDiseaseYes;
     @BindView(R.id.rb_moyamoya_disease_no)
@@ -98,28 +114,83 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner esApoplexyDoctor;
     @BindView(R.id.et_input_weight)
     EditText etInputWeight;
+    @BindView(R.id.tv_time_diagnosis_progress)
+    TextTimeBar ttbDiagnosisProgress;
+    @BindView(R.id.tv_time_diagnosis)
+    TextTimeBar ttbDiagnosis;
+    @BindView(R.id.btn_save)
+    AppCompatButton btnSave;
+    @BindView(R.id.cb_cpc_left1)
+    CheckBox cbCpcLeft1;
+    @BindView(R.id.cb_cpc_left2)
+    CheckBox cbCpcLeft2;
+    @BindView(R.id.cb_cpc_left3)
+    CheckBox cbCpcLeft3;
+    @BindView(R.id.cb_cpc_left4)
+    CheckBox cbCpcLeft4;
+    @BindView(R.id.cb_cpc_left5)
+    CheckBox cbCpcLeft5;
+    @BindView(R.id.cb_cpc_right1)
+    CheckBox cbCpcRight1;
+    @BindView(R.id.cb_cpc_right2)
+    CheckBox cbCpcRight2;
+    @BindView(R.id.cb_cpc_right3)
+    CheckBox cbCpcRight3;
+    @BindView(R.id.cb_cpc_right4)
+    CheckBox cbCpcRight4;
+    @BindView(R.id.cb_cpc_right5)
+    CheckBox cbCpcRight5;
+    @BindView(R.id.cpc_ll)
+    LinearLayout llCpc;
+    @BindView(R.id.ieb_hemorrhage_size)
+    ItemEditBar iebHemorrhageSize;
+    @BindView(R.id.rg_have_cerebral_hernia)
+    RadioGroup rgHaveCerebralHernia;
+    @BindView(R.id.es_dmlpl)
+    EditSpinner esDmlpl;
+    @BindView(R.id.rg_dmlpls)
+    RadioGroup rgDmlpls;
+    @BindView(R.id.ll_dmlpl)
+    LinearLayout llDmlpl;
+    @BindView(R.id.ll_dmlpl_unt)
+    LinearLayout llDmlplUnt;
+    @BindView(R.id.ieb_unt_Hess)
+    ItemEditBar iebUntHess;
+    @BindView(R.id.ieb_fisher)
+    ItemEditBar iebFisher;
+    @BindView(R.id.rg_nmdpzl)
+    RadioGroup rgNmdpzl;
+    @BindView(R.id.es_cxxcz)
+    EditSpinner esCxxcz;
+    @BindView(R.id.rg_symptom)
+    RadioGroup rgSymptom;
+    @BindView(R.id.rg_narrow)
+    RadioGroup rgNarrow;
+    @BindView(R.id.ll_symptom)
+    LinearLayout llSymptom;
 
     @BindView(R.id.ll_diagnostic_evaluation)
     LinearLayout llDiagnosticEvaluation;
-    private String mPatientId;
-    private String mDocId;
+
+    private int isDmpl = -1; //1动脉破裂 0非动脉破裂
 
     private ArrayList<String> nosogenesisList;
+
+    private DiagnosticEvaluationBean bean = new DiagnosticEvaluationBean();
 
     /**
      * 0 == 入院诊断
      * 1 == 出院诊断
      */
+    private String mRecordId;
 
     public DiagnosticEvaluationFragment() {
-        // Required empty public constructor
     }
 
-    public static DiagnosticEvaluationFragment newInstance(String patientId, String docId) {
+    public static DiagnosticEvaluationFragment newInstance(String recordId) {
         DiagnosticEvaluationFragment fragment = new DiagnosticEvaluationFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -128,8 +199,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
@@ -138,8 +208,8 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        View llBottom = getActivity().findViewById(R.id.ll_bottom);
-        HideBottonUtils.getInstance().getHideBotton(llDiagnosticEvaluation, llBottom);
+//        View llBottom = getActivity().findViewById(R.id.ll_bottom);
+//        HideBottonUtils.getInstance().getHideBotton(llDiagnosticEvaluation, llBottom);
     }
 
 
@@ -151,6 +221,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
         loadData();
+        queryData();
     }
 
 
@@ -161,22 +232,131 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         rgHaveDiseaseWay.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radiobutton = (RadioButton) group.findViewById(group.getCheckedRadioButtonId());
-                //  Toast.makeText(getActivity(),"选中的内容是"+ radiobutton.getText().toString(),Toast.LENGTH_LONG).show();
                 switch (checkedId) {
                     case R.id.rb_acute:
                         llProgressSite.setVisibility(View.GONE);
+                        bean.setModeofonset("cpc_evolveaddress_jx");
                         break;
 
                     case R.id.rb_progressivity:
                         llProgressSite.setVisibility(View.VISIBLE);
                         //获取选中的radiobutton内容 group.getCheckedRadioButtonId()
+                        bean.setModeofonset("cpc_evolveaddress_jzx");
+                        break;
+                }
+            }
+        });
+        //是否右症状
+        rgSymptom.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_symptom_yes:
+                        bean.setIshavesymptomincarotidarteryinit("cpc_hascas_true");
+                        break;
+                    case R.id.rb_symptom_no:
+                        bean.setIshavesymptomincarotidarteryinit("cpc_hascas_false");
+                        break;
+                }
+            }
+        });
+        //是否有狭窄
+        rgNarrow.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_narrow_yes:
+                        bean.setIsnarrowinit("cpc_bool_true");
+                        break;
+                    case R.id.rb_narrow_no:
+                        bean.setIsnarrowinit("cpc_bool_false");
+                        break;
+                }
+            }
+        });
+        //进展地点
+        rgProgressSite.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_court:
+                        bean.setEvolveaddress("cpc_evolveaddress_yn");
+                        break;
 
+                    case R.id.rb_lobby:
+                        //获取选中的radiobutton内容 group.getCheckedRadioButtonId()
+                        bean.setEvolveaddress("cpc_evolveaddress_yw");
                         break;
                 }
             }
         });
 
+        //是否脑疝
+        rgHaveCerebralHernia.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_cerebral_hernia_ture:
+                        llProgressSite.setVisibility(View.GONE);
+                        bean.setIsherniainit("cpc_bool_true");
+                        break;
+
+                    case R.id.rb_cerebral_hernia_false:
+                        llProgressSite.setVisibility(View.VISIBLE);
+                        bean.setIsherniainit("cpc_bool_true");
+                        break;
+                }
+            }
+        });
+
+        //有无既往动脉瘤破裂史
+        rgDmlpls.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_dmlpls_ture:
+                        llProgressSite.setVisibility(View.GONE);
+                        bean.setIshadruptureofaneurysminit("cpc_exist_true");
+                        break;
+
+                    case R.id.rb_dmlpls_false:
+                        llProgressSite.setVisibility(View.VISIBLE);
+                        bean.setIshadruptureofaneurysminit("cpc_exist_false");
+                        break;
+                }
+            }
+        });
+
+        //尼莫地平治疗
+        rgNmdpzl.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_nmdpzl_ture:
+                        bean.setIsusenimodipineinit("cpc_bool_true");
+                        break;
+                    case R.id.rb_nmdpzl_false:
+                        bean.setIsusenimodipineinit("cpc_bool_false");
+                        break;
+                }
+            }
+        });
+        //动脉瘤破裂
+        esDmlpl.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
+            @Override
+            public void getSeletedString(String text) {
+                if (text.contains("蛛网膜下腔出血")) {
+//                    llDmlpl.setVisibility(View.VISIBLE);
+                    llDmlplUnt.setVisibility(View.VISIBLE);
+                } else if (text.contains("蛛网膜下腔出血合并脑出血")) {
+//                    llDmlpl.setVisibility(View.VISIBLE);
+                    llDmlplUnt.setVisibility(View.VISIBLE);
+                } else {
+//                    llDmlpl.setVisibility(View.GONE);
+                    llDmlplUnt.setVisibility(View.GONE);
+                }
+            }
+        });
         //诊断结果
         esDiagnosis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
@@ -186,30 +366,61 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
                     llIschemicStroke.setVisibility(View.VISIBLE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
                     llOtherDiagnostic.setVisibility(View.GONE);
+                    llCpc.setVisibility(View.GONE);
                     llIschemicStroke.requestLayout();
                     if (etNosogenesis.getText().contains("其他原因所致的缺血性卒中（SOE）")) {
                         etNosogenesis.setItemData(nosogenesisList);
                     } else {
                         llMoyamoyaDisease.setVisibility(View.GONE);
                     }
+                    llSymptom.setVisibility(View.GONE);
+                    llDmlpl.setVisibility(View.GONE);
                 } else if (text.contains("出血性卒中")) {
                     llHemorrhagicApoplexy.setVisibility(View.VISIBLE);
                     llIschemicStroke.setVisibility(View.GONE);
                     llOtherDiagnostic.setVisibility(View.GONE);
-                } else if (text.contains("其它")) {
+                    bean.setHemorrhagicstrokeinit(esHemorrhagicApoplexy.getSelectData()[1]);
+                    llDmlpl.setVisibility(View.VISIBLE);
+                    llCpc.setVisibility(View.VISIBLE);
+                    llSymptom.setVisibility(View.GONE);
+                } else if (text.contains("颈部动脉狭窄或闭塞")) {
+                    llSymptom.setVisibility(View.VISIBLE);
+                    llDmlpl.setVisibility(View.GONE);
+                } else if (text.contains("其他")) {
                     llOtherDiagnostic.setVisibility(View.VISIBLE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
                     llIschemicStroke.setVisibility(View.GONE);
+                    llCpc.setVisibility(View.GONE);
+                    llSymptom.setVisibility(View.GONE);
+                    llDmlpl.setVisibility(View.GONE);
                 } else {
                     llIschemicStroke.setVisibility(View.GONE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
                     llOtherDiagnostic.setVisibility(View.GONE);
+                    llCpc.setVisibility(View.GONE);
+                    llSymptom.setVisibility(View.GONE);
+                    llDmlpl.setVisibility(View.GONE);
                 }
 
                 llMoyamoyaDisease.setVisibility(View.GONE);
             }
         });
-
+        esCxxcz.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
+            @Override
+            public void getSeletedString(String text) {
+                if (text.equals("动脉瘤破裂")) {
+                    llDmlplUnt.setVisibility(View.VISIBLE);
+                    //动脉瘤破裂
+                    esDmlpl.setStringArrayId(R.array.rupturedAneurysm);
+                    isDmpl = 1;
+                } else if (text.equals("非动脉瘤破裂")) {
+                    llDmlplUnt.setVisibility(View.GONE);
+                    //非动脉瘤破裂
+                    esDmlpl.setStringArrayId(R.array.ruptureofnonaneurysm);
+                    isDmpl = 0;
+                }
+            }
+        });
         //发病机制
         etNosogenesis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
@@ -231,51 +442,169 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
                 // Toast.makeText(getActivity(), "选中的内容是" + radiobutton.getText().toString(), Toast.LENGTH_LONG).show();
                 switch (checkedId) {
                     case R.id.rb_moyamoya_disease_yes:
-
+                        bean.setIsmoyamoyainit("cpc_bool_true");
                         break;
 
                     case R.id.rb_moyamoya_disease_no:
-
-
+                        bean.setIsmoyamoyainit("cpc_bool_false");
                         break;
                 }
             }
         });
 
+        btnSave.setOnClickListener(v -> {
+            getViewData();
+        });
+
     }
 
+    private void getViewData() {
+        bean.setEvolvetime(ttbDiagnosisProgress.getTime());
+        bean.setDiagnosticresultinit(esDiagnosis.getSelectData()[1]);
+        bean.setIschemicstrokeinit(etIschemicStroke.getSelectData()[1]);
+        bean.setPathogenesisinit(etNosogenesis.getSelectData()[1]);
+        bean.setDiagnostictimeinit(ttbDiagnosis.getTime());
+        bean.setEmergencydoctorCzzdinit(esEmergencyTreatmentDoctor.getText());
+        bean.setStrokedoctorCzzdinit(esApoplexyDoctor.getText());
+        /**
+         * 卒中诊断 左 侧的出血部位
+         */
+        String checkBoxValueLeft = getCheckBoxValue(cbCpcLeft1, cbCpcLeft2, cbCpcLeft3, cbCpcLeft4, cbCpcLeft5);
+        bean.setHemorrhageinleftinit(checkBoxValueLeft);
+        /**
+         * 卒中诊断 右 侧的出血部位
+         */
+        String checkBoxValueRight = getCheckBoxValue(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
+        bean.setHemorrhageinrightinit(checkBoxValueRight);
+        bean.setHemorrhageamountinit(iebHemorrhageSize.getEditContent());
+        if (isDmpl == 1) {
+            /**
+             * 动脉瘤破裂
+             */
+            bean.setRuptureofaneurysminit(esDmlpl.getSelectData()[1]);
+        } else if (isDmpl == 0) {
+            /**
+             * 非动脉瘤破裂
+             */
+            bean.setRuptureofnonaneurysminit(esDmlpl.getSelectData()[1]);
+        }
+
+        bean.setHunthesslevelinit(iebUntHess.getEditContent());
+        bean.setFisherlevelinit(iebFisher.getEditContent());
+        bean.setOtherdiagnosticresultinit(etInputWeight.getText().toString().trim());
+        dataSave(bean);
+    }
+
+    private void dataSave(DiagnosticEvaluationBean bean) {
+        bean.setRecordId("1111");
+        String request = GsonUtils.getGson().toJson(bean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveDiagnosticEvaluation(requestBody)
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("保存数据成功");
+                            } else {
+                                showToast(response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        showToast(call.toString());
+                    }
+                });
+    }
+
+    //查询数据
+    private void queryData() {
+        //调用获取数据接口
+//        DiagnosticEvaluationBean p = new DiagnosticEvaluationBean();
+//        p.setRecordId(mRecordId);
+//        String request = GsonUtils.getGson().toJson(p);
+//        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        mRecordId = "1111";
+        BaseRequestBean<DiagnosticEvaluationBean> requestBean = new BaseRequestBean<>(mRecordId, 1, new DiagnosticEvaluationBean());
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getDiagnosticEvaluation(requestBean.getResuestBody(requestBean))
+                .enqueue(new Callback<BaseObjectBean<DiagnosticEvaluationBean>>() {
+
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Response<BaseObjectBean<DiagnosticEvaluationBean>> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast("获取数据成功");
+                                if (response.body().getData() != null) {
+                                    bean = response.body().getData();
+                                    queryDataDiagnosticEvaluation();
+                                }
+
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Throwable t) {
+                        LogUtils.d(call.toString());
+                        showToast(call.toString());
+                    }
+                });
+    }
+
+    private void queryDataDiagnosticEvaluation() {
+
+    }
 
     private void loadData() {
-        ArrayList<String> diagnosisList = new ArrayList<>();
-        diagnosisList.add("请选择");
-        diagnosisList.add("缺血性卒中");
-        diagnosisList.add("出血性卒中");
-        diagnosisList.add("非破裂动脉瘤");
-        diagnosisList.add("颈部动脉狭窄或闭塞");
-        diagnosisList.add("其它");
-        esDiagnosis.setItemData(diagnosisList);
+//        ArrayList<String> diagnosisList = new ArrayList<>();
+//        diagnosisList.add("请选择");
+//        diagnosisList.add("缺血性卒中");
+//        diagnosisList.add("出血性卒中");
+//        diagnosisList.add("非破裂动脉瘤");
+//        diagnosisList.add("颈部动脉狭窄或闭塞");
+//        diagnosisList.add("其它");
+//        esDiagnosis.setItemData(diagnosisList);
+        esDiagnosis.setStringArrayId(R.array.diagnosisList);
 
-        ArrayList<String> ischemicStrokeList = new ArrayList<>();
-        ischemicStrokeList.add("请选择");
-        ischemicStrokeList.add("脑梗死");
-        ischemicStrokeList.add("短暂性脑缺血(TIA)");
-        etIschemicStroke.setItemData(ischemicStrokeList);
+//        ArrayList<String> ischemicStrokeList = new ArrayList<>();
+//        ischemicStrokeList.add("请选择");
+//        ischemicStrokeList.add("脑梗死");
+//        ischemicStrokeList.add("短暂性脑缺血(TIA)");
+//        etIschemicStroke.setItemData(ischemicStrokeList);
+        etIschemicStroke.setStringArrayId(R.array.ischemicStrokeList);
 
-        nosogenesisList = new ArrayList<>();
-        nosogenesisList.add("请选择");
-        nosogenesisList.add("大动脉粥样硬化性卒中（LAA）");
-        nosogenesisList.add("心源性脑栓塞（CE）");
-        nosogenesisList.add("小动脉闭塞性卒中或腔隙性卒中（SAA）");
-        nosogenesisList.add("其他原因所致的缺血性卒中（SOE）");
-        nosogenesisList.add("不明原因的缺血性卒中（SUE）");
-        etNosogenesis.setItemData(nosogenesisList);
+//        nosogenesisList = new ArrayList<>();
+//        nosogenesisList.add("请选择");
+//        nosogenesisList.add("大动脉粥样硬化性卒中（LAA）");
+//        nosogenesisList.add("心源性脑栓塞（CE）");
+//        nosogenesisList.add("小动脉闭塞性卒中或腔隙性卒中（SAA）");
+//        nosogenesisList.add("其他原因所致的缺血性卒中（SOE）");
+//        nosogenesisList.add("不明原因的缺血性卒中（SUE）");
+//        etNosogenesis.setItemData(nosogenesisList);
+        etNosogenesis.setStringArrayId(R.array.nosogenesisList);
 
         //急诊医生
-        ArrayList<String> hemorrhagicApoplexyList = new ArrayList<>();
-        hemorrhagicApoplexyList.add("请选择");
-        hemorrhagicApoplexyList.add("动脉瘤破裂");
-        hemorrhagicApoplexyList.add("非动脉瘤破裂");
-        esHemorrhagicApoplexy.setItemData(hemorrhagicApoplexyList);
+//        ArrayList<String> hemorrhagicApoplexyList = new ArrayList<>();
+//        hemorrhagicApoplexyList.add("请选择");
+//        hemorrhagicApoplexyList.add("动脉瘤破裂");
+//        hemorrhagicApoplexyList.add("非动脉瘤破裂");
+//        esHemorrhagicApoplexy.setItemData(hemorrhagicApoplexyList);
+        esCxxcz.setStringArrayId(R.array.hemorrhagicApoplexyList);
+
         //急诊医生
         ArrayList<String> emergencyTreatmentDoctorList = new ArrayList<>();
         emergencyTreatmentDoctorList.add("请选择");
@@ -289,6 +618,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         emergencyTreatmentDoctorList.add("刘蕾");
         emergencyTreatmentDoctorList.add("程亚辉");
         esEmergencyTreatmentDoctor.setItemData(emergencyTreatmentDoctorList);
+
         //卒中医生
         ArrayList<String> apoplexyDoctorList = new ArrayList<>();
         apoplexyDoctorList.add("请选择");

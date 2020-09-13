@@ -12,14 +12,18 @@ import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
  */
 public class StrokeTrigaeInfoBean extends ChestPainTriageInfoBean {
 
+    public StrokeTrigaeInfoBean() {
+        super();
+    }
+
     /**
      * 卒中医生接诊
      */
-    protected String strokedoctorreceptiontime;
+    public String strokedoctorreceptiontime;
     /**
      * 卒中医生
      */
-    protected String strokedoctorreception;
+    public String strokedoctorreception;
 
     public String getStrokedoctorreceptiontime() {
         return strokedoctorreceptiontime;

@@ -4,36 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/color_bg"
-    tools:context=".fragment.stroke.StrokeBloodExaminationFragment">
+    android:orientation="vertical">
 
-
-    <com.flyco.tablayout.SegmentTabLayout
-        android:id="@+id/stl_title_frag_stroke_medice"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="@dimen/dp_8"
-        android:layout_marginEnd="@dimen/dp_8"
-        tl:tl_bar_color="@color/white"
-        tl:tl_indicator_color="@color/colorPrimary"
-        tl:tl_indicator_corner_radius="8dp"
-        tl:tl_tab_padding="5dp"
-        tl:tl_textsize="@dimen/item_title_size" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white" />
-
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_content_act_stroke_main"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
         android:overScrollMode="never"
-        android:scrollbars="none" />
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_blood_sampling_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bottomLineVisible="true"
+                tl:title="采血时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_blood_inspect_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bottomLineVisible="true"
+                tl:title="血样送检时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_send_verify_lab_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bottomLineVisible="true"
+                tl:title="送达检验科" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_start_verify_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bottomLineVisible="true"
+                tl:title="开始检验时间" />
+
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_blood_report_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bottomLineVisible="true"
+                tl:title="血检报告时间" />
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_blood_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bar_bottomLineVisible="true"
+                tl:bar_leftText="血型（ABO）"
+                tl:bar_rightText="选择血型"
+                tl:bar_rightTextVisible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_fingertip_blood"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:ieb_bottom_line_visible="true"
+                tl:ieb_title="指尖血糖"
+                tl:ieb_unit_text="@string/app_mmol"
+                tl:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_vein_blood"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:ieb_bottom_line_visible="true"
+                tl:ieb_title="静脉血糖"
+                tl:ieb_unit_text="@string/app_mmol"
+                tl:ieb_unit_visible="true" />
+
+            <com.xyj.strokeaid.view.SettingBar
+                android:id="@+id/sb_blood_report"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                tl:bar_bottomLineVisible="true"
+                tl:bar_leftText="血检报告"
+                tl:bar_rightText="上传"
+                tl:bar_rightTextVisible="true" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_blood_text_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:visibility="visible"
+                tools:listitem="@layout/adapter_blood_exam_detail_item" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/space_height" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <include
+        layout="@layout/view_two_horizontal_bottom_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/item_normal_margin" />
+
 </LinearLayout>

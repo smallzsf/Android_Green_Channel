@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,7 +24,7 @@ import butterknife.OnClick;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class StrokeOutHosDrugFragment extends BaseFragment {
+public class StrokeOutHosDrugFragment extends BaseStrokeFragment {
 
     @BindView(R.id.cb_pressure_frag_sohd)
     CheckBox cbPressureFragSohd;
@@ -60,29 +61,16 @@ public class StrokeOutHosDrugFragment extends BaseFragment {
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
 
-    private String mPatientId;
-    private String mDocId;
-
     public StrokeOutHosDrugFragment() {
         // Required empty public constructor
     }
 
-    public static StrokeOutHosDrugFragment newInstance(String patientId, String docId) {
+    public static StrokeOutHosDrugFragment newInstance(String recordId) {
         StrokeOutHosDrugFragment fragment = new StrokeOutHosDrugFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
-        }
     }
 
     @Override

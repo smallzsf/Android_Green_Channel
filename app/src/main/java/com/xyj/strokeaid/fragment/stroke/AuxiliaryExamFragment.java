@@ -100,24 +100,19 @@ public class AuxiliaryExamFragment extends BaseFragment {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
-    @BindView(R.id.ll_auxiliary_exam)
-    LinearLayout llAuxiliaryExam;
 
-    private String mPatientId;
-    private String mDocId;
     protected TimePickerView mTimePickerView;
 
     private int type = 0;
+    private String mRecordId;
 
     public AuxiliaryExamFragment() {
-        // Required empty public constructor
     }
 
-    public static AuxiliaryExamFragment newInstance(String patientId, String docId) {
+    public static AuxiliaryExamFragment newInstance(String recordId) {
         AuxiliaryExamFragment fragment = new AuxiliaryExamFragment();
         Bundle args = new Bundle();
-        args.putString(IntentKey.PATIENT_ID, patientId);
-        args.putString(IntentKey.DOC_ID, docId);
+        args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -126,17 +121,13 @@ public class AuxiliaryExamFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mPatientId = getArguments().getString(IntentKey.PATIENT_ID);
-            mDocId = getArguments().getString(IntentKey.DOC_ID);
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        View llBottom = getActivity().findViewById(R.id.ll_bottom);
-        HideBottonUtils.getInstance().getHideBotton(llAuxiliaryExam, llBottom);
     }
 
     @Override
@@ -153,7 +144,7 @@ public class AuxiliaryExamFragment extends BaseFragment {
     /**
      * 设置显示内容, tablayout 切换时调用
      *
-     * @param type 0、默认状态（血液检查）
+     * @param type 0、默认状态（心电）
      *             1、 CT检查
      *             2、 核磁检查
      *             3、 超声检查
@@ -179,8 +170,8 @@ public class AuxiliaryExamFragment extends BaseFragment {
 
             //TODO 接口请求
             SendCTDataBean sendCTDataBean = new SendCTDataBean();
-            sendCTDataBean.setId(mPatientId);
-            sendCTDataBean.setRdcord_id(mPatientId);
+            sendCTDataBean.setId(mRecordId);
+            sendCTDataBean.setRdcord_id(mRecordId);
             getCTData(sendCTDataBean);
         } else if (type == 2) {
             // 核磁检查
@@ -200,8 +191,8 @@ public class AuxiliaryExamFragment extends BaseFragment {
             tvPhotoFragAe.setText("查看MRI片子");
             //TODO 接口请求
             SendImageExaminteDataBean sendImageExaminteDataBean = new SendImageExaminteDataBean();
-            sendImageExaminteDataBean.setId(mPatientId);
-            sendImageExaminteDataBean.setRdcord_id(mPatientId);
+            sendImageExaminteDataBean.setId(mRecordId);
+            sendImageExaminteDataBean.setRdcord_id(mRecordId);
             getImageExaminte(sendImageExaminteDataBean);
         } else if (type == 3) {
             // 超声检查
@@ -222,8 +213,8 @@ public class AuxiliaryExamFragment extends BaseFragment {
 
             //TODO 接口请求
             SendImageExaminteDataBean sendImageExaminteDataBean = new SendImageExaminteDataBean();
-            sendImageExaminteDataBean.setId(mPatientId);
-            sendImageExaminteDataBean.setRdcord_id(mPatientId);
+            sendImageExaminteDataBean.setId(mRecordId);
+            sendImageExaminteDataBean.setRdcord_id(mRecordId);
             getImageExaminte(sendImageExaminteDataBean);
         } else {
             // 默认状态
@@ -239,12 +230,12 @@ public class AuxiliaryExamFragment extends BaseFragment {
             // 报告显示
             llPhotoFragAe.setVisibility(View.GONE);
             llReportFragAe.setVisibility(View.VISIBLE);
-            tvReportFragAe.setText("查看血检报告");
+            tvReportFragAe.setText("查看心电报告");
 
             //TODO 接口请求
             SendBloodDataBean sendBloodDataBean = new SendBloodDataBean();
-            sendBloodDataBean.setId(mPatientId);
-            sendBloodDataBean.setRdcord_id(mPatientId);
+            sendBloodDataBean.setId(mRecordId);
+            sendBloodDataBean.setRdcord_id(mRecordId);
             getBloodData(sendBloodDataBean);
         }
         // 清除数据

@@ -367,7 +367,10 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                                 }
 
                             } else {
-                                showToast(response.body().getMessage());
+                                     showToast(TextUtils.isEmpty(response.body().getMessage())
+                                            ? getString(R.string.http_tip_data_save_error)
+                                            : response.body().getMessage());
+
                             }
                         }
                     }
@@ -376,6 +379,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
+                        showToast(call.toString());
                     }
                 });
     }
@@ -407,7 +411,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
+                        showToast(call.toString());
                     }
                 });
     }
@@ -426,19 +430,22 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
          *  "cpc_bqpg_jxxxm": "间歇性胸闷/胸痛",
          *   "cpc_bqpg_zzyhj": "症状已缓解"
          */
-        if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_cxxxm")) {
-            rbIntermittentChestPain.setChecked(true);
-        } else if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_jxxxm")) {
-            rbPersistentChestPain.setChecked(true);
-        } else {
-            rbRelievedChestPain.setChecked(true);
-        }
+        if (!TextUtils.isEmpty(chestPainDiseaseRecordBean.getConditionassessment())){
+            if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_cxxxm")) {
+                rbIntermittentChestPain.setChecked(true);
+            } else if (chestPainDiseaseRecordBean.getConditionassessment().contains("cpc_bqpg_jxxxm")) {
+                rbPersistentChestPain.setChecked(true);
+            } else {
+                rbRelievedChestPain.setChecked(true);
+            }
 
+        }
 
 
         /**
          * 病情评估明细
          */
+
         String dischargedunacs = chestPainDiseaseRecordBean.getConditionassessmentdetail();
         if (!TextUtils.isEmpty(dischargedunacs)) {
             cbNonAcs1.setChecked(dischargedunacs.contains("cpc_bqpgmx_hxkn"));

@@ -38,26 +38,27 @@
     </string-array>
 
     <string-array name="chest_pain_operation_delay_reason">
-        <item>症状不明显延误诊断</item>
-        <item>家属未到场</item>
-        <item>医生决策延误</item>
-        <item>排队挂号、缴费、办住院时间长</item>
-        <item>急诊科处理时间长</item>
-        <item>手术期间出现并发症</item>
-        <item>未实施绕行急诊方案</item>
-        <item>导管室人员未到位</item>
-        <item>药物缺乏</item>
-        <item>知情同意时间过长</item>
-        <item>病情不稳定</item>
-        <item>绕行急诊科但未直接入导管室</item>
-        <item>导管室占台</item>
-        <item>转运时间长</item>
-        <item>经费问题</item>
-        <item>心内科会诊时间长</item>
-        <item>血管通路困难</item>
-        <item>难以绕行病变区域</item>
-        <item>急需影像学资料再行PCI</item>
-        <item>其他原因</item>
+        <item>症状不明显延误诊断:cpc_delayreason_zzbmx</item>
+        <item>家属未到场:cpc_delayreason_jswdc</item>
+        <item>医生决策延误:cpc_delayreason_ysjcyw</item>
+        <item>排队挂号、缴费、办住院时间长:cpc_delayreason_pdgh</item>
+        <item>急诊科处理时间长:cpc_delayreason_jzkclsjc</item>
+        <item>手术期间出现并发症:cpc_delayreason_ssqjcxbfz</item>
+        <item>超过再灌注时间:cpc_delayreason_cgzgzsj</item>
+        <item>未实施绕行急诊方案:cpc_delayreason_wssrxjzfa</item>
+        <item>导管室人员未到位:cpc_delayreason_dgsrywdw</item>
+        <item>药物缺乏:cpc_delayreason_ywqf</item>
+        <item>知情同意时间过长:cpc_delayreason_zqtysjgc</item>
+        <item>病情不稳定:cpc_delayreason_bqbwd</item>
+        <item>绕行急诊科但未直接入导管室:cpc_delayreason_rxjzk</item>
+        <item>导管室占台:cpc_delayreason_dgszt</item>
+        <item>转运时间长:cpc_delayreason_zysjc</item>
+        <item>经费问题:cpc_delayreason_jfwt</item>
+        <item>心内科会诊时间长:cpc_delayreason_xnkhzsjc</item>
+        <item>血管通路困难:cpc_delayreason_xgtlkn</item>
+        <item>难以绕行病变区域:cpc_delayreason_nyrxbbqy</item>
+        <item>急需影像学资料再行PCI:cpc_delayreason_jxyxxzl</item>
+        <item>其他原因:cpc_delayreason_qt</item>
     </string-array>
 
     <string-array name="chest_pain_operation_medicinal">
@@ -65,6 +66,47 @@
         <item>低分子肝素:cpc_knyw_dfzgs</item>
         <item>比伐卢定:cpc_knyw_bfrd</item>
         <item>磺达肝癸钠:cpc_knyw_hdgkn</item>
+    </string-array>
+
+    <string-array name="diagnosisList">
+        <item>缺血性卒中:cpc_czzdjg_qxxncz</item>
+        <item>出血性卒中:cpc_czzdjg_cxxncz</item>
+        <item>非破裂动脉瘤:cpc_czzdjg_fpldml</item>
+        <item>颈部动脉狭窄或闭塞:cpc_czzdjg_jbdmxzhbs</item>
+        <item>其他:cpc_czzdjg_qtnb</item>
+    </string-array>
+
+    <string-array name="ischemicStrokeList">
+        <item>脑梗死:cpc_qxxncz_ngs</item>
+        <item>短暂性脑缺血(TIA):cpc_qxxncz_dzxnqx</item>
+    </string-array>
+
+    <string-array name="hemorrhagicApoplexyList">
+        <item>动脉瘤破裂:cpc_cxxncz_dmlpl</item>
+        <item>非动脉瘤破裂:cpc_cxxncz_fdmlpl</item>
+    </string-array>
+
+    <string-array name="rupturedAneurysm">
+        <item>蛛网膜下腔出血:cpc_ruptureofaneurysm_zwmxqcx</item>
+        <item>蛛网膜下腔出血合并脑出血:cpc_ruptureofaneurysm_zwmxqcxhbncx</item>
+        <item>其他:cpc_ruptureofaneurysm_qt</item>
+    </string-array>
+
+    <string-array name="ruptureofnonaneurysm">
+        <item>高血压脑出血:cpc_ruptureofnonaneurysm_gxyncx</item>
+        <item>海绵状血管瘤:cpc_ruptureofnonaneurysm_hmzxgl</item>
+        <item>动静脉畸形（AVM瘘）:cpc_ruptureofnonaneurysm_djmjx</item>
+        <item>静脉窦血栓形成:cpc_ruptureofnonaneurysm_jmdxsxc</item>
+        <item>淀粉样变:cpc_ruptureofnonaneurysm_dfyb</item>
+        <item>其他:cpc_ruptureofnonaneurysm_qt</item>
+    </string-array>
+
+    <string-array name="nosogenesisList">
+        <item>大动脉粥样硬化性卒中(LAA):cpc_pathogenesis_laa</item>
+        <item>心源性脑栓塞(CE):cpc_pathogenesis_ce</item>
+        <item>小动脉闭塞性卒中或腔隙性卒中(SAA):cpc_pathogenesis_saa</item>
+        <item>其他原因所致的缺血性卒中(SOE):cpc_pathogenesis_soe</item>
+        <item>不明原因的缺血性卒中(SUE):cpc_pathogenesis_sue</item>
     </string-array>
 
     <string-array name="chest_pain_operation_intraoperative_complications">
@@ -192,14 +234,14 @@
     </string-array>
 
     <string-array name="original_diagnose">
-        <item>STEMI</item>
-        <item>NSTEMI</item>
-        <item>UA</item>
-        <item>主动脉夹层</item>
-        <item>肺动脉拴塞</item>
-        <item>非ACS心源性胸痛</item>
-        <item>其他非心源性胸痛</item>
-        <item>待查</item>
+        <item>STEMI:cpc_cbzdv2_stemi</item>
+        <item>NSTEMI:cpc_cbzdv2_nstemi</item>
+        <item>UA:cpc_cbzdv2_ua</item>
+        <item>主动脉夹层:cpc_cbzdv2_zdmjc</item>
+        <item>肺动脉拴:cpc_cbzdv2_fdmss</item>
+        <item>非ACS心源性胸痛:cpc_cbzdv2_facsxyxxt</item>
+        <item>其他非心源性胸痛:cpc_cbzdv2_qtfxyxxt</item>
+        <item>待查:cpc_cbzdv2_dc</item>
     </string-array>
 
     <string-array name="confirm_diagnose">
@@ -338,6 +380,13 @@
         <item>其他:cpc_transway_other</item>
     </string-array>
 
+    <string-array name="stroke_state_of_consciousness">
+        <item>清醒:cpc_smtzys_qx</item>
+        <item>对语言有反应:cpc_smtzys_yyfy</item>
+        <item>对刺激有反应:cpc_smtzys_ctfy</item>
+        <item>对任何刺激无反应:cpc_smtzys_rhcj</item>
+    </string-array>
+
     <string-array name="chest_pain_treament_decision">
         <item>直接PCI:cpc_stemi_zgzcsv2_zjpci</item>
         <item>溶栓:cpc_stemi_zgzcsv2_rs</item>
@@ -346,4 +395,46 @@
         <item>转运PCI:cpc_stemi_zgzcsv2_zypci</item>
     </string-array>
 
+    <string-array name="chest_pain_diagnose_patients_detour">
+        <item>收入心内病房:cpc_xthzqx_srxnbf</item>
+        <item>收入急诊病房:cpc_xthzqx_srjzbf</item>
+        <item>其他:cpc_xthzqx_other</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_kxxby">
+        <item>阿司匹林:cpc_jwyysbxx_aspl</item>
+        <item>氯吡格雷:cpc_jwyysbxx_lbgl</item>
+        <item>替格普洛:cpc_jwyysbxx_tgpl</item>
+        <item>西洛他唑:cpc_jwyysbxx_xltc</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_kny">
+        <item>华法林:cpc_jwyysbxx_hfl</item>
+        <item>利伐沙班:cpc_jwyysbxx_lfsb</item>
+        <item>达比加群:cpc_jwyysbxx_dbjq</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jyy">
+        <item>利尿剂:cpc_jwyysbxx_lnj</item>
+        <item>β受体阻滞剂:cpc_jwyysbxx_zzj</item>
+        <item>钙拮抗剂:cpc_jwyysbxx_gjkj</item>
+        <item>ACEI:cpc_jwyysbxx_acei</item>
+        <item>ARB:cpc_jwyysbxx_arb</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jty">
+        <item>胰岛素:cpc_jwyysbxx_yds</item>
+        <item>磺酰脲类:cpc_jwyysbxx_hxnl</item>
+        <item>双胍类:cpc_jwyysbxx_sgl</item>
+        <item>α糖苷酶抑制剂:cpc_jwyysbxx_yzj</item>
+        <item>胰岛素增敏剂:cpc_jwyysbxx_ydszmj</item>
+        <item>非磺酰脲类促胰岛素分泌剂:cpc_jwyysbxx_fbj</item>
+    </string-array>
+
+    <string-array name="stroke_medicaldrughistory_cpc_jwyysbxx_jzy">
+        <item>他汀类:cpc_jwyysbxx_ttl</item>
+        <item>烟酸及其衍生物:cpc_jwyysbxx_ysw</item>
+        <item>贝特类:cpc_jwyysbxx_btl</item>
+        <item>胆固醇吸收抑制剂:cpc_jwyysbxx_dgcxsyjj</item>
+    </string-array>
 </resources>

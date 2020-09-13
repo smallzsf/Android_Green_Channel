@@ -9,12 +9,14 @@
         style="@style/XyjTextTitel"
         android:text="Grace评估" />
 
+
     <CheckBox
         android:id="@+id/cb_grace_judge_1"
         style="@style/XyjCheckBox"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_graceassess_fbh"
         android:text="发病后曾出现心脏骤停" />
 
     <CheckBox
@@ -23,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_graceassess_xdtst"
         android:text="心电图ST段改变" />
 
     <CheckBox
@@ -31,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_graceassess_xjhs"
         android:text="心肌坏死标志物升高" />
 
     <View style="@style/horizontal_divider" />
@@ -39,12 +43,14 @@
         style="@style/XyjTextTitel"
         android:text="Grace极高危条件（满足其一即可）" />
 
+
     <CheckBox
         android:id="@+id/cb_grace_high_1"
         style="@style/XyjCheckBox"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_jsxlsj"
         android:text="急性心力衰竭伴难治性心绞痛和ST段改变" />
 
     <CheckBox
@@ -53,6 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_wjsm"
         android:text="危及生命的心率失常或心脏骤停" />
 
     <CheckBox
@@ -61,6 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_xyxxk"
         android:text="心源性休克或血流动力学不稳定" />
 
     <CheckBox
@@ -69,6 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_xjgs"
         android:text="心肌梗死机械性并发症" />
 
     <CheckBox
@@ -77,6 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_zfst"
         android:text="再发ST-T动态演变，尤其是伴有间歇性ST段抬高" />
 
     <CheckBox
@@ -85,6 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         android:layout_marginStart="@dimen/item_normal_margin"
+        android:tag="cpc_gracehighriskcondition_ywzlwx"
         android:text="药物治疗无效的反复发作或持续性胸痛" />
 
     <View style="@style/horizontal_divider" />
@@ -98,130 +109,117 @@
         app:bar_rightText="去评分"
         app:bar_rightTextVisible="true" />
 
-    <TextView
-        style="@style/XyjTextTitel"
-        android:text="再次危险分层" />
-
-    <com.xyj.strokeaid.view.MyRadioGroup
-        android:id="@+id/rg_re_risk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/item_normal_margin"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            android:orientation="horizontal">
-
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_1"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="未做" />
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_2"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="转为STEMI" />
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_3"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="极高危" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            android:orientation="horizontal">
-
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_4"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="高危" />
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_5"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="中危" />
-
-            <RadioButton
-                android:id="@+id/rb_re_risk_6"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="低危" />
-
-
-        </LinearLayout>
-
-    </com.xyj.strokeaid.view.MyRadioGroup>
-
-    <View style="@style/horizontal_divider" />
-
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        app:bottomLineVisible="true"
-        app:title="再次危险分层时间" />
-
     <LinearLayout
-        android:id="@+id/ll_treatment_strategy"
+        android:id="@+id/ll_fdmss"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+
         android:orientation="vertical">
 
         <TextView
-            style="@style/XyjTextTitel"
-            android:text="处理策略" />
+            style="@style/XyjTextSubTitel"
+            android:text="危险分层" />
 
-        <RadioGroup
-            android:id="@+id/rg_treatment_strategy"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/item_normal_height"
-            android:layout_marginStart="@dimen/item_normal_margin"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RadioButton
-                android:id="@+id/rb_treatment_strategy_1"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="保守治疗(仅药物治疗)" />
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/mrg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/item_normal_margin"
+                android:orientation="vertical">
 
 
-            <RadioButton
-                android:id="@+id/rb_treatment_strategy_2"
-                style="@style/XyjRadionButtonHorizontalWeight"
-                android:text="侵入性策略" />
-        </RadioGroup>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_sky_high_danger"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_gracefc_jgw"
+                            android:text="极高危" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_high_danger"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_gracefc_gw"
+                            android:text="高危" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_center_danger"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_gracefc_zw"
+                            android:text="中危" />
+
+
+                        <RadioButton
+                            android:id="@+id/rb_low_danger"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:tag="cpc_gracefc_dw"
+                            android:text="低危" />
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </com.xyj.strokeaid.view.MyRadioGroup>
+
+        </LinearLayout>
+
+
+        <View style="@style/horizontal_divider" />
+
+        <TextView
+            style="@style/XyjTextTitel"
+            android:text="再次危险分层" />
 
         <com.xyj.strokeaid.view.MyRadioGroup
-            android:id="@+id/rg_invasive_strategy"
+            android:id="@+id/rg_re_risk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/item_normal_margin"
             android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rb_invasive_strategy_1"
-                    style="@style/XyjRadionButtonHorizontalWeight"
-                    android:text="2H内介入治疗" />
 
                 <RadioButton
-                    android:id="@+id/rb_invasive_strategy_2"
+                    android:id="@+id/rb_re_risk_1"
                     style="@style/XyjRadionButtonHorizontalWeight"
-                    android:text="24H内介入治疗" />
+                    android:tag="cpc_regracefc_wz"
+                    android:text="未做" />
 
                 <RadioButton
-                    android:id="@+id/rb_invasive_strategy_3"
+                    android:id="@+id/rb_re_risk_2"
                     style="@style/XyjRadionButtonHorizontalWeight"
-                    android:text="72H内介入治疗" />
+                    android:tag="cpc_regracefc_zwstemi"
+                    android:text="转为STEMI" />
+
+                <RadioButton
+                    android:id="@+id/rb_re_risk_3"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:tag="cpc_regracefc_jgw"
+                    android:text="极高危" />
 
 
             </LinearLayout>
@@ -229,26 +227,42 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:orientation="horizontal"
-                android:weightSum="3">
+                android:orientation="horizontal">
+
 
                 <RadioButton
-                    android:id="@+id/rb_invasive_strategy_4"
+                    android:id="@+id/rb_re_risk_4"
                     style="@style/XyjRadionButtonHorizontalWeight"
-                    android:text="择期介入治疗" />
+                    android:tag="cpc_regracefc_gw"
+                    android:text="高危" />
 
                 <RadioButton
-                    android:id="@+id/rb_invasive_strategy_5"
+                    android:id="@+id/rb_re_risk_5"
                     style="@style/XyjRadionButtonHorizontalWeight"
-                    android:text="CABG" />
+                    android:tag="cpc_regracefc_zw"
+                    android:text="中危" />
+
+                <RadioButton
+                    android:id="@+id/rb_re_risk_6"
+                    style="@style/XyjRadionButtonHorizontalWeight"
+                    android:tag="cpc_regracefc_dw"
+                    android:text="低危" />
+
 
             </LinearLayout>
 
         </com.xyj.strokeaid.view.MyRadioGroup>
 
+        <View style="@style/horizontal_divider" />
+
+        <com.xyj.strokeaid.view.TextTimeBar
+            android:id="@+id/ttb_re_risk_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            app:bottomLineVisible="true"
+            app:title="再次危险分层时间" />
+
+
     </LinearLayout>
-
-    <View style="@style/horizontal_divider" />
-
 
 </LinearLayout>

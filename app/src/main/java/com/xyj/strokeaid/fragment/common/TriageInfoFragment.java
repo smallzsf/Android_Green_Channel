@@ -33,7 +33,7 @@ import retrofit2.Response;
 
 /**
  * TriageInfoFragment
- * description: TODO
+ * description: 卒中分诊信息
  *
  * @author : Licy
  * @date : 2020/9/5
@@ -242,7 +242,7 @@ public class TriageInfoFragment extends BaseFragment {
 
     private void saveDataToStroke() {
 
-        BaseRequestBean<ChestPainTriageInfoBean> baseRequestBean = new BaseRequestBean<>(
+        BaseRequestBean<StrokeTrigaeInfoBean> baseRequestBean = new BaseRequestBean<>(
                 mRecordId, 1, mStrokeTrigaeInfoBean);
 
         RetrofitClient.getInstance().getApi()
@@ -302,8 +302,8 @@ public class TriageInfoFragment extends BaseFragment {
     }
 
     private void loadDataForStroke(String recordId) {
-
-        BaseRequestBean<ChestPainTriageInfoBean> baseRequestBean = new BaseRequestBean<>(
+        showLoadingDialog();
+        BaseRequestBean<StrokeTrigaeInfoBean> baseRequestBean = new BaseRequestBean<>(
                 recordId, 1, new StrokeTrigaeInfoBean());
 
         RetrofitClient.getInstance()
@@ -348,7 +348,8 @@ public class TriageInfoFragment extends BaseFragment {
                 .getChestPainTriageInfo(baseRequestBean.getResuestBody(baseRequestBean))
                 .enqueue(new Callback<BaseResponseBean<ChestPainTriageInfoBean>>() {
                     @Override
-                    public void onResponse(Call<BaseResponseBean<ChestPainTriageInfoBean>> call, Response<BaseResponseBean<ChestPainTriageInfoBean>> response) {
+                    public void onResponse(Call<BaseResponseBean<ChestPainTriageInfoBean>> call,
+                                           Response<BaseResponseBean<ChestPainTriageInfoBean>> response) {
                         hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {

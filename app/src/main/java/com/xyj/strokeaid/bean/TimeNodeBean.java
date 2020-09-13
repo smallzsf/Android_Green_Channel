@@ -10,28 +10,32 @@ package com.xyj.strokeaid.bean;
  */
 public class TimeNodeBean {
 
-    private String desc;
-    private String time;
+    private String date;
+    private String node_label;
+    private String node_name;
 
-    public TimeNodeBean(String desc, String time) {
-        this.desc = desc;
-        this.time = time;
+    public String getDate() {
+        return date;
     }
 
-    public String getDesc() {
-        return desc;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public String getNode_label() {
+        return node_label;
     }
 
-    public String getTime() {
-        return time;
+    public void setNode_label(String node_label) {
+        this.node_label = node_label;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getNode_name() {
+        return node_name;
+    }
+
+    public void setNode_name(String node_name) {
+        this.node_name = node_name;
     }
 }
 
