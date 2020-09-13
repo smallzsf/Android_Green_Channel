@@ -9,6 +9,8 @@ import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.MainBean;
+import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
+import com.xyj.strokeaid.bean.PreoperativePreparationInfoBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
 import com.xyj.strokeaid.bean.RequestCTDataBean;
 import com.xyj.strokeaid.bean.RequestElectrocardiogramDataBean;
@@ -19,6 +21,7 @@ import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
@@ -286,14 +289,14 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
-    Call<BaseObjectBean<DiagnosticEvaluationBean>> getDiagnosticEvaluation(@Body RequestBody info);
+    Call<BaseResponseBean<DiagnosticEvaluationBean>> getDiagnosticEvaluation(@Body RequestBody info);
 
     /**
      * 卒中 药物治疗 查询
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
-    Call<BaseObjectBean<StrokeInHosDrugBean>> getStrokeInHosDrug(@Body RequestBody info);
+    Call<BaseResponseBean<StrokeInHosDrugBean>> getStrokeInHosDrug(@Body RequestBody info);
 
 
     /**
@@ -303,6 +306,15 @@ public interface ApiService {
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_DISEASERECORD_GET)
     Call<BaseObjectBean<ChestPainDiseaseRecordBean>> getChestPainDiseaseRecord(@Body RequestBody info);
 
+    /**
+     * 查询患者信息
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_PATIENMEDICAL_RECORD_GET)
+    Call<BaseObjectBean<PatientMedicalRecordBean>> getPatientInfo(@Body RequestBody info);
 
 
     /**
@@ -493,5 +505,7 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<PreoperativePreparationInfoBean>> getPreoperativePreparation(@Body RequestBody info);
+
+
 
 }
