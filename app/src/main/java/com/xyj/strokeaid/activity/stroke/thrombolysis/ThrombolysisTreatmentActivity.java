@@ -163,10 +163,6 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     @BindView(R.id.btn_save_data)
     AppCompatButton btnSaveData;
 
-    @BindView(R.id.ieb_thrive)
-    ItemEditBar iebThrive;
-
-
     private ProgressDialog loading;
     /**
      * 患者主表id
@@ -354,11 +350,6 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
                             loading.dismiss();
                         }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
 
@@ -369,19 +360,6 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 //                                    getDatatoStrokeViews(mStrokeTrigaeInfoBean);
 //                                }
 
-    /**
-     * 事件接收
-     * @param event 事件通知
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void receiveScoreEventBus(ScoreEvent event) {
-        if (event == null) {
-            return;
-        }
-        if (7 == event.getType()) {
-            iebThrive.setEditContent(event.getScore() + "");
-        }
-    }
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -401,6 +379,29 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
                         showToast(R.string.http_tip_server_error);
                     }
                 });
+    }
+
+    /**
+     * 事件接收
+     * @param event 事件通知
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveScoreEventBus(ScoreEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (7 == event.getType()) {
+            iebThrive.setEditContent(event.getScore() + "");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loading != null && loading.isShowing()) {
+            loading.dismiss();
+        }
+        EventBus.getDefault().unregister(this);
     }
 
     /**
@@ -428,11 +429,4 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (loading != null && loading.isShowing()) {
-            loading.dismiss();
-        }
-    }
 }
