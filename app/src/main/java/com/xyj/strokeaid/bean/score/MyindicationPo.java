@@ -14,37 +14,37 @@ public class MyindicationPo extends BaseResponseBean<MyindicationPo> {
      * 1.年龄在18岁以上。
      */
     //@TableField(value = "EMBOLECTOMY_INDICATION_AGE")
-    private Integer embolectomyIndicationAge;
+    private String embolectomyIndicationAge;
     
     /**
      * 2.大血管闭塞卒中患者应尽早实施血管内介入治疗。前循环闭塞发病6h以内，推荐血管介入治疗；前循环闭塞发病在6~24h，经过严格的影像学筛选，推荐血管介入治疗；后循环大血管闭塞发病在24h以内，可行血管介入治疗。
      */
     //@TableField(value = "EMBOLECTOMY_INDICATION_TIME")
-    private Integer embolectomyIndicationTime;
+    private String embolectomyIndicationTime;
     
     /**
      * 3.CT排除颅内出血、蛛网膜下腔出血。
      */
     //@TableField(value = "EMBOLECTOMY_INDICATION_EXCLUDE")
-    private Integer embolectomyIndicationExclude;
+    private String embolectomyIndicationExclude;
     
     /**
      * 4.急性缺血性脑卒中，影像学检查证实为大血管闭塞。
      */
     //@TableField(value = "EMBOLECTOMY_INDICATION_DXGBS")
-    private Integer embolectomyIndicationDxgbs;
+    private String embolectomyIndicationDxgbs;
     
     /**
      * 5.患者或法定代理人签署知情同意书。
      */
     //@TableField(value = "EMBOLECTOMY_INDICATION_AGREE")
-    private Integer embolectomyIndicationAgree;
+    private String embolectomyIndicationAgree;
     
     /**
      * 总分
      */
     //@TableField(value = "SCORE")
-    private Integer score;
+    private String score;
     
     /**
      * 
@@ -71,51 +71,51 @@ public class MyindicationPo extends BaseResponseBean<MyindicationPo> {
     private String createByName;
 
 
-    public Integer getEmbolectomyIndicationAge() {
+    public String getEmbolectomyIndicationAge() {
         return embolectomyIndicationAge;
     }
 
-    public void setEmbolectomyIndicationAge(Integer embolectomyIndicationAge) {
+    public void setEmbolectomyIndicationAge(String embolectomyIndicationAge) {
         this.embolectomyIndicationAge = embolectomyIndicationAge;
     }
 
-    public Integer getEmbolectomyIndicationTime() {
+    public String getEmbolectomyIndicationTime() {
         return embolectomyIndicationTime;
     }
 
-    public void setEmbolectomyIndicationTime(Integer embolectomyIndicationTime) {
+    public void setEmbolectomyIndicationTime(String embolectomyIndicationTime) {
         this.embolectomyIndicationTime = embolectomyIndicationTime;
     }
 
-    public Integer getEmbolectomyIndicationExclude() {
+    public String getEmbolectomyIndicationExclude() {
         return embolectomyIndicationExclude;
     }
 
-    public void setEmbolectomyIndicationExclude(Integer embolectomyIndicationExclude) {
+    public void setEmbolectomyIndicationExclude(String embolectomyIndicationExclude) {
         this.embolectomyIndicationExclude = embolectomyIndicationExclude;
     }
 
-    public Integer getEmbolectomyIndicationDxgbs() {
+    public String getEmbolectomyIndicationDxgbs() {
         return embolectomyIndicationDxgbs;
     }
 
-    public void setEmbolectomyIndicationDxgbs(Integer embolectomyIndicationDxgbs) {
+    public void setEmbolectomyIndicationDxgbs(String embolectomyIndicationDxgbs) {
         this.embolectomyIndicationDxgbs = embolectomyIndicationDxgbs;
     }
 
-    public Integer getEmbolectomyIndicationAgree() {
+    public String getEmbolectomyIndicationAgree() {
         return embolectomyIndicationAgree;
     }
 
-    public void setEmbolectomyIndicationAgree(Integer embolectomyIndicationAgree) {
+    public void setEmbolectomyIndicationAgree(String embolectomyIndicationAgree) {
         this.embolectomyIndicationAgree = embolectomyIndicationAgree;
     }
 
-    public Integer getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Integer score) {
+    public void setScore(String score) {
         this.score = score;
     }
 
