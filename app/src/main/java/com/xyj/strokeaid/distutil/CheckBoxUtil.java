@@ -11,12 +11,8 @@ public class CheckBoxUtil extends ViewDistUtils<CheckBox> {
     }
 
     @Override
-    protected List<CheckBox> getSelectViews() {
+    public List<CheckBox> getSelectViews() {
         return super.getSelectViews();
     }
 
-    @Override
-    protected List<String> getSelectViewKeys() {
-        return super.getSelectViewKeys();
-    }
 }

@@ -13,6 +13,7 @@ import com.xyj.strokeaid.view.MyRadioGroup;
 import java.security.spec.KeySpec;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,6 +23,10 @@ public class RadioGroupDistUtil extends RadioButtonDistUtil {
         super(context);
     }
 
+    @Override
+    public List<String> getSelectViewKeys() {
+        return super.getSelectViewKeys();
+    }
 
     public void addView(RadioGroup radioGroup) {
         int childCount = radioGroup.getChildCount();

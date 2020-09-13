@@ -241,6 +241,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.stroke.thrombolysis.ThrombolysisTreatmentActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.score.InterventionalTherapyEvaluationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

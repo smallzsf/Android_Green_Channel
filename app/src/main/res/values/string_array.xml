@@ -446,4 +446,31 @@
         <item>接诊科室3:cpc_jzks_ks3</item>
     </string-array>
 
+
+    <string-array name="doctor_test">
+        <item>周吉从:1</item>
+        <item>李承杨:2</item>
+    </string-array>
+
+    <string-array name="consultation_location">
+        <item>急诊科:Emergency_Department</item>
+        <item>其他:other</item>
+    </string-array>
+
+    <string-array name="contraindication_result">
+        <item>合适:cpc_rsscjg_hs</item>
+        <item>不合适:cpc_rsscjg_bhs</item>
+    </string-array>
+
+    <string-array name="indication_result">
+        <item>是:cpc_bool_true</item>
+        <item>否:cpc_bool_false</item>
+    </string-array>
+
+    <string-array name="treatment_decision_family">
+        <item>同意:cpc_jsyj_ty</item>
+        <item>拒绝:cpc_jsyj_jj</item>
+    </string-array>
+
+
 </resources>

@@ -14,15 +14,17 @@
         app:titleSize="@dimen/item_title_size"
         app:title="介入适应症" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ListView
         android:id="@+id/rv_content_act_tc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/inclue"
-        android:layout_below="@id/title_bar_act_tc"
+        android:cacheColorHint="@color/transparent"
+        android:listSelector="@color/transparent"
         android:overScrollMode="never"
-        android:scrollbars="none"
-        tools:listitem="@layout/adapter_rv_stroke_thrombolysis_symptom_item" />
+        android:layout_below="@id/title_bar_act_tc"
+        android:layout_above="@+id/inclue"
+        android:divider="@color/transparent"
+        android:scrollbars="none"/>
 
     <include
         android:id="@+id/inclue"

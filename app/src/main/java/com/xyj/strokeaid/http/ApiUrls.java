@@ -367,6 +367,34 @@ public class ApiUrls {
      */
     public static final String NET_URL_CHEST_EMERGENCYCENTER_THRIVE= "yjjk-gateway/yjjk-cdm-api/v1/thrive/add";
 
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--获取
+     */
+    public static final String NET_URL_GET_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/get";
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--保存
+     */
+    public static final String NET_URL_SAVE_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
+
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_GET_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/get";
+
+    /**
+     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     */
+    public static final String NET_URL_SAVE_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
+
+
+    /**
+     *-App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     */
+    public static final String NET_URL_SAVE_REPERFUSIONMEASURES= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/reperfusionMeasures/edit";
+
+//
 }
 
     
