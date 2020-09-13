@@ -370,9 +370,6 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseResponseBean<ThrombolysisTreatmentBean>> call, Throwable t) {
-
-                        Log.e("Throwable", t.getMessage().toString());
-
                         if (loading != null && loading.isShowing()) {
                             loading.dismiss();
                         }
