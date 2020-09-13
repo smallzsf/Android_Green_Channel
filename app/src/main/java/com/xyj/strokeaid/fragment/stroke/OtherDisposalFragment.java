@@ -3,10 +3,12 @@ package com.xyj.strokeaid.fragment.stroke;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
@@ -76,12 +78,44 @@ public class OtherDisposalFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+
+        // scAcceptRecoveryViewTsb.setOnClickListener(this);
+        llRecoveryTypeFragOd.setVisibility(View.GONE);
+        llEduTypeFragOd.setVisibility(View.GONE);
+        tsbAcceptRecoveryFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llRecoveryTypeFragOd.setVisibility(View.VISIBLE);
+                }else {
+                    llRecoveryTypeFragOd.setVisibility(View.GONE);
+                }
+
+            }
+        });
+        tsbEduFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    llEduTypeFragOd.setVisibility(View.VISIBLE);
+                }else {
+                    llEduTypeFragOd.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+
+
     }
 
     @Override
     protected void initListener() {
 
     }
+
+
+
 
 
 }

@@ -36,6 +36,8 @@
             android:layout_marginBottom="@dimen/dp_4"
             android:background="@drawable/shape_edittext_bg"
             android:cursorVisible="true"
+            android:visibility="visible"
+            android:enabled="true"
             android:gravity="center_vertical|end"
             android:textColor="@color/color_222222"
             android:paddingEnd="@dimen/item_normal_margin"
@@ -61,7 +63,6 @@
             android:textSize="@dimen/item_content_size"
             android:visibility="gone" />
 
-
         <TextView
             android:id="@+id/tv_unit_view_ieb"
             android:layout_width="wrap_content"
@@ -71,7 +72,7 @@
             android:minWidth="@dimen/item_unit_width"
             android:textColor="@color/color_222222"
             android:textSize="@dimen/item_title_size"
-            android:visibility="visible"
+            android:visibility="gone"
             tools:text="岁岁岁" />
 
         <ImageView
@@ -81,7 +82,7 @@
             android:layout_marginEnd="@dimen/item_normal_margin"
             android:scaleType="centerInside"
             android:src="@drawable/icon_location"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
     </LinearLayout>
 

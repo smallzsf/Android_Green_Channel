@@ -118,6 +118,7 @@ public class TraumaPatientActivity extends BaseActivity {
                 .setLeftLayoutClickListener(v -> finish())
                 .setOnTitleClickListener(v -> ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
                         .withInt(IntentKey.VIEW_TYPE, 2)
+                        .withInt(IntentKey.DISEASE_VIEW_TYPE, 3)
                         .withString(IntentKey.RECORD_ID, mRecordId)
                         .navigation());
 

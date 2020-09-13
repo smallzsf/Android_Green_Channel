@@ -66,7 +66,7 @@ public class StrokeDetectionFragment extends BaseFragment {
         list.add(new StrokeProcessBean("首次NIHSS评分", "STT02", 1, "", RouteUrl.Detection.PATIENT_ARRIVAL, false));
         list.add(new StrokeProcessBean("首次GCS评分", "STT03", 1, "", RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS, false));
         list.add(new StrokeProcessBean("患者到达CT室", "STT04", 1, "", RouteUrl.Detection.PATIENT_ARRIVAL, false));
-        list.add(new StrokeProcessBean("影像检查", "STT05", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
+       // list.add(new StrokeProcessBean("影像检查", "STT05", 1, "", RouteUrl.Detection.IMAGE_CHECKED, false));
         list.add(new StrokeProcessBean("ASPECT评分", "STT06", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("实验室检查", "STT07", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
         list.add(new StrokeProcessBean("初步诊断", "STT08", 1, "", RouteUrl.Stroke.STROKE_GREEN_CHANNEL_OUTCOME, false));
@@ -75,6 +75,8 @@ public class StrokeDetectionFragment extends BaseFragment {
         return list;
     }
     @Override
+
+
     protected void initListener() {
         srlFreshFragStoke.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

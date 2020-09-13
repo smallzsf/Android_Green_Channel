@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tl="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_diagnostic_evaluation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_bg"
     android:orientation="vertical"
-    android:id="@+id/ll_diagnostic_evaluation"
     tools:context=".fragment.DiagnosticEvaluationFragment">
 
     <ScrollView
@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
+                android:paddingLeft="@dimen/item_normal_margin"
                 android:paddingRight="@dimen/dp_10">
 
                 <TextView
@@ -73,15 +73,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone"
-                >
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     android:layout_below="@+id/doctor_name_line"
                     android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/dp_25"
+                    android:paddingLeft="@dimen/item_normal_margin"
                     android:paddingRight="@dimen/dp_10">
 
                     <TextView
@@ -103,7 +102,7 @@
                             android:id="@+id/rb_court"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="true"
+                            android:checked="false"
                             android:text="院内"
                             android:textSize="@dimen/item_content_size" />
 
@@ -122,44 +121,51 @@
                 <View style="@style/horizontal_divider" />
 
 
-                <LinearLayout
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/tv_time_diagnosis_progress"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:layout_below="@+id/doctor_name_line"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="@dimen/dp_25"
-                    android:paddingRight="@dimen/dp_10">
+                    app:bottomLineVisible="true"
+                    app:title="进展时间" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="14dp"
-                        android:text="诊断时间"
-                        android:textColor="@color/app_223b53"
-                        android:textSize="@dimen/item_title_size" />
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="@dimen/item_normal_height"-->
+                <!--                    android:layout_below="@+id/doctor_name_line"-->
+                <!--                    android:gravity="center_vertical"-->
+                <!--                    android:paddingLeft="@dimen/dp_25"-->
+                <!--                    android:paddingRight="@dimen/dp_10">-->
 
-                    <TextView
-                        style="@style/patient_et_style"
-                        android:layout_width="@dimen/dp_0"
-                        android:layout_weight="2.4"
-                        android:focusable="false"
-                        android:hint="@string/app_default_time_example"
-                        android:paddingLeft="@dimen/dp_10"
-                        android:textSize="@dimen/item_content_size" />
+                <!--                    <TextView-->
+                <!--                        android:layout_width="wrap_content"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_marginRight="14dp"-->
+                <!--                        android:text="诊断时间"-->
+                <!--                        android:textColor="@color/app_223b53"-->
+                <!--                        android:textSize="@dimen/item_title_size" />-->
 
-                    <ImageView
-                        android:id="@+id/iv_refresh1"
-                        android:layout_width="@dimen/dp_22"
-                        android:layout_height="@dimen/dp_22"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="10dp"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="2dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="2dp"
-                        android:src="@drawable/ic_refresh" />
-                </LinearLayout>
+                <!--                    <TextView-->
+                <!--                        style="@style/patient_et_style"-->
+                <!--                        android:layout_width="@dimen/dp_0"-->
+                <!--                        android:layout_weight="2.4"-->
+                <!--                        android:focusable="false"-->
+                <!--                        android:hint="@string/app_default_time_example"-->
+                <!--                        android:paddingLeft="@dimen/dp_10"-->
+                <!--                        android:textSize="@dimen/item_content_size" />-->
+
+                <!--                    <ImageView-->
+                <!--                        android:id="@+id/iv_refresh1"-->
+                <!--                        android:layout_width="@dimen/dp_22"-->
+                <!--                        android:layout_height="@dimen/dp_22"-->
+                <!--                        android:layout_alignParentRight="true"-->
+                <!--                        android:layout_centerVertical="true"-->
+                <!--                        android:layout_marginRight="10dp"-->
+                <!--                        android:paddingLeft="4dp"-->
+                <!--                        android:paddingTop="2dp"-->
+                <!--                        android:paddingRight="4dp"-->
+                <!--                        android:paddingBottom="2dp"-->
+                <!--                        android:src="@drawable/ic_refresh" />-->
+                <!--                </LinearLayout>-->
 
 
                 <View style="@style/horizontal_divider" />
@@ -173,7 +179,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
+                android:paddingLeft="@dimen/item_normal_margin"
                 android:paddingRight="@dimen/dp_10">
 
 
@@ -420,7 +426,7 @@
                             android:id="@+id/rb_moyamoya_disease_yes"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="true"
+                            android:checked="false"
                             android:text="是"
                             android:textSize="@dimen/item_content_size" />
 
@@ -439,7 +445,56 @@
                 <View style="@style/horizontal_divider" />
 
             </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_symptom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/item_normal_margin"
+                android:paddingRight="@dimen/dp_10">
 
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="wrap_content"
+                    android:text="是否有症状"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/item_title_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_symptom"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_symptom_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="有(缺血症状或脑梗死)"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_symptom_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="无"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -450,36 +505,452 @@
                 android:paddingRight="@dimen/dp_10">
 
                 <TextView
-                    android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/dp_68"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="14dp"
-                    android:text="诊断时间"
+                    android:text="是否有狭窄"
                     android:textColor="@color/app_223b53"
                     android:textSize="@dimen/item_title_size" />
 
-                <TextView
-                    android:id="@+id/app_tv_editSpinner_time"
-                    style="@style/patient_et_style"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_weight="2.4"
-                    android:focusable="false"
-                    android:hint="@string/app_default_time_example"
-                    android:paddingLeft="@dimen/dp_10"
-                    android:textSize="@dimen/item_content_size" />
+                <RadioGroup
+                    android:id="@+id/rg_narrow"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/iv_refresh"
-                    android:layout_width="@dimen/dp_22"
-                    android:layout_height="@dimen/dp_22"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:paddingLeft="4dp"
-                    android:paddingTop="2dp"
-                    android:paddingRight="4dp"
-                    android:paddingBottom="2dp"
-                    android:src="@drawable/ic_refresh" />
+                    <RadioButton
+                        android:id="@+id/rb_narrow_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:text="是"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_narrow_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="否"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+        </LinearLayout>
+            <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/tv_time_diagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:bottomLineVisible="true"
+                app:title="诊断时间" />
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="@dimen/item_normal_height"-->
+            <!--                android:layout_below="@+id/doctor_name_line"-->
+            <!--                android:gravity="center_vertical"-->
+            <!--                android:paddingLeft="@dimen/item_normal_margin"-->
+            <!--                android:paddingRight="@dimen/dp_10">-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_name"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginRight="14dp"-->
+            <!--                    android:text="诊断时间"-->
+            <!--                    android:textColor="@color/app_223b53"-->
+            <!--                    android:textSize="@dimen/item_title_size" />-->
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/app_tv_editSpinner_time"-->
+            <!--                    style="@style/patient_et_style"-->
+            <!--                    android:layout_width="@dimen/dp_0"-->
+            <!--                    android:layout_weight="2.4"-->
+            <!--                    android:focusable="false"-->
+            <!--                    android:hint="@string/app_default_time_example"-->
+            <!--                    android:paddingLeft="@dimen/dp_10"-->
+            <!--                    android:textSize="@dimen/item_content_size" />-->
+
+            <!--                <ImageView-->
+            <!--                    android:id="@+id/iv_refresh"-->
+            <!--                    android:layout_width="@dimen/dp_22"-->
+            <!--                    android:layout_height="@dimen/dp_22"-->
+            <!--                    android:layout_alignParentRight="true"-->
+            <!--                    android:layout_centerVertical="true"-->
+            <!--                    android:layout_marginRight="10dp"-->
+            <!--                    android:paddingLeft="4dp"-->
+            <!--                    android:paddingTop="2dp"-->
+            <!--                    android:paddingRight="4dp"-->
+            <!--                    android:paddingBottom="2dp"-->
+            <!--                    android:src="@drawable/ic_refresh" />-->
+            <!--            </LinearLayout>-->
+            <View style="@style/horizontal_divider" />
+
+            <LinearLayout
+                android:id="@+id/cpc_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_cxxcz"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/item_normal_margin"
+                    android:paddingRight="@dimen/dp_10">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="32dp"
+                        android:text="出血性卒中"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <com.xyj.strokeaid.view.editspinner.EditSpinner
+                        android:id="@+id/es_cxxcz"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:editable="false"
+                        app:Background="@drawable/bg_view_frame"
+                        app:hint="请选择"
+                        app:rightImage="@drawable/ic_arrow_down_blue"
+                        tools:ignore="Deprecated" />
+
+                </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:id="@+id/ll_dmlpl"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:layout_below="@+id/doctor_name_line"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/item_normal_margin"
+                        android:paddingRight="@dimen/dp_10">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="32dp"
+                            android:text="动脉瘤破裂"
+                            android:textColor="@color/app_223b53"
+                            android:textSize="@dimen/item_title_size" />
+
+                        <com.xyj.strokeaid.view.editspinner.EditSpinner
+                            android:id="@+id/es_dmlpl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:editable="false"
+                            app:Background="@drawable/bg_view_frame"
+                            app:hint="请选择"
+                            app:rightImage="@drawable/ic_arrow_down_blue"
+                            tools:ignore="Deprecated" />
+
+                    </LinearLayout>
+                    <View style="@style/horizontal_divider" />
+                    <LinearLayout
+                        android:id="@+id/ll_dmlpl_unt"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <com.xyj.strokeaid.view.ItemEditBar
+                            android:id="@+id/ieb_unt_Hess"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            app:ieb_bottom_line_visible="true"
+                            app:ieb_title="Hunt-Hess分级"
+                            app:ieb_top_line_visible="true"
+                            app:ieb_unit_text="级"
+                            app:ieb_unit_visible="true" />
+                        <View style="@style/horizontal_divider" />
+                        <com.xyj.strokeaid.view.ItemEditBar
+                            android:id="@+id/ieb_fisher"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            app:ieb_bottom_line_visible="true"
+                            app:ieb_title="Fisher分级"
+                            app:ieb_top_line_visible="true"
+                            app:ieb_unit_text="级"
+                            app:ieb_unit_visible="true" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/item_normal_height"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/item_normal_margin"
+                            android:paddingRight="@dimen/dp_10">
+
+                            <TextView
+                                android:layout_width="@dimen/dp_90"
+                                android:layout_height="wrap_content"
+                                android:text="尼莫地平治疗"
+                                android:textColor="@color/app_223b53"
+                                android:textSize="@dimen/tab_text_size" />
+
+                            <RadioGroup
+                                android:id="@+id/rg_nmdpzl"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/rb_nmdpzl_ture"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="false"
+                                    android:text="是"
+                                    android:textSize="@dimen/item_content_size" />
+
+                                <RadioButton
+                                    android:id="@+id/rb_nmdpzl_false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="否"
+                                    android:textSize="@dimen/item_content_size" />
+
+                            </RadioGroup>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <View style="@style/horizontal_divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="@dimen/item_normal_margin"
+                        android:paddingRight="@dimen/dp_10">
+
+                        <TextView
+                            android:layout_width="@dimen/dp_90"
+                            android:layout_height="wrap_content"
+                            android:text="动脉瘤破裂史"
+                            android:textColor="@color/app_223b53"
+                            android:textSize="@dimen/tab_text_size" />
+
+                        <RadioGroup
+                            android:id="@+id/rg_dmlpls"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rb_dmlpls_ture"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="false"
+                                android:text="有"
+                                android:textSize="@dimen/item_content_size" />
+
+                            <RadioButton
+                                android:id="@+id/rb_dmlpls_false"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="无"
+                                android:textSize="@dimen/item_content_size" />
+
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/item_normal_margin"
+                    android:paddingRight="@dimen/dp_10"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/Text_Dark_Content_Style"
+                        android:text="出血部位左侧" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_left1"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_leftsideofbleedingsite_jdyq"
+                            android:text="基底节区" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_left2"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_leftsideofbleedingsite_msny"
+                            android:text="幕上脑叶" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_left3"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_leftsideofbleedingsite_xn"
+                            android:text="小脑" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_left4"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_leftsideofbleedingsite_ng"
+                            android:text="脑干" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_left5"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_leftsideofbleedingsite_ns"
+                            android:text="脑室" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/item_normal_margin"
+                    android:paddingRight="@dimen/dp_10"
+                    android:visibility="visible">
+
+                    <TextView
+                        style="@style/Text_Dark_Content_Style"
+                        android:text="出血部位右侧" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_right1"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_rightsideofbleedingsite_jdyq"
+                            android:text="基底节区" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_right2"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_rightsideofbleedingsite_msny"
+                            android:text="幕上脑叶" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_right3"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_rightsideofbleedingsite_xn"
+                            android:text="小脑" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_right4"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_rightsideofbleedingsite_ng"
+                            android:text="脑干" />
+
+                        <CheckBox
+                            android:id="@+id/cb_cpc_right5"
+                            style="@style/XyjCheckBoxHorizontalWeight"
+                            android:tag="cpc_rightsideofbleedingsite_ns"
+                            android:text="脑室" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View style="@style/horizontal_divider" />
+
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_hemorrhage_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="出血大小"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="ml"
+                    app:ieb_unit_visible="true" />
+
+                <View style="@style/horizontal_divider" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:layout_below="@+id/doctor_name_line"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/item_normal_margin"
+                    android:paddingRight="@dimen/dp_10">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="是否脑疝"
+                        android:textColor="@color/app_223b53"
+                        android:textSize="@dimen/tab_text_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_have_cerebral_hernia"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_cerebral_hernia_ture"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="是"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_cerebral_hernia_false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="否"
+                            android:textSize="@dimen/item_content_size" />
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
             </LinearLayout>
 
             <View style="@style/horizontal_divider" />
@@ -490,7 +961,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
+                android:paddingLeft="@dimen/item_normal_margin"
                 android:paddingRight="@dimen/dp_10">
 
 
@@ -520,7 +991,7 @@
                 android:layout_height="@dimen/item_normal_height"
                 android:layout_below="@+id/doctor_name_line"
                 android:gravity="center_vertical"
-                android:paddingLeft="@dimen/dp_25"
+                android:paddingLeft="@dimen/item_normal_margin"
                 android:paddingRight="@dimen/dp_10">
 
 
@@ -604,7 +1075,6 @@
             </LinearLayout>
 
             <View style="@style/horizontal_divider" />
-
 
 
             <LinearLayout
@@ -734,7 +1204,6 @@
             <View style="@style/horizontal_divider" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
@@ -768,12 +1237,12 @@
         </LinearLayout>
     </ScrollView>
 
+    <include layout="@layout/view_bottom_save_button" />
 
-    <include
-        android:id="@+id/ll_bottom"
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dp_8" />
-
+    <!--    <include-->
+    <!--        android:id="@+id/ll_bottom"-->
+    <!--        layout="@layout/view_two_horizontal_bottom_button"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="@dimen/dp_8" />-->
 </LinearLayout>

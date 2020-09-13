@@ -200,7 +200,7 @@
         <attr name="ieb_edit_content" format="string" />
 
         <attr name="ieb_unit_visible" format="boolean" />
-        <attr name="ieb_unit_text" format="string" />
+        <attr name="ieb_unit_text" format="string|reference" />
 
         <attr name="ieb_top_line_visible" format="boolean" />
         <attr name="ieb_bottom_line_visible" format="boolean" />

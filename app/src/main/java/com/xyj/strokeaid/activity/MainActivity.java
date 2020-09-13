@@ -33,6 +33,7 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.score.ISSActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
@@ -173,7 +174,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         // 新建患者
         tvAddActMain.setOnClickListener(v ->
                 ARouter.getInstance().build(RouteUrl.NEW_PATIENT)
-                        .withString(IntentKey.DOC_ID, mDocId)
+                        .withInt(IntentKey.DISEASE_VIEW_TYPE, mDiseaseType)
+                        .withInt(IntentKey.VIEW_TYPE, 1)
                         .navigation());
 
         // tab切换
