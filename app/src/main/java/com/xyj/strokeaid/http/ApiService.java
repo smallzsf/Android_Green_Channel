@@ -4,6 +4,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
 import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
+import com.xyj.strokeaid.bean.EmergencyCenterStrokeInterventionalTherapyPo;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.IntraConsultBean;
@@ -542,6 +543,6 @@ public interface ApiService {
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
-    Call<BaseResponseBean<RequestGetVitalSigns>> getEcsitherapy(@Body RequestBody info);
+    Call<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>> getEcsitherapy(@Body RequestBody info);
 
 }

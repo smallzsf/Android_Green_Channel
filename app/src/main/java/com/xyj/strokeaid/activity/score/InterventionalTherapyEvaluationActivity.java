@@ -13,9 +13,14 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.EmergencyCenterStrokeInterventionalTherapyPo;
+import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
+import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.distutil.RadioGroupDistUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -23,6 +28,8 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -84,15 +91,77 @@ public class InterventionalTherapyEvaluationActivity extends BaseActivity {
 
         rgContraindicationResultUtil = new RadioGroupDistUtil(mContext);
         rgIndicationResultUtil = new RadioGroupDistUtil(mContext);
-
+//    TODO   下面的setStringArrayId需要查看代码的时候重新设置
         rgContraindicationResultUtil.setStringArrayId(R.array.contraindication_result);
         rgIndicationResultUtil.setStringArrayId(R.array.indication_result);
-
         edsYinYangFirst.setStringArrayId(R.array.doctor_test);
         consultationLocation.setStringArrayId(R.array.consultation_location);
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadData();
+    }
+
+    public void loadData() {
+
+        EmergencyCenterStrokeInterventionalTherapyPo interventionalTherapyPo = new EmergencyCenterStrokeInterventionalTherapyPo();
+
+        BaseRequestBean<EmergencyCenterStrokeInterventionalTherapyPo> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, interventionalTherapyPo);
+
+        String request = GsonUtils.getGson().toJson(baseRequestBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .getEcsitherapy(requestBody)
+                .enqueue(new Callback<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>> call, Response<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>> response) {
+                        if (response.body().getResult() == 1){
+                            BaseResponseBean.DataBeanX<EmergencyCenterStrokeInterventionalTherapyPo> data = response.body().getData();
+                            resetView(data.getData());
+                        }
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>> call, Throwable t) {
+
+                    }
+                });
+    }
+
+    private void resetView(EmergencyCenterStrokeInterventionalTherapyPo data) {
+        netBean = new EmergencyCenterStrokeInterventionalTherapyPo();
+//        jrzlinterventdoctorreceptiontime	介入医生接诊	是	[datetime]		查看
+        ;
+        ttbInterventionalDoctors.setTime(netBean.getJrzlinterventdoctorreceptiontime());
+//3	jrzlinterventdoctor	介入医生	是	[string]		查看
+
+        // 医生列表
+        edsYinYangFirst.setStringArrayNormalKey(netBean.getJrzlinterventdoctorreceptiontime());
+
+//4	jrzldepartment	会诊地点	是	[string]		查看
+        consultationLocation.setStringArrayNormalKey(netBean.getJrzldepartment());
+
+//5	jrzlindicationevalutetime	适应症评估	是	[datetime]		查看
+//6	jrzlindicationevaluteresult	适应症评估结果	是	[string]		查看
+        rgIndicationResultUtil.setStringArrayNormalKey(netBean.getJrzlindicationevaluteresultrelationid());
+//7	jrzlindicationevaluteresultrelationid	适应症评估结果的评分关联Id	是	[string]		查看
+//8	jrzlcontraindicationsevalutetime	禁忌症评估	是	[datetime]		查看
+//9	jrzlcontraindicationsevaluteresult	禁忌症评估结果	是	[string]		查看
+        rgContraindicationResultUtil.setStringArrayNormalKey(netBean.getJrzlcontraindicationsevaluteresultrelationid());
+//10	jrzlcontraindicationsevaluteresultrelationid	禁忌症评估结果的评分关联Id	是	[string]		查看
+//11	jrzlalerttime	手术预警时间	是	[datetime]		查看
+        ttbOperationWarningTime.setTime(netBean.getJrzlalerttime());
+//12	jrzloperationprecompletedtime	急诊术前准备完成	是	[datetime]
+        ttbBeforeEmergencySurgery.setTime(netBean.getJrzloperationprecompletedtime());
+
+    }
     @Override
     public void initListener() {
 //        title_bar_act_nihss

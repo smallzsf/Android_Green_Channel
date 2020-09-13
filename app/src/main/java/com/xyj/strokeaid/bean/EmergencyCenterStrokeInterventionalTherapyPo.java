@@ -1,10 +1,13 @@
 package com.xyj.strokeaid.bean;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * 卒中-介入治疗评估
  */
 //@TableName("EMERGENCY_CENTER_STROKE_INTERVENTIONAL_THERAPY")
-public class EmergencyCenterStrokeInterventionalTherapyPo {
+public class EmergencyCenterStrokeInterventionalTherapyPo   {
+
 
     /**
      * 介入治疗评估-介入医生接诊
@@ -71,6 +74,7 @@ public class EmergencyCenterStrokeInterventionalTherapyPo {
      */
     //@TableField(value = "JRZLOPERATIONPRECOMPLETEDTIME")
     private String jrzloperationprecompletedtime;
+
 
     public String getJrzlinterventdoctorreceptiontime() {
         return jrzlinterventdoctorreceptiontime;
