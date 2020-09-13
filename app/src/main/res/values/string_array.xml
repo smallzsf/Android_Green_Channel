@@ -103,6 +103,27 @@
         <item>其他:cpc_ruptureofnonaneurysm_qt</item>
     </string-array>
 
+    <string-array name="beforeoperationvitalsigns">
+        <item>清醒:1</item>
+        <item>模糊:2</item>
+        <item>嗜睡:3</item>
+        <item>昏睡:4</item>
+        <item>浅昏迷:5</item>
+        <item>中昏迷:6</item>
+        <item>深昏迷:7</item>
+    </string-array>
+
+    <string-array name="afteroperationvitalsigns">
+        <item>清醒:1</item>
+        <item>模糊:2</item>
+        <item>嗜睡:3</item>
+        <item>昏睡:4</item>
+        <item>浅昏迷:5</item>
+        <item>中昏迷:6</item>
+        <item>深昏迷:7</item>
+    </string-array>
+
+
     <string-array name="nosogenesisList">
         <item>大动脉粥样硬化性卒中(LAA):cpc_pathogenesis_laa</item>
         <item>心源性脑栓塞(CE):cpc_pathogenesis_ce</item>

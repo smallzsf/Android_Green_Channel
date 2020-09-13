@@ -37,6 +37,8 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.trauma.TraumaEcgCheckBean;
+import com.xyj.strokeaid.bean.trauma.TraumaOperationInfoBean;
 import com.xyj.strokeaid.bean.dist.CeaCesBean;
 import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
@@ -381,7 +383,34 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<DiagnosticEvaluationBean>> getDiagnosticEvaluation(@Body RequestBody info);
 
+    /**
+     * 创伤 手术信息 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<TraumaOperationInfoBean>> getTraumaOperationInfo(@Body RequestBody info);
 
+    /**
+     * 创伤 手术信息 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveTraumaOperationInfo(@Body RequestBody info);
+
+    /**
+     * 创伤 心电检查 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<TraumaEcgCheckBean>> getTraumaEcgCheck(@Body RequestBody info);
+
+
+    /**
+     * 创伤 心电检查 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveTraumaEcgCheck(@Body RequestBody info);
     /**
      * 胸痛 病情记录查询
      */
