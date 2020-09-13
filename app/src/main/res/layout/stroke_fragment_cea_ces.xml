@@ -67,11 +67,13 @@
                     android:text="手术部位" />
 
                 <CheckBox
+                    android:tag="cpc_ssbw_lica"
                     android:id="@+id/ck_local_lica_fgm_cea"
                     style="@style/XyjCheckBoxHorizontalWeight"
                     android:text="LICA" />
 
                 <CheckBox
+                    android:tag="cpc_ssbw_rica"
                     android:id="@+id/ck_local_rica_fgm_cea"
                     style="@style/XyjCheckBoxHorizontalWeight"
                     android:text="RICA" />
@@ -89,16 +91,18 @@
                     android:text="麻醉方式" />
 
                 <RadioGroup
+                    android:id="@+id/rg_cpc_mzfs_qm"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-
                     <RadioButton
+                        android:tag="cpc_mzfs_qm"
                         android:id="@+id/rb_all_anaesthesia_fgm_cea"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="全麻" />
 
                     <RadioButton
+                        android:tag="cpc_mzfs_jm"
                         android:id="@+id/rb_local_anaesthesia_fgm_cea"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="局麻" />
@@ -121,18 +125,20 @@
                     android:layout_height="@dimen/item_normal_height"
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/item_normal_margin">
-
                     <CheckBox
+                        android:tag="cpc_jcsd_tcd"
                         android:id="@+id/ck_tcd_fgm_cea"
                         style="@style/XyjCheckBoxHorizontalWeight"
                         android:text="TCD" />
 
                     <CheckBox
+                        android:tag="cpc_jcsd_ndt"
                         android:id="@+id/ck_ndt_fgm_cea"
                         style="@style/XyjCheckBoxHorizontalWeight"
                         android:text="脑电图" />
 
                     <CheckBox
+                        android:tag="cpc_jcsd_qt"
                         android:id="@+id/ck_other_fgm_cea"
                         style="@style/XyjCheckBoxHorizontalWeight"
                         android:text="其他" />
@@ -152,6 +158,7 @@
                     android:text="手术采取方式" />
 
                 <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_shoushu_fgm_cea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -163,11 +170,13 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:tag="cpc_sscqfs_bzscea"
                             android:id="@+id/rb_bzcea_fgm_cea"
                             style="@style/XyjRadionButtonHorizontalWeight"
                             android:text="标准式CEA" />
 
                         <RadioButton
+                            android:tag="cpc_sscqfs_wfscea"
                             android:id="@+id/rb_wfcea_fgm_cea"
                             style="@style/XyjRadionButtonHorizontalWeight"
                             android:text="外翻式CEA" />
@@ -179,11 +188,12 @@
                         android:orientation="horizontal">
 
                         <RadioButton
+                            android:tag="cpc_sscqfs_cas"
                             android:id="@+id/rb_ces_fgm_cea"
                             style="@style/XyjRadionButtonHorizontalWeight"
                             android:text="CES" />
-
                         <RadioButton
+                            android:tag="cpc_sscqfs_fhss"
                             android:id="@+id/rb_fhss_fgm_cea"
                             style="@style/XyjRadionButtonHorizontalWeight"
                             android:text="复合手术" />
@@ -205,17 +215,19 @@
                     android:text="是否采用补片" />
 
                 <RadioGroup
+                    android:id="@+id/rg_sfcybp_cea"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/rb_sfcybp_yes"
+                        android:tag="cpc_bool_true"
+                        android:id="@+id/rb_sfcybp_yes_cea"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="是" />
-
                     <RadioButton
-                        android:id="@+id/rb_sfcybp_no"
+                        android:tag="cpc_bool_false"
+                        android:id="@+id/rb_sfcybp_no_cea"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="否" />
                 </RadioGroup>
@@ -230,62 +242,180 @@
             <com.zhy.view.flowlayout.FlowLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/item_normal_margin"
-                android:paddingEnd="@dimen/item_normal_margin">
+                android:paddingEnd="@dimen/item_normal_margin"
+                android:paddingStart="@dimen/item_normal_margin">
 
                 <CheckBox
                     android:id="@+id/cb_fluid_infusion"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_none"
                     android:text="无" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_way"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_ngs"
                     android:text="脑梗死" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_bandage"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_ggz"
                     android:text="高灌注" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_limbs"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_ncx"
                     android:text="脑出血" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_chest"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_zwsjss"
                     android:text="周围神经损伤" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_pelvis"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_qkgr"
                     android:text="切口感染" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_neck"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_jfxdx"
                     android:text="继发性癫痫" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_vertebra"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_fbgr"
                     android:text="肺部感染" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_fracture_out"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_mnxgr"
                     android:text="泌尿系统感染" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_other"
                     style="@style/XyjFlowCheckBox"
+                    android:tag="cpc_bfz_qt"
                     android:text="其他" />
 
             </com.zhy.view.flowlayout.FlowLayout>
 
+            <View style="@style/horizontal_divider" />
 
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/XyjTextSubTitel"
+                    android:text="救治是否延后" />
+
+                <RadioGroup
+                    android:id="@+id/rg_yangwu_cea"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:tag="1"
+                        android:id="@+id/rb_jzsfyh_yes_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="是" />
+                    <RadioButton
+                        android:tag="-1"
+                        android:id="@+id/rb_jzsfyh_no_cea"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="否" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+<LinearLayout
+    android:id="@+id/ll_yangwu_cea"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+            <TextView
+                style="@style/XyjTextSubTitel"
+                android:text="延误原因" />
+
+            <com.zhy.view.flowlayout.FlowLayout
+                android:id="@+id/ck_flowLayout_yw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/item_normal_margin"
+                android:paddingEnd="@dimen/item_normal_margin">
+                <CheckBox
+                    android:tag="cpc_ywyy_zzbmxywzd"
+                    android:id="@+id/ck_bmzd_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="症状不明显延误诊断" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_jswdc"
+                    android:id="@+id/ck_jswd_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="家属未到场" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_ysjcyw"
+                    android:id="@+id/ck_jcsw_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="医生决策延误" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_pdghsc"
+                    android:id="@+id/ck_pdgc_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="排队挂号、缴费、办住院时间长" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_jzkclsc"
+                    android:id="@+id/ck_jsgc_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="急诊科处理时间长" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_ssqjcxbfz"
+                    android:id="@+id/ck_bfz_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="手术期间出现并发症" />
+
+
+                <CheckBox
+                    android:tag="cpc_ywyy_wssrxjzfa"
+                    android:id="@+id/ck_rxjz_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="未实施绕行急诊方案" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_dgsrywdw"
+                    android:id="@+id/ck_dgwd_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="导管室人员未到位" />
+
+                <CheckBox
+                    android:tag="cpc_ywyy_zqtysjgc"
+                    android:id="@+id/ck_zqtygc_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="知情同意时间过长" />
+                <CheckBox
+                    android:tag="cpc_ywyy_bqbwd"
+                    android:id="@+id/ck_bqbw_yw_cea"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="病情不稳定" />
+            </com.zhy.view.flowlayout.FlowLayout></LinearLayout>
+
+            <View style="@style/horizontal_divider" />
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/space_height" />
