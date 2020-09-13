@@ -22,6 +22,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
@@ -534,13 +535,13 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
                 .getInstance()
                 .getApi()
                 .getDiagnosticEvaluation(requestBean.getResuestBody(requestBean))
-                .enqueue(new Callback<BaseObjectBean<DiagnosticEvaluationBean>>() {
+                .enqueue(new Callback<BaseResponseBean<DiagnosticEvaluationBean>>() {
 
                     @Override
-                    public void onResponse(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Response<BaseObjectBean<DiagnosticEvaluationBean>> response) {
+                    public void onResponse(Call<BaseResponseBean<DiagnosticEvaluationBean>> call, Response<BaseResponseBean<DiagnosticEvaluationBean>> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                bean = response.body().getData();
+                                bean = response.body().getData().getData();
                                 dataToView(bean);
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
@@ -552,7 +553,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
 
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<DiagnosticEvaluationBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<DiagnosticEvaluationBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
                         showToast(call.toString());
                     }
@@ -562,11 +563,16 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     private void dataToView(DiagnosticEvaluationBean bean) {
         ttbDiagnosisProgress.setTime(bean.getEvolvetime());
         ttbDiagnosis.setTime(bean.getDiagnostictimeinit());
-        esDiagnosis.setText(bean.getDiagnosticresultinit());
-        etIschemicStroke.setText(bean.getIschemicstrokeinit());
-        etNosogenesis.setText(bean.getPathogenesisinit());
-        esEmergencyTreatmentDoctor.setText(bean.getEmergencydoctorCzzdinit());
-        esApoplexyDoctor.setText(bean.getStrokedoctorCzzdinit());
+        String ischemicstrokeinit = bean.getIschemicstrokeinit();
+        if (!TextUtils.isEmpty(ischemicstrokeinit)){
+            if (ischemicstrokeinit.equals("cpc_qxxncz_ngs")){
+                etIschemicStroke.setText("脑梗死");
+            }else if (ischemicstrokeinit.equals("cpc_qxxncz_dzxnqx")){
+                etIschemicStroke.setText("短暂性脑缺血(TIA)");
+            }
+        }
+//        esEmergencyTreatmentDoctor.setText(bean.getEmergencydoctorCzzdinit());
+//        esApoplexyDoctor.setText(bean.getStrokedoctorCzzdinit());
         /**
          * 卒中诊断 左 侧的出血部位
          */
@@ -678,86 +684,77 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             rgNmdpzl.check(isusenimodipineinit.equals("cpc_bool_true") ? R.id.rb_nmdpzl_ture : R.id.rb_nmdpzl_false );
 
         }
-
-        //诊断结果
-        esDiagnosis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
-            @Override
-            public void getSeletedString(String text) {
-
-                if (text.contains("缺血性卒中")) {
-                    llIschemicStroke.setVisibility(View.VISIBLE);
-                    llHemorrhagicApoplexy.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
-                    llCpc.setVisibility(View.GONE);
-                    llIschemicStroke.requestLayout();
-                    if (etNosogenesis.getText().contains("其他原因所致的缺血性卒中（SOE）")) {
-                        etNosogenesis.setItemData(nosogenesisList);
-                    } else {
-                        llMoyamoyaDisease.setVisibility(View.GONE);
-                    }
-                    llSymptom.setVisibility(View.GONE);
-                    llDmlpl.setVisibility(View.GONE);
-                } else if (text.contains("出血性卒中")) {
-                    llHemorrhagicApoplexy.setVisibility(View.VISIBLE);
-                    llIschemicStroke.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
-                    bean.setHemorrhagicstrokeinit(esHemorrhagicApoplexy.getSelectData()[1]);
-                    llDmlpl.setVisibility(View.VISIBLE);
-                    llCpc.setVisibility(View.VISIBLE);
-                    llSymptom.setVisibility(View.GONE);
-                } else if (text.contains("颈部动脉狭窄或闭塞")) {
-                    llSymptom.setVisibility(View.VISIBLE);
-                    llDmlpl.setVisibility(View.GONE);
-                } else if (text.contains("其他")) {
-                    llOtherDiagnostic.setVisibility(View.VISIBLE);
-                    llHemorrhagicApoplexy.setVisibility(View.GONE);
-                    llIschemicStroke.setVisibility(View.GONE);
-                    llCpc.setVisibility(View.GONE);
-                    llSymptom.setVisibility(View.GONE);
-                    llDmlpl.setVisibility(View.GONE);
-                } else {
-                    llIschemicStroke.setVisibility(View.GONE);
-                    llHemorrhagicApoplexy.setVisibility(View.GONE);
-                    llOtherDiagnostic.setVisibility(View.GONE);
-                    llCpc.setVisibility(View.GONE);
-                    llSymptom.setVisibility(View.GONE);
-                    llDmlpl.setVisibility(View.GONE);
-                }
-
-                llMoyamoyaDisease.setVisibility(View.GONE);
-            }
-        });
-        //发病机制
-        etNosogenesis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
-            @Override
-            public void getSeletedString(String text) {
-
-                if (text.contains("其他原因所致的缺血性卒中（SOE）")) {
-                    llMoyamoyaDisease.setVisibility(View.VISIBLE);
+        String diagnosticresultinit = bean.getDiagnosticresultinit();
+        if (!TextUtils.isEmpty(diagnosticresultinit)){
+            if (diagnosticresultinit.equals("cpc_czzdjg_qxxncz")){
+                esDiagnosis.setText("缺血性卒中");
+                llIschemicStroke.setVisibility(View.VISIBLE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llIschemicStroke.requestLayout();
+                if (etNosogenesis.getText().contains("其他原因所致的缺血性卒中（SOE）")) {
+                    etNosogenesis.setItemData(nosogenesisList);
                 } else {
                     llMoyamoyaDisease.setVisibility(View.GONE);
                 }
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_cxxncz")){
+                esDiagnosis.setText("出血性卒中");
+                llHemorrhagicApoplexy.setVisibility(View.VISIBLE);
+                llIschemicStroke.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.VISIBLE);
+                llCpc.setVisibility(View.VISIBLE);
+                llSymptom.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_fpldml")){
+                esDiagnosis.setText("非破裂动脉瘤");
+                llSymptom.setVisibility(View.VISIBLE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_jbdmxzhbs")){
+                esDiagnosis.setText("颈部动脉狭窄或闭塞");
+                llOtherDiagnostic.setVisibility(View.VISIBLE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llIschemicStroke.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
+            }else if (diagnosticresultinit.equals("cpc_czzdjg_qtnb")){
+                esDiagnosis.setText("其他");
+                llIschemicStroke.setVisibility(View.GONE);
+                llHemorrhagicApoplexy.setVisibility(View.GONE);
+                llOtherDiagnostic.setVisibility(View.GONE);
+                llCpc.setVisibility(View.GONE);
+                llSymptom.setVisibility(View.GONE);
+                llDmlpl.setVisibility(View.GONE);
             }
-        });
-
+            llMoyamoyaDisease.setVisibility(View.GONE);
+        }
+        String pathogenesisinit = bean.getPathogenesisinit();
+        if (!TextUtils.isEmpty(pathogenesisinit)){
+            if (pathogenesisinit.equals("cpc_pathogenesis_laa")){
+                etNosogenesis.setText("大动脉粥样硬化性卒中(LAA)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_ce")){
+                etNosogenesis.setText("心源性脑栓塞(CE)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_saa")){
+                etNosogenesis.setText("小动脉闭塞性卒中或腔隙性卒中(SAA)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_soe")){
+                etNosogenesis.setText("其他原因所致的缺血性卒中(SOE)");
+                llMoyamoyaDisease.setVisibility(View.VISIBLE);
+            }else if (pathogenesisinit.equals("cpc_pathogenesis_sue")){
+                etNosogenesis.setText("不明原因的缺血性卒中(SUE)");
+                llMoyamoyaDisease.setVisibility(View.GONE);
+            }
+        }
         //烟雾病
-        rgMoyamoyaDisease.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton radiobutton = (RadioButton) group.findViewById(group.getCheckedRadioButtonId());
-                // Toast.makeText(getActivity(), "选中的内容是" + radiobutton.getText().toString(), Toast.LENGTH_LONG).show();
-                switch (checkedId) {
-                    case R.id.rb_moyamoya_disease_yes:
-                        bean.setIsmoyamoyainit("cpc_bool_true");
-                        break;
-
-                    case R.id.rb_moyamoya_disease_no:
-                        bean.setIsmoyamoyainit("cpc_bool_false");
-                        break;
-                }
-            }
-        });
-
+        String ismoyamoyainit = bean.getIsmoyamoyainit();
+        if (!TextUtils.isEmpty(ismoyamoyainit)){
+            rgMoyamoyaDisease.check(ismoyamoyainit.equals("cpc_bool_true") ? R.id.rb_moyamoya_disease_yes : R.id.rb_moyamoya_disease_no );
+        }
     }
 
     private void queryDataDiagnosticEvaluation(DiagnosticEvaluationBean entity) {

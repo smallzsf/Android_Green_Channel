@@ -25,6 +25,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.AfterOperationDrugBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
@@ -335,13 +336,13 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
                 .getInstance()
                 .getApi()
                 .getStrokeInHosDrug(requestBean.getResuestBody(requestBean))
-                .enqueue(new Callback<BaseObjectBean<StrokeInHosDrugBean>>() {
+                .enqueue(new Callback<BaseResponseBean<StrokeInHosDrugBean>>() {
 
                     @Override
-                    public void onResponse(Call<BaseObjectBean<StrokeInHosDrugBean>> call, Response<BaseObjectBean<StrokeInHosDrugBean>> response) {
+                    public void onResponse(Call<BaseResponseBean<StrokeInHosDrugBean>> call, Response<BaseResponseBean<StrokeInHosDrugBean>> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                bean = response.body().getData();
+                                bean = response.body().getData().getData();
                                 dataToView(bean);
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
@@ -353,7 +354,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
 
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<StrokeInHosDrugBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<StrokeInHosDrugBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
                         showToast(call.toString());
                     }
