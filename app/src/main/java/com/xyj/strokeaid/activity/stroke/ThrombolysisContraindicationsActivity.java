@@ -21,6 +21,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
@@ -84,8 +85,6 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
     public void initView() {
         mStrokeTCBeans = prepareData();
 //
-//        R.layout.adapter_header_single_text,
-//                R.layout.adapter_rv_stroke_thrombolysis_symptom_item,
         refrashAdapter(true);
     }
 
@@ -104,14 +103,19 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getMyindication(requestBody)
-                .enqueue(new Callback<BaseObjectBean<MyindicationPo>>() {
+                .getSiscontraindication(requestBody)
+                .enqueue(new Callback<BaseResponseBean<SiscontraindicationBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
-                        if (response.body().getResult() == 1) {
+                    public void onResponse(Call<BaseResponseBean<SiscontraindicationBean>> call, Response<BaseResponseBean<SiscontraindicationBean>> response) {
+                        BaseResponseBean<SiscontraindicationBean> body = response
+                                .body();
+                        if (body == null) {
+                            return;
+                        }
+                        if (body.getResult() == 1) {
                             // TODO: 2020/9/13 重现接口验证数据为null
-//                            bean = response
-//                                    .body().getData();
+                            BaseResponseBean.DataBeanX<SiscontraindicationBean> data = body.getData();
+                            bean = data.getData();
 
                             mStrokeTCBeans = prepareData();
                             refrashAdapter(true);
@@ -119,7 +123,7 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<MyindicationPo>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<SiscontraindicationBean>> call, Throwable t) {
 
                     }
                 });
@@ -197,9 +201,116 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
          *   	 thrombolysisRelativecontraindicationYcf	6 孕产妇	是	[string]	查看
          *   	 thrombolysisRelativecontraindicationNone	7. 无以上禁忌症
          */
-        List<StrokeTCBean> strokeTCBeans = mStrokeTCBeans;
-        for (int i = 0; i < strokeTCBeans.size(); i++) {
-            StrokeTCBean strokeTCBean = strokeTCBeans.get(i);
+
+
+//        thrombolysisContraindicationLrcx	1. 颅内出血（
+        bean = new SiscontraindicationBean();
+//                	1. 颅内出血（包括脑
+        bean.thrombolysisContraindicationLrcx = mStrokeTCBeans.get(1).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationCzlrcx = mStrokeTCBeans.get(2).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationCzs = mStrokeTCBeans.get(3).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationLrzr = mStrokeTCBeans.get(4).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationJqss = mStrokeTCBeans.get(5).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationNzcx = mStrokeTCBeans.get(6).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationDmcc = mStrokeTCBeans.get(7).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationXysg = mStrokeTCBeans.get(8).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationJxcxqx = mStrokeTCBeans.get(9).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationDfzgszl = mStrokeTCBeans.get(10).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationKfknj = mStrokeTCBeans.get(11).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationJcyc = mStrokeTCBeans.get(12).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationXtd = mStrokeTCBeans.get(13).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisContraindicationDmjgs = mStrokeTCBeans.get(14).getChecked() ? "1" : "-1";
+        bean.thrombolysisContraindicationNone = mStrokeTCBeans.get(15).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationGscz = mStrokeTCBeans.get(16 + 1).getChecked() ? "1" : "-1";
+        bean.thrombolysisRelativecontraindicationSjgnsh = mStrokeTCBeans.get(16 + 2).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationJqyzws = mStrokeTCBeans.get(16 + 3).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationJqxjgs = mStrokeTCBeans.get(16 + 4).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationJqwccx = mStrokeTCBeans.get(16 + 5).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationYcf = mStrokeTCBeans.get(16 + 6).getChecked() ? "1" : "-1";
+
+        bean.thrombolysisRelativecontraindicationNone = mStrokeTCBeans.get(16 + 7).getChecked() ? "1" : "-1";
+
+
+        String request = GsonUtils.getGson().toJson(bean);
+        saveNet(request);
+
+    }
+
+    private void saveNet(String request) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveSiscontraindication(requestBody)
+                .enqueue(new Callback<BaseResponseBean<SiscontraindicationBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<SiscontraindicationBean>> call, Response<BaseResponseBean<SiscontraindicationBean>> response) {
+                        BaseResponseBean<SiscontraindicationBean> body = response.body();
+                        if (body == null) {
+                            return;
+                        }
+                        if (body.getResult() == 1) {
+                            showToast("保存成功");
+                            // TODO: 2020/9/13  接口未返回评分结果 需要返回将评分结果返回打开页面
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<SiscontraindicationBean>> call, Throwable t) {
+
+                    }
+                });
+    }
+
+
+    private List<StrokeTCBean> prepareData() {
+        ArrayList<StrokeTCBean> list = new ArrayList<>();
+
+        list.add(new StrokeTCBean(true, "静脉溶栓禁忌症", false, ""));
+        list.add(new StrokeTCBean(false, "1.颅内出血（包括脑实质出血、脑室内出血、蛛网膜下腔出血、硬膜下/外血肿等）", false, ""));
+        list.add(new StrokeTCBean(false, "2.既往颅内出血史", false, ""));
+        list.add(new StrokeTCBean(false, "3.近3个月有严重头颅外伤史或卒中史", false, ""));
+        list.add(new StrokeTCBean(false, "4.颅内肿瘤、巨大颅内动脉瘤", false, ""));
+        list.add(new StrokeTCBean(false, "5.近期（3个月）有颅内或椎管内手术", false, ""));
+        list.add(new StrokeTCBean(false, "6.活动性内脏出血", false, ""));
+        list.add(new StrokeTCBean(false, "7.近1周内有在不易压迫止血部位的动脉穿刺", false, ""));
+        list.add(new StrokeTCBean(false, "8.血压升高：收缩压≥180mmHg，或舒张压≥100mmHg", false, ""));
+        list.add(new StrokeTCBean(false, "9.急性出血倾向，包括血小板计数低于100x109/L或其他情况", false, ""));
+        list.add(new StrokeTCBean(false, "10.48h内接受过肝素治疗（APTT超出正常范围上限）", false, ""));
+        list.add(new StrokeTCBean(false, "11.口服抗凝剂且INR＞1.7或PT＞15s", false, ""));
+        list.add(new StrokeTCBean(false, "12.目前正在使用凝血酶抑制器或Xa因子抑制剂，各种敏感的实验室检查异常（如APTT，INR，血小板计数，ECT，TT或恰当的Xa因子活性测定等）", false, ""));
+        list.add(new StrokeTCBean(false, "13.血糖＜2.7mmol/L", false, ""));
+        list.add(new StrokeTCBean(false, "14.头部CT或MRI提示大面积梗死（梗死面积＞1/3大脑中动脉供血区）", false, ""));
+        list.add(new StrokeTCBean(false, "15.无以上禁忌症", false, ""));
+        list.add(new StrokeTCBean(true, "相对禁忌症\n下列情况需谨慎考虑和权衡溶栓的分析和获益（即虽然存在一项或多项禁忌症，但并非绝对不能溶栓）", false, ""));
+        list.add(new StrokeTCBean(false, "1.轻型非致残性卒中或症状迅速改善的卒中", false, ""));
+        list.add(new StrokeTCBean(false, "2.惊厥发作后出现的神经功能损害（与此次卒中发生相关）", false, ""));
+        list.add(new StrokeTCBean(false, "3.近2周内有大型外科手术或严重外伤", false, ""));
+        list.add(new StrokeTCBean(false, "4.近3个月内有心肌梗死", false, ""));
+        list.add(new StrokeTCBean(false, "5.近3周内有胃肠或泌尿系统出血", false, ""));
+        list.add(new StrokeTCBean(false, "6.孕产妇", false, ""));
+        list.add(new StrokeTCBean(false, "7.无以上禁忌症", false, ""));
+
+        if (bean == null) {
+            return list;
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            StrokeTCBean strokeTCBean = list.get(i);
             if (strokeTCBean == null) {
                 continue;
             }
@@ -295,67 +406,11 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
                     nextText = bean.thrombolysisRelativecontraindicationNone;
                     break;
             }
+            checked = "1".equals(nextText);
+            strokeTCBean.setChecked(checked);
         }
-        String request = GsonUtils.getGson().toJson(bean);
-        saveNet(request);
-
-    }
-
-    private void saveNet(String request) {
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        RetrofitClient
-                .getInstance()
-                .getApi()
-                .saveMyindication(requestBody)
-                .enqueue(new Callback<BaseObjectBean<MyindicationPo>>() {
-                    @Override
-                    public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
-                        BaseObjectBean<MyindicationPo> body = response.body();
-                        if (body == null) {
-                            return;
-                        }
-                        if (body.getResult() == 1) {
-                            showToast("保存成功");
-                            // TODO: 2020/9/13  接口未返回评分结果 需要返回将评分结果返回打开页面
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BaseObjectBean<MyindicationPo>> call, Throwable t) {
-
-                    }
-                });
-    }
 
 
-    private List<StrokeTCBean> prepareData() {
-        ArrayList<StrokeTCBean> list = new ArrayList<>();
-
-        list.add(new StrokeTCBean(true, "静脉溶栓禁忌症", false, ""));
-        list.add(new StrokeTCBean(false, "1.颅内出血（包括脑实质出血、脑室内出血、蛛网膜下腔出血、硬膜下/外血肿等）", false, ""));
-        list.add(new StrokeTCBean(false, "2.既往颅内出血史", false, ""));
-        list.add(new StrokeTCBean(false, "3.近3个月有严重头颅外伤史或卒中史", false, ""));
-        list.add(new StrokeTCBean(false, "4.颅内肿瘤、巨大颅内动脉瘤", false, ""));
-        list.add(new StrokeTCBean(false, "5.近期（3个月）有颅内或椎管内手术", false, ""));
-        list.add(new StrokeTCBean(false, "6.活动性内脏出血", false, ""));
-        list.add(new StrokeTCBean(false, "7.近1周内有在不易压迫止血部位的动脉穿刺", false, ""));
-        list.add(new StrokeTCBean(false, "8.血压升高：收缩压≥180mmHg，或舒张压≥100mmHg", false, ""));
-        list.add(new StrokeTCBean(false, "9.急性出血倾向，包括血小板计数低于100x109/L或其他情况", false, ""));
-        list.add(new StrokeTCBean(false, "10.48h内接受过肝素治疗（APTT超出正常范围上限）", false, ""));
-        list.add(new StrokeTCBean(false, "11.口服抗凝剂且INR＞1.7或PT＞15s", false, ""));
-        list.add(new StrokeTCBean(false, "12.目前正在使用凝血酶抑制器或Xa因子抑制剂，各种敏感的实验室检查异常（如APTT，INR，血小板计数，ECT，TT或恰当的Xa因子活性测定等）", false, ""));
-        list.add(new StrokeTCBean(false, "13.血糖＜2.7mmol/L", false, ""));
-        list.add(new StrokeTCBean(false, "14.头部CT或MRI提示大面积梗死（梗死面积＞1/3大脑中动脉供血区）", false, ""));
-        list.add(new StrokeTCBean(false, "15.无以上禁忌症", false, ""));
-        list.add(new StrokeTCBean(true, "相对禁忌症\n下列情况需谨慎考虑和权衡溶栓的分析和获益（即虽然存在一项或多项禁忌症，但并非绝对不能溶栓）", false, ""));
-        list.add(new StrokeTCBean(false, "1.轻型非致残性卒中或症状迅速改善的卒中", false, ""));
-        list.add(new StrokeTCBean(false, "2.惊厥发作后出现的神经功能损害（与此次卒中发生相关）", false, ""));
-        list.add(new StrokeTCBean(false, "3.近2周内有大型外科手术或严重外伤", false, ""));
-        list.add(new StrokeTCBean(false, "4.近3个月内有心肌梗死", false, ""));
-        list.add(new StrokeTCBean(false, "5.近3周内有胃肠或泌尿系统出血", false, ""));
-        list.add(new StrokeTCBean(false, "6.孕产妇", false, ""));
-        list.add(new StrokeTCBean(false, "7.无以上禁忌症", false, ""));
         return list;
     }
 }

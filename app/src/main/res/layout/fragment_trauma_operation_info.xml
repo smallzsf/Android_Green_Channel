@@ -19,12 +19,14 @@
             android:orientation="vertical">
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
                 tl:title="患者到达时间" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_leave_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -169,30 +171,35 @@
                     android:text="手术信息" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_mzkssj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="麻醉开始时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_mzjssj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="麻醉结束时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_sskssj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="手术开始时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_ssjssj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
                     tl:title="手术结束时间" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_sdsj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
@@ -208,6 +215,7 @@
                     android:text="术中出量" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_cxl"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -220,6 +228,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_nl"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -239,6 +248,7 @@
 
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_jty"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -251,6 +261,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_jiaoty"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     tl:ieb_edit_hint="单行输入"
@@ -261,6 +272,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_RBC"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -272,6 +284,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_xj"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -283,6 +296,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_lcd"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -294,6 +308,7 @@
                 </com.xyj.strokeaid.view.ItemEditBar>
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_xxb"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"

@@ -87,20 +87,10 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
     EditSpinner etNosogenesis;
     @BindView(R.id.ll_ischemic_stroke)
     LinearLayout llIschemicStroke;
-    //    @BindView(R.id.tv_name)
-//    TextView tvName;
-//    @BindView(R.id.app_tv_editSpinner_time)
-//    TextView appTvEditSpinnerTime;
-//    @BindView(R.id.iv_refresh)
-//    ImageView ivRefresh;
     @BindView(R.id.sv_admitting_diagnosis)
     ScrollView svAdmittingDiagnosis;
     @BindView(R.id.sv_discharge_diagnosis)
     ScrollView svDischargeDiagnosis;
-    //    @BindView(R.id.btn_get_data)
-//    AppCompatButton btnGetData;
-//    @BindView(R.id.btn_confirm)
-//    AppCompatButton btnConfirm;
     @BindView(R.id.rb_moyamoya_disease_yes)
     RadioButton rbMoyamoyaDiseaseYes;
     @BindView(R.id.rb_moyamoya_disease_no)
@@ -543,6 +533,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
                             if (response.body().getResult() == 1) {
                                 bean = response.body().getData().getData();
                                 dataToView(bean);
+
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -603,43 +594,48 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
 
         String ruptureofaneurysminit = bean.getRuptureofaneurysminit();
         String ruptureofnonaneurysminit = bean.getRuptureofnonaneurysminit();
-        if (!TextUtils.isEmpty(ruptureofaneurysminit)){
-            if (ruptureofaneurysminit.equals("cpc_cxxncz_dmlpl")){
+        String hemorrhagicstrokeinit = bean.getHemorrhagicstrokeinit();
+        if (!TextUtils.isEmpty(hemorrhagicstrokeinit)){
+            if (hemorrhagicstrokeinit.equals("cpc_cxxncz_dmlpl")){
                 isDmpl = 1;
                 esCxxcz.setText("动脉瘤破裂");
                 llDmlplUnt.setVisibility(View.VISIBLE);
                 //动脉瘤破裂
                 esDmlpl.setStringArrayId(R.array.rupturedAneurysm);
-                if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
-                    llDmlplUnt.setVisibility(View.VISIBLE);
-                    esDmlpl.setText("蛛网膜下腔出血");
-                }else if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
-                    esDmlpl.setText("蛛网膜下腔出血合并脑出血");
-                    llDmlplUnt.setVisibility(View.VISIBLE);
-                }else {
-                    esDmlpl.setText("其他");
-                    llDmlplUnt.setVisibility(View.GONE);
+                if (!TextUtils.isEmpty(ruptureofaneurysminit)){
+                    if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
+                        llDmlplUnt.setVisibility(View.VISIBLE);
+                        esDmlpl.setText("蛛网膜下腔出血");
+                    }else if (ruptureofaneurysminit.equals("cpc_ruptureofaneurysm_zwmxqcx")){
+                        esDmlpl.setText("蛛网膜下腔出血合并脑出血");
+                        llDmlplUnt.setVisibility(View.VISIBLE);
+                    }else {
+                        esDmlpl.setText("其他");
+                        llDmlplUnt.setVisibility(View.GONE);
+                    }
                 }
             }
-        } else if (!TextUtils.isEmpty(ruptureofnonaneurysminit)){
-            if (ruptureofnonaneurysminit.equals("cpc_cxxncz_fdmlpl")){
+        } else if (!TextUtils.isEmpty(hemorrhagicstrokeinit)){
+            if (hemorrhagicstrokeinit.equals("cpc_cxxncz_fdmlpl")){
                 isDmpl = 2;
                 esCxxcz.setText("非动脉瘤破裂");
                 llDmlplUnt.setVisibility(View.GONE);
                 //非动脉瘤破裂
                 esDmlpl.setStringArrayId(R.array.ruptureofnonaneurysm);
-                if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_gxyncx")){
-                    esDmlpl.setText("高血压脑出血");
-                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_hmzxgl")){
-                    esDmlpl.setText("海绵状血管瘤");
-                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_djmjx")){
-                    esDmlpl.setText("动静脉畸形（AVM瘘）");
-                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_jmdxsxc")){
-                    esDmlpl.setText("静脉窦血栓形成");
-                }else if (ruptureofaneurysminit.equals("cpc_ruptureofnonaneurysm_dfyb")){
-                    esDmlpl.setText("淀粉样变");
-                }else {
-                    esDmlpl.setText("其他");
+                if (!TextUtils.isEmpty(ruptureofnonaneurysminit)){
+                    if (ruptureofnonaneurysminit.equals("cpc_ruptureofnonaneurysm_gxyncx")){
+                        esDmlpl.setText("高血压脑出血");
+                    }else if (ruptureofnonaneurysminit.equals("cpc_ruptureofnonaneurysm_hmzxgl")){
+                        esDmlpl.setText("海绵状血管瘤");
+                    }else if (ruptureofnonaneurysminit.equals("cpc_ruptureofnonaneurysm_djmjx")){
+                        esDmlpl.setText("动静脉畸形（AVM瘘）");
+                    }else if (ruptureofnonaneurysminit.equals("cpc_ruptureofnonaneurysm_jmdxsxc")){
+                        esDmlpl.setText("静脉窦血栓形成");
+                    }else if (ruptureofnonaneurysminit.equals("cpc_ruptureofnonaneurysm_dfyb")){
+                        esDmlpl.setText("淀粉样变");
+                    }else {
+                        esDmlpl.setText("其他");
+                    }
                 }
             }
         }
@@ -731,6 +727,7 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
             }
             llMoyamoyaDisease.setVisibility(View.GONE);
         }
+
         String pathogenesisinit = bean.getPathogenesisinit();
         if (!TextUtils.isEmpty(pathogenesisinit)){
             if (pathogenesisinit.equals("cpc_pathogenesis_laa")){
@@ -755,10 +752,6 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         if (!TextUtils.isEmpty(ismoyamoyainit)){
             rgMoyamoyaDisease.check(ismoyamoyainit.equals("cpc_bool_true") ? R.id.rb_moyamoya_disease_yes : R.id.rb_moyamoya_disease_no );
         }
-    }
-
-    private void queryDataDiagnosticEvaluation(DiagnosticEvaluationBean entity) {
-
     }
 
     private void loadData() {

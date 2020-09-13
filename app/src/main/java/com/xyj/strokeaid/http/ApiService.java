@@ -22,8 +22,10 @@ import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.RequestThriveDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
+import com.xyj.strokeaid.bean.StrokeOperationOnInfoBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
@@ -36,6 +38,8 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.trauma.TraumaEcgCheckBean;
+import com.xyj.strokeaid.bean.trauma.TraumaOperationInfoBean;
 import com.xyj.strokeaid.bean.dist.CeaCesBean;
 import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
@@ -380,7 +384,34 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<DiagnosticEvaluationBean>> getDiagnosticEvaluation(@Body RequestBody info);
 
+    /**
+     * 创伤 手术信息 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<TraumaOperationInfoBean>> getTraumaOperationInfo(@Body RequestBody info);
 
+    /**
+     * 创伤 手术信息 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveTraumaOperationInfo(@Body RequestBody info);
+
+    /**
+     * 创伤 心电检查 查询
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<TraumaEcgCheckBean>> getTraumaEcgCheck(@Body RequestBody info);
+
+
+    /**
+     * 创伤 心电检查 保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveTraumaEcgCheck(@Body RequestBody info);
     /**
      * 胸痛 病情记录查询
      */
@@ -672,6 +703,20 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
     Call<BaseResponseBean> saveFamilyOpinion(@Body RequestBody info);
 
+    /**
+     * 录入术中治疗信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeOperationOnInfo(@Body RequestBody info);
+
+    /**
+     * 获取录中治疗信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeOperationOnInfoBean>> getStrokeOperationOnInfo(@Body RequestBody info);
+
 
     /**
      * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/add
@@ -679,8 +724,17 @@ public interface ApiService {
      静脉溶栓禁忌症评估
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_COMMON_SAVE)
-    Call<BaseResponseBean> saveSiscontraindication(@Body RequestBody info);
+    @POST(ApiUrls.NET_URL_SAVE_SISCONTRAINDICATION)
+    Call<BaseResponseBean<SiscontraindicationBean>> saveSiscontraindication(@Body RequestBody info);
+
+    /**
+     * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/add
+     POST
+     静脉溶栓禁忌症评估
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_SISCONTRAINDICATION)
+    Call<BaseResponseBean<SiscontraindicationBean>> getSiscontraindication(@Body RequestBody info);
 
 
 }
