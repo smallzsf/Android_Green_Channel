@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:padding="@dimen/item_normal_margin">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_normal_height"
+            android:gravity="center"
+            android:text="新增动脉瘤"
+            android:textColor="@color/color_222222"
+            android:textSize="15dp" />
+            <View style="@style/horizontal_divider" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_below="@+id/doctor_name_line"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="@dimen/dp_68"
+                    android:layout_height="wrap_content"
+                    android:text="侧别"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+
+                <RadioGroup
+                    android:id="@+id/rg_side"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rb_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="左侧"
+                        android:textSize="@dimen/item_content_size" />
+
+                    <RadioButton
+                        android:id="@+id/rb_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="右侧"
+                        android:textSize="@dimen/item_content_size" />
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+
+            <View style="@style/horizontal_divider" />
+            <TextView
+                android:layout_width="@dimen/dp_68"
+                android:layout_height="wrap_content"
+                android:text="部位"
+                android:textColor="@color/app_223b53"
+                android:textSize="@dimen/tab_text_size" />
+            <com.xyj.strokeaid.view.MyRadioGroup
+                android:id="@+id/rg_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_ica"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="ICA" />
+
+                    <RadioButton
+                        android:id="@+id/rb_pcoma"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="PComA" />
+                    <RadioButton
+                        android:id="@+id/rb_acha"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="AChA" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_aca"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="ACA" />
+
+                    <RadioButton
+                        android:id="@+id/rb_acoma"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="AcomA" />
+                    <RadioButton
+                        android:id="@+id/rb_mca"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="MCA" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_va"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="VA" />
+
+                    <RadioButton
+                        android:id="@+id/rb_ba"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="BA" />
+                    <RadioButton
+                        android:id="@+id/rb_pca"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="PCA" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_aica"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="AICA" />
+
+                    <RadioButton
+                        android:id="@+id/rb_pica"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="PICA" />
+                    <RadioButton
+                        android:id="@+id/rb_sca"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="SCA" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_other"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="其他" />
+                    <com.xyj.strokeaid.view.ItemEditBar
+                        android:id="@+id/ieb_other"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        app:ieb_title="具体部位"
+
+                    />
+
+                </LinearLayout>
+            </com.xyj.strokeaid.view.MyRadioGroup>
+            <LinearLayout
+                android:id="@+id/ll_ica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="颈内动脉ICA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_ica"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_ica_jd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="颈段" />
+                        <RadioButton
+                            android:id="@+id/rb_ica_yd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="岩段" />
+                        <RadioButton
+                            android:id="@+id/rb_ica_plkd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="破裂孔段" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_ica_hmdd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="海绵窦段" />
+                        <RadioButton
+                            android:id="@+id/rb_ica_ctd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="床突段" />
+                        <RadioButton
+                            android:id="@+id/rb_ica_ydmd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="眼动脉段" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_ica_jtdmd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="交通动脉段" />
+
+                    </LinearLayout>
+                </com.xyj.strokeaid.view.MyRadioGroup>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_aca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="大脑前动脉ACA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_aca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_aca_a1"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="A1" />
+                        <RadioButton
+                            android:id="@+id/rb_aca_a2"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="A2" />
+                        <RadioButton
+                            android:id="@+id/rb_aca_a3"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="A3" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_aca_a4"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="A4" />
+                        <RadioButton
+                            android:id="@+id/rb_aca_a5"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="A5" />
+                        <RadioButton
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:visibility="invisible"
+                           />
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_mca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="大脑中动脉MCA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_mca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_mca_m1"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M1" />
+                        <RadioButton
+                            android:id="@+id/rb_mca_m2"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M2" />
+                        <RadioButton
+                            android:id="@+id/rb_mca_m3"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M3" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_mca_m4"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M4" />
+
+                        <RadioButton
+                            android:id="@+id/rb_mca_m5"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M5" />
+                        <RadioButton
+                            android:id="@+id/rb_mca_dnzdm"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="M2分叉处"
+                            />
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_va"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="椎动脉VA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_va"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_va_v1"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="V1" />
+                        <RadioButton
+                            android:id="@+id/rb_va_v2"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="V2" />
+                        <RadioButton
+                            android:id="@+id/rb_va_v3"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="V3" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_va_v4"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="V4" />
+
+                        <RadioButton
+                            android:id="@+id/rb_va_v5"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="V5" />
+                        <RadioButton
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:visibility="invisible"
+                            />
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_ba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="基底动脉BA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_ba"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_ba_dd"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="BA-顶端" />
+                        <RadioButton
+                            android:id="@+id/rb_ba_zg"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="BA-主干" />
+                        <RadioButton
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:visibility="invisible"
+                            />
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_pca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="大脑后动脉PCA"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_pca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_pca_p1"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="P1" />
+                        <RadioButton
+                            android:id="@+id/rb_pca_p2"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="P2" />
+                        <RadioButton
+                            android:id="@+id/rb_pca_p3"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="P3" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_pca_p4"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="P4" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+            <View style="@style/horizontal_divider" />
+            <TextView
+                android:layout_width="@dimen/dp_68"
+                android:layout_height="wrap_content"
+                android:text="大小"
+                android:textColor="@color/app_223b53"
+                android:textSize="@dimen/tab_text_size" />
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_length"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                android:layout_marginStart="-12dp"
+                app:ieb_title="长："
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="mm"
+                app:ieb_unit_visible="true" />
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_width"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                android:layout_marginStart="-12dp"
+                app:ieb_title="宽："
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="mm"
+                app:ieb_unit_visible="true" />
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_height"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                android:layout_marginStart="-12dp"
+                app:ieb_title="长："
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="mm"
+                app:ieb_unit_visible="true" />
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_radius"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                android:layout_marginStart="-12dp"
+                app:ieb_title="瘤颈："
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_text="mm"
+                app:ieb_unit_visible="true" />
+
+            <LinearLayout
+                android:id="@+id/ll_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="类型"
+                    android:textColor="@color/app_223b53"
+                    android:textSize="@dimen/tab_text_size" />
+                <com.xyj.strokeaid.view.MyRadioGroup
+                    android:id="@+id/rg_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_type_sx"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="梭形" />
+                        <RadioButton
+                            android:id="@+id/rb_type_nz"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="囊状" />
+                        <RadioButton
+                            android:id="@+id/rb_type_jc"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="囊状" />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_type_jjxdml"
+                            style="@style/XyjRadionButtonHorizontalWeight"
+                            android:text="假性动脉瘤" />
+
+                    </LinearLayout>
+
+                </com.xyj.strokeaid.view.MyRadioGroup>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginTop="@dimen/dp_10"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/buttom_normal_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/login_btn_bg"
+                    android:gravity="center"
+                    android:text="保存"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/buttom_normal_height"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:layout_weight="1"
+                    android:background="@drawable/login_btn_bg"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -54,4 +54,12 @@ public final class IntentKey {
      *
      */
     public static final String TRAUMA_IMAGE_CHECK_DETAIL_BEAN = "TRAUMA_IMAGE_CHECK_DETAIL_BEAN";
+    /**
+     * 动脉瘤状态
+     */
+    public static final String ANEURYSMTYPE ="ANEURYSM_TYPE";
+    /**
+     * 动脉瘤
+     */
+    public static final String ANEURYSM ="ANEURYSM";
 }

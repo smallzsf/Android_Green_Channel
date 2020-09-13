@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.http;
 
+import com.xyj.strokeaid.activity.stroke.EmergencyCenterStrokeAneurysmSurgeryData;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
@@ -80,6 +81,14 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<StrokeTrigaeInfoBean>> getStrokeTrigaeInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveAneurysm(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<EmergencyCenterStrokeAneurysmSurgeryData>> getAneurysm(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
