@@ -25,6 +25,7 @@ import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
+import com.xyj.strokeaid.bean.StrokeOperationOnInfoBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
@@ -672,6 +673,20 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
     Call<BaseResponseBean> saveFamilyOpinion(@Body RequestBody info);
+
+    /**
+     * 录入术中治疗信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeOperationOnInfo(@Body RequestBody info);
+
+    /**
+     * 获取录中治疗信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeOperationOnInfoBean>> getStrokeOperationOnInfo(@Body RequestBody info);
 
 
     /**

@@ -78,8 +78,8 @@ public class RadioGroupDistUtil extends RadioButtonDistUtil {
      * 获取radioGroup中选中的文字
      */
     public static String getSelectRadioButtonTag(ViewGroup radioGroup, Map<String, String> map) {
-        String key = getSelectRadioButtonText(radioGroup);
-        return map.get(key);
+        String txt = getSelectRadioButtonText(radioGroup);
+        return getKeyOfMap(map,txt);
     }
 
 

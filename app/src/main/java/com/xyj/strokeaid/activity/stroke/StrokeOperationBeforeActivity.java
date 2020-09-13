@@ -153,7 +153,7 @@ public class StrokeOperationBeforeActivity extends BaseActivity {
             return;
         }
         tvStartCatheter.setTime(data.getEnabledsaroombegintime());
-        rgDirectdsaroom.check("1".equals(data.getDirectdsaroom()) ? R.id.rb_directdsaroom_yes : R.id.rb_directdsaroom_no);
+        rgDirectdsaroom.check("cpc_bool_true".equals(data.getDirectdsaroom()) ? R.id.rb_directdsaroom_yes : R.id.rb_directdsaroom_no);
         tvSelectCatheter.setText(data.getEmbolectomyroom());
         iebInterveneDoctor.setEditContent(data.getEmbolectomypatientsurgerydoctor());
         iebInterveneNurse.setEditContent(data.getEmbolectomypatientsurgerynurse());
@@ -170,7 +170,7 @@ public class StrokeOperationBeforeActivity extends BaseActivity {
         //启动导管室
         savedData.setEnabledsaroombegintime(tvStartCatheter.getTime());
         //直达导管室
-        savedData.setDirectdsaroom(rgDirectdsaroom.getCheckedRadioButtonId() == R.id.rb_directdsaroom_yes ? "1" : "-1");
+        savedData.setDirectdsaroom(rgDirectdsaroom.getCheckedRadioButtonId() == R.id.rb_directdsaroom_yes ? "cpc_bool_true" : "cpc_bool_false");
         //TODO 手术室修改
         savedData.setEmbolectomyroom("卒中介入手术室");
         //介入医生
