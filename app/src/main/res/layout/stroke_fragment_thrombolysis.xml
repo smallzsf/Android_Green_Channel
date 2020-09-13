@@ -199,10 +199,21 @@
                 app:bottomLineVisible="true"
                 app:title="开始静脉溶栓" />
 
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="发病至溶栓"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_visible="false" />
 
-
-
-
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="到院至溶栓"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_visible="false" />
 
 
 
@@ -366,15 +377,17 @@
 
 
 
+            <include
+                android:id="@+id/ll_bottom"
+                layout="@layout/view_two_horizontal_bottom_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/item_normal_margin" />
+
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <include
-        android:id="@+id/ll_bottom"
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/item_normal_margin" />
+
 
 </LinearLayout>

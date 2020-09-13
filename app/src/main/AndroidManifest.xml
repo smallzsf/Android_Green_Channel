@@ -170,6 +170,7 @@
         <activity
             android:name=".activity.common.PatientStrokeRecordActivity"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" >
 
             <intent-filter>
