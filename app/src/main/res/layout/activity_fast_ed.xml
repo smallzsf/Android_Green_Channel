@@ -23,6 +23,7 @@
         android:layout_below="@id/title_bar_act_nihss"
         android:background="@color/white"
         android:orientation="horizontal"
+        android:visibility="gone"
         android:paddingStart="@dimen/dp_12"
         android:paddingEnd="@dimen/dp_12">
 
@@ -32,6 +33,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="@string/app_rating_results"
+
             android:textColor="@color/color_222222"
             android:textSize="14sp" />
     </LinearLayout>

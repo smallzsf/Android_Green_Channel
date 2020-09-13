@@ -61,7 +61,11 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                     SendAddStrokeMrsBean sendAddStrokeMrsBean = new SendAddStrokeMrsBean();
                     sendAddStrokeMrsBean.setMrs(nibBeforeDiseaseMrsFragSs.getScore());
                     sendAddStrokeMrsBean.setScore(nibBeforeDiseaseMrsFragSs.getScore());
-                    addStrokeMrs(sendAddStrokeMrsBean);
+                    if (-2 != nibBeforeDiseaseMrsFragSs.getScore()) {
+                        addStrokeMrs(sendAddStrokeMrsBean);
+                    } else {
+                        showToast("存在未选择选项，请检查！");
+                    }
                 });
         initNihssBars();
     }
@@ -103,8 +107,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                showToast("保存数据成功");
-                                // TODO
+                                showToast("评分提交成功！");
                             } else {
                                 showToast(response.body().getMessage());
                             }
