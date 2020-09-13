@@ -19,11 +19,5 @@ public class RadioButtonDistUtil extends ViewDistUtils<RadioButton> {
         return null;
     }
 
-    public String getSelectViewKey() {
-        List<String> selectViews = super.getSelectViewKeys();
-        if (selectViews != null && selectViews.isEmpty()) {
-            return selectViews.get(0);
-        }
-        return null;
-    }
+
 }

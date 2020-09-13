@@ -6,6 +6,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RadioGroupDistUtil extends RadioButtonDistUtil {
     public RadioGroupDistUtil(Context context) {
@@ -13,6 +14,10 @@ public class RadioGroupDistUtil extends RadioButtonDistUtil {
         super(context);
     }
 
+    @Override
+    public List<String> getSelectViewKeys() {
+        return super.getSelectViewKeys();
+    }
 
     public void addView(RadioGroup radioGroup) {
         int childCount = radioGroup.getChildCount();

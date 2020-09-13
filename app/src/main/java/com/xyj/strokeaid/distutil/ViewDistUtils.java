@@ -125,7 +125,15 @@ public class ViewDistUtils<T extends CompoundButton> {
         }
     }
 
+    public void setStringArrayNormalKeys(String keyData) {
+        String[] split = keyData.split(",");
+        for (int i = 0; i < split.length; i++) {
+            setStringArrayNormalKey(split[i]);
+        }
+    }
+
     public void setStringArrayNormalKey(String keyData) {
+
         if (distListUtil == null) {
             return;
         }
@@ -141,7 +149,7 @@ public class ViewDistUtils<T extends CompoundButton> {
         return selectViews;
     }
 
-    protected List<String> getSelectViewKeys() {
+    public List<String> getSelectViewKeys() {
         List<String> selectViewKeys = new ArrayList<>();
         for (int i = 0; i < selectViews.size(); i++) {
             T t = selectViews.get(i);
@@ -153,6 +161,19 @@ public class ViewDistUtils<T extends CompoundButton> {
 
 
         return selectViewKeys;
+    }
+    public String getSelectViewKey() {
+        List<String> selectViews = getSelectViewKeys();
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < selectViews.size(); i++) {
+            if (i == 0){
+                sb.append(selectViews.get(i));
+            }else {
+                sb.append(",");
+                sb.append(selectViews.get(i));
+            }
+        }
+        return sb.toString();
     }
 
     private ViewClickListener listener;

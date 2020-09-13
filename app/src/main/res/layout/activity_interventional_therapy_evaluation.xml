@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_nihss"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:rightText="保存"
+        app:rightTextVisible="true"
+        app:title="介入治疗评估" />
+
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_interventional_doctors"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:topLineVisible="true"
+        tl:title="介入医生接诊" />
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_operation_warning_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:topLineVisible="true"
+        tl:title="手术预警时间" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,28 +56,130 @@
             android:layout_marginEnd="@dimen/dp_3"
             android:gravity="center"
             app:Background="@drawable/bg_view_frame"
-            app:hint="阴性"
+            app:hint="周吉从"
             app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:minWidth="60dp"
+            android:text="会诊地点:"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginEnd="@dimen/dp_3"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="其他"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="@dimen/item_normal_height"
+            android:gravity="center_vertical"
+            android:text="禁忌症结果:" />
+
+        <RadioGroup
+            android:id="@+id/rg_contraindication_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_contraindication_result_true"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="是" />
+
+
+            <RadioButton
+                android:id="@+id/rb_contraindication_result_false"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="否" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_score"
+            >
+        </Button>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/tv_normal_titel"
+            android:layout_width="@dimen/item_title_min_width"
+            android:layout_height="@dimen/item_normal_height"
+            android:gravity="center_vertical"
+            android:text="适应症结果:" />
+
+        <RadioGroup
+            android:id="@+id/rg_indication_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_indication_result_true"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="合适" />
+
+
+            <RadioButton
+                android:id="@+id/rb_indication_result_false"
+                style="@style/XyjRadionButtonHorizontalWeight"
+                android:text="不合适" />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_score"
+            >
+        </Button>
 
     </LinearLayout>
 
 
     <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/ttb_interventional_doctors"
+        android:id="@+id/ttb_before_emergency_surgery"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:bottomLineVisible="true"
         app:topLineVisible="true"
-        tl:title="介入医生接诊" />
+        tl:title="急诊术前准备完成" />
 
-    <com.xyj.strokeaid.view.TextTimeBar
-        android:id="@+id/ttb_operation_warning_time"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_normal_height"
-        app:bottomLineVisible="true"
-        app:topLineVisible="true"
-        tl:title="手术预警时间" />
+
 
 
 </LinearLayout>

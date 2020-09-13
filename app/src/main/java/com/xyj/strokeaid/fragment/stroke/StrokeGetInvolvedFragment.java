@@ -49,19 +49,8 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
         return fragment;
     }
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            if (view.getId() == R.id.sb_interventional_therapy_evaluation){
-                startActivity(new Intent(context, InterventionalTherapyEvaluationActivity.class));
-                return;
-            }
-        }
-    };
-
     @Override
     protected void initView(@NonNull View view) {
-        sbInterventionalTherapyEvaluation.setOnClickListener(onClickListener);
     }
 
 
@@ -75,12 +64,14 @@ public class StrokeGetInvolvedFragment extends BaseStrokeFragment {
 
     }
 
-    @OnClick({R.id.sb_jrzt_jrzlpg, R.id.sb_jrzt_jrzqty, R.id.sb_jrzt_sqzbxx, R.id.sb_jrzt_szzlxx, R.id.sb_jrzt_shjgxx})
+    @OnClick({R.id.sb_interventional_therapy_evaluation, R.id.sb_jrzt_jrzqty, R.id.sb_jrzt_sqzbxx, R.id.sb_jrzt_szzlxx, R.id.sb_jrzt_shjgxx})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.sb_jrzt_jrzlpg:
+            case R.id.sb_interventional_therapy_evaluation:
                 // 介入治疗评估
 //                startActivity(new Intent(mActivity, GetInvolvedInformedConsentActivity.class));
+                startActivity(new Intent(context, InterventionalTherapyEvaluationActivity.class));
+
                 break;
             case R.id.sb_jrzt_jrzqty:
                 // 介入知情同意

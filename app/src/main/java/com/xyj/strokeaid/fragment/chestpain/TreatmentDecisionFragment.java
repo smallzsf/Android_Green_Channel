@@ -21,11 +21,14 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.chestpain.ReperfusionMeasuresBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.distutil.RadioGroupDistUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import java.util.List;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -189,6 +192,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
         radioButtonDistUtil.addView(rbIntoMeasureLevel4);
         radioButtonDistUtil.addView(rbIntoMeasureLevel5);
         radioButtonDistUtil.setStringArrayId(R.array.chest_pain_treament_decision);
+
     }
 
     @Override
