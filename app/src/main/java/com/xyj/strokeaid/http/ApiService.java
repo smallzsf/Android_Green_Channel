@@ -5,6 +5,8 @@ import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
 import com.xyj.strokeaid.bean.InformedConsentBean;
+import com.xyj.strokeaid.bean.EmergencyCenterChestpainHospitalData;
+import com.xyj.strokeaid.bean.EmergencyCenterStrokeInterventionalTherapyPo;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.MainBean;
@@ -33,6 +35,10 @@ import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.bean.dist.CeaCesBean;
+import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
+import com.xyj.strokeaid.bean.score.ContraindicationPo;
+import com.xyj.strokeaid.bean.score.MyindicationPo;
 
 import java.util.List;
 
@@ -69,6 +75,14 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<StrokeTrigaeInfoBean>> getStrokeTrigaeInfo(@Body RequestBody info);
 
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeSangguineousInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<StrokeSangguineousBean>> getStrokeSangguineousInfo(@Body RequestBody info);
+
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
@@ -77,6 +91,14 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<RequestGetVitalSigns>> getStrokeVitalSignsInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveStrokeCeaCesInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<CeaCesBean>> getStrokeCeaCesInfo(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
@@ -150,6 +172,20 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_MRS)
     Call<BaseObjectBean> addMrs(@Body RequestBody info);
+
+    /**
+     * fast评分
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_FAST)
+    Call<BaseObjectBean> getFastEdScoreSave(@Body RequestBody info);
+
+    /**
+     * Nihss评分
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_NIHSS)
+    Call<BaseObjectBean> addNihss(@Body RequestBody info);
 
     /**
      * CGS评分
@@ -531,6 +567,52 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
     Call<BaseObjectBean<List<TimeNodeBean>>> getTimerLine(@Body RequestBody info);
+
+
+    /**
+     *-卒中--手术治疗--介入--适应症评估--获取
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_GET_MYINDICATION)
+    Call<BaseObjectBean<MyindicationPo>> getMyindication(@Body RequestBody info);
+
+    /**
+     * -卒中--手术治疗--介入--适应症评估--保存
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_MYINDICATION)
+    Call<BaseObjectBean<MyindicationPo>> saveMyindication(@Body RequestBody info);
+
+    /**
+     *  -卒中--手术治疗--介入--禁忌症评估- 获取
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_GET_CONTRAINDICATION)
+    Call<BaseObjectBean<ContraindicationPo>> getContraindication(@Body RequestBody info);
+    /**
+     *  -卒中--手术治疗--介入--禁忌症评估- 获取
+     *
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_CONTRAINDICATION)
+    Call<BaseObjectBean<ContraindicationPo>> saveContraindication(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveEcsitherapy(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<EmergencyCenterStrokeInterventionalTherapyPo>> getEcsitherapy(@Body RequestBody info);
 
     /**
      * 录入术前准备

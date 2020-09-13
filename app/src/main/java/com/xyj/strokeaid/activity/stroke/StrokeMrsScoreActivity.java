@@ -96,6 +96,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
      * 上传MRS评分
      */
     private void addStrokeMrs(SendAddStrokeMrsBean sendAddStrokeMrsBean) {
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(sendAddStrokeMrsBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -105,6 +106,7 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("评分提交成功！");

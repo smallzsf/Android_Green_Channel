@@ -306,4 +306,26 @@ public class ToolnihssBean {
     public void setCreateByName(String createByName) {
         this.createByName = createByName;
     }
+
+    @Override
+    public String toString() {
+        return "ToolnihssBean{" +
+                "id='" + id + '\'' +
+                ", nihssConsciousness=" + nihssConsciousness +
+                ", nihssConsciousnessquestion=" + nihssConsciousnessquestion +
+                ", nihssConsciousnesscommand=" + nihssConsciousnesscommand +
+                ", nihssEyeballgaze=" + nihssEyeballgaze +
+                ", nihssEyssight=" + nihssEyssight +
+                ", nihssFacialparalysis=" + nihssFacialparalysis +
+                ", nihssWeaknesstopleft=" + nihssWeaknesstopleft +
+                ", nihssWeaknesstopright=" + nihssWeaknesstopright +
+                ", nihssWeaknessbottomleft=" + nihssWeaknessbottomleft +
+                ", nihssWeaknessbottomright=" + nihssWeaknessbottomright +
+                ", nihssAtaxia=" + nihssAtaxia +
+                ", nihssFeel=" + nihssFeel +
+                ", nihssLanguage=" + nihssLanguage +
+                ", nihssSpeech=" + nihssSpeech +
+                ", nihssSightignore=" + nihssSightignore +
+                '}';
+    }
 }

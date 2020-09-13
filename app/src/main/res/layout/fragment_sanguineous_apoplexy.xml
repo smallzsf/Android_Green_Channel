@@ -284,6 +284,7 @@
         android:id="@+id/ck_yanwu_ll_apoplexy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+            android:visibility="gone"
             android:orientation="vertical">
         <TextView
             style="@style/XyjTextSubTitel"

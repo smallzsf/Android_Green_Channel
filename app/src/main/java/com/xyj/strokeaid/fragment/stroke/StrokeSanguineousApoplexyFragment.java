@@ -359,17 +359,17 @@ public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
         hemorrhageoperationcomplication = combineHemorrhageoperationcomplication();
         //延误原因字符串
         operationdelayreason = conbineDelayreason();
-//        Log.e("==>arrivebegintime", arrivetohemorrhageoperationbegintime);
-//        Log.e("==>attackbegintime", attacktohemorrhageoperationbegintime);
-//        Log.e("==>begintime", hemorrhageoperationbegintime);
-//        Log.e("==>anesthesiamode", operationanesthesiamode);
-//        Log.e("==>mode", hemorrhageoperationmode);
-//        Log.e("==>othermode", otherhemorrhageoperationmode);
-//        Log.e("==>complication", hemorrhageoperationcomplication);
-//        Log.e("==>othercomplication", otherhemorrhageoperationcomplication);
-//        Log.e("==>prognosis", hemorrhageoperationprognosis);
-//        Log.e("==>operationisdelay", operationisdelay);
-//        Log.e("==>operationdelayreason", operationdelayreason);
+        Log.e("==>arrivebegintime", arrivetohemorrhageoperationbegintime);
+        Log.e("==>attackbegintime", attacktohemorrhageoperationbegintime);
+        Log.e("==>begintime", hemorrhageoperationbegintime);
+        Log.e("==>anesthesiamode", operationanesthesiamode);
+        Log.e("==>mode", hemorrhageoperationmode);
+        Log.e("==>othermode", otherhemorrhageoperationmode);
+        Log.e("==>complication", hemorrhageoperationcomplication);
+        Log.e("==>othercomplication", otherhemorrhageoperationcomplication);
+        Log.e("==>prognosis", hemorrhageoperationprognosis);
+        Log.e("==>operationisdelay", operationisdelay);
+        Log.e("==>operationdelayreason", operationdelayreason);
         if (verifyParameters()) {
             //参数规范正确
             Log.e("==>verifyParameters", "参数正确");
@@ -437,7 +437,6 @@ public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
         showLoadingDialog();
         BaseRequestBean<StrokeSangguineousBean> baseRequestBean = new BaseRequestBean<>(
                 recordId, 1, new StrokeSangguineousBean());
-
         RetrofitClient.getInstance()
                 .getApi()
                 .getStrokeSangguineousInfo(baseRequestBean.getResuestBody(baseRequestBean))
@@ -576,10 +575,8 @@ public class StrokeSanguineousApoplexyFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if (i == rb_all_anaesthesia_fgm_sang.getId()) {
-                    Log.e("==>rg", "1");
                     operationanesthesiamode = (String) rb_all_anaesthesia_fgm_sang.getTag();
                 } else if (i == rb_local_anaesthesia_fgm_sang.getId()) {
-                    Log.e("==>rg", "2");
                     operationanesthesiamode = (String) rb_local_anaesthesia_fgm_sang.getTag();
                 }
             }
