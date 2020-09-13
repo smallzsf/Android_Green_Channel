@@ -536,4 +536,12 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_SAVE_CONTRAINDICATION)
     Call<BaseObjectBean<ContraindicationPo>> saveContraindication(@Body RequestBody info);
 
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveEcsitherapy(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<RequestGetVitalSigns>> getEcsitherapy(@Body RequestBody info);
+
 }

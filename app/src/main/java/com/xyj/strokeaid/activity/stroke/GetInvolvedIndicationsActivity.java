@@ -94,11 +94,8 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
         if (mStrokeTCRvAdapter == null || isReset) {
             mStrokeTCRvAdapter = new StrokeTCRvAdapterNew(
                     mContext, mStrokeTCBeans);
-//            rvContentActTc.setLayoutManager(new LinearLayoutManager(mContext));
             rvContentActTc.setAdapter(mStrokeTCRvAdapter);
-
             mStrokeTCRvAdapter.setOnSwitchClickListener(onSwitchChangeListener);
-//            mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
         } else {
             mStrokeTCRvAdapter.notifyDataSetChanged();
         }
@@ -219,7 +216,7 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
                         }
                         if (body.getResult() == 1) {
                             showToast("保存成功");
-                            // TODO: 2020/9/13  接口未返回评分结果 需要返回将评分结果返回打开页面 
+                            // TODO: 2020/9/13  接口未返回评分结果 需要返回将评分结果返回打开页面
                             finish();
                         }
                     }

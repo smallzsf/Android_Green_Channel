@@ -49,7 +49,7 @@ public class GetInvolvedContraindicationsActivity extends GetInvolvedIndications
                     @Override
                     public void onResponse(Call<BaseObjectBean<ContraindicationPo>> call, Response<BaseObjectBean<ContraindicationPo>> response) {
                         if (response.body().getResult() == 1) {
-                            // TODO: 2020/9/13 重现接口返回数据为空  需要验证调试 
+                            // TODO: 2020/9/13 重现接口返回数据为空  需要验证调试
                             contraindicationPo = response.body().getData();
                             mStrokeTCBeans = prepareData();
                             refrashAdapter(true);
