@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.fragment.stroke;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -10,12 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
+import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
+import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
+import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextSwitchBar;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * OtherDisposalFragment
@@ -62,6 +79,8 @@ public class OtherDisposalFragment extends BaseFragment {
     LinearLayout llEduFragOd;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
+    private String mRecordId;
+    StrokeOtherDisposalBean strokeOtherDisposalBean = null;
 
     public static OtherDisposalFragment newInstance(String recordId) {
         OtherDisposalFragment fragment = new OtherDisposalFragment();
@@ -70,6 +89,16 @@ public class OtherDisposalFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+        }
+    }
+
 
     @Override
     protected int getLayoutId() {
@@ -85,9 +114,9 @@ public class OtherDisposalFragment extends BaseFragment {
         tsbAcceptRecoveryFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     llRecoveryTypeFragOd.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     llRecoveryTypeFragOd.setVisibility(View.GONE);
                 }
 
@@ -96,15 +125,16 @@ public class OtherDisposalFragment extends BaseFragment {
         tsbEduFragOd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     llEduTypeFragOd.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     llEduTypeFragOd.setVisibility(View.GONE);
                 }
 
             }
         });
 
+        loadOtherDisposalData();
 
 
     }
@@ -115,7 +145,153 @@ public class OtherDisposalFragment extends BaseFragment {
     }
 
 
+    @OnClick(R.id.btn_save)
+    public void onViewClicked() {
+        if (strokeOtherDisposalBean == null) {
+            strokeOtherDisposalBean = new StrokeOtherDisposalBean();
+        }
 
+        SwitchCompat switchCompat = tsbAcceptRecoveryFragOd.findViewById(R.id.sc_view_tsb);
+        if ( switchCompat.isChecked()){
+            strokeOtherDisposalBean.setRecoveringtreatmentisaccept(Constants.BOOL_TRUE);
+        }else {
+            strokeOtherDisposalBean.setRecoveringtreatmentisaccept(Constants.BOOL_FALSE);
+        }
+
+        String recoverIngtreatmentWaysValue = getCheckBoxValue(cbTraditionFragOd, cbPtFragOd, cbOtFragOd, cbStFragOd, cbOtherRecoveryFragOd);
+        strokeOtherDisposalBean.setRecoveringtreatmentways(recoverIngtreatmentWaysValue);
+        String recoverIngtreatmentPlaceValue = getCheckBoxValue(cbBedsideFragOd, cbRecoveryDepartFragOd);
+        strokeOtherDisposalBean.setRecoveringtreatmentplace(recoverIngtreatmentPlaceValue);
+
+        SwitchCompat switchCompat1 = tsbEduFragOd.findViewById(R.id.sc_view_tsb);
+        if ( switchCompat1.isChecked()){
+            strokeOtherDisposalBean.setEducationway(Constants.BOOL_TRUE);
+        }else {
+            strokeOtherDisposalBean.setEducationway(Constants.BOOL_FALSE);
+        }
+
+
+        String healtheducationValue = getCheckBoxValue(cbGroupFragOd, cbOneFragOd,cbOtherEduFragOd);
+        strokeOtherDisposalBean.setHealtheducation(healtheducationValue);
+        saveOtherDisposalData(strokeOtherDisposalBean);
+    }
+
+
+    private void saveOtherDisposalData(StrokeOtherDisposalBean strokeOtherDisposalBean) {
+
+        BaseRequestBean<StrokeOtherDisposalBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, strokeOtherDisposalBean);
+
+       RetrofitClient
+                .getInstance()
+                .getApi()
+                .saveOtherDisposalData(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        showToast(call.toString());
+                    }
+                });
+
+    }
+
+    private void loadOtherDisposalData() {
+
+
+        BaseRequestBean<StrokeOtherDisposalBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 1, new StrokeOtherDisposalBean());
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .getOtherDisposalData(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<StrokeOtherDisposalBean>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<StrokeOtherDisposalBean>> call,
+                                           Response<BaseResponseBean<StrokeOtherDisposalBean>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                strokeOtherDisposalBean = response.body().getData().getData();
+                                if (strokeOtherDisposalBean != null) {
+                                    // 请求成功
+                                    // 填充页面
+                                    getOtherDisposalData(strokeOtherDisposalBean);
+                                }
+
+
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<StrokeOtherDisposalBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+    }
+
+
+    private void getOtherDisposalData(StrokeOtherDisposalBean strokeOtherDisposalBean) {
+      //  strokeOtherDisposalBean.getEducationway();
+
+
+       if(strokeOtherDisposalBean.getRecoveringtreatmentisaccept().equals(Constants.BOOL_TRUE)){
+           tsbAcceptRecoveryFragOd.setSwitch(true);
+       }else {
+           tsbAcceptRecoveryFragOd.setSwitch(false);
+       }
+
+        String recoveringtreatmentways = strokeOtherDisposalBean.getRecoveringtreatmentways();
+        if (!TextUtils.isEmpty(recoveringtreatmentways)) {
+            cbTraditionFragOd.setChecked(recoveringtreatmentways.contains(cbTraditionFragOd.getTag().toString()));
+            cbPtFragOd.setChecked(recoveringtreatmentways.contains(cbPtFragOd.getTag().toString()));
+            cbOtFragOd.setChecked(recoveringtreatmentways.contains(cbOtFragOd.getTag().toString()));
+            cbStFragOd.setChecked(recoveringtreatmentways.contains(cbStFragOd.getTag().toString()));
+            cbOtherRecoveryFragOd.setChecked(recoveringtreatmentways.contains(cbOtherRecoveryFragOd.getTag().toString()));
+        }
+        String recoveringtreatmentplace = strokeOtherDisposalBean.getRecoveringtreatmentplace();
+        if (!TextUtils.isEmpty(recoveringtreatmentplace)) {
+            cbBedsideFragOd.setChecked(recoveringtreatmentplace.contains(cbBedsideFragOd.getTag().toString()));
+            cbRecoveryDepartFragOd.setChecked(recoveringtreatmentplace.contains(cbRecoveryDepartFragOd.getTag().toString()));
+
+        }
+
+        if(strokeOtherDisposalBean.getEducationway().equals(Constants.BOOL_TRUE)){
+            tsbEduFragOd.setSwitch(true);
+        }else {
+            tsbEduFragOd.setSwitch(false);
+        }
+        String healtheducation = strokeOtherDisposalBean.getHealtheducation();
+        if (!TextUtils.isEmpty(healtheducation)) {
+            cbGroupFragOd.setChecked(healtheducation.contains(cbGroupFragOd.getTag().toString()));
+            cbOneFragOd.setChecked(healtheducation.contains(cbOneFragOd.getTag().toString()));
+            cbOtherEduFragOd.setChecked(healtheducation.contains(cbOtherEduFragOd.getTag().toString()));
+
+        }
+
+
+
+    }
 
 
 }

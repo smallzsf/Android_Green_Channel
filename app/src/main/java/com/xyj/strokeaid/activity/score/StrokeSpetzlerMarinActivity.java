@@ -1,4 +1,4 @@
-package com.xyj.strokeaid.activity.stroke;
+package com.xyj.strokeaid.activity.score;
 
 import android.os.Bundle;
 import android.view.View;

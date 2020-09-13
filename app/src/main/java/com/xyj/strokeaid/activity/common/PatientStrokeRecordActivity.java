@@ -120,9 +120,6 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
         tvStartTimeIncludeCt.start();
         tvHosTimeIncludeCt.start();
-
-        NfcUtils nfcUtils = new NfcUtils(this);
-        NfcUtils.NfcInit(this);
     }
 
     @Override
@@ -180,15 +177,11 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (NfcUtils.mNfcAdapter != null) {
-            NfcUtils.mNfcAdapter.disableForegroundDispatch(this);
-        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        NfcUtils.mNfcAdapter = null;
     }
 
     @Override
