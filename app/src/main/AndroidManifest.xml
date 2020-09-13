@@ -236,6 +236,8 @@
         <activity android:name=".activity.score.ISSActivity" />
         <activity android:name=".activity.score.TIActivity" />
         <activity android:name=".activity.common.TimeNodeActivity" />
+        <activity android:name=".activity.score.InterventionalTherapyEvaluationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

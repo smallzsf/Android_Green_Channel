@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_normal_height"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:minWidth="60dp"
+            android:text="介入医生"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/item_title_size" />
+
+        <com.xyj.strokeaid.view.editspinner.EditSpinner
+            android:id="@+id/eds_yin_yang_first"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginEnd="@dimen/dp_3"
+            android:gravity="center"
+            app:Background="@drawable/bg_view_frame"
+            app:hint="阴性"
+            app:rightImage="@drawable/ic_arrow_down_blue" />
+
+
+    </LinearLayout>
+
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_interventional_doctors"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:topLineVisible="true"
+        tl:title="介入医生接诊" />
+
+    <com.xyj.strokeaid.view.TextTimeBar
+        android:id="@+id/ttb_operation_warning_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        app:bottomLineVisible="true"
+        app:topLineVisible="true"
+        tl:title="手术预警时间" />
+
+
+</LinearLayout>
