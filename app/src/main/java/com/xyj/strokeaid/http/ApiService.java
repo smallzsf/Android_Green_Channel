@@ -22,6 +22,7 @@ import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.RequestThriveDataBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
@@ -638,8 +639,17 @@ public interface ApiService {
      静脉溶栓禁忌症评估
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_COMMON_SAVE)
-    Call<BaseResponseBean> saveSiscontraindication(@Body RequestBody info);
+    @POST(ApiUrls.NET_URL_SAVE_SISCONTRAINDICATION)
+    Call<BaseResponseBean<SiscontraindicationBean>> saveSiscontraindication(@Body RequestBody info);
+
+    /**
+     * http://localhost/yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/add
+     POST
+     静脉溶栓禁忌症评估
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_SAVE_SISCONTRAINDICATION)
+    Call<BaseResponseBean<SiscontraindicationBean>> getSiscontraindication(@Body RequestBody info);
 
 
 }

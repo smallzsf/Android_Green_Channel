@@ -189,13 +189,13 @@ public class ApiUrls {
         public static final String NET_URL_CHEST_PAIN_DISEASERECORD_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/chestpain/editForApp";
 
         /**
-         *  卒中 诊断评估 保存
+         * 卒中 诊断评估 保存
          */
         public static final String NET_URL_DIAGNOSTICEVALUATION_SAVE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/edit";
 
 
         /**
-         *  卒中 诊断评估 查询
+         * 卒中 诊断评估 查询
          */
         public static final String NET_URL_DIAGNOSTICEVALUATION_GET = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterStrokeDiagnosis/getByRecordId";
 
@@ -344,49 +344,54 @@ public class ApiUrls {
     /**
      * 主页 卒中、胸痛、创伤列表查询
      */
-    public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/record/select";
 
     /**
      * 获取时间线
      */
-    public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
+    public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
     /**
-     *  卒中、洼田吞咽评分
+     * 卒中、洼田吞咽评分
      */
-    public static final String NET_URL_CHEST_EMERGENCYCENTER_FIELD_EVALUATE= "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_FIELD_EVALUATE = "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
 
     /**
-     *  THRIVE 评分
+     * THRIVE 评分
      */
-    public static final String NET_URL_CHEST_EMERGENCYCENTER_THRIVE= "yjjk-gateway/yjjk-cdm-api/v1/thrive/add";
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_THRIVE = "yjjk-gateway/yjjk-cdm-api/v1/thrive/add";
 
 
     /**
      * -卒中--手术治疗--介入--适应症评估--获取
      */
-    public static final String NET_URL_GET_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/get";
+    public static final String NET_URL_GET_MYINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/myindication/get";
 
     /**
      * -卒中--手术治疗--介入--适应症评估--保存
      */
-    public static final String NET_URL_SAVE_MYINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
+    public static final String NET_URL_SAVE_MYINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/myindication/add";
 
     /**
-     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     * -卒中--手术治疗--介入--禁忌症评估- 获取
      */
-    public static final String NET_URL_GET_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/get";
+    public static final String NET_URL_GET_CONTRAINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/contraindication/get";
 
     /**
-     *-卒中--手术治疗--介入--禁忌症评估- 获取
+     * -卒中--手术治疗--介入--禁忌症评估- 获取
      */
-    public static final String NET_URL_SAVE_CONTRAINDICATION= "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
+    public static final String NET_URL_SAVE_CONTRAINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/contraindication/add";
 
 
     /**
-     *-App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     * 静脉溶栓禁忌症评估
      */
-    public static final String NET_URL_SAVE_REPERFUSIONMEASURES= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/chestpain/reperfusionMeasures/edit";
+    public static final String NET_URL_SAVE_SISCONTRAINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/add";
+
+    /**
+     * 静脉溶栓禁忌症评估
+     */
+    public static final String NET_URL_GET_SISCONTRAINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/get";
 
 //
 }
