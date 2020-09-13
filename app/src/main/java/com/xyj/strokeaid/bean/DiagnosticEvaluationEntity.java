@@ -1,6 +1,54 @@
 package com.xyj.strokeaid.bean;
 
-public class DiagnosticEvaluationBean {
+public class DiagnosticEvaluationEntity {
+
+    /**
+     * userId : null
+     * tenantId : null
+     * id : 751535969940934656
+     * moduleId : null
+     * mkId : null
+     * auth : null
+     * sign : null
+     * pyt : null
+     * recordId : 123
+     * modeofonset : null
+     * evolveaddress : null
+     * evolvetime : null
+     * diagnosticresultinit : null
+     * ischemicstrokeinit : null
+     * pathogenesisinit : null
+     * ismoyamoyainit : null
+     * diagnostictimeinit : null
+     * emergencydoctorCzzdinit : null
+     * strokedoctorCzzdinit : null
+     * hemorrhagicstrokeinit : null
+     * hemorrhageinleftinit : null
+     * hemorrhageinrightinit : null
+     * hemorrhageamountinit : null
+     * isherniainit : null
+     * ruptureofaneurysminit : null
+     * ishadruptureofaneurysminit : null
+     * hunthesslevelinit : null
+     * fisherlevelinit : null
+     * prehospitalmrs : null
+     * prehospitalmrsrelationid : null
+     * isusenimodipineinit : null
+     * ruptureofnonaneurysminit : null
+     * ishavesymptomincarotidarteryinit : null
+     * isnarrowinit : null
+     * otherdiagnosticresultinit : null
+     * attacktodiagnostictimeinit : null
+     */
+
+    private String userId;
+    private String tenantId;
+    private String id;
+    private String moduleId;
+    private String mkId;
+    private String auth;
+    private String sign;
+    private String pyt;
     private String modeofonset;
     private String evolveaddress;
     private String evolvetime;
@@ -28,6 +76,70 @@ public class DiagnosticEvaluationBean {
     private String isnarrowinit;
     private String otherdiagnosticresultinit;
     private String attacktodiagnostictimeinit;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getModuleId() {
+        return moduleId;
+    }
+
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public String getMkId() {
+        return mkId;
+    }
+
+    public void setMkId(String mkId) {
+        this.mkId = mkId;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public String getPyt() {
+        return pyt;
+    }
+
+    public void setPyt(String pyt) {
+        this.pyt = pyt;
+    }
 
     public String getModeofonset() {
         return modeofonset;

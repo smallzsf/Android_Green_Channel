@@ -16,6 +16,7 @@
             style="@style/tv_normal_titel"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:text="发病48h内用药" />
 
         <RadioGroup

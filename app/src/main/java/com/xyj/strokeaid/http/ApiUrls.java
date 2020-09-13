@@ -351,6 +351,16 @@ public class ApiUrls {
      */
     public static final String NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE= "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenter/recordJson/getTimeLine";
 
+    /**
+     *  卒中、洼田吞咽评分
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_FIELD_EVALUATE= "yjjk-gateway/yjjk-cdm-api/v1/eat/add";
+
+    /**
+     *  THRIVE 评分
+     */
+    public static final String NET_URL_CHEST_EMERGENCYCENTER_THRIVE= "yjjk-gateway/yjjk-cdm-api/v1/thrive/add";
+
 }
 
     

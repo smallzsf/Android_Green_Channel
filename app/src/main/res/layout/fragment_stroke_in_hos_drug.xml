@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_stroke_in_hos_drug"
     tools:context=".fragment.stroke.StrokeInHosDrugFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/include_bottom_view"
         android:overScrollMode="never"
         android:scrollbars="none">
 
@@ -17,260 +17,396 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <com.xyj.strokeaid.view.TextSwitchBar
+                android:id="@+id/tsb_antiplatelet_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/color_FFFFFF"
+                app:tsb_switch="false"
+                app:tsb_title="抗血小板治疗" />
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/ll_antiplatelet_frag_sihd"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
-
-                <TextView
-                    android:id="@+id/tv_antiplatelet_frag_sihd"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:text="抗血小板" />
-
-                <TextView
-                    android:id="@+id/tv_antiplatelet_short_frag_sihd"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|end"
-                    android:maxLength="8"
-                    android:maxLines="1"
-                    android:textColor="@color/color_555555"
-                    android:textSize="13sp"
-                    tools:text="抗血小板抗血小板抗血小板" />
-
-                <ImageView
-                    android:id="@+id/iv_antiplatelet_frag_sihd"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_arrow_down_blue" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_antiplatelet_frag_sihd"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                android:visibility="gone"
-                tools:itemCount="5"
-                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
-
-            <LinearLayout
-                android:id="@+id/ll_anticoagulants_frag_sihd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
-
-                <TextView
-                    android:id="@+id/tv_anticoagulants_frag_sihd"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_bg">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
-                    android:text="抗凝" />
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12">
 
-                <TextView
-                    android:id="@+id/tv_anticoagulants_short_frag_sihd"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|end"
-                    android:maxLength="8"
-                    android:maxLines="1"
-                    android:textColor="@color/color_555555"
-                    android:textSize="13sp"
-                    tools:text="抗血小板抗血小板抗血小板" />
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="发病48h内用药" />
 
-                <ImageView
-                    android:id="@+id/iv_anticoagulants_frag_sihd"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_arrow_down_blue" />
+                    <RadioGroup
+                        android:id="@+id/rg_antiplatelet_frag_sihd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:orientation="horizontal">
 
+                        <RadioButton
+                            android:id="@+id/rb_antiplatelet_frag_sihd_yes"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="是" />
+
+                        <RadioButton
+                            android:id="@+id/rb_antiplatelet_frag_sihd_no"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="否" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:id="@+id/fl_antiplatelet_frag_sihd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_1"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_aspl"
+                        android:text="阿司匹林" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_2"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_lbgl"
+                        android:text="氯吡格雷" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_3"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_ozgl"
+                        android:text="奥扎格雷" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_4"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_smdm"
+                        android:text="双嘧达莫" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_5"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_smdm"
+                        android:text="塞氯吡啶" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_6"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_smdm"
+                        android:text="西洛他唑" />
+
+                    <CheckBox
+                        android:id="@+id/cb_antiplatelet_7"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAntiplateletDrug_smdm"
+                        android:text="其他" />
+                </com.zhy.view.flowlayout.FlowLayout>
             </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_anticoagulants_frag_sihd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                android:visibility="gone"
-                tools:itemCount="5"
-                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
-
-            <LinearLayout
-                android:id="@+id/ll_pressure_frag_sihd"
+            <com.xyj.strokeaid.view.TextSwitchBar
+                android:id="@+id/tsb_anticoagulation_frag_sihd"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
-
-                <TextView
-                    android:id="@+id/tv_pressure_frag_sihd"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:text="降压" />
-
-                <TextView
-                    android:id="@+id/tv_pressure_short_frag_sihd"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|end"
-                    android:maxLength="8"
-                    android:maxLines="1"
-                    android:textColor="@color/color_555555"
-                    android:textSize="13sp"
-                    tools:text="抗血小板抗血小板抗血小板" />
-
-                <ImageView
-                    android:id="@+id/iv_pressure_frag_sihd"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_arrow_down_blue" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_pressure_frag_sihd"
+                android:background="@color/color_FFFFFF"
+                app:tsb_switch="false"
+                app:tsb_title="抗凝治疗" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_anticoagulation_frag_sihd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                android:visibility="gone"
-                tools:itemCount="5"
-                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+                android:orientation="vertical"
+                android:background="@color/color_bg">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12">
 
-            <LinearLayout
-                android:id="@+id/ll_fat_frag_sihd"
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="发病48h内用药" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_anticoagulation_frag_sihd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/dp_12"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_anticoagulation_frag_sihd_yes"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="是" />
+
+                        <RadioButton
+                            android:id="@+id/rb_anticoagulation_frag_sihd_no"
+                            style="@style/tv_normal_titel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="否" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:id="@+id/fl_anticoagulation_frag_sihd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_1"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_ffl"
+                        android:text="华法令" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_2"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_lfsb"
+                        android:text="利伐沙班" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_3"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_dbjq"
+                        android:text="达比加群" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_4"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_apsb"
+                        android:text="阿哌沙班" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_5"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_ydsb"
+                        android:text="依度沙班" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_6"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_dfzsg"
+                        android:text="低分子肝素" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_7"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_ptgs"
+                        android:text="普通肝素" />
+
+                    <CheckBox
+                        android:id="@+id/cb_anticoagulation_8"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalAnticoagulationDrug_qt"
+                        android:text="其他" />
+                </com.zhy.view.flowlayout.FlowLayout>
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.TextSwitchBar
+                android:id="@+id/tsb_stepdown_frag_sihd"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
-
-                <TextView
-                    android:id="@+id/tv_fat_frag_sihd"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:text="调脂" />
-
-                <TextView
-                    android:id="@+id/tv_fat_short_frag_sihd"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|end"
-                    android:maxLength="8"
-                    android:maxLines="1"
-                    android:textColor="@color/color_555555"
-                    android:textSize="13sp"
-                    tools:text="抗血小板抗血小板抗血小板" />
-
-                <ImageView
-                    android:id="@+id/iv_fat_frag_sihd"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_arrow_down_blue" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_fat_frag_sihd"
+                android:background="@color/color_FFFFFF"
+                app:tsb_switch="false"
+                app:tsb_title="降压" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_stepdown_frag_sihd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                android:visibility="gone"
-                tools:itemCount="5"
-                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
+                android:orientation="vertical"
+                android:background="@color/color_bg">
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:id="@+id/fl_stepdown_frag_sihd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_1"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_acei"
+                        android:text="ACEI" />
 
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_2"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_arb"
+                        android:text="ARB" />
+
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_3"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_lnj"
+                        android:text="利尿剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_4"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_btstzzj"
+                        android:text="β受体阻滞剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_5"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_gjkj"
+                        android:text="钙拮抗剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_stepdown_6"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalBloodPressureDrug_qt"
+                        android:text="其他" />
+                </com.zhy.view.flowlayout.FlowLayout>
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.TextSwitchBar
+                android:id="@+id/tsb_lipid_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/color_FFFFFF"
+                app:tsb_switch="false"
+                app:tsb_title="调脂" />
             <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll_lipid_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_bg">
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:id="@+id/fl_lipid_frag_sihd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+                    <CheckBox
+                        android:id="@+id/cb_lipid_1"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalLipidDrug_tdl"
+                        android:text="他汀类" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lipid_2"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalLipidDrug_ysjqysw"
+                        android:text="烟酸及其衍生物" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lipid_3"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalLipidDrug_btl"
+                        android:text="贝特类" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lipid_4"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalLipidDrug_dgcxsyzj"
+                        android:text="胆固醇吸收抑制剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_lipid_5"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalLipidDrug_qt"
+                        android:text="其他" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
+            </LinearLayout>
+
+            <com.xyj.strokeaid.view.TextSwitchBar
+                android:id="@+id/tsb_sugar_frag_sihd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:background="@color/color_FFFFFF"
+                app:tsb_switch="false"
+                app:tsb_title="降糖" />
+            <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/ll_sugar_frag_sihd"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/item_normal_height"
-                android:layout_marginTop="@dimen/dp_1"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/dp_12"
-                android:paddingEnd="@dimen/dp_12">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/color_bg">
+                <com.zhy.view.flowlayout.FlowLayout
+                    android:id="@+id/fl_sugar_frag_sihd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:paddingEnd="@dimen/item_normal_margin">
+                    <CheckBox
+                        android:id="@+id/cb_sugar_1"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_yds"
+                        android:text="胰岛素" />
 
-                <TextView
-                    android:id="@+id/tv_sugar_frag_sihd"
-                    style="@style/tv_normal_titel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:text="降糖" />
+                    <CheckBox
+                        android:id="@+id/cb_sugar_2"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_hxnl"
+                        android:text="磺酰脲类" />
 
-                <TextView
-                    android:id="@+id/tv_sugar_short_frag_sihd"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:layout_weight="1"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical|end"
-                    android:maxLength="8"
-                    android:maxLines="1"
-                    android:textColor="@color/color_555555"
-                    android:textSize="13sp"
-                    tools:text="抗血小板抗血小板抗血小板" />
+                    <CheckBox
+                        android:id="@+id/cb_sugar_3"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_sgl"
+                        android:text="双胍类" />
 
-                <ImageView
-                    android:id="@+id/iv_sugar_frag_sihd"
-                    android:layout_width="@dimen/item_normal_height"
-                    android:layout_height="@dimen/item_normal_height"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/ic_arrow_down_blue" />
+                    <CheckBox
+                        android:id="@+id/cb_sugar_4"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_atgmyzj"
+                        android:text="α糖苷酶抑制剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_sugar_5"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_ydszmj"
+                        android:text="胰岛素增敏剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_sugar_6"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_fhxnlcydsfmj"
+                        android:text="非磺酰脲类促胰岛素分泌剂" />
+
+                    <CheckBox
+                        android:id="@+id/cb_sugar_7"
+                        style="@style/XyjFlowRadionButton"
+                        android:tag="cpc_hospitalSugarDrug_qt"
+                        android:text="其他" />
+
+                </com.zhy.view.flowlayout.FlowLayout>
 
             </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_sugar_frag_sihd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"
-                android:scrollbars="none"
-                android:visibility="gone"
-                tools:itemCount="5"
-                tools:listitem="@layout/adapter_rv_after_operation_drug_item" />
-
+            <include layout="@layout/view_bottom_save_button" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <include
-        android:id="@+id/ll_bottom"
-        layout="@layout/view_two_horizontal_bottom_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+
 
 </RelativeLayout>
