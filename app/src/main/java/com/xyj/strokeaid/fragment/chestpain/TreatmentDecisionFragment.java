@@ -193,6 +193,8 @@ public class TreatmentDecisionFragment extends BaseFragment {
         radioFamilDistUtil = new RadioButtonDistUtil(context);
         radioFamilDistUtil.addView(rgFamilyOpinion);
         radioFamilDistUtil.setStringArrayId(R.array.treatment_decision_family);
+//TODO 设置回显使用
+//        radioFamilDistUtil.setStringArrayNormalKey();
 
     }
 
