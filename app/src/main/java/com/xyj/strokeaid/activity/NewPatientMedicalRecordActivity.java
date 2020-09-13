@@ -3,7 +3,11 @@ package com.xyj.strokeaid.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
@@ -36,6 +40,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.DeviceBindBean;
 import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
 import com.xyj.strokeaid.bean.RequestIdBean;
+import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.http.DeviceService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -45,6 +50,7 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -178,6 +184,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         iebAgeActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
         iebWeightActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
         iebHeightActNpmr.getEtRoot().setInputType(InputType.TYPE_CLASS_NUMBER);
+        NfcUtils nfcUtils = new NfcUtils(this);
+        NfcUtils.NfcInit(this);
     }
 
     @Override
@@ -253,20 +261,30 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     @Override
     protected void onResume() {
         super.onResume();
-
+        if (NfcUtils.mNfcAdapter != null) {
+            NfcUtils.mNfcAdapter.enableForegroundDispatch(this, NfcUtils.mPendingIntent, null, null);
+        }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (idReader != null) {
-            idReader.nfcReadCard(intent);
+        processIntent(intent);
+        if (TextUtils.equals("android.nfc.action.TAG_DISCOVERED", intent.getAction())) {
+            if (idReader != null)
+                idReader.enableReaderMode(this);
+        } else {
+            if (idReader != null)
+                idReader.disableReaderMode();
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if (NfcUtils.mNfcAdapter != null) {
+            NfcUtils.mNfcAdapter.disableForegroundDispatch(this);
+        }
     }
 
     @Override
@@ -275,9 +293,39 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         if (idReader != null) {
             idReader.release();
         }
+        NfcUtils.mNfcAdapter = null;
         destroyLocation();
     }
 
+
+    public void processIntent(Intent intent) {
+        Parcelable[] rawmsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        if (rawmsgs == null) {
+            LogUtils.e("--------------NFC-------------数据为空");
+            return;
+        }
+        NdefMessage msg = (NdefMessage) rawmsgs[0];
+        NdefRecord[] records = msg.getRecords();
+        String resultStr = new String(records[0].getPayload());
+        iebWristbandActNpmr.setEditContent(resultStr);
+        showToast(resultStr);
+        // 返回的是NFC检查到卡中的数据
+        LogUtils.e("processIntent: " + resultStr);
+        try {
+            // 检测卡的id
+            String id = NfcUtils.readNFCId(intent);
+            LogUtils.e("processIntent--id: " + id);
+            // NfcUtils中获取卡中数据的方法
+            String result = NfcUtils.readNFCFromTag(intent);
+            LogUtils.e("processIntent--result: " + result);
+            // 往卡中写数据
+//
+//            String data = "this.is.write";
+//            NfcUtils.writeNFCToTag(data,intent);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void onIDCardState(int i, String s) {

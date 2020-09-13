@@ -173,7 +173,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         super.onResume();
         //设定intentfilter和tech-list。如果两个都为null就代表优先接收任何形式的TAG action。也就是说系统会主动发TAG intent。
         if (NfcUtils.mNfcAdapter != null) {
-            NfcUtils.mNfcAdapter.enableForegroundDispatch(this, NfcUtils.mPendingIntent, NfcUtils.mIntentFilter, NfcUtils.mTechList);
+            NfcUtils.mNfcAdapter.enableForegroundDispatch(this, NfcUtils.mPendingIntent, null, null);
         }
     }
 
@@ -200,6 +200,10 @@ public class PatientStrokeRecordActivity extends BaseActivity {
 
     public void processIntent(Intent intent) {
         Parcelable[] rawmsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+        if(rawmsgs==null){
+            LogUtils.e("--------------NFC-------------数据为空");
+            return;
+        }
         NdefMessage msg = (NdefMessage) rawmsgs[0];
         NdefRecord[] records = msg.getRecords();
         String resultStr = new String(records[0].getPayload());
