@@ -3,6 +3,7 @@ package com.xyj.strokeaid.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ public class ItemEditBar extends RelativeLayout {
     ImageView ivRightViewIeb;
 
     private boolean mEditEnable;
+    private boolean isSetInpute; // ieb_edit_input_type
 
     public ItemEditBar(Context context) {
         this(context, null);
@@ -84,6 +86,12 @@ public class ItemEditBar extends RelativeLayout {
         } else {
             tvContentViewIeb.setVisibility(VISIBLE);
             etContentViewIeb.setVisibility(GONE);
+        }
+
+        // 是否设置 输入类型
+        isSetInpute = array.getBoolean(R.styleable.ItemEditBar_ieb_edit_input_type, false);
+        if(isSetInpute) {
+            etContentViewIeb.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_NORMAL);
         }
         // 设置提示文字
         if (array.hasValue(R.styleable.ItemEditBar_ieb_edit_hint)) {

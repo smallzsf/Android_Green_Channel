@@ -170,18 +170,19 @@
         <activity
             android:name=".activity.common.PatientStrokeRecordActivity"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" >
 
-            <intent-filter>
-                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="*/*" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.nfc.action.NDEF_DISCOVERED"/>-->
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--                <data android:mimeType="*/*" />-->
+<!--            </intent-filter>-->
 
-            <intent-filter>
-                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.nfc.action.TAG_DISCOVERED"/>-->
+<!--                <category android:name="android.intent.category.DEFAULT"/>-->
+<!--            </intent-filter>-->
 
         </activity>
         <activity
@@ -236,6 +237,10 @@
         <activity android:name=".activity.score.ISSActivity" />
         <activity android:name=".activity.score.TIActivity" />
         <activity android:name=".activity.common.TimeNodeActivity" />
+        <activity android:name=".activity.stroke.thrombolysis.ThrombolysisAssessmentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.stroke.thrombolysis.ThrombolysisTreatmentActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".activity.score.InterventionalTherapyEvaluationActivity"
             android:screenOrientation="portrait" />
     </application>

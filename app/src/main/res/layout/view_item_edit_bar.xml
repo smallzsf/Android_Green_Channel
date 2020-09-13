@@ -24,6 +24,7 @@
             android:textSize="@dimen/item_title_size"
             tools:text="腕带ID" />
 
+
         <EditText
             android:id="@+id/et_content_view_ieb"
             android:layout_width="0dp"

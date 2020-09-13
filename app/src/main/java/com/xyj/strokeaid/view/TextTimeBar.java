@@ -75,8 +75,12 @@ public class TextTimeBar extends RelativeLayout {
 
         boolean topLine = typedArray.getBoolean(R.styleable.TextTimeBar_topLineVisible, false);
         boolean bottomLine = typedArray.getBoolean(R.styleable.TextTimeBar_bottomLineVisible, false);
+        boolean editable = typedArray.getBoolean(R.styleable.TextTimeBar_ttb_edit_enable, true);
         viewTopLineViewTtb.setVisibility(topLine ? VISIBLE : GONE);
         viewBottomLineViewTtb.setVisibility(bottomLine ? VISIBLE : GONE);
+        ivRefreshViewTtb.setVisibility(editable ? VISIBLE : GONE);
+        ivRefreshViewTtb.setEnabled(editable);
+        tvTimeViewTtb.setEnabled(editable);
 
         String title = typedArray.getString(R.styleable.TextTimeBar_title);
         if (!TextUtils.isEmpty(title)) {
