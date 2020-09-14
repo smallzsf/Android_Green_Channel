@@ -729,12 +729,12 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             }
         }
 
-
+        // 性别
         String sex = sbSexActNpmr.getRightText().toString();
-        if (sex.equals("男")) {
-            mPatinetBean.setGender("cpc_gender_1");
-        } else {
-            mPatinetBean.setGender("cpc_gender_2");
+        if ("男".equals(sex)) {
+            mPatinetBean.setGender("1");
+        } else if ("女".equals(sex)){
+            mPatinetBean.setGender("2");
         }
 
         String birth = sbBirthActNpmr.getRightText().toString();
