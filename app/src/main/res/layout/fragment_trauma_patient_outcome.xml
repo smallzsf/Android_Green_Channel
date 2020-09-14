@@ -184,8 +184,7 @@
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
                     app:ieb_title="医院名称"
-                    app:ieb_unit_text="小时"
-                    app:ieb_unit_visible="true" />
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -239,12 +238,14 @@
                     app:title="转科时间" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_receiving_department"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
                     app:ieb_title="接诊科室" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_reason"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -261,6 +262,7 @@
                 android:visibility="gone">
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_place_death"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"
@@ -273,6 +275,7 @@
                     app:title="死亡时间" />
 
                 <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/ieb_death_reason"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:ieb_bottom_line_visible="true"

@@ -1,17 +1,23 @@
 package com.xyj.strokeaid.fragment.trauma;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-
+import com.google.gson.Gson;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
+import com.xyj.strokeaid.bean.RequestGetVitalSigns;
+import com.xyj.strokeaid.bean.trauma.TraumaOutcomeBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
@@ -20,8 +26,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * 患者转归
@@ -81,6 +92,14 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
     LinearLayout llDie;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
+    @BindView(R.id.ieb_receiving_department)
+    ItemEditBar iebReceivingDepartment;
+    @BindView(R.id.ieb_reason)
+    ItemEditBar iebReason;
+    @BindView(R.id.ieb_place_death)
+    ItemEditBar iebPlaceDeath;
+    @BindView(R.id.ieb_death_reason)
+    ItemEditBar iebDeathReason;
     private List<RadioButton> outcomeList = new ArrayList();
     private int checkRadioId = R.id.rb_die;
     /**
@@ -90,6 +109,11 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
     private int resutcheckRadioId = R.id.rb_result_ok;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
 
+    private List<RadioButton> netList = new ArrayList();
+    private int netcheckRadioId = R.id.rb_net_hos_yes;
+    private String mRecordId;
+
+    private TraumaOutcomeBean traumaOutcomeBean;
 
     public TraumaPatientOutcomeFragment() {
 
@@ -103,6 +127,14 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
+            traumaOutcomeBean = new TraumaOutcomeBean();
+        }
+    }
 
     @Override
     protected int getLayoutId() {
@@ -127,13 +159,14 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
             RadioButton radioButton = resutList.get(i);
             radioButton.setOnClickListener(resultClickListener);
         }
-        rgIsNet.setOnCheckedChangeListener((radioGroup, i) -> {
-
-        });
+        netList.add(rbNethospitalTrue);
+        netList.add(rbNethospitalFlase);
+        for (int i = 0; i < netList.size(); i++) {
+            RadioButton radioButton = netList.get(i);
+            radioButton.setOnClickListener(netClickListener);
+        }
 
         loadData();
-
-
     }
 
     View.OnClickListener onRadioClickListener = view -> {
@@ -144,7 +177,9 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
         resutcheckRadioId = view.getId();
         refrashresultStatus();
     };
-
+    View.OnClickListener netClickListener = view -> {
+        netcheckRadioId = view.getId();
+    };
     private void refrashresultStatus() {
         for (int i = 0; i < resutList.size(); i++) {
             RadioButton radioButton = resutList.get(i);
@@ -196,26 +231,129 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
     }
 
     private void loadData() {
-//        esVitalSignAware.setItemData(list);
+        showLoadingDialog();
+        BaseRequestBean<TraumaOutcomeBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 3, new TraumaOutcomeBean());
+
+        RetrofitClient.getInstance()
+                .getApi()
+                .getStrokeVitalSignsInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<RequestGetVitalSigns>>() {
+                    @Override
+                    public void onResponse(Call<BaseResponseBean<RequestGetVitalSigns>> call,
+                                           Response<BaseResponseBean<RequestGetVitalSigns>> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseResponseBean<RequestGetVitalSigns>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
     }
 
 
     @Override
     protected void initListener() {
-
+        btnSave.setOnClickListener(view -> {
+            getTraumaOutcomeData();
+        });
     }
 
-    @OnClick({R.id.rb_leave_hospital, R.id.rb_transform_hospital, R.id.rb_transform_department, R.id.rb_die})
+    private void getTraumaOutcomeData() {
+
+
+        traumaOutcomeBean.setOutcomelengthstay(iebLiveHosDays.getEditContent());
+        traumaOutcomeBean.setOutcomeicudays(iebLiveIcuDays.getEditContent());
+        traumaOutcomeBean.setOutcomerespiratorduration(iebBreathMachineTimes.getEditContent());
+        traumaOutcomeBean.setOutcomeallincost(iebTotalCost.getEditContent());
+        traumaOutcomeBean.setOutcomedischargetime(ttbLeaveHospital.getTime());
+        traumaOutcomeBean.setOutcometransferleaveourcollegetime(ttbLeaveHospitalDoor.getTime());
+        traumaOutcomeBean.setOutcometransferhospitalname(iebHosName.getEditContent());
+        traumaOutcomeBean.setOutcometransferdepartmenttime(ttbTransferDepartment.getTime());
+        traumaOutcomeBean.setOutcomereceivingdepartment(iebReceivingDepartment.getEditContent());
+        traumaOutcomeBean.setTransferdepartmentreason(iebReason.getEditContent());
+        traumaOutcomeBean.setOutcomeplacedeath(iebPlaceDeath.getEditContent());
+        traumaOutcomeBean.setOutcomedeathtime(ttbDieDate.getTime());
+        traumaOutcomeBean.setOutcomedeathreason(iebDeathReason.getEditContent());
+        Log.e("TAG", "getTraumaOutcomeData: "+new Gson().toJson(traumaOutcomeBean));
+        saveTraumaOutcome();
+    }
+
+    private void saveTraumaOutcome() {
+        BaseRequestBean<TraumaOutcomeBean> baseRequestBean = new BaseRequestBean<>(
+                mRecordId, 3, traumaOutcomeBean);
+
+        RetrofitClient.getInstance().getApi()
+                .saveStrokeTrigaeInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseObjectBean>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                showToast(R.string.http_tip_data_save_success);
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
+                    }
+                });
+    }
+
+    @OnClick({R.id.rb_leave_hospital, R.id.rb_transform_hospital, R.id.rb_transform_department, R.id.rb_die
+            , R.id.rb_result_ok, R.id.rb_result_better, R.id.rb_leave_self, R.id.rb_result_other, R.id.rb_nethospital_true, R.id.rb_nethospital_flase})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rb_leave_hospital:
+                traumaOutcomeBean.setOutcomepatients("1");
                 break;
             case R.id.rb_transform_hospital:
+                traumaOutcomeBean.setOutcomepatients("2");
                 break;
             case R.id.rb_transform_department:
+                traumaOutcomeBean.setOutcomepatients("3");
                 break;
             case R.id.rb_die:
+                traumaOutcomeBean.setOutcomepatients("4");
+                break;
+            case R.id.rb_result_ok:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("1");
+                break;
+            case R.id.rb_result_better:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("2");
+                break;
+            case R.id.rb_leave_self:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("3");
+                break;
+            case R.id.rb_result_other:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("4");
+                break;
+            case R.id.rb_nethospital_true:
+                traumaOutcomeBean.setOutcomenetworkhospital("1");
+                break;
+            case R.id.rb_nethospital_flase:
+                traumaOutcomeBean.setOutcomenetworkhospital("2");
                 break;
         }
     }
+
+
 }
