@@ -24,7 +24,33 @@ public class StrokeBloodExaminationBean {
     private String bloodkey;
     private String bloodvalue;
     private String unit;
+    /**
+     * 血液送检时间
+     */
+    private String bloodsendbegintime;
 
+
+    /**
+     * 开始检验时间
+     */
+    private String bloodinspectionbegintime;
+
+
+    public String getBloodsendbegintime() {
+        return bloodsendbegintime;
+    }
+
+    public void setBloodsendbegintime(String bloodsendbegintime) {
+        this.bloodsendbegintime = bloodsendbegintime;
+    }
+
+    public String getBloodinspectionbegintime() {
+        return bloodinspectionbegintime;
+    }
+
+    public void setBloodinspectionbegintime(String bloodinspectionbegintime) {
+        this.bloodinspectionbegintime = bloodinspectionbegintime;
+    }
 
     public String getBloodcollectiontime() {
         return bloodcollectiontime;

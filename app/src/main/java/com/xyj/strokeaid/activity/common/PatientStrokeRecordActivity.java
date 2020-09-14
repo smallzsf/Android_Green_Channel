@@ -104,16 +104,20 @@ public class PatientStrokeRecordActivity extends BaseCommonActivity {
     public void initView() {
         // set title
         if (mPatientInfo != null) {
+
             String fullname = mPatientInfo.getFullname();
-            String age = mPatientInfo.getAge();
-            String gender = TextUtils.equals(mPatientInfo.getGender(), "1") ? "男" : "女";
-            if (fullname.length() > 5) {
-                fullname = fullname.substring(0, 5);
+            if (!TextUtils.isEmpty(fullname)){
+                String age = mPatientInfo.getAge();
+                String gender = TextUtils.equals(mPatientInfo.getGender(), "1") ? "男" : "女";
+                if (fullname.length() > 5) {
+                    fullname = fullname.substring(0, 5);
+                }
+                SpannableString spannableString = new SpannableString(fullname + "(" + gender + "-" + age + "-胸痛)");
+                RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
+                spannableString.setSpan(relativeSizeSpan, fullname.length(), spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+                titleBarActPsr.setTitle(spannableString);
             }
-            SpannableString spannableString = new SpannableString(fullname + "(" + gender + "-" + age + "-胸痛)");
-            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
-            spannableString.setSpan(relativeSizeSpan, fullname.length(), spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-            titleBarActPsr.setTitle(spannableString);
+
         } else {
             titleBarActPsr.setTitle("胸痛患者");
         }

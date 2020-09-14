@@ -1,24 +1,31 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import com.bigkoo.pickerview.builder.TimePickerBuilder;
-import com.bigkoo.pickerview.listener.OnTimeSelectListener;
-import com.bigkoo.pickerview.view.TimePickerView;
+
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.PhotoViewActivity;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.AddImageExaminteDataBean;
+import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.CTDataBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
@@ -29,13 +36,15 @@ import com.xyj.strokeaid.bean.SendAddCTBean;
 import com.xyj.strokeaid.bean.SendBloodDataBean;
 import com.xyj.strokeaid.bean.SendCTDataBean;
 import com.xyj.strokeaid.bean.SendImageExaminteDataBean;
-import com.xyj.strokeaid.helper.CalendarUtils;
-import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.bean.file.FileInfoBean;
+import com.xyj.strokeaid.http.FileServiceImpl;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
+
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.MediaType;
@@ -103,6 +112,10 @@ public class AuxiliaryExamFragment extends BaseFragment {
 
     private int type = 0;
     private String mRecordId;
+
+    private SparseArray<LocalMedia> mLocalMedias;
+    private final int CT_PHOTO = 1;
+    private final int CT_REPORT = 2;
 
     public AuxiliaryExamFragment() {
     }
@@ -340,10 +353,188 @@ public class AuxiliaryExamFragment extends BaseFragment {
             case R.id.tv_photo_frag_ae:
                 break;
             case R.id.iv_photo_frag_ae:
+                showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+                            ToastUtils.showShort(localMedia.getRealPath());
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        ToastUtils.showShort(data.toString());
+
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            /*if (data != null) {
+                                                sbBloodReport.setRightText("查看");
+                                                strokeBloodExaminationBean.setBloodreport(data.get(0).getPath());
+                                                sbBloodReport.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        LogUtils.d(data.toString());
+                                                        Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+                                                        intent.putExtra("image", data.get(0).getPath());
+                                                        startActivity(intent);
+                                                    }
+                                                });
+
+                                            }*/
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }, new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+
+                        // 相册
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data1 = response.body().getData();
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            if (data1 != null) {
+
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
                 break;
             case R.id.tv_report_frag_ae:
                 break;
             case R.id.iv_report_frag_ae:
+                showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+                            ToastUtils.showShort(localMedia.getRealPath());
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        ToastUtils.showShort(data.toString());
+
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            /*if (data != null) {
+                                                sbBloodReport.setRightText("查看");
+                                                strokeBloodExaminationBean.setBloodreport(data.get(0).getPath());
+                                                sbBloodReport.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        LogUtils.d(data.toString());
+                                                        Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+                                                        intent.putExtra("image", data.get(0).getPath());
+                                                        startActivity(intent);
+                                                    }
+                                                });
+
+                                            }*/
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                }, new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+
+                        // 相册
+                        if (result != null && result.size() > 0) {
+                            LocalMedia localMedia = result.get(0);
+                            LogUtils.d(localMedia.toString());
+                            mLocalMedias.put(CT_PHOTO, localMedia);
+
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data1 = response.body().getData();
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            if (data1 != null) {
+
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+                });
                 break;
             case R.id.btn_get_data:
                 break;
