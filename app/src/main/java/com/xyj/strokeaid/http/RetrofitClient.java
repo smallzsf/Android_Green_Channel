@@ -114,6 +114,7 @@ public class RetrofitClient {
 
 
     private ChestPainApiService cpApiService;
+
     public ChestPainApiService getCPApi() {
         //初始化一个client,不然retrofit会自己默认添加一个
         if (retrofit == null) {
@@ -138,11 +139,23 @@ public class RetrofitClient {
 
     /**
      * 获取对应的Service
+     *
      * @param service Service 的 class
      * @param <T>
      * @return
      */
-    public <T> T create(Class<T> service){
+    public <T> T create(Class<T> service) {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    //设置网络请求的Url地址
+                    .baseUrl(ApiUrls.BASE_URL)
+                    //设置数据解析器
+                    .addConverterFactory(GsonConverterFactory.create())
+                    //设置网络请求适配器，使其支持RxJava与RxAndroid
+                    .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                    .client(getOkHttpClient())
+                    .build();
+        }
         return retrofit.create(service);
     }
 }

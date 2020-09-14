@@ -6,6 +6,7 @@ import android.text.SpannableString;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -49,9 +50,9 @@ public class MaternalTreatCenterActivity extends BaseActivity {
     @BindView(R.id.title_bar_act_mtc)
     BaseTitleBar titleBarActMtc;
     @BindView(R.id.tv_start_time_include_ct)
-    Chronometer tvStartTimeIncludeCt;
+    TextView tvStartTimeIncludeCt;
     @BindView(R.id.tv_hos_time_include_ct)
-    Chronometer tvHosTimeIncludeCt;
+    TextView tvHosTimeIncludeCt;
     @BindView(R.id.rv_menu_act_mtc)
     RecyclerView rvMenuActMtc;
     @BindView(R.id.vp_content_act_mtc)
@@ -98,10 +99,6 @@ public class MaternalTreatCenterActivity extends BaseActivity {
         vpContentActMtc.setUserInputEnabled(false);
         vpContentActMtc.setAdapter(new MaternalMenuVpAdapter(MaternalTreatCenterActivity.this, "", ""));
 
-        tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvStartTimeIncludeCt.start();
-        tvHosTimeIncludeCt.start();
     }
 
     @Override

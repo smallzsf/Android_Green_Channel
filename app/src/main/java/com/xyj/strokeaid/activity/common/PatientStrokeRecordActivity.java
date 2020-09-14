@@ -1,12 +1,16 @@
 package com.xyj.strokeaid.activity.common;
 
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +30,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.MainListBean;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
@@ -58,24 +63,32 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.Stroke.STROKE_HOME)
-public class PatientStrokeRecordActivity extends BaseActivity {
+public class PatientStrokeRecordActivity extends BaseCommonActivity {
 
     @BindView(R.id.title_bar_act_psr)
     BaseTitleBar titleBarActPsr;
     @BindView(R.id.tv_start_time_include_ct)
-    Chronometer tvStartTimeIncludeCt;
+    TextView tvStartTimeIncludeCt;
     @BindView(R.id.tv_hos_time_include_ct)
-    Chronometer tvHosTimeIncludeCt;
+    TextView tvHosTimeIncludeCt;
     @BindView(R.id.rv_menu_act_psr)
     RecyclerView rvMenuActPsr;
     @BindView(R.id.vp_content_act_psr)
     ViewPager2 vpContentActPsr;
+
     @Autowired(name = IntentKey.RECORD_ID)
     String mRecordId;
+    @Autowired(name = IntentKey.PATIENT_INFO)
+    MainListBean mPatientInfo;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
     private int mSelectedTab = -1;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public int getLayoutId() {
@@ -90,10 +103,20 @@ public class PatientStrokeRecordActivity extends BaseActivity {
     @Override
     public void initView() {
         // set title
-        SpannableString spannableString = new SpannableString("霸波奔（男-58-卒中）");
-        RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
-        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-        titleBarActPsr.setTitle(spannableString);
+        if (mPatientInfo != null) {
+            String fullname = mPatientInfo.getFullname();
+            String age = mPatientInfo.getAge();
+            String gender = TextUtils.equals(mPatientInfo.getGender(), "1") ? "男" : "女";
+            if (fullname.length() > 5) {
+                fullname = fullname.substring(0, 5);
+            }
+            SpannableString spannableString = new SpannableString(fullname + "(" + gender + "-" + age + "-胸痛)");
+            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
+            spannableString.setSpan(relativeSizeSpan, fullname.length(), spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+            titleBarActPsr.setTitle(spannableString);
+        } else {
+            titleBarActPsr.setTitle("胸痛患者");
+        }
 
         mMenuTitles = new ArrayList<>();
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_STROKE_MENU_TITLES) {
@@ -109,10 +132,7 @@ public class PatientStrokeRecordActivity extends BaseActivity {
         vpContentActPsr.setUserInputEnabled(false);
         vpContentActPsr.setAdapter(new GreenChannelVpAdapter(PatientStrokeRecordActivity.this, mRecordId));
 
-        tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvStartTimeIncludeCt.start();
-        tvHosTimeIncludeCt.start();
+        myTask = createTask(tvStartTimeIncludeCt, tvHosTimeIncludeCt, mPatientInfo);
     }
 
     @Override

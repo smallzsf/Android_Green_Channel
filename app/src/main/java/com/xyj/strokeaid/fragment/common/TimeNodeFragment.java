@@ -19,11 +19,10 @@ import com.xyj.strokeaid.adapter.TimeNodeRvAdapter;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
-import com.xyj.strokeaid.bean.MainBean;
-import com.xyj.strokeaid.bean.MainListPost;
-import com.xyj.strokeaid.bean.TimeLinePost;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
+import com.xyj.strokeaid.http.PatientService;
 import com.xyj.strokeaid.http.RetrofitClient;
 
 import java.util.ArrayList;
@@ -31,7 +30,6 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -120,14 +118,14 @@ public class TimeNodeFragment extends BaseFragment {
     }
 
     /**
-     *  获取 主页 列表数据  1卒中、2胸痛、3创伤
+     * 获取 主页 列表数据  1卒中、2胸痛、3创伤
      */
     private void getTimeLine(String recordId) {
 
-        TimeLinePost timeLinePost = new TimeLinePost();
-        timeLinePost.setRecordId(recordId);
+        RecordIdBean timeLinePost = new RecordIdBean(recordId);
 
-        RetrofitClient.getInstance().getApi()
+        RetrofitClient.getInstance()
+                .create(PatientService.class)
                 .getTimerLine(timeLinePost.getResuestBody(timeLinePost))
                 .enqueue(new Callback<BaseObjectBean<List<TimeNodeBean>>>() {
                     @Override
@@ -157,7 +155,6 @@ public class TimeNodeFragment extends BaseFragment {
                 });
 
     }
-
 
 
     /**

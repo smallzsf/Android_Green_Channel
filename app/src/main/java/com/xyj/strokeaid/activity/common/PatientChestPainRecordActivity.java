@@ -1,11 +1,11 @@
 package com.xyj.strokeaid.activity.common;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
-import android.widget.Chronometer;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,6 +26,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.MainListBean;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainAssistantTestFragment;
 import com.xyj.strokeaid.fragment.chestpain.ChestPainBloodTestFragment;
@@ -43,10 +44,14 @@ import com.xyj.strokeaid.fragment.common.TimeNodeFragment;
 import com.xyj.strokeaid.fragment.common.TriageInfoFragment;
 import com.xyj.strokeaid.fragment.common.VitalSignsFragment;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
+import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 
@@ -59,7 +64,7 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.ChestPain.CHEST_PAIN_HOME)
-public class PatientChestPainRecordActivity extends BaseActivity {
+public class PatientChestPainRecordActivity extends BaseCommonActivity {
 
     @BindView(R.id.rv_menu_act_pcpr)
     RecyclerView rvMenuActPcpr;
@@ -68,12 +73,14 @@ public class PatientChestPainRecordActivity extends BaseActivity {
     @BindView(R.id.title_bar_act_pcpr)
     BaseTitleBar titleBarActPcpr;
     @BindView(R.id.tv_start_time_include_ct)
-    Chronometer tvStartTimeIncludeCt;
+    TextView tvStartTimeIncludeCt;
     @BindView(R.id.tv_hos_time_include_ct)
-    Chronometer tvHosTimeIncludeCt;
+    TextView tvHosTimeIncludeCt;
 
     @Autowired(name = IntentKey.RECORD_ID)
     String mRecordId;
+    @Autowired(name = IntentKey.PATIENT_INFO)
+    MainListBean mPatientInfo;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -92,10 +99,20 @@ public class PatientChestPainRecordActivity extends BaseActivity {
     @Override
     public void initView() {
         // set title
-        SpannableString spannableString = new SpannableString("奔波霸（男-58-胸痛）");
-        RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
-        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-        titleBarActPcpr.setTitle(spannableString);
+        if (mPatientInfo != null) {
+            String fullname = mPatientInfo.getFullname();
+            String age = mPatientInfo.getAge();
+            String gender = TextUtils.equals(mPatientInfo.getGender(), "1") ? "男" : "女";
+            if (fullname.length() > 5) {
+                fullname = fullname.substring(0, 5);
+            }
+            SpannableString spannableString = new SpannableString(fullname + "(" + gender + "-" + age + "-胸痛)");
+            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
+            spannableString.setSpan(relativeSizeSpan, fullname.length(), spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+            titleBarActPcpr.setTitle(spannableString);
+        } else {
+            titleBarActPcpr.setTitle("胸痛患者");
+        }
 
         mMenuTitles = new ArrayList<>();
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_CHEST_PAIN_MENU_TITLES) {
@@ -111,10 +128,8 @@ public class PatientChestPainRecordActivity extends BaseActivity {
         vpContentActPcpr.setUserInputEnabled(false);
         vpContentActPcpr.setAdapter(new ChestPainRecordVpAdapter(PatientChestPainRecordActivity.this, mRecordId));
 
-        tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvStartTimeIncludeCt.start();
-        tvHosTimeIncludeCt.start();
+        myTask = createTask(tvStartTimeIncludeCt, tvHosTimeIncludeCt, mPatientInfo);
+
     }
 
     @Override

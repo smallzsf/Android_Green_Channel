@@ -125,25 +125,6 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<RequestGetDiseaseRecordBean>> GetDiseaseRecordInfo(@Body RequestBody info);
 
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_LOGIN)
-    Observable<BaseObjectBean<LoginBean>> login(@Body RequestBody info);
-
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_USER_UPDATE_PASSWORD)
-    Observable<BaseObjectBean> changePassword(@Body RequestBody info);
-
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_USER_UPDATE_PASSWORD)
-    Call<BaseObjectBean> changePasswordnor(@Body RequestBody info);
-
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_LOGIN_BY_PHONE)
-    Observable<BaseObjectBean<LoginBean>> phoneLoign(@Body RequestBody info);
-
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_SEND_SMS_FOR_LOGIN)
-    Observable<BaseObjectBean<SendSmsBean>> sendSms(@Body RequestBody info);
 
     /**
      * 获取CT 数据
@@ -610,25 +591,7 @@ public interface ApiService {
     Call<BaseObjectBean<ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean>> getChestPainDiagnosePatientsDetourGet(@Body RequestBody info);
 
 
-    /**
-     * 主页 卒中、胸痛、创伤列表查询
-     *
-     * @param info
-     * @return
-     */
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_CHEST_EMERGENCYCENTER_RECORD_SELECT)
-    Call<BaseObjectBean<MainBean>> getMainList(@Body RequestBody info);
 
-    /**
-     * 获取时间线
-     *
-     * @param info
-     * @return
-     */
-    @Headers({"Content-Type: application/json", "Accept: application/json"})
-    @POST(ApiUrls.NET_URL_EMERGENCYCENTER_RECORDJSON_GETTIMELINE)
-    Call<BaseObjectBean<List<TimeNodeBean>>> getTimerLine(@Body RequestBody info);
 
 
     /**
