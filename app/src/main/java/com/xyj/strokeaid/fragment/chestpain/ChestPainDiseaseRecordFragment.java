@@ -21,6 +21,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -325,7 +326,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         /**
          * 病情评估  病情评估明细
          */
-        String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+        String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
                 cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
                 , cbNonAcs14, cbNonAcs15);
         chestPainDiseaseRecordRequest.setConditionassessmentdetail(checkBoxValue);

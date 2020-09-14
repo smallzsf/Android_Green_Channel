@@ -21,6 +21,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -274,7 +275,7 @@ public class DiagnoseNonAcsFragment extends BaseFragment {
         //TODO 诊断医生没赋值
         chestPainDiagnosisBean.setInitialdiagnosisdoctorid(esDiagnoseDoc.getText());
 
-        String checkBoxNonAcsValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5, cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13, cbNonAcs14, cbNonAcs15, cbNonAcs16, cbNonAcs17, cbNonAcs18, cbNonAcs19, cbNonAcs20, cbNonAcs21, cbNonAcs22, cbNonAcs23, cbNonAcs24);
+        String checkBoxNonAcsValue = KeyValueHelper.getCheckboxsKey(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5, cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13, cbNonAcs14, cbNonAcs15, cbNonAcs16, cbNonAcs17, cbNonAcs18, cbNonAcs19, cbNonAcs20, cbNonAcs21, cbNonAcs22, cbNonAcs23, cbNonAcs24);
         chestPainDiagnosisBean.setDiagnosisunacs(checkBoxNonAcsValue);
 
         if (rbTreatStrategy1.isChecked()) {

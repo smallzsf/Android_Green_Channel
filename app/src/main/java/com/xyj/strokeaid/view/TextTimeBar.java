@@ -97,7 +97,7 @@ public class TextTimeBar extends RelativeLayout {
         typedArray.recycle();
 
         ivRefreshViewTtb.setOnClickListener(v -> {
-            String now = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, new Date());
+            String now = CalendarUtils.parseDate(timeType, new Date());
             tvTimeViewTtb.setText(now);
         });
 

@@ -24,6 +24,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
 import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -530,9 +531,9 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
         ChestpainGraceScoreBean chestpainGraceScoreBean = new ChestpainGraceScoreBean();
         chestpainGraceScoreBean.setId("");
         chestpainGraceScoreBean.setRecordId(mRecordId);
-        String checkBoxGraceJudgeValue = getCheckBoxValue(cbGraceJudge1, cbGraceJudge2, cbGraceJudge3);
+        String checkBoxGraceJudgeValue = KeyValueHelper.getCheckboxsKey(cbGraceJudge1, cbGraceJudge2, cbGraceJudge3);
         chestpainGraceScoreBean.setGraceassess(checkBoxGraceJudgeValue);
-        String checkBoxGraceHighgeValue = getCheckBoxValue(cbGraceHigh1, cbGraceHigh2, cbGraceHigh3, cbGraceHigh4, cbGraceHigh5, cbGraceHigh6);
+        String checkBoxGraceHighgeValue = KeyValueHelper.getCheckboxsKey(cbGraceHigh1, cbGraceHigh2, cbGraceHigh3, cbGraceHigh4, cbGraceHigh5, cbGraceHigh6);
         chestpainGraceScoreBean.setGracehighriskcondition(checkBoxGraceHighgeValue);
         //危险分层
         if (rbSkyHighDanger.isChecked()) {

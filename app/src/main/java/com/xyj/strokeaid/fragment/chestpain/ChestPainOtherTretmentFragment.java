@@ -720,7 +720,7 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
         if (cbLyxcWxj.isChecked()) {
             mOtherTreatmentBean.setMissioneducation("cpc_missioneducation_wxj");
         } else {
-            String checkBoxValue = getCheckBoxValue(cbLyxcXxgwxyskz, cbLyxcShqjth, cbLyxcGljcfy, cbLyxcJy, cbLyxcJyzsfzl);
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbLyxcXxgwxyskz, cbLyxcShqjth, cbLyxcGljcfy, cbLyxcJy, cbLyxcJyzsfzl);
             mOtherTreatmentBean.setMissioneducation(checkBoxValue);
         }
         // 患者转归

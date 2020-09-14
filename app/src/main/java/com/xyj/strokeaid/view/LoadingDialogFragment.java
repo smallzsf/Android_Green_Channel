@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.view;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,6 +29,15 @@ public class LoadingDialogFragment extends DialogFragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
+
+
+        return super.onCreateDialog(savedInstanceState);
     }
 
     @Nullable

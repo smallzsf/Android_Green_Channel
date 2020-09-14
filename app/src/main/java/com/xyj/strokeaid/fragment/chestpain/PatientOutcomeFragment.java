@@ -18,6 +18,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -456,17 +457,17 @@ public class PatientOutcomeFragment extends BaseFragment {
             } else if (rgHeartFailure.getCheckedRadioButtonId() == R.id.rb_heart_failure_no) {
                 mOutcomeBean.setIsheartfailureinhospital("cpc_bool_false");
             }
-            String checkBoxValue = getCheckBoxValue(cbSetmi1, cbSetmi2, cbSetmi3, cbSetmi4, cbSetmi5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbSetmi1, cbSetmi2, cbSetmi3, cbSetmi4, cbSetmi5,
                     cbSetmi6, cbSetmi7, cbSetmi8, cbSetmi9, cbSetmi10, cbSetmi11, cbSetmi12, cbSetmi13);
             mOutcomeBean.setComplication(checkBoxValue);
         } else if (TextUtils.equals(diagnose, "非ACS心源性胸痛")) {
-            String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
                     cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
                     , cbNonAcs14, cbNonAcs15, cbNonAcs16, cbNonAcs17, cbNonAcs18, cbNonAcs19, cbNonAcs20
                     , cbNonAcs21, cbNonAcs22, cbNonAcs23, cbNonAcs24);
             mOutcomeBean.setDischargedunacs(checkBoxValue);
         } else if (TextUtils.equals(diagnose, "其它非心源性胸痛")) {
-            String checkBoxValue = getCheckBoxValue(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5,
                     cbNonHeart6, cbNonHeart7);
             mOutcomeBean.setDischargedotheracs(checkBoxValue);
         }

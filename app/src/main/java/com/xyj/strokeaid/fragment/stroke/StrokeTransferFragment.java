@@ -21,6 +21,7 @@ import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeTransferBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.MyRadioGroup;
@@ -470,7 +471,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
             }
         });
         //出院带药
-        String checkBoxCydyValue = getCheckBoxValue(cbCydyJyy, cbCydyJty, cbCydyTzy, cbCydyKny, cbCydyKxxby, cbCydyZyzl, cbCydyQt, cbCydyWu);
+        String checkBoxCydyValue = KeyValueHelper.getCheckboxsKey(cbCydyJyy, cbCydyJty, cbCydyTzy, cbCydyKny, cbCydyKxxby, cbCydyZyzl, cbCydyQt, cbCydyWu);
         strokeTransferBean.setLeavewithmedicine(checkBoxCydyValue);
 
         strokeTransferBean.setLeavegcs(iebLeaveHospitalGcs.getEditContent());
@@ -485,7 +486,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         //死亡时间
         strokeTransferBean.setDeathtime(ttbDeathTime.getTime());
         //死亡原因
-        String checkBoxSwyyValue = getCheckBoxValue(cbSwyyHxxhsj, cbSwyyNxgb, cbSwyyFbgr, cbSwyySxhdcx, cbSwyyJxsgnsj, cbSwyySshzd, cbSwyyQt, cbSwyyBx);
+        String checkBoxSwyyValue = KeyValueHelper.getCheckboxsKey(cbSwyyHxxhsj, cbSwyyNxgb, cbSwyyFbgr, cbSwyySxhdcx, cbSwyyJxsgnsj, cbSwyySshzd, cbSwyyQt, cbSwyyBx);
         strokeTransferBean.setDeathreason(checkBoxSwyyValue);
 
 

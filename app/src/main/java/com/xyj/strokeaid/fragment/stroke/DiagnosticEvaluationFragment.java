@@ -30,6 +30,7 @@ import com.xyj.strokeaid.bean.DiagnosticEvaluationEntity;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
@@ -460,12 +461,12 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         /**
          * 卒中诊断 左 侧的出血部位
          */
-        String checkBoxValueLeft = getCheckBoxValue(cbCpcLeft1, cbCpcLeft2, cbCpcLeft3, cbCpcLeft4, cbCpcLeft5);
+        String checkBoxValueLeft = KeyValueHelper.getCheckboxsKey(cbCpcLeft1, cbCpcLeft2, cbCpcLeft3, cbCpcLeft4, cbCpcLeft5);
         bean.setHemorrhageinleftinit(checkBoxValueLeft);
         /**
          * 卒中诊断 右 侧的出血部位
          */
-        String checkBoxValueRight = getCheckBoxValue(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
+        String checkBoxValueRight = KeyValueHelper.getCheckboxsKey(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
         bean.setHemorrhageinrightinit(checkBoxValueRight);
         bean.setHemorrhageamountinit(iebHemorrhageSize.getEditContent());
 
