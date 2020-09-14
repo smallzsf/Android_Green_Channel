@@ -304,8 +304,8 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     @Override
     public void initView() {
         EventBus.getDefault().register(this);
-        loadData(mRecordId);
         loadLocalData();
+        loadData(mRecordId);
     }
 
     @Override
@@ -685,6 +685,7 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         }
         thrombolysisTreatmentBean.setNotembolectomyreason(reCodse);
 
+        // 提交保存
         saveData(thrombolysisTreatmentBean);
     }
 
@@ -754,16 +755,7 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                // TODO: 2020/9/14
-
-
-//                                mStrokeTrigaeInfoBean = response.body().getData().getData();
-//                                if (mStrokeTrigaeInfoBean != null) {
-//                                    // 请求成功
-//                                    // 填充页面
-//                                    getDatatoStrokeViews(mStrokeTrigaeInfoBean);
-//                                }
-
+                                viewInitData(response.body().getData().getData());
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -783,24 +775,225 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     }
 
     /**
+     *  填充数据
+     */
+    private void viewInitData(ThrombolysisTreatmentBean treatmentBean) {
+
+        // TODO: 2020/9/14 谈话医生
+
+        // 静脉溶栓开始知情同意时间
+        ttbBeginKnowTime.setTime(treatmentBean.getThrombolyticpatientcommunicationsbegintime());
+        // 静脉溶栓签署知情同意时间
+        ttbSignKnowTime.setTime(treatmentBean.getThrombolyticpatientcommunicationsendtime());
+
+        // 静脉溶栓-静脉溶栓家属意见
+        if (treatmentBean.getThrombolyticpatientopinion().equals("1")) {
+            rbFamilyOpinionAgree.setChecked(true);
+        } else if (treatmentBean.getThrombolyticpatientopinion().equals("-1")){
+            rbFamilyOpinionDisagree.setChecked(true);
+
+            // 拒绝原因
+            switch (treatmentBean.getThrombolyticpatientrefusereason()) {
+                case "cpc_strokjjyy_bycdfy":
+                    rbFamilyUnagreeOne.setChecked(true);
+                    break;
+                case "cpc_strokjjyy_jjyy":
+                    rbFamilyUnagreeTwo.setChecked(true);
+                    llFamilyUnagreeLayout.setVisibility(View.VISIBLE);
+                    break;
+                case "cpc_strokjjyy_qt":
+                    rbFamilyUnagreeThree.setChecked(true);
+                    llFamilyUnagreeLayout.setVisibility(View.VISIBLE);
+                    iebFamilyUnagreeRemark.setVisibility(View.VISIBLE);
+                    break;
+            }
+
+            // 其他拒绝原因
+            iebFamilyUnagreeRemark.setEditContent(treatmentBean.getThrombolyticotherrefusereason());
+        }
+
+        // 知情同意书
+        pathUrl = treatmentBean.getThrombolyticinformedconsent();
+        // THRIVE评分
+        iebThrive.setEditContent(treatmentBean.getThrive());
+        // 溶栓前NIHSS
+        itbBrforNihss.setEditContent(treatmentBean.getPrethrombolyticnihss());
+        // 溶栓地点
+        switch (treatmentBean.getThrombolyticaddress()) {
+            case "cpc_rsdd_jzk":
+                esThrombolysisAddress.setText("急诊科");
+                break;
+            case "cpc_rsdd_ct":
+                esThrombolysisAddress.setText("CT室");
+                break;
+            case "cpc_rsdd_sjnk":
+                esThrombolysisAddress.setText("神经内科");
+                break;
+            case "cpc_rsdd_jrs":
+                esThrombolysisAddress.setText("介入室");
+                break;
+            case "cpc_rsdd_byjjs":
+                esThrombolysisAddress.setText("本院急救车");
+                break;
+            case "cpc_rsdd_bybf":
+                esThrombolysisAddress.setText("本院病房");
+                break;
+            case "cpc_rsdd_wy":
+                esThrombolysisAddress.setText("外院");
+                break;
+        }
+
+        // todo  溶栓护士  setEmergencynurseJmrs();
+
+        // 静脉溶栓静推时间
+        ttbBeginJmrsTime.setTime(treatmentBean.getThrombolyticstaticpushtime());
+        // 发病至溶栓时间时间差
+        iebFbzrs.setEditContent(treatmentBean.getThrombolyticont());
+        // 入门至溶栓时间时间差
+        iebDyzrs.setEditContent(treatmentBean.getThrombolyticdnt());
+        // 静脉溶栓溶栓药物
+        if (treatmentBean.getThrombolyticdrug().equals("cpc_strokersyw_rtpa")) {
+            medicineCode = "cpc_strokersyw_rtpa";
+            rbMedicinePa.setChecked(true);
+            llRtpaLayout.setVisibility(View.VISIBLE);
+            llNjmLayout.setVisibility(View.GONE);
+        } else if (treatmentBean.getThrombolyticdrug().equals("cpc_strokersyw_njm")){
+            medicineCode = "cpc_strokersyw_njm";
+            rbMedicineNjm.setChecked(true);
+            llRtpaLayout.setVisibility(View.GONE);
+            llNjmLayout.setVisibility(View.VISIBLE);
+        }
+
+        // 对应药物处理
+        if (rbMedicinePa.isChecked()) { // rt-PA
+
+            // 剂量类型
+            if (treatmentBean.getThrombolyticdosetype().equals("cpc_rtpajllx_09")) {
+                doseType = "cpc_rtpajllx_09";
+                rbDoseTypeNine.setChecked(true);
+            } else if (treatmentBean.getThrombolyticdosetype().equals("cpc_rtpajllx_06")) {
+                doseType = "cpc_rtpajllx_06";
+                rbDoseTypeSix.setChecked(true);
+            }
+            // 预计剂量
+            iebYjjl.setEditContent(treatmentBean.getTHROMBOLYSISESTIMATEDDRUGDOSE());
+            // 实际静推剂量
+            iebSjjtjl.setEditContent(treatmentBean.getThrombolyticactualintravenousdose());
+            // 实际滴注剂量
+            iebSjdzjl.setEditContent(treatmentBean.getThrombolyticactualinfusiondose());
+            // 实际用药总量
+            sjyyjl.setEditContent(treatmentBean.getActualtotalmedication());
+            // 实际剂量标准
+            iebSjjlbz.setEditContent(treatmentBean.getThrombolyticactualdosestandard());
+
+        } else if (rbMedicineNjm.isChecked()) { // 尿激酶
+            // 使用剂量
+            if (treatmentBean.getThrombolysisdrugdose().equals("cpc_njm_100w")) {
+                doseNumCode = "cpc_njm_100w";
+                rbDose100.setChecked(true);
+            } else if (treatmentBean.getThrombolysisdrugdose().equals("cpc_njm_125w")) {
+                doseNumCode = "cpc_njm_125w";
+                rbDose125.setChecked(true);
+            } else if (treatmentBean.getThrombolysisdrugdose().equals("cpc_njm_150w")) {
+                doseNumCode = "cpc_njm_150w";
+                rbDose150.setChecked(true);
+            }
+        }
+
+        // 血管再通
+        if (treatmentBean.getIsthrombolyticrecanalization().equals("1")) {
+            rbVesselYes.setChecked(true);
+        } else if (treatmentBean.getIsthrombolyticrecanalization().equals("-1")){
+            rbVesselYes.setChecked(false);
+        }
+
+        // 溶栓并发症
+        String[] bStrings = treatmentBean.getThrombolyticcomplication().split(",");
+        if (bStrings.length > 0) {
+            for (int i = 0; i < bStrings.length; i++) {
+                switch (bStrings[i]) {
+                    case "cpc_jmrsbfz_lncx":
+                        cpcJmrsbfzLncx.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_xhdcx":
+                        cpcJmrsbfzXhdcx.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_yycx":
+                        cpcJmrsbfzYycx.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_otherbwcx":
+                        cpcJmrsbfzOtherbwcx.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_zgzss":
+                        cpcJmrsbfzZgzss.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_xgyxcssz":
+                        cpcJmrsbfzXgyxcssz.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_qt":
+                        cpcJmrsbfzQt.setChecked(true);
+                        break;
+                    case "cpc_jmrsbfz_w":
+                        cpcJmrsbfzW.setChecked(true);
+                        break;
+                }
+            }
+        }
+
+        // 其他溶栓并发症
+        if (cpcJmrsbfzQt.isChecked()) {
+            itbVesselOther.setEditContent(treatmentBean.getOtherthrombolyticcomplication());
+        }
+
+        // 溶栓结束后即刻NIHSS
+        iebNowNihss.setEditContent(treatmentBean.getPostthrombolyticnihss());
+        // 溶栓后24h NIHSS
+        iebDayNihss.setEditContent(treatmentBean.getAfterdaythrombolyticnihss());
+        // 7±2天 NIHSS
+        iebWeakNihss.setEditContent(treatmentBean.getAfterweekthrombolyticnihss());
+
+        // 未给予血管内治疗的原因
+        String[] NoteStrings = treatmentBean.getNotembolectomyreason().split(",");
+        if (NoteStrings.length > 0) {
+            for (int i = 0; i < NoteStrings.length; i++) {
+                switch (NoteStrings[i]) {
+                    case "cpc_wjyxgnzldyy_fdxgbb":
+                        cpcWjyxgnzldyyFdxgbb.setChecked(true);
+                        break;
+                    case "cpc_wjyxgnzldyy_csjc":
+                        cpcWjyxgnzldyyCsjc.setChecked(true);
+                        break;
+                    case "cpc_wjyxgnzldyy_jjz":
+                        cpcWjyxgnzldyyJjz.setChecked(true);
+                        break;
+                    case "cpc_wjyxgnzldyy_jsjj":
+                        cpcWjyxgnzldyyJsjj.setChecked(true);
+                        break;
+                    case "cpc_wjyxgnzldyy_qt":
+                        cpcWjyxgnzldyyQt.setChecked(true);
+                        break;
+                }
+            }
+        }
+
+    }
+
+    /**
      * 溶栓药物 类型
-     * <p>
-     * rb_medicine_pa = rt-PA
-     * rb_medicine_njm = 尿激酶
      */
     @OnClick({R.id.rb_medicine_pa, R.id.rb_medicine_njm, R.id.rb_dose_type_nine, R.id.rb_dose_type_six,
             R.id.rb_dose_100, R.id.rb_dose_125, R.id.rb_dose_150})
     public void onViewClicked(RadioButton radioButton) {
         boolean checked = radioButton.isChecked();
         switch (radioButton.getId()) {
-            case R.id.rb_medicine_pa:
+            case R.id.rb_medicine_pa: // rt-PA
                 if (checked) {
                     medicineCode = "cpc_strokersyw_rtpa";
                     llRtpaLayout.setVisibility(View.VISIBLE);
                     llNjmLayout.setVisibility(View.GONE);
                 }
                 break;
-            case R.id.rb_medicine_njm:
+            case R.id.rb_medicine_njm: // 尿激酶
                 if (checked) {
                     medicineCode = "cpc_strokersyw_njm";
                     llRtpaLayout.setVisibility(View.GONE);
@@ -837,34 +1030,8 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
 
     /**
-     * 事件接收
-     *
-     * @param event 事件通知
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void receiveScoreEventBus(ScoreEvent event) {
-        if (event == null) {
-            return;
-        }
-        if (7 == event.getType()) {
-            iebThrive.setEditContent(event.getScore() + "");
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (loading != null && loading.isShowing()) {
-            loading.dismiss();
-        }
-        EventBus.getDefault().unregister(this);
-    }
-
-    /**
      * 家属意见 - 同意 拒绝
      *  拒绝原因
-     *
-     * @param
      */
     @OnClick({R.id.rb_family_opinion_agree, R.id.rb_family_opinion_disagree, R.id.rb_family_unagree_one, R.id.rb_family_unagree_two, R.id.rb_family_unagree_three})
     public void familyReasonViewClicked(RadioButton radioButton) {
@@ -905,5 +1072,29 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
                 }
                 break;
         }
+    }
+
+    /**
+     * 事件接收
+     *
+     * @param event 事件通知
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveScoreEventBus(ScoreEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (7 == event.getType()) {
+            iebThrive.setEditContent(event.getScore() + "");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (loading != null && loading.isShowing()) {
+            loading.dismiss();
+        }
+        EventBus.getDefault().unregister(this);
     }
 }
