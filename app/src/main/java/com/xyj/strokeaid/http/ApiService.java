@@ -44,6 +44,7 @@ import com.xyj.strokeaid.bean.dist.CeaCesBean;
 import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
+import com.xyj.strokeaid.bean.trauma.TraumaOutcomeBean;
 
 import java.util.List;
 
@@ -112,6 +113,10 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<RequestGetVitalSigns>> getStrokeVitalSignsInfo(@Body RequestBody info);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<TraumaOutcomeBean>> getTraumaOutcomeData(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)

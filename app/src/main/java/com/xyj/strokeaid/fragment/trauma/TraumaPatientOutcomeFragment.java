@@ -179,7 +179,32 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
     };
     View.OnClickListener netClickListener = view -> {
         netcheckRadioId = view.getId();
+        refrashnetStatus();
     };
+
+    private void refrashnetStatus() {
+        for (int i = 0; i < netList.size(); i++) {
+            RadioButton radioButton = netList.get(i);
+            if (radioButton == null) {
+                continue;
+            }
+            if (radioButton.getId() == netcheckRadioId) {
+                radioButton.setChecked(true);
+            } else {
+                radioButton.setChecked(false);
+            }
+        }
+        switch (netcheckRadioId) {
+            case R.id.rb_nethospital_true:
+                traumaOutcomeBean.setOutcomenetworkhospital("1");
+                break;
+            case R.id.rb_nethospital_flase:
+                traumaOutcomeBean.setOutcomenetworkhospital("2");
+                break;
+
+        }
+    }
+
     private void refrashresultStatus() {
         for (int i = 0; i < resutList.size(); i++) {
             RadioButton radioButton = resutList.get(i);
@@ -191,6 +216,20 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
             } else {
                 radioButton.setChecked(false);
             }
+        }
+        switch (resutcheckRadioId) {
+            case R.id.rb_result_ok:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("1");
+                break;
+            case R.id.rb_result_better:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("2");
+                break;
+            case R.id.rb_leave_self:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("3");
+                break;
+            case R.id.rb_result_other:
+                traumaOutcomeBean.setOutcometherapeuticoutcome("4");
+                break;
         }
     }
 
@@ -215,16 +254,21 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
         llTransferhospital.setVisibility(View.GONE);
         switch (checkRadioId) {
             case R.id.rb_leave_hospital:
+                Log.e("TAG", "refrashRadioStatus: "+11111 );
                 llLeavehospital.setVisibility(View.VISIBLE);
+                traumaOutcomeBean.setOutcomepatients("1");
                 break;
             case R.id.rb_transform_hospital:
                 llTransferhospital.setVisibility(View.VISIBLE);
+                traumaOutcomeBean.setOutcomepatients("2");
                 break;
             case R.id.rb_transform_department:
                 llTransferdepartment.setVisibility(View.VISIBLE);
+                traumaOutcomeBean.setOutcomepatients("3");
                 break;
             case R.id.rb_die:
                 llDie.setVisibility(View.VISIBLE);
+                traumaOutcomeBean.setOutcomepatients("4");
                 break;
         }
 
@@ -237,14 +281,73 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
 
         RetrofitClient.getInstance()
                 .getApi()
-                .getStrokeVitalSignsInfo(baseRequestBean.getResuestBody(baseRequestBean))
-                .enqueue(new Callback<BaseResponseBean<RequestGetVitalSigns>>() {
+                .getTraumaOutcomeData(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<TraumaOutcomeBean>>() {
                     @Override
-                    public void onResponse(Call<BaseResponseBean<RequestGetVitalSigns>> call,
-                                           Response<BaseResponseBean<RequestGetVitalSigns>> response) {
+                    public void onResponse(Call<BaseResponseBean<TraumaOutcomeBean>> call,
+                                           Response<BaseResponseBean<TraumaOutcomeBean>> response) {
                         hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
+                                traumaOutcomeBean = response.body().getData().getData();
+                                switch (traumaOutcomeBean.getOutcomepatients()){
+                                    case "1":
+                                        rbLeaveHospital.setChecked(true);
+                                        llLeavehospital.setVisibility(View.VISIBLE);
+
+                                        break;
+                                    case "2":
+                                        llTransferhospital.setVisibility(View.VISIBLE);
+                                        rbTransformHospital.setChecked(true);
+                                        break;
+                                    case "3":
+                                        llTransferdepartment.setVisibility(View.VISIBLE);
+                                        rbTransformDepartment.setChecked(true);
+                                        break;
+                                    case "4":
+                                        llDie.setVisibility(View.VISIBLE);
+                                        rbDie.setChecked(true);
+                                        break;
+                                }
+                                iebLiveHosDays.setEditContent(traumaOutcomeBean.getOutcomelengthstay());//住院天数
+                                iebLiveIcuDays.setEditContent(traumaOutcomeBean.getOutcomeicudays());//住ICU天数
+                                iebBreathMachineTimes.setEditContent(traumaOutcomeBean.getOutcomerespiratorduration());//呼吸机使用时长
+                                iebTotalCost.setEditContent(traumaOutcomeBean.getOutcomeallincost());//总费用
+                                ttbLeaveHospital.setTime(traumaOutcomeBean.getOutcomedischargetime());//出院时间
+                                //治疗结果
+                                switch (traumaOutcomeBean.getOutcometherapeuticoutcome()){
+                                    case "1":
+                                        rbResultOk.setChecked(true);
+                                        break;
+                                    case "2":
+                                        rbResultBetter.setChecked(true);
+                                        break;
+                                    case "3":
+                                        rbLeaveSelf.setChecked(true);
+                                        break;
+                                    case "4":
+                                        rbResultOther.setChecked(true);
+                                        break;
+                                }
+                                ttbLeaveHospitalDoor.setTime(traumaOutcomeBean.getOutcometransferleaveourcollegetime());//离开本院时间
+                                iebHosName.setEditContent(traumaOutcomeBean.getOutcometransferhospitalname());//医院名称
+                                //网络医院
+                                switch (traumaOutcomeBean.getOutcomenetworkhospital()){
+                                    case "1":
+                                        rbNethospitalTrue.setChecked(true);
+                                        break;
+                                    case "2":
+                                        rbNethospitalFlase.setChecked(true);
+                                        break;
+                                }
+                                ttbTransferDepartment.setTime(traumaOutcomeBean.getOutcometransferdepartmenttime());//转科时间
+                                iebReceivingDepartment.setEditContent(traumaOutcomeBean.getOutcomereceivingdepartment());//接诊科室
+                                iebReason.setEditContent( traumaOutcomeBean.getTransferdepartmentreason());//转科原因
+
+                                iebPlaceDeath.setEditContent(traumaOutcomeBean.getOutcomeplacedeath());//死亡地点
+                                ttbDieDate.setTime(traumaOutcomeBean.getOutcomedeathtime());//死亡时间
+                                iebDeathReason.setEditContent(traumaOutcomeBean.getOutcomedeathreason());//死亡原因
+
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -254,7 +357,7 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseResponseBean<RequestGetVitalSigns>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<TraumaOutcomeBean>> call, Throwable t) {
                         hideLoadingDialog();
                         showToast(R.string.http_tip_server_error);
                     }
@@ -276,12 +379,16 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
         traumaOutcomeBean.setOutcomeicudays(iebLiveIcuDays.getEditContent());
         traumaOutcomeBean.setOutcomerespiratorduration(iebBreathMachineTimes.getEditContent());
         traumaOutcomeBean.setOutcomeallincost(iebTotalCost.getEditContent());
+
         traumaOutcomeBean.setOutcomedischargetime(ttbLeaveHospital.getTime());
+
         traumaOutcomeBean.setOutcometransferleaveourcollegetime(ttbLeaveHospitalDoor.getTime());
         traumaOutcomeBean.setOutcometransferhospitalname(iebHosName.getEditContent());
+
         traumaOutcomeBean.setOutcometransferdepartmenttime(ttbTransferDepartment.getTime());
         traumaOutcomeBean.setOutcomereceivingdepartment(iebReceivingDepartment.getEditContent());
         traumaOutcomeBean.setTransferdepartmentreason(iebReason.getEditContent());
+
         traumaOutcomeBean.setOutcomeplacedeath(iebPlaceDeath.getEditContent());
         traumaOutcomeBean.setOutcomedeathtime(ttbDieDate.getTime());
         traumaOutcomeBean.setOutcomedeathreason(iebDeathReason.getEditContent());
@@ -318,40 +425,11 @@ public class TraumaPatientOutcomeFragment extends BaseStrokeFragment {
                 });
     }
 
-    @OnClick({R.id.rb_leave_hospital, R.id.rb_transform_hospital, R.id.rb_transform_department, R.id.rb_die
-            , R.id.rb_result_ok, R.id.rb_result_better, R.id.rb_leave_self, R.id.rb_result_other, R.id.rb_nethospital_true, R.id.rb_nethospital_flase})
+    @OnClick({ R.id.rb_result_ok, R.id.rb_result_better, R.id.rb_leave_self, R.id.rb_result_other, R.id.rb_nethospital_true, R.id.rb_nethospital_flase})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.rb_leave_hospital:
-                traumaOutcomeBean.setOutcomepatients("1");
-                break;
-            case R.id.rb_transform_hospital:
-                traumaOutcomeBean.setOutcomepatients("2");
-                break;
-            case R.id.rb_transform_department:
-                traumaOutcomeBean.setOutcomepatients("3");
-                break;
-            case R.id.rb_die:
-                traumaOutcomeBean.setOutcomepatients("4");
-                break;
-            case R.id.rb_result_ok:
-                traumaOutcomeBean.setOutcometherapeuticoutcome("1");
-                break;
-            case R.id.rb_result_better:
-                traumaOutcomeBean.setOutcometherapeuticoutcome("2");
-                break;
-            case R.id.rb_leave_self:
-                traumaOutcomeBean.setOutcometherapeuticoutcome("3");
-                break;
-            case R.id.rb_result_other:
-                traumaOutcomeBean.setOutcometherapeuticoutcome("4");
-                break;
-            case R.id.rb_nethospital_true:
-                traumaOutcomeBean.setOutcomenetworkhospital("1");
-                break;
-            case R.id.rb_nethospital_flase:
-                traumaOutcomeBean.setOutcomenetworkhospital("2");
-                break;
+
+
         }
     }
 
