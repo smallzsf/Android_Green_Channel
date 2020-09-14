@@ -21,6 +21,7 @@ import com.xyj.strokeaid.bean.RequestGetVitalSigns;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
 import com.xyj.strokeaid.bean.RequestThriveDataBean;
+import com.xyj.strokeaid.bean.RequestTraumaConsultationInfoBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
@@ -736,5 +737,17 @@ public interface ApiService {
     @POST(ApiUrls.NET_URL_SAVE_SISCONTRAINDICATION)
     Call<BaseResponseBean<SiscontraindicationBean>> getSiscontraindication(@Body RequestBody info);
 
+    /**
+     * 录入会诊信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_SAVE)
+    Call<BaseObjectBean> saveTraumaConsultationInfo(@Body RequestBody info);
 
+    /**
+     * 获取会诊信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<RequestTraumaConsultationInfoBean>> getTraumaConsultationInfo(@Body RequestBody info);
 }

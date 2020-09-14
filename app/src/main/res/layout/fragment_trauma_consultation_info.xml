@@ -27,6 +27,7 @@
                 android:orientation="vertical">
 
                 <com.xyj.strokeaid.view.TextTimeBar
+                    android:id="@+id/ttb_arrive_time_1"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
                     app:bottomLineVisible="true"
@@ -40,6 +41,7 @@
                     android:paddingEnd="@dimen/item_normal_margin">
 
                     <EditText
+                        android:id="@+id/et_doctor_name_1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -56,6 +58,7 @@
                         android:textSize="@dimen/item_content_size" />
 
                     <TextView
+                        android:id="@+id/tv_doctor_select_1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
@@ -73,6 +76,7 @@
                 android:text="普外一科" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -86,6 +90,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -102,6 +107,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -117,6 +123,7 @@
 
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -130,6 +137,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -146,6 +154,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_3"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -161,6 +170,7 @@
 
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -174,6 +184,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_4"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -190,6 +201,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_4"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -205,6 +217,7 @@
 
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_5"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -218,6 +231,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_5"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -234,6 +248,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_5"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -248,6 +263,7 @@
                 android:text="妇科" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_6"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -261,6 +277,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_6"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -277,6 +294,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_6"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -291,6 +309,7 @@
                 android:text="产一科" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_7"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -304,6 +323,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_7"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -320,6 +340,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -334,6 +355,7 @@
                 android:text="产二科" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_arrive_time_8"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -347,6 +369,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <EditText
+                    android:id="@+id/et_doctor_name_8"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -363,6 +386,7 @@
                     android:textSize="@dimen/item_content_size" />
 
                 <TextView
+                    android:id="@+id/tv_doctor_select_8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
