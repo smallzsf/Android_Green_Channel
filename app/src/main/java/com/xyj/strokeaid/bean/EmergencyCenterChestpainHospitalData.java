@@ -192,6 +192,7 @@ public class EmergencyCenterChestpainHospitalData  extends BaseBean<EmergencyCen
         this.afterthrombolysiscontraindication = afterthrombolysiscontraindication;
     }
 
+    @Override
     public RequestBody getResuestBody(@NonNull EmergencyCenterChestpainHospitalData t) {
         String request = GsonUtils.getGson().toJson(t);
         return RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);

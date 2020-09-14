@@ -166,6 +166,8 @@ public class TraumaDiseaseSceneFragment extends BaseStrokeFragment {
     AppCompatButton btnSave;
     @BindView(R.id.es_conscious_state)
     EditSpinner esConsciousState;
+    @BindView(R.id.ll_ventilation_way)
+    LinearLayout llVentilationWay;
 
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
     private Map<String, Integer> mapNormalRadioIds = new HashMap<>();
@@ -338,6 +340,26 @@ public class TraumaDiseaseSceneFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 etPositionTraumaPart.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbFluidInfusion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llFluidInfusion.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbVentilationWay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llVentilationWay.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+        cbVentilationOther.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etOtherDealWay.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             }
         });
     }

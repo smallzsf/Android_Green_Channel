@@ -89,13 +89,13 @@
 
                 <EditText
                     android:id="@+id/et_reason_trauma_reason"
-                    android:hint="创伤原因"
                     style="@style/et_hole_line"
+                    android:hint="创伤原因"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
-                    android:visibility="gone"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -165,12 +165,12 @@
                 <EditText
                     android:id="@+id/et_position_trauma_part"
                     style="@style/et_hole_line"
+                    android:hint="创伤部位"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
-                    android:visibility="gone"
-                    android:hint="创伤部位" />
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
@@ -231,12 +231,12 @@
                 <EditText
                     android:id="@+id/et_nature_of_injury_other"
                     style="@style/et_hole_line"
+                    android:hint="受伤性质"
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
-                    android:visibility="gone"
-                    android:hint="受伤性质" />
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout
@@ -330,7 +330,6 @@
                         android:text="补液" />
 
 
-
                     <CheckBox
                         android:id="@+id/cb_ventilation_way"
                         style="@style/XyjFlowCheckBox"
@@ -382,6 +381,7 @@
                     android:id="@+id/ll_fluid_infusion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <com.xyj.strokeaid.view.ItemEditBar
@@ -390,6 +390,7 @@
                         app:ieb_bottom_line_visible="true"
                         app:ieb_edit_hint="单行输入"
                         app:ieb_title="晶体"
+                        app:ieb_top_line_visible="true"
                         app:ieb_unit_text="ml"
                         app:ieb_unit_visible="true">
 
@@ -408,40 +409,59 @@
 
                 </LinearLayout>
 
-                <com.zhy.view.flowlayout.FlowLayout
-                    android:id="@+id/fl_ventilation_way"
+                <LinearLayout
+                    android:id="@+id/ll_ventilation_way"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
                     android:paddingStart="@dimen/item_normal_margin"
                     android:paddingEnd="@dimen/item_normal_margin">
 
-                    <RadioButton
-                        android:id="@+id/rb_simple_respirator"
-                        style="@style/XyjFlowCheckBox"
-                        android:text="简易呼吸器" />
+                    <View style="@style/horizontal_divider" />
 
-                    <RadioButton
-                        android:id="@+id/rb_ILMA"
-                        style="@style/XyjFlowCheckBox"
-                        android:text="喉罩通气" />
+                    <TextView
+                        style="@style/tv_normal_titel"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/item_normal_height"
+                        android:gravity="center_vertical"
+                        android:text="通气方式" />
 
-                    <RadioButton
-                        android:id="@+id/rb_nasal_catheter_ventilation"
-                        style="@style/XyjFlowCheckBox"
-                        android:text="鼻导管通气" />
+                    <com.zhy.view.flowlayout.FlowLayout
+                        android:id="@+id/fl_ventilation_way"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <RadioButton
-                        android:id="@+id/rb_oropharyngeal_ventilation"
-                        style="@style/XyjFlowCheckBox"
-                        android:text="口咽管通气" />
+                        <RadioButton
+                            android:id="@+id/rb_simple_respirator"
+                            style="@style/XyjFlowCheckBox"
+                            android:text="简易呼吸器" />
+
+                        <RadioButton
+                            android:id="@+id/rb_ILMA"
+                            style="@style/XyjFlowCheckBox"
+                            android:text="喉罩通气" />
+
+                        <RadioButton
+                            android:id="@+id/rb_nasal_catheter_ventilation"
+                            style="@style/XyjFlowCheckBox"
+                            android:text="鼻导管通气" />
+
+                        <RadioButton
+                            android:id="@+id/rb_oropharyngeal_ventilation"
+                            style="@style/XyjFlowCheckBox"
+                            android:text="口咽管通气" />
 
 
-                    <RadioButton
-                        android:id="@+id/rb_ricothyroidotomy"
-                        style="@style/XyjFlowCheckBox"
-                        android:text="环甲膜切开手术" />
+                        <RadioButton
+                            android:id="@+id/rb_ricothyroidotomy"
+                            style="@style/XyjFlowCheckBox"
+                            android:text="环甲膜切开手术" />
 
-                </com.zhy.view.flowlayout.FlowLayout>
+                    </com.zhy.view.flowlayout.FlowLayout>
+
+                    <View style="@style/horizontal_divider" />
+                </LinearLayout>
 
 
                 <EditText
@@ -451,12 +471,13 @@
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginTop="@dimen/dp_7"
                     android:layout_marginRight="@dimen/dp_12"
+                    android:visibility="gone"
                     android:layout_marginBottom="@dimen/dp_10"
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="请输入其他处理方式"
-                    android:paddingTop="@dimen/dp_6"
                     android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
 
 
@@ -490,7 +511,6 @@
             </LinearLayout>
 
             <LinearLayout
-
                 android:id="@+id/ll_tallransferred_to_department"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -569,8 +589,8 @@
                     android:background="@drawable/shape_edittext_bg"
                     android:gravity="start"
                     android:hint="多行输入"
-                    android:paddingTop="@dimen/dp_6"
                     android:paddingLeft="@dimen/dp_6"
+                    android:paddingTop="@dimen/dp_6"
                     android:textSize="@dimen/item_content_size" />
             </LinearLayout>
 

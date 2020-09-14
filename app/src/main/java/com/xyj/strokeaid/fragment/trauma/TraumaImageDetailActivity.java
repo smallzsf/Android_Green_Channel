@@ -8,6 +8,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
@@ -45,10 +46,12 @@ public class TraumaImageDetailActivity extends BaseActivity {
     AppCompatButton btnGetData;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
+    @BindView(R.id.title_bar_act_ticd)
+    BaseTitleBar titleBarActTicd;
 
     @Override
     public int getLayoutId() {
-        return R.layout.trauma_dialog_image_check;
+        return R.layout.trauma_act_image_check_detail;
     }
 
     @Override
@@ -63,6 +66,7 @@ public class TraumaImageDetailActivity extends BaseActivity {
 
     @Override
     public void initListener() {
+        titleBarActTicd.setLeftLayoutClickListener(v -> finish());
 
     }
 
@@ -83,6 +87,7 @@ public class TraumaImageDetailActivity extends BaseActivity {
                 break;
         }
     }
+
 }
 
     

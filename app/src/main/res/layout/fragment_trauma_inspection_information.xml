@@ -32,15 +32,18 @@
                     android:text="检验信息" />
 
                 <RadioGroup
+                    android:id="@+id/rg_depart_type"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/rb_depart_emergency"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="急诊" />
 
                     <RadioButton
+                        android:id="@+id/rb_depart_eicu"
                         style="@style/XyjRadionButtonHorizontalWeight"
                         android:text="EICU/ICU" />
 
@@ -56,45 +59,58 @@
 
 
                 <CheckBox
+                    android:id="@+id/cb_jyxx_item_px"
                     style="@style/XyjFlowCheckBox"
                     android:text="配血" />
 
                 <CheckBox
-
+                    android:id="@+id/cb_jyxx_item_nxgn"
                     style="@style/XyjFlowCheckBox"
                     android:text="凝血功能" />
 
                 <CheckBox
-
+                    android:id="@+id/cb_jyxx_item_xcg"
                     style="@style/XyjFlowCheckBox"
                     android:text="血常规" />
 
                 <CheckBox
-
+                    android:id="@+id/cb_jyxx_item_xsh"
                     style="@style/XyjFlowCheckBox"
                     android:text="血生化" />
 
                 <CheckBox
-                    android:id="@+id/cb_ventilation_way"
+                    android:id="@+id/cb_jyxx_item_gsgn"
                     style="@style/XyjFlowCheckBox"
                     android:text="肝肾功能" />
 
                 <CheckBox
+                    android:id="@+id/cb_jyxx_item_xt"
                     style="@style/XyjFlowCheckBox"
                     android:text="血糖" />
 
                 <CheckBox
+                    android:id="@+id/cb_jyxx_item_crb"
                     style="@style/XyjFlowCheckBox"
                     android:text="传染病" />
 
             </com.zhy.view.flowlayout.FlowLayout>
 
             <LinearLayout
-                android:id="@+id/ll_jyxx_xcg"
+                android:id="@+id/ll_jyxx_px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="配血" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
@@ -124,11 +140,66 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_jyxx_nxsx"
+                android:id="@+id/ll_jyxx_nxgn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="凝血功能" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间"
+                    app:topLineVisible="true" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_xcg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="血常规" />
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
@@ -164,6 +235,107 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="血生化" />
+
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_gsgn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="肝肾功能" />
+
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="采集时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="送达时间" />
+
+                <com.xyj.strokeaid.view.TextTimeBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bottomLineVisible="true"
+                    app:title="报告时间" />
+
+                <com.xyj.strokeaid.view.SettingBar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:bar_leftText="血检报告"
+                    app:bar_rightText="上传"
+                    app:bar_rightTextVisible="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_jyxx_xt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="血糖" />
+
+
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
@@ -197,6 +369,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:visibility="gone">
+
+                <View style="@style/horizontal_divider" />
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/item_normal_margin"
+                    android:text="传染病" />
+
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:layout_width="match_parent"

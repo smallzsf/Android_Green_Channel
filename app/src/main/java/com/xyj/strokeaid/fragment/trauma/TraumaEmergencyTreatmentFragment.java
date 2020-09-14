@@ -3,6 +3,7 @@ package com.xyj.strokeaid.fragment.trauma;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -133,6 +134,12 @@ public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
     RadioGroup rgAbdominal;
     @BindView(R.id.ll_abdominal_puncture)
     LinearLayout llAbdominalPuncture;
+    @BindView(R.id.cb_fluid_infusion)
+    CheckBox cbFluidInfusion;
+    @BindView(R.id.cb_ventilation_way)
+    CheckBox cbVentilationWay;
+    @BindView(R.id.ll_ventilation_way)
+    LinearLayout llVentilationWay;
     private List<RadioButton> ventilationModeList = new ArrayList();
     private int checkRadioId = R.id.rb_simple_respirator;
     private Map<Integer, Boolean> mapVentilationSelected = new HashMap<>();
@@ -213,7 +220,40 @@ public class TraumaEmergencyTreatmentFragment extends BaseStrokeFragment {
 
     @Override
     protected void initListener() {
+        cbFluidInfusion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llFluidInfusion.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
 
+        cbVentilationWay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llVentilationWay.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbChestPuncture.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llChestPuncture.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbAbdominalPuncture.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                llAbdominalPuncture.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbVentilationOther.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etOtherDealWay.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
     }
 
 }

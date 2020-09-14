@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <com.xyj.strokeaid.view.BaseTitleBar
+        android:id="@+id/title_bar_act_ticd"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
         app:title="新增影像检查" />
@@ -111,6 +112,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_normal_height"
+        android:layout_margin="@dimen/item_normal_margin"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
