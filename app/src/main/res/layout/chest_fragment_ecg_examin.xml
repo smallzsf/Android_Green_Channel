@@ -70,7 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dp_6"
                 android:background="@drawable/shape_edittext_bg"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <com.xyj.strokeaid.view.TextTimeBar
                     android:id="@+id/ttbl_ecg_check_time"
@@ -157,7 +158,7 @@
                 android:layout_marginBottom="@dimen/dp_7"
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_ecg_record_close_two"
@@ -255,7 +256,7 @@
                 android:layout_marginBottom="@dimen/dp_7"
                 android:background="@drawable/shape_edittext_bg"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_ecg_record_close_three"
@@ -396,6 +397,7 @@
                     android:id="@+id/rtb_ecg_receiving_time"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/item_normal_height"
+                    android:visibility="gone"
                     app:bottomLineVisible="true"
                     app:title="接收时间"
                     app:topLineVisible="true" />
@@ -405,7 +407,8 @@
                     android:layout_height="@dimen/vital_sign_item_height"
                     android:layout_marginLeft="@dimen/dp_12"
                     android:layout_marginRight="@dimen/dp_12"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="@dimen/item_title_min_width"

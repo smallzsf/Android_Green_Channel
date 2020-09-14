@@ -94,6 +94,7 @@
                     android:inputType="text"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
+                    android:visibility="gone"
                     android:singleLine="true" />
 
             </LinearLayout>
@@ -115,47 +116,47 @@
 
                     <CheckBox
                         android:id="@+id/cb_position_head"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="头颈部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_face"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="面部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_chest"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="胸部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_belly"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="腹部" />
 
                     <CheckBox
                         android:id="@+id/cb_position_limb"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="四肢" />
 
                     <CheckBox
                         android:id="@+id/cb_position_body"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="体表" />
 
                     <CheckBox
                         android:id="@+id/cb_position_pelvis"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="盆骨" />
 
                     <CheckBox
                         android:id="@+id/cb_position_spine"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="脊柱" />
 
                     <CheckBox
                         android:id="@+id/cb_position_other"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="其他" />
                 </com.zhy.view.flowlayout.FlowLayout>
 
@@ -168,6 +169,7 @@
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
+                    android:visibility="gone"
                     android:hint="创伤部位" />
             </LinearLayout>
 
@@ -188,37 +190,37 @@
 
                     <CheckBox
                         android:id="@+id/cb_injury_laceration"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="挫裂伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_stab"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="刀刺伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_fall"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="坠落伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_impact"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="撞击伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_tumble"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="摔伤" />
 
                     <CheckBox
                         android:id="@+id/cb_injury_trample"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="踩踏" />
 
                     <CheckBox
                         android:id="@+id/cb_intrury_other"
-                        style="@style/XyjFlowRadionButton"
+                        style="@style/XyjFlowCheckBox"
                         android:text="其他" />
 
 
@@ -233,6 +235,7 @@
                     android:paddingStart="@dimen/dp_8"
                     android:paddingEnd="@dimen/dp_8"
                     android:singleLine="true"
+                    android:visibility="gone"
                     android:hint="受伤性质" />
             </LinearLayout>
 

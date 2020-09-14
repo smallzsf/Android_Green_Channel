@@ -11,6 +11,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import butterknife.BindView;
 
@@ -21,13 +22,6 @@ import butterknife.BindView;
  */
 public class TraumaInspectionInfoFragment extends BaseStrokeFragment {
 
-
-    @BindView(R.id.cb_fluid_infusion)
-    CheckBox cbFluidInfusion;
-    @BindView(R.id.cb_chest_puncture)
-    CheckBox cbChestPuncture;
-    @BindView(R.id.cb_abdominal_puncture)
-    CheckBox cbAbdominalPuncture;
     @BindView(R.id.cb_ventilation_way)
     CheckBox cbVentilationWay;
     @BindView(R.id.ll_jyxx_xcg)
@@ -56,7 +50,6 @@ public class TraumaInspectionInfoFragment extends BaseStrokeFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
 
     }
 

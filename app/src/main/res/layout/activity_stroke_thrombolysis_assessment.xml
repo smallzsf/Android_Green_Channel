@@ -24,6 +24,7 @@
             android:orientation="vertical">
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_doctor_receive_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -45,7 +46,7 @@
                     android:textSize="@dimen/item_title_size" />
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/es_emergency_nurse_frag_ti"
+                    android:id="@+id/es_doctor_select"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/item_normal_margin"
@@ -105,6 +106,7 @@
                 android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_indication_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -163,6 +165,7 @@
                 android:background="@color/color_EEEEEE" />
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_taboo"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"

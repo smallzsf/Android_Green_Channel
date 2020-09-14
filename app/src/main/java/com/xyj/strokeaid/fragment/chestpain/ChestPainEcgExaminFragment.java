@@ -98,7 +98,7 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
     @BindView(R.id.ll_auxiliary_exam)
     LinearLayout llAuxiliaryExam;
 
-    private int ecgRecordItem = 1;
+    private int ecgRecordItem = 0;
 
 
     public static ChestPainEcgExaminFragment newInstance(String recordId) {
@@ -130,6 +130,8 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
     private void resetShowData() {
         showLoadingDialog();
         RequestIdBean requestIdBean = new RequestIdBean(mRecordId);
+
+
         RetrofitClient
                 .getInstance()
                 .getCPApi()
@@ -354,7 +356,7 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
             return;
         }
         showLoadingDialog();
-        bean.setRecordId(mRecordId);
+//        bean.setRecordId(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()

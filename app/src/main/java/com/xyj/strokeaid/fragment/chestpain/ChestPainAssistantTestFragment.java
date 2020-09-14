@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.xyj.strokeaid.R;
@@ -27,6 +28,7 @@ import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
 import com.xyj.strokeaid.bean.file.FileInfoBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.helper.PictureSelectorImageEngine;
 import com.xyj.strokeaid.http.FileServiceImpl;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -284,6 +286,23 @@ public class ChestPainAssistantTestFragment extends BaseStrokeFragment {
                     public void onResult(List<LocalMedia> result) {
                         // 相册
                         if (result != null && result.size() > 0) {
+
+
+
+
+                            PictureSelector.create(mActivity)
+                                    .themeStyle(R.style.picture_default_style)
+                                    .isNotPreviewDownload(true)
+                                    .imageEngine(PictureSelectorImageEngine.createGlideEngine())
+                                    .openExternalPreview(0, result);
+
+
+
+
+
+
+
+
                             LocalMedia localMedia = result.get(0);
                             LogUtils.d(localMedia.toString());
                             mLocalMedias.put(CT_PHOTO, localMedia);

@@ -31,16 +31,20 @@
                     android:gravity="center_vertical"
                     android:text="检验信息" />
 
-                <com.xyj.strokeaid.view.editspinner.EditSpinner
-                    android:id="@+id/es_inspection_depart"
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp_30"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="@dimen/item_normal_margin"
-                    android:gravity="center"
-                    app:Background="@drawable/bg_view_frame"
-                    app:hint="转入本院"
-                    app:rightImage="@drawable/ic_arrow_down_blue" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="急诊" />
+
+                    <RadioButton
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="EICU/ICU" />
+
+                </RadioGroup>
 
             </LinearLayout>
 
@@ -50,26 +54,38 @@
                 android:paddingStart="@dimen/item_normal_margin"
                 android:paddingEnd="@dimen/item_normal_margin">
 
+
                 <CheckBox
-                    android:id="@+id/cb_fluid_infusion"
+                    style="@style/XyjFlowCheckBox"
+                    android:text="配血" />
+
+                <CheckBox
+
+                    style="@style/XyjFlowCheckBox"
+                    android:text="凝血功能" />
+
+                <CheckBox
+
                     style="@style/XyjFlowCheckBox"
                     android:text="血常规" />
 
                 <CheckBox
-                    android:id="@+id/cb_chest_puncture"
-                    style="@style/XyjFlowCheckBox"
-                    android:text="凝血四项" />
 
-                <CheckBox
-                    android:id="@+id/cb_abdominal_puncture"
                     style="@style/XyjFlowCheckBox"
                     android:text="血生化" />
 
                 <CheckBox
                     android:id="@+id/cb_ventilation_way"
                     style="@style/XyjFlowCheckBox"
-                    android:text="传染病" />
+                    android:text="肝肾功能" />
 
+                <CheckBox
+                    style="@style/XyjFlowCheckBox"
+                    android:text="血糖" />
+
+                <CheckBox
+                    style="@style/XyjFlowCheckBox"
+                    android:text="传染病" />
 
             </com.zhy.view.flowlayout.FlowLayout>
 

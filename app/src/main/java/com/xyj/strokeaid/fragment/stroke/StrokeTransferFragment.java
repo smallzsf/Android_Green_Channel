@@ -12,9 +12,11 @@ import android.widget.RadioGroup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ToastUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
@@ -269,11 +271,27 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
     @Override
     protected void initListener() {
 
+
+        iebLeaveHospitalNihss.setRightIvOnClickerListener(v -> {
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .navigation();
+        });
+
+        iebLeaveHospitalMrs.setRightIvOnClickerListener(v -> {
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_MRS_SCORE)
+                    .navigation();
+        });
+
+        iebLeaveHospitalGcs.setRightIvOnClickerListener(v -> {
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_GCS_SCORE)
+                    .navigation();
+        });
+
+
         //诊断结果
         esDiagnosis.setOnSelectStringLitner(new EditSpinner.OnSelectStringLitner() {
             @Override
             public void getSeletedString(String text) {
-                ToastUtils.showShort(text);
                 if (text.equals("缺血性卒中")) {
                     llIschemicStroke.setVisibility(View.VISIBLE);
                     llHemorrhagicApoplexy.setVisibility(View.GONE);
@@ -338,52 +356,6 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
     }
 
 
-    /**
-     * 出院诊断-出院时GCS
-     */
-    private String leavegcs;
-
-    /**
-     * 出院诊断-出院时GCS的评分关联Id
-     */
-    private String leavegcsrelationid;
-
-    /**
-     * 出院诊断-出院时mRS
-     */
-    private String leavemrs;
-
-    /**
-     * 出院诊断-出院时mRS的评分关联Id
-     */
-    private String leavemrsrelationid;
-
-    /**
-     * 出院诊断-出院NIHSS评分
-     */
-    private String leavenihss;
-
-    /**
-     * 出院诊断-出院NIHSS评分的评分关联Id
-     */
-    private String leavenihssrelationid;
-
-    /**
-     * 出院诊断-住院天数
-     */
-    private String numberofdaysinhospital;
-
-    /**
-     * 出院诊断-其他
-     */
-    private String otherdiagnosticresultleave;
-
-
-    /**
-     * 出院诊断-总费用
-     */
-    private String totalcostinhospital;
-
     private void saveStrokeTransferData() {
 
         if (strokeTransferBean == null) {
@@ -423,53 +395,43 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
             strokeTransferBean.setPrognosisresult(rbPatientOutDeath.getTag().toString());
         }
 
-        //出院 出院时间
+        //出院 出院时间 后台返回有问题
+
         strokeTransferBean.setDischargedtime(ttbLeaveHospitalTime.getTime());
         //离院方式
-        rgDepartureHospital.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_leave_hospital:
-                        strokeTransferBean.setLeaveway(rbLeaveHospital.getTag().toString());
-                        break;
-                    case R.id.rb_transform_hospital:
-                        strokeTransferBean.setLeaveway(rbTransformHospital.getTag().toString());
-                        break;
-                    case R.id.rb_township_health_center:
-                        strokeTransferBean.setLeaveway(rbTownshipHealthCenter.getTag().toString());
-                        break;
-                    case R.id.rb_no_leave_hospital:
-                        strokeTransferBean.setLeaveway(rbNoLeaveHospital.getTag().toString());
-                        break;
-                    case R.id.rb_other:
-                        strokeTransferBean.setLeaveway(rbOther.getTag().toString());
-                        break;
+        if (rbLeaveHospital.isChecked()) {
+            String tag = (String) rbLeaveHospital.getTag();
+            strokeTransferBean.setLeaveway(tag);
+        } else if (rbTransformHospital.isChecked()) {
+            String tag = (String) rbTransformHospital.getTag();
+            strokeTransferBean.setLeaveway(tag);
+        } else if (rbTownshipHealthCenter.isChecked()) {
+            String tag = (String) rbTownshipHealthCenter.getTag();
+            strokeTransferBean.setLeaveway(tag);
+        } else if (rbNoLeaveHospital.isChecked()) {
+            String tag = (String) rbNoLeaveHospital.getTag();
+            strokeTransferBean.setLeaveway(tag);
+        } else {
+            String tag = (String) rbOther.getTag();
+            strokeTransferBean.setLeaveway(tag);
+        }
 
-                }
-            }
-        });
         //治疗效果
-        rgTreatResult.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.rb_treat_result_cure:
-                        strokeTransferBean.setTreatmentresult(rbTreatResultCure.getTag().toString());
-                        break;
-                    case R.id.rb_treat_result_better:
-                        strokeTransferBean.setTreatmentresult(rbTreatResultBetter.getTag().toString());
-                        break;
-                    case R.id.rb_treat_result_head_death:
-                        strokeTransferBean.setTreatmentresult(rbTreatResultHeadDeath.getTag().toString());
-                        break;
-                    case R.id.rb_treat_result_other:
-                        strokeTransferBean.setTreatmentresult(rbTreatResultOther.getTag().toString());
-                        break;
+        if (rbTreatResultCure.isChecked()) {
+            String tag = (String) rbTreatResultCure.getTag();
+            strokeTransferBean.setTreatmentresult(tag);
+        } else if (rbTreatResultBetter.isChecked()) {
+            String tag = (String) rbTreatResultBetter.getTag();
+            strokeTransferBean.setTreatmentresult(tag);
+        } else if (rbTreatResultHeadDeath.isChecked()) {
+            String tag = (String) rbTreatResultHeadDeath.getTag();
+            strokeTransferBean.setTreatmentresult(tag);
+        } else if (rbTreatResultOther.isChecked()) {
+            String tag = (String) rbTreatResultOther.getTag();
+            strokeTransferBean.setTreatmentresult(tag);
+        }
 
-                }
-            }
-        });
+
         //出院带药
         String checkBoxCydyValue = KeyValueHelper.getCheckboxsKey(cbCydyJyy, cbCydyJty, cbCydyTzy, cbCydyKny, cbCydyKxxby, cbCydyZyzl, cbCydyQt, cbCydyWu);
         strokeTransferBean.setLeavewithmedicine(checkBoxCydyValue);
@@ -640,7 +602,6 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         cbSwyySshzd.setChecked(deathreason.contains(cbSwyySshzd.getTag().toString()));
         cbSwyyQt.setChecked(deathreason.contains(cbSwyyQt.getTag().toString()));
         cbSwyyBx.setChecked(deathreason.contains(cbSwyyBx.getTag().toString()));
-
 
 
     }

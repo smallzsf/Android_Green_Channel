@@ -1,27 +1,35 @@
 package com.xyj.strokeaid.fragment.stroke;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.bumptech.glide.Glide;
+import com.hjq.permissions.OnPermission;
+import com.hjq.permissions.XXPermissions;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
+import com.luck.picture.lib.photoview.PhotoView;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.activity.stroke.PhotoViewActivity;
+import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
-import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
-import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
-import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
 import com.xyj.strokeaid.bean.file.FileInfoBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
@@ -32,13 +40,19 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 
+import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * @Description: 卒中血液检查
@@ -78,6 +92,7 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
     private final int CT_PHOTO = 1;
     private final int CT_REPORT = 2;
     private StrokeBloodExaminationBean strokeBloodExaminationBean;
+    private List<FileInfoBean> data1;
 
 
     public static StrokeBloodExaminationFragment newInstance(String recordId) {
@@ -103,7 +118,8 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-        SparseArray<Object> mLocalMedias = new SparseArray<>();
+
+        mLocalMedias = new SparseArray<>();
         sbBloodType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,9 +127,11 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
             }
         });
 
-
+        //  Glide.with(getActivity()).load("http://ykj.yjjk366.com//upload/files/20200914/b0046459-6f67-457c-9ead-812e17de0e0f.jpg").into(ivPicture);
         loadBloodExaminationData();
-
+        if (strokeBloodExaminationBean == null) {
+            strokeBloodExaminationBean = new StrokeBloodExaminationBean();
+        }
     }
 
     @Override
@@ -129,12 +147,48 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
                 showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
                     @Override
                     public void onResult(List<LocalMedia> result) {
-                        // 拍照
+
                         if (result != null && result.size() > 0) {
                             LocalMedia localMedia = result.get(0);
+
                             LogUtils.d(localMedia.toString());
                             mLocalMedias.put(CT_PHOTO, localMedia);
+                            ToastUtils.showShort(localMedia.getRealPath());
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination",localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        ToastUtils.showShort(data.toString());
+
+                                        if (response.body().getResult() == 1) {
+                                            showToast("数据保存成功");
+                                            if (data != null) {
+                                                sbBloodReport.setRightText("查看");
+                                                strokeBloodExaminationBean.setBloodreport(data.get(0).getPath());
+                                                sbBloodReport.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        LogUtils.d(data.toString());
+                                                        Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+                                                        intent.putExtra("image", data.get(0).getPath());
+                                                        startActivity(intent);
+                                                    }
+                                                });
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    LogUtils.d(t.getMessage());
+                                }
+                            });
                         }
+
+
                     }
 
                     @Override
@@ -144,20 +198,36 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
                 }, new OnResultCallbackListener<LocalMedia>() {
                     @Override
                     public void onResult(List<LocalMedia> result) {
+
                         // 相册
                         if (result != null && result.size() > 0) {
                             LocalMedia localMedia = result.get(0);
                             LogUtils.d(localMedia.toString());
                             mLocalMedias.put(CT_PHOTO, localMedia);
-                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getRealPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
                                 @Override
                                 public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
                                     if (response.body() != null) {
-                                        List<FileInfoBean> data = response.body().getData();
+                                        data1 = response.body().getData();
                                         if (response.body().getResult() == 1) {
                                             showToast("数据保存成功");
-                                            if (data != null) {
-                                                LogUtils.d(data.toString());
+                                            if (data1 != null) {
+                                                if (!TextUtils.isEmpty(data1.get(0).getPath())) {
+                                                    strokeBloodExaminationBean.setBloodreport(data1.get(0).getPath());
+                                                    sbBloodReport.setRightText("查看");
+                                                    sbBloodReport.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {
+                                                            LogUtils.d(data1.toString());
+
+                                                            Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+                                                            intent.putExtra("image", data1.get(0).getPath());
+                                                            startActivity(intent);
+                                                        }
+                                                    });
+                                                }
+
                                             }
                                         }
                                     }
@@ -211,20 +281,14 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
     private void saveBloodExaminationData() {
 
 
-        if (strokeBloodExaminationBean == null) {
-            strokeBloodExaminationBean = new StrokeBloodExaminationBean();
-        }
-
-
         strokeBloodExaminationBean.setBloodcollectiontime(ttbBloodSamplingTime.getTime());
-        strokeBloodExaminationBean.setBloodsubmissiontime(ttbBloodInspectTime.getTime());
+        strokeBloodExaminationBean.setBloodsendbegintime(ttbBloodInspectTime.getTime());
         strokeBloodExaminationBean.setBloodarrivecheckdepartmenttime(ttbSendVerifyLabTime.getTime());
-        strokeBloodExaminationBean.setBloodstarttime(ttbStartVerifyTime.getTime());
+        strokeBloodExaminationBean.setBloodinspectionbegintime(ttbStartVerifyTime.getTime());
         strokeBloodExaminationBean.setBloodreporttime(ttbBloodReportTime.getTime());
         strokeBloodExaminationBean.setBloodgroup(sbBloodType.getRightText().toString());
         strokeBloodExaminationBean.setFingerbloodsugar(iebFingertipBlood.getEditContent());
         strokeBloodExaminationBean.setVenousbloodsugar(iebVeinBlood.getEditContent());
-
 
 
         BaseRequestBean<StrokeBloodExaminationBean> baseRequestBean = new BaseRequestBean<>(
@@ -253,7 +317,6 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
                         showToast(call.toString());
                     }
                 });
-
 
 
     }
@@ -303,14 +366,25 @@ public class StrokeBloodExaminationFragment extends BaseStrokeFragment {
 
     private void getStrokeBloodExaminationBean(StrokeBloodExaminationBean strokeBloodExaminationBean) {
         ttbBloodSamplingTime.setTime(strokeBloodExaminationBean.getBloodcollectiontime());
-        ttbBloodInspectTime.setTime(strokeBloodExaminationBean.getBloodsubmissiontime());
+        ttbBloodInspectTime.setTime(strokeBloodExaminationBean.getBloodsendbegintime());
         ttbSendVerifyLabTime.setTime(strokeBloodExaminationBean.getBloodarrivecheckdepartmenttime());
-        ttbStartVerifyTime.setTime(strokeBloodExaminationBean.getBloodstarttime());
+        ttbStartVerifyTime.setTime(strokeBloodExaminationBean.getBloodinspectionbegintime());
         ttbBloodReportTime.setTime(strokeBloodExaminationBean.getBloodreporttime());
         sbBloodType.setRightText(strokeBloodExaminationBean.getBloodgroup());
         iebFingertipBlood.setEditContent(strokeBloodExaminationBean.getFingerbloodsugar());
-        iebFingertipBlood.setEditContent(strokeBloodExaminationBean.getVenousbloodsugar());
+        iebVeinBlood.setEditContent(strokeBloodExaminationBean.getVenousbloodsugar());
+        if (!TextUtils.isEmpty(strokeBloodExaminationBean.getBloodreport())) {
+            sbBloodReport.setRightText("查看");
+            sbBloodReport.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    Intent intent = new Intent(getActivity(), PhotoViewActivity.class);
+                    intent.putExtra("image", strokeBloodExaminationBean.getBloodreport());
+                    startActivity(intent);
+                }
+            });
+        }
 
     }
 
