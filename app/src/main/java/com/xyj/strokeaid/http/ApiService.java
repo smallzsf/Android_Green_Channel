@@ -27,6 +27,7 @@ import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeOperationOnInfoBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
+import com.xyj.strokeaid.bean.ThrombolysisAssessmentBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.StrokeTransferBean;
 import com.xyj.strokeaid.bean.TimeNodeBean;
@@ -97,13 +98,22 @@ public interface ApiService {
     Call<BaseResponseBean<StrokeSangguineousBean>> getStrokeSangguineousInfo(@Body RequestBody info);
 
     /**
-     *
+     * 溶栓治疗
      * @param info
      * @return
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<ThrombolysisTreatmentBean>> getThrombolysisTreatmentInfo(@Body RequestBody info);
+
+    /**
+     * 溶栓评估
+     * @param info
+     * @return
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_COMMON_GET)
+    Call<BaseResponseBean<ThrombolysisAssessmentBean>> getThrombolysisAssessment(@Body RequestBody info);
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_SAVE)
