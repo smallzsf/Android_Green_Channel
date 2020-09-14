@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -33,10 +31,10 @@ import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.score.ISSActivity;
 import com.xyj.strokeaid.activity.set.AccountActivity;
 import com.xyj.strokeaid.adapter.HomePatientRvAdapter;
 import com.xyj.strokeaid.app.Constants;
+import com.xyj.strokeaid.app.DocInfoCache;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.MmkvKey;
 import com.xyj.strokeaid.app.RouteUrl;
@@ -156,7 +154,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         rvContentActMain.setAdapter(mPatientRvAdapter);
         mPatientRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
         srlFreshActMain.setOnRefreshListener(this);
+
+        // 请求数据
+        DocInfoCache.getInstance().getAllDocAndNurseInfo();
     }
+
 
     private void initTab() {
         mTabEntities = new ArrayList<>();
@@ -504,5 +506,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             return "卒中";
         }
     }
+
+
 
 }

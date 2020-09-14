@@ -3,6 +3,7 @@ package com.xyj.strokeaid.http;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
+import com.xyj.strokeaid.bean.hospital.HospitalStaffBean;
 
 import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
@@ -38,6 +39,9 @@ public interface CommonService {
     @POST(ApiUrls.NET_URL_SEND_SMS_FOR_LOGIN)
     Observable<BaseObjectBean<SendSmsBean>> sendSms(@Body RequestBody info);
 
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_EMERGENCY_CENTER_PERSON_GET_ALL)
+    Call<HospitalStaffBean> getAllEmergencyCenterPerson(@Body RequestBody info);
 }
 
     

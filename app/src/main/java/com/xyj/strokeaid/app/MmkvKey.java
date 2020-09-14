@@ -25,6 +25,7 @@ public final class MmkvKey {
      * 首页选择的患者状态类型
      */
     public static final String HOME_PATIENT_STATUS_TYPE = "HOME_PATIENT_STATUS_TYPE";
+    public static final String ALL_HOS_PERSONS = "ALL_HOS_PERSONS";
 
 }
 

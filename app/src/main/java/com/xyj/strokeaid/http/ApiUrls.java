@@ -44,6 +44,10 @@ public class ApiUrls {
      * 文件上传
      */
     public static final String NET_URL_COMMON_FILE_UPLOAD = "yjjk-gateway/yjjk-pt-api/v1/common/upload";
+    /**
+     * 获取所有医院工作人员信息
+     */
+    public static final String NET_URL_EMERGENCY_CENTER_PERSON_GET_ALL = "yjjk-gateway/yjjk-cdm-api/v1/emergencyCenterPersonType/selectAll";
 
 
     /**

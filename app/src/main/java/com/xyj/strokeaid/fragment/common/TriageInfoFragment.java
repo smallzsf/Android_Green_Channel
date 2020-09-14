@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import com.google.gson.reflect.TypeToken;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.DocInfoCache;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -17,6 +18,7 @@ import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
+import com.xyj.strokeaid.bean.hospital.HospitalStaffBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -24,6 +26,7 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -119,15 +122,33 @@ public class TriageInfoFragment extends BaseFragment {
         // 接诊地点
         esEmergencyAddrFragTi.setItemData(Arrays.asList(getResources().getStringArray(R.array.accepts_location)));
         // 接诊医生
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("露露");
-        list.add("安琪拉");
-        list.add("小熊");
-        esEmergencyNurseFragTi.setItemData(list);
+        List<HospitalStaffBean.DataBean> emergencydoctor = DocInfoCache.getInstance().getPersionByKey("emergencydoctor");
+        if (emergencydoctor != null) {
+            List<String> docs = new ArrayList<>();
+            for (HospitalStaffBean.DataBean dataBean : emergencydoctor) {
+                docs.add(dataBean.getUserName());
+            }
+            esEmergencyDocFragTi.setItemData(docs);
+        }
         // 接诊护士
-        esEmergencyDocFragTi.setItemData(list);
+        List<HospitalStaffBean.DataBean> nurse = DocInfoCache.getInstance().getPersionByKey("nurse");
+        if (nurse != null) {
+            List<String> nurses = new ArrayList<>();
+            for (HospitalStaffBean.DataBean dataBean : nurse) {
+                nurses.add(dataBean.getUserName());
+            }
+            esEmergencyNurseFragTi.setItemData(nurses);
+        }
+
         // 接诊卒中医生
-        esStrokeDocFragTi.setItemData(list);
+        List<HospitalStaffBean.DataBean> strokedoctor = DocInfoCache.getInstance().getPersionByKey("strokedoctor");
+        if (strokedoctor != null) {
+            List<String> strokedocs = new ArrayList<>();
+            for (HospitalStaffBean.DataBean dataBean : emergencydoctor) {
+                strokedocs.add(dataBean.getUserName());
+            }
+            esStrokeDocFragTi.setItemData(strokedocs);
+        }
     }
 
     @Override
