@@ -18,7 +18,7 @@ public class ChestPainTriageInfoBean {
      * 后台
      * 来院方式-患者到院时间(到达医院大门时间)
      */
-    public String arrivegatetime;
+    public String arrivehospitaltime;
     /**
      * app
      * 患者到达急诊
@@ -63,12 +63,12 @@ public class ChestPainTriageInfoBean {
      */
     public String emergencydoctorreception;
 
-    public String getArrivegatetime() {
-        return arrivegatetime;
+    public String getArrivehospitaltime() {
+        return arrivehospitaltime;
     }
 
-    public void setArrivegatetime(String arrivegatetime) {
-        this.arrivegatetime = arrivegatetime;
+    public void setArrivehospitaltime(String arrivehospitaltime) {
+        this.arrivehospitaltime = arrivehospitaltime;
     }
 
     public String getArrivedertime() {

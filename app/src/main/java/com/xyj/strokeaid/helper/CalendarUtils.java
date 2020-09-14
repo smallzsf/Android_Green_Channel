@@ -297,6 +297,24 @@ public class CalendarUtils {
 
     }
 
+    /**
+     * 把年月日时分秒 格式的时间戳  转换成 date
+     *
+     * @param time "2020-03-16T01:57:44.000Z"
+     * @return
+     */
+    public static Date parseTimeToDate(String time) {
+        SimpleDateFormat fromFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date;
+        try {
+            return date = fromFormat.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
     public static String getTodayToYMD() {
         SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return mSimpleDateFormat.format(new Date());

@@ -14,6 +14,15 @@ public class MainListBean {
     private String gender; // 性别 1男2女
     private String idcardno; // 身份证号
     private String attacktime; // 发病时间yyyy-MM-dd
+    private String arrivegatetime; // 发病时间yyyy-MM-dd
+
+    public String getArrivegatetime() {
+        return arrivegatetime;
+    }
+
+    public void setArrivegatetime(String arrivegatetime) {
+        this.arrivegatetime = arrivegatetime;
+    }
 
     public String getId() {
         return id;

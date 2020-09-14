@@ -96,7 +96,6 @@ public class VitalSignsFragment extends BaseFragment {
     @Override
     protected void initView(@NonNull View view) {
         esConsciousState.setStringArrayId(R.array.stroke_state_of_consciousness);
-
         loadData();
     }
 

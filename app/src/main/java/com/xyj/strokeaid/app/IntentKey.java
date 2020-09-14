@@ -12,6 +12,7 @@ public final class IntentKey {
     public static final String PATIENT_ID = "PATIENT_ID";
     public static final String RECORD_ID = "RECORD_ID";
     public static final String DOC_ID = "DOC_ID";
+    public static final String PATIENT_INFO = "PATIENT_INFO";
     /**
      *
      */

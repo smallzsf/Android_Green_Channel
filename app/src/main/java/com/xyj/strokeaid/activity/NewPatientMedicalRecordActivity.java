@@ -30,7 +30,6 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.didichuxing.doraemonkit.widget.tableview.utils.DensityUtils;
 import com.eid.reader.EIDReader;
 import com.eid.reader.IIDDataCallback;
@@ -39,12 +38,15 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.BaseRequestBean;
+import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DeviceBindBean;
 import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
 import com.xyj.strokeaid.bean.RequestIdBean;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.http.DeviceService;
+import com.xyj.strokeaid.http.PatientService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ActionSheet;
@@ -180,7 +182,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     @Override
     public void initView() {
 
-        LogUtils.d("new patient ~~  mDiseaseType is "  + mDiseaseType);
+        LogUtils.d("new patient ~~  mDiseaseType is " + mDiseaseType);
 
         requestPerms("获取授权成功", "获取授权失败，", Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
         if (idReader == null) {
@@ -264,6 +266,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         if (NfcUtils.mNfcAdapter != null) {
             NfcUtils.mNfcAdapter.enableForegroundDispatch(this, NfcUtils.mPendingIntent, null, null);
         }
+        getData(mRecordId);
     }
 
     @Override
@@ -466,21 +469,16 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             case R.id.sb_nation_act_npmr:
                 //民族
                 showPickerView();
-
                 break;
             case R.id.sb_dis_start_range_act_npmr:
                 showActionSheet(sbDisStartRangeActNpmr,
                         "凌晨(0点到6点)", "清晨(6到8点)", "上午(8到12点)", "中午(12到14点)", "傍晚(17到19点)", "晚上(19到24点)");
                 break;
             case R.id.sb_medicare_type_act_npmr:
-
                 showActionSheet(sbMedicareTypeActNpmr, "城镇职工基本医疗保险", "新型农村合作医疗", "城镇居民基本医疗保险", "自费", "军免");
-
                 break;
             case R.id.sb_serious_medicare_act_npmr:
-
                 showActionSheet(sbSeriousMedicareActNpmr, "是", "否");
-
                 break;
             case R.id.btn_save_act_npmr:
                 preSave();
@@ -495,18 +493,23 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
      * 获取数据
      */
     private void getData(String recordId) {
+        if (TextUtils.isEmpty(recordId)) {
+            return;
+        }
         showLoadingDialog();
-        RequestIdBean requestIdBean = new RequestIdBean(recordId);
+        BaseRequestBean<PatientMedicalRecordBean> baseRequestBean =
+                new BaseRequestBean<>(recordId, mDiseaseType, new PatientMedicalRecordBean());
         RetrofitClient
                 .getInstance()
-                .getApi()
-                .getPatientInfo(requestIdBean.getResuestBody(requestIdBean))
-                .enqueue(new Callback<BaseObjectBean<PatientMedicalRecordBean>>() {
+                .create(PatientService.class)
+                .getPatientInfo(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean<PatientMedicalRecordBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean<PatientMedicalRecordBean>> call, Response<BaseObjectBean<PatientMedicalRecordBean>> response) {
+                    public void onResponse(Call<BaseResponseBean<PatientMedicalRecordBean>> call,
+                                           Response<BaseResponseBean<PatientMedicalRecordBean>> response) {
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                mPatinetBean = response.body().getData();
+                                mPatinetBean = response.body().getData().getData();
                                 refreshView(mPatinetBean);
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
@@ -518,7 +521,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<PatientMedicalRecordBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseResponseBean<PatientMedicalRecordBean>> call, Throwable t) {
                         hideLoadingDialog();
                         showToast(R.string.http_tip_server_error);
                     }
@@ -664,16 +667,23 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         }
 
         if (iebNameActNpmr.getEditContent().equals("")) {
-            ToastUtils.showShort("姓名不能为空");
+            showToast("姓名不能为空~");
+            return;
+        }
+        if (TextUtils.isEmpty(iebWristbandActNpmr.getEditContent())){
+            showToast("腕带编号不能为空~");
             return;
         }
         // 疾病类型
         mPatinetBean.setEmergencyType(String.valueOf(mDiseaseType));
 
         //edit 14
-        String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();//就诊id
-        String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();//入院id
-        String editIebWristbandActNpmr = iebWristbandActNpmr.getEditContent();//时间采集器腕带编号
+        //就诊id
+        String editIebOutpatientIdActNpmr = iebOutpatientIdActNpmr.getEditContent();
+        //入院id
+        String editIebLiveHosIdActNpmr = iebLiveHosIdActNpmr.getEditContent();
+        //时间采集器腕带编号
+        String editIebWristbandActNpmr = iebWristbandActNpmr.getEditContent();
         String editIebDisAddrActNpmr = iebDisAddrActNpmr.getEditContent();
         String editIebNameActNpmr = iebNameActNpmr.getEditContent();
         String editIebIdcardActNpmr = iebIdcardActNpmr.getEditContent();
@@ -702,7 +712,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         mPatinetBean.setMedicarecardcode(editIebMedicareNumActNpmr);
         mPatinetBean.setPatientidofambulant(editIebOutpatientIdActNpmr);
         mPatinetBean.setPatientidofhospitalization(editIebLiveHosIdActNpmr);
-        mPatinetBean.setTimecollectorcode(editIebWristbandActNpmr);
 
         if (rgDisTimeActNpmr.getCheckedRadioButtonId() == R.id.rb_dis_time_exact_act_npmr) {
             mPatinetBean.setAttacktime(disStarTime);
@@ -733,7 +742,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         String sex = sbSexActNpmr.getRightText().toString();
         if ("男".equals(sex)) {
             mPatinetBean.setGender("1");
-        } else if ("女".equals(sex)){
+        } else if ("女".equals(sex)) {
             mPatinetBean.setGender("2");
         }
 
@@ -866,10 +875,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
 
         /**
-         * 调用新建接口
+         * 调用新建接口, 先绑定腕带，在生成新患者
          */
-        newPatientMedicalRecord(mPatinetBean);
-
+        bindWristbandId(iebWristbandActNpmr.getEditContent());
 
     }
 
@@ -919,15 +927,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     }
 
-
-    private void quickCreatPatient() {
-        PatientMedicalRecordBean patientMedicalRecordBean = new PatientMedicalRecordBean();
-        patientMedicalRecordBean.setFullname("患者" + System.currentTimeMillis());
-        patientMedicalRecordBean.setEmergencyType(String.valueOf(mDiseaseType));
-        newPatientMedicalRecord(patientMedicalRecordBean);
-    }
-
-
     /**
      * 展示民族
      */
@@ -939,10 +938,8 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
         //条件选择器
         OptionsPickerView pvOptions = new OptionsPickerBuilder(mContext, new OnOptionsSelectListener() {
-
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                ToastUtils.showShort(strings.get(options1) + "**" + options1);
                 sbNationActNpmr.setRightText(strings.get(options1));
             }
         }).build();
@@ -1076,20 +1073,56 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     }
 
     /**
+     * 快速建档， 只保存用户的姓名
+     */
+    private void quickCreatPatient() {
+        PatientMedicalRecordBean bean = new PatientMedicalRecordBean();
+        bean.setFullname("患者" + System.currentTimeMillis());
+        bean.setEmergencyType(String.valueOf(mDiseaseType));
+        bean.setOperationid(getUserId());
+        newPatientMedicalRecord(bean);
+    }
+
+    /**
      * 新建患者信息
      */
-    private void newPatientMedicalRecord(PatientMedicalRecordBean newPatientMedicalRecordBean) {
+    private void newPatientMedicalRecord(PatientMedicalRecordBean bean) {
+        showLoadingDialog();
+        BaseRequestBean<PatientMedicalRecordBean> baseRequestBean =
+                new BaseRequestBean<>("", mDiseaseType, bean);
         RetrofitClient
                 .getInstance()
-                .getApi()
-                .newPatienMedical(newPatientMedicalRecordBean.getResuestBody(newPatientMedicalRecordBean))
-                .enqueue(new Callback<BaseObjectBean>() {
+                .create(PatientService.class)
+                .saveNewPatient(baseRequestBean.getResuestBody(baseRequestBean))
+                .enqueue(new Callback<BaseResponseBean>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                    public void onResponse(Call<BaseResponseBean> call, Response<BaseResponseBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                showToast("保存数据成功" + response.body().getResult() + "***" + response.body().getMessage() + "***" + response.body().getData());
-                                // TODO
+                                String recordId = response.body().getData().getRecordId();
+                                String nav = "";
+                                if (mViewType == 1) {
+                                    // 新建, 完成后跳转对应的病历页面
+                                    if (mDiseaseType == 1) {
+                                        // 卒中
+                                        nav = RouteUrl.Stroke.STROKE_HOME;
+                                    } else if (mDiseaseType == 2) {
+                                        // 胸痛
+                                        nav = RouteUrl.ChestPain.CHEST_PAIN_HOME;
+                                    } else if (mDiseaseType == 3) {
+                                        // 创伤
+                                        nav = RouteUrl.Trauma.TRAUMA_HOME;
+                                    }
+                                    if (!TextUtils.isEmpty(nav)) {
+                                        ARouter.getInstance()
+                                                .build(nav)
+                                                .withString(IntentKey.RECORD_ID, recordId)
+                                                .navigation();
+                                    }
+                                    finish();
+                                }
+                                // 查看
                                 finish();
                             } else {
                                 showToast(response.body().getMessage());
@@ -1098,8 +1131,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
+                    public void onFailure(Call<BaseResponseBean> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -1126,7 +1160,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                             if (response.body().getResult() == 1) {
                                 mPatinetBean.setTimecollectorcode(wristbandNum);
                                 mPatinetBean.setTimecollectorserialnumber(response.body().getData().toString());
-                                preSave();
+                                newPatientMedicalRecord(mPatinetBean);
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -1144,6 +1178,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
     }
 
     private TimePickerView mTimePickerView;
+
     /**
      * 显示时间选择控件
      *
