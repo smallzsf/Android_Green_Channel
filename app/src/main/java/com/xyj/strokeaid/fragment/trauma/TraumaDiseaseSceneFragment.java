@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -319,7 +320,26 @@ public class TraumaDiseaseSceneFragment extends BaseStrokeFragment {
 
     @Override
     protected void initListener() {
+        rbReasonOther.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etReasonTraumaReason.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
 
+        cbIntruryOther.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etNatureOfInjuryOther.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
+
+        cbPositionOther.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                etPositionTraumaPart.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
     }
 
 }
