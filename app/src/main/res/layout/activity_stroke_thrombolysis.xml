@@ -112,6 +112,65 @@
                 android:background="@color/color_EEEEEE" />
 
             <LinearLayout
+                android:id="@+id/ll_family_unagree_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:layout_marginLeft="@dimen/item_normal_margin"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_normal_titel"
+                    android:layout_width="@dimen/item_title_min_width"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="拒绝原因" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/item_normal_margin"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RadioButton
+                        android:id="@+id/rb_family_unagree_one"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="不愿承担风险"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_family_unagree_two"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="经济原因"
+                        android:textSize="@dimen/sp_12" />
+
+                    <RadioButton
+                        android:id="@+id/rb_family_unagree_three"
+                        style="@style/XyjRadionButtonHorizontalWeight"
+                        android:text="其他"
+                        android:textSize="@dimen/sp_12" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/color_EEEEEE" />
+
+            <com.xyj.strokeaid.view.ItemEditBar
+                android:id="@+id/ieb_family_unagree_remark"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                app:ieb_bottom_line_visible="true"
+                app:ieb_title="拒绝原因"
+                app:ieb_top_line_visible="true"
+                app:ieb_unit_visible="false"
+                android:visibility="gone"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dp_12"

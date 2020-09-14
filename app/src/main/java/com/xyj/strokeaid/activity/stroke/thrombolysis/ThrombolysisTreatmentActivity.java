@@ -1,9 +1,9 @@
 package com.xyj.strokeaid.activity.stroke.thrombolysis;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.text.TextUtils;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -17,25 +17,32 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.LogUtils;
+import com.luck.picture.lib.entity.LocalMedia;
+import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.activity.stroke.StrokeThriveActivity;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
-import com.xyj.strokeaid.event.ScoreEvent;
+import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
+import com.xyj.strokeaid.bean.file.FileInfoBean;
+import com.xyj.strokeaid.event.ScoreEvent;
+import com.xyj.strokeaid.http.FileServiceImpl;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.ItemEditBar;
+import com.xyj.strokeaid.view.TextTimeBar;
+import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import com.xyj.strokeaid.view.TextTimeBar;
-import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,42 +62,83 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_treatment)
     BaseTitleBar titleBarActTreatment;
+    /**
+     * 谈话医生
+     */
     @BindView(R.id.es_talk_doctor)
     EditSpinner esTalkDoctor;
+    /**
+     * 开始知情同意
+     */
     @BindView(R.id.ttb_begin_know_time)
     TextTimeBar ttbBeginKnowTime;
+    /**
+     * 签署知情同意
+     */
     @BindView(R.id.ttb_sign_know_time)
     TextTimeBar ttbSignKnowTime;
+    /**
+     * 家属意见
+     */
     @BindView(R.id.rb_family_opinion_agree)
     RadioButton rbFamilyOpinionAgree;
     @BindView(R.id.rb_family_opinion_disagree)
     RadioButton rbFamilyOpinionDisagree;
+    /**
+     *  查看知情同意书
+     */
     @BindView(R.id.tv_book_upload)
     TextView tvBookUpload;
+    /**
+     * THRIVE评分
+     */
     @BindView(R.id.ieb_thrive)
     ItemEditBar iebThrive;
+    /**
+     * 溶栓前NIHSS
+     */
     @BindView(R.id.itb_brfor_nihss)
     ItemEditBar itbBrforNihss;
     @BindView(R.id.es_thrombolysis_address)
     EditSpinner esThrombolysisAddress;
     @BindView(R.id.es_thrombolysis_doctor)
     EditSpinner esThrombolysisDoctor;
+    /**
+     * 静脉溶栓静推时间
+     */
     @BindView(R.id.ttb_begin_jmrs_time)
     TextTimeBar ttbBeginJmrsTime;
+    /**
+     * 发病至溶栓时间时间差
+     */
     @BindView(R.id.ieb_fbzrs)
     ItemEditBar iebFbzrs;
+    /**
+     * 入门至溶栓时间时间差
+     */
     @BindView(R.id.ieb_dyzrs)
     ItemEditBar iebDyzrs;
+    /**
+     * 溶栓药物  rt-PA  尿激酶
+     */
     @BindView(R.id.rb_medicine_pa)
     RadioButton rbMedicinePa;
     @BindView(R.id.rb_medicine_njm)
     RadioButton rbMedicineNjm;
+
+    /**
+     * 剂量类型
+     */
     @BindView(R.id.rg_medicine)
     RadioGroup rgMedicine;
     @BindView(R.id.rb_dose_type_nine)
     RadioButton rbDoseTypeNine;
     @BindView(R.id.rb_dose_type_six)
     RadioButton rbDoseTypeSix;
+
+    /**
+     *  rt-PA ------
+     */
     @BindView(R.id.rg_dose_type)
     RadioGroup rgDoseType;
     @BindView(R.id.ieb_yjjl)
@@ -105,22 +153,33 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     ItemEditBar iebSjjlbz;
     @BindView(R.id.ll_rtpa_layout)
     LinearLayout llRtpaLayout;
+
+    /**
+     * 尿激酶 ----
+     */
+    @BindView(R.id.rg_use_dose)
+    RadioGroup rgUseDose;
+    @BindView(R.id.ll_njm_layout)
+    LinearLayout llNjmLayout;
     @BindView(R.id.rb_dose_100)
     RadioButton rbDose100;
     @BindView(R.id.rb_dose_125)
     RadioButton rbDose125;
     @BindView(R.id.rb_dose_150)
     RadioButton rbDose150;
-    @BindView(R.id.rg_use_dose)
-    RadioGroup rgUseDose;
-    @BindView(R.id.ll_njm_layout)
-    LinearLayout llNjmLayout;
+
+    /**
+     * 血管再通
+     */
     @BindView(R.id.rb_vessel_yes)
     RadioButton rbVesselYes;
     @BindView(R.id.rb_vessel_no)
     RadioButton rbVesselNo;
     @BindView(R.id.rg_vessel)
     RadioGroup rgVessel;
+    /**
+     * 血管再通  选项
+     */
     @BindView(R.id.cpc_jmrsbfz_lncx)
     CheckBox cpcJmrsbfzLncx;
     @BindView(R.id.cpc_jmrsbfz_xhdcx)
@@ -137,14 +196,26 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     CheckBox cpcJmrsbfzQt;
     @BindView(R.id.cpc_jmrsbfz_w)
     CheckBox cpcJmrsbfzW;
+
+    /**
+     * 其他溶栓并发症
+     */
     @BindView(R.id.itb_vessel_other)
     ItemEditBar itbVesselOther;
+
+    /**
+     * 溶栓结束后即刻NIHSS
+     */
     @BindView(R.id.ieb_now_nihss)
     ItemEditBar iebNowNihss;
     @BindView(R.id.ieb_day_nihss)
     ItemEditBar iebDayNihss;
     @BindView(R.id.ieb_weak_nihss)
     ItemEditBar iebWeakNihss;
+
+    /**
+     *  静脉溶栓延误原因
+     */
     @BindView(R.id.cpc_wjyxgnzldyy_fdxgbb)
     CheckBox cpcWjyxgnzldyyFdxgbb;
     @BindView(R.id.cpc_wjyxgnzldyy_csjc)
@@ -155,8 +226,26 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     CheckBox cpcWjyxgnzldyyJsjj;
     @BindView(R.id.cpc_wjyxgnzldyy_qt)
     CheckBox cpcWjyxgnzldyyQt;
+    /**
+     *  保存
+     */
     @BindView(R.id.btn_save_data)
     AppCompatButton btnSaveData;
+
+    /**
+     * 家属不同意 原因
+     */
+    @BindView(R.id.rb_family_unagree_one)
+    RadioButton rbFamilyUnagreeOne;
+    @BindView(R.id.rb_family_unagree_two)
+    RadioButton rbFamilyUnagreeTwo;
+    @BindView(R.id.rb_family_unagree_three)
+    RadioButton rbFamilyUnagreeThree;
+    @BindView(R.id.ll_family_unagree_layout)
+    LinearLayout llFamilyUnagreeLayout;
+    // 其他原因 text
+    @BindView(R.id.ieb_family_unagree_remark)
+    ItemEditBar iebFamilyUnagreeRemark;
 
     private ProgressDialog loading;
     /**
@@ -164,6 +253,37 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
      */
     @Autowired(name = IntentKey.RECORD_ID)
     String mRecordId;
+
+    /**
+     * 家属拒绝原因
+     */
+    private String familyReason = "";
+    /**
+     * 知情同意书
+     */
+    private String pathUrl = "";
+    /**
+     * 溶栓药物 code
+     */
+    private String medicineCode = "";
+    /**
+     * 剂量类型 code
+     */
+    private String doseType = "";
+    /**
+     *  使用剂量 code
+     */
+    private String doseNumCode = "";
+
+    /**
+     *  溶栓并发症 code
+     */
+    private String thrombolyticCode = "";
+
+    /**
+     * 静脉溶栓延误原因  code
+     */
+    private String delayReasonCode = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,6 +305,7 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     public void initView() {
         EventBus.getDefault().register(this);
         loadData(mRecordId);
+        loadLocalData();
     }
 
     @Override
@@ -237,32 +358,183 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.cpc_jmrsbfz_lncx:
                 if (isChecked) {
-                    showToast("cpc_jmrsbfz_lncx");
+                    cpcJmrsbfzW.setChecked(false);
                 }
                 break;
             case R.id.cpc_jmrsbfz_xhdcx:
+                if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
+                }
                 break;
             case R.id.cpc_jmrsbfz_yycx:
+                if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
+                }
                 break;
             case R.id.cpc_jmrsbfz_otherbwcx:
+                if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
+                }
                 break;
             case R.id.cpc_jmrsbfz_zgzss:
+                if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
+                }
                 break;
             case R.id.cpc_jmrsbfz_xgyxcssz:
+                if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
+                }
                 break;
             case R.id.cpc_jmrsbfz_qt:
+
                 if (isChecked) {
+                    cpcJmrsbfzW.setChecked(false);
                     itbVesselOther.setVisibility(View.VISIBLE);
                 } else {
                     itbVesselOther.setVisibility(View.GONE);
                 }
 
                 break;
-            case R.id.cpc_jmrsbfz_w:
-                itbVesselOther.setVisibility(View.GONE);
+            case R.id.cpc_jmrsbfz_w: // 无
+
+                if (isChecked) {
+                    itbVesselOther.setVisibility(View.GONE);
+                    cpcJmrsbfzLncx.setChecked(false);
+                    cpcJmrsbfzXhdcx.setChecked(false);
+                    cpcJmrsbfzYycx.setChecked(false);
+                    cpcJmrsbfzOtherbwcx.setChecked(false);
+                    cpcJmrsbfzZgzss.setChecked(false);
+                    cpcJmrsbfzXgyxcssz.setChecked(false);
+                    cpcJmrsbfzQt.setChecked(false);
+                }
 
                 break;
         }
+    }
+
+    /**
+     * 本地数据加载
+     */
+    private void loadLocalData() {
+        esThrombolysisAddress.setStringArrayId(R.array.stroke_thrombolysis_address);
+
+    }
+
+    /**
+     * 点击事件处理
+     */
+    @OnClick(R.id.tv_book_upload)
+    public void viewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_book_upload: // 查看知情同意书
+
+                showPhotoSelector(new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 拍照
+                        if (result != null && result.size() > 0) {
+
+                            loading = ProgressDialog.show(mContext, "", "图片上传中。。。", true, false);
+                            LocalMedia localMedia = result.get(0);
+//                            LogUtils.d(localMedia.toString());
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (loading != null && loading.isShowing()) {
+                                        loading.dismiss();
+                                    }
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        if (response.body().getResult() == 1) {
+                                            if (data != null && data.size() > 0) {
+                                                pathUrl = data.get(0).getPath();
+                                                showToast("数据保存成功");
+                                            } else {
+                                                showToast("请重试");
+                                            }
+                                        } else {
+                                            showToast(TextUtils.isEmpty(response.body().getMessage())
+                                                    ? getString(R.string.http_tip_data_save_error)
+                                                    : response.body().getMessage());
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    if (loading != null && loading.isShowing()) {
+                                        loading.dismiss();
+                                    }
+                                    showToast(R.string.http_tip_server_error);
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        if (loading != null && loading.isShowing()) {
+                            loading.dismiss();
+                        }
+                    }
+                }, new OnResultCallbackListener<LocalMedia>() {
+                    @Override
+                    public void onResult(List<LocalMedia> result) {
+                        // 相册
+                        if (result != null && result.size() > 0) {
+
+                            loading = ProgressDialog.show(mContext, "", "图片上传中。。。", true, false);
+
+                            LocalMedia localMedia = result.get(0);
+//                            LogUtils.d(localMedia.toString());
+                            FileServiceImpl.uploadImage("emergency_center_chestpain_imaging_examination", localMedia.getPath(), new Callback<BaseArrayBean<FileInfoBean>>() {
+                                @Override
+                                public void onResponse(Call<BaseArrayBean<FileInfoBean>> call, Response<BaseArrayBean<FileInfoBean>> response) {
+                                    if (loading != null && loading.isShowing()) {
+                                        loading.dismiss();
+                                    }
+
+                                    if (response.body() != null) {
+                                        List<FileInfoBean> data = response.body().getData();
+                                        if (response.body().getResult() == 1) {
+                                            if (data != null && data.size() > 0) {
+                                                pathUrl = data.get(0).getPath();
+                                                showToast("数据保存成功");
+                                            } else {
+                                                showToast("请重试");
+                                            }
+                                        } else {
+                                            showToast(TextUtils.isEmpty(response.body().getMessage())
+                                                    ? getString(R.string.http_tip_data_save_error)
+                                                    : response.body().getMessage());
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<BaseArrayBean<FileInfoBean>> call, Throwable t) {
+                                    if (loading != null && loading.isShowing()) {
+                                        loading.dismiss();
+                                    }
+                                    showToast(R.string.http_tip_server_error);
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        if (loading != null && loading.isShowing()) {
+                            loading.dismiss();
+                        }
+                    }
+                });
+
+                break;
+        }
+
     }
 
     /**
@@ -272,16 +544,156 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     public void onViewClicked() {
 
         ThrombolysisTreatmentBean thrombolysisTreatmentBean = new ThrombolysisTreatmentBean();
+        // TODO: 2020/9/14 谈话医生
 
+        // 静脉溶栓开始知情同意时间
+        thrombolysisTreatmentBean.setThrombolyticpatientcommunicationsbegintime(ttbBeginKnowTime.getTime());
+        // 静脉溶栓签署知情同意时间
+        thrombolysisTreatmentBean.setThrombolyticpatientcommunicationsendtime(ttbSignKnowTime.getTime());
+        // 静脉溶栓-静脉溶栓家属意见
+        if (rbFamilyOpinionAgree.isChecked()) {
+            // 家属意见
+            thrombolysisTreatmentBean.setThrombolyticpatientopinion("1");
+        } else if (rbFamilyOpinionDisagree.isChecked()) {
+            // 家属意见
+            thrombolysisTreatmentBean.setThrombolyticpatientopinion("-1");
+            // 拒绝原因
+            thrombolysisTreatmentBean.setThrombolyticpatientrefusereason(familyReason);
+
+            // 其他拒绝原因
+            if (rbFamilyUnagreeThree.isChecked()) {
+                thrombolysisTreatmentBean.setThrombolyticotherrefusereason(iebFamilyUnagreeRemark.getEditContent());
+            }
+
+        } else {
+            //  不传 or ""
+        }
+
+        // 知情同意书
+        thrombolysisTreatmentBean.setThrombolyticinformedconsent(pathUrl);
+        // THRIVE评分
+        thrombolysisTreatmentBean.setThrive(iebThrive.getEditContent());
+        // 溶栓前NIHSS
+        thrombolysisTreatmentBean.setPrethrombolyticnihss(itbBrforNihss.getEditContent());
+        // 溶栓地点
+        thrombolysisTreatmentBean.setThrombolyticaddress(esThrombolysisAddress.getSelectData()[1]);
+        // todo  溶栓护士  setEmergencynurseJmrs();
+
+        // 静脉溶栓静推时间
+        thrombolysisTreatmentBean.setThrombolyticstaticpushtime(ttbBeginJmrsTime.getTime());
+        // 发病至溶栓时间时间差
+        thrombolysisTreatmentBean.setThrombolyticont(iebFbzrs.getEditContent());
+        // 入门至溶栓时间时间差
+        thrombolysisTreatmentBean.setThrombolyticdnt(iebDyzrs.getEditContent());
+        // 静脉溶栓溶栓药物
+        thrombolysisTreatmentBean.setThrombolyticdrug(medicineCode);
+        // 对应药物处理
+        if (rbMedicinePa.isChecked()) { // rt-PA
+
+            // 剂量类型
+            thrombolysisTreatmentBean.setThrombolyticdosetype(doseType);
+            // 预计剂量
+            thrombolysisTreatmentBean.setTHROMBOLYSISESTIMATEDDRUGDOSE(iebYjjl.getEditContent());
+            // 实际静推剂量
+            thrombolysisTreatmentBean.setThrombolyticactualintravenousdose(iebSjjtjl.getEditContent());
+            // 实际滴注剂量
+            thrombolysisTreatmentBean.setThrombolyticactualinfusiondose(iebSjdzjl.getEditContent());
+            // 实际用药总量
+            thrombolysisTreatmentBean.setActualtotalmedication(sjyyjl.getEditContent());
+            // 实际剂量标准
+            thrombolysisTreatmentBean.setThrombolyticactualdosestandard(iebSjjlbz.getEditContent());
+
+        } else if (rbMedicineNjm.isChecked()) { // 尿激酶
+            // 使用剂量
+            thrombolysisTreatmentBean.setThrombolysisdrugdose(doseNumCode);
+        }
+
+        // 血管再通
+        if (rbVesselYes.isChecked()) {
+            thrombolysisTreatmentBean.setIsthrombolyticrecanalization("1");
+        } else if (rbVesselNo.isChecked()){
+            thrombolysisTreatmentBean.setIsthrombolyticrecanalization("-1");
+        }
+
+        // 溶栓并发症 thrombolyticCode
+        if (cpcJmrsbfzLncx.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_lncx,";
+        }
+        if (cpcJmrsbfzXhdcx.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_xhdcx,";
+        }
+        if (cpcJmrsbfzYycx.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_yycx,";
+        }
+        if (cpcJmrsbfzOtherbwcx.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_otherbwcx,";
+        }
+        if (cpcJmrsbfzZgzss.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_zgzss,";
+        }
+        if (cpcJmrsbfzXgyxcssz.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_xgyxcssz,";
+        }
+        if (cpcJmrsbfzQt.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_qt,";
+        }
+        if (cpcJmrsbfzW.isChecked()) {
+            thrombolyticCode = thrombolyticCode + "cpc_jmrsbfz_w";
+        }
+
+        String thCodse;
+        if (thrombolyticCode.endsWith(",")) {
+            thCodse = thrombolyticCode.substring(0, thrombolyticCode.length()-1);
+        } else {
+            thCodse = thrombolyticCode;
+        }
+        // 溶栓并发症
+        thrombolysisTreatmentBean.setThrombolyticcomplication(thCodse);
+        // 其他溶栓并发症 otherthrombolyticcomplication
+        if (cpcJmrsbfzQt.isChecked()) {
+            thrombolysisTreatmentBean.setOtherthrombolyticcomplication(itbVesselOther.getEditContent());
+        }
+
+        // 溶栓结束后即刻NIHSS
+        thrombolysisTreatmentBean.setPostthrombolyticnihss(iebNowNihss.getEditContent());
+        // 溶栓后24h NIHSS
+        thrombolysisTreatmentBean.setAfterdaythrombolyticnihss(iebDayNihss.getEditContent());
+        // 7±2天 NIHSS
+        thrombolysisTreatmentBean.setAfterweekthrombolyticnihss(iebWeakNihss.getEditContent());
+        // 未给予血管内治疗的原因
+        if (cpcWjyxgnzldyyFdxgbb.isChecked()) {
+            delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_fdxgbb,";
+        }
+        if (cpcWjyxgnzldyyCsjc.isChecked()) {
+            delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_csjc,";
+        }
+        if (cpcWjyxgnzldyyJjz.isChecked()) {
+            delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_jjz,";
+        }
+        if (cpcWjyxgnzldyyJsjj.isChecked()) {
+            delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_jsjj,";
+        }
+        if (cpcWjyxgnzldyyQt.isChecked()) {
+            delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_qt";
+        }
+
+        String reCodse;
+        if (delayReasonCode.endsWith(",")) {
+            reCodse = delayReasonCode.substring(0, delayReasonCode.length()-1);
+        } else {
+            reCodse = delayReasonCode;
+        }
+        thrombolysisTreatmentBean.setNotembolectomyreason(reCodse);
 
         saveData(thrombolysisTreatmentBean);
     }
+
 
     /**
      * 保存数据
      */
     private void saveData(ThrombolysisTreatmentBean thrombolysisTreatmentBean) {
-        loading = ProgressDialog.show(mContext, "", "发送请求。。。",true,false);
+        loading = ProgressDialog.show(mContext, "", "发送请求。。。", true, false);
         BaseRequestBean<ThrombolysisTreatmentBean> baseRequestBean =
                 new BaseRequestBean<>(mRecordId, 2, thrombolysisTreatmentBean);
 
@@ -298,8 +710,8 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-
                                 showToast(R.string.http_tip_data_save_success);
+                                finish();
                             } else {
                                 showToast(TextUtils.isEmpty(response.body().getMessage())
                                         ? getString(R.string.http_tip_data_save_error)
@@ -325,7 +737,7 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
      */
     private void loadData(String recordId) {
 
-        loading = ProgressDialog.show(mContext, "", "发送请求。。。",true,false);
+        loading = ProgressDialog.show(mContext, "", "发送请求。。。", true, false);
         BaseRequestBean<ThrombolysisTreatmentBean> baseRequestBean = new BaseRequestBean<>(
                 recordId, 1, new ThrombolysisTreatmentBean());
 
@@ -342,6 +754,8 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
+                                // TODO: 2020/9/14
+
 
 //                                mStrokeTrigaeInfoBean = response.body().getData().getData();
 //                                if (mStrokeTrigaeInfoBean != null) {
@@ -369,7 +783,62 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     }
 
     /**
+     * 溶栓药物 类型
+     * <p>
+     * rb_medicine_pa = rt-PA
+     * rb_medicine_njm = 尿激酶
+     */
+    @OnClick({R.id.rb_medicine_pa, R.id.rb_medicine_njm, R.id.rb_dose_type_nine, R.id.rb_dose_type_six,
+            R.id.rb_dose_100, R.id.rb_dose_125, R.id.rb_dose_150})
+    public void onViewClicked(RadioButton radioButton) {
+        boolean checked = radioButton.isChecked();
+        switch (radioButton.getId()) {
+            case R.id.rb_medicine_pa:
+                if (checked) {
+                    medicineCode = "cpc_strokersyw_rtpa";
+                    llRtpaLayout.setVisibility(View.VISIBLE);
+                    llNjmLayout.setVisibility(View.GONE);
+                }
+                break;
+            case R.id.rb_medicine_njm:
+                if (checked) {
+                    medicineCode = "cpc_strokersyw_njm";
+                    llRtpaLayout.setVisibility(View.GONE);
+                    llNjmLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.rb_dose_type_nine: // 剂量类型
+                if (checked) {
+                    doseType = "cpc_rtpajllx_09";
+                }
+                break;
+            case R.id.rb_dose_type_six: // 剂量类型
+                if (checked) {
+                    doseType = "cpc_rtpajllx_06";
+                }
+                break;
+            case R.id.rb_dose_100:
+                if (checked) {
+                    doseNumCode = "cpc_njm_100w";
+                }
+                break;
+            case R.id.rb_dose_125:
+                if (checked) {
+                    doseNumCode = "cpc_njm_125w";
+                }
+                break;
+            case R.id.rb_dose_150:
+                if (checked) {
+                    doseNumCode = "cpc_njm_150w";
+                }
+                break;
+        }
+    }
+
+
+    /**
      * 事件接收
+     *
      * @param event 事件通知
      */
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -392,28 +861,49 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     }
 
     /**
-     * 溶栓药物 类型
+     * 家属意见 - 同意 拒绝
+     *  拒绝原因
      *
-     *  rb_medicine_pa = rt-PA
-     *  rb_medicine_njm = 尿激酶
+     * @param
      */
-    @OnClick({R.id.rb_medicine_pa, R.id.rb_medicine_njm})
-    public void onViewClicked(RadioButton radioButton) {
+    @OnClick({R.id.rb_family_opinion_agree, R.id.rb_family_opinion_disagree, R.id.rb_family_unagree_one, R.id.rb_family_unagree_two, R.id.rb_family_unagree_three})
+    public void familyReasonViewClicked(RadioButton radioButton) {
         boolean checked = radioButton.isChecked();
         switch (radioButton.getId()) {
-            case R.id.rb_medicine_pa:
+            case R.id.rb_family_opinion_agree:
                 if (checked) {
-                    llRtpaLayout.setVisibility(View.VISIBLE);
-                    llNjmLayout.setVisibility(View.GONE);
+                    llFamilyUnagreeLayout.setVisibility(View.GONE);
+                    iebFamilyUnagreeRemark.setVisibility(View.GONE);
+                    familyReason = "";
                 }
                 break;
-            case R.id.rb_medicine_njm:
+            case R.id.rb_family_opinion_disagree:
                 if (checked) {
-                    llRtpaLayout.setVisibility(View.GONE);
-                    llNjmLayout.setVisibility(View.VISIBLE);
+                    llFamilyUnagreeLayout.setVisibility(View.VISIBLE);
+                }
+                break;
+            case R.id.rb_family_unagree_one:
+                // cpc_strokjjyy_bycdfy
+                if (checked) {
+                    iebFamilyUnagreeRemark.setVisibility(View.GONE);
+                    familyReason = "cpc_strokjjyy_bycdfy";
+                }
+                break;
+            case R.id.rb_family_unagree_two:
+                //cpc_strokjjyy_jjyy
+                if (checked) {
+                    iebFamilyUnagreeRemark.setVisibility(View.GONE);
+                    familyReason = "cpc_strokjjyy_jjyy";
+                }
+
+                break;
+            case R.id.rb_family_unagree_three:
+                // cpc_strokjjyy_qt
+                if (checked) {
+                    iebFamilyUnagreeRemark.setVisibility(View.VISIBLE);
+                    familyReason = "cpc_strokjjyy_qt";
                 }
                 break;
         }
     }
-
 }
