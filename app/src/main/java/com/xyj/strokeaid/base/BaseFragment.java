@@ -1,14 +1,11 @@
 package com.xyj.strokeaid.base;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,28 +13,17 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 
-import com.bigkoo.pickerview.builder.TimePickerBuilder;
-import com.bigkoo.pickerview.listener.OnTimeSelectListener;
-import com.bigkoo.pickerview.view.TimePickerView;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.tencent.mmkv.MMKV;
-import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.UserInfoCache;
-import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.PictureSelectorImageEngine;
 import com.xyj.strokeaid.view.ActionSheet;
-import com.xyj.strokeaid.view.LoadingDialogFragment;
-import com.xyj.strokeaid.view.SettingBar;
-import com.xyj.strokeaid.view.TextTimeBar;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -53,16 +39,15 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
 
     protected MMKV mDefaultMMKV;
-    protected Activity mActivity;
+    protected BaseActivity mActivity;
     protected View mRootView;
     protected Unbinder mUnbinder;
     public Context context;
-    protected LoadingDialogFragment mLoadingDialogFragment;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mActivity = (Activity) context;
+        mActivity = (BaseActivity) context;
         this.context = context;
     }
 
@@ -99,6 +84,11 @@ public abstract class BaseFragment extends Fragment {
         return mRootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     protected View onCreateView(Bundle savedInstanceState) {
         return mRootView;
     }
@@ -115,23 +105,6 @@ public abstract class BaseFragment extends Fragment {
         Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
     }
 
-    public void showContent(Class<? extends BaseFragment> fragmentClass) {
-        showContent(fragmentClass, null);
-    }
-
-    public void showContent(Class<? extends BaseFragment> fragmentClass, Bundle bundle) {
-        BaseActivity activity = (BaseActivity) getActivity();
-        if (activity != null) {
-            activity.showContent(fragmentClass, bundle);
-        }
-    }
-
-    public void finish() {
-        BaseActivity activity = (BaseActivity) getActivity();
-        if (activity != null) {
-            activity.doBack(this);
-        }
-    }
 
     protected boolean onBackPressed() {
         return false;
@@ -140,11 +113,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        hideLoadingDialog();
         if (mUnbinder != null) {
             mUnbinder.unbind();
-        }
-        if (mLoadingDialogFragment != null) {
-            mLoadingDialogFragment.dismiss();
         }
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
@@ -160,158 +131,20 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void showLoadingDialog() {
-        if (mLoadingDialogFragment == null) {
-            mLoadingDialogFragment = new LoadingDialogFragment();
+        if (mActivity != null) {
+            mActivity.showLoadingDialog();
         }
-        if (mLoadingDialogFragment.isVisible()) {
-            return;
-        }
-        mLoadingDialogFragment.show(getChildFragmentManager(), "loading");
     }
 
     public void hideLoadingDialog() {
-        if (mLoadingDialogFragment != null) {
-            mLoadingDialogFragment.dismiss();
+        if (mActivity != null) {
+            mActivity.hideLoadingDialog();
         }
     }
 
-
-    protected TimePickerView mTimePickerView;
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param tvShowTime 显示时间的 TextView
-     */
-    protected void showTimePickView(TextView tvShowTime) {
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(1900, 0, 1);
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime, date);
-                }
-            })
-                    .isDialog(false)
-                    .setRangDate(startTime, Calendar.getInstance())
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param textTimeBar 显示时间的 TextView
-     */
-    protected void showTimePickView(TextTimeBar textTimeBar) {
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(1900, 0, 1);
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(textTimeBar, date);
-                }
-            })
-                    .isDialog(false)
-                    .setRangDate(startTime, Calendar.getInstance())
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param tvShowTime 显示时间的 TextView
-     */
-    protected void showTimePickView(SettingBar tvShowTime) {
-        Calendar startTime = Calendar.getInstance();
-        startTime.set(1900, 0, 1);
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime, date);
-                }
-            })
-                    .isDialog(false)
-                    .setRangDate(startTime, Calendar.getInstance())
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param textView
-     */
-    protected void refreshTime(TextView textView, Date date) {
-        if (textView != null) {
-            textView.setTextColor(getResources().getColor(R.color.color_222222));
-            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param textTimeBar
-     */
-    protected void refreshTime(TextTimeBar textTimeBar, Date date) {
-        if (textTimeBar != null) {
-            textTimeBar.setTime(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param settingBar
-     */
-    protected void refreshTime(SettingBar settingBar, Date date) {
-        if (settingBar != null) {
-            settingBar.setRightTextColor(getResources().getColor(R.color.color_222222));
-            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
 
     public String getUserId() {
         return UserInfoCache.getInstance().getUserInfo().getId();
-    }
-
-    public String getCheckBoxValue(CheckBox... checkBoxes) {
-        if (checkBoxes != null) {
-            StringBuilder stringBuilder = new StringBuilder();
-            for (CheckBox checkBox : checkBoxes) {
-                if (checkBox.isChecked()) {
-                    if (stringBuilder.length() > 0) {
-                        stringBuilder.append(",");
-                    }
-                    stringBuilder.append(checkBox.getTag().toString());
-                }
-            }
-            return stringBuilder.toString();
-        } else {
-            return "";
-        }
     }
 
     /**
@@ -332,6 +165,11 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initListener();
 
 
+    /**
+     * 显示 相机和相册 的action sheet
+     *
+     * @param listeners
+     */
     protected void showPhotoSelector(OnResultCallbackListener<LocalMedia>... listeners) {
         ActionSheet.createBuilder(mActivity, getChildFragmentManager())
                 .setCancelButtonTitle("取消")
@@ -364,6 +202,11 @@ public abstract class BaseFragment extends Fragment {
                 }).show();
     }
 
+    /**
+     * 打开相册
+     *
+     * @param listener
+     */
     protected void openPhotoAlbum(OnResultCallbackListener<LocalMedia> listener) {
         if (listener == null) {
             return;
@@ -378,6 +221,11 @@ public abstract class BaseFragment extends Fragment {
                 .forResult(listener);
     }
 
+    /**
+     * 打开相机
+     *
+     * @param listener
+     */
     protected void openCamera(OnResultCallbackListener<LocalMedia> listener) {
         if (listener == null) {
             return;

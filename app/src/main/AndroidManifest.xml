@@ -136,9 +136,6 @@
             android:name=".activity.stroke.EcgExamnationMainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.stroke.ThrombolysisDocReceiveActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activity.stroke.ThrombolysisContraindicationsActivity"
             android:screenOrientation="portrait" />
         <activity

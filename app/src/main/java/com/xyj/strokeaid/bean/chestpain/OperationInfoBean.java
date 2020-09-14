@@ -1,5 +1,7 @@
 package com.xyj.strokeaid.bean.chestpain;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * OperationInfoBean
  * description: 手术信息
@@ -8,7 +10,7 @@ package com.xyj.strokeaid.bean.chestpain;
  * @date : 2020/9/9
  * email ：licy3051@qq.com
  */
-public class OperationInfoBean {
+public class OperationInfoBean  extends BaseBean<OperationInfoBean> {
 
     private String id;
     private String recordId;

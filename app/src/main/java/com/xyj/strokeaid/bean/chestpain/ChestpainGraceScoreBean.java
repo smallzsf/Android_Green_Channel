@@ -1,11 +1,13 @@
 package com.xyj.strokeaid.bean.chestpain;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * @Description: 胸痛--初始诊断--Grace--保存
  * @Author: crq
  * @CreateDate: 2020/9/10 21:15
  */
-public class ChestpainGraceScoreBean {
+public class ChestpainGraceScoreBean extends BaseBean<ChestpainGraceScoreBean> {
 
     private String  id;
     private String  recordId;

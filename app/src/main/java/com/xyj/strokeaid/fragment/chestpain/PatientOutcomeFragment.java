@@ -14,10 +14,11 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -39,7 +40,7 @@ import retrofit2.Response;
  * @date : 2020/9/1
  * email ：licy3051@qq.com
  */
-public class PatientOutcomeFragment extends BaseFragment {
+public class PatientOutcomeFragment extends BaseStrokeFragment {
 
     @BindView(R.id.es_title_select)
     EditSpinner esTitleSelect;
@@ -147,16 +148,13 @@ public class PatientOutcomeFragment extends BaseFragment {
     LinearLayout llNonHeart;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
-    private String mRecordId;
+
     private PatientOutcomeBean mOutcomeBean;
     private HashMap<String, String> mDiagnoseMap;
     private HashMap<String, String> mComplicationMap;
     private HashMap<String, String> mUnacsMap;
     private HashMap<String, String> mOtherunacsMap;
 
-    public PatientOutcomeFragment() {
-
-    }
 
     public static PatientOutcomeFragment newInstance(String recordId) {
         PatientOutcomeFragment fragment = new PatientOutcomeFragment();
@@ -166,13 +164,6 @@ public class PatientOutcomeFragment extends BaseFragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -208,6 +199,12 @@ public class PatientOutcomeFragment extends BaseFragment {
         mComplicationMap.put(complicationStrings.get(12), "cpc_complication_wu");
 
         esTitleSelect.setItemData(Arrays.asList(Constants.CHEST_PAIN_DIAGNOSE_CONTENT));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         loadViewData(mRecordId);
     }
 
@@ -282,6 +279,7 @@ public class PatientOutcomeFragment extends BaseFragment {
      * 默认 databean 不为null 且有数据
      */
     private void saveViewData() {
+        showLoadingDialog();
         RetrofitClient.getInstance()
                 .getApi()
                 .saveChestPainPatientOutcome(mOutcomeBean.getResuestBody(mOutcomeBean))
@@ -456,17 +454,17 @@ public class PatientOutcomeFragment extends BaseFragment {
             } else if (rgHeartFailure.getCheckedRadioButtonId() == R.id.rb_heart_failure_no) {
                 mOutcomeBean.setIsheartfailureinhospital("cpc_bool_false");
             }
-            String checkBoxValue = getCheckBoxValue(cbSetmi1, cbSetmi2, cbSetmi3, cbSetmi4, cbSetmi5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbSetmi1, cbSetmi2, cbSetmi3, cbSetmi4, cbSetmi5,
                     cbSetmi6, cbSetmi7, cbSetmi8, cbSetmi9, cbSetmi10, cbSetmi11, cbSetmi12, cbSetmi13);
             mOutcomeBean.setComplication(checkBoxValue);
         } else if (TextUtils.equals(diagnose, "非ACS心源性胸痛")) {
-            String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
                     cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
                     , cbNonAcs14, cbNonAcs15, cbNonAcs16, cbNonAcs17, cbNonAcs18, cbNonAcs19, cbNonAcs20
                     , cbNonAcs21, cbNonAcs22, cbNonAcs23, cbNonAcs24);
             mOutcomeBean.setDischargedunacs(checkBoxValue);
         } else if (TextUtils.equals(diagnose, "其它非心源性胸痛")) {
-            String checkBoxValue = getCheckBoxValue(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5,
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5,
                     cbNonHeart6, cbNonHeart7);
             mOutcomeBean.setDischargedotheracs(checkBoxValue);
         }

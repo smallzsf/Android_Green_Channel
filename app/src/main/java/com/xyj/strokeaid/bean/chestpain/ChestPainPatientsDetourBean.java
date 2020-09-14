@@ -1,11 +1,13 @@
 package com.xyj.strokeaid.bean.chestpain;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * @Description: 患者绕行--编辑类
  * @Author: crq
  * @CreateDate: 2020/9/10 20:48
  */
-public class ChestPainPatientsDetourBena {
+public class ChestPainPatientsDetourBean extends BaseBean<ChestPainPatientsDetourBean> {
 
 
     private String recordId;

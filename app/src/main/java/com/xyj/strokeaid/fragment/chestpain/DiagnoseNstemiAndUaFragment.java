@@ -16,14 +16,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
-import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
+import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBean;
 import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -221,7 +221,7 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
             ((OriginalDiagnoseFragment) (DiagnoseNstemiAndUaFragment.this.getParentFragment())).getChestPainDiagnosePatientsDetour(mRecordId);
             ((OriginalDiagnoseFragment) (DiagnoseNstemiAndUaFragment.this.getParentFragment())).setOnGetChestPainResponsePatientsDetourData(new OriginalDiagnoseFragment.OnGetChestPainResponsePatientsDetourData() {
                 @Override
-                public void getChestPainResponsePatientsDetourData(ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean data) {
+                public void getChestPainResponsePatientsDetourData(ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean data) {
 
                     getPatientsDetourData(data);
 
@@ -437,7 +437,7 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
     /**
      * 胸痛--初始诊断--患者绕行--查询数据
      */
-    private void getPatientsDetourData(ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean data) {
+    private void getPatientsDetourData(ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean data) {
         if (data != null) {
 
             if (!TextUtils.isEmpty(data.getIsskiper())) {
@@ -530,9 +530,9 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
         ChestpainGraceScoreBean chestpainGraceScoreBean = new ChestpainGraceScoreBean();
         chestpainGraceScoreBean.setId("");
         chestpainGraceScoreBean.setRecordId(mRecordId);
-        String checkBoxGraceJudgeValue = getCheckBoxValue(cbGraceJudge1, cbGraceJudge2, cbGraceJudge3);
+        String checkBoxGraceJudgeValue = KeyValueHelper.getCheckboxsKey(cbGraceJudge1, cbGraceJudge2, cbGraceJudge3);
         chestpainGraceScoreBean.setGraceassess(checkBoxGraceJudgeValue);
-        String checkBoxGraceHighgeValue = getCheckBoxValue(cbGraceHigh1, cbGraceHigh2, cbGraceHigh3, cbGraceHigh4, cbGraceHigh5, cbGraceHigh6);
+        String checkBoxGraceHighgeValue = KeyValueHelper.getCheckboxsKey(cbGraceHigh1, cbGraceHigh2, cbGraceHigh3, cbGraceHigh4, cbGraceHigh5, cbGraceHigh6);
         chestpainGraceScoreBean.setGracehighriskcondition(checkBoxGraceHighgeValue);
         //危险分层
         if (rbSkyHighDanger.isChecked()) {
@@ -579,7 +579,7 @@ public class DiagnoseNstemiAndUaFragment extends BaseFragment {
      * 保存胸痛患者绕行--编辑
      */
     private void saveChestPainPatientsDetour() {
-        ChestPainPatientsDetourBena chestPainPatientsDetourBena = new ChestPainPatientsDetourBena();
+        ChestPainPatientsDetourBean chestPainPatientsDetourBena = new ChestPainPatientsDetourBean();
         chestPainPatientsDetourBena.setRecordId(mRecordId);
         if (rgDetourEmergent.getCheckedRadioButtonId() == R.id.rb_detour_emergent_yes) {
             chestPainPatientsDetourBena.setIsskiper(Constants.BOOL_TRUE);

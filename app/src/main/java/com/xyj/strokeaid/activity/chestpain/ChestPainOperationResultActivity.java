@@ -12,15 +12,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.GenderSelectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.distutil.DistListUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -133,6 +135,9 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     @BindView(R.id.idb_cpc_funcexam_value)
     ItemEditBar idbCpcFuncexamValue;
 
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
+
     private List<GenderSelectBean> selectList = new ArrayList<>();
     private List<String> intraoperativeList;
     private List<String> genderList;
@@ -205,11 +210,15 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         chestUtil.initGenderMap(R.array.chest_pain_operation_intraoperative_complications);
         initFlowLayout();
 
-        bean = resetShowNet();
-//        resetShow();
     }
 
-    private void resetShow() {
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resetShowNet();
+    }
+
+    private void resetShow(ChestPainOperationRsultBean bean) {
 
         String value = bean.getIsiabp();
         resetRadioButton(rgIabp, value);
@@ -227,17 +236,17 @@ public class ChestPainOperationResultActivity extends BaseActivity {
         List<ChestPainOperationRsultBean.CoronaryangiographyarrayBean> data = bean.getCoronaryangiographyarray();
         if (data != null) {
             for (int i = 0; i < data.size(); i++) {
-                ChestPainOperationRsultBean.CoronaryangiographyarrayBean bean = data.get(i);
+                ChestPainOperationRsultBean.CoronaryangiographyarrayBean coronaryangiographyarrayBean = data.get(i);
                 for (int j = 0; j < genderList.size(); j++) {
                     String s = genderList.get(j);
-                    if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                    if (TextUtils.equals(s, coronaryangiographyarrayBean.getCoronaryangiographyX())) {
                         tagGenderAdapter.setSelected(j, s);
                     }
                 }
 
                 for (int j = 0; j < genderListMore.size(); j++) {
                     String s = genderListMore.get(j);
-                    if (TextUtils.equals(s, bean.getCoronaryangiographyX())) {
+                    if (TextUtils.equals(s, coronaryangiographyarrayBean.getCoronaryangiographyX())) {
                         tagGenderMoreAdapter.setSelected(j, s);
                     }
                 }
@@ -271,28 +280,36 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     }
 
     // TODO 通过网络请求得到这个javabean 自动回显数据
-    private ChestPainOperationRsultBean resetShowNet() {
-        RecordIdUtil src = new RecordIdUtil();
-        src.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(src);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    private void resetShowNet() {
+
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .getChestPainOpeationResult(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
+                .getChestPainOpeationResult(recordIdBean.getResuestBody(recordIdBean))
+                .enqueue(new Callback<BaseObjectBean<ChestPainOperationRsultBean>>() {
 
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                    public void onResponse(Call<BaseObjectBean<ChestPainOperationRsultBean>> call,
+                                           Response<BaseObjectBean<ChestPainOperationRsultBean>> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse");
+                        if (response.body() != null && response.body().getResult() == 1) {
+                            if (response.body().getData() != null) {
+                                resetShow(response.body().getData());
+                            }
+                        }
+
+
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                    public void onFailure(Call<BaseObjectBean<ChestPainOperationRsultBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
-        return new ChestPainOperationRsultBean();
     }
 
 
@@ -562,13 +579,12 @@ public class ChestPainOperationResultActivity extends BaseActivity {
     };
 
     public void save(ChestPainOperationRsultBean bean) {
-        bean.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(bean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+
+        bean.setRecordId(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .saveChestPainOpeationResult(requestBody)
+                .saveChestPainOpeationResult(bean.getResuestBody(bean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {

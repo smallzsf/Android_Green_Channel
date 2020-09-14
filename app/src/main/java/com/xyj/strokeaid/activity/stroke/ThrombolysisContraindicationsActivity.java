@@ -1,31 +1,23 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.adapter.StrokeTCRvAdapter;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapterNew;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
-import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
-import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -52,10 +44,9 @@ import retrofit2.Response;
 @Route(path = RouteUrl.Stroke.STROKE_THROMBOLYSIS_CONTRAINDICATIONS)
 public class ThrombolysisContraindicationsActivity extends BaseActivity {
 
-    @Autowired(name = IntentKey.PATIENT_ID)
-    String mPatientId;
-    @Autowired(name = IntentKey.DOC_ID)
-    String mDocId;
+
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
 
     @BindView(R.id.title_bar_act_tc)
     BaseTitleBar titleBarActTc;
@@ -95,18 +86,16 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
     }
 
     public void loadData() {
-
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getSiscontraindication(requestBody)
+                .getSiscontraindication(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseResponseBean<SiscontraindicationBean>>() {
                     @Override
                     public void onResponse(Call<BaseResponseBean<SiscontraindicationBean>> call, Response<BaseResponseBean<SiscontraindicationBean>> response) {
+                 hideLoadingDialog();
                         BaseResponseBean<SiscontraindicationBean> body = response
                                 .body();
                         if (body == null) {
@@ -124,7 +113,8 @@ public class ThrombolysisContraindicationsActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseResponseBean<SiscontraindicationBean>> call, Throwable t) {
-
+hideLoadingDialog();
+showToast(R.string.http_tip_server_error);
                     }
                 });
     }

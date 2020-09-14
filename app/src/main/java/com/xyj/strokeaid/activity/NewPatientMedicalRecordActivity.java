@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -25,8 +24,11 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.didichuxing.doraemonkit.widget.tableview.utils.DensityUtils;
@@ -40,6 +42,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.DeviceBindBean;
 import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
 import com.xyj.strokeaid.bean.RequestIdBean;
+import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.NfcUtils;
 import com.xyj.strokeaid.http.DeviceService;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -52,6 +55,7 @@ import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -175,6 +179,9 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
     @Override
     public void initView() {
+
+        LogUtils.d("new patient ~~  mDiseaseType is "  + mDiseaseType);
+
         requestPerms("获取授权成功", "获取授权失败，", Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_PHONE_STATE);
         if (idReader == null) {
             idReader = new EIDReader(this);
@@ -201,17 +208,13 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
 
                 if (checkedId == R.id.rb_dis_time_exact_act_npmr) {
                     // 发病时间精确就不显示区间
-                    ttbDisStartActNpmr.setVisibility(View.VISIBLE);
                     sbDisStartRangeActNpmr.setVisibility(View.GONE);
+                    ttbDisStartActNpmr.setTimeType(CalendarUtils.TYPE_ALL);
                 } else {
-                    ttbDisStartActNpmr.setVisibility(View.GONE);
+                    ttbDisStartActNpmr.setTimeType(CalendarUtils.TYPE_YEAR_MONTH_DAY);
                     sbDisStartRangeActNpmr.setVisibility(View.VISIBLE);
                 }
             }
-        });
-        // 发病时间
-        ttbDisStartActNpmr.setTimeZoneClickListener(v -> {
-            showTimePickView(ttbDisStartActNpmr);
         });
         // 地址
         iebDisAddrActNpmr.setRightIvOnClickerListener(v -> {
@@ -223,10 +226,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                 // 将NFC设置为读卡器模式
                 idReader.enableReaderMode(this);
             }
-            showLoadingDialog();
         });
-        // 腕带
-
     }
 
     private void initLocation() {
@@ -575,10 +575,10 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         if ("cpc_lyfsv2_hj120".equals(comingway)) {
 
             String helporganization = bean.getHelporganization();
-            if (!TextUtils.isEmpty(helporganization)){
-                if (TextUtils.equals("cpc_hj120v2_cc_zx", helporganization)){
+            if (!TextUtils.isEmpty(helporganization)) {
+                if (TextUtils.equals("cpc_hj120v2_cc_zx", helporganization)) {
                     sbComeTypeActNpmr.setRightText("120急救车");
-                }else {
+                } else {
                     sbComeTypeActNpmr.setRightText("本院救护车");
                 }
             }
@@ -586,7 +586,7 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             comeHosBeanList.add(new ComeHosBean("呼救时间", "", bean.getTimeofcall(), false));
             comeHosBeanList.add(new ComeHosBean("120出车时间", "", bean.getDepart120time(), false));
             comeHosBeanList.add(new ComeHosBean("到达现场时间", "", bean.getArrivescenetime(), false));
-            comeHosBeanList.add(new ComeHosBean("首次医疗接触",  "", bean.getFmctime(),false));
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触", "", bean.getFmctime(), false));
             comeHosBeanList.add(new ComeHosBean("离开现场时间", "", bean.getLevavescenetime(), false));
             comeHosBeanList.add(new ComeHosBean("到达医院大门", "", bean.getArrivehospitaltime(), false));
             comeHosBeanList.add(new ComeHosBean("院内接诊时间", "", bean.getFirstdoctorreceptiontime(), false));
@@ -595,13 +595,13 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             sbComeTypeActNpmr.setRightText("转院");
             List<ComeHosBean> comeHosBeanList = new ArrayList<>();
             comeHosBeanList.add(new ComeHosBean("转出医院入门", "", bean.getHospitaltransferfromarrivedtime(), false));
-            comeHosBeanList.add(new ComeHosBean("首次医疗接触",  "", bean.getFmctime(),false));
+            comeHosBeanList.add(new ComeHosBean("首次医疗接触", "", bean.getFmctime(), false));
             comeHosBeanList.add(new ComeHosBean("转运救护车到达", "", bean.getTransferambulancearrivaltime(), false));
             comeHosBeanList.add(new ComeHosBean("离开转出医院", "", bean.getHospitaltransferfromleavetime(), false));
             comeHosBeanList.add(new ComeHosBean("到达医院大门", "", bean.getArrivehospitaltime(), false));
             comeHosBeanList.add(new ComeHosBean("院内接诊时间", "", bean.getFirstdoctorreceptiontime(), false));
             comeHosBeanList.add(new ComeHosBean("决定转院时间", "", bean.getDecidetranstime(), false));
-            comeHosBeanList.add(new ComeHosBean("医院名称",bean.getHospitalnametransfrom(), "",  false));
+            comeHosBeanList.add(new ComeHosBean("医院名称", bean.getHospitalnametransfrom(), "", false));
             showViews(comeHosBeanList);
         } else if ("cpc_lyfsv2_zxly".equals(comingway)) {
             sbComeTypeActNpmr.setRightText("自行来院");
@@ -622,9 +622,36 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         // 发病时间
         ttbDisStartActNpmr.setTime(bean.getAttacktime());
         // 发病区间
-
-        // 发病精确时间
-
+        String attacktimeisinaccurate = bean.getAttacktimeisinaccurate();
+        if (TextUtils.equals(attacktimeisinaccurate, "-1")) {
+            // 不精确
+            rgDisTimeActNpmr.check(R.id.rb_dis_time_inaccuracy_act_npmr);
+            // 发病日期
+            ttbDisStartActNpmr.setTime(bean.getAttackdate());
+            // 发病区间
+            String attacktimeinterval = bean.getAttacktimeinterval();
+            if (!TextUtils.isEmpty(attacktimeinterval)) {
+                if (attacktimeinterval.contains("cpc_fbsjfw_0-6")) {
+                    sbDisStartRangeActNpmr.setRightText("凌晨(0点到6点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_6-8")) {
+                    sbDisStartRangeActNpmr.setRightText("清晨(6到8点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_8-12")) {
+                    sbDisStartRangeActNpmr.setRightText("上午(8到12点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_12-14")) {
+                    sbDisStartRangeActNpmr.setRightText("中午(12到14点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_14-17")) {
+                    sbDisStartRangeActNpmr.setRightText("下午(14到17点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_17-19")) {
+                    sbDisStartRangeActNpmr.setRightText("傍晚(17到19点)");
+                } else if (attacktimeinterval.contains("cpc_fbsjfw_19-24")) {
+                    sbDisStartRangeActNpmr.setRightText("晚上(19到24点)");
+                }
+            }
+        } else if (TextUtils.equals(attacktimeisinaccurate, "1")) {
+            // 精确
+            rgDisTimeActNpmr.check(R.id.rb_dis_time_exact_act_npmr);
+            ttbDisStartActNpmr.setTime(bean.getAttacktime());
+        }
     }
 
     /**
@@ -677,11 +704,37 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
         mPatinetBean.setPatientidofhospitalization(editIebLiveHosIdActNpmr);
         mPatinetBean.setTimecollectorcode(editIebWristbandActNpmr);
 
-        String sex = sbSexActNpmr.getRightText().toString();
-        if (sex.equals("男")) {
-            mPatinetBean.setGender("cpc_gender_1");
+        if (rgDisTimeActNpmr.getCheckedRadioButtonId() == R.id.rb_dis_time_exact_act_npmr) {
+            mPatinetBean.setAttacktime(disStarTime);
         } else {
-            mPatinetBean.setGender("cpc_gender_2");
+            mPatinetBean.setAttackdate(disStarTime);
+            /**
+             * 发病区间
+             */
+            String disStartRange = sbDisStartRangeActNpmr.getRightText().toString();
+            if (disStartRange.contains("凌晨(0点到6点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_0-6");
+            } else if (disStartRange.contains("清晨(6到8点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_6-8");
+            } else if (disStartRange.contains("上午(8到12点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_8-12");
+            } else if (disStartRange.contains("中午(12到14点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_12-14");
+            } else if (disStartRange.contains("下午(14到17点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_14-17");
+            } else if (disStartRange.contains("傍晚(17到19点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_17-19");
+            } else if (disStartRange.contains("晚上(19到24点)")) {
+                mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_19-24");
+            }
+        }
+
+        // 性别
+        String sex = sbSexActNpmr.getRightText().toString();
+        if ("男".equals(sex)) {
+            mPatinetBean.setGender("1");
+        } else if ("女".equals(sex)){
+            mPatinetBean.setGender("2");
         }
 
         String birth = sbBirthActNpmr.getRightText().toString();
@@ -811,25 +864,6 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
             mPatinetBean.setSeriousillnessmedicare("-1");
         }
 
-        /**
-         * 发病区间
-         */
-        String disStartRange = sbDisStartRangeActNpmr.getRightText().toString();
-        if (disStartRange.contains("凌晨(0点到6点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_0-6");
-        } else if (disStartRange.contains("清晨(6到8点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_6-8");
-        } else if (disStartRange.contains("上午(8到12点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_8-12");
-        } else if (disStartRange.contains("中午(12到14点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_12-14");
-        } else if (disStartRange.contains("下午(14到17点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_14-17");
-        } else if (disStartRange.contains("傍晚(17到19点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_17-19");
-        } else if (disStartRange.contains("晚上(19到24点)")) {
-            mPatinetBean.setAttacktimeinterval("cpc_fbsjfw_19-24");
-        }
 
         /**
          * 调用新建接口
@@ -1108,6 +1142,33 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                     }
                 });
     }
+
+    private TimePickerView mTimePickerView;
+    /**
+     * 显示时间选择控件
+     *
+     * @param settingBar 显示时间的 TextView
+     */
+    protected void showBirthPickView(SettingBar settingBar) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    String birth = CalendarUtils.parseDate(CalendarUtils.TYPE_YEAR_MONTH_DAY, date);
+                    settingBar.setRightText(birth);
+                }
+            })
+                    .isDialog(false)
+                    .setType(new boolean[]{true, true, true, false, false, false})
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
 
     private static class ComeHosBean {
         private String titel;

@@ -133,6 +133,7 @@ public class TriageInfoFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        showLoadingDialog();
         if (mDiseaseViewType == 2) {
             loadDataForChestPain(mRecordId);
         } else if (mDiseaseViewType == 1) {

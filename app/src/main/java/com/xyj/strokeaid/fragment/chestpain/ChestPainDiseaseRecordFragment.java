@@ -20,7 +20,9 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.bean.RecordIdBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -46,7 +48,7 @@ import retrofit2.Response;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainDiseaseRecordFragment extends BaseFragment {
+public class ChestPainDiseaseRecordFragment extends BaseStrokeFragment {
 
     @BindView(R.id.rb_persistent_chest_pain)
     RadioButton rbPersistentChestPain;
@@ -54,8 +56,6 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     RadioButton rbIntermittentChestPain;
     @BindView(R.id.rb_relieved_chest_pain)
     RadioButton rbRelievedChestPain;
-    /*  @BindView(R.id.gv_detailed)
-      XyjGridView gvDetailed;*/
     @BindView(R.id.et_major_complaint_frag)
     EditText etMajorComplaintFrag;
     @BindView(R.id.tfl_action_in_chief)
@@ -66,7 +66,6 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     EditText etSymptom;
     @BindView(R.id.ll_remark)
     LinearLayout llRemark;
-    List<String> detailedDataList = new ArrayList<>();
     @BindView(R.id.sl_content)
     NestedScrollView slContent;
     @BindView(R.id.ll_root)
@@ -106,19 +105,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     @BindView(R.id.ll_non_acs)
     LinearLayout llNonAcs;
 
-
-    private Map<Integer, Boolean> mapDataSelect = new HashMap<>();
-    //   private MyAdapter adapter;
-    private int mMaxSrollHeight = 0;
-
-    private String mRecordId;
     private ChestPainDiseaseRecordRequest chestPainDiseaseRecordRequest = null;
-    private StringBuilder selectIndex;
-    private int num;
 
-    public ChestPainDiseaseRecordFragment() {
-
-    }
 
     public static ChestPainDiseaseRecordFragment newInstance(String recordId) {
         ChestPainDiseaseRecordFragment fragment = new ChestPainDiseaseRecordFragment();
@@ -128,13 +116,6 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -143,17 +124,15 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-/*
-        loadData();
-
-        refrashAdapter(true);*/
-
-        //查询数据
-        queryData();
-
     }
 
-/*
+    @Override
+    public void onResume() {
+        super.onResume();
+        queryData();
+    }
+
+    /*
     private void refrashAdapter(boolean b) {
 
         if (b || adapter == null) {
@@ -325,7 +304,7 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
         /**
          * 病情评估  病情评估明细
          */
-        String checkBoxValue = getCheckBoxValue(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
+        String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbNonAcs1, cbNonAcs2, cbNonAcs3, cbNonAcs4, cbNonAcs5,
                 cbNonAcs6, cbNonAcs7, cbNonAcs8, cbNonAcs9, cbNonAcs10, cbNonAcs11, cbNonAcs12, cbNonAcs13
                 , cbNonAcs14, cbNonAcs15);
         chestPainDiseaseRecordRequest.setConditionassessmentdetail(checkBoxValue);
@@ -345,18 +324,17 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
      */
     private void queryData() {
         //调用获取数据接口
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(mRecordId);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiseaseRecord(requestBody)
+                .getChestPainDiseaseRecord(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<ChestPainDiseaseRecordBean>>() {
 
                     @Override
                     public void onResponse(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Response<BaseObjectBean<ChestPainDiseaseRecordBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("获取数据成功");
@@ -379,7 +357,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestPainDiseaseRecordBean>> call, Throwable t) {
                         LogUtils.d(call.toString());
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -388,18 +367,19 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
     /**
      * 胸痛 病情记录保存
      */
-    private void chestPainDiseaseRecordSave(ChestPainDiseaseRecordRequest chestPainDiseaseRecordRequest) {
-
-
-        String request = GsonUtils.getGson().toJson(chestPainDiseaseRecordRequest);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    private void chestPainDiseaseRecordSave(ChestPainDiseaseRecordRequest request) {
+        if (request == null){
+            return;
+        }
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .saveChestPainDiseaseRecord(requestBody)
+                .saveChestPainDiseaseRecord(request.getResuestBody(request))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("保存数据成功");
@@ -411,7 +391,8 @@ public class ChestPainDiseaseRecordFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }

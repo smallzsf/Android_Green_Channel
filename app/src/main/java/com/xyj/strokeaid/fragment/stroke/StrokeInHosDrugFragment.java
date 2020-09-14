@@ -31,6 +31,7 @@ import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextSwitchBar;
@@ -278,27 +279,27 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
         /**
          * 卒中诊断 抗血小板 药物治疗
          */
-        String cbAntiplatelet = getCheckBoxValue(cbAntiplatelet1, cbAntiplatelet2, cbAntiplatelet3, cbAntiplatelet4, cbAntiplatelet5,cbAntiplatelet6,cbAntiplatelet7);
+        String cbAntiplatelet = KeyValueHelper.getCheckboxsKey(cbAntiplatelet1, cbAntiplatelet2, cbAntiplatelet3, cbAntiplatelet4, cbAntiplatelet5,cbAntiplatelet6,cbAntiplatelet7);
         bean.setHospitalmedicationanticoagulationdrugs(cbAntiplatelet);
         /**
          * 卒中诊断 抗凝 药物治疗
          */
-        String cbAnticoagulation = getCheckBoxValue(cbAnticoagulation1, cbAnticoagulation2, cbAnticoagulation3, cbAnticoagulation4, cbAnticoagulation5,cbAnticoagulation6,cbAnticoagulation7,cbAnticoagulation8);
+        String cbAnticoagulation = KeyValueHelper.getCheckboxsKey(cbAnticoagulation1, cbAnticoagulation2, cbAnticoagulation3, cbAnticoagulation4, cbAnticoagulation5,cbAnticoagulation6,cbAnticoagulation7,cbAnticoagulation8);
         bean.setHospitalmedicationantiplateletdrugs(cbAnticoagulation);
         /**
          * 卒中诊断 降压 药物治疗
          */
-        String cbStepdown = getCheckBoxValue(cbStepdown1, cbStepdown2, cbStepdown3, cbStepdown4, cbStepdown5,cbStepdown6);
+        String cbStepdown = KeyValueHelper.getCheckboxsKey(cbStepdown1, cbStepdown2, cbStepdown3, cbStepdown4, cbStepdown5,cbStepdown6);
         bean.setHospitalmedicationbloodpressuredrugs(cbStepdown);
         /**
          * 卒中诊断 调指 药物治疗
          */
-        String cbLipid = getCheckBoxValue(cbLipid1, cbLipid2, cbLipid3, cbLipid4, cbLipid5);
+        String cbLipid = KeyValueHelper.getCheckboxsKey(cbLipid1, cbLipid2, cbLipid3, cbLipid4, cbLipid5);
         bean.setHospitalmedicationlipiddrugs(cbLipid);
         /**
          * 卒中诊断 降糖 药物治疗
          */
-        String cbSugar = getCheckBoxValue(cbSugar1, cbSugar2, cbSugar3, cbSugar4, cbSugar5,cbSugar6,cbSugar7);
+        String cbSugar = KeyValueHelper.getCheckboxsKey(cbSugar1, cbSugar2, cbSugar3, cbSugar4, cbSugar5,cbSugar6,cbSugar7);
         bean.setHospitalmedicationsugardrugs(cbSugar);
         saveData(bean);
     }

@@ -16,16 +16,14 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.EmergencyCenterChestpainDrugPo;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import okhttp3.MediaType;
@@ -41,7 +39,7 @@ import retrofit2.Response;
  * @author : 张世福
  * email ：licy3051@qq.com
  */
-public class ChestPainInitDrugFragment extends BaseFragment implements View.OnClickListener {
+public class ChestPainInitDrugFragment extends BaseStrokeFragment implements View.OnClickListener {
 
     @BindView(R.id.sv_antihemotherapy)
     SwitchCompat svAntihemotherapy;
@@ -100,11 +98,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
 
-    private String mRecordId;
-
-    public ChestPainInitDrugFragment() {
-
-    }
 
     public static ChestPainInitDrugFragment newInstance(String recordId) {
         ChestPainInitDrugFragment fragment = new ChestPainInitDrugFragment();
@@ -114,13 +107,6 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -172,17 +158,16 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
     }
 
     private void resetShowData() {
-        RecordIdUtil src = new RecordIdUtil();
-        src.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(src);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .getChestPainsuEmergencyCenter(requestBody)
+                .getChestPainsuEmergencyCenter(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<EmergencyCenterChestpainDrugPo>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<EmergencyCenterChestpainDrugPo>> call, Response<BaseObjectBean<EmergencyCenterChestpainDrugPo>> response) {
+                       hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse: " + response.toString());
                         if (response.body() == null) {
                             return;
@@ -195,7 +180,8 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<EmergencyCenterChestpainDrugPo>> call, Throwable t) {
-
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
 
@@ -467,7 +453,12 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
      * @param bean
      */
     public void save(EmergencyCenterChestpainDrugPo bean) {
-        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        if (bean == null)
+        {
+            return;
+        }
+        showLoadingDialog();
+        bean.setRecordId(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
@@ -475,6 +466,7 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                       hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
@@ -487,7 +479,8 @@ public class ChestPainInitDrugFragment extends BaseFragment implements View.OnCl
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                      hideLoadingDialog();
+                      showToast(R.string.http_tip_server_error);
                     }
                 });
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,9 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
-
+import com.google.gson.Gson;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
@@ -22,7 +21,6 @@ import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.DiseaseRecordRequest;
 import com.xyj.strokeaid.bean.RequestGetDiseaseRecordBean;
-import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
 import com.xyj.strokeaid.distutil.DistListUtil;
 import com.xyj.strokeaid.helper.HideBottonUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -35,6 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import butterknife.BindView;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -100,6 +100,7 @@ public class DiseaseRecordFragment extends BaseFragment {
     private String mRecordId;
     RequestGetDiseaseRecordBean mRequestGetDiseaseRecordBean;
     private List<String> selectMedicaldrughistory = new ArrayList<>();;
+    TagAdapter<String> adapter;
     public DiseaseRecordFragment() {
     }
 
@@ -196,7 +197,7 @@ public class DiseaseRecordFragment extends BaseFragment {
         });
 
         btnConfirm.setOnClickListener(v -> {
-
+            Log.e("TAG", "btnConfirm: "+new Gson().toJson(selectMedicaldrughistory));
             RequestGetDiseaseRecordBean requestGetDiseaseRecordBean = new RequestGetDiseaseRecordBean();
             requestGetDiseaseRecordBean.setRecordId(mRecordId);
             requestGetDiseaseRecordBean.setChiefcomplaint(etMajorComplaintFrag.getText().toString());
@@ -284,27 +285,144 @@ public class DiseaseRecordFragment extends BaseFragment {
                                     etMajorComplaintFrag.setText(mRequestGetDiseaseRecordBean.getChiefcomplaint());
                                     etSymptom.setText(mRequestGetDiseaseRecordBean.getSymptom());
                                     etMedicalHistory.setText(mRequestGetDiseaseRecordBean.getMedicalhistory());
-                                    if (!TextUtils.isEmpty(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
-                                        if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().contains(",")){
-                                            String[] medicaldrughistoryStr =  mRequestGetDiseaseRecordBean.getMedicaldrughistory().split(",");
 
+                                    //既往用药史回显
+                                    if (!TextUtils.isEmpty(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                        //先判断是不是多个选项
+                                        if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().contains(",")){
+                                            String[] medicaldrughistory = mRequestGetDiseaseRecordBean.getMedicaldrughistory().split(",");
+                                            for (int i = 0; i < medicaldrughistory.length; i++) {
+                                                selectMedicaldrughistory.add(medicaldrughistory[i]);
+                                            }
+                                            //拆分成数组准备循环
+                                            String[] medicaldrughistoryStr =  mRequestGetDiseaseRecordBean.getMedicaldrughistory().split(",");
+                                            //声明list准备记录哪些被选择了
+
+                                            List<Integer> kxxbyList = new ArrayList<>();
+                                            List<Integer> knyList = new ArrayList<>();
+                                            List<Integer> JjyList = new ArrayList<>();
+                                            List<Integer> JtyList = new ArrayList<>();
+                                            List<Integer> JzyList = new ArrayList<>();
+                                            //通过选择的字段和本地所有字段去对比，得到本地的位置
                                             for (int i = 0; i < medicaldrughistoryStr.length; i++) {
                                                 if (kxxbyValueDataList.contains(medicaldrughistoryStr[i])){
-
+                                                    for (int i1 = 0; i1 < kxxbyValueDataList.size(); i1++) {
+                                                        if ( medicaldrughistoryStr[i].equals(kxxbyValueDataList.get(i1))){
+                                                            kxxbyList.add(i1);
+                                                        }
+                                                    }
+//
                                                 }else if (knyValueDataList.contains(medicaldrughistoryStr[i])){
-
+                                                    for (int i1 = 0; i1 < knyValueDataList.size(); i1++) {
+                                                        if (medicaldrughistoryStr[i].equals(knyValueDataList.get(i1))){
+                                                            knyList.add(i1);
+                                                        }
+                                                    }
                                                 }else if (JjyValueDataList.contains(medicaldrughistoryStr[i])){
-
+                                                    for (int i1 = 0; i1 < JjyValueDataList.size(); i1++) {
+                                                        if (medicaldrughistoryStr[i].equals(JjyValueDataList.get(i1))){
+                                                            JjyList.add(i1);
+                                                        }
+                                                    }
                                                 }else if (JtyValueDataList.contains(medicaldrughistoryStr[i])){
 
-                                                }else if (JzyValueDataList .contains(medicaldrughistoryStr[i])){
+                                                    for (int i1 = 0; i1 < JtyValueDataList.size(); i1++) {
+                                                        if (medicaldrughistoryStr[i].equals(JtyValueDataList.get(i1))){
+                                                            JtyList.add(i1);
+                                                        }
+
+                                                    }
+                                                }else if (JzyValueDataList.contains(medicaldrughistoryStr[i])){
+                                                    for (int i1 = 0; i1 < JzyValueDataList.size(); i1++) {
+                                                        if ( medicaldrughistoryStr[i].equals(JzyValueDataList.get(i1))){
+                                                            JzyList.add(i1);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            //将list转成int数组
+                                            int[] kxxbyarr =new int[kxxbyList.size()];
+                                            int[] knyarr =new int[knyList.size()];
+                                            int[] Jjyarr =new int[JjyList.size()];
+                                            int[] Jtyarr =new int[JtyList.size()];
+                                            int[] jzyarr =new int[JzyList.size()];
+
+                                            for (int i = 0; i < kxxbyList.size(); i++) {
+                                                kxxbyarr[i] = kxxbyList.get(i);
+                                            }
+                                            for (int i = 0; i < knyList.size(); i++) {
+                                                knyarr[i] = knyList.get(i);
+                                            }
+                                            for (int i = 0; i < JjyList.size(); i++) {
+                                                Jjyarr[i] = JjyList.get(i);
+                                            }
+                                            for (int i = 0; i < JtyList.size(); i++) {
+                                                Jtyarr[i] = JtyList.get(i);
+                                            }
+                                            for (int i = 0; i < JzyList.size(); i++) {
+                                                jzyarr[i] = JzyList.get(i);
+                                            }
+                                            //回显
+                                            tflAnticoagulantDrug.getAdapter().setSelectedList(kxxbyarr);
+                                            tflAnticoagulantDrug1.getAdapter().setSelectedList(knyarr);
+                                            tflAnticoagulantDrug2.getAdapter().setSelectedList(Jjyarr);
+                                            tflAnticoagulantDrug3.getAdapter().setSelectedList(Jtyarr);
+                                            tflAnticoagulantDrug4.getAdapter().setSelectedList(jzyarr);
+                                        }else {
+                                            selectMedicaldrughistory.add(mRequestGetDiseaseRecordBean.getMedicaldrughistory());
+                                            //通过选择的字段和本地所有字段去对比，得到本地的位置
+
+                                            if (kxxbyValueDataList.contains(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                                int kxxbyint=0 ;
+                                                for (int i1 = 0; i1 < kxxbyValueDataList.size(); i1++) {
+                                                    if ( mRequestGetDiseaseRecordBean.getMedicaldrughistory().equals(kxxbyValueDataList.get(i1))){
+                                                        kxxbyint=i1;
+                                                    }
+                                                }
+                                                //回显
+                                                tflAnticoagulantDrug.getAdapter().setSelectedList(kxxbyint);
+
+                                            }else if (knyValueDataList.contains(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                                int knyint = 0 ;
+                                                for (int i1 = 0; i1 < knyValueDataList.size(); i1++) {
+                                                    if ( mRequestGetDiseaseRecordBean.getMedicaldrughistory().equals(knyValueDataList.get(i1))){
+                                                        knyint=i1;
+                                                    }
+                                                }
+                                                tflAnticoagulantDrug1.getAdapter().setSelectedList(knyint);
+
+                                            }else if (JjyValueDataList.contains(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                                int Jjyint =0;
+                                                for (int i1 = 0; i1 < JjyValueDataList.size(); i1++) {
+                                                    if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().equals(JjyValueDataList.get(i1))){
+                                                        Jjyint=i1;
+                                                    }
+                                                }
+                                                tflAnticoagulantDrug2.getAdapter().setSelectedList(Jjyint);
+
+                                            } else if (JtyValueDataList.contains(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                                int Jtyint = 0;
+                                                for (int i1 = 0; i1 < JtyValueDataList.size(); i1++) {
+                                                    if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().equals(JtyValueDataList.get(i1))){
+                                                        Jtyint=i1;
+                                                    }
 
                                                 }
+                                                tflAnticoagulantDrug3.getAdapter().setSelectedList(Jtyint);
 
+                                            }else if (JzyValueDataList.contains(mRequestGetDiseaseRecordBean.getMedicaldrughistory())){
+                                                int jzyint = 0;
+                                                for (int i1 = 0; i1 < JzyValueDataList.size(); i1++) {
+                                                    if (mRequestGetDiseaseRecordBean.getMedicaldrughistory().equals(JzyValueDataList.get(i1))){
+                                                        jzyint=i1;
+                                                    }
+                                                }
+                                                tflAnticoagulantDrug4.getAdapter().setSelectedList(jzyint);
                                             }
+
                                         }
                                     }
-
+                                    selectMedicaldrughistory =  delRepeat(selectMedicaldrughistory);
                                     etDrugallergy.setText(mRequestGetDiseaseRecordBean.getDrugallergy());
                                     etConditionreMark.setText(mRequestGetDiseaseRecordBean.getConditionremark());
 
@@ -325,7 +443,16 @@ public class DiseaseRecordFragment extends BaseFragment {
                 });
     }
 
-
+    // 遍历后判断赋给另一个list集合，保持原来顺序
+    public static List<String> delRepeat(List<String> list) {
+        List<String> listNew = new ArrayList<String>();
+        for (String str : list) {
+            if (!listNew.contains(str)) {
+                listNew.add(str);
+            }
+        }
+        return listNew ;
+    }
     private void getEtTransferReason(TagFlowLayout tfl, EditText et, String[] mVals, List<String> valueDataList) {
 
 
@@ -418,8 +545,6 @@ public class DiseaseRecordFragment extends BaseFragment {
             });
 
         } else {
-
-
             tfl.setAdapter(new TagAdapter<String>(mVals) {
 
                 private TextView tv;
@@ -445,6 +570,7 @@ public class DiseaseRecordFragment extends BaseFragment {
                     super.unSelected(position, view);
                     view.setBackground(getResources().getDrawable(R.drawable.selector_flow_layout_nomal_bg));
                     selectMedicaldrughistory.remove(valueDataList.get(position));
+
                 }
             });
 

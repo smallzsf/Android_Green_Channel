@@ -1,10 +1,11 @@
 package com.xyj.strokeaid.bean.dist;
 
 import com.google.gson.annotations.SerializedName;
+import com.xyj.strokeaid.base.BaseBean;
 
 import java.util.List;
 
-public class ChestPainOperationRsultBean {
+public class ChestPainOperationRsultBean extends BaseBean<ChestPainOperationRsultBean> {
     // 入路
     private String arterialapproach;
     // 部位（参考字典）

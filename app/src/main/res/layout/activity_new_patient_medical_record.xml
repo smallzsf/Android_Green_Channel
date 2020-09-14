@@ -71,13 +71,12 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/tv_normal_titel"
                     android:layout_width="@dimen/item_title_min_width"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/item_normal_margin"
                     android:gravity="center_vertical"
-                    android:text="发病时间"
-                    android:textColor="@color/color_222222"
-                    android:textSize="@dimen/item_title_size" />
+                    android:text="发病时间精确？" />
 
                 <RadioGroup
                     android:id="@+id/rg_dis_time_act_npmr"
@@ -109,7 +108,7 @@
                 android:id="@+id/ttb_dis_start_act_npmr"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:bottomLineVisible="true"
                 app:title="发病时间"
                 app:topLineVisible="true" />
