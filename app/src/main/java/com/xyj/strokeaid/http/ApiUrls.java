@@ -403,7 +403,12 @@ public class ApiUrls {
      */
     public static final String NET_URL_GET_SISCONTRAINDICATION = "yjjk-gateway/yjjk-cdm-api/v1/siscontraindication/get";
 
-//
+
+    /**
+     *  EICU/ICU 信息
+     */
+    public static final String NET_URL_CHEST_TRAUMA_EICU_INFO= "yjjk-gateway/yjjk-cdm-api/v1/EmergencyCenterTraumaEicuicu/edit";
+
 }
 
     

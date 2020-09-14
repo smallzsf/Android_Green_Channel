@@ -18,6 +18,7 @@
             android:orientation="vertical">
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/ttb_start_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -64,6 +65,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <CheckBox
+                    android:id="@+id/other_set_xffs"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -71,6 +73,7 @@
                     android:text="心肺复苏" />
 
                 <CheckBox
+                    android:id="@+id/other_set_qgcg"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -78,6 +81,7 @@
                     android:text="气管插管" />
 
                 <CheckBox
+                    android:id="@+id/other_set_hxjzc"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -85,6 +89,7 @@
                     android:text="呼吸机支持" />
 
                 <CheckBox
+                    android:id="@+id/other_set_bsyl"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -92,6 +97,7 @@
                     android:text="闭式引流" />
 
                 <CheckBox
+                    android:id="@+id/other_set_qgqg"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -99,6 +105,7 @@
                     android:text="气管切管" />
 
                 <CheckBox
+                    android:id="@+id/other_set_sjmcz"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -106,6 +113,7 @@
                     android:text="深静脉置入" />
 
                 <CheckBox
+                    android:id="@+id/other_set_xbcc"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -113,6 +121,7 @@
                     android:text="心包穿刺" />
 
                 <CheckBox
+                    android:id="@+id/other_set_fc"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -120,6 +129,7 @@
                     android:text="腹穿" />
 
                 <CheckBox
+                    android:id="@+id/other_set_xc"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -127,6 +137,65 @@
                     android:text="胸穿" />
 
             </com.zhy.view.flowlayout.FlowLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_chest_puncture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <com.xyj.strokeaid.view.ItemEditBar
+                    android:id="@+id/take_out_blood"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    app:ieb_bottom_line_visible="true"
+                    app:ieb_title="血液"
+                    app:ieb_top_line_visible="true"
+                    app:ieb_unit_text="ml"
+                    app:ieb_unit_visible="true" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_normal_height"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12">
+
+                    <TextView
+                        android:layout_width="@dimen/dp_68"
+                        android:layout_height="wrap_content"
+                        android:text="颜色"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/item_title_size" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_blood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rb_blood_red"
+                            android:layout_width="@dimen/dp_90"
+                            android:layout_height="@dimen/dp_30"
+                            android:checked="true"
+                            android:text="鲜红"
+                            android:textSize="@dimen/item_content_size" />
+
+                        <RadioButton
+                            android:id="@+id/rb_blood_other"
+                            android:layout_width="@dimen/dp_90"
+                            android:layout_height="@dimen/dp_30"
+                            android:text="其他"
+                            android:textSize="@dimen/item_content_size" />
+                    </RadioGroup>
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <TextView
                 style="@style/Text_Blue_Content_Style"
@@ -139,6 +208,7 @@
                 android:paddingEnd="@dimen/item_normal_margin">
 
                 <CheckBox
+                    android:id="@+id/take_blood_px"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -146,6 +216,7 @@
                     android:text="配血" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_nxgn"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -153,6 +224,7 @@
                     android:text="凝血功能" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_xcg"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -160,6 +232,7 @@
                     android:text="血常规" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_xsh"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -167,6 +240,7 @@
                     android:text="血生化" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_gsgn"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -174,6 +248,7 @@
                     android:text="肝肾功能" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_xt"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -181,6 +256,7 @@
                     android:text="血糖" />
 
                 <CheckBox
+                    android:id="@+id/take_blood_crb"
                     style="@style/XyjCheckBox"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/item_normal_height"
@@ -190,6 +266,7 @@
             </com.zhy.view.flowlayout.FlowLayout>
 
             <com.xyj.strokeaid.view.TextTimeBar
+                android:id="@+id/rrb_go_out_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 app:bottomLineVisible="true"
@@ -211,13 +288,13 @@
 
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/go_out_eicuicuconsciousness"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_30"
                     android:gravity="center"
                     app:Background="@drawable/bg_view_frame"
                     app:hint="请选择"
                     app:rightImage="@drawable/ic_arrow_down_blue" />
-
 
             </LinearLayout>
 
@@ -236,6 +313,7 @@
 
 
                 <com.xyj.strokeaid.view.editspinner.EditSpinner
+                    android:id="@+id/where_to_go"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_30"
                     android:gravity="center"

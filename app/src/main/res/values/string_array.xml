@@ -505,4 +505,28 @@
         <item>本院病房:cpc_rsdd_bybf</item>
         <item>外院:cpc_rsdd_wy</item>
     </string-array>
+
+    <string-array name="traumaEicuInfoBean_eicuicuconsciousness">
+        <item>清醒</item>
+        <item>嗜睡</item>
+        <item>意识模糊</item>
+        <item>昏睡</item>
+        <item>谵妄</item>
+    </string-array>
+
+    <string-array name="traumaEicuInfoBean_eicuicuemergencyprocessway">
+        <item>心肺复苏</item>
+        <item>气管插管</item>
+        <item>呼吸及支持</item>
+        <item>闭式引流</item>
+        <item>气管切管</item>
+        <item>深静脉置入</item>
+        <item>心包穿刺</item>
+    </string-array>
+
+    <string-array name="traumaEicuInfoBean_where_to_go">
+        <item>1手术室</item>
+        <item>专科病房</item>
+    </string-array>
+
 </resources>

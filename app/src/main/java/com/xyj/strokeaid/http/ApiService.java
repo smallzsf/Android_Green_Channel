@@ -750,4 +750,12 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_COMMON_GET)
     Call<BaseResponseBean<RequestTraumaConsultationInfoBean>> getTraumaConsultationInfo(@Body RequestBody info);
+
+    /**
+     * EICU/ICU 信息
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_TRAUMA_EICU_INFO)
+    Call<BaseObjectBean> addTraumaEicuInfo(@Body RequestBody info);
+
 }
