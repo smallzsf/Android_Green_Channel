@@ -208,6 +208,11 @@
         <attr name="ieb_right_icon_visible" format="boolean" />
         <attr name="ieb_right_icon" format="reference" />
         <attr name="ieb_edit_input_type" format="boolean" />
+        <attr name="ieb_edit_input_type_style" format="enum" >
+            <enum name="text" value="0"/>
+            <enum name="number" value="1"/>
+            <enum name="numberDecimal" value="2"/>
+        </attr>
 
     </declare-styleable>
 

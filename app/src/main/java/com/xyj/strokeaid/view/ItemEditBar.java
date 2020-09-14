@@ -48,6 +48,7 @@ public class ItemEditBar extends RelativeLayout {
 
     private boolean mEditEnable;
     private boolean isSetInpute; // ieb_edit_input_type
+    private int inputeTypeStyle = -1;
 
     public ItemEditBar(Context context) {
         this(context, null);
@@ -91,7 +92,22 @@ public class ItemEditBar extends RelativeLayout {
         // 是否设置 输入类型
         isSetInpute = array.getBoolean(R.styleable.ItemEditBar_ieb_edit_input_type, false);
         if(isSetInpute) {
-            etContentViewIeb.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_NORMAL);
+            inputeTypeStyle = array.getInt(R.styleable.ItemEditBar_ieb_edit_input_type_style, inputeTypeStyle);
+            switch (inputeTypeStyle) {
+                case 0:
+                    etContentViewIeb.setInputType(InputType.TYPE_CLASS_TEXT);
+                    break;
+                case 1:
+                    etContentViewIeb.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    break;
+                case 2:
+                    etContentViewIeb.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL|InputType.TYPE_CLASS_NUMBER);
+                    break;
+                default:
+                    etContentViewIeb.setInputType(InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_VARIATION_NORMAL);
+                    break;
+            }
+
         }
         // 设置提示文字
         if (array.hasValue(R.styleable.ItemEditBar_ieb_edit_hint)) {
