@@ -29,10 +29,12 @@ import butterknife.OnClick;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * @ClassName: OriginalStatus1
- * @Description:
- * @Author: 小黑
- * @Date: 2020/9/3 0:05
+ * OriginalDiagnoseFragment
+ * description: 初始诊断 -- 主动脉夹层
+ *
+ * @author : Licy
+ * @date : 2020/9/6
+ * email ：licy3051@qq.com
  */
 public class DiagnoseZdmjcFragment extends BaseFragment {
 

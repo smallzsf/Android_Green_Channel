@@ -14,21 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
 
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.distutil.DistListUtil;
-import com.xyj.strokeaid.distutil.RadioButtonDistUtil;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.chestpain.ReperfusionMeasuresBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
-import com.xyj.strokeaid.distutil.RadioGroupDistUtil;
+import com.xyj.strokeaid.distutil.DistListUtil;
+import com.xyj.strokeaid.distutil.RadioButtonDistUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.SettingBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
-import java.util.List;
 
 import butterknife.BindView;
 import retrofit2.Call;
@@ -328,7 +324,8 @@ public class TreatmentDecisionFragment extends BaseFragment {
      * @param bean
      */
     private void save(ReperfusionMeasuresBean bean) {
-        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        bean.setRecordId(mRecordId);
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getCPApi()
@@ -336,6 +333,7 @@ public class TreatmentDecisionFragment extends BaseFragment {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
@@ -349,10 +347,11 @@ public class TreatmentDecisionFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
                         Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
-
 
 
 }

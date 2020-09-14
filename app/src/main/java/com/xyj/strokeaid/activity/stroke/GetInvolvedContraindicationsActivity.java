@@ -1,10 +1,11 @@
 package com.xyj.strokeaid.activity.stroke;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -31,23 +32,21 @@ public class GetInvolvedContraindicationsActivity extends GetInvolvedIndications
     @Override
     public void initView() {
         super.initView();
-//        title_bar_act_tc
         titleBarActTc.setTitle("介入禁忌症");
     }
 
     @Override
     public void loadData() {
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getContraindication(requestBody)
+                .getContraindication(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<ContraindicationPo>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<ContraindicationPo>> call, Response<BaseObjectBean<ContraindicationPo>> response) {
+                        hideLoadingDialog();
                         if (response.body().getResult() == 1) {
                             // TODO: 2020/9/13 重现接口返回数据为空  需要验证调试
                             contraindicationPo = response.body().getData();
@@ -58,7 +57,8 @@ public class GetInvolvedContraindicationsActivity extends GetInvolvedIndications
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<ContraindicationPo>> call, Throwable t) {
-
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -93,7 +93,8 @@ public class GetInvolvedContraindicationsActivity extends GetInvolvedIndications
                 case 5://embolectomyContraindicationNone
                     contraindicationPo.setEmbolectomyContraindicationNone((checked ? 1 : -1));
                     break;
-
+                default:
+                    break;
             }
         }
         String request = GsonUtils.getGson().toJson(contraindicationPo);
@@ -128,6 +129,7 @@ public class GetInvolvedContraindicationsActivity extends GetInvolvedIndications
     }
 
 
+    @Override
     public List<StrokeTCBean> prepareData() {
         ArrayList<StrokeTCBean> list = new ArrayList<>();
 

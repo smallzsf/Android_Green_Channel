@@ -24,8 +24,11 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
+import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
+import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.bigkoo.pickerview.view.TimePickerView;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.didichuxing.doraemonkit.widget.tableview.utils.DensityUtils;
@@ -52,6 +55,7 @@ import com.xyj.strokeaid.view.TextTimeBar;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -1138,6 +1142,33 @@ public class NewPatientMedicalRecordActivity extends BaseActivity implements IID
                     }
                 });
     }
+
+    private TimePickerView mTimePickerView;
+    /**
+     * 显示时间选择控件
+     *
+     * @param settingBar 显示时间的 TextView
+     */
+    protected void showBirthPickView(SettingBar settingBar) {
+        if (mTimePickerView == null) {
+            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
+                @Override
+                public void onTimeSelect(Date date, View v) {
+                    String birth = CalendarUtils.parseDate(CalendarUtils.TYPE_YEAR_MONTH_DAY, date);
+                    settingBar.setRightText(birth);
+                }
+            })
+                    .isDialog(false)
+                    .setType(new boolean[]{true, true, true, false, false, false})
+                    .setOutSideCancelable(true)
+                    .build();
+        }
+        if (mTimePickerView.isShowing()) {
+            mTimePickerView.dismiss();
+        }
+        mTimePickerView.show();
+    }
+
 
     private static class ComeHosBean {
         private String titel;

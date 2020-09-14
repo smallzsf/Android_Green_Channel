@@ -14,10 +14,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.PatientOutcomeBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -40,7 +40,7 @@ import retrofit2.Response;
  * @date : 2020/9/1
  * email ：licy3051@qq.com
  */
-public class PatientOutcomeFragment extends BaseFragment {
+public class PatientOutcomeFragment extends BaseStrokeFragment {
 
     @BindView(R.id.es_title_select)
     EditSpinner esTitleSelect;
@@ -148,16 +148,13 @@ public class PatientOutcomeFragment extends BaseFragment {
     LinearLayout llNonHeart;
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
-    private String mRecordId;
+
     private PatientOutcomeBean mOutcomeBean;
     private HashMap<String, String> mDiagnoseMap;
     private HashMap<String, String> mComplicationMap;
     private HashMap<String, String> mUnacsMap;
     private HashMap<String, String> mOtherunacsMap;
 
-    public PatientOutcomeFragment() {
-
-    }
 
     public static PatientOutcomeFragment newInstance(String recordId) {
         PatientOutcomeFragment fragment = new PatientOutcomeFragment();
@@ -167,13 +164,6 @@ public class PatientOutcomeFragment extends BaseFragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
 
     @Override
     protected int getLayoutId() {
@@ -209,6 +199,12 @@ public class PatientOutcomeFragment extends BaseFragment {
         mComplicationMap.put(complicationStrings.get(12), "cpc_complication_wu");
 
         esTitleSelect.setItemData(Arrays.asList(Constants.CHEST_PAIN_DIAGNOSE_CONTENT));
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         loadViewData(mRecordId);
     }
 
@@ -283,6 +279,7 @@ public class PatientOutcomeFragment extends BaseFragment {
      * 默认 databean 不为null 且有数据
      */
     private void saveViewData() {
+        showLoadingDialog();
         RetrofitClient.getInstance()
                 .getApi()
                 .saveChestPainPatientOutcome(mOutcomeBean.getResuestBody(mOutcomeBean))

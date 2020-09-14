@@ -4,6 +4,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChestpainEcgDetailBean;
 import com.xyj.strokeaid.bean.chestpain.EmergencyCenterChestpainDrugPo;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
+import com.xyj.strokeaid.bean.dist.ChestPainOperationRsultBean;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -43,7 +44,7 @@ public interface ChestPainApiService {
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_OPERATION_RESULT_GET)
-    Call<BaseObjectBean> getChestPainOpeationResult(@Body RequestBody info);
+    Call<BaseObjectBean<ChestPainOperationRsultBean>> getChestPainOpeationResult(@Body RequestBody info);
 
 
     /**

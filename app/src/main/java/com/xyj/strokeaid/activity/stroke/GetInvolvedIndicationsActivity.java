@@ -1,32 +1,24 @@
 package com.xyj.strokeaid.activity.stroke;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.listener.OnItemChildClickListener;
 import com.xyj.strokeaid.R;
-import com.xyj.strokeaid.adapter.StrokeTCRvAdapter;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapterNew;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -64,6 +56,10 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     AppCompatButton btnConfirm;
     @BindView(R.id.btn_cancel)
     AppCompatButton btnCancel;
+
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
+
     public List<StrokeTCBean> mStrokeTCBeans;
     private StrokeTCRvAdapterNew mStrokeTCRvAdapter;
     private MyindicationPo myindicationPo;
@@ -113,15 +109,13 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     };
 
     public void loadData() {
+        showLoadingDialog();
 
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getMyindication(requestBody)
+                .getMyindication(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<MyindicationPo>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<MyindicationPo>> call, Response<BaseObjectBean<MyindicationPo>> response) {
