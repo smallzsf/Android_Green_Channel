@@ -157,7 +157,7 @@ public class TriageInfoFragment extends BaseFragment {
             return;
         }
         // 患者到院
-        ttbPatientArrivalFragTi.setTime(bean.getArrivegatetime());
+        ttbPatientArrivalFragTi.setTime(bean.getArrivehospitaltime());
         // 患者到达急诊
         ttbPatientEmergencyFragTi.setTime(bean.getArrivedertime());
         // 急诊分诊
@@ -174,7 +174,7 @@ public class TriageInfoFragment extends BaseFragment {
 
     private void getDatatoStrokeViews(StrokeTrigaeInfoBean bean) {
         // 患者到院
-        ttbPatientArrivalFragTi.setTime(bean.getArrivegatetime());
+        ttbPatientArrivalFragTi.setTime(bean.getArrivehospitaltime());
         // 患者到达急诊
         ttbPatientEmergencyFragTi.setTime(bean.getArrivedertime());
         // 急诊分诊
@@ -199,7 +199,7 @@ public class TriageInfoFragment extends BaseFragment {
             mChestPainTriageInfoBean = new ChestPainTriageInfoBean();
         }
         // 患者到院
-        mChestPainTriageInfoBean.setArrivegatetime(ttbPatientArrivalFragTi.getTime());
+        mChestPainTriageInfoBean.setArrivehospitaltime(ttbPatientArrivalFragTi.getTime());
         // 患者到达急诊
         mChestPainTriageInfoBean.setArrivedertime(ttbPatientEmergencyFragTi.getTime());
         // 急诊分诊
@@ -221,7 +221,7 @@ public class TriageInfoFragment extends BaseFragment {
             mStrokeTrigaeInfoBean = new StrokeTrigaeInfoBean();
         }
         // 患者到院
-        mStrokeTrigaeInfoBean.setArrivegatetime(ttbPatientArrivalFragTi.getTime());
+        mStrokeTrigaeInfoBean.setArrivehospitaltime(ttbPatientArrivalFragTi.getTime());
         // 患者到达急诊
         mStrokeTrigaeInfoBean.setArrivedertime(ttbPatientEmergencyFragTi.getTime());
         // 急诊分诊

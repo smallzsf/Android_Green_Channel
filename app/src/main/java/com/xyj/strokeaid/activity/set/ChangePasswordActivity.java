@@ -13,6 +13,8 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChangePasswordPostBean;
 import com.xyj.strokeaid.helper.Base64Util;
 import com.xyj.strokeaid.helper.RsaUitl;
+import com.xyj.strokeaid.http.CommonService;
+import com.xyj.strokeaid.http.PatientService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
@@ -122,8 +124,8 @@ public class ChangePasswordActivity extends BaseActivity {
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
                 .getInstance()
-                .getApi()
-                .changePasswordnor(requestBody)
+                .create(CommonService.class)
+                .changePassword(requestBody)
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {

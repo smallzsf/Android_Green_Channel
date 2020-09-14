@@ -50,6 +50,7 @@ import com.xyj.strokeaid.bean.MainListPost;
 import com.xyj.strokeaid.bean.TabEntity;
 import com.xyj.strokeaid.contract.MainContract;
 import com.xyj.strokeaid.helper.SpacesItemDecoration;
+import com.xyj.strokeaid.http.PatientService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.presenter.MainPresenter;
 
@@ -240,6 +241,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 }
                 ARouter.getInstance().build(destination)
                         .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
+                        .withObject(IntentKey.PATIENT_INFO, mainListBeans.get(position))
                         .navigation();
             }
         });
@@ -348,7 +350,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         mainListPost.setEmergencyType(emergencyType);
         mainListPost.setFullname(fullname);
 
-        RetrofitClient.getInstance().getApi()
+        RetrofitClient.getInstance()
+                .create(PatientService.class)
                 .getMainList(mainListPost.getResuestBody(mainListPost))
                 .enqueue(new Callback<BaseObjectBean<MainBean>>() {
                     @Override

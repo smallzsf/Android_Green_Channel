@@ -3,9 +3,11 @@ package com.xyj.strokeaid.activity.common;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.Chronometer;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,6 +28,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.MainListBean;
 import com.xyj.strokeaid.bean.PatientMenuBean;
 import com.xyj.strokeaid.fragment.stroke.EmptyFragment;
 import com.xyj.strokeaid.fragment.trauma.TraumaConsultationInfoFragment;
@@ -53,14 +56,14 @@ import butterknife.BindView;
  * email ：licy3051@qq.com
  */
 @Route(path = RouteUrl.Trauma.TRAUMA_HOME)
-public class TraumaPatientActivity extends BaseActivity {
+public class TraumaPatientActivity extends BaseCommonActivity {
 
     @BindView(R.id.title_bar_act_tp)
     BaseTitleBar titleBarActTp;
     @BindView(R.id.tv_start_time_include_ct)
-    Chronometer tvStartTimeIncludeCt;
+    TextView tvStartTimeIncludeCt;
     @BindView(R.id.tv_hos_time_include_ct)
-    Chronometer tvHosTimeIncludeCt;
+    TextView tvHosTimeIncludeCt;
     @BindView(R.id.rv_menu_act_tp)
     RecyclerView rvMenuActTp;
     @BindView(R.id.vp_content_act_tp)
@@ -68,6 +71,8 @@ public class TraumaPatientActivity extends BaseActivity {
 
     @Autowired(name = IntentKey.RECORD_ID)
     String mRecordId;
+    @Autowired(name = IntentKey.PATIENT_INFO)
+    MainListBean mPatientInfo;
 
     private PatientMenuRvAdapter mMenuRvAdapter;
     private List<PatientMenuBean> mMenuTitles;
@@ -86,10 +91,20 @@ public class TraumaPatientActivity extends BaseActivity {
     @Override
     public void initView() {
         // set title
-        SpannableString spannableString = new SpannableString("牛魔王（男-58-创伤）");
-        RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
-        spannableString.setSpan(relativeSizeSpan, 3, spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
-        titleBarActTp.setTitle(spannableString);
+        if (mPatientInfo != null) {
+            String fullname = mPatientInfo.getFullname();
+            String age = mPatientInfo.getAge();
+            String gender = TextUtils.equals(mPatientInfo.getGender(), "1") ? "男" : "女";
+            if (fullname.length() > 5) {
+                fullname = fullname.substring(0, 5);
+            }
+            SpannableString spannableString = new SpannableString(fullname + "(" + gender + "-" + age + "-胸痛)");
+            RelativeSizeSpan relativeSizeSpan = new RelativeSizeSpan(0.8f);
+            spannableString.setSpan(relativeSizeSpan, fullname.length(), spannableString.length() - 1, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE);
+            titleBarActTp.setTitle(spannableString);
+        } else {
+            titleBarActTp.setTitle("胸痛患者");
+        }
 
         mMenuTitles = new ArrayList<>();
         for (String greenChannelTabTitle : Constants.GREEN_CHANNEL_TRAUMA_MENU_TITLES) {
@@ -105,10 +120,7 @@ public class TraumaPatientActivity extends BaseActivity {
         vpContentActTp.setUserInputEnabled(false);
         vpContentActTp.setAdapter(new TraumaMenuVpAdapter(TraumaPatientActivity.this, mRecordId));
 
-        tvStartTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvHosTimeIncludeCt.setBase(SystemClock.elapsedRealtime());
-        tvStartTimeIncludeCt.start();
-        tvHosTimeIncludeCt.start();
+        myTask = createTask(tvStartTimeIncludeCt, tvHosTimeIncludeCt, mPatientInfo);
     }
 
     @Override

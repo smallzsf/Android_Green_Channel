@@ -6,6 +6,7 @@ import com.xyj.strokeaid.bean.LoginBean;
 import com.xyj.strokeaid.bean.RequestSmsBean;
 import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.contract.LoginContract;
+import com.xyj.strokeaid.http.CommonService;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 
@@ -27,7 +28,7 @@ public class LoginModel implements LoginContract.Model {
         RequestLoginBean requestLoginBean = new RequestLoginBean(username, password, "1");
         String request = GsonUtils.getGson().toJson(requestLoginBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        return RetrofitClient.getInstance().getApi().login(requestBody);
+        return RetrofitClient.getInstance().create(CommonService.class).login(requestBody);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class LoginModel implements LoginContract.Model {
         RequestLoginBean requestLoginBean = new RequestLoginBean(phone, code, "");
         String request = GsonUtils.getGson().toJson(requestLoginBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        return RetrofitClient.getInstance().getApi().phoneLoign(requestBody);
+        return RetrofitClient.getInstance().create(CommonService.class).phoneLoign(requestBody);
     }
 
 
@@ -45,7 +46,7 @@ public class LoginModel implements LoginContract.Model {
         RequestSmsBean requestSmsBean = new RequestSmsBean(phone);
         String request = GsonUtils.getGson().toJson(requestSmsBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        return RetrofitClient.getInstance().getApi().sendSms(requestBody);
+        return RetrofitClient.getInstance().create(CommonService.class).sendSms(requestBody);
     }
 
     private static class RequestLoginBean {
