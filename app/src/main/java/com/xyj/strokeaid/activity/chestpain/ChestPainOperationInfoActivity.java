@@ -3,22 +3,22 @@ package com.xyj.strokeaid.activity.chestpain;
 import android.view.View;
 import android.widget.EditText;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.utilcode.util.LogUtils;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.OperationInfoBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.distutil.DistListUtil;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.http.RetrofitClient;
-import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -30,8 +30,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,15 +49,12 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
     @BindView(R.id.title_bar_act_npmr)
     BaseTitleBar titleBarActNpmr;
- /*   @BindView(R.id.tag_reason_delay)
-    TagFlowLayout tagFlowLayout;
-*/
     @BindView(R.id.tv_activation_time_cath_lab)
     TextTimeBar tvActivationTime;       //导管室激活时间
     @BindView(R.id.tv_arrive_time_patient)
     TextTimeBar tvArriveTime;       //患者到达时间
-/*    @BindView(R.id.tv_time_begin)
-    TextTimeBar tvTimeBegin;       *///手术开始时间
+    /*    @BindView(R.id.tv_time_begin)
+        TextTimeBar tvTimeBegin;       *///手术开始时间
     @BindView(R.id.tv_time_puncture)
     TextTimeBar tvTimePuncture;       //开始穿刺时间
 
@@ -77,10 +72,10 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     @BindView(R.id.es_medicinal_name)
     EditSpinner es_medicinal_name;  //药品名称
 
-/*    @BindView(R.id.rb_delay_true)
-    RadioButton rbTrue;
-    @BindView(R.id.rb_delay_false)
-    RadioButton rbFalse;*/
+    /*    @BindView(R.id.rb_delay_true)
+        RadioButton rbTrue;
+        @BindView(R.id.rb_delay_false)
+        RadioButton rbFalse;*/
     @BindView(R.id.et_doctor_input)
     EditText etDoctorInput;
     @BindView(R.id.et_recorder_input)
@@ -89,6 +84,10 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     EditText etDosage;
     @BindView(R.id.et_unit)
     EditText etUnit;
+
+    @Autowired(name = IntentKey.RECORD_ID)
+    String mRecordId;
+
     private boolean delayType = false;
     //初步诊断
     private List<String> preliminaryDiagnosisList = new ArrayList<>();
@@ -105,7 +104,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
             R.id.tv_activation_time_cath_lab, R.id.tv_arrive_time_patient, R.id.tv_time_puncture,
             R.id.tv_time_anticoagulant_administration, R.id.tv_time_radiography,
             R.id.tv_talk_time_again, R.id.tv_through_time_guide_wire, R.id.tv_over_time,
-           })
+    })
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_left_base_title_bar:
@@ -315,9 +314,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
             return;
         }
         //调用获取数据接口
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId("213242341");
-        operationInfoBean.setRecordId(p.getRecordId());
+        operationInfoBean.setRecordId(mRecordId);
         //介入医师 pcimedicalstaffid
         String etDoctor = etDoctorInput.getText().toString().trim();
         operationInfoBean.setPcimedicalstaffid(etDoctor);
@@ -329,7 +326,7 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         //time 9
         String time1 = tvActivationTime.getTime();//导管室激活时间
         String time2 = tvArriveTime.getTime();  //患者到达时间
-       // String time3 = tvTimeBegin.getTime(); //手术开始时间
+        // String time3 = tvTimeBegin.getTime(); //手术开始时间
         String time4 = tvTimePuncture.getTime();//开始穿刺时间
         String time5 = tvTimeAnticoagulantAdministration.getTime(); //抗凝给药时间
         String time6 = tvTimeRadiography.getTime();//造影开始时间
@@ -391,8 +388,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     }
 
 
-
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_chest_pain_operation_info;
@@ -435,7 +430,6 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         });*/
 
 
-
         /**
          * editSpinner设置数据
          */
@@ -443,12 +437,16 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
         es_medicinal_name.setStringArrayId(R.array.chest_pain_operation_medicinal);
       /*  List<String> list = Arrays.asList(getResources().getStringArray(R.array.chest_pain_operation_medicinal));
         es_medicinal_name.setItemData(list);*/
-        /**
-         * 获取手术信息数据
-         */
-        chestPainChestPainOperationInfoGet();
+
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 获取手术信息数据
+        chestPainChestPainOperationInfoGet();
+    }
 
     @Override
     public void initListener() {
@@ -477,16 +475,15 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
      */
     private void chestPainChestPainOperationInfoSave(OperationInfoBean operationInfoBean) {
 
-
-        String request = GsonUtils.getGson().toJson(operationInfoBean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .saveChestPainOperationInfo(requestBody)
+                .saveChestPainOperationInfo(operationInfoBean.getResuestBody(operationInfoBean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("保存数据成功");
@@ -498,8 +495,8 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
-
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -511,17 +508,16 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
     private void chestPainChestPainOperationInfoGet() {
 
         //调用获取数据接口
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId("213242341");
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainOperationInfo(requestBody)
+                .getChestPainOperationInfo(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<OperationInfoBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<OperationInfoBean>> call, Response<BaseObjectBean<OperationInfoBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 if (response.body().getData() != null) {
@@ -539,7 +535,8 @@ public class ChestPainOperationInfoActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<OperationInfoBean>> call, Throwable t) {
-                        LogUtils.d(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }

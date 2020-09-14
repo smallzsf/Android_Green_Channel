@@ -22,6 +22,7 @@ import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainTriageInfoBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextSwitchBar;
@@ -158,9 +159,9 @@ public class OtherDisposalFragment extends BaseFragment {
             strokeOtherDisposalBean.setRecoveringtreatmentisaccept(Constants.BOOL_FALSE);
         }
 
-        String recoverIngtreatmentWaysValue = getCheckBoxValue(cbTraditionFragOd, cbPtFragOd, cbOtFragOd, cbStFragOd, cbOtherRecoveryFragOd);
+        String recoverIngtreatmentWaysValue = KeyValueHelper.getCheckboxsKey(cbTraditionFragOd, cbPtFragOd, cbOtFragOd, cbStFragOd, cbOtherRecoveryFragOd);
         strokeOtherDisposalBean.setRecoveringtreatmentways(recoverIngtreatmentWaysValue);
-        String recoverIngtreatmentPlaceValue = getCheckBoxValue(cbBedsideFragOd, cbRecoveryDepartFragOd);
+        String recoverIngtreatmentPlaceValue = KeyValueHelper.getCheckboxsKey(cbBedsideFragOd, cbRecoveryDepartFragOd);
         strokeOtherDisposalBean.setRecoveringtreatmentplace(recoverIngtreatmentPlaceValue);
 
         SwitchCompat switchCompat1 = tsbEduFragOd.findViewById(R.id.sc_view_tsb);
@@ -171,7 +172,7 @@ public class OtherDisposalFragment extends BaseFragment {
         }
 
 
-        String healtheducationValue = getCheckBoxValue(cbGroupFragOd, cbOneFragOd,cbOtherEduFragOd);
+        String healtheducationValue = KeyValueHelper.getCheckboxsKey(cbGroupFragOd, cbOneFragOd,cbOtherEduFragOd);
         strokeOtherDisposalBean.setHealtheducation(healtheducationValue);
         saveOtherDisposalData(strokeOtherDisposalBean);
     }

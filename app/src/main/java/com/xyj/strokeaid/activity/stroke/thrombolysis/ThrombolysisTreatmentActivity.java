@@ -184,11 +184,6 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
     @Override
     public void initView() {
         EventBus.getDefault().register(this);
-        iebThrive.setOnClickListener(v -> {
-            Intent intent = new Intent(this, StrokeThriveActivity.class);
-            startActivity(intent);
-        });
-
         loadData(mRecordId);
     }
 
@@ -199,7 +194,7 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
         // THRIVE评分
         iebThrive.setRightIvOnClickerListener(v -> {
-            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_THRIVE_SCORE)
                     .navigation();
         });
 

@@ -2,17 +2,13 @@ package com.xyj.strokeaid.bean;
 
 import androidx.annotation.NonNull;
 
+import com.xyj.strokeaid.base.BaseBean;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
-public class EmergencyCenterChestpainHospitalData {
-
-    /**
-     *
-     */
-    private String id;
+public class EmergencyCenterChestpainHospitalData  extends BaseBean<EmergencyCenterChestpainHospitalData> {
 
     /**
      *
@@ -91,13 +87,6 @@ public class EmergencyCenterChestpainHospitalData {
     private String afterthrombolysiscontraindication;
 
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getRecordId() {
         return recordId;

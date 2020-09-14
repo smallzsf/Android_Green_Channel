@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -23,15 +20,9 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
-import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
-import com.xyj.strokeaid.bean.ChestPainDiseaseRecordRequest;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
-import com.xyj.strokeaid.bean.DiagnosticEvaluationEntity;
-import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
-import com.xyj.strokeaid.helper.HideBottonUtils;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
-import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -39,8 +30,6 @@ import com.xyj.strokeaid.view.editspinner.EditSpinner;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -460,12 +449,12 @@ public class DiagnosticEvaluationFragment extends BaseFragment {
         /**
          * 卒中诊断 左 侧的出血部位
          */
-        String checkBoxValueLeft = getCheckBoxValue(cbCpcLeft1, cbCpcLeft2, cbCpcLeft3, cbCpcLeft4, cbCpcLeft5);
+        String checkBoxValueLeft = KeyValueHelper.getCheckboxsKey(cbCpcLeft1, cbCpcLeft2, cbCpcLeft3, cbCpcLeft4, cbCpcLeft5);
         bean.setHemorrhageinleftinit(checkBoxValueLeft);
         /**
          * 卒中诊断 右 侧的出血部位
          */
-        String checkBoxValueRight = getCheckBoxValue(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
+        String checkBoxValueRight = KeyValueHelper.getCheckboxsKey(cbCpcRight1, cbCpcRight2, cbCpcRight3, cbCpcRight4, cbCpcRight5);
         bean.setHemorrhageinrightinit(checkBoxValueRight);
         bean.setHemorrhageamountinit(iebHemorrhageSize.getEditContent());
 

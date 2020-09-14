@@ -22,6 +22,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.OtherTreatmentBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.ItemEditBar;
@@ -42,7 +43,7 @@ import retrofit2.Response;
  * @Description: 胸痛其他处置
  * @Date: 2020/9/4 20:05
  */
-public class ChestPainOtherTretmentFragment extends BaseFragment {
+public class ChestPainOtherTretmentFragment extends BaseStrokeFragment {
 
     @BindView(R.id.rb_sugar_yes)
     RadioButton rbSugarYes;
@@ -181,7 +182,6 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
     @BindView(R.id.ieb_transfer_hos_name)
     ItemEditBar iebTransferHosName;
     private OtherTreatmentBean mOtherTreatmentBean;
-    private String mRecordId;
     private HashMap<String, String> mSuagrDrugMap;
     private HashMap<String, String> mAntiDrugMap;
     private HashMap<String, String> mPcsk9DrugMap;
@@ -202,9 +202,6 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
     private LinearLayout mLinearLayoutOutOtherDepart;
     private LinearLayout mLinearLayoutOutDeath;
 
-    public ChestPainOtherTretmentFragment() {
-
-    }
 
     public static ChestPainOtherTretmentFragment newInstance(String recordId) {
         ChestPainOtherTretmentFragment fragment = new ChestPainOtherTretmentFragment();
@@ -212,14 +209,6 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
         args.putString(IntentKey.RECORD_ID, recordId);
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
     }
 
     @Override
@@ -408,6 +397,7 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
      * 默认 databean 不为null 且有数据
      */
     private void saveViewData() {
+        showLoadingDialog();
         RetrofitClient.getInstance()
                 .getApi()
                 .saveChestPainOtherTreatment(mOtherTreatmentBean.getResuestBody(mOtherTreatmentBean))
@@ -720,7 +710,7 @@ public class ChestPainOtherTretmentFragment extends BaseFragment {
         if (cbLyxcWxj.isChecked()) {
             mOtherTreatmentBean.setMissioneducation("cpc_missioneducation_wxj");
         } else {
-            String checkBoxValue = getCheckBoxValue(cbLyxcXxgwxyskz, cbLyxcShqjth, cbLyxcGljcfy, cbLyxcJy, cbLyxcJyzsfzl);
+            String checkBoxValue = KeyValueHelper.getCheckboxsKey(cbLyxcXxgwxyskz, cbLyxcShqjth, cbLyxcGljcfy, cbLyxcJy, cbLyxcJyzsfzl);
             mOtherTreatmentBean.setMissioneducation(checkBoxValue);
         }
         // 患者转归

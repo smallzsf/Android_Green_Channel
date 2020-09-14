@@ -17,8 +17,8 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ChestpainEcgDetailBean;
+import com.xyj.strokeaid.bean.RequestIdBean;
 import com.xyj.strokeaid.bean.SendAddVitalSignsDataBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -116,6 +116,7 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
 
     @Override
     protected void initView(@NonNull View view) {
+        loadData();
         refrashRecordItem();
     }
 
@@ -123,22 +124,20 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadData();
         resetShowData();
     }
 
     private void resetShowData() {
-        RecordIdUtil src = new RecordIdUtil();
-        src.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(src);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RequestIdBean requestIdBean = new RequestIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .getChestPainsuEcgDetail(requestBody)
+                .getChestPainsuEcgDetail(requestIdBean.getResuestBody(requestIdBean))
                 .enqueue(new Callback<BaseObjectBean<ChestpainEcgDetailBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<ChestpainEcgDetailBean>> call, Response<BaseObjectBean<ChestpainEcgDetailBean>> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse: " + response.toString());
                         if (response.body() == null) {
                             return;
@@ -151,7 +150,8 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestpainEcgDetailBean>> call, Throwable t) {
-
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
 
@@ -350,16 +350,19 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
 
 
     public void save(ChestpainEcgDetailBean bean) {
-        bean.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(bean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        if (bean == null){
+            return;
+        }
+        showLoadingDialog();
+        bean.setRecordId(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .saveChestPainsuEcgDetail(requestBody)
+                .saveChestPainsuEcgDetail(bean.getResuestBody(bean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                      hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
@@ -372,42 +375,13 @@ public class ChestPainEcgExaminFragment extends BaseStrokeFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
 
 
     }
-
-    /**
-     * 生命体征编辑
-     */
-    private void editVitalSigns(SendAddVitalSignsDataBean sendAddVitalSignsDataBean) {
-        String request = GsonUtils.getGson().toJson(sendAddVitalSignsDataBean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
-        RetrofitClient
-                .getInstance()
-                .getApi()
-                .editVitalSigns(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
-                    @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
-                                showToast("保存成功");
-                            } else {
-                                showToast(response.body().getMessage());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
-                    }
-                });
-    }
-
 
     private void uploadFile() {
 

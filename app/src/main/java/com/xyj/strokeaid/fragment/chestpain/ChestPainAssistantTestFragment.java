@@ -21,12 +21,12 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseArrayBean;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.bean.file.FileInfoBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.FileServiceImpl;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
@@ -50,7 +50,7 @@ import retrofit2.Response;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainAssistantTestFragment extends BaseFragment {
+public class ChestPainAssistantTestFragment extends BaseStrokeFragment {
 
     @BindView(R.id.tv_title_frag_at)
     TextView tvTitleFragAt;
@@ -102,7 +102,6 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     AppCompatButton btnConfirm;
 
     private ChestPainImageExaminationBean.DataBean data;
-    private String mRecordId;
     private SparseArray<LocalMedia> mLocalMedias;
     private final int CT_PHOTO = 1;
     private final int CT_REPORT = 2;
@@ -120,31 +119,27 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.PATIENT_ID);
-        }
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_assistant_test;
     }
 
     @Override
     protected void initView(@NonNull View view) {
+
         mLocalMedias = new SparseArray<>();
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         loadData();
     }
 
-
     private void loadData() {
-
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(p);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
+        String request = GsonUtils.getGson().toJson(recordIdBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
                 .getInstance()
@@ -153,24 +148,21 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                 .enqueue(new Callback<ChestPainImageExaminationBean>() {
                     @Override
                     public void onResponse(Call<ChestPainImageExaminationBean> call, Response<ChestPainImageExaminationBean> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             ChestPainImageExaminationBean body = response.body();
                             data = body.getData();
                             checkViews();
                         }
-
-
                     }
-
 
                     @Override
                     public void onFailure(Call<ChestPainImageExaminationBean> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
-
-
     }
 
     /**
@@ -377,7 +369,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
         if (data == null) {
             data = new ChestPainImageExaminationBean.DataBean();
         }
-        data.setRecordId(RecordIdUtil.RECORD_ID);
+        data.setRecordId(mRecordId);
 
         if (cbNotDone.isChecked()) {
             data.setImageexam("cpc_imageexam_none");
@@ -439,6 +431,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
      * 保存数据
      */
     private void saveData() {
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(data);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -448,6 +441,7 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
@@ -462,6 +456,8 @@ public class ChestPainAssistantTestFragment extends BaseFragment {
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
                         Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
 

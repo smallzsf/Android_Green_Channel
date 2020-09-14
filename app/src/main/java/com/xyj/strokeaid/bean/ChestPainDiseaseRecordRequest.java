@@ -1,11 +1,13 @@
 package com.xyj.strokeaid.bean;
 
+import com.xyj.strokeaid.base.BaseBean;
+
 /**
  * @Description: 胸痛病情记录
  * @Author: crq
  * @CreateDate: 2020/9/9 9:36
  */
-public class ChestPainDiseaseRecordRequest {
+public class ChestPainDiseaseRecordRequest extends BaseBean<ChestPainDiseaseRecordRequest> {
     /**
      * recordId : 751546854738628608
      * conditionassessment : cpc_bqpg_cxxxm

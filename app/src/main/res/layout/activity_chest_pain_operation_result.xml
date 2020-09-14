@@ -49,42 +49,42 @@
                 android:weightSum="4">
 
                 <RadioButton
-                    android:tag="cpc_rl_rdml"
                     android:id="@+id/rb_radial_artery_right"
                     style="@style/tv_small"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_rl_rdml"
                     android:text="桡动脉(右侧)"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_rl_rdmr"
                     android:id="@+id/rb_radial_artery_left"
                     style="@style/tv_small"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_rl_rdmr"
                     android:text="桡动脉(左侧)"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_rl_gdm"
                     android:id="@+id/rb_arteria_femoralis"
                     style="@style/tv_small"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_rl_gdm"
                     android:text="股动脉"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_rl_qt"
                     android:id="@+id/rb_other"
                     style="@style/tv_small"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_rl_qt"
                     android:text="其他"
                     android:textSize="@dimen/item_content_size" />
 
@@ -193,42 +193,42 @@
                 android:weightSum="4">
 
                 <RadioButton
-                    android:tag="cpc_qnyx_ivus"
                     android:id="@+id/rb_gender_diversity_IVUS"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_qnyx_ivus"
                     android:text="IVUS"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_qnyx_oct"
                     android:id="@+id/rb_gender_diversity_OCT"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_qnyx_oct"
                     android:text="OCT"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_qnyx_qt"
                     android:id="@+id/rb_gender_diversity_other"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_qnyx_qt"
                     android:text="其他"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_qnyx_wz"
                     android:id="@+id/rb_gender_diversity_no_doing"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_qnyx_wz"
                     android:text="未做"
                     android:textSize="@dimen/item_content_size" />
 
@@ -254,52 +254,52 @@
                 android:weightSum="4">
 
                 <RadioButton
-                    android:tag="cpc_funcexam_FFR"
                     android:id="@+id/rb_function_FFR"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_funcexam_FFR"
                     android:text="FFR"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_funcexam_iFR"
                     android:id="@+id/rb_function_iFR"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_funcexam_iFR"
                     android:text="iFR"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_funcexam_IMR"
                     android:id="@+id/rb_function_IMR"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_funcexam_IMR"
                     android:text="IMR"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_funcexam_other"
                     android:id="@+id/rb_function_other"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_funcexam_other"
                     android:text="其他"
                     android:textSize="@dimen/item_content_size" />
 
                 <RadioButton
-                    android:tag="cpc_funcexam_unexam"
                     android:id="@+id/rb_function_no_doing"
                     style="@style/tv_small"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:tag="cpc_funcexam_unexam"
                     android:text="未做"
                     android:textSize="@dimen/item_content_size" />
 
@@ -310,22 +310,21 @@
             <com.xyj.strokeaid.view.ItemEditBar
                 android:id="@+id/idb_cpc_funcexam_value"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/item_normal_height"
+                android:gravity="center_vertical"
                 android:inputType="number|numberDecimal"
                 app:ieb_bottom_line_visible="true"
                 app:ieb_edit_hint="请输入"
-                app:ieb_title="数值"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content"
-                >
+                app:ieb_title="数值">
 
             </com.xyj.strokeaid.view.ItemEditBar>
 
             <LinearLayout
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_normal_height"
                 android:orientation="horizontal"
-                android:paddingLeft="@dimen/dp_12">
+                android:paddingLeft="@dimen/dp_12"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -384,24 +383,24 @@
                     android:weightSum="2">
 
                     <RadioButton
-                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_IABP_false"
                         style="@style/tv_small"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_false"
                         android:text="否"
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
-                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_IABP_true"
                         style="@style/tv_small"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_true"
                         android:text="是"
                         android:textSize="@dimen/item_content_size" />
 
@@ -433,24 +432,24 @@
                     android:weightSum="2">
 
                     <RadioButton
-                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_pacesetter_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_false"
                         android:text="否"
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
-                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_pacesetter_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_true"
                         android:text="是"
                         android:textSize="@dimen/item_content_size" />
 
@@ -484,22 +483,22 @@
                     <RadioButton
                         android:id="@+id/rb_ECMO_true"
                         style="@style/tv_small"
-                        android:tag="cpc_bool_false"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_false"
                         android:text="否"
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
-                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_ECMO_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_true"
                         android:text="是"
                         android:textSize="@dimen/item_content_size" />
 
@@ -531,24 +530,24 @@
                     android:weightSum="2">
 
                     <RadioButton
-                        android:tag="cpc_bool_false"
                         android:id="@+id/rb_ventricular_assist_true"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_false"
                         android:text="否"
                         android:textSize="@dimen/item_content_size" />
 
                     <RadioButton
-                        android:tag="cpc_bool_true"
                         android:id="@+id/rb_ventricular_assist_false"
                         style="@style/tv_small"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingRight="@dimen/dp_10"
+                        android:tag="cpc_bool_true"
                         android:text="是"
                         android:textSize="@dimen/item_content_size" />
 

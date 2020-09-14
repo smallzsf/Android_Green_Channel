@@ -1,37 +1,25 @@
 package com.xyj.strokeaid.fragment.chestpain;
 
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.umeng.vt.diff.Event;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
-import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBena;
+import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBean;
 import com.xyj.strokeaid.bean.chestpain.ChestpainGraceScoreBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
-import java.util.Arrays;
-import java.util.List;
 
 import butterknife.BindView;
 import okhttp3.MediaType;
@@ -42,12 +30,13 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-
 /**
- * @ClassName: OriginalDiagnoseFragment
- * @Description:初始诊断
- * @Author: 小黑
- * @Date: 2020/9/2 19:09
+ * OriginalDiagnoseFragment
+ * description: 初始诊断
+ *
+ * @author : Licy
+ * @date : 2020/9/6
+ * email ：licy3051@qq.com
  */
 public class OriginalDiagnoseFragment extends BaseFragment {
 
@@ -67,7 +56,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     private BaseFragment mCurrentFragment;
 
     private String mRecordId;
-    private  int selectTitlePosition=0;
+    private int selectTitlePosition = 0;
 
 
     public OriginalDiagnoseFragment() {
@@ -103,9 +92,9 @@ public class OriginalDiagnoseFragment extends BaseFragment {
          * editSpinner设置数据
          */
         esTitleSelect.setStringArrayId(R.array.original_diagnose);
-        SharedPreferences sharedPreferences=getActivity().getSharedPreferences("sp",MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("sp", MODE_PRIVATE);
         String initialdiagnosis = sharedPreferences.getString("initialdiagnosis", "");
-        if (!TextUtils.isEmpty(initialdiagnosis)){
+        if (!TextUtils.isEmpty(initialdiagnosis)) {
             esTitleSelect.setStringArrayNormalKey(initialdiagnosis);
             int selectPosition = esTitleSelect.getSelectPosition();
             FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
@@ -269,7 +258,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
      */
     public void saveChestPainDiagnosis(ChestPainDiagnosisBean chestPainDiagnosisBean) {
 
-
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(chestPainDiagnosisBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -279,6 +268,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("保存数据成功");
@@ -290,7 +280,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -299,20 +290,18 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     /**
      * 胸痛 初始诊断查询
      */
-    public void getChestPainDiagnoseGet(String mRecordId) {
-
+    public void getChestPainDiagnoseGet(String recordId) {
+        showLoadingDialog();
         //调用获取数据接口
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(mRecordId);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiagnoseGet(requestBody)
+                .getChestPainDiagnoseGet(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<ChestPainDiagnosisBean.ChestPainResponseBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<ChestPainDiagnosisBean.ChestPainResponseBean>> call, Response<BaseObjectBean<ChestPainDiagnosisBean.ChestPainResponseBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 if (response.body().getData() != null) {
@@ -331,7 +320,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestPainDiagnosisBean.ChestPainResponseBean>> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -340,16 +330,19 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     /**
      * 胸痛--初始诊断--患者绕行--编辑
      */
-    public void saveChestPainDiagnosePatientsDetour(ChestPainPatientsDetourBena chestPainPatientsDetourBena) {
-        String request = GsonUtils.getGson().toJson(chestPainPatientsDetourBena);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    public void saveChestPainDiagnosePatientsDetour(ChestPainPatientsDetourBean bean) {
+        if (bean == null) {
+            return;
+        }
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiagnosePatientsDetourEdit(requestBody)
+                .getChestPainDiagnosePatientsDetourEdit(bean.getResuestBody(bean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
 
@@ -361,7 +354,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -370,23 +364,23 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     /**
      * 胸痛--初始诊断--患者绕行--查询
      */
-    public void getChestPainDiagnosePatientsDetour(String mRecordId) {
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(mRecordId);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    public void getChestPainDiagnosePatientsDetour(String recordId) {
+        showLoadingDialog();
+        //调用获取数据接口
+        RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiagnosePatientsDetourGet(requestBody)
-                .enqueue(new Callback<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>>() {
+                .getChestPainDiagnosePatientsDetourGet(recordIdBean.getResuestBody(recordIdBean))
+                .enqueue(new Callback<BaseObjectBean<ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>> call, Response<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>> response) {
+                    public void onResponse(Call<BaseObjectBean<ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean>> call, Response<BaseObjectBean<ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 if (response.body().getData() != null) {
 
-                                    ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean data = response.body().getData();
+                                    ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean data = response.body().getData();
                                     if (onGetChestPainResponsePatientsDetourData != null) {
                                         onGetChestPainResponsePatientsDetourData.getChestPainResponsePatientsDetourData(data);
                                     }
@@ -399,8 +393,9 @@ public class OriginalDiagnoseFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean>> call, Throwable t) {
-                        showToast(call.toString());
+                    public void onFailure(Call<BaseObjectBean<ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean>> call, Throwable t) {
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -409,16 +404,19 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     /**
      * 胸痛--初始诊断--Grace--保存
      */
-    public void saveChestPainDiagnoseGrace(ChestpainGraceScoreBean chestpainGraceScoreBean) {
-        String request = GsonUtils.getGson().toJson(chestpainGraceScoreBean);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    public void saveChestPainDiagnoseGrace(ChestpainGraceScoreBean bean) {
+        if (bean == null) {
+            return;
+        }
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiagnoseGraceSave(requestBody)
+                .getChestPainDiagnoseGraceSave(bean.getResuestBody(bean))
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
 
@@ -430,7 +428,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -439,18 +438,18 @@ public class OriginalDiagnoseFragment extends BaseFragment {
     /**
      * 胸痛--初始诊断--Grace--获取
      */
-    public void getChestPainDiagnoseGrace(String mRecordId) {
-        RecordIdUtil p = new RecordIdUtil();
-        p.setRecordId(mRecordId);
-        String request = GsonUtils.getGson().toJson(p);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+    public void getChestPainDiagnoseGrace(String recordId) {
+        showLoadingDialog();
+        //调用获取数据接口
+        RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .getChestPainDiagnoseGraceGet(requestBody)
+                .getChestPainDiagnoseGraceGet(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<BaseObjectBean<ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean>> call, Response<BaseObjectBean<ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean data = response.body().getData();
@@ -465,7 +464,8 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<ChestpainGraceScoreBean.ChestpainResponseGraceScoreBean>> call, Throwable t) {
-                        showToast(call.toString());
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -497,7 +497,7 @@ public class OriginalDiagnoseFragment extends BaseFragment {
 
     //返回胸痛--初始诊断--患者绕行获取bean
     public interface OnGetChestPainResponsePatientsDetourData {
-        void getChestPainResponsePatientsDetourData(ChestPainPatientsDetourBena.ChestPainResponsePatientsDetourBean data);
+        void getChestPainResponsePatientsDetourData(ChestPainPatientsDetourBean.ChestPainResponsePatientsDetourBean data);
     }
 
     private OnGetChestPainResponsePatientsDetourData onGetChestPainResponsePatientsDetourData;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -14,5 +15,13 @@
         app:lottie_fileName="lottie_loading.json"
         app:lottie_loop="true"
         app:lottie_repeatMode="restart" />
+
+    <TextView
+        android:id="@+id/tv_loading_text"
+        style="@style/tv_normal_titel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_normal_height"
+        android:gravity="center"
+        tools:text="加载中..." />
 
 </LinearLayout>

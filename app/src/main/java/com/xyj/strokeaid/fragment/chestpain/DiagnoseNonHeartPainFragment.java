@@ -21,6 +21,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
+import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -224,7 +225,7 @@ public class DiagnoseNonHeartPainFragment extends BaseFragment {
         //TODO 诊断医生没赋值
         chestPainDiagnosisBean.setInitialdiagnosisdoctorid(esDiagnoseDoc.getText());
 
-        String checkBoxNonHeartValue = getCheckBoxValue(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5, cbNonHeart6, cbNonHeart7);
+        String checkBoxNonHeartValue = KeyValueHelper.getCheckboxsKey(cbNonHeart1, cbNonHeart2, cbNonHeart3, cbNonHeart4, cbNonHeart5, cbNonHeart6, cbNonHeart7);
         chestPainDiagnosisBean.setDiagnosisotheracs(checkBoxNonHeartValue);
 
         if (rbTreatStrategy1.isChecked()) {

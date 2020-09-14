@@ -101,8 +101,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     @BindView(R.id.btn_confirm)
     AppCompatButton btnConfirm;
 
-    protected TimePickerView mTimePickerView;
-
     private int type = 0;
     private String mRecordId;
 
@@ -247,8 +245,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
     @Override
     protected void initListener() {
         initRadioButtonCheckListener();
-        ttbCompleteTimeFragAe.setTimeZoneClickListener(v -> showTimePickView(ttbCompleteTimeFragAe));
-        ttbReportTimeFragAe.setTimeZoneClickListener(v -> showTimePickView(ttbReportTimeFragAe));
         stlTitleFragAe.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
@@ -383,33 +379,6 @@ public class AuxiliaryExamFragment extends BaseFragment {
                 break;
         }
     }
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param textTimeBar 要显示时间的控件
-     */
-    @Override
-    protected void showTimePickView(TextTimeBar textTimeBar) {
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mActivity, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    String time = CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date);
-                    textTimeBar.setTime(time);
-                }
-            })
-                    .isDialog(false)
-                    .setType(new boolean[]{true, true, true, true, true, true})
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
 
     /**
      * 获取CT数据

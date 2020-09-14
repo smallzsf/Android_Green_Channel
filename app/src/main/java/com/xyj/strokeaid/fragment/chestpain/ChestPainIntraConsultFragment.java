@@ -16,6 +16,7 @@ import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.IntraConsultBean;
 import com.xyj.strokeaid.bean.RecordIdBean;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
@@ -35,7 +36,7 @@ import retrofit2.Response;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainIntraConsultFragment extends BaseFragment {
+public class ChestPainIntraConsultFragment extends BaseStrokeFragment {
 
     @BindView(R.id.rb_cardiology_site)
     RadioButton rbCardiologySite;
@@ -76,12 +77,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     @BindView(R.id.btn_save)
     AppCompatButton btnSave;
 
-    private String mRecordId;
     private IntraConsultBean mIntraConsultBean;
-
-    public ChestPainIntraConsultFragment() {
-
-    }
 
     public static ChestPainIntraConsultFragment newInstance(String recordId) {
         ChestPainIntraConsultFragment fragment = new ChestPainIntraConsultFragment();
@@ -92,21 +88,12 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_intrac_consult;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-        showLoadingDialog();
         loadDocData();
     }
 
@@ -135,6 +122,7 @@ public class ChestPainIntraConsultFragment extends BaseFragment {
         if (TextUtils.isEmpty(recordId)) {
             return;
         }
+        showLoadingDialog();
         RecordIdBean recordIdBean = new RecordIdBean(recordId);
         RetrofitClient.getInstance().getApi()
                 .getChestPainIntraConsult(recordIdBean.getResuestBody(recordIdBean))

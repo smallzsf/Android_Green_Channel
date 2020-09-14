@@ -7,7 +7,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -16,12 +15,11 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.IntentKey;
-import com.xyj.strokeaid.base.BaseFragment;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainBloodTestBean;
-import com.xyj.strokeaid.bean.dist.RecordIdUtil;
+import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.http.RetrofitClient;
-import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
@@ -29,8 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +39,7 @@ import retrofit2.Response;
  * @date : 2020/8/26
  * email ：licy3051@qq.com
  */
-public class ChestPainBloodTestFragment extends BaseFragment implements View.OnClickListener {
+public class ChestPainBloodTestFragment extends BaseStrokeFragment implements View.OnClickListener {
 
 
     @BindView(R.id.rb_troponin_tnt_first)
@@ -164,12 +160,6 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     LinearLayout llSerumCreatinineData;
     private int troponinDataNum = 1;
 
-    private String mRecordId;
-
-    public ChestPainBloodTestFragment() {
-
-    }
-
     public static ChestPainBloodTestFragment newInstance(String recordId) {
         ChestPainBloodTestFragment fragment = new ChestPainBloodTestFragment();
         Bundle args = new Bundle();
@@ -179,27 +169,18 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mRecordId = getArguments().getString(IntentKey.RECORD_ID);
-        }
-    }
-
-    @Override
     protected int getLayoutId() {
         return R.layout.fragment_chest_pain_blood_test;
     }
 
     @Override
     protected void initView(@NonNull View view) {
-
+        initSpinner();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initSpinner();
         loadData();
     }
 
@@ -221,23 +202,24 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
     }
 
     private void loadData() {
-        RecordIdUtil src = new RecordIdUtil();
-        src.setRecordId(RecordIdUtil.RECORD_ID);
-        String request = GsonUtils.getGson().toJson(src);
-        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        showLoadingDialog();
+        RecordIdBean recordIdBean = new RecordIdBean(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
-                .getChestPainBloodText(requestBody)
+                .getChestPainBloodText(recordIdBean.getResuestBody(recordIdBean))
                 .enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Log.e("zhangshifu", "onResponse");
+                        hideLoadingDialog();
+
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
     }
@@ -416,13 +398,15 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
         }
         this.save(bean);
     }
+
     /**
      * 保存数据接口调用成功
      *
      * @param bean
      */
     public void save(ChestPainBloodTestBean bean) {
-        bean.setRecordId(RecordIdUtil.RECORD_ID);
+        showLoadingDialog();
+        bean.setRecordId(mRecordId);
         RetrofitClient
                 .getInstance()
                 .getCPApi()
@@ -430,6 +414,7 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         Log.e("zhangshifu", "onResponse" + response);
                         if (response != null && response.body() != null) {
                             BaseObjectBean body = response.body();
@@ -442,7 +427,8 @@ public class ChestPainBloodTestFragment extends BaseFragment implements View.OnC
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-                        Log.e("zhangshifu", "onFailure");
+                        hideLoadingDialog();
+                        showToast(R.string.http_tip_server_error);
                     }
                 });
 

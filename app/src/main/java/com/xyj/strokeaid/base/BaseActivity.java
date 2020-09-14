@@ -12,8 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
@@ -32,13 +30,11 @@ import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.helper.CalendarUtils;
 import com.xyj.strokeaid.helper.KeyboardUtils;
 import com.xyj.strokeaid.view.ActionSheet;
-import com.xyj.strokeaid.view.LoadingDialogFragment;
+import com.xyj.strokeaid.view.LoadingDialog;
 import com.xyj.strokeaid.view.SettingBar;
-import com.xyj.strokeaid.view.TextTimeBar;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayDeque;
 import java.util.Date;
 import java.util.List;
 
@@ -56,7 +52,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Context mContext;
     protected MMKV mDefaultMMKV;
-    protected LoadingDialogFragment mLoadingDialogFragment;
+    protected LoadingDialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -103,9 +99,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mLoadingDialogFragment != null) {
-            mLoadingDialogFragment.dismiss();
-        }
+        hideLoadingDialog();
         if (EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().unregister(this);
         }
@@ -116,66 +110,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return super.getResources();
     }
 
-//    @Override
-//    public Resources getResources() {
-//        return super.getResources();
-//        Resources resources = super.getResources();
-//        Configuration configuration = new Configuration();
-//        configuration.setToDefaults();
-//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//        return resources;
-//    }
-
-    private ArrayDeque<BaseFragment> mFragments = new ArrayDeque<>();
-
-    public void showContent(Class<? extends BaseFragment> target) {
-        showContent(target, null);
-    }
-
-    public void showContent(Class<? extends BaseFragment> target, Bundle bundle) {
-        try {
-            BaseFragment fragment = target.newInstance();
-            if (bundle != null) {
-                fragment.setArguments(bundle);
-            }
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fm.beginTransaction();
-            fragmentTransaction.add(android.R.id.content, fragment);
-            mFragments.push(fragment);
-            fragmentTransaction.addToBackStack("");
-            fragmentTransaction.commit();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void onBackPressed() {
-        if (!mFragments.isEmpty()) {
-            BaseFragment fragment = mFragments.getFirst();
-            if (!fragment.onBackPressed()) {
-                mFragments.removeFirst();
-                super.onBackPressed();
-                if (mFragments.isEmpty()) {
-                    finish();
-                }
-            }
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    public void doBack(BaseFragment fragment) {
-        if (mFragments.contains(fragment)) {
-            mFragments.remove(fragment);
-            FragmentManager fm = getSupportFragmentManager();
-            fm.popBackStack();
-            if (mFragments.isEmpty()) {
-                finish();
-            }
-        }
+        super.onBackPressed();
     }
 
     /**
@@ -200,143 +137,6 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public abstract void initListener();
 
-    protected TimePickerView mTimePickerView;
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param tvShowTime 显示时间的 TextView
-     */
-    protected void showTimePickView(TextView tvShowTime) {
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime, date);
-                }
-            })
-                    .isDialog(false)
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param textTimeBar 显示时间的 TextView
-     */
-    protected void showTimePickView(TextTimeBar textTimeBar) {
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(textTimeBar, date);
-                }
-            })
-                    .isDialog(false)
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param tvShowTime 显示时间的 TextView
-     */
-    protected void showTimePickView(SettingBar tvShowTime) {
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    refreshTime(tvShowTime, date);
-                }
-            })
-                    .isDialog(false)
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-    /**
-     * 显示时间选择控件
-     *
-     * @param settingBar 显示时间的 TextView
-     */
-    protected void showBirthPickView(SettingBar settingBar) {
-        if (mTimePickerView == null) {
-            mTimePickerView = new TimePickerBuilder(mContext, new OnTimeSelectListener() {
-                @Override
-                public void onTimeSelect(Date date, View v) {
-                    String birth = CalendarUtils.parseDate(CalendarUtils.TYPE_YEAR_MONTH_DAY, date);
-                    settingBar.setRightText(birth);
-                }
-            })
-                    .isDialog(false)
-                    .setType(new boolean[]{true, true, true, false, false, false})
-                    .setOutSideCancelable(true)
-                    .build();
-        }
-        if (mTimePickerView.isShowing()) {
-            mTimePickerView.dismiss();
-        }
-        mTimePickerView.show();
-    }
-
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param textView
-     */
-    protected void refreshTime(TextView textView, Date date) {
-        if (textView != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                textView.setTextColor(getColor(R.color.color_222222));
-            } else {
-                textView.setTextColor(getResources().getColor(R.color.color_222222));
-            }
-            textView.setText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param textTimeBar
-     */
-    protected void refreshTime(TextTimeBar textTimeBar, Date date) {
-        if (textTimeBar != null) {
-            textTimeBar.setTime(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
-
-    /**
-     * 刷新对应view中显示的时间
-     *
-     * @param settingBar
-     */
-    protected void refreshTime(SettingBar settingBar, Date date) {
-        if (settingBar != null) {
-            settingBar.setRightTextColor(getResources().getColor(R.color.color_222222));
-            settingBar.setRightText(CalendarUtils.parseDate(CalendarUtils.TYPE_ALL, date));
-        }
-    }
-
     public void showToast(CharSequence msg) {
         Toast.makeText(mContext, msg, Toast.LENGTH_SHORT).show();
     }
@@ -350,18 +150,23 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void showLoadingDialog() {
-        if (mLoadingDialogFragment == null) {
-            mLoadingDialogFragment = new LoadingDialogFragment();
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog.Builder(mContext)
+                    .setShowMessage(false)
+                    .setCancelable(false)
+                    .setCancelOutside(false)
+                    .setMessage("加载中...")
+                    .create();
         }
-        if (mLoadingDialogFragment.isVisible()) {
+        if (mLoadingDialog.isShowing()) {
             return;
         }
-        mLoadingDialogFragment.show(getSupportFragmentManager(), "loading");
+        mLoadingDialog.show();
     }
 
     public void hideLoadingDialog() {
-        if (mLoadingDialogFragment != null) {
-            mLoadingDialogFragment.dismiss();
+        if (mLoadingDialog != null) {
+            mLoadingDialog.dismiss();
         }
     }
 
@@ -428,6 +233,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * 显示相册和相机的action sheet
+     *
+     * @param listeners
+     */
     protected void showPhotoSelector(OnResultCallbackListener<LocalMedia>... listeners) {
         ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle("取消")
@@ -455,8 +265,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 }).show();
     }
 
+    /**
+     * 打开相册
+     *
+     * @param listener
+     */
     protected void openPhotoAlbum(OnResultCallbackListener<LocalMedia> listener) {
-        if (listener == null){
+        if (listener == null) {
             return;
         }
         PictureSelector.create(this)
@@ -468,8 +283,13 @@ public abstract class BaseActivity extends AppCompatActivity {
                 .forResult(listener);
     }
 
+    /**
+     * 打开相机
+     *
+     * @param listener
+     */
     protected void openCamera(OnResultCallbackListener<LocalMedia> listener) {
-        if (listener == null){
+        if (listener == null) {
             return;
         }
         PictureSelector.create(this)
