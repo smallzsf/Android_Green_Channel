@@ -9,19 +9,25 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
+import com.xyj.strokeaid.bean.ScoreResultBean;
 import com.xyj.strokeaid.bean.SendAddStrokeCgsBean;
 import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +76,8 @@ public class StrokeGcsScoreActivity extends BaseActivity {
     @BindView(R.id.ll_ih_title_frag_ss)
     LinearLayout llIhTitleFragSs;
 
+    @Autowired(name = IntentKey.GCS_TYPE)
+    int mGcsType;
 
     @Override
     public int getLayoutId() {
@@ -162,28 +170,35 @@ public class StrokeGcsScoreActivity extends BaseActivity {
      * 上传CGS评分
      */
     private void addStrokeMrs(SendAddStrokeCgsBean sendAddStrokeCgsBean) {
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(sendAddStrokeCgsBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
                 .getInstance()
                 .getApi()
                 .addCgs(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
+                .enqueue(new Callback<BaseObjectBean<ScoreResultBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
+                    public void onResponse(Call<BaseObjectBean<ScoreResultBean>> call, Response<BaseObjectBean<ScoreResultBean>> response) {
+                        BaseObjectBean<ScoreResultBean> body = response.body();
+                        if (body != null) {
+                            if (body.getResult() == 1) {
                                 showToast("保存数据成功");
                                 // TODO
+                                ScoreResultBean data = body.getData();
+                                ScoreEvent event = new ScoreEvent(data.getScore(), mGcsType, data.getId());
+                                EventBus.getDefault().postSticky(event);
+                                finish();
                             } else {
-                                showToast(response.body().getMessage());
+                                showToast(body.getMessage());
                             }
+                            hideLoadingDialog();
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
+                    public void onFailure(Call<BaseObjectBean<ScoreResultBean>> call, Throwable t) {
+                        hideLoadingDialog();
                     }
                 });
     }

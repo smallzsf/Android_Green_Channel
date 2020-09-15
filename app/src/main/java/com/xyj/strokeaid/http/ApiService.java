@@ -205,7 +205,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_CGS)
-    Call<BaseObjectBean> addCgs(@Body RequestBody info);
+    Call<BaseObjectBean<ScoreResultBean>> addCgs(@Body RequestBody info);
 
     /**
      * 洼田吞咽评定

@@ -89,6 +89,7 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
         });
         ibeGcs.setRightIvOnClickerListener(v -> {
             ARouter.getInstance().build(RouteUrl.Stroke.STROKE_GCS_SCORE)
+                    .withInt(IntentKey.GCS_TYPE,ScoreEvent.TYPE_GSC)
                     .navigation();
         });
         iebMrs.setRightIvOnClickerListener(v -> {
@@ -130,6 +131,10 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
         }else if (ScoreEvent.TYPE_FAST_ED == event.getType()) {
             iebFastEd.setEditContent(event.getScore() + "");
             iebFastEd.setTag(event.getId() + "");
+        }else if (ScoreEvent.TYPE_GSC == event.getType()){
+            ibeGcs.setEditContent(event.getScore() + "");
+            ibeGcs.setTag(event.getId() + "");
+
         }
     }
 

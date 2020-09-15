@@ -24,6 +24,10 @@ public final class IntentKey {
      * 3、  溶栓后即刻
      */
     public static final String NIHSS_TYPE = "NIHSS_TYPE";
+    /**
+     * GCS 评分
+     */
+    public static final String GCS_TYPE = "GCS_TYPE";
 
     /**
      * 患者类型
