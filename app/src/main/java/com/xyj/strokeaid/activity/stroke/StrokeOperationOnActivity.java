@@ -11,7 +11,9 @@ import androidx.core.content.ContextCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ProcessUtils;
 import com.xyj.strokeaid.R;
+import com.xyj.strokeaid.app.PatientCache;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
@@ -412,6 +414,7 @@ public class StrokeOperationOnActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        mRecordId = PatientCache.getRecordId();
         bindRadioGroupMap();
         initCheckBoxMap();
         initES();

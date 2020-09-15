@@ -47,6 +47,13 @@ public class BaseRequestBean<T extends Object> extends BaseBean<BaseRequestBean>
         this.recordId = recordId;
     }
 
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
 }
 
     

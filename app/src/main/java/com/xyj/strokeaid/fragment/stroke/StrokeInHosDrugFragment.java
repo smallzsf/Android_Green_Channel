@@ -307,10 +307,12 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
     private void saveData(StrokeInHosDrugBean bean) {
         BaseRequestBean<StrokeInHosDrugBean> baseRequestBean =
                 new BaseRequestBean<>(mRecordId, 1, bean);
+
+        RequestBody resuestBody = baseRequestBean.getResuestBody(baseRequestBean);
         RetrofitClient
                 .getInstance()
                 .getApi()
-                .saveDiagnosticEvaluation(baseRequestBean.getResuestBody(baseRequestBean))
+                .saveDiagnosticEvaluation(resuestBody)
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
