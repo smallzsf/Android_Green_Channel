@@ -424,6 +424,11 @@ public class ApiUrls {
      */
     public static final String NET_URL_CHEST_SAVE_INDICTION= "yjjk-gateway/yjjk-cdm-api/v1/indication/add";
 
+    /**
+     * ASPECT（CT、MRI）获取
+     */
+    public static final String NET_URL_CHEST_GET_ASPECT= "yjjk-gateway/yjjk-cdm-api/v1/aspect/get";
+
 
 }
 

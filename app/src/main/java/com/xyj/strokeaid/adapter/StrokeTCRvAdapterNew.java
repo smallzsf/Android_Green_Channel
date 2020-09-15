@@ -3,6 +3,7 @@ package com.xyj.strokeaid.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -28,6 +29,8 @@ import butterknife.ButterKnife;
  * email ：licy3051@qq.com
  */
 public class StrokeTCRvAdapterNew extends BaseAdapter {
+
+    private static final String TAG = StrokeTCRvAdapterNew.class.getSimpleName();
 
     private Context context;
     private List<StrokeTCBean> data;
@@ -73,7 +76,7 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
         viewHolder.tsbRoot.setSwitchClickListener(new OnSwitchClickListener(i));
 
         viewHolder.tvHeaderSingleText.setText(bean.getContent());
-        viewHolder.tsbRoot.setSelected(bean.getChecked());
+//        viewHolder.tsbRoot.setSelected(bean.getChecked());
         viewHolder.tsbRoot.setSwitch(bean.getChecked());
         return view;
     }
@@ -103,6 +106,7 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+            Log.e(TAG, "onCheckedChanged: "+position );
             if (onSwitchClickListener != null) {
                 onSwitchClickListener.onCheckedChanged(compoundButton, b, position);
             }

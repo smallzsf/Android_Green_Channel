@@ -1,6 +1,7 @@
 package com.xyj.strokeaid.activity.stroke;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -22,10 +23,16 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapter;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapterNew;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.PatientCache;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.AspectPo;
+import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.RecordIdBean;
 import com.xyj.strokeaid.bean.StrokeTCBean;
+import com.xyj.strokeaid.bean.dist.ChestPainImageExaminationBean;
+import com.xyj.strokeaid.http.RetrofitClient;
+import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
 import java.util.ArrayList;
@@ -33,6 +40,11 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * @Description: ASPECT评分
@@ -82,15 +94,48 @@ public class AspectScoreActivity extends BaseActivity {
     public void initView() {
         stlTitleFragStrokeMedice.setTabData(STROKE_TAB_TITLES);
 
+        initData();
+
+        loadData();
+
+
+    }
+
+    private void initData() {
         mStrokeTCBeans = prepareData();
         refrashAdapter(true);
-//        mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
-
 
         mStrokeTCBeans1 = prepareData1();
         refrashAdapter1(true);
-//        mStrokeTCRvAdapter1.setEmptyView(R.layout.view_empty_for_rv);
+    }
 
+
+    private void loadData() {
+        showLoadingDialog();
+
+        RecordIdBean recordIdBean = new RecordIdBean(PatientCache.getRecordId());
+        String request = GsonUtils.getGson().toJson(recordIdBean);
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
+        RetrofitClient
+                .getInstance()
+                .getCPApi()
+                .getAspect(requestBody)
+                .enqueue(new Callback<BaseObjectBean<AspectPo>>() {
+                    @Override
+                    public void onResponse(Call<BaseObjectBean<AspectPo>> call, Response<BaseObjectBean<AspectPo>> response) {
+                        BaseObjectBean<AspectPo> body = response.body();
+                        if (body.getResult() == 1){
+                            aspectPo = body.getData();
+                            initData();
+                        }
+                        hideLoadingDialog();
+                    }
+
+                    @Override
+                    public void onFailure(Call<BaseObjectBean<AspectPo>> call, Throwable t) {
+                        hideLoadingDialog();
+                    }
+                });
     }
 
     private void refrashAdapter(boolean b) {

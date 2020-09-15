@@ -1,5 +1,6 @@
 package com.xyj.strokeaid.http;
 
+import com.xyj.strokeaid.bean.AspectPo;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestpainEcgDetailBean;
@@ -94,4 +95,11 @@ public interface ChestPainApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.ChestPain.NET_URL_CHEST_PAIN_ECG_DETAIL_SAVE)
     Call<BaseObjectBean> saveReperfusionmeasures(@Body RequestBody info);
+
+    /**
+     * App--胸痛--治疗决策--直接PCI--保存 胸痛中心-初步诊断-
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_GET_ASPECT)
+    Call<BaseObjectBean<AspectPo>> getAspect(@Body RequestBody info);
 }
