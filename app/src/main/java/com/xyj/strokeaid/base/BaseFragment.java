@@ -98,11 +98,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public void showToast(CharSequence msg) {
-        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, msg, Toast.LENGTH_SHORT).show();
     }
 
     public void showToast(@StringRes int res) {
-        Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mActivity, res, Toast.LENGTH_SHORT).show();
     }
 
 
