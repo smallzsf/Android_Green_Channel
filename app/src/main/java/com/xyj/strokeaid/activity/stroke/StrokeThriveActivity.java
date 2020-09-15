@@ -37,7 +37,6 @@ import okhttp3.RequestBody;
 
 /**
  * StrokeThriveActivity
- * description: TODO
  *
  * @author : Licy
  * @date : 2020/8/24
@@ -161,7 +160,7 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
                     sendThriveDataBean.setThriveGlycuresis(nib2ActNihss.getScore() + "");
                     sendThriveDataBean.setThriveFibrillation(nib3ActNihss.getScore() + "");
                     sendThriveDataBean.setScore(getAllScores() + "");
-                    sendThriveDataBean.setCreateTime(getTime());
+//                    sendThriveDataBean.setCreateTime(getTime());
                     sendThriveDataBean.setCreateBy("");
                     sendThriveDataBean.setCreateByName("");
                     sendThriveDataBean.setId(mRecordId);
@@ -170,7 +169,7 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
     }
 
     private String getTime() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");// HH:mm:ss
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// HH:mm:ss
         Date date = new Date(System.currentTimeMillis());
         return simpleDateFormat.format(date);
     }
@@ -354,6 +353,7 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
      * @param sendThriveDataBean 数据
      */
     private void addFieldEvaluateScore(SendThriveDataBean sendThriveDataBean) {
+        showLoadingDialog();
         String request = GsonUtils.getGson().toJson(sendThriveDataBean);
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), request);
         RetrofitClient
@@ -363,20 +363,24 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
                 .enqueue(new Callback<BaseObjectBean<RequestThriveDataBean>>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean<RequestThriveDataBean>> call, Response<BaseObjectBean<RequestThriveDataBean>> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 RequestThriveDataBean reQuestThriveDataBean = response.body().getData();
                                 EventBus.getDefault().postSticky(new ScoreEvent(reQuestThriveDataBean.getScore(), 7, mRecordId));
+                                finish();
                                 showToast("修改成功");
                             } else {
                                 showToast(response.body().getMessage());
                             }
+                        }else {
+                            showToast("服务器异常");
                         }
                     }
 
                     @Override
                     public void onFailure(Call<BaseObjectBean<RequestThriveDataBean>> call, Throwable t) {
-
+                        hideLoadingDialog();
                     }
                 });
     }
