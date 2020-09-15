@@ -10,8 +10,13 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.view.ItemEditBar;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
@@ -54,7 +59,7 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
 
     @Override
     protected void initView(@NonNull View view) {
-
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -74,11 +79,12 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
     protected void initListener() {
         iebFastEd.setRightIvOnClickerListener(v -> {
             ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+                    .withInt(IntentKey.NIHSS_TYPE, ScoreEvent.TYPE_FAST_ED)
                     .navigation();
         });
         iebNihss.setRightIvOnClickerListener(v -> {
             ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
-
+                    .withInt(IntentKey.NIHSS_TYPE, ScoreEvent.TYPE_NIHSS_FIRST)
                     .navigation();
         });
         ibeGcs.setRightIvOnClickerListener(v -> {
@@ -107,4 +113,30 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
         });
     }
 
+
+    /**
+     * 事件接收
+     *
+     * @param event 事件通知
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveScoreEventBus(ScoreEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (ScoreEvent.TYPE_NIHSS_FIRST == event.getType()) {
+            iebNihss.setEditContent(event.getScore() + "");
+            iebNihss.setTag(event.getId() + "");
+        }else if (ScoreEvent.TYPE_FAST_ED == event.getType()) {
+            iebFastEd.setEditContent(event.getScore() + "");
+            iebFastEd.setTag(event.getId() + "");
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }

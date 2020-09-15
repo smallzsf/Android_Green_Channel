@@ -44,6 +44,7 @@ import com.xyj.strokeaid.bean.dist.StrokeSangguineousBean;
 import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.bean.trauma.TraumaOutcomeBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -190,7 +191,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_FAST)
-    Call<BaseObjectBean> getFastEdScoreSave(@Body RequestBody info);
+    Call<BaseObjectBean<ScoreEvent>> getFastEdScoreSave(@Body RequestBody info);
 
     /**
      * Nihss评分

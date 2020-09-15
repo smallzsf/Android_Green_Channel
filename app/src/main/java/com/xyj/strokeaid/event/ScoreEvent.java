@@ -64,6 +64,7 @@ public class ScoreEvent {
     public static int TYPE_介入治疗禁忌症 = 21;
     public static int TYPE_介入治疗适应症 = 22;
     public static int TYPE_NIHSS_出院 = 23;
+    public static int TYPE_FAST_ED = 24;
 
 
     private int type;

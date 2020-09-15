@@ -15,10 +15,13 @@ import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.ToolfastedBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -131,21 +134,27 @@ public class FastEdActivity extends BaseActivity implements NihssItemBar.OnScore
                 .getInstance()
                 .getApi()
                 .getFastEdScoreSave(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
+                .enqueue(new Callback<BaseObjectBean<ScoreEvent>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                    public void onResponse(Call<BaseObjectBean<ScoreEvent>> call, Response<BaseObjectBean<ScoreEvent>> response) {
                         hideLoadingDialog();
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
+                        BaseObjectBean<ScoreEvent> body = response.body();
+                        if (body != null) {
+                            if (body.getResult() == 1) {
                                 showToast("评分提交成功！");
+                                ScoreEvent data = body.getData();
+                                ScoreEvent event = new ScoreEvent(data.getScore(), mNihssType, data.getId());
+                                EventBus.getDefault().postSticky(event);
+
+                                finish();
                             } else {
-                                showToast(response.body().getMessage());
+                                showToast(body.getMessage());
                             }
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                    public void onFailure(Call<BaseObjectBean<ScoreEvent>> call, Throwable t) {
                         showToast(call.toString());
                     }
                 });
