@@ -21,6 +21,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ThrombolysisAssessmentBean;
+import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.TextTimeBar;
@@ -100,6 +101,13 @@ public class ThrombolysisAssessmentActivity extends BaseActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @Override
     public void initListener() {
         titleBarActAssessment.setLeftLayoutClickListener(v -> finish());
     }
@@ -139,15 +147,15 @@ public class ThrombolysisAssessmentActivity extends BaseActivity {
                             loading.dismiss();
                         }
 
-//                        if (response.body() != null) {
-//                            if (response.body().getResult() == 1) {
-//                                viewInitData(response.body().getData().getData());
-//                            } else {
-//                                showToast(TextUtils.isEmpty(response.body().getMessage())
-//                                        ? getString(R.string.http_tip_data_save_error)
-//                                        : response.body().getMessage());
-//                            }
-//                        }
+                        if (response.body() != null) {
+                            if (response.body().getResult() == 1) {
+                                viewInitData(response.body().getData().getData());
+                            } else {
+                                showToast(TextUtils.isEmpty(response.body().getMessage())
+                                        ? getString(R.string.http_tip_data_save_error)
+                                        : response.body().getMessage());
+                            }
+                        }
                     }
 
                     @Override
@@ -158,6 +166,41 @@ public class ThrombolysisAssessmentActivity extends BaseActivity {
                         showToast(R.string.http_tip_server_error);
                     }
                 });
+    }
+
+    /**
+     *  填充数据
+     */
+    private void viewInitData(ThrombolysisAssessmentBean assessmentBean) {
+
+        // 时间
+        ttbDoctorReceiveTime.setTime(assessmentBean.getJmrsthrombolysisdoctorreceptiontime());
+        // todo 溶栓医生 jmrsthrombolysisdoctor
+
+        // 会诊地点
+        if (assessmentBean.getJmrsdepartment().equals("cpc_jrzlhzdd_jzk")) {
+            rbExit.setChecked(true);
+        } else if (assessmentBean.getJmrsdepartment().equals("cpc_jrzlhzdd_qt")) {
+            rbOther.setChecked(true);
+        }
+
+        //  适应症评估
+        ttbIndicationTime.setTime(assessmentBean.getJmrsindicationevalutetime());
+        // 适应症评估结果
+        if (assessmentBean.getJmrsindicationevaluteresult().equals("cpc_jrzlsyzpg_result_accord")) {
+            rbIndicationOk.setChecked(true);
+        } else if (assessmentBean.getJmrsindicationevaluteresult().equals("cpc_jrzlsyzpg_result_inconformity")) {
+            rbIndicationNo.setChecked(true);
+        }
+
+        // 禁忌症评估
+        ttbTaboo.setTime(assessmentBean.getJmrscontraindicationsevalutetime());
+        // 禁忌症评估结果
+        if (assessmentBean.getJmrscontraindicationsevaluteresult().equals("cpc_jrzljjzpg_result_inconformity")) {
+            rbTabooHave.setChecked(true);
+        } else if (assessmentBean.getJmrscontraindicationsevaluteresult().equals("cpc_jrzljjzpg_result_accord")) {
+            rbTabooNothing.setChecked(true);
+        }
     }
 
     /**
@@ -237,11 +280,4 @@ public class ThrombolysisAssessmentActivity extends BaseActivity {
                 });
     }
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }
