@@ -74,6 +74,7 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
 
         viewHolder.tvHeaderSingleText.setText(bean.getContent());
         viewHolder.tsbRoot.setSelected(bean.getChecked());
+        viewHolder.tsbRoot.setSwitch(bean.getChecked());
         return view;
     }
 

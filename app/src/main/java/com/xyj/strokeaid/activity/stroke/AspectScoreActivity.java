@@ -2,7 +2,9 @@ package com.xyj.strokeaid.activity.stroke;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
@@ -18,9 +20,11 @@ import com.flyco.tablayout.SegmentTabLayout;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.adapter.StrokeTCRvAdapter;
+import com.xyj.strokeaid.adapter.StrokeTCRvAdapterNew;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
+import com.xyj.strokeaid.bean.AspectPo;
 import com.xyj.strokeaid.bean.StrokeTCBean;
 import com.xyj.strokeaid.view.BaseTitleBar;
 
@@ -45,21 +49,24 @@ public class AspectScoreActivity extends BaseActivity {
     @BindView(R.id.title_bar_act_tc)
     BaseTitleBar titleBarActTc;
     @BindView(R.id.rv_content_act_tc)
-    RecyclerView rvContentActTc;
+    ListView rvContentActTc;
     @BindView(R.id.stl_title_frag_stroke_medice)
     SegmentTabLayout stlTitleFragStrokeMedice;
     @BindView(R.id.ll_before_loop)
     LinearLayout llBeforeLoop;
     @BindView(R.id.rv_back_loop)
-    RecyclerView rvBackLoop;
+    ListView rvBackLoop;
     @BindView(R.id.ll_back_loop)
     LinearLayout llBackLoop;
 
     private List<StrokeTCBean> mStrokeTCBeans;
-    private StrokeTCRvAdapter mStrokeTCRvAdapter;
+    private StrokeTCRvAdapterNew mStrokeTCRvAdapter;
     public static final String[] STROKE_TAB_TITLES = new String[]{"前循环", "后循环"};
     private List<StrokeTCBean> mStrokeTCBeans1;
-    private StrokeTCRvAdapter mStrokeTCRvAdapter1;
+    private StrokeTCRvAdapterNew mStrokeTCRvAdapter1;
+
+    private AspectPo aspectPo;
+
 
     @Override
     public int getLayoutId() {
@@ -76,56 +83,77 @@ public class AspectScoreActivity extends BaseActivity {
         stlTitleFragStrokeMedice.setTabData(STROKE_TAB_TITLES);
 
         mStrokeTCBeans = prepareData();
-        mStrokeTCRvAdapter = new StrokeTCRvAdapter(R.layout.adapter_header_single_text, R.layout.adapter_rv_stroke_thrombolysis_symptom_item, mStrokeTCBeans);
-
-        rvContentActTc.setLayoutManager(new LinearLayoutManager(mContext));
-        rvContentActTc.setAdapter(mStrokeTCRvAdapter);
-        mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
+        refrashAdapter(true);
+//        mStrokeTCRvAdapter.setEmptyView(R.layout.view_empty_for_rv);
 
 
         mStrokeTCBeans1 = prepareData1();
-        mStrokeTCRvAdapter1 = new StrokeTCRvAdapter(R.layout.adapter_header_single_text, R.layout.adapter_rv_stroke_thrombolysis_symptom_item, mStrokeTCBeans1);
-
-        rvBackLoop.setLayoutManager(new LinearLayoutManager(mContext));
-        rvBackLoop.setAdapter(mStrokeTCRvAdapter1);
-        mStrokeTCRvAdapter1.setEmptyView(R.layout.view_empty_for_rv);
+        refrashAdapter1(true);
+//        mStrokeTCRvAdapter1.setEmptyView(R.layout.view_empty_for_rv);
 
     }
 
+    private void refrashAdapter(boolean b) {
+        if (mStrokeTCRvAdapter == null || b) {
+            mStrokeTCRvAdapter = new StrokeTCRvAdapterNew(this, mStrokeTCBeans);
+            mStrokeTCRvAdapter.setOnSwitchClickListener(onSwitchClickListener);
+            rvContentActTc.setAdapter(mStrokeTCRvAdapter);
+        } else {
+            mStrokeTCRvAdapter.notifyDataSetChanged();
+        }
+    }
+
+    StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchClickListener = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
+            StrokeTCBean bean = mStrokeTCBeans.get(position);
+            bean.setChecked(true);
+            if (position == mStrokeTCBeans.size() - 1) {
+                for (int i = 0; i < mStrokeTCBeans.size(); i++) {
+                    StrokeTCBean bean1 = mStrokeTCBeans.get(i);
+                    if (bean1 == null) {
+                        continue;
+                    }
+                    if (i == position) {
+                        continue;
+                    }
+                    bean1.setChecked(false);
+                }
+            }
+            refrashAdapter(false);
+        }
+    };
+    private void refrashAdapter1(boolean b) {
+        if (mStrokeTCRvAdapter1 == null || b) {
+            mStrokeTCRvAdapter1 = new StrokeTCRvAdapterNew(this, mStrokeTCBeans1);
+
+            mStrokeTCRvAdapter1.setOnSwitchClickListener(onSwitchClickListener1);
+            rvBackLoop.setAdapter(mStrokeTCRvAdapter1);
+        } else {
+            mStrokeTCRvAdapter1.notifyDataSetChanged();
+        }
+    }
+    StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchClickListener1 = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
+            StrokeTCBean bean = mStrokeTCBeans1.get(position);
+            bean.setChecked(true);
+            for (int i = 0; i < mStrokeTCBeans1.size(); i++) {
+                StrokeTCBean bean1 = mStrokeTCBeans1.get(i);
+                if (bean1 == null) {
+                    continue;
+                }
+                if (i == position) {
+                    continue;
+                }
+                bean1.setChecked(false);
+            }
+            refrashAdapter1(false);
+        }
+    };
     @Override
     public void initListener() {
         titleBarActTc.setLeftLayoutClickListener(v -> finish());
-
-        mStrokeTCRvAdapter.setOnItemChildClickListener(new OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(@NonNull BaseQuickAdapter adapter, @NonNull View view, int position) {
-                if (view.getId() == R.id.tsb_root) {
-                    final boolean checked = mStrokeTCBeans.get(position).getChecked();
-                    if (!mStrokeTCBeans.get(position).isHeader()) {
-                        mStrokeTCBeans.get(position).setChecked(!checked);
-                        mStrokeTCRvAdapter.notifyItemChanged(position);
-                    }
-                    if (position == 15) {
-                        // 清除1~14项的选中状态
-                        if (!checked) {
-                            mStrokeTCBeans.get(position).setChecked(true);
-                            for (int i = 1; i < 15; i++) {
-                                mStrokeTCBeans.get(i).setChecked(false);
-                            }
-                        }
-                    } else if (position == mStrokeTCBeans.size() - 1) {
-                        // 清除相对禁忌症中1~6项的选中状态
-                        if (!checked) {
-                            mStrokeTCBeans.get(position).setChecked(true);
-                            for (int i = 17; i < mStrokeTCBeans.size() - 1; i++) {
-                                mStrokeTCBeans.get(i).setChecked(false);
-                            }
-                        }
-                    }
-                    mStrokeTCRvAdapter.notifyDataSetChanged();
-                }
-            }
-        });
 
         stlTitleFragStrokeMedice.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -167,6 +195,21 @@ public class AspectScoreActivity extends BaseActivity {
         list.add(new StrokeTCBean(false, "1=（9）M2上方的大脑中动脉皮层（M5）", false, ""));
         list.add(new StrokeTCBean(false, "1=（10）M3上方的大脑中动脉皮层（M6）", false, ""));
         list.add(new StrokeTCBean(false, "0=（11）以上区域均无异常", false, ""));
+
+        if (aspectPo == null){
+            return list;
+        }
+        list.get(0).setChecked(aspectPo.aspectBeforeC.equals("1"));
+        list.get(1).setChecked(aspectPo.aspectBeforeL.equals("1"));
+        list.get(2).setChecked(aspectPo.aspectBeforeIc.equals("1"));
+        list.get(3).setChecked(aspectPo.aspectBeforeM1.equals("1"));
+        list.get(4).setChecked(aspectPo.aspectBeforeI.equals("1"));
+        list.get(5).setChecked(aspectPo.aspectBeforeM2.equals("1"));
+        list.get(6).setChecked(aspectPo.aspectBeforeM3.equals("1"));
+        list.get(7).setChecked(aspectPo.aspectBeforeM4.equals("1"));
+        list.get(8).setChecked(aspectPo.aspectBeforeM5.equals("1"));
+        list.get(9).setChecked(aspectPo.aspectBeforeM6.equals("1"));
+        list.get(10).setChecked(aspectPo.aspectBeforeNone.equals("1"));
         return list;
     }
 
@@ -181,8 +224,20 @@ public class AspectScoreActivity extends BaseActivity {
         list.add(new StrokeTCBean(false, "1=（6）右侧丘脑", false, ""));
         list.add(new StrokeTCBean(false, "1=（7）左侧大脑后动脉供血区", false, ""));
         list.add(new StrokeTCBean(false, "1=（8）右侧大脑后动脉供血区", false, ""));
-        list.add(new StrokeTCBean(false, "1=（9）M2上方的大脑中动脉皮层（M5）", false, ""));
         list.add(new StrokeTCBean(false, "0=（9）以上区域均无异常", false, ""));
+
+        if (aspectPo == null){
+            return list;
+        }
+        list.get(0).setChecked(aspectPo.aspectAfterPons.equals("2"));
+        list.get(1).setChecked(aspectPo.aspectAfterMidbrain.equals("2"));
+        list.get(2).setChecked(aspectPo.aspectAfterCerebellumleft.equals("1"));
+        list.get(3).setChecked(aspectPo.aspectAfterCerebellumright.equals("1"));
+        list.get(4).setChecked(aspectPo.aspectAfterMidbrainleft.equals("1"));
+        list.get(5).setChecked(aspectPo.aspectAfterMidbrainright.equals("1"));
+        list.get(6).setChecked(aspectPo.aspectAfterBrainarteryleft.equals("1"));
+        list.get(7).setChecked(aspectPo.aspectAfterBrainarteryright.equals("1"));
+        list.get(8).setChecked(aspectPo.aspectAfterNone.equals("1"));
         return list;
     }
 }
