@@ -5,6 +5,7 @@ import com.xyj.strokeaid.bean.BaseObjectBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.ChestPainDiseaseRecordBean;
 import com.xyj.strokeaid.bean.DiagnosticEvaluationBean;
+import com.xyj.strokeaid.bean.IndicationBean;
 import com.xyj.strokeaid.bean.InformedConsentBean;
 import com.xyj.strokeaid.bean.EmergencyCenterStrokeInterventionalTherapyPo;
 import com.xyj.strokeaid.bean.IntraConsultBean;
@@ -757,5 +758,21 @@ public interface ApiService {
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_CHEST_TRAUMA_EICU_INFO)
     Call<BaseObjectBean> addTraumaEicuInfo(@Body RequestBody info);
+//
+
+    /**
+     *静脉溶栓适应症评估表-获取
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_GET_INDICTION)
+    Call<BaseObjectBean<IndicationBean>> getIndication(@Body RequestBody info);
+    /**
+     *静脉溶栓适应症评估表-保存
+     */
+    @Headers({"Content-Type: application/json", "Accept: application/json"})
+    @POST(ApiUrls.NET_URL_CHEST_SAVE_INDICTION)
+    Call<BaseObjectBean> saveIndication(@Body RequestBody info);
+
+
 
 }

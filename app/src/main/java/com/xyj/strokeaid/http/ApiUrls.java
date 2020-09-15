@@ -412,6 +412,18 @@ public class ApiUrls {
      *  EICU/ICU 信息
      */
     public static final String NET_URL_CHEST_TRAUMA_EICU_INFO= "yjjk-gateway/yjjk-cdm-api/v1/EmergencyCenterTraumaEicuicu/edit";
+//
+
+    /**
+     * 静脉溶栓适应症评估表-获取
+     */
+    public static final String NET_URL_CHEST_GET_INDICTION= "yjjk-gateway/yjjk-cdm-api/v1/indication/get";
+
+    /**
+     * 静脉溶栓适应症评估表-保存
+     */
+    public static final String NET_URL_CHEST_SAVE_INDICTION= "yjjk-gateway/yjjk-cdm-api/v1/indication/add";
+
 
 }
 
