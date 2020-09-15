@@ -13,7 +13,7 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
-import com.xyj.strokeaid.bean.RequestThriveDataBean;
+import com.xyj.strokeaid.bean.ScoreResultBean;
 import com.xyj.strokeaid.bean.SendThriveDataBean;
 import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -360,14 +360,15 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
                 .getInstance()
                 .getApi()
                 .addThriveScore(requestBody)
-                .enqueue(new Callback<BaseObjectBean<RequestThriveDataBean>>() {
+                .enqueue(new Callback<BaseObjectBean<ScoreResultBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean<RequestThriveDataBean>> call, Response<BaseObjectBean<RequestThriveDataBean>> response) {
+                    public void onResponse(Call<BaseObjectBean<ScoreResultBean>> call, Response<BaseObjectBean<ScoreResultBean>> response) {
                         hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
-                                RequestThriveDataBean reQuestThriveDataBean = response.body().getData();
-                                EventBus.getDefault().postSticky(new ScoreEvent(reQuestThriveDataBean.getScore(), 7, mRecordId));
+                                ScoreResultBean resultBean = response.body().getData();
+                                ScoreEvent event = new ScoreEvent(resultBean.getScore(), ScoreEvent.TYPE_THRIVE, resultBean.getId());
+                                EventBus.getDefault().postSticky(event);
                                 finish();
                                 showToast("修改成功");
                             } else {
@@ -379,7 +380,7 @@ public class StrokeThriveActivity extends BaseActivity implements NihssItemBar.O
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean<RequestThriveDataBean>> call, Throwable t) {
+                    public void onFailure(Call<BaseObjectBean<ScoreResultBean>> call, Throwable t) {
                         hideLoadingDialog();
                     }
                 });

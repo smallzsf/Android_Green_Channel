@@ -9,8 +9,6 @@ import com.xyj.strokeaid.bean.IndicationBean;
 import com.xyj.strokeaid.bean.InformedConsentBean;
 import com.xyj.strokeaid.bean.EmergencyCenterStrokeInterventionalTherapyPo;
 import com.xyj.strokeaid.bean.IntraConsultBean;
-import com.xyj.strokeaid.bean.LoginBean;
-import com.xyj.strokeaid.bean.MainBean;
 import com.xyj.strokeaid.bean.PatientMedicalRecordBean;
 import com.xyj.strokeaid.bean.PreoperativePreparationInfoBean;
 import com.xyj.strokeaid.bean.RequestBloodDataBean;
@@ -21,9 +19,8 @@ import com.xyj.strokeaid.bean.RequestGetDiseaseRecordBean;
 import com.xyj.strokeaid.bean.RequestGetVitalSigns;
 import com.xyj.strokeaid.bean.RequestGetVitalSignsBean;
 import com.xyj.strokeaid.bean.RequestImageExaminteDataBean;
-import com.xyj.strokeaid.bean.RequestThriveDataBean;
+import com.xyj.strokeaid.bean.ScoreResultBean;
 import com.xyj.strokeaid.bean.RequestTraumaConsultationInfoBean;
-import com.xyj.strokeaid.bean.SendSmsBean;
 import com.xyj.strokeaid.bean.SiscontraindicationBean;
 import com.xyj.strokeaid.bean.StrokeInHosDrugBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
@@ -32,7 +29,6 @@ import com.xyj.strokeaid.bean.StrokeOtherDisposalBean;
 import com.xyj.strokeaid.bean.ThrombolysisAssessmentBean;
 import com.xyj.strokeaid.bean.ThrombolysisTreatmentBean;
 import com.xyj.strokeaid.bean.StrokeTransferBean;
-import com.xyj.strokeaid.bean.TimeNodeBean;
 import com.xyj.strokeaid.bean.StrokeTrigaeInfoBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainDiagnosisBean;
 import com.xyj.strokeaid.bean.chestpain.ChestPainPatientsDetourBean;
@@ -49,9 +45,6 @@ import com.xyj.strokeaid.bean.score.ContraindicationPo;
 import com.xyj.strokeaid.bean.score.MyindicationPo;
 import com.xyj.strokeaid.bean.trauma.TraumaOutcomeBean;
 
-import java.util.List;
-
-import io.reactivex.rxjava3.core.Observable;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -204,7 +197,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_NIHSS)
-    Call<BaseObjectBean> addNihss(@Body RequestBody info);
+    Call<BaseObjectBean<ScoreResultBean>> addNihss(@Body RequestBody info);
 
     /**
      * CGS评分
@@ -675,7 +668,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_CHEST_EMERGENCYCENTER_THRIVE)
-    Call<BaseObjectBean<RequestThriveDataBean>> addThriveScore(@Body RequestBody info);
+    Call<BaseObjectBean<ScoreResultBean>> addThriveScore(@Body RequestBody info);
 
     /**
      * 卒中 药物治疗 查询

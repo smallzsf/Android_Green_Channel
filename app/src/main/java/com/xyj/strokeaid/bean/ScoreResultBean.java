@@ -1,6 +1,6 @@
 package com.xyj.strokeaid.bean;
 
-public class RequestThriveDataBean {
+public class ScoreResultBean {
 //    score		是	[string]
 //            4	id
 

@@ -171,6 +171,16 @@ public class ItemEditBar extends RelativeLayout {
         return this;
     }
 
+    public void setTag(Object tags) {
+        etContentViewIeb.setTag(tags);
+    }
+
+    public Object getTag(){
+        return etContentViewIeb.getTag();
+    }
+
+
+
     public ItemEditBar setEditEnable(boolean enable) {
         mEditEnable = enable;
         if (mEditEnable) {

@@ -78,6 +78,7 @@ public class StrokeEvaluationFragment extends BaseStrokeFragment {
         });
         iebNihss.setRightIvOnClickerListener(v -> {
             ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+
                     .navigation();
         });
         ibeGcs.setRightIvOnClickerListener(v -> {

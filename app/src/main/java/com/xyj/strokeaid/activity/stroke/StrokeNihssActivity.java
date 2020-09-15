@@ -9,15 +9,19 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.app.IntentKey;
+import com.xyj.strokeaid.app.PatientCache;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
-import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.bean.ScoreResultBean;
 import com.xyj.strokeaid.bean.ToolnihssBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,12 +113,18 @@ public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.On
         if (mNihssType == 1) {
             // 首次NIHSS评分
             titleBarActNihss.setTitle("首次NIHSS评分");
-        } else if (mNihssType == 2) {
+        } else if (mNihssType == ScoreEvent.TYPE_NIHSS_FIRST) {
             // 溶栓前NIHSS评分
             titleBarActNihss.setTitle("溶栓前NIHSS评分");
-        } else if (mNihssType == 3) {
+        } else if (mNihssType == ScoreEvent.TYPE_NIHSS_OVER) {
             // 溶栓后即刻NIHSS评分
             titleBarActNihss.setTitle("溶栓后即刻NIHSS评分");
+        } else if (mNihssType == ScoreEvent.TYPE_NIHSS_OVER_24) {
+            // 溶栓后即刻NIHSS评分
+            titleBarActNihss.setTitle("溶栓后24NIHSS评分");
+        } else if (mNihssType == ScoreEvent.TYPE_NIHSS_OVER_7_2) {
+            // 溶栓后即刻NIHSS评分
+            titleBarActNihss.setTitle("溶栓后7±2NIHSS评分");
         } else {
             // NIHSS评分
             titleBarActNihss.setTitle("NIHSS评分");
@@ -146,22 +156,27 @@ public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.On
                 .getInstance()
                 .getApi()
                 .addNihss(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
+                .enqueue(new Callback<BaseObjectBean<ScoreResultBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                    public void onResponse(Call<BaseObjectBean<ScoreResultBean>> call, Response<BaseObjectBean<ScoreResultBean>> response) {
                         hideLoadingDialog();
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
+                        BaseObjectBean<ScoreResultBean> body = response.body();
+                        if (body != null) {
+                            if (body.getResult() == 1) {
                                 showToast("评分提交成功！");
+                                ScoreResultBean data = body.getData();
+                                ScoreEvent event = new ScoreEvent(data.getScore(), mNihssType, data.getId());
+                                EventBus.getDefault().postSticky(event);
+
                                 finish();
                             } else {
-                                showToast(response.body().getMessage());
+                                showToast(body.getMessage());
                             }
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                    public void onFailure(Call<BaseObjectBean<ScoreResultBean>> call, Throwable t) {
 
                     }
                 });

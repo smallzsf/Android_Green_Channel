@@ -321,25 +321,30 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
         // 溶栓前NIHSS
         itbBrforNihss.setRightIvOnClickerListener(v -> {
-            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+            ARouter.getInstance()
+                    .build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .withInt(IntentKey.NIHSS_TYPE,ScoreEvent.TYPE_NIHSS_FIRST)
                     .navigation();
         });
 
         // 溶栓后即刻NIHSS
         iebNowNihss.setRightIvOnClickerListener(v -> {
-            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .withInt(IntentKey.NIHSS_TYPE,ScoreEvent.TYPE_NIHSS_OVER)
                     .navigation();
         });
 
         // 溶栓后24hNIHSS
         iebDayNihss.setRightIvOnClickerListener(v -> {
-            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .withInt(IntentKey.NIHSS_TYPE,ScoreEvent.TYPE_NIHSS_OVER_24)
                     .navigation();
         });
 
         // 7±2天 NIHSS
         iebWeakNihss.setRightIvOnClickerListener(v -> {
-            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_FAST_ED__SCORE)
+            ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .withInt(IntentKey.NIHSS_TYPE,ScoreEvent.TYPE_NIHSS_OVER_7_2)
                     .navigation();
         });
 
@@ -573,8 +578,10 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         thrombolysisTreatmentBean.setThrombolyticinformedconsent(pathUrl);
         // THRIVE评分
         thrombolysisTreatmentBean.setThrive(iebThrive.getEditContent());
+        thrombolysisTreatmentBean.setThriverelationid((String) iebThrive.getTag());
         // 溶栓前NIHSS
         thrombolysisTreatmentBean.setPrethrombolyticnihss(itbBrforNihss.getEditContent());
+        thrombolysisTreatmentBean.setPrethrombolyticnihssrelationid((String) itbBrforNihss.getTag());
         // 溶栓地点
         thrombolysisTreatmentBean.setThrombolyticaddress(esThrombolysisAddress.getSelectData()[1]);
         // todo  溶栓护士  setEmergencynurseJmrs();
@@ -656,10 +663,13 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
         // 溶栓结束后即刻NIHSS
         thrombolysisTreatmentBean.setPostthrombolyticnihss(iebNowNihss.getEditContent());
+        thrombolysisTreatmentBean.setPostthrombolyticnihssrelationid((String) iebNowNihss.getTag());
         // 溶栓后24h NIHSS
         thrombolysisTreatmentBean.setAfterdaythrombolyticnihss(iebDayNihss.getEditContent());
+        thrombolysisTreatmentBean.setAfterdaythrombolyticnihssrelationid((String) iebDayNihss.getTag());
         // 7±2天 NIHSS
         thrombolysisTreatmentBean.setAfterweekthrombolyticnihss(iebWeakNihss.getEditContent());
+        thrombolysisTreatmentBean.setAfterweekthrombolyticnihssrelationid((String) iebWeakNihss.getTag());
         // 未给予血管内治疗的原因
         if (cpcWjyxgnzldyyFdxgbb.isChecked()) {
             delayReasonCode = delayReasonCode + "cpc_wjyxgnzldyy_fdxgbb,";
@@ -816,8 +826,10 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         pathUrl = treatmentBean.getThrombolyticinformedconsent();
         // THRIVE评分
         iebThrive.setEditContent(treatmentBean.getThrive());
+        iebThrive.setTag(treatmentBean.getThriverelationid());
         // 溶栓前NIHSS
         itbBrforNihss.setEditContent(treatmentBean.getPrethrombolyticnihss());
+        itbBrforNihss.setTag(treatmentBean.getPrethrombolyticnihssrelationid());
         // 溶栓地点
         switch (treatmentBean.getThrombolyticaddress()) {
             case "cpc_rsdd_jzk":
@@ -947,10 +959,13 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
 
         // 溶栓结束后即刻NIHSS
         iebNowNihss.setEditContent(treatmentBean.getPostthrombolyticnihss());
+        iebNowNihss.setTag(treatmentBean.getPostthrombolyticnihssrelationid());
         // 溶栓后24h NIHSS
         iebDayNihss.setEditContent(treatmentBean.getAfterdaythrombolyticnihss());
+        iebDayNihss.setTag(treatmentBean.getAfterdaythrombolyticnihssrelationid());
         // 7±2天 NIHSS
         iebWeakNihss.setEditContent(treatmentBean.getAfterweekthrombolyticnihss());
+        iebWeakNihss.setTag(treatmentBean.getAfterweekthrombolyticnihssrelationid());
 
         // 未给予血管内治疗的原因
         String[] NoteStrings = treatmentBean.getNotembolectomyreason().split(",");
@@ -1084,8 +1099,23 @@ public class ThrombolysisTreatmentActivity extends BaseActivity {
         if (event == null) {
             return;
         }
-        if (7 == event.getType()) {
+        if (ScoreEvent.TYPE_THRIVE == event.getType()) {
             iebThrive.setEditContent(event.getScore() + "");
+            iebThrive.setTag(event.getId() + "");
+        }else if(ScoreEvent.TYPE_NIHSS_FIRST  == event.getType()){
+            itbBrforNihss.setEditContent(event.getScore() + "");
+            itbBrforNihss.setTag(event.getId() + "");
+        }else if (ScoreEvent.TYPE_NIHSS_OVER == event.getType()){
+
+            iebNowNihss.setEditContent(event.getScore() + "");
+            iebNowNihss.setTag(event.getId() + "");
+        }else if (ScoreEvent.TYPE_NIHSS_OVER_24 == event.getType()){
+
+            iebDayNihss.setEditContent(event.getScore() + "");
+            iebDayNihss.setTag(event.getId() + "");
+        }else if (ScoreEvent.TYPE_NIHSS_OVER_7_2 == event.getType()){
+            iebWeakNihss.setEditContent(event.getScore() + "");
+            iebWeakNihss.setTag(event.getId() + "");
         }
     }
 

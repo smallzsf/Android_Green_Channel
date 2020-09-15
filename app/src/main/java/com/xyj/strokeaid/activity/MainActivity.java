@@ -37,6 +37,7 @@ import com.xyj.strokeaid.app.Constants;
 import com.xyj.strokeaid.app.DocInfoCache;
 import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.MmkvKey;
+import com.xyj.strokeaid.app.PatientCache;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.app.UserInfoCache;
 import com.xyj.strokeaid.base.BaseMvpActivity;
@@ -241,6 +242,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 } else {
                     destination = RouteUrl.Stroke.STROKE_HOME;
                 }
+                PatientCache.setInfoBean(mainListBeans.get(position));
                 ARouter.getInstance().build(destination)
                         .withString(IntentKey.RECORD_ID, mainListBeans.get(position).getId())
                         .withObject(IntentKey.PATIENT_INFO, mainListBeans.get(position))

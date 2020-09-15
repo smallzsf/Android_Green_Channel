@@ -20,7 +20,10 @@ public class ScoreEvent {
      * 1、  fast
      * 2、  gsc
      * 3、  asptect
-     * 4、  nihss
+     * 4、  溶栓前nihss
+     * 19、  溶栓后即刻nihss
+     * 20、  溶栓24hnihss
+     * 21、  溶栓7+2天 nihss
      * 5、  mrs
      * 6、  吞咽
      * 7、  thrive
@@ -36,6 +39,32 @@ public class ScoreEvent {
      * 17、 介入治疗禁忌症
      * 18、 介入治疗适应症
      */
+
+
+    public static int TYPE_FAST = 1;
+    public static int TYPE_GSC = 2;
+    public static int TYPE_ASPTECT = 3;
+    public static int TYPE_NIHSS_FIRST = 4;
+    public static int TYPE_NIHSS_OVER = 5;
+    public static int TYPE_NIHSS_OVER_24 = 6;
+    public static int TYPE_NIHSS_OVER_7_2 = 7;
+    public static int TYPE_MRS = 8;
+    public static int TYPE_吞咽 = 9;
+    public static int TYPE_THRIVE = 10;
+    public static int TYPE_HUNT = 11;
+    public static int TYPE_FISHER = 12;
+    public static int TYPE_TI = 13;
+    public static int TYPE_TS = 14;
+    public static int TYPE_ISS = 15;
+    public static int TYPE_GRACE = 16;
+//    public static int TYPE_grace = 17;
+    public static int TYPE_PHI = 18;
+    public static int TYPE_静脉溶栓适应症 = 19;
+    public static int TYPE_静脉溶栓禁忌症 = 20;
+    public static int TYPE_介入治疗禁忌症 = 21;
+    public static int TYPE_介入治疗适应症 = 22;
+
+
     private int type;
 
     /**
