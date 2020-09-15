@@ -100,12 +100,6 @@ public class ThrombolysisAssessmentActivity extends BaseActivity {
         loadData(mRecordId);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 
     @Override
     public void initListener() {
