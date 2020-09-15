@@ -31,6 +31,7 @@ import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -204,7 +205,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         } else {
             RouterHelper.navWithPatient( RouteUrl.Stroke.STROKE_THRIVE_SCORE, "11");
         }*/
-
+        EventBus.getDefault().register(this);
         loadData();
 
         //缺血性卒中
@@ -632,7 +633,9 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         }
     }
 
-
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }
