@@ -28,6 +28,10 @@ public final class IntentKey {
      * GCS 评分
      */
     public static final String GCS_TYPE = "GCS_TYPE";
+    /**
+     * MRS  评分
+     */
+    public static final String MRS_TYPE = "MRS_TYPE";
 
     /**
      * 患者类型

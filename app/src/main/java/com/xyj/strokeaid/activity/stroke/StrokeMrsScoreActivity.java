@@ -8,11 +8,15 @@ import com.xyj.strokeaid.app.IntentKey;
 import com.xyj.strokeaid.app.RouteUrl;
 import com.xyj.strokeaid.base.BaseActivity;
 import com.xyj.strokeaid.bean.BaseObjectBean;
+import com.xyj.strokeaid.bean.ScoreResultBean;
 import com.xyj.strokeaid.bean.SendAddStrokeMrsBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.http.RetrofitClient;
 import com.xyj.strokeaid.http.gson.GsonUtils;
 import com.xyj.strokeaid.view.BaseTitleBar;
 import com.xyj.strokeaid.view.NihssItemBar;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +46,8 @@ public class StrokeMrsScoreActivity extends BaseActivity {
 
     @BindView(R.id.nib_before_disease_mrs_frag_ss)
     NihssItemBar nibBeforeDiseaseMrsFragSs;
-
-
+    @Autowired(name = IntentKey.MRS_TYPE)
+    int mMrsType;
     @Override
     public int getLayoutId() {
         return R.layout.activity_stroke_mrs_scores;
@@ -103,22 +107,27 @@ public class StrokeMrsScoreActivity extends BaseActivity {
                 .getInstance()
                 .getApi()
                 .addMrs(requestBody)
-                .enqueue(new Callback<BaseObjectBean>() {
+                .enqueue(new Callback<BaseObjectBean<ScoreResultBean>>() {
                     @Override
-                    public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                    public void onResponse(Call<BaseObjectBean<ScoreResultBean>> call, Response<BaseObjectBean<ScoreResultBean>> response) {
                         hideLoadingDialog();
-                        if (response.body() != null) {
-                            if (response.body().getResult() == 1) {
+                        BaseObjectBean<ScoreResultBean> body = response.body();
+                        if (body != null) {
+                            if (body.getResult() == 1) {
                                 showToast("评分提交成功！");
+                                ScoreResultBean data = body.getData();
+                                ScoreEvent event = new ScoreEvent(data.getScore(), mMrsType, data.getId());
+                                EventBus.getDefault().postSticky(event);
+                                finish();
                             } else {
-                                showToast(response.body().getMessage());
+                                showToast(body.getMessage());
                             }
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<BaseObjectBean> call, Throwable t) {
-
+                    public void onFailure(Call<BaseObjectBean<ScoreResultBean>> call, Throwable t) {
+                        hideLoadingDialog();
                     }
                 });
     }

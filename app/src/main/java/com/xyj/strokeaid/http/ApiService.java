@@ -184,7 +184,7 @@ public interface ApiService {
      */
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @POST(ApiUrls.NET_URL_NEW_PATIENMEDICAL_STROKE_MRS)
-    Call<BaseObjectBean> addMrs(@Body RequestBody info);
+    Call<BaseObjectBean<ScoreResultBean>> addMrs(@Body RequestBody info);
 
     /**
      * fast评分

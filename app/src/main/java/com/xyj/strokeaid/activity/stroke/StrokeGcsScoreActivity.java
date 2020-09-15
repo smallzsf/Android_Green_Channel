@@ -184,7 +184,6 @@ public class StrokeGcsScoreActivity extends BaseActivity {
                         if (body != null) {
                             if (body.getResult() == 1) {
                                 showToast("保存数据成功");
-                                // TODO
                                 ScoreResultBean data = body.getData();
                                 ScoreEvent event = new ScoreEvent(data.getScore(), mGcsType, data.getId());
                                 EventBus.getDefault().postSticky(event);
