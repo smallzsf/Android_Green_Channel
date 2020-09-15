@@ -88,6 +88,11 @@ public class TextSwitchBar extends LinearLayout {
             scViewTsb.setOnCheckedChangeListener(listener);
         }
     }
+    public void setOnClickListener(CompoundButton.OnClickListener listener){
+        if (scViewTsb != null) {
+            scViewTsb.setOnClickListener(listener);
+        }
+    }
 
 }
 

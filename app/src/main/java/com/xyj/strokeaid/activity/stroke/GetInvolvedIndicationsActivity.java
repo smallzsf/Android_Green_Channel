@@ -98,12 +98,11 @@ public class GetInvolvedIndicationsActivity extends BaseActivity {
     }
 
     StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchChangeListener = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
-            Log.e(TAG, b + " onCheckedChanged: " + position);
 
+        @Override
+        public void onCheckedChanged(View view, int position) {
             StrokeTCBean bean = mStrokeTCBeans.get(position);
-            bean.setChecked(b);
+            bean.setChecked(!bean.getChecked());
             refrashAdapter(false);
         }
     };

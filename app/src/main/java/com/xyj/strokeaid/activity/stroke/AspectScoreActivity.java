@@ -124,7 +124,7 @@ public class AspectScoreActivity extends BaseActivity {
                     @Override
                     public void onResponse(Call<BaseObjectBean<AspectPo>> call, Response<BaseObjectBean<AspectPo>> response) {
                         BaseObjectBean<AspectPo> body = response.body();
-                        if (body.getResult() == 1){
+                        if (body.getResult() == 1) {
                             aspectPo = body.getData();
                             initData();
                         }
@@ -149,10 +149,11 @@ public class AspectScoreActivity extends BaseActivity {
     }
 
     StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchClickListener = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
+
         @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
+        public void onCheckedChanged(View view, int position) {
             StrokeTCBean bean = mStrokeTCBeans.get(position);
-            bean.setChecked(true);
+            bean.setChecked(!bean.getChecked());
             if (position == mStrokeTCBeans.size() - 1) {
                 for (int i = 0; i < mStrokeTCBeans.size(); i++) {
                     StrokeTCBean bean1 = mStrokeTCBeans.get(i);
@@ -164,10 +165,14 @@ public class AspectScoreActivity extends BaseActivity {
                     }
                     bean1.setChecked(false);
                 }
+            } else {
+                bean = mStrokeTCBeans.get(mStrokeTCBeans.size() - 1);
+                bean.setChecked(false);
             }
             refrashAdapter(false);
         }
     };
+
     private void refrashAdapter1(boolean b) {
         if (mStrokeTCRvAdapter1 == null || b) {
             mStrokeTCRvAdapter1 = new StrokeTCRvAdapterNew(this, mStrokeTCBeans1);
@@ -178,24 +183,31 @@ public class AspectScoreActivity extends BaseActivity {
             mStrokeTCRvAdapter1.notifyDataSetChanged();
         }
     }
+
     StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchClickListener1 = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
         @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
+        public void onCheckedChanged(View view, int position) {
             StrokeTCBean bean = mStrokeTCBeans1.get(position);
-            bean.setChecked(true);
-            for (int i = 0; i < mStrokeTCBeans1.size(); i++) {
-                StrokeTCBean bean1 = mStrokeTCBeans1.get(i);
-                if (bean1 == null) {
-                    continue;
+            bean.setChecked(!bean.getChecked());
+            if (position == mStrokeTCBeans1.size() - 1) {
+                for (int i = 0; i < mStrokeTCBeans1.size(); i++) {
+                    StrokeTCBean bean1 = mStrokeTCBeans1.get(i);
+                    if (bean1 == null) {
+                        continue;
+                    }
+                    if (i == position) {
+                        continue;
+                    }
+                    bean1.setChecked(false);
                 }
-                if (i == position) {
-                    continue;
-                }
-                bean1.setChecked(false);
+            } else {
+                bean = mStrokeTCBeans1.get(mStrokeTCBeans1.size() - 1);
+                bean.setChecked(false);
             }
             refrashAdapter1(false);
         }
     };
+
     @Override
     public void initListener() {
         titleBarActTc.setLeftLayoutClickListener(v -> finish());
@@ -241,7 +253,7 @@ public class AspectScoreActivity extends BaseActivity {
         list.add(new StrokeTCBean(false, "1=（10）M3上方的大脑中动脉皮层（M6）", false, ""));
         list.add(new StrokeTCBean(false, "0=（11）以上区域均无异常", false, ""));
 
-        if (aspectPo == null){
+        if (aspectPo == null) {
             return list;
         }
         list.get(0).setChecked(aspectPo.aspectBeforeC.equals("1"));
@@ -271,7 +283,7 @@ public class AspectScoreActivity extends BaseActivity {
         list.add(new StrokeTCBean(false, "1=（8）右侧大脑后动脉供血区", false, ""));
         list.add(new StrokeTCBean(false, "0=（9）以上区域均无异常", false, ""));
 
-        if (aspectPo == null){
+        if (aspectPo == null) {
             return list;
         }
         list.get(0).setChecked(aspectPo.aspectAfterPons.equals("2"));

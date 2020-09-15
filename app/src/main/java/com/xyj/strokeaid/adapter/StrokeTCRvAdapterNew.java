@@ -73,11 +73,12 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
             viewHolder.llItem.setBackground(new ColorDrawable(Color.WHITE));
         }
 
-        viewHolder.tsbRoot.setSwitchClickListener(new OnSwitchClickListener(i));
+        viewHolder.tsbRoot.setOnClickListener(new OnSwitchClickListener(i));
 
         viewHolder.tvHeaderSingleText.setText(bean.getContent());
 //        viewHolder.tsbRoot.setSelected(bean.getChecked());
         viewHolder.tsbRoot.setSwitch(bean.getChecked());
+        Log.e(TAG, "onCheckedChanged: checked  "+bean.getChecked() );
         return view;
     }
 
@@ -97,18 +98,19 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
         }
     }
 
-    private class OnSwitchClickListener implements CompoundButton.OnCheckedChangeListener {
+    private class OnSwitchClickListener implements CompoundButton.OnClickListener {
         private final int position;
 
         private OnSwitchClickListener(int position) {
             this.position = position;
         }
 
+
         @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        public void onClick(View view) {
             Log.e(TAG, "onCheckedChanged: "+position );
             if (onSwitchClickListener != null) {
-                onSwitchClickListener.onCheckedChanged(compoundButton, b, position);
+                onSwitchClickListener.onCheckedChanged(view, position);
             }
         }
     }
@@ -121,7 +123,7 @@ public class StrokeTCRvAdapterNew extends BaseAdapter {
     }
 
     public interface OnSwitchChangeListener {
-        void onCheckedChanged(CompoundButton compoundButton, boolean b, int position);
+        void onCheckedChanged(View view, int position);
     }
 
 }

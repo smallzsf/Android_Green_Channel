@@ -133,11 +133,11 @@ showToast(R.string.http_tip_server_error);
 
 
     StrokeTCRvAdapterNew.OnSwitchChangeListener onSwitchChangeListener = new StrokeTCRvAdapterNew.OnSwitchChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b, int position) {
 
+        @Override
+        public void onCheckedChanged(View view, int position) {
             StrokeTCBean bean = mStrokeTCBeans.get(position);
-            bean.setChecked(b);
+            bean.setChecked(!bean.getChecked());
             refrashAdapter(false);
         }
     };
