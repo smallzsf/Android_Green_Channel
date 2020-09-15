@@ -199,10 +199,10 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.rb_antiplatelet_frag_sihd_yes:
-                        bean.setHospitalmedicationanticoagulationis48hourdose("cpc_bool_true");
+                        bean.setHospitalmedicationanticoagulationis48hourdose("1");
                         break;
                     case R.id.rb_antiplatelet_frag_sihd_no:
-                        bean.setHospitalmedicationanticoagulationis48hourdose("cpc_bool_false");
+                        bean.setHospitalmedicationanticoagulationis48hourdose("-1");
                         break;
                 }
             }
@@ -213,10 +213,10 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i){
                     case R.id.rb_anticoagulation_frag_sihd_yes:
-                        bean.setHospitalmedicationantiplateletis48hourdose("cpc_bool_true");
+                        bean.setHospitalmedicationantiplateletis48hourdose("1");
                         break;
                     case R.id.rb_anticoagulation_frag_sihd_no:
-                        bean.setHospitalmedicationantiplateletis48hourdose("cpc_bool_false");
+                        bean.setHospitalmedicationantiplateletis48hourdose("-1");
                         break;
                 }
             }
@@ -226,14 +226,14 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 llAntiplateletFragSihd.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                bean.setHospitalmedicationisantiplatelet(isChecked ? "cpc_bool_true" : "cpc_bool_false");
+                bean.setHospitalmedicationisantiplatelet(isChecked ? "1" : "-1");
             }
         });
         tsbAnticoagulationFragSihd.setSwitchClickListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 llAnticoagulationFragSihd.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                bean.setHospitalmedicationisanticoagulation(isChecked ? "cpc_bool_true" : "cpc_bool_false");
+                bean.setHospitalmedicationisanticoagulation(isChecked ? "1" : "-1");
             }
         });
 
@@ -241,7 +241,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 llStepDown.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                bean.setHospitalmedicationisbloodpressure(isChecked ? "cpc_bool_true" : "cpc_bool_false");
+                bean.setHospitalmedicationisbloodpressure(isChecked ? "1" : "-1");
             }
         });
 
@@ -249,7 +249,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 llLipid.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                bean.setHospitalmedicationislipid(isChecked ? "cpc_bool_true" : "cpc_bool_false");
+                bean.setHospitalmedicationislipid(isChecked ? "1" : "-1");
             }
         });
 
@@ -258,7 +258,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 llSugar.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-                bean.setHospitalmedicationissugar(isChecked ? "cpc_bool_true" : "cpc_bool_false");
+                bean.setHospitalmedicationissugar(isChecked ? "1" : "-1");
             }
         });
     }
@@ -309,6 +309,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
                 new BaseRequestBean<>(mRecordId, 1, bean);
 
         RequestBody resuestBody = baseRequestBean.getResuestBody(baseRequestBean);
+        showLoadingDialog();
         RetrofitClient
                 .getInstance()
                 .getApi()
@@ -316,6 +317,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
                 .enqueue(new Callback<BaseObjectBean>() {
                     @Override
                     public void onResponse(Call<BaseObjectBean> call, Response<BaseObjectBean> response) {
+                        hideLoadingDialog();
                         if (response.body() != null) {
                             if (response.body().getResult() == 1) {
                                 showToast("保存数据成功");
@@ -327,6 +329,7 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
 
                     @Override
                     public void onFailure(Call<BaseObjectBean> call, Throwable t) {
+                        hideLoadingDialog();
                         showToast(call.toString());
                     }
                 });
@@ -430,45 +433,45 @@ public class StrokeInHosDrugFragment extends BaseStrokeFragment {
         }
         String hospitalmedicationanticoagulationis48hourdose = bean.getHospitalmedicationanticoagulationis48hourdose();
         if (!TextUtils.isEmpty(hospitalmedicationanticoagulationis48hourdose)){
-            rgrgAntiplatelet.check(hospitalmedicationanticoagulationis48hourdose.equals("cpc_bool_true") ? R.id.rb_antiplatelet_frag_sihd_yes : R.id.rb_antiplatelet_frag_sihd_no);
+            rgrgAntiplatelet.check(hospitalmedicationanticoagulationis48hourdose.equals("1") ? R.id.rb_antiplatelet_frag_sihd_yes : R.id.rb_antiplatelet_frag_sihd_no);
         }
 
         String hospitalmedicationantiplateletis48hourdose = bean.getHospitalmedicationantiplateletis48hourdose();
         if (!TextUtils.isEmpty(hospitalmedicationantiplateletis48hourdose)){
-            rgAnticoagulation.check(hospitalmedicationantiplateletis48hourdose.equals("cpc_bool_true") ? R.id.rb_anticoagulation_frag_sihd_yes : R.id.rb_anticoagulation_frag_sihd_no);
+            rgAnticoagulation.check(hospitalmedicationantiplateletis48hourdose.equals("1") ? R.id.rb_anticoagulation_frag_sihd_yes : R.id.rb_anticoagulation_frag_sihd_no);
         }
 
         String hospitalmedicationisantiplatelet = bean.getHospitalmedicationisantiplatelet();
         if (!TextUtils.isEmpty(hospitalmedicationisantiplatelet)){
-            boolean isChecked = hospitalmedicationisantiplatelet.equals("cpc_bool_true");
+            boolean isChecked = hospitalmedicationisantiplatelet.equals("1");
             llAntiplateletFragSihd.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             tsbAntiplateletFragSihd.setSwitch(isChecked);
         }
 
         String hospitalmedicationisanticoagulation = bean.getHospitalmedicationisanticoagulation();
         if (!TextUtils.isEmpty(hospitalmedicationisanticoagulation)){
-            boolean isChecked = hospitalmedicationisanticoagulation.equals("cpc_bool_true");
+            boolean isChecked = hospitalmedicationisanticoagulation.equals("1");
             llAnticoagulationFragSihd.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             tsbAnticoagulationFragSihd.setSwitch(isChecked);
         }
 
         String hospitalmedicationisbloodpressure = bean.getHospitalmedicationisbloodpressure();
         if (!TextUtils.isEmpty(hospitalmedicationisbloodpressure)){
-            boolean isChecked = hospitalmedicationisbloodpressure.equals("cpc_bool_true");
+            boolean isChecked = hospitalmedicationisbloodpressure.equals("1");
             llStepDown.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             tsbStepDown.setSwitch(isChecked);
         }
 
         String hospitalmedicationislipid = bean.getHospitalmedicationislipid();
         if (!TextUtils.isEmpty(hospitalmedicationislipid)){
-            boolean isChecked = hospitalmedicationislipid.equals("cpc_bool_true");
+            boolean isChecked = hospitalmedicationislipid.equals("1");
             llLipid.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             tsbLipid.setSwitch(isChecked);
         }
 
         String hospitalmedicationissugar = bean.getHospitalmedicationissugar();
         if (!TextUtils.isEmpty(hospitalmedicationissugar)){
-            boolean isChecked = hospitalmedicationissugar.equals("cpc_bool_true");
+            boolean isChecked = hospitalmedicationissugar.equals("1");
             llSugar.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             tsbSugar.setSwitch(isChecked);
         }
