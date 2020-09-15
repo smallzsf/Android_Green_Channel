@@ -1,7 +1,9 @@
 package com.xyj.strokeaid.activity.stroke;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.luck.picture.lib.photoview.PhotoView;
@@ -9,7 +11,6 @@ import com.xyj.strokeaid.R;
 import com.xyj.strokeaid.base.BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @Description: 查看图片
@@ -19,6 +20,12 @@ import butterknife.ButterKnife;
 public class PhotoViewActivity extends BaseActivity {
     @BindView(R.id.pv_picture)
     PhotoView pvPicture;
+
+    public static void launch(@NonNull Activity activity, String filepath) {
+        Intent intent = new Intent(activity, PhotoViewActivity.class);
+        intent.putExtra("image", filepath);
+        activity.startActivity(intent);
+    }
 
     @Override
     public int getLayoutId() {
@@ -34,7 +41,7 @@ public class PhotoViewActivity extends BaseActivity {
     public void initView() {
         Intent intent = getIntent();
         String image = intent.getStringExtra("image");
-        Glide.with(this).load("http://ykj.yjjk366.com"+image).into(pvPicture);
+        Glide.with(this).load("http://ykj.yjjk366.com" + image).into(pvPicture);
     }
 
     @Override

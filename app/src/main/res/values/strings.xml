@@ -932,5 +932,6 @@
     <string name="http_tip_data_save_success_with_string">%s保存成功</string>
     <string name="http_tip_emp_data_error">获取基础信息错误，请联系管理员</string>
     <string name="http_tip_data_no_more">没有更多数据</string>
+    <string name="http_tip_data_file_success">文件上传成功</string>
 
 </resources>
