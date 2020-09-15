@@ -125,6 +125,9 @@ public class StrokeNihssActivity extends BaseActivity implements NihssItemBar.On
         } else if (mNihssType == ScoreEvent.TYPE_NIHSS_OVER_7_2) {
             // 溶栓后即刻NIHSS评分
             titleBarActNihss.setTitle("溶栓后7±2NIHSS评分");
+        }  else if (mNihssType == ScoreEvent.TYPE_NIHSS_出院) {
+            // 溶栓后即刻NIHSS评分
+            titleBarActNihss.setTitle("出院NIHSS评分");
         } else {
             // NIHSS评分
             titleBarActNihss.setTitle("NIHSS评分");

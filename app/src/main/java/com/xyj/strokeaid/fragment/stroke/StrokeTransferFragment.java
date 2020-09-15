@@ -22,6 +22,7 @@ import com.xyj.strokeaid.bean.BaseRequestBean;
 import com.xyj.strokeaid.bean.BaseResponseBean;
 import com.xyj.strokeaid.bean.StrokeBloodExaminationBean;
 import com.xyj.strokeaid.bean.StrokeTransferBean;
+import com.xyj.strokeaid.event.ScoreEvent;
 import com.xyj.strokeaid.fragment.BaseStrokeFragment;
 import com.xyj.strokeaid.helper.KeyValueHelper;
 import com.xyj.strokeaid.http.RetrofitClient;
@@ -29,6 +30,9 @@ import com.xyj.strokeaid.view.ItemEditBar;
 import com.xyj.strokeaid.view.MyRadioGroup;
 import com.xyj.strokeaid.view.TextTimeBar;
 import com.xyj.strokeaid.view.editspinner.EditSpinner;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -274,6 +278,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
 
         iebLeaveHospitalNihss.setRightIvOnClickerListener(v -> {
             ARouter.getInstance().build(RouteUrl.Stroke.STROKE_NIHSS)
+                    .withInt(IntentKey.NIHSS_TYPE,ScoreEvent.TYPE_NIHSS_出院)
                     .navigation();
         });
 
@@ -379,6 +384,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         strokeTransferBean.setTotalcostinhospital(iebAllMoney.getEditContent());
         //出院诊断-出院NIHSS评分
         strokeTransferBean.setLeavenihss(iebLeaveHospitalNihss.getEditContent());
+        strokeTransferBean.setLeavenihssrelationid((String) iebLeaveHospitalNihss.getTag());
         //出院诊断-出院时mRS
         strokeTransferBean.setLeavemrs(iebLeaveHospitalMrs.getEditContent());
         //出院诊断-出院时GCS
@@ -546,6 +552,7 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
         iebAllMoney.setEditContent(strokeTransferBean.getTotalcostinhospital());
         //出院诊断-出院NIHSS评分
         iebLeaveHospitalNihss.setEditContent(strokeTransferBean.getLeavenihss());
+        iebLeaveHospitalNihss.setTag(strokeTransferBean.getLeavenihssrelationid());
         //出院诊断-出院时mRS
         iebLeaveHospitalMrs.setEditContent(strokeTransferBean.getLeavemrs());
         //出院诊断-出院时GCS
@@ -605,6 +612,27 @@ public class StrokeTransferFragment extends BaseStrokeFragment {
 
 
     }
+
+
+
+    /**
+     * 事件接收
+     *
+     * @param event 事件通知
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void receiveScoreEventBus(ScoreEvent event) {
+        if (event == null) {
+            return;
+        }
+        if (ScoreEvent.TYPE_NIHSS_出院 == event.getType()) {
+//            ieb_leave_hospital_nihss
+            iebLeaveHospitalNihss.setEditContent(event.getScore() + "");
+            iebLeaveHospitalNihss.setTag(event.getId() + "");
+        }
+    }
+
+
 
 
 }

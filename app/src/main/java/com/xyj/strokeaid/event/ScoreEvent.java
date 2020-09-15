@@ -63,6 +63,7 @@ public class ScoreEvent {
     public static int TYPE_静脉溶栓禁忌症 = 20;
     public static int TYPE_介入治疗禁忌症 = 21;
     public static int TYPE_介入治疗适应症 = 22;
+    public static int TYPE_NIHSS_出院 = 23;
 
 
     private int type;
